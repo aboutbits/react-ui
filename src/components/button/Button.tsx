@@ -1,8 +1,6 @@
 import classNames from 'classnames'
 import React from 'react'
 
-import styles from './Button.module.css'
-
 export enum Variant {
   primary = 'primary',
   secondary = 'secondary',
@@ -28,16 +26,13 @@ const variantStyles: Record<
 > = {
   [Variant.primary]: {
     variantClass:
-      'bg-gradient-to-r from-primary to-primary-700 hover:from-primary-700 hover:to-primary-900 focus:from-primary-700 focus:to-primary-900 font-bold text-white text-xl ' +
-      styles['leading-button'],
-    variantDisabledClass:
-      'bg-primary-50 font-bold text-gray text-xl ' + styles['leading-button'],
+      'bg-gradient-to-r from-primary to-primary-700 hover:from-primary-700 hover:to-primary-900 focus:from-primary-700 focus:to-primary-900 font-bold text-white text-xl',
+    variantDisabledClass: 'bg-primary-50 font-bold text-gray text-xl',
   },
   [Variant.secondary]: {
     variantClass:
-      'border-2 border-primary font-bold text-primary hover:border-primary-700 hover:text-primary-700 focus:border-primary-700 focus:text-primary-700 text-xl ' +
-      styles['leading-button'],
-    variantDisabledClass: 'text-gray-500 text-xl ',
+      'border-2 border-primary font-bold text-primary hover:border-primary-700 hover:text-primary-700 focus:border-primary-700 focus:text-primary-700 text-xl ',
+    variantDisabledClass: 'text-gray-500 text-xl',
   },
   [Variant.danger]: {
     variantClass:
