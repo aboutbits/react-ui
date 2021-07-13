@@ -1,21 +1,27 @@
-import React from 'react'
 import classNames from 'classnames'
+import React from 'react'
+
+import styles from './Button.module.css'
 
 export enum Variant {
   primary = 'primary',
   secondary = 'secondary',
-  danger = 'danger',
+  tertiary = 'tertiary',
+  fourth = 'fourth',
 }
 
 export enum Size {
-  sm = 'sm',
   md = 'md',
+  sm = 'sm',
 }
 
 export type ButtonProps = {
   variant: Variant
   size?: Size
-}
+} & React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>
 
 const variantStyles: Record<
   Variant,
@@ -23,50 +29,66 @@ const variantStyles: Record<
 > = {
   [Variant.primary]: {
     variantClass:
-      'rounded border shadow text-black bg-primary border-primary hover:bg-primary-light hover:border-primary-light focus:border-primary-light focus:bg-primary-light',
+      'bg-gradient-to-r from-primary to-primary-700 hover:from-primary-700 hover:to-primary-900 focus:from-primary-700 focus:to-primary-900 font-bold text-white text-xl ' +
+      styles['leading-button'],
     variantDisabledClass:
-      'rounded border text-gray-darker bg-gray-light border-gray-light',
+      'bg-primary-50 font-bold text-gray text-xl ' + styles['leading-button'],
   },
   [Variant.secondary]: {
     variantClass:
-      'rounded hover:bg-gray-lightest focus:bg-gray-lightest text-black',
-    variantDisabledClass: 'text-gray-light',
+      'border-2 border-primary font-bold text-primary hover:border-primary-700 hover:text-primary-700 focus:border-primary-700 focus:text-primary-700 text-xl ' +
+      styles['leading-button'],
+    variantDisabledClass: 'text-gray-500 text-xl ',
   },
-  [Variant.danger]: {
+  [Variant.tertiary]: {
     variantClass:
-      'rounded border shadow text-white bg-red border-red hover:bg-red-light hover:border-red-light focus:border-red-light focus:bg-red-light',
-    variantDisabledClass:
-      'rounded border text-gray-darker bg-gray-light border-gray-light',
+      'text-red-400 underline hover:text-red-800 focus:text-red-800',
+    variantDisabledClass: 'text-gray-500',
+  },
+  [Variant.fourth]: {
+    variantClass: 'hover:opacity-60 focus:opacity-60',
+    variantDisabledClass: 'text-gray-500',
   },
 }
 
 const sizeStyles: Record<Size, string> = {
-  sm: 'px-4 py-2 font-medium text-xs',
-  md: 'px-4 py-2 leading-normal font-semibold',
+  [Size.sm]: 'px-2 py-1',
+  [Size.md]: 'min-w-50 px-4 py-3',
 }
 
-const Button: React.FC<
-  ButtonProps &
-    React.DetailedHTMLProps<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    >
-> = ({ variant, size = Size.md, className = '', children, ...props }) => {
-  return (
-    <button
-      className={classNames(
-        'focus:outline-none fill-current',
-        props.disabled
-          ? variantStyles[variant].variantDisabledClass
-          : variantStyles[variant].variantClass,
-        sizeStyles[size],
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </button>
-  )
-}
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      variant,
+      size = Size.md,
+      type = 'button',
+      className = '',
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <button
+        className={classNames(
+          'focus:outline-none fill-current',
+          props.disabled
+            ? variantStyles[variant].variantDisabledClass
+            : variantStyles[variant].variantClass,
+          sizeStyles[size],
+          className
+        )}
+        ref={ref}
+        type={type}
+        {...props}
+      >
+        {children}
+      </button>
+    )
+  }
+)
+
+// This improves readability in dev tools
+Button.displayName = 'Button'
 
 export { Button }

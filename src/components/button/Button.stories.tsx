@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Button, Variant } from './Button'
+import { Button, Size, Variant } from './Button'
 
 export default {
   title: 'Components/Button',
@@ -12,6 +12,14 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
-  children: 'Button',
+  children: 'Click Me!',
   variant: Variant.primary,
+  size: Size.md,
+}
+
+export const Secondary = Template.bind({})
+Secondary.args = {
+  children: 'Click Me!',
+  variant: Variant.secondary,
+  size: Size.md,
 }
