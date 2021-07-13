@@ -6,8 +6,7 @@ import styles from './Button.module.css'
 export enum Variant {
   primary = 'primary',
   secondary = 'secondary',
-  tertiary = 'tertiary',
-  fourth = 'fourth',
+  danger = 'danger',
 }
 
 export enum Size {
@@ -40,13 +39,9 @@ const variantStyles: Record<
       styles['leading-button'],
     variantDisabledClass: 'text-gray-500 text-xl ',
   },
-  [Variant.tertiary]: {
+  [Variant.danger]: {
     variantClass:
       'text-red-400 underline hover:text-red-800 focus:text-red-800',
-    variantDisabledClass: 'text-gray-500',
-  },
-  [Variant.fourth]: {
-    variantClass: 'hover:opacity-60 focus:opacity-60',
     variantDisabledClass: 'text-gray-500',
   },
 }

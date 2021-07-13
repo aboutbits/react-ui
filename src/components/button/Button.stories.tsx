@@ -23,3 +23,10 @@ Secondary.args = {
   variant: Variant.secondary,
   size: Size.md,
 }
+
+export const Danger = Template.bind({})
+Danger.args = {
+  children: 'Delete',
+  variant: Variant.danger,
+  size: Size.md,
+}
