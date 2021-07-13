@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  node:
+    build:
+      context: ./
+      dockerfile: docker/node/Dockerfile
+    volumes:
+      - ./:/code
+    working_dir: /code
+    command: npm run dev
+    environment:
+      NEXT_TELEMETRY_DISABLED: 1
+    networks:
+      - internal
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.web.entrypoints=http,https
+      - traefik.http.routers.web.rule=Host(`web.aboutbits.test`)
+      - traefik.http.routers.web.tls=true
+      - traefik.http.routers.web.service=web
+      - traefik.http.services.web.loadbalancer.server.port=3000
+
+networks:
+  proxy:
+    external: true
+  internal:
+    external: false
