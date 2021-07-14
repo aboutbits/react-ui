@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Button, Size, Variant } from './Button'
+import { Button, Tone, Variant } from './Button'
 
 export default {
   title: 'Components/Button',
@@ -10,23 +10,37 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
-export const Primary = Template.bind({})
-Primary.args = {
+export const Default = Template.bind({})
+Default.args = {
   children: 'Click Me!',
-  variant: Variant.primary,
-  size: Size.md,
 }
 
-export const Secondary = Template.bind({})
-Secondary.args = {
+export const Ghost = Template.bind({})
+Ghost.args = {
   children: 'Click Me!',
-  variant: Variant.secondary,
-  size: Size.md,
+  variant: Variant.ghost,
 }
 
-export const Danger = Template.bind({})
-Danger.args = {
-  children: 'Delete',
-  variant: Variant.danger,
-  size: Size.md,
+export const Transparent = Template.bind({})
+Transparent.args = {
+  children: 'Click Me!',
+  variant: Variant.transparent,
+}
+
+export const TonePrimary = Template.bind({})
+TonePrimary.args = {
+  children: 'Click Me!',
+  tone: Tone.primary,
+}
+
+export const ToneCritical = Template.bind({})
+ToneCritical.args = {
+  children: 'Click Me!',
+  tone: Tone.critical,
+}
+
+export const ToneCustom = Template.bind({})
+ToneCustom.args = {
+  children: 'Click Me!',
+  tone: 'green',
 }

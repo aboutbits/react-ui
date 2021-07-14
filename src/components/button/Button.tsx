@@ -2,9 +2,9 @@ import classNames from 'classnames'
 import React from 'react'
 
 export enum Variant {
-  primary = 'primary',
-  secondary = 'secondary',
-  danger = 'danger',
+  solid = 'solid',
+  ghost = 'ghost',
+  transparent = 'transparent',
 }
 
 export enum Size {
@@ -12,45 +12,74 @@ export enum Size {
   sm = 'sm',
 }
 
-export type ButtonProps = {
-  variant: Variant
-  size?: Size
-} & React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->
+export enum Tone {
+  primary = 'primary',
+  critical = 'critical',
+}
 
-const variantStyles: Record<
-  Variant,
-  { variantClass: string; variantDisabledClass: string }
-> = {
-  [Variant.primary]: {
-    variantClass:
-      'bg-gradient-to-r from-primary to-primary-700 hover:from-primary-700 hover:to-primary-900 focus:from-primary-700 focus:to-primary-900 font-bold text-white text-xl',
-    variantDisabledClass: 'bg-primary-50 font-bold text-gray text-xl',
-  },
-  [Variant.secondary]: {
-    variantClass:
-      'border-2 border-primary font-bold text-primary hover:border-primary-700 hover:text-primary-700 focus:border-primary-700 focus:text-primary-700 text-xl ',
-    variantDisabledClass: 'text-gray-500 text-xl',
-  },
-  [Variant.danger]: {
-    variantClass:
-      'text-red-400 underline hover:text-red-800 focus:text-red-800',
-    variantDisabledClass: 'text-gray-500',
-  },
+export interface ButtonProps
+  extends React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  /**
+   * Defines the variant of the button.
+   */
+  variant?: Variant
+  /**
+   * Defines the size of the button.
+   */
+  size?: Size
+  /**
+   * Defines the tone of the button. Basically the color, so be sure to have the colors defined in Tailwind.
+   * You need at least: DEFAULT, 700
+   */
+  tone?: Tone | string
+
+  /**
+   * If you set gradient to true, it will make the solid button with a background gradient from 500 -> 700 and on hover from 700 - 900.
+   */
+  gradient?: boolean
+}
+
+function calculateToneStyle(
+  parameters: Required<Pick<ButtonProps, 'variant' | 'tone' | 'gradient'>>
+): { toneClass: string; toneClassDisabled: string } {
+  if (parameters.variant === Variant.solid) {
+    return {
+      toneClass: `border-transparent bg-${parameters.tone} hover:bg-${parameters.tone}-700 focus:bg-${parameters.tone}-700 text-white font-bold`,
+      toneClassDisabled: `border-transparent bg-gray-300 text-gray-500`,
+    }
+  } else if (parameters.variant === Variant.ghost) {
+    return {
+      toneClass: `border-${parameters.tone} hover:border-${parameters.tone}-700 bg-transparent text-${parameters.tone} hover:text-${parameters.tone}-700 font-bold`,
+      toneClassDisabled: `border-gray-500 bg-transparent text-gray-500`,
+    }
+  } else if (parameters.variant === Variant.transparent) {
+    return {
+      toneClass: `border-transparent background-transparent text-${parameters.tone} hover:text-${parameters.tone}-700 underline`,
+      toneClassDisabled: `border-transparent background-gray-300 text-gray-500 underline`,
+    }
+  }
+
+  return {
+    toneClass: '',
+    toneClassDisabled: '',
+  }
 }
 
 const sizeStyles: Record<Size, string> = {
   [Size.sm]: 'px-2 py-1',
-  [Size.md]: 'min-w-50 px-4 py-3',
+  [Size.md]: 'px-4 py-3 border-2',
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      variant,
+      variant = Variant.solid,
       size = Size.md,
+      tone = Tone.primary,
+      gradient = false,
       type = 'button',
       className = '',
       children,
@@ -58,13 +87,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
+    const toneStyles = calculateToneStyle({ variant, tone, gradient })
+
     return (
       <button
         className={classNames(
           'focus:outline-none fill-current',
-          props.disabled
-            ? variantStyles[variant].variantDisabledClass
-            : variantStyles[variant].variantClass,
+          props.disabled ? toneStyles.toneClassDisabled : toneStyles.toneClass,
           sizeStyles[size],
           className
         )}

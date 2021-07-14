@@ -1,5 +1,13 @@
 module.exports = {
-  purge: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],
+  purge: {
+    content: [
+      './src/**/*.js',
+      './src/**/*.jsx',
+      './src/**/*.ts',
+      './src/**/*.tsx',
+    ],
+  },
+
   theme: {
     extend: {
       boxShadow: {
@@ -43,21 +51,14 @@ module.exports = {
         600: '#545d6e',
         700: '#48505f',
       },
-      red: {
+      critical: {
         100: '#ffcece',
-        400: '#ff7979',
-        800: '#881c27',
+        DEFAULT: '#ff7979',
+        700: '#881c27',
       },
       green: {
         DEFAULT: '#57a870',
-        light: '#d8ffe4',
-      },
-      'light-blue': {
-        DEFAULT: '#f0f6fd',
-      },
-      yellow: {
-        400: '#ffe079',
-        700: '#ffc400',
+        700: '#047857',
       },
     },
   },
