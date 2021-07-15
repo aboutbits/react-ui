@@ -14,8 +14,4 @@ const Template: ComponentStory<typeof LoadingInput> = (args) => (
 )
 
 export const Default = Template.bind({})
-Default.args = {
-  tone: 'gray',
-  title: 'My title!',
-  content: 'My content!',
-}
+Default.args = {}

@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 
-const LoadingBar: React.FC<{ className?: string }> = ({
+const LoadingBar: React.FC<{ className?: string; tone?: string }> = ({
   className,
-  children,
-}) => <div className={classNames('rounded', className)}>{children}</div>
+  tone = 'gray',
+}) => <div className={classNames(`rounded bg-${tone}`, className)} />
 
 export { LoadingBar }
