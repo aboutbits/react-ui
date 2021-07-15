@@ -11,8 +11,13 @@ const SectionHeader: React.FC<{ className?: string }> = ({
   </div>
 )
 
-const SectionTitle: React.FC = ({ children }) => (
-  <h1 className="text-xs font-bold uppercase">{children}</h1>
+const SectionTitle: React.FC<{ className?: string }> = ({
+  className,
+  children,
+}) => (
+  <h1 className={classnames(`text-xs font-bold uppercase`, className)}>
+    {children}
+  </h1>
 )
 
 const SectionHeaderWithAction: React.FC<{
