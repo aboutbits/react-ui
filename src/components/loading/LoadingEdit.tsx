@@ -5,6 +5,7 @@ import {
   SectionTitle,
 } from '../section'
 import { LoadingInput } from '.'
+import React from 'react'
 
 const LoadingEdit: React.FC<{
   numberOfItems: number
@@ -26,5 +27,8 @@ const LoadingEdit: React.FC<{
     </Section>
   )
 }
+
+// This improves readability in dev tools
+LoadingEdit.displayName = 'LoadingEdit'
 
 export { LoadingEdit }
