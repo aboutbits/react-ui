@@ -8,10 +8,18 @@ const LoadingField: React.FC = () => (
   />
 )
 
-const LoadingInput: React.FC = () => (
-  <div>
-    <LoadingBar className="p-2 w-40" />
-    <LoadingBar className="p-6 mt-1 mb-1 w-full border border-transparent" />
+const LoadingInput: React.FC<{
+  tone?: string
+  content?: string
+  title?: string
+}> = ({ tone, content, title }) => (
+  <div className="animate-pulse">
+    <LoadingBar className={`p-2 w-40 bg-${tone}`}>{title}</LoadingBar>
+    <LoadingBar
+      className={`p-6 mt-1 mb-1 w-full border border-transparent bg-${tone}`}
+    >
+      {content}
+    </LoadingBar>
   </div>
 )
 

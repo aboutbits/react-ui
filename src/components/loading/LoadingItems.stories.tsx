@@ -1,0 +1,21 @@
+//https://tailwindcss.com/docs/animation#pulse
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
+
+import { LoadingInput } from './LoadingItems'
+
+export default {
+  title: 'Components/LoadingInput',
+  component: LoadingInput,
+} as ComponentMeta<typeof LoadingInput>
+
+const Template: ComponentStory<typeof LoadingInput> = (args) => (
+  <LoadingInput {...args} />
+)
+
+export const Default = Template.bind({})
+Default.args = {
+  tone: 'gray',
+  title: 'My title!',
+  content: 'My content!',
+}

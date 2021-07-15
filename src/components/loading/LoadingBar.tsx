@@ -1,8 +1,8 @@
 import classNames from 'classnames'
-import styles from './LoadingBar.module.css'
 
-const LoadingBar: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={classNames('rounded', styles.loading, className)}></div>
-)
+const LoadingBar: React.FC<{ className?: string }> = ({
+  className,
+  children,
+}) => <div className={classNames('rounded', className)}>{children}</div>
 
 export { LoadingBar }
