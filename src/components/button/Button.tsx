@@ -69,8 +69,8 @@ function calculateToneStyle(
 }
 
 const sizeStyles: Record<Size, string> = {
-  [Size.sm]: 'px-2 py-1',
-  [Size.md]: 'px-4 py-3 border-2',
+  [Size.sm]: 'border px-2 py-1',
+  [Size.md]: 'border-2 px-4 py-3 text-lg leading-normal',
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
