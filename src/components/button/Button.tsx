@@ -45,27 +45,30 @@ export interface ButtonProps
 function calculateToneStyle(
   parameters: Required<Pick<ButtonProps, 'variant' | 'tone' | 'gradient'>>
 ): { toneClass: string; toneClassDisabled: string } {
-  if (parameters.variant === Variant.solid) {
-    return {
-      toneClass: `border-transparent bg-${parameters.tone} hover:bg-${parameters.tone}-700 focus:bg-${parameters.tone}-700 text-white font-bold`,
-      toneClassDisabled: `border-transparent bg-gray-300 text-gray-500`,
-    }
-  } else if (parameters.variant === Variant.ghost) {
-    return {
-      toneClass: `border-${parameters.tone} hover:border-${parameters.tone}-700 bg-transparent text-${parameters.tone} hover:text-${parameters.tone}-700 font-bold`,
-      toneClassDisabled: `border-gray-500 bg-transparent text-gray-500`,
-    }
-  } else if (parameters.variant === Variant.transparent) {
-    return {
-      toneClass: `border-transparent background-transparent text-${parameters.tone} hover:text-${parameters.tone}-700 underline`,
-      toneClassDisabled: `border-transparent background-gray-300 text-gray-500 underline`,
-    }
-  }
-
-  return {
+  const tone = {
     toneClass: '',
     toneClassDisabled: '',
   }
+
+  if (parameters.variant === Variant.solid) {
+    tone.toneClass = `border-transparent bg-${parameters.tone} hover:bg-${parameters.tone}-700 focus:bg-${parameters.tone}-700 text-white font-bold`
+    tone.toneClassDisabled = `border-transparent bg-gray-300 text-gray-500`
+  } else if (parameters.variant === Variant.ghost) {
+    tone.toneClass = `border-${parameters.tone} hover:border-${parameters.tone}-700 bg-transparent text-${parameters.tone} hover:text-${parameters.tone}-700 font-bold`
+    tone.toneClassDisabled = `border-gray-500 bg-transparent text-gray-500`
+  } else if (parameters.variant === Variant.transparent) {
+    tone.toneClass = `border-transparent background-transparent text-${parameters.tone} hover:text-${parameters.tone}-700 underline`
+    tone.toneClassDisabled = `border-transparent background-gray-300 text-gray-500 underline`
+  }
+
+  //double control if gradient is needed at all
+  //however, there is still a flaw within tailwind, such that the border is no transparent...
+  /*
+  if (parameters.gradient === true && parameters.variant === Variant.solid) {
+    tone.toneClass = `border-0 border-transparent bg-gradient-to-br from-${parameters.tone}-400 to-${parameters.tone}-700 hover:from-${parameters.tone}-700 hover:to-${parameters.tone}-900 focus:from-${parameters.tone}-700 focus:to-${parameters.tone}-900 text-white font-bold`
+  }
+  */
+  return tone
 }
 
 const sizeStyles: Record<Size, string> = {
@@ -88,7 +91,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const toneStyles = calculateToneStyle({ variant, tone, gradient })
-
     return (
       <button
         className={classNames(

@@ -44,3 +44,9 @@ ToneCustom.args = {
   children: 'Click Me!',
   tone: 'green',
 }
+
+export const ToneGradient = Template.bind({})
+ToneGradient.args = {
+  children: 'Click Me!',
+  gradient: true,
+}
