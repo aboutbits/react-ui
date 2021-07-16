@@ -15,11 +15,11 @@ const Template: ComponentStory<typeof DeleteButton> = (args) => (
 
 export const Delete = Template.bind({})
 Delete.args = {
-  children: 'Click Me!',
+  children: 'Delete Me!',
 }
 
 export const DeleteSize = Template.bind({})
 DeleteSize.args = {
-  children: 'Click Me!',
+  children: 'Delete Me!',
   size: Size.sm,
 }
