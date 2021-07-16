@@ -5,7 +5,7 @@ import { DeleteButton } from './DeleteButton'
 import { Size } from './Button'
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/Button/Delete',
   component: DeleteButton,
 } as ComponentMeta<typeof DeleteButton>
 

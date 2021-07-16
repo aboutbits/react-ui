@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Button, Tone, Variant } from './Button'
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/Button/Base',
   component: Button,
 } as ComponentMeta<typeof Button>
 
@@ -15,14 +15,14 @@ Default.args = {
   children: 'Click Me!',
 }
 
-export const Ghost = Template.bind({})
-Ghost.args = {
+export const VariantGhost = Template.bind({})
+VariantGhost.args = {
   children: 'Click Me!',
   variant: Variant.ghost,
 }
 
-export const Transparent = Template.bind({})
-Transparent.args = {
+export const VariantTransparent = Template.bind({})
+VariantTransparent.args = {
   children: 'Click Me!',
   variant: Variant.transparent,
 }
@@ -43,10 +43,4 @@ export const ToneCustom = Template.bind({})
 ToneCustom.args = {
   children: 'Click Me!',
   tone: 'green',
-}
-
-export const ToneGradient = Template.bind({})
-ToneGradient.args = {
-  children: 'Click Me!',
-  gradient: true,
 }

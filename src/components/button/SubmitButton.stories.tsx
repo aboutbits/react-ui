@@ -2,10 +2,9 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { SubmitButton } from './SubmitButton'
-import { Size } from './Button'
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/Button/Submit',
   component: SubmitButton,
 } as ComponentMeta<typeof SubmitButton>
 
@@ -19,9 +18,8 @@ Submit.args = {
   disabled: false,
 }
 
-export const SubmitSize = Template.bind({})
-SubmitSize.args = {
-  children: 'Submit!',
-  size: Size.sm,
+export const Submitting = Template.bind({})
+Submitting.args = {
+  children: 'Submiting...',
   disabled: true,
 }
