@@ -16,3 +16,13 @@ export const Default = Template.bind({})
 Default.args = {
   children: 'I am a ContentArea!',
 }
+
+export const MultipleElements = Template.bind({})
+MultipleElements.args = {
+  children: (
+    <>
+      <div className="w-full p-4 bg-primary" />
+      <div className="w-full p-4 bg-green" />
+    </>
+  ),
+}
