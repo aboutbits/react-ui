@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { LoadingInput } from './LoadingItems'
 
 export default {
-  title: 'Components/LoadingInput',
+  title: 'Components/Loading',
   component: LoadingInput,
 } as ComponentMeta<typeof LoadingInput>
 
@@ -13,10 +13,10 @@ const Template: ComponentStory<typeof LoadingInput> = (args) => (
   <LoadingInput {...args} />
 )
 
-export const Default = Template.bind({})
-Default.args = {}
+export const LoadingItemsInput = Template.bind({})
+LoadingItemsInput.args = {}
 
-export const TonePrimary = Template.bind({})
-TonePrimary.args = {
+export const LoadingItemsInputTonePrimary = Template.bind({})
+LoadingItemsInputTonePrimary.args = {
   tone: 'primary',
 }

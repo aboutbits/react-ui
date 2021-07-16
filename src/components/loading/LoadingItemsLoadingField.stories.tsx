@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { LoadingField } from './LoadingItems'
 
 export default {
-  title: 'Components/LoadingField',
+  title: 'Components/Loading',
   component: LoadingField,
 } as ComponentMeta<typeof LoadingField>
 
@@ -13,20 +13,20 @@ const Template: ComponentStory<typeof LoadingField> = (args) => (
   <LoadingField {...args} />
 )
 
-export const Default = Template.bind({})
-Default.args = {}
+export const LoadingItemsField = Template.bind({})
+LoadingItemsField.args = {}
 
-export const TonePrimary = Template.bind({})
-TonePrimary.args = {
+export const LoadingItemsFieldTonePrimary = Template.bind({})
+LoadingItemsFieldTonePrimary.args = {
   tone: 'primary',
 }
 
-export const VariantError = Template.bind({})
-VariantError.args = {
+export const LoadingItemsFieldVariantError = Template.bind({})
+LoadingItemsFieldVariantError.args = {
   variant: 'error',
 }
 
-export const VariantLoaded = Template.bind({})
-VariantLoaded.args = {
+export const LoadingItemsFieldVariantLoaded = Template.bind({})
+LoadingItemsFieldVariantLoaded.args = {
   variant: 'loaded',
 }

@@ -2,25 +2,25 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { LoadingList } from './LoadingList'
+import { LoadingList as LoadingListComponent } from './LoadingList'
 
 export default {
-  title: 'Components/LoadingList',
-  component: LoadingList,
-} as ComponentMeta<typeof LoadingList>
+  title: 'Components/Loading',
+  component: LoadingListComponent,
+} as ComponentMeta<typeof LoadingListComponent>
 
-const Template: ComponentStory<typeof LoadingList> = (args) => (
-  <LoadingList {...args} />
+const Template: ComponentStory<typeof LoadingListComponent> = (args) => (
+  <LoadingListComponent {...args} />
 )
 
-export const Default = Template.bind({})
-Default.args = {
+export const LoadingList = Template.bind({})
+LoadingList.args = {
   numberOfItems: 2,
   sectionHeader: 'Change me!',
 }
 
-export const TonePrimary = Template.bind({})
-TonePrimary.args = {
+export const LoadingListTonePrimary = Template.bind({})
+LoadingListTonePrimary.args = {
   numberOfItems: 2,
   sectionHeader: 'Change me!',
   tone_background: 'primary-900',
