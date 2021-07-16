@@ -9,20 +9,20 @@ import { LoadingField } from '.'
 const LoadingDetails: React.FC<{
   numberOfItems: number
   sectionHeader: React.ReactNode
-  tone_background?: string
-  tone_elements?: string
-}> = ({ numberOfItems, sectionHeader, tone_background, tone_elements }) => {
+  toneBackground?: string
+  toneElements?: string
+}> = ({ numberOfItems, sectionHeader, toneBackground, toneElements }) => {
   return (
     <Section>
       <SectionHeader>
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContainerMultiColumn tone={tone_background}>
+      <SectionContainerMultiColumn tone={toneBackground}>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <LoadingField tone={tone_elements} key={index} />
+            <LoadingField tone={toneElements} key={index} />
           ))}
       </SectionContainerMultiColumn>
     </Section>

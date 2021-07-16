@@ -23,6 +23,6 @@ export const LoadingListTonePrimary = Template.bind({})
 LoadingListTonePrimary.args = {
   numberOfItems: 2,
   sectionHeader: 'Change me!',
-  tone_background: 'primary-900',
-  tone_elements: 'primary-400',
+  toneBackground: 'primary-900',
+  toneElements: 'primary-400',
 }

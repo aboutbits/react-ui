@@ -10,9 +10,9 @@ import { LoadingBar } from '.'
 const LoadingList: React.FC<{
   numberOfItems: number
   sectionHeader: React.ReactNode
-  tone_background?: string
-  tone_elements?: string
-}> = ({ numberOfItems, sectionHeader, tone_background, tone_elements }) => {
+  toneBackground?: string
+  toneElements?: string
+}> = ({ numberOfItems, sectionHeader, toneBackground, toneElements }) => {
   return (
     <Section>
       <SectionHeader>
@@ -23,9 +23,9 @@ const LoadingList: React.FC<{
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <SectionListItem tone={tone_background} key={index}>
-              <LoadingBar tone={tone_elements} className="p-4 mr-4 w-full" />
-              <LoadingBar tone={tone_elements} className="p-4 w-12" />
+            <SectionListItem tone={toneBackground} key={index}>
+              <LoadingBar tone={toneElements} className="p-4 mr-4 w-full" />
+              <LoadingBar tone={toneElements} className="p-4 w-12" />
             </SectionListItem>
           ))}
       </SectionListContainer>
