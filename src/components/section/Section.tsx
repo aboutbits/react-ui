@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classNames from 'classnames'
 
 export enum SectionBackground {
   white = 'white',
@@ -15,7 +15,7 @@ export const Section: React.FC<{ background?: SectionBackground }> = ({
   background = SectionBackground.white,
   children,
 }) => (
-  <section className={classnames(backgroundStyle[background], 'lg:shadow-md')}>
+  <section className={classNames(backgroundStyle[background], 'lg:shadow-md')}>
     {children}
   </section>
 )
@@ -31,6 +31,7 @@ export const SectionContainerMultiColumn: React.FC<{
   </div>
 )
 
-export const SectionListContainer: React.FC = ({ children }) => (
-  <div className="space-y-px bg-gray-300">{children}</div>
-)
+export const SectionListContainer: React.FC<{ tone?: string }> = ({
+  children,
+  tone = 'gray-300',
+}) => <div className={`space-y-px bg-${tone}`}>{children}</div>
