@@ -5,7 +5,7 @@ import { DeleteButton } from './DeleteButton'
 import { Size } from './Button'
 
 export default {
-  title: 'Components/DeleteButton',
+  title: 'Components/Button',
   component: DeleteButton,
 } as ComponentMeta<typeof DeleteButton>
 
@@ -13,8 +13,8 @@ const Template: ComponentStory<typeof DeleteButton> = (args) => (
   <DeleteButton {...args} />
 )
 
-export const Default = Template.bind({})
-Default.args = {
+export const Delete = Template.bind({})
+Delete.args = {
   children: 'Click Me!',
 }
 
