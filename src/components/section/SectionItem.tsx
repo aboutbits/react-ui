@@ -7,8 +7,8 @@ export enum SectionDescriptionItemVariant {
 }
 
 const variantStyles: Record<SectionDescriptionItemVariant, string> = {
-  [SectionDescriptionItemVariant.loaded]: 'border-gray-300 text-white',
-  [SectionDescriptionItemVariant.error]: 'border-red-400 text-red-400',
+  [SectionDescriptionItemVariant.loaded]: 'border-gray text-white',
+  [SectionDescriptionItemVariant.error]: 'border-critical text-critical',
 }
 
 export const SectionListItem: React.FC<{ className?: string }> = ({
