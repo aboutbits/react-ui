@@ -13,6 +13,9 @@ const Template: ComponentStory<typeof LoadingBar> = (args) => (
 )
 
 export const Default = Template.bind({})
-Default.args = {
-  className: 'p-2 w-40',
+Default.args = {}
+
+export const TonePrimary = Template.bind({})
+TonePrimary.args = {
+  tone: 'primary',
 }
