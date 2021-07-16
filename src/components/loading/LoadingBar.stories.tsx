@@ -9,16 +9,13 @@ export default {
 } as ComponentMeta<typeof LoadingBarComponent>
 
 const Template: ComponentStory<typeof LoadingBarComponent> = (args) => (
-  <LoadingBarComponent {...args} />
+  <LoadingBarComponent className="p-4" {...args} />
 )
 
 export const LoadingBar = Template.bind({})
-LoadingBar.args = {
-  className: 'p-4',
-}
+LoadingBar.args = {}
 
 export const LoadingBarTonePrimary = Template.bind({})
 LoadingBarTonePrimary.args = {
   tone: 'primary',
-  className: 'p-4',
 }
