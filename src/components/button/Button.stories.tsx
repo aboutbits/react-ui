@@ -15,6 +15,12 @@ Default.args = {
   children: 'Click Me!',
 }
 
+export const VarianSolid = Template.bind({})
+VarianSolid.args = {
+  children: 'Click Me!',
+  variant: Variant.solid,
+}
+
 export const VariantGhost = Template.bind({})
 VariantGhost.args = {
   children: 'Click Me!',

@@ -20,6 +20,6 @@ Submit.args = {
 
 export const Submitting = Template.bind({})
 Submitting.args = {
-  children: 'Submiting...',
+  children: 'Submitting...',
   disabled: true,
 }
