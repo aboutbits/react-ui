@@ -5,13 +5,12 @@ import {
 import { LoadingBar } from './LoadingBar'
 
 const LoadingField: React.FC<{
-  variant?: SectionDescriptionItemVariant
   tone?: string
-}> = ({ tone, variant }) => (
+}> = ({ tone }) => (
   <SectionDescriptionItem
     title={<LoadingBar tone={tone} className="p-2.5 w-40" />}
     content={<LoadingBar tone={tone} className="p-3 w-full" />}
-    variant={variant}
+    variant={SectionDescriptionItemVariant.loaded}
   />
 )
 
