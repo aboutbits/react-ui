@@ -15,3 +15,8 @@ const Template: ComponentStory<typeof LoadingInput> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {}
+
+export const TonePrimary = Template.bind({})
+TonePrimary.args = {
+  tone: 'primary',
+}
