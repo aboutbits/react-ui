@@ -22,9 +22,10 @@ export const Section: React.FC<{ background?: SectionBackground }> = ({
 
 export const SectionContainerMultiColumn: React.FC<{
   className?: string
-}> = ({ children, className = '' }) => (
+  tone?: string
+}> = ({ children, className = '', tone = 'gray-700' }) => (
   <div
-    className={`grid xl:grid-cols-2 pt-5 pb-10 px-4 lg:px-5 xl:gap-x-5 gap-y-5 bg-gray-700 ${className}`}
+    className={`grid xl:grid-cols-2 pt-5 pb-10 px-4 lg:px-5 xl:gap-x-5 gap-y-5 bg-${tone} ${className}`}
   >
     {children}
   </div>
