@@ -4,23 +4,13 @@ import {
 } from '../section'
 import { LoadingBar } from './LoadingBar'
 
-export interface LoadingFieldProps {
+const LoadingField: React.FC<{
   variant?: SectionDescriptionItemVariant
   tone?: string
-}
-
-const LoadingField: React.FC<LoadingFieldProps> = ({ tone, variant }) => (
+}> = ({ tone, variant }) => (
   <SectionDescriptionItem
-    title={
-      <LoadingBar tone={tone} className="p-2.5 w-40">
-        test
-      </LoadingBar>
-    }
-    content={
-      <LoadingBar tone={tone} className="p-3 w-full">
-        test
-      </LoadingBar>
-    }
+    title={<LoadingBar tone={tone} className="p-2.5 w-40" />}
+    content={<LoadingBar tone={tone} className="p-3 w-full" />}
     variant={variant}
   />
 )
