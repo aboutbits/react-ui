@@ -22,7 +22,7 @@ export const LoadingEditToneBackground = Template.bind({})
 LoadingEditToneBackground.args = {
   numberOfItems: 2,
   sectionHeader: 'Change me!',
-  toneBackground: 'critical',
+  toneSectionBackground: 'critical',
 }
 
 export const LoadingEditToneElements = Template.bind({})

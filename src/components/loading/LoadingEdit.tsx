@@ -10,20 +10,25 @@ import React from 'react'
 const LoadingEdit: React.FC<{
   numberOfItems: number
   sectionHeader: React.ReactNode
-  toneBackground?: string
-  toneElements?: string
-}> = ({ numberOfItems, sectionHeader, toneBackground, toneElements }) => {
+  toneSectionBackground?: string
+  toneLoadingBar?: string
+}> = ({
+  numberOfItems,
+  sectionHeader,
+  toneSectionBackground,
+  toneLoadingBar,
+}) => {
   return (
     <Section>
       <SectionHeader>
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContainerMultiColumn tone={toneBackground}>
+      <SectionContainerMultiColumn tone={toneSectionBackground}>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <LoadingInput tone={toneElements} key={index} />
+            <LoadingInput tone={toneLoadingBar} key={index} />
           ))}
       </SectionContainerMultiColumn>
     </Section>

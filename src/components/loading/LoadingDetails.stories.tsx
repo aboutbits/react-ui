@@ -22,12 +22,12 @@ export const LoadingDetailsToneBackground = Template.bind({})
 LoadingDetailsToneBackground.args = {
   numberOfItems: 2,
   sectionHeader: 'Change me!',
-  toneBackground: 'critical',
+  toneSectionBackground: 'critical',
 }
 
 export const LoadingDetailsToneElements = Template.bind({})
 LoadingDetailsToneElements.args = {
   numberOfItems: 2,
   sectionHeader: 'Change me!',
-  toneElements: 'green',
+  toneLoadingBar: 'green',
 }
