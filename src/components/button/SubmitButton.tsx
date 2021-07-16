@@ -17,7 +17,7 @@ const SubmitButton: React.FC<
     <Button
       type="submit"
       variant={variant}
-      disabled={formik.isSubmitting || disabled}
+      disabled={formik?.isSubmitting || disabled}
       {...props}
     >
       {children}
