@@ -3,7 +3,7 @@ import React from 'react'
 import { Button, Variant } from '../Button'
 
 function renderButton(): RenderResult {
-  return render(<Button variant={Variant.primary}>xyz</Button>)
+  return render(<Button variant={Variant.solid}>xyz</Button>)
 }
 
 test('renders the button', function () {
