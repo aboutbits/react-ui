@@ -30,7 +30,4 @@ const LoadingEdit: React.FC<{
   )
 }
 
-// This improves readability in dev tools
-LoadingEdit.displayName = 'LoadingEdit'
-
 export { LoadingEdit }
