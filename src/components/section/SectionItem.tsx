@@ -11,15 +11,15 @@ const variantStyles: Record<SectionDescriptionItemVariant, string> = {
   [SectionDescriptionItemVariant.error]: 'border-critical text-critical',
 }
 
-export const SectionListItem: React.FC<{ className?: string }> = ({
-  className,
-  children,
-}) => {
+export const SectionListItem: React.FC<{
+  className?: string
+  tone?: string
+}> = ({ className, children, tone = 'gray-700' }) => {
   return (
     <div
       className={classnames(
         className,
-        'flex items-center min-h-14 px-4 lg:px-5 text-white bg-gray-700'
+        `flex items-center min-h-14 px-4 lg:px-5 text-white bg-${tone}`
       )}
     >
       {children}
