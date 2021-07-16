@@ -1,33 +1,33 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { LoadingDetails } from './LoadingDetails'
+import { LoadingDetails as LoadingDetailsComponent } from './LoadingDetails'
 
 export default {
-  title: 'Components/LoadingDetail',
-  component: LoadingDetails,
-} as ComponentMeta<typeof LoadingDetails>
+  title: 'Components/Loading',
+  component: LoadingDetailsComponent,
+} as ComponentMeta<typeof LoadingDetailsComponent>
 
-const Template: ComponentStory<typeof LoadingDetails> = (args) => (
-  <LoadingDetails {...args} />
+const Template: ComponentStory<typeof LoadingDetailsComponent> = (args) => (
+  <LoadingDetailsComponent {...args} />
 )
 
-export const Default = Template.bind({})
-Default.args = {
+export const LoadingDetails = Template.bind({})
+LoadingDetails.args = {
   numberOfItems: 2,
   sectionHeader: 'Change me!',
 }
 
-export const ToneBackground = Template.bind({})
-ToneBackground.args = {
+export const LoadingDetailsToneBackground = Template.bind({})
+LoadingDetailsToneBackground.args = {
   numberOfItems: 2,
   sectionHeader: 'Change me!',
-  tone_background: 'critical',
+  toneSectionBackground: 'critical',
 }
 
-export const ToneElements = Template.bind({})
-ToneElements.args = {
+export const LoadingDetailsToneElements = Template.bind({})
+LoadingDetailsToneElements.args = {
   numberOfItems: 2,
   sectionHeader: 'Change me!',
-  tone_elements: 'green',
+  toneLoadingBar: 'green',
 }
