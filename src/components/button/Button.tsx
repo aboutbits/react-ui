@@ -5,7 +5,6 @@ export enum Variant {
   solid = 'solid',
   ghost = 'ghost',
   transparent = 'transparent',
-  delete = 'delete',
 }
 
 export enum Size {
@@ -60,9 +59,6 @@ function calculateToneStyle(
   } else if (parameters.variant === Variant.transparent) {
     tone.toneClass = `border-transparent background-transparent text-${parameters.tone} hover:text-${parameters.tone}-700 underline`
     tone.toneClassDisabled = `border-transparent background-gray-300 text-gray-500 underline`
-  } else if (parameters.variant === Variant.delete) {
-    tone.toneClass = `text-critical underline hover:text-critical-700`
-    tone.toneClassDisabled = `text-gray`
   }
 
   //double control if gradient is needed at all
