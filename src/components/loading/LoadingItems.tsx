@@ -28,11 +28,11 @@ const LoadingField: React.FC<LoadingFieldProps> = ({ tone, variant }) => (
 const LoadingInput: React.FC<{
   tone?: string
 }> = ({ tone }) => (
-  <div className="animate-pulse">
+  <div>
     <LoadingBar tone={tone} className="p-2 w-40" />
     <LoadingBar
       tone={tone}
-      className="p-6 mt-1 mb-1 w-full border border-transparent "
+      className="p-6 mt-1 mb-1 w-full border border-transparent"
     />
   </div>
 )
