@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "start-storybook -p 6000",
+    "dev": "start-storybook",
     "build": "npm run build:esm",
     "build:esm": "tsc --project tsconfig.esnext.json",
     "lint": "eslint --ext .js,.ts,.tsx,.jsx .",
