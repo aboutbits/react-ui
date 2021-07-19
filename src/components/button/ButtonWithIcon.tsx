@@ -29,6 +29,6 @@ const ButtonWithIcon = React.forwardRef<HTMLButtonElement, ButtonWithIconProps>(
   }
 )
 
-ButtonWithIcon.displayName = 'DeleteButton'
+ButtonWithIcon.displayName = 'ButtonWithIcon'
 
 export { ButtonWithIcon }
