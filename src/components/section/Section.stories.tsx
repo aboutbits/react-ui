@@ -9,10 +9,7 @@ export default {
 } as ComponentMeta<typeof SectionComponent>
 
 const Template: ComponentStory<typeof SectionComponent> = (args) => (
-  <SectionComponent {...args} />
+  <SectionComponent {...args}>I am a section!</SectionComponent>
 )
 
 export const Section = Template.bind({})
-Section.args = {
-  children: 'I am a section!',
-}
