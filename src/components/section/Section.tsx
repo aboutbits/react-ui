@@ -1,15 +1,13 @@
 import classNames from 'classnames'
 
-export enum ActionSectionVariant {
-  right = 'right',
+export enum ActionSectionAlignment {
+  end = 'end',
   center = 'center',
-  left = 'left',
 }
 
-const variantStyles: Record<ActionSectionVariant, string> = {
-  [ActionSectionVariant.right]: 'lg:justify-end',
-  [ActionSectionVariant.center]: 'lg:justify-center',
-  [ActionSectionVariant.left]: 'lg:justify-start',
+const alignmentStyles: Record<ActionSectionAlignment, string> = {
+  [ActionSectionAlignment.end]: 'lg:justify-end',
+  [ActionSectionAlignment.center]: 'lg:justify-center',
 }
 
 export const Section: React.FC<{
@@ -51,13 +49,13 @@ export const SectionListContainer: React.FC<{
 )
 
 export const ActionSection: React.FC<{
-  variant?: ActionSectionVariant
+  alignment?: ActionSectionAlignment
   className?: string
-}> = ({ variant = ActionSectionVariant.right, children, className }) => (
+}> = ({ alignment = ActionSectionAlignment.end, children, className }) => (
   <div
     className={classNames(
       'flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mx-4 lg:mx-0',
-      variantStyles[variant],
+      alignmentStyles[alignment],
       className
     )}
   >
