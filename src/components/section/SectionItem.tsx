@@ -42,13 +42,18 @@ export const SectionDescriptionItem: React.FC<{
   )
 }
 
-export const SectionListItemWithButton: React.FC<{ onClick: () => void }> = ({
-  children,
-  onClick,
-}) => {
+export const SectionListItemWithButton: React.FC<{
+  onClick: () => void
+  className?: string
+}> = ({ children, onClick, className }) => {
   return (
     <button onClick={onClick} className="block w-full">
-      <SectionListItem className="justify-between space-x-4 hover:bg-gray-600">
+      <SectionListItem
+        className={classNames(
+          `justify-between space-x-4 hover:bg-gray-600`,
+          className
+        )}
+      >
         {children}
         <IconKeyboardArrowRight
           width="24"
