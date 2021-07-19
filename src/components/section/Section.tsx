@@ -3,11 +3,13 @@ import classNames from 'classnames'
 export enum ActionSectionVariant {
   right = 'right',
   center = 'center',
+  left = 'left',
 }
 
 const variantStyles: Record<ActionSectionVariant, string> = {
   [ActionSectionVariant.right]: 'lg:justify-end',
   [ActionSectionVariant.center]: 'lg:justify-center',
+  [ActionSectionVariant.left]: 'lg:justify-start',
 }
 
 export const Section: React.FC<{
@@ -19,7 +21,6 @@ export const Section: React.FC<{
   </section>
 )
 
-//TODO: write storybook
 export const SectionContainer: React.FC<{ className?: string; tone?: string }> =
   ({ children, className, tone = 'gray-700' }) => (
     <div
@@ -49,15 +50,15 @@ export const SectionListContainer: React.FC<{
   </div>
 )
 
-//TODO: write storybook
-export const ActionSection: React.FC<{ variant?: ActionSectionVariant }> = ({
-  variant = ActionSectionVariant.right,
-  children,
-}) => (
+export const ActionSection: React.FC<{
+  variant?: ActionSectionVariant
+  className?: string
+}> = ({ variant = ActionSectionVariant.right, children, className }) => (
   <div
     className={classNames(
       'flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mx-4 lg:mx-0',
-      variantStyles[variant]
+      variantStyles[variant],
+      className
     )}
   >
     {children}
