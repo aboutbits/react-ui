@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { ConfirmationDialog as ConfirmationDialogComponent } from './ConfirmationDialog'
 
 export default {
-  title: 'Components/Dialog/Confirm',
+  title: 'Components/Dialog',
   component: ConfirmationDialogComponent,
 } as ComponentMeta<typeof ConfirmationDialogComponent>
 

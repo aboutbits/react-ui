@@ -2,16 +2,15 @@ import Dialog from '@reach/dialog'
 import classnames from 'classnames'
 import { ReactNode } from 'react'
 import { Button, Size, Variant } from '../../button/Button'
-import styles from './ConfirmationDialog.module.css'
 
 export enum ConfirmationDialogVariant {
   confirm = 'confirm',
-  delete = 'delete',
+  critical = 'critical',
 }
 
 const variantStyles: Record<ConfirmationDialogVariant, string> = {
   [ConfirmationDialogVariant.confirm]: 'text-black',
-  [ConfirmationDialogVariant.delete]: 'text-critical',
+  [ConfirmationDialogVariant.critical]: 'text-critical',
 }
 
 const ConfirmationDialog: React.FC<{
@@ -47,8 +46,7 @@ const ConfirmationDialog: React.FC<{
       }}
       aria-label={title}
       className={classnames(
-        styles['dialog-position'],
-        'min-w-dialog max-w-min bg-white px-5 pt-5 pb-2'
+        'min-w-dialog max-w-min bg-white px-5 pt-5 pb-2 top-1/2 left-1/2 outline-none absolute transform -translate-x-1/2 -translate-y-1/2'
       )}
     >
       <h2 className={classnames(variantStyles[variant], 'text-xl')}>{title}</h2>
@@ -56,8 +54,7 @@ const ConfirmationDialog: React.FC<{
       <div className="mt-5 space-x-4 text-right">
         {dismissButtonText && (
           <Button
-            //variant was fourth
-            variant={Variant.solid}
+            variant={Variant.transparent}
             size={Size.sm}
             disabled={disableDismiss}
             onClick={onDismiss}
@@ -66,8 +63,7 @@ const ConfirmationDialog: React.FC<{
           </Button>
         )}
         <Button
-          //variant was fourth
-          variant={Variant.solid}
+          variant={Variant.transparent}
           size={Size.sm}
           disabled={disableConfirm}
           onClick={onConfirm}
