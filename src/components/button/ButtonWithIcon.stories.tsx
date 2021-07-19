@@ -12,17 +12,20 @@ export default {
 } as ComponentMeta<typeof ButtonWithIconComponent>
 
 const Template: ComponentStory<typeof ButtonWithIconComponent> = (args) => (
-  <ButtonWithIconComponent {...args} Icon={Icon}>
+  <ButtonWithIconComponent {...args}>
     I am button with an Icon!
   </ButtonWithIconComponent>
 )
 
 export const ButtonWithIcon = Template.bind({})
-ButtonWithIcon.args = {}
+ButtonWithIcon.args = {
+  Icon,
+}
 
 export const ButtonWithIconSize = Template.bind({})
 ButtonWithIconSize.args = {
   size: Size.sm,
+  Icon,
 }
 
 export const ButtonWithIconNewIcon = Template.bind({})
