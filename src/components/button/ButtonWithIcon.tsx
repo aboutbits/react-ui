@@ -1,26 +1,28 @@
-import IconDelete from '@aboutbits/react-material-icons/dist/IconDelete'
-import { Button, ButtonProps, Tone, Variant } from './Button'
+import { Button, ButtonProps } from './Button'
 import React, { ComponentType } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
+import classNames from 'classnames'
 
 interface ButtonWithIconProps extends ButtonProps {
   /**
-   * Defines the icon of the button. As default is a trash can icon.
+   * Defines the icon of the button.
    * */
-  Icon?: ComponentType<IconProps>
+  Icon: ComponentType<IconProps>
+  className?: string
 }
 
 const ButtonWithIcon = React.forwardRef<HTMLButtonElement, ButtonWithIconProps>(
-  ({ children, Icon = IconDelete, ...props }, ref) => {
+  ({ children, Icon, className, ...props }, ref) => {
+    console.log(props)
     return (
-      <Button
-        variant={Variant.transparent}
-        tone={Tone.critical}
-        {...props}
-        ref={ref}
-      >
+      <Button {...props} ref={ref}>
         <div className="flex justify-center items-center">
-          <Icon className="mr-1 h-4 fill-current" />
+          <Icon
+            className={classNames(
+              `mr-1 h-4 fill-current w-${props.size === 'sm' ? '3' : '4'}`,
+              className
+            )}
+          />
           {children}
         </div>
       </Button>
