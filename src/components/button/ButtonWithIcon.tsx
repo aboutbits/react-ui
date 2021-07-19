@@ -2,7 +2,7 @@ import IconDelete from '@aboutbits/react-material-icons/dist/IconDelete'
 import { Button, ButtonProps, Tone, Variant } from './Button'
 import React from 'react'
 
-const DeleteButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const ButtonWithIcon = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, Icon = IconDelete, ...props }, ref) => {
     return (
       <Button
@@ -20,6 +20,6 @@ const DeleteButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   }
 )
 
-DeleteButton.displayName = 'DeleteButton'
+ButtonWithIcon.displayName = 'DeleteButton'
 
-export { DeleteButton }
+export { ButtonWithIcon }

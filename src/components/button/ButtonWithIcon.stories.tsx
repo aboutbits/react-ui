@@ -2,16 +2,16 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Icon from '@aboutbits/react-material-icons/dist/IconDeleteForever'
 
-import { DeleteButton } from './DeleteButton'
+import { ButtonWithIcon } from './ButtonWithIcon'
 import { Size } from './Button'
 
 export default {
   title: 'Components/Button/Delete',
-  component: DeleteButton,
-} as ComponentMeta<typeof DeleteButton>
+  component: ButtonWithIcon,
+} as ComponentMeta<typeof ButtonWithIcon>
 
-const Template: ComponentStory<typeof DeleteButton> = (args) => (
-  <DeleteButton {...args} />
+const Template: ComponentStory<typeof ButtonWithIcon> = (args) => (
+  <ButtonWithIcon {...args} />
 )
 
 export const Delete = Template.bind({})
