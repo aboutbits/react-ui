@@ -22,10 +22,12 @@ const SectionTitle: React.FC<{ className?: string }> = ({
 export const SectionHeaderWithAction: React.FC<{
   title: ReactNode
   actionIcon: ReactNode
-}> = ({ title, actionIcon }) => (
+  className?: string
+  classNameTitle?: string
+}> = ({ title, actionIcon, className, classNameTitle }) => (
   <SectionHeader>
-    <div className="flex justify-between items-center">
-      <SectionTitle>{title}</SectionTitle>
+    <div className={classNames(`flex justify-between items-center`, className)}>
+      <SectionTitle className={classNameTitle}>{title}</SectionTitle>
       {actionIcon}
     </div>
   </SectionHeader>
