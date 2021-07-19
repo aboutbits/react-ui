@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@aboutbits/react-material-icons": "^1.0.0",
+    "@reach/dialog": "^0.15.3",
     "@tailwindcss/forms": "^0.3.3",
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
