@@ -13,11 +13,14 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@aboutbits/react-material-icons": "^1.0.0",
     "@tailwindcss/forms": "^0.3.3",
     "classnames": "^2.3.1",
+    "formik": "^2.2.9",
     "next": "^10.0.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-intl": "^5.20.4",
     "tailwindcss": "^2.2.4"
   },
   "devDependencies": {

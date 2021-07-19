@@ -52,13 +52,13 @@ function calculateToneStyle(
 
   if (parameters.variant === Variant.solid) {
     tone.toneClass = `border-transparent bg-${parameters.tone} hover:bg-${parameters.tone}-700 focus:bg-${parameters.tone}-700 text-white font-bold`
-    tone.toneClassDisabled = `border-transparent bg-gray-300 text-gray-500`
+    tone.toneClassDisabled = `border-transparent bg-gray-50 text-gray`
   } else if (parameters.variant === Variant.ghost) {
     tone.toneClass = `border-${parameters.tone} hover:border-${parameters.tone}-700 bg-transparent text-${parameters.tone} hover:text-${parameters.tone}-700 font-bold`
-    tone.toneClassDisabled = `border-gray-500 bg-transparent text-gray-500`
+    tone.toneClassDisabled = `border-gray-500 bg-transparent text-gray`
   } else if (parameters.variant === Variant.transparent) {
     tone.toneClass = `border-transparent background-transparent text-${parameters.tone} hover:text-${parameters.tone}-700 underline`
-    tone.toneClassDisabled = `border-transparent background-gray-300 text-gray-500 underline`
+    tone.toneClassDisabled = `border-transparent background-gray-50 text-gray underline`
   }
 
   //double control if gradient is needed at all
