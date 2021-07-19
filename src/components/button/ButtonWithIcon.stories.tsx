@@ -11,22 +11,18 @@ export default {
 } as ComponentMeta<typeof ButtonWithIcon>
 
 const Template: ComponentStory<typeof ButtonWithIcon> = (args) => (
-  <ButtonWithIcon {...args} />
+  <ButtonWithIcon {...args}>Delete Me!</ButtonWithIcon>
 )
 
 export const Delete = Template.bind({})
-Delete.args = {
-  children: 'Delete Me!',
-}
+Delete.args = {}
 
 export const DeleteSize = Template.bind({})
 DeleteSize.args = {
-  children: 'Delete Me!',
   size: Size.sm,
 }
 
 export const DeleteIconChange = Template.bind({})
 DeleteIconChange.args = {
-  children: 'Delete Me!',
-  Icon,
+  Icon: Icon,
 }

@@ -1,8 +1,16 @@
 import IconDelete from '@aboutbits/react-material-icons/dist/IconDelete'
 import { Button, ButtonProps, Tone, Variant } from './Button'
-import React from 'react'
+import React, { ComponentType } from 'react'
+import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 
-const ButtonWithIcon = React.forwardRef<HTMLButtonElement, ButtonProps>(
+interface ButtonWithIconProps extends ButtonProps {
+  /**
+   * Defines the icon of the button. As default is a trash can icon.
+   * */
+  Icon?: ComponentType<IconProps>
+}
+
+const ButtonWithIcon = React.forwardRef<HTMLButtonElement, ButtonWithIconProps>(
   ({ children, Icon = IconDelete, ...props }, ref) => {
     return (
       <Button

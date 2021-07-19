@@ -1,6 +1,5 @@
 import classNames from 'classnames'
-import React, { ComponentType } from 'react'
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
+import React from 'react'
 
 export enum Variant {
   solid = 'solid',
@@ -41,11 +40,6 @@ export interface ButtonProps
    * If you set gradient to true, it will make the solid button with a background gradient from 500 -> 700 and on hover from 700 - 900.
    */
   gradient?: boolean
-
-  /**
-   * An individual icon can be set for the delete button. If nothing is set, the default trash can will be used.
-   */
-  Icon?: ComponentType<IconProps>
 }
 
 function calculateToneStyle(
