@@ -1,14 +1,24 @@
 import { useFormikContext } from 'formik'
 import { FormattedMessage } from 'react-intl'
 
-import { Button, Variant } from './Button'
+import { Button, Size, Tone, Variant, ButtonProps } from './Button'
+import React from 'react'
+
+export interface SubmitButtonProps extends ButtonProps {
+  /**
+   * Defines the disabling status of a button.
+   */
+  disabled?: boolean
+}
 
 const SubmitButton: React.FC<
-  React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant }
+  SubmitButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
 > = ({
   children = <FormattedMessage id="shared.save" />,
   variant = Variant.solid,
-  disabled,
+  disabled = false,
+  tone = Tone.primary,
+  size = Size.md,
   ...props
 }) => {
   const formik = useFormikContext()
@@ -18,6 +28,8 @@ const SubmitButton: React.FC<
       type="submit"
       variant={variant}
       disabled={formik?.isSubmitting || disabled}
+      tone={tone}
+      size={size}
       {...props}
     >
       {children}
