@@ -65,12 +65,14 @@ export const SectionListItemWithButton: React.FC<{
   )
 }
 
-export const SectionListItemWithAction: React.FC<{ actionIcon: ReactNode }> = ({
-  children,
-  actionIcon,
-}) => {
+export const SectionListItemWithAction: React.FC<{
+  actionIcon: ReactNode
+  className?: string
+}> = ({ children, actionIcon, className }) => {
   return (
-    <SectionListItem className="justify-between space-x-4">
+    <SectionListItem
+      className={classNames('justify-between space-x-4', className)}
+    >
       {children}
       {actionIcon}
     </SectionListItem>
