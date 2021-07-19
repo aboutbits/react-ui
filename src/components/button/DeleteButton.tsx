@@ -3,7 +3,7 @@ import { Button, ButtonProps, Tone, Variant } from './Button'
 import React from 'react'
 
 const DeleteButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, ...props }, ref) => {
+  ({ children, Icon = IconDelete, ...props }, ref) => {
     return (
       <Button
         variant={Variant.transparent}
@@ -12,7 +12,7 @@ const DeleteButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
       >
         <div className="flex justify-center items-center">
-          <IconDelete className="mr-1 h-4 fill-current" />
+          <Icon className="mr-1 h-4 fill-current" />
           {children}
         </div>
       </Button>

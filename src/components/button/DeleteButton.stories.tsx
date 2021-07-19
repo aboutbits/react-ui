@@ -1,5 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import Icon from '@aboutbits/react-material-icons/dist/IconDeleteForever'
 
 import { DeleteButton } from './DeleteButton'
 import { Size } from './Button'
@@ -22,4 +23,10 @@ export const DeleteSize = Template.bind({})
 DeleteSize.args = {
   children: 'Delete Me!',
   size: Size.sm,
+}
+
+export const DeleteIconChange = Template.bind({})
+DeleteIconChange.args = {
+  children: 'Delete Me!',
+  Icon,
 }
