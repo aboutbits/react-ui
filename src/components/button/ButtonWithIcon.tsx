@@ -13,13 +13,12 @@ interface ButtonWithIconProps extends ButtonProps {
 
 const ButtonWithIcon = React.forwardRef<HTMLButtonElement, ButtonWithIconProps>(
   ({ children, Icon, className, ...props }, ref) => {
-    console.log(props)
     return (
       <Button {...props} ref={ref}>
         <div className="flex justify-center items-center">
           <Icon
             className={classNames(
-              `mr-1 h-4 fill-current w-${props.size === 'sm' ? '3' : '4'}`,
+              `mr-1 fill-current ${props.size === 'sm' ? 'w-3 h3' : 'w-4 h-4'}`,
               className
             )}
           />
