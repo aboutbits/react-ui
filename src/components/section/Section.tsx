@@ -1,24 +1,33 @@
 import classNames from 'classnames'
 
-export enum SectionBackground {
-  white = 'white',
-  gradient = 'gradient',
+export enum ActionSectionVariant {
+  right = 'right',
+  center = 'center',
 }
 
-const backgroundStyle: Record<SectionBackground, string> = {
-  [SectionBackground.white]: 'bg-white',
-  [SectionBackground.gradient]:
-    'bg-gradient-to-b from-white to-primary-100 border-t border-gray-300',
+const variantStyles: Record<ActionSectionVariant, string> = {
+  [ActionSectionVariant.right]: 'lg:justify-end',
+  [ActionSectionVariant.center]: 'lg:justify-center',
 }
 
-export const Section: React.FC<{ background?: SectionBackground }> = ({
-  background = SectionBackground.white,
-  children,
-}) => (
-  <section className={classNames(backgroundStyle[background], 'lg:shadow-md')}>
+export const Section: React.FC<{
+  className?: string
+  tone?: string
+}> = ({ children, className, tone = 'white' }) => (
+  <section className={classNames(className, `lg:shadow-md bg-${tone}`)}>
     {children}
   </section>
 )
+
+//TODO: write storybook
+export const SectionContainer: React.FC<{ className?: string; tone?: string }> =
+  ({ children, className, tone = 'gray-700' }) => (
+    <div
+      className={classNames(`pt-5 pb-10 px-4 lg:px-5 bg-${tone}`, className)}
+    >
+      {children}
+    </div>
+  )
 
 export const SectionContainerMultiColumn: React.FC<{
   className?: string
@@ -31,7 +40,25 @@ export const SectionContainerMultiColumn: React.FC<{
   </div>
 )
 
-export const SectionListContainer: React.FC<{ tone?: string }> = ({
+export const SectionListContainer: React.FC<{
+  tone?: string
+  className?: string
+}> = ({ children, tone = 'gray-300', className }) => (
+  <div className={classNames(className, `space-y-px bg-${tone}`)}>
+    {children}
+  </div>
+)
+
+export const ActionSection: React.FC<{ variant?: ActionSectionVariant }> = ({
+  variant = ActionSectionVariant.right,
   children,
-  tone = 'gray-300',
-}) => <div className={`space-y-px bg-${tone}`}>{children}</div>
+}) => (
+  <div
+    className={classNames(
+      'flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mx-4 lg:mx-0',
+      variantStyles[variant]
+    )}
+  >
+    {children}
+  </div>
+)

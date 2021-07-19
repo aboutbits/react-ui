@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import { ReactNode } from 'react'
+import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
 
 export enum SectionDescriptionItemVariant {
   loaded = 'loaded',
@@ -38,5 +39,35 @@ export const SectionDescriptionItem: React.FC<{
       <dt className="text-sm">{title}</dt>
       <dd>{content}</dd>
     </div>
+  )
+}
+
+export const SectionListItemWithButton: React.FC<{ onClick: () => void }> = ({
+  children,
+  onClick,
+}) => {
+  return (
+    <button onClick={onClick} className="block w-full">
+      <SectionListItem className="justify-between space-x-4 hover:bg-gray-600">
+        {children}
+        <IconKeyboardArrowRight
+          width="24"
+          height="24"
+          className="fill-current"
+        />
+      </SectionListItem>
+    </button>
+  )
+}
+
+export const SectionListItemWithAction: React.FC<{ actionIcon: ReactNode }> = ({
+  children,
+  actionIcon,
+}) => {
+  return (
+    <SectionListItem className="justify-between space-x-4">
+      {children}
+      {actionIcon}
+    </SectionListItem>
   )
 }
