@@ -5,3 +5,22 @@
   transform: translate(-50%, -50%);
   outline: none;
 }
+
+:root {
+  --reach-dialog: 1;
+}
+
+[data-reach-dialog-overlay] {
+  background:rgba(0, 0, 0, 0.36);
+  @apply fixed;
+  @apply inset-0;
+  @apply overflow-auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+[data-reach-dialog-content] {
+  outline: none;
+}

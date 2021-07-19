@@ -11,7 +11,7 @@ export enum ConfirmationDialogVariant {
 
 const variantStyles: Record<ConfirmationDialogVariant, string> = {
   [ConfirmationDialogVariant.confirm]: 'text-black',
-  [ConfirmationDialogVariant.delete]: 'text-red-400',
+  [ConfirmationDialogVariant.delete]: 'text-critical',
 }
 
 const ConfirmationDialog: React.FC<{
