@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-
+import { Formik, Field, Form } from 'formik'
 import { SubmitButton } from './SubmitButton'
 
 export default {
@@ -8,9 +8,20 @@ export default {
   component: SubmitButton,
 } as ComponentMeta<typeof SubmitButton>
 
-//TODO add formik in default
 const Template: ComponentStory<typeof SubmitButton> = (args) => (
-  <SubmitButton {...args} />
+  <Formik
+    initialValues={{ name: '', email: '' }}
+    onSubmit={async (values) => {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+      alert(JSON.stringify(values, null, 2))
+    }}
+  >
+    <Form>
+      <Field name="name" type="text" />
+      <Field name="email" type="email" />
+      <SubmitButton {...args} />
+    </Form>
+  </Formik>
 )
 
 export const Default = Template.bind({})
@@ -21,6 +32,6 @@ Default.args = {
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  children: 'Submitting...',
+  children: 'Submit!',
   disabled: true,
 }
