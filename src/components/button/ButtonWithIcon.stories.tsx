@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import Icon from '@aboutbits/react-material-icons/dist/IconDeleteForever'
 import IconForButton from '@aboutbits/react-material-icons/dist/Icon4k'
 
@@ -17,18 +17,18 @@ const Template: ComponentStory<typeof ButtonWithIconComponent> = (args) => (
   </ButtonWithIconComponent>
 )
 
-export const ButtonWithIcon = Template.bind({})
-ButtonWithIcon.args = {
+export const Default = Template.bind({})
+Default.args = {
   Icon,
 }
 
-export const ButtonWithIconSize = Template.bind({})
-ButtonWithIconSize.args = {
+export const IconSize = Template.bind({})
+IconSize.args = {
   size: Size.sm,
   Icon,
 }
 
-export const ButtonWithIconNewIcon = Template.bind({})
-ButtonWithIconNewIcon.args = {
+export const DifferentIcon = Template.bind({})
+DifferentIcon.args = {
   Icon: IconForButton,
 }
