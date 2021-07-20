@@ -1,7 +1,7 @@
 import Dialog from '@reach/dialog'
 import classnames from 'classnames'
 import { ReactNode } from 'react'
-import { Button, Size, Variant } from '../../button/Button'
+import { Button, Size, Tone, Variant } from '../../button/Button'
 
 export enum ConfirmationDialogVariant {
   confirm = 'confirm',
@@ -11,6 +11,11 @@ export enum ConfirmationDialogVariant {
 const variantStyles: Record<ConfirmationDialogVariant, string> = {
   [ConfirmationDialogVariant.confirm]: 'text-black',
   [ConfirmationDialogVariant.critical]: 'text-critical',
+}
+
+const variantConfirmationButtonTone: Record<ConfirmationDialogVariant, Tone> = {
+  [ConfirmationDialogVariant.confirm]: Tone.primary,
+  [ConfirmationDialogVariant.critical]: Tone.critical,
 }
 
 const ConfirmationDialog: React.FC<{
@@ -54,7 +59,8 @@ const ConfirmationDialog: React.FC<{
       <div className="mt-5 space-x-4 text-right">
         {dismissButtonText && (
           <Button
-            variant={Variant.transparent}
+            variant={Variant.ghost}
+            tone={Tone.secondary}
             size={Size.sm}
             disabled={disableDismiss}
             onClick={onDismiss}
@@ -63,8 +69,9 @@ const ConfirmationDialog: React.FC<{
           </Button>
         )}
         <Button
-          variant={Variant.transparent}
+          variant={Variant.solid}
           size={Size.sm}
+          tone={variantConfirmationButtonTone[variant]}
           disabled={disableConfirm}
           onClick={onConfirm}
         >
