@@ -6,6 +6,15 @@ import { SubmitButton } from './SubmitButton'
 export default {
   title: 'Components/Button/Submit',
   component: SubmitButton,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'The ***default values*** for variant, size, and tone can be found in the [Button/Base](http://localhost:4000/?path=/docs/components-button-base--default) section. <br>' +
+          'The submit button works with `formik` so that it is automatically disabled after being pressed. <br>',
+      },
+    },
+  },
 } as ComponentMeta<typeof SubmitButton>
 
 const Template: ComponentStory<typeof SubmitButton> = (args) => (
