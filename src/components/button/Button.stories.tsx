@@ -27,13 +27,6 @@ VariantGhost.args = {
   variant: Variant.ghost,
 }
 
-export const VariantGhostToneSecondary = Template.bind({})
-VariantGhostToneSecondary.args = {
-  variant: Variant.ghost,
-  tone: Tone.secondary,
-  children: 'Click Me!',
-}
-
 export const VariantTransparent = Template.bind({})
 VariantTransparent.args = {
   children: 'Click Me!',
