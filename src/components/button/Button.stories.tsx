@@ -15,8 +15,8 @@ const Template: ComponentStory<typeof Button> = (args) => (
 export const Default = Template.bind({})
 Default.args = {}
 
-export const VarianSolid = Template.bind({})
-VarianSolid.args = {
+export const VariantSolid = Template.bind({})
+VariantSolid.args = {
   variant: Variant.solid,
 }
 
@@ -37,7 +37,6 @@ TonePrimary.args = {
 
 export const ToneSecondary = Template.bind({})
 ToneSecondary.args = {
-  children: 'Click Me!',
   tone: Tone.secondary,
 }
 
