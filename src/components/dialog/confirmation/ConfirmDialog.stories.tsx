@@ -12,9 +12,7 @@ export default {
 } as ComponentMeta<typeof ConfirmationDialogComponent>
 
 const Template: ComponentStory<typeof ConfirmationDialogComponent> = (args) => (
-  <div>
-    <ConfirmationDialogComponent {...args} />
-  </div>
+  <ConfirmationDialogComponent {...args} />
 )
 
 export const Default = Template.bind({})
