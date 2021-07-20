@@ -15,6 +15,7 @@ export enum Size {
 export enum Tone {
   primary = 'primary',
   critical = 'critical',
+  secondary = 'secondary',
 }
 
 export type ButtonProps = React.DetailedHTMLProps<

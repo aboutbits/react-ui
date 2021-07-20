@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { Button, Tone, Variant } from './Button'
 
@@ -33,6 +33,12 @@ VariantTransparent.args = {
 export const TonePrimary = Template.bind({})
 TonePrimary.args = {
   tone: Tone.primary,
+}
+
+export const ToneSecondary = Template.bind({})
+ToneSecondary.args = {
+  children: 'Click Me!',
+  tone: Tone.secondary,
 }
 
 export const ToneCritical = Template.bind({})
