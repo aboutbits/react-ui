@@ -1,19 +1,37 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentStory, ComponentMeta, forceReRender } from '@storybook/react'
+import { ConfirmationDialog as ConfirmationDialogComponent } from './ConfirmationDialog'
+import { Button } from '../../../index'
 
-import {
-  ConfirmationDialog as ConfirmationDialogComponent,
-  ConfirmationDialogVariant,
-} from './ConfirmationDialog'
+let toggle = false
+
+const toggleFunction = () => {
+  toggle = !toggle
+  forceReRender()
+}
 
 export default {
   title: 'Components/Dialog',
   component: ConfirmationDialogComponent,
 } as ComponentMeta<typeof ConfirmationDialogComponent>
 
-const Template: ComponentStory<typeof ConfirmationDialogComponent> = (args) => (
-  <ConfirmationDialogComponent {...args} />
-)
+const Template: ComponentStory<typeof ConfirmationDialogComponent> = (args) => {
+  return (
+    <div>
+      {toggle ? (
+        <ConfirmationDialogComponent {...args} />
+      ) : (
+        <Button
+          onClick={() => {
+            toggleFunction()
+          }}
+        >
+          show dialog
+        </Button>
+      )}
+    </div>
+  )
+}
 
 export const Default = Template.bind({})
 Default.args = {
@@ -24,16 +42,7 @@ Default.args = {
   confirmButtonText: 'confirm',
   body: <>I am the body</>,
   title: 'I am a Confirmation Dialog',
-}
 
-export const VariantCritical = Template.bind({})
-VariantCritical.args = {
-  isOpen: true,
-  disableConfirm: false,
-  disableDismiss: true,
-  dismissButtonText: 'dismiss',
-  confirmButtonText: 'confirm',
-  body: <>I am the body</>,
-  title: 'I am a Confirmation Dialog',
-  variant: ConfirmationDialogVariant.critical,
+  onDismiss: () => toggleFunction(),
+  onConfirm: () => toggleFunction(),
 }
