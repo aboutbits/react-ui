@@ -1,7 +1,15 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentStory } from '@storybook/react'
 import { Formik, Field, Form } from 'formik'
 import { SubmitButton } from './SubmitButton'
+
+let domain = ''
+
+if (process.env.NODE_ENV === 'production') {
+  domain = 'https://storybook.aboutbits.it'
+} else if (process.env.NODE_ENV === 'development') {
+  domain = 'http://localhost:4000'
+}
 
 export default {
   title: 'Components/Button/Submit',
@@ -10,12 +18,12 @@ export default {
     docs: {
       description: {
         component:
-          'The ***default values*** for variant, size, and tone can be found in the [Button/Base](http://localhost:4000/?path=/docs/components-button-base--default) section. <br>' +
+          `The ***default values*** for variant, size, and tone can be found in the [Base/Button](${domain}/path?path=/docs/components-button-base--default) section. <br>` +
           'The submit button works with `formik` so that it is automatically disabled after being pressed. <br>',
       },
     },
   },
-} as ComponentMeta<typeof SubmitButton>
+}
 
 const Template: ComponentStory<typeof SubmitButton> = (args) => (
   <Formik
