@@ -21,7 +21,7 @@ const Template: ComponentStory<typeof SubmitButton> = (args) => (
   <Formik
     initialValues={{ name: '', email: '' }}
     onSubmit={async (values) => {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      await new Promise((resolve) => setTimeout(resolve, 1000))
       alert(JSON.stringify(values, null, 2))
     }}
   >
