@@ -1,7 +1,10 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { ConfirmationDialog as ConfirmationDialogComponent } from './ConfirmationDialog'
+import {
+  ConfirmationDialog as ConfirmationDialogComponent,
+  ConfirmationDialogVariant,
+} from './ConfirmationDialog'
 
 export default {
   title: 'Components/Dialog',
@@ -9,11 +12,13 @@ export default {
 } as ComponentMeta<typeof ConfirmationDialogComponent>
 
 const Template: ComponentStory<typeof ConfirmationDialogComponent> = (args) => (
-  <ConfirmationDialogComponent {...args} />
+  <div>
+    <ConfirmationDialogComponent {...args} />
+  </div>
 )
 
-export const ConfirmationDialog = Template.bind({})
-ConfirmationDialog.args = {
+export const Default = Template.bind({})
+Default.args = {
   isOpen: true,
   disableConfirm: false,
   disableDismiss: true,
@@ -21,4 +26,16 @@ ConfirmationDialog.args = {
   confirmButtonText: 'confirm',
   body: <>I am the body</>,
   title: 'I am a Confirmation Dialog',
+}
+
+export const VariantCritical = Template.bind({})
+VariantCritical.args = {
+  isOpen: true,
+  disableConfirm: false,
+  disableDismiss: true,
+  dismissButtonText: 'dismiss',
+  confirmButtonText: 'confirm',
+  body: <>I am the body</>,
+  title: 'I am a Confirmation Dialog',
+  variant: ConfirmationDialogVariant.critical,
 }
