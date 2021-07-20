@@ -15,13 +15,13 @@ export enum Size {
 export enum Tone {
   primary = 'primary',
   critical = 'critical',
+  secondary = 'secondary',
 }
 
-export interface ButtonProps
-  extends React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {
+export type ButtonProps = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> & {
   /**
    * Defines the variant of the button.
    */
@@ -35,15 +35,10 @@ export interface ButtonProps
    * You need at least: DEFAULT, 700
    */
   tone?: Tone | string
-
-  /**
-   * If you set gradient to true, it will make the solid button with a background gradient from 500 -> 700 and on hover from 700 - 900.
-   */
-  gradient?: boolean
 }
 
 function calculateToneStyle(
-  parameters: Required<Pick<ButtonProps, 'variant' | 'tone' | 'gradient'>>
+  parameters: Required<Pick<ButtonProps, 'variant' | 'tone'>>
 ): { toneClass: string; toneClassDisabled: string } {
   const tone = {
     toneClass: '',
@@ -82,7 +77,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant = Variant.solid,
       size = Size.md,
       tone = Tone.primary,
-      gradient = false,
       type = 'button',
       className = '',
       children,
@@ -90,7 +84,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const toneStyles = calculateToneStyle({ variant, tone, gradient })
+    const toneStyles = calculateToneStyle({ variant, tone })
     return (
       <button
         className={classNames(
