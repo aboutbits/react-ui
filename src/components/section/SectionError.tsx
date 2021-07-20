@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import styles from './SectionList.module.css'
+
 import { Warning } from '../svg/Warning'
 import { FormattedMessage } from 'react-intl'
 import { Button, Variant } from '../button/Button'
@@ -8,7 +8,7 @@ const SectionError: React.FC = ({ children }) => (
   <div
     className={classnames(
       'flex flex-col items-center justify-center overflow-hidden mx-auto my-15 lg:mt-20',
-      styles['error-width']
+      'width-minWidth.dialog'
     )}
   >
     <div className="w-60 h-60">
