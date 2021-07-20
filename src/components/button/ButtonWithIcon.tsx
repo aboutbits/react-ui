@@ -3,11 +3,12 @@ import React, { ComponentType } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import classNames from 'classnames'
 
-interface ButtonWithIconProps extends ButtonProps {
+type ButtonWithIconProps = ButtonProps & {
   /**
    * Defines the icon of the button.
-   * */
+   */
   Icon: ComponentType<IconProps>
+
   className?: string
 }
 

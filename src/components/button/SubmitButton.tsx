@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import { Button, Size, Tone, Variant, ButtonProps } from './Button'
 import React from 'react'
 
-export interface SubmitButtonProps extends ButtonProps {
+export type SubmitButtonProps = ButtonProps & {
   /**
    * Defines the disabling status of a button.
    */
