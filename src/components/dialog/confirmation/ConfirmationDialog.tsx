@@ -18,18 +18,50 @@ const variantConfirmationButtonTone: Record<ConfirmationDialogVariant, Tone> = {
   [ConfirmationDialogVariant.critical]: Tone.critical,
 }
 
-const ConfirmationDialog: React.FC<{
+type ConfirmDialogProps = {
+  /**
+   * Defines if the dialog is accessible.
+   * */
   isOpen: boolean
+  /**
+   * Defines if the dismiss button is disabled.
+   * */
   disableDismiss?: boolean
+  /**
+   * Defines if the confirmation button is disabled.
+   * */
   disableConfirm?: boolean
+  /**
+   * Defines which action should be executed on dismissing.
+   * */
   onDismiss: () => void
+  /**
+   * Defines which action should be executed on confirmation.
+   * */
   onConfirm: () => void
+  /**
+   * Defines the variant of the dialog.
+   * */
   variant?: ConfirmationDialogVariant
+  /**
+   * Defines the title of the dialog.
+   * */
   title: string
+  /**
+   * Further information can be placed in the dialog.
+   * */
   body: ReactNode
+  /**
+   * Defines the text for the confirmation button in the dialog.
+   * */
   confirmButtonText: ReactNode
+  /**
+   * Defines the text for the conformation button in the dialog.
+   * */
   dismissButtonText?: ReactNode
-}> = ({
+}
+
+const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
   isOpen,
   disableDismiss,
   disableConfirm,
