@@ -24,11 +24,11 @@ type ConfirmDialogProps = {
    * */
   isOpen: boolean
   /**
-   * Defines if the dismiss button is disabled.
+   * Defines if the entire dialog is dismissible. This includes escaping, clicking the button, and clicking outside of the dialog.
    * */
   disableDismiss?: boolean
   /**
-   * Defines if the confirmation button is disabled.
+   * Defines if the confirmation button is disabled. It is
    * */
   disableConfirm?: boolean
   /**
