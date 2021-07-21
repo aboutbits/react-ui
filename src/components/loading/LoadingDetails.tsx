@@ -8,11 +8,11 @@ import { LoadingField } from '.'
 
 export type LoadingDetailsProps = {
   /**
-   * Defines the title of the section.
+   * Defines the number of items in the section.
    */
   numberOfItems: number
   /**
-   * Defines the number of items in the section.
+   * Defines the title of the section.
    */
   sectionHeader: React.ReactNode
   /**
