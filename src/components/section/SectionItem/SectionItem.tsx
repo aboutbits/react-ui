@@ -3,6 +3,21 @@ import { ReactNode } from 'react'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
 import { SectionProps } from '../Section/Section'
 
+type SectionDescriptionItemProps = {
+  /**
+   * Defines the title of the section item.
+   * */
+  title: ReactNode
+  /**
+   * Defines the content of the section item.
+   * */
+  content: ReactNode
+  /**
+   * Adjusting individual the style with any CSS class.
+   * */
+  className?: string
+}
+
 export const SectionListItem: React.FC<SectionProps> = ({
   className,
   children,
@@ -50,12 +65,18 @@ export const SectionListItemWithAction: React.FC<{ actionIcon: ReactNode }> = ({
   )
 }
 
-export const SectionDescriptionItem: React.FC<{
-  title: ReactNode
-  content: ReactNode
-}> = ({ title, content }) => {
+export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
+  title,
+  content,
+  className,
+}) => {
   return (
-    <div className="flex flex-col pb-2 space-y-1 text-white border-b border-gray-300">
+    <div
+      className={classNames(
+        'flex flex-col pb-2 space-y-1 text-white border-b border-gray-300',
+        className
+      )}
+    >
       <dt className="text-sm">{title}</dt>
       <dd>{content}</dd>
     </div>
