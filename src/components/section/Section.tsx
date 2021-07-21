@@ -22,19 +22,21 @@ export const Section: React.FC<SectionProps> = ({
   </section>
 )
 
-export const SectionContent: React.FC<{ className?: string }> = ({
-  children,
-  className,
-}) => (
-  <div className={ClassNames('pt-5 pb-10 px-4 lg:px-5 bg-gray-700', className)}>
+export const SectionContent: React.FC<{
+  children?: any
+  className?: string
+  tone?: string
+}> = ({ children, className, tone = 'gray' }) => (
+  <div className={ClassNames(`pt-5 pb-10 px-4 lg:px-5 bg-${tone}`, className)}>
     {children}
   </div>
 )
 
-export const SectionContentTwoColumn: React.FC<{
-  className?: string
-  tone?: string
-}> = ({ children, className = '' }) => (
+//TODO: add tone to args and classname
+export const SectionContentTwoColumn: React.FC<SectionProps> = ({
+  children,
+  className = '',
+}) => (
   <SectionContent
     className={ClassNames('grid xl:grid-cols-2 xl:gap-x-5 gap-y-5', className)}
   >
@@ -45,3 +47,5 @@ export const SectionContentTwoColumn: React.FC<{
 export const SectionContentList: React.FC = ({ children }) => (
   <div className="space-y-px bg-gray-300">{children}</div>
 )
+
+export default Section
