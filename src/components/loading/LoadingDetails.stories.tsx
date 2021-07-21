@@ -9,9 +9,11 @@ export default {
 } as ComponentMeta<typeof LoadingDetailsComponent>
 
 const Template: ComponentStory<typeof LoadingDetailsComponent> = (args) => (
-  <LoadingDetailsComponent {...args} numberOfItems={2}>
-    Change me!
-  </LoadingDetailsComponent>
+  <LoadingDetailsComponent
+    {...args}
+    numberOfItems={2}
+    sectionHeader={'Section header'}
+  />
 )
 
 export const Default = Template.bind({})
