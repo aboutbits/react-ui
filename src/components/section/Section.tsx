@@ -1,16 +1,15 @@
 import ClassNames from 'classnames'
 
-export enum SectionBackground {
-  white = 'white',
-  gradient = 'gradient',
-}
+export type SectionProps = {
+  /**
+   * Defines the tone of the button. Basically the color, so be sure to have the colors defined in Tailwind.
+   * */
+  tone?: string
 
-export type SectionProps = { background?: SectionBackground }
-
-const backgroundStyle: Record<SectionBackground, string> = {
-  [SectionBackground.white]: 'bg-white',
-  [SectionBackground.gradient]:
-    'bg-gradient-to-b from-white to-primary-100 border-t border-gray-300',
+  /**
+   * Adjusting individual the style with tailwind class names.
+   * */
+  className?: string
 }
 
 export const Section: React.FC<SectionProps> = ({
