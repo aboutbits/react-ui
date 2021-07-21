@@ -4,15 +4,10 @@ import {
   SectionHeader,
   SectionTitle,
 } from '../section'
-import { LoadingInput } from '.'
+import { LoadingDetailsProps, LoadingInput } from '.'
 import React from 'react'
 
-const LoadingEdit: React.FC<{
-  numberOfItems: number
-  sectionHeader: React.ReactNode
-  toneSectionBackground?: string
-  toneLoadingBar?: string
-}> = ({
+const LoadingEdit: React.FC<LoadingDetailsProps> = ({
   numberOfItems,
   sectionHeader,
   toneSectionBackground,

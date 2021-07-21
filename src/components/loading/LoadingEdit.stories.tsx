@@ -4,27 +4,27 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { LoadingEdit as LoadingEditComponent } from './LoadingEdit'
 
 export default {
-  title: 'Components/Loading',
+  title: 'Components/Loading/Edit',
   component: LoadingEditComponent,
 } as ComponentMeta<typeof LoadingEditComponent>
 
 const Template: ComponentStory<typeof LoadingEditComponent> = (args) => (
   <LoadingEditComponent
-    numberOfItems={2}
     sectionHeader={'Change me!'}
     {...args}
+    numberOfItems={2}
   />
 )
 
-export const LoadingEdit = Template.bind({})
-LoadingEdit.args = {}
+export const Default = Template.bind({})
+Default.args = {}
 
-export const LoadingEditToneBackground = Template.bind({})
-LoadingEditToneBackground.args = {
+export const ToneBackground = Template.bind({})
+ToneBackground.args = {
   toneSectionBackground: 'critical',
 }
 
-export const LoadingEditToneElements = Template.bind({})
-LoadingEditToneElements.args = {
-  toneElements: 'green',
+export const ToneElements = Template.bind({})
+ToneElements.args = {
+  toneLoadingBar: 'green',
 }

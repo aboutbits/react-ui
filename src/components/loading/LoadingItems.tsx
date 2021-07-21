@@ -4,9 +4,14 @@ import {
 } from '../section'
 import { LoadingBar } from './LoadingBar'
 
-const LoadingField: React.FC<{
+type LoadingFieldProps = {
+  /**
+   * Defines the tone of the bar. Basically the color, so be sure to have the colors defined in Tailwind.
+   * */
   tone?: string
-}> = ({ tone }) => (
+}
+
+const LoadingField: React.FC<LoadingFieldProps> = ({ tone }) => (
   <SectionDescriptionItem
     title={<LoadingBar tone={tone} className="p-2.5 w-40" />}
     content={<LoadingBar tone={tone} className="p-3 w-full" />}
@@ -14,9 +19,7 @@ const LoadingField: React.FC<{
   />
 )
 
-const LoadingInput: React.FC<{
-  tone?: string
-}> = ({ tone }) => (
+const LoadingInput: React.FC<LoadingFieldProps> = ({ tone }) => (
   <div>
     <LoadingBar tone={tone} className="p-2 w-40" />
     <LoadingBar

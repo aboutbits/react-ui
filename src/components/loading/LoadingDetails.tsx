@@ -6,12 +6,26 @@ import {
 } from '../section'
 import { LoadingField } from '.'
 
-const LoadingDetails: React.FC<{
+export type LoadingDetailsProps = {
+  /**
+   * Defines the number of items in the section.
+   */
   numberOfItems: number
+  /**
+   * Defines the title of the section.
+   */
   sectionHeader: React.ReactNode
+  /**
+   * Defines the tone of the background. Basically the color, so be sure to have the colors defined in Tailwind.
+   */
   toneSectionBackground?: string
+  /**
+   * Defines the background color of the pulsing elements. Basically the color, so be sure to have the colors defined in Tailwind.
+   */
   toneLoadingBar?: string
-}> = ({
+}
+
+const LoadingDetails: React.FC<LoadingDetailsProps> = ({
   numberOfItems,
   sectionHeader,
   toneSectionBackground,
