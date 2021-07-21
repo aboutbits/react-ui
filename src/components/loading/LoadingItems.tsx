@@ -4,7 +4,6 @@ import {
 } from '../section'
 import { LoadingBar } from './LoadingBar'
 
-//TODO: add variant
 const LoadingField: React.FC<{
   tone?: string
 }> = ({ tone }) => (

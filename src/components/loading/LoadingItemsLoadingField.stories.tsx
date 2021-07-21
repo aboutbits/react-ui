@@ -20,13 +20,3 @@ export const TonePrimary = Template.bind({})
 TonePrimary.args = {
   tone: 'primary',
 }
-
-export const VariantError = Template.bind({})
-VariantError.args = {
-  variant: 'error',
-}
-
-export const VariantLoaded = Template.bind({})
-VariantLoaded.args = {
-  variant: 'loaded',
-}
