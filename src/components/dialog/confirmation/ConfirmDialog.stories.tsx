@@ -1,14 +1,7 @@
-import React from 'react'
-import { ComponentStory, ComponentMeta, forceReRender } from '@storybook/react'
+import React, { useState } from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { ConfirmationDialog as ConfirmationDialogComponent } from './ConfirmationDialog'
 import { Button } from '../../../index'
-
-let toggle = false
-
-const toggleFunction = () => {
-  toggle = !toggle
-  forceReRender()
-}
 
 export default {
   title: 'Components/Dialog',
@@ -16,18 +9,17 @@ export default {
 } as ComponentMeta<typeof ConfirmationDialogComponent>
 
 const Template: ComponentStory<typeof ConfirmationDialogComponent> = (args) => {
+  const [toggle, setToggle] = useState(false)
   return (
     <div>
       {toggle ? (
-        <ConfirmationDialogComponent {...args} />
+        <ConfirmationDialogComponent
+          {...args}
+          onDismiss={() => setToggle(!toggle)}
+          onConfirm={() => setToggle(!toggle)}
+        />
       ) : (
-        <Button
-          onClick={() => {
-            toggleFunction()
-          }}
-        >
-          show dialog
-        </Button>
+        <Button onClick={() => setToggle(!toggle)}>show dialog</Button>
       )}
     </div>
   )
@@ -42,7 +34,4 @@ Default.args = {
   confirmButtonText: 'confirm',
   body: <>I am the body</>,
   title: 'I am a Confirmation Dialog',
-
-  onDismiss: () => toggleFunction(),
-  onConfirm: () => toggleFunction(),
 }
