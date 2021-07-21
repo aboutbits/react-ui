@@ -5,7 +5,7 @@ import { SectionContent as SectionContentComponent } from './SectionContent'
 import { Tone } from '../../button/Button'
 
 export default {
-  title: 'Components/Section/SectionContent',
+  title: 'Components/Section/Content',
   component: SectionContentComponent,
 } as ComponentMeta<typeof SectionContentComponent>
 

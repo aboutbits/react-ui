@@ -5,7 +5,7 @@ import { SectionHeaderWithAction as SectionHeaderWithActionComponent } from './S
 import IconAccessTime from '@aboutbits/react-material-icons/dist/IconAccessTime'
 
 export default {
-  title: 'Components/Section/HeaderWithAction',
+  title: 'Components/Section/Header With Action',
   component: SectionHeaderWithActionComponent,
 } as ComponentMeta<typeof SectionHeaderWithActionComponent>
 

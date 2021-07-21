@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { SectionHeader as SectionHeaderComponent } from './SectionHeader'
 
 export default {
-  title: 'Components/Section/SectionHeader',
+  title: 'Components/Section/Header',
   component: SectionHeaderComponent,
 } as ComponentMeta<typeof SectionHeaderComponent>
 

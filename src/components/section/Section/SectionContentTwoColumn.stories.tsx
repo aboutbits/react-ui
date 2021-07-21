@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { SectionContentTwoColumn as SectionContentTwoColumnComponent } from './SectionContentTwoColumn'
 
 export default {
-  title: 'Components/Section/SectionContentTwoColumn',
+  title: 'Components/Section/Content Two Column',
   component: SectionContentTwoColumnComponent,
 } as ComponentMeta<typeof SectionContentTwoColumnComponent>
 
