@@ -1,7 +1,19 @@
 import classNames from 'classnames'
 import { ReactNode } from 'react'
+import { SectionContentTwoColumnProps } from './Section/SectionContentTwoColumn'
 
-export const SectionHeader: React.FC<{ className?: string }> = ({
+type SectionHeaderWithActionProps = {
+  /**
+   * Defines the title of the section header.
+   * */
+  title: ReactNode
+  /**
+   * Does sth
+   * */
+  actionIcon: ReactNode
+}
+
+export const SectionHeader: React.FC<SectionContentTwoColumnProps> = ({
   className,
   children,
 }) => (
@@ -14,14 +26,12 @@ export const SectionTitle: React.FC = ({ children }) => (
   <h1 className="text-xs font-bold uppercase">{children}</h1>
 )
 
-export const SectionHeaderWithAction: React.FC<{
-  title: ReactNode
-  actionIcon: ReactNode
-}> = ({ title, actionIcon }) => (
-  <SectionHeader>
-    <div className="flex justify-between items-center">
-      <SectionTitle>{title}</SectionTitle>
-      {actionIcon}
-    </div>
-  </SectionHeader>
-)
+export const SectionHeaderWithAction: React.FC<SectionHeaderWithActionProps> =
+  ({ title, actionIcon }) => (
+    <SectionHeader>
+      <div className="flex justify-between items-center">
+        <SectionTitle>{title}</SectionTitle>
+        {actionIcon}
+      </div>
+    </SectionHeader>
+  )
