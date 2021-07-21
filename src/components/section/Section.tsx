@@ -33,6 +33,7 @@ export const SectionContent: React.FC<{ className?: string }> = ({
 
 export const SectionContentTwoColumn: React.FC<{
   className?: string
+  tone?: string
 }> = ({ children, className = '' }) => (
   <SectionContent
     className={classnames('grid xl:grid-cols-2 xl:gap-x-5 gap-y-5', className)}
@@ -43,16 +44,4 @@ export const SectionContentTwoColumn: React.FC<{
 
 export const SectionContentList: React.FC = ({ children }) => (
   <div className="space-y-px bg-gray-300">{children}</div>
-)
-
-//TODO: check were this file is now
-export const SectionContainerMultiColumn: React.FC<{
-  className?: string
-  tone?: string
-}> = ({ children, className = '', tone = 'gray-700' }) => (
-  <div
-    className={`grid xl:grid-cols-2 pt-5 pb-10 px-4 lg:px-5 xl:gap-x-5 gap-y-5 bg-${tone} ${className}`}
-  >
-    {children}
-  </div>
 )
