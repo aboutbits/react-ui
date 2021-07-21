@@ -1,8 +1,8 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { SectionContent as SectionContentComponent } from './Section'
-import { Tone } from '../button/Button'
+import { SectionContent as SectionContentComponent } from './SectionContent'
+import { Tone } from '../../button/Button'
 
 export default {
   title: 'Components/Section/SectionContent',
