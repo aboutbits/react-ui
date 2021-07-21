@@ -23,9 +23,5 @@ Default.args = {}
 
 export const Action = Template.bind({})
 Action.args = {
-  actionIcon: (
-    <div className="w-4 h-4">
-      <IconAccessTime />
-    </div>
-  ),
+  actionIcon: <IconAccessTime width="24" height="24" />,
 }

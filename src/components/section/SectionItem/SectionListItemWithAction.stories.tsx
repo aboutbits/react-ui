@@ -28,9 +28,5 @@ TonePrimary.args = {
 
 export const Icon = Template.bind({})
 Icon.args = {
-  actionIcon: (
-    <div className="w-4 h-4">
-      <IconTimer />
-    </div>
-  ),
+  actionIcon: <IconTimer width="24" height="24" />,
 }
