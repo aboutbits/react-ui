@@ -2,11 +2,16 @@ import classNames from 'classnames'
 import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import { SectionProps } from '../Section/Section'
 
-export const SectionListEmpty: React.FC = ({ children }) => (
+export const SectionListEmpty: React.FC<SectionProps> = ({
+  children,
+  className,
+  tone = 'gray-700',
+}) => (
   <div
     className={classNames(
       'text-gray-100',
-      'flex items-center justify-center py-4 px-4 lg:px-5 bg-gray-700'
+      `flex items-center justify-center py-4 px-4 lg:px-5 bg-${tone}`,
+      className
     )}
   >
     {children}
