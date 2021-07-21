@@ -59,6 +59,10 @@ type ConfirmDialogProps = {
    * Defines the text for the conformation button in the dialog.
    * */
   dismissButtonText?: ReactNode
+  /**
+   * Adjusting individual the style with any css class.
+   * */
+  className?: string
 }
 
 const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
@@ -72,6 +76,7 @@ const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
   body,
   confirmButtonText,
   dismissButtonText,
+  className,
 }) => {
   return (
     <Dialog
@@ -83,7 +88,8 @@ const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
       }}
       aria-label={title}
       className={classnames(
-        'min-w-dialog max-w-min bg-white px-5 pt-5 pb-2 top-1/2 left-1/2 outline-none absolute transform -translate-x-1/2 -translate-y-1/2'
+        'min-w-dialog max-w-min bg-white px-5 pt-5 pb-2 top-1/2 left-1/2 outline-none absolute transform -translate-x-1/2 -translate-y-1/2',
+        className
       )}
     >
       <h2 className={classnames(variantStyles[variant], 'text-xl')}>{title}</h2>
