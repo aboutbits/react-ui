@@ -10,17 +10,18 @@ export default {
 } as ComponentMeta<typeof LoadingListComponent>
 
 const Template: ComponentStory<typeof LoadingListComponent> = (args) => (
-  <LoadingListComponent sectionHeader={'Change me!'} {...args} />
+  <LoadingListComponent
+    sectionHeader={'Change me!'}
+    {...args}
+    numberOfItems={2}
+  />
 )
 
 export const Default = Template.bind({})
-Default.args = {
-  numberOfItems: 2,
-}
+Default.args = {}
 
 export const TonePrimary = Template.bind({})
 TonePrimary.args = {
   toneSectionBackground: 'primary',
   toneLoadingBar: 'primary-100',
-  numberOfItems: 2,
 }
