@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import SectionComponent from './Section'
 
 export default {
-  title: 'Components/Section/Base',
+  title: 'Components/Section/Section',
   component: SectionComponent,
 } as ComponentMeta<typeof SectionComponent>
 
