@@ -6,7 +6,7 @@ type LoadingBarProps = {
    */
   tone?: string
   /**
-   * Adjusting individual the style with tailwind class names.
+   * Adjusting individual the style with any css class.
    */
   className?: string
 }
