@@ -2,6 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import SectionComponent from './Section'
+import { Tone } from '../button/Button'
 
 export default {
   title: 'Components/Section/Section',
@@ -9,10 +10,13 @@ export default {
 } as ComponentMeta<typeof SectionComponent>
 
 const Template: ComponentStory<typeof SectionComponent> = (args) => (
-  <SectionComponent {...args} />
+  <SectionComponent {...args}>I am a Section!</SectionComponent>
 )
 
 export const Default = Template.bind({})
-Default.args = {
-  children: 'I am a Section!',
+Default.args = {}
+
+export const TonePrimary = Template.bind({})
+TonePrimary.args = {
+  tone: Tone.primary,
 }
