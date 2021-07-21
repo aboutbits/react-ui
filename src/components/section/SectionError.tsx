@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classNames from 'classnames'
 
 import { Warning } from '../svg/Warning'
 import { FormattedMessage } from 'react-intl'
@@ -6,7 +6,7 @@ import { Button, Variant } from '../button/Button'
 
 const SectionError: React.FC = ({ children }) => (
   <div
-    className={classnames(
+    className={classNames(
       'flex flex-col items-center justify-center overflow-hidden mx-auto my-15 lg:mt-20',
       'width-minWidth.dialog'
     )}
