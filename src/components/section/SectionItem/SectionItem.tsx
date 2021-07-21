@@ -18,6 +18,12 @@ type SectionDescriptionItemProps = {
   className?: string
 }
 
+type SectionListItemWithActionProps = SectionProps & {
+  /**
+   * Defines a React element what could be a string, any, or a JSXElementConstructor.
+   * */
+  actionIcon: ReactNode
+}
 export const SectionListItem: React.FC<SectionProps> = ({
   className,
   children,
@@ -53,17 +59,18 @@ export const SectionListItemWithButton: React.FC<{ onClick: () => void }> = ({
   )
 }
 
-export const SectionListItemWithAction: React.FC<{ actionIcon: ReactNode }> = ({
-  children,
-  actionIcon,
-}) => {
-  return (
-    <SectionListItem className="justify-between space-x-4">
-      {children}
-      {actionIcon}
-    </SectionListItem>
-  )
-}
+export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps> =
+  ({ children, actionIcon, tone, className }) => {
+    return (
+      <SectionListItem
+        className={classNames('justify-between space-x-4', className)}
+        tone={tone}
+      >
+        {children}
+        {actionIcon}
+      </SectionListItem>
+    )
+  }
 
 export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
   title,
