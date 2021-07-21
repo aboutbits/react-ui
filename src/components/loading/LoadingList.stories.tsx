@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { LoadingList as LoadingListComponent } from './LoadingList'
 
 export default {
-  title: 'Components/Loading',
+  title: 'Components/Loading/List',
   component: LoadingListComponent,
 } as ComponentMeta<typeof LoadingListComponent>
 
@@ -17,11 +17,11 @@ const Template: ComponentStory<typeof LoadingListComponent> = (args) => (
   />
 )
 
-export const LoadingList = Template.bind({})
-LoadingList.args = {}
+export const Default = Template.bind({})
+Default.args = {}
 
-export const LoadingListTonePrimary = Template.bind({})
-LoadingListTonePrimary.args = {
-  toneSectionBackground: 'primary-900',
-  toneElements: 'primary-400',
+export const TonePrimary = Template.bind({})
+TonePrimary.args = {
+  toneSectionBackground: 'primary',
+  toneLoadingBar: 'primary-100',
 }
