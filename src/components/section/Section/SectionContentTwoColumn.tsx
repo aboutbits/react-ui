@@ -3,7 +3,7 @@ import { SectionContent } from './SectionContent'
 
 export type SectionContentTwoColumnProps = {
   /**
-   * Adjusting individual the style with any css class.
+   * Adjusting individual the style with any CSS class.
    * */
   className?: string
 }
