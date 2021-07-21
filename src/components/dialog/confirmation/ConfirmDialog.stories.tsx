@@ -4,7 +4,7 @@ import { ConfirmationDialog as ConfirmationDialogComponent } from './Confirmatio
 import { Button } from '../../../index'
 
 export default {
-  title: 'Components/Dialog',
+  title: 'Components/ConfirmDialog',
   component: ConfirmationDialogComponent,
   parameters: {
     docs: {
