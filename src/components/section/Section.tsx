@@ -1,6 +1,6 @@
 import ClassNames from 'classnames'
 
-export type SectionProps = {
+type SectionProps = {
   /**
    * Defines the tone of the button. Basically the color, so be sure to have the colors defined in Tailwind.
    * */
@@ -22,11 +22,11 @@ export const Section: React.FC<SectionProps> = ({
   </section>
 )
 
-export const SectionContent: React.FC<{
-  children?: any
-  className?: string
-  tone?: string
-}> = ({ children, className, tone = 'gray' }) => (
+export const SectionContent: React.FC<SectionProps> = ({
+  children,
+  className,
+  tone = 'gray-700',
+}) => (
   <div className={ClassNames(`pt-5 pb-10 px-4 lg:px-5 bg-${tone}`, className)}>
     {children}
   </div>
