@@ -20,7 +20,7 @@ const variantConfirmationButtonTone: Record<ConfirmationDialogVariant, Tone> = {
 
 type ConfirmDialogProps = {
   /**
-   * Defines if the dialog is accessible.
+   * Defines if the dialog is open.
    * */
   isOpen: boolean
   /**
