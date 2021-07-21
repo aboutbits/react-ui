@@ -1,21 +1,18 @@
 import classNames from 'classnames'
 import { ReactNode } from 'react'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
+import { SectionProps } from '../Section/Section'
 
-export enum SectionDescriptionItemVariant {
-  loaded = 'loaded',
-  error = 'error',
-}
-
-export const SectionListItem: React.FC<{ className?: string }> = ({
+export const SectionListItem: React.FC<SectionProps> = ({
   className,
   children,
+  tone = 'gray-700',
 }) => {
   return (
     <div
       className={classNames(
         className,
-        'flex items-center min-h-14 px-4 lg:px-5 text-white bg-gray-700'
+        `flex items-center min-h-14 px-4 lg:px-5 text-white bg-${tone}`
       )}
     >
       {children}

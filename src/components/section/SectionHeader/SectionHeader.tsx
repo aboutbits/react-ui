@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import { ReactNode } from 'react'
-import { SectionContentTwoColumnProps } from './Section/SectionContentTwoColumn'
 
 type SectionHeaderWithActionProps = {
   /**
@@ -8,12 +7,19 @@ type SectionHeaderWithActionProps = {
    * */
   title: ReactNode
   /**
-   * Does sth
+   * Defines a React element what could be a string, any, or a JSXElementConstructor.
    * */
   actionIcon: ReactNode
 }
 
-export const SectionHeader: React.FC<SectionContentTwoColumnProps> = ({
+type SectionHeaderProps = {
+  /**
+   * Adjusting individual the style with any CSS class.
+   * */
+  className?: string
+}
+
+export const SectionHeader: React.FC<SectionHeaderProps> = ({
   className,
   children,
 }) => (
