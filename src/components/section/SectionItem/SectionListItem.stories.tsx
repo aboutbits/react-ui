@@ -5,7 +5,7 @@ import { SectionListItem as SectionListItemComponent } from './SectionItem'
 import { Tone } from '../../button/Button'
 
 export default {
-  title: 'Components/Section/SectionItem',
+  title: 'Components/Section/Item',
   component: SectionListItemComponent,
 } as ComponentMeta<typeof SectionListItemComponent>
 
