@@ -5,14 +5,9 @@ import {
   SectionContentList,
   SectionTitle,
 } from '../section'
-import { LoadingBar } from '.'
+import { LoadingBar, LoadingDetailsProps } from '.'
 
-const LoadingList: React.FC<{
-  numberOfItems: number
-  sectionHeader: React.ReactNode
-  toneSectionBackground?: string
-  toneLoadingBar?: string
-}> = ({
+const LoadingList: React.FC<LoadingDetailsProps> = ({
   numberOfItems,
   sectionHeader,
   toneSectionBackground,
