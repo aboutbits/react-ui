@@ -2,7 +2,7 @@ import {
   Section,
   SectionHeader,
   SectionListItem,
-  SectionListContainer,
+  SectionContentList,
   SectionTitle,
 } from '../section'
 import { LoadingBar } from '.'
@@ -24,7 +24,7 @@ const LoadingList: React.FC<{
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionListContainer>
+      <SectionContentList>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
@@ -33,7 +33,7 @@ const LoadingList: React.FC<{
               <LoadingBar tone={toneLoadingBar} className="p-4 w-12" />
             </SectionListItem>
           ))}
-      </SectionListContainer>
+      </SectionContentList>
     </Section>
   )
 }
