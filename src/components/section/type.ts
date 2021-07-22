@@ -24,3 +24,10 @@ export type ActionIconProps = {
    * */
   actionIcon: ReactNode
 }
+
+export type ContentReactProps = {
+  /**
+   * Defines the content of the section item.
+   * */
+  content: ReactNode
+}

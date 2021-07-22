@@ -1,29 +1,19 @@
 import classNames from 'classnames'
-import { ReactNode } from 'react'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
 import { SectionProps } from '../Section/Section'
+import {
+  ActionIconProps,
+  ClassNameProps,
+  ContentReactProps,
+  TitleReactProps,
+} from '../type'
 
-type SectionDescriptionItemProps = {
-  /**
-   * Defines the title of the section item.
-   * */
-  title: ReactNode
-  /**
-   * Defines the content of the section item.
-   * */
-  content: ReactNode
-  /**
-   * Adjusting individual the style with any CSS class.
-   * */
-  className?: string
-}
+type SectionDescriptionItemProps = ContentReactProps &
+  TitleReactProps &
+  ClassNameProps
 
-type SectionListItemWithActionProps = SectionProps & {
-  /**
-   * Defines a React element what could be a string, any, or a JSXElementConstructor.
-   * */
-  actionIcon: ReactNode
-}
+type SectionListItemWithActionProps = SectionProps & ActionIconProps
+
 export const SectionListItem: React.FC<SectionProps> = ({
   className,
   children,
