@@ -25,7 +25,7 @@ const Template: ComponentStory<typeof SectionContentComponent> = (args) => (
 export const Default = Template.bind({})
 Default.args = {}
 
-export const TonePrimary = Template.bind({})
-TonePrimary.args = {
+export const BackgroundColorPrimary = Template.bind({})
+BackgroundColorPrimary.args = {
   backgroundColor: Tone.primary,
 }

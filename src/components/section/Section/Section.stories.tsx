@@ -27,8 +27,8 @@ Default.args = {
   className: 'p-4',
 }
 
-export const TonePrimary = Template.bind({})
-TonePrimary.args = {
+export const BackgroundColorPrimary = Template.bind({})
+BackgroundColorPrimary.args = {
   className: 'p-4',
   backgroundColor: Tone.primary,
 }
