@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof LoadingField> = (args) => (
 export const Default = Template.bind({})
 Default.args = {}
 
-export const TonePrimary = Template.bind({})
-TonePrimary.args = {
-  tone: 'primary',
+export const BackgroundColorPrimary = Template.bind({})
+BackgroundColorPrimary.args = {
+  backgroundColor: 'primary',
 }

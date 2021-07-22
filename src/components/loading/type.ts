@@ -30,14 +30,14 @@ export type SectionHeaderReactProps = {
 
 export type ToneSectionBackgroundProps = {
   /**
-   * Defines the tone of the background. Basically the color, so be sure to have the colors defined in Tailwind.
+   * Defines the color of the background. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
    */
   colorSectionBackground?: string
 }
 
 export type ToneLoadingBarProps = {
   /**
-   * Defines the background color of the pulsing elements. Basically the color, so be sure to have the colors defined in Tailwind.
+   * Defines the background color of the pulsing elements. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
    */
   colorLoadingBar?: string
 }

@@ -19,12 +19,12 @@ const Template: ComponentStory<typeof LoadingDetailsComponent> = (args) => (
 export const Default = Template.bind({})
 Default.args = {}
 
-export const ToneBackground = Template.bind({})
-ToneBackground.args = {
-  toneSectionBackground: 'critical',
+export const ColorSectionBackground = Template.bind({})
+ColorSectionBackground.args = {
+  colorSectionBackground: 'critical',
 }
 
-export const ToneElements = Template.bind({})
-ToneElements.args = {
-  toneLoadingBar: 'green',
+export const ColorLoadingBar = Template.bind({})
+ColorLoadingBar.args = {
+  colorLoadingBar: 'green',
 }

@@ -20,8 +20,8 @@ const Template: ComponentStory<typeof LoadingListComponent> = (args) => (
 export const Default = Template.bind({})
 Default.args = {}
 
-export const TonePrimary = Template.bind({})
-TonePrimary.args = {
-  toneSectionBackground: 'primary',
-  toneLoadingBar: 'primary-100',
+export const ColorPrimary = Template.bind({})
+ColorPrimary.args = {
+  colorSectionBackground: 'primary',
+  colorLoadingBar: 'primary-100',
 }
