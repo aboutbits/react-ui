@@ -12,7 +12,7 @@ export default {
       description: {
         component:
           'This component adds an HTML-div element and applies basic padding.<br> ' +
-          'Usablly it is used in combination with other sections components to have a padding for `children`.',
+          'Usually, it is used in combination with other sections components to have a padding for the `children`.',
       },
     },
   },
