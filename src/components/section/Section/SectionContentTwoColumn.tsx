@@ -4,12 +4,12 @@ import { SectionProps } from './Section'
 
 export const SectionContentTwoColumn: React.FC<SectionProps> = ({
   children,
-  className = '',
-  tone = 'gray-700',
+  className,
+  backgroundColor = 'gray-700',
 }) => (
   <SectionContent
     className={classNames(
-      `grid xl:grid-cols-2 xl:gap-x-5 gap-y-5 bg-${tone}`,
+      `grid xl:grid-cols-2 xl:gap-x-5 gap-y-5 bg-${backgroundColor}`,
       className
     )}
   >
