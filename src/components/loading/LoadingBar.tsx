@@ -5,9 +5,14 @@ type LoadingBarProps = ToneProps & ClassNameProps
 
 const LoadingBar: React.FC<LoadingBarProps> = ({
   className,
-  tone = 'gray',
+  backgroundColor = 'gray',
 }) => (
-  <div className={classNames(`rounded bg-${tone} animate-pulse`, className)} />
+  <div
+    className={classNames(
+      `rounded bg-${backgroundColor} animate-pulse`,
+      className
+    )}
+  />
 )
 
 export { LoadingBar }

@@ -2,9 +2,9 @@ import { ReactNode } from 'react'
 
 export type ToneProps = {
   /**
-   * Defines the tone of the bar. Basically the color, so be sure to have the colors defined in Tailwind.
+   * Defines the background color of the bar. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
    */
-  tone?: string
+  backgroundColor?: string
 }
 
 export type ClassNameProps = {

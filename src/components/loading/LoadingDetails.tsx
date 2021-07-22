@@ -33,7 +33,7 @@ const LoadingDetails: React.FC<LoadingDetailsProps> = ({
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <LoadingField tone={toneLoadingBar} key={index} />
+            <LoadingField backgroundColor={toneLoadingBar} key={index} />
           ))}
       </SectionContainerMultiColumn>
     </Section>

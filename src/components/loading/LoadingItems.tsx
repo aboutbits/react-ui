@@ -7,19 +7,23 @@ import { ToneProps } from './type'
 
 type LoadingFieldProps = ToneProps
 
-const LoadingField: React.FC<LoadingFieldProps> = ({ tone }) => (
+const LoadingField: React.FC<LoadingFieldProps> = ({ backgroundColor }) => (
   <SectionDescriptionItem
-    title={<LoadingBar tone={tone} className="p-2.5 w-40" />}
-    content={<LoadingBar tone={tone} className="p-3 w-full" />}
+    title={
+      <LoadingBar backgroundColor={backgroundColor} className="p-2.5 w-40" />
+    }
+    content={
+      <LoadingBar backgroundColor={backgroundColor} className="p-3 w-full" />
+    }
     variant={SectionDescriptionItemVariant.loaded}
   />
 )
 
-const LoadingInput: React.FC<LoadingFieldProps> = ({ tone }) => (
+const LoadingInput: React.FC<LoadingFieldProps> = ({ backgroundColor }) => (
   <div>
-    <LoadingBar tone={tone} className="p-2 w-40" />
+    <LoadingBar backgroundColor={backgroundColor} className="p-2 w-40" />
     <LoadingBar
-      tone={tone}
+      backgroundColor={backgroundColor}
       className="p-6 mt-1 mb-1 w-full border border-transparent"
     />
   </div>

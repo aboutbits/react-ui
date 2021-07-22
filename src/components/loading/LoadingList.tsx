@@ -24,8 +24,14 @@ const LoadingList: React.FC<LoadingDetailsProps> = ({
           .fill(null)
           .map((_, index) => (
             <SectionListItem tone={toneSectionBackground} key={index}>
-              <LoadingBar tone={toneLoadingBar} className="p-4 mr-4 w-full" />
-              <LoadingBar tone={toneLoadingBar} className="p-4 w-12" />
+              <LoadingBar
+                backgroundColor={toneLoadingBar}
+                className="p-4 mr-4 w-full"
+              />
+              <LoadingBar
+                backgroundColor={toneLoadingBar}
+                className="p-4 w-12"
+              />
             </SectionListItem>
           ))}
       </SectionListContainer>

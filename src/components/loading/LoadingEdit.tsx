@@ -23,7 +23,7 @@ const LoadingEdit: React.FC<LoadingDetailsProps> = ({
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <LoadingInput tone={toneLoadingBar} key={index} />
+            <LoadingInput backgroundColor={toneLoadingBar} key={index} />
           ))}
       </SectionContainerMultiColumn>
     </Section>
