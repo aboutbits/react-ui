@@ -4,9 +4,14 @@ import { SectionProps } from './Section'
 export const SectionContent: React.FC<SectionProps> = ({
   children,
   className,
-  tone = 'gray-700',
+  backgroundColor = 'gray-700',
 }) => (
-  <div className={classNames(`pt-5 pb-10 px-4 lg:px-5 bg-${tone}`, className)}>
+  <div
+    className={classNames(
+      `pt-5 pb-10 px-4 lg:px-5 bg-${backgroundColor}`,
+      className
+    )}
+  >
     {children}
   </div>
 )
