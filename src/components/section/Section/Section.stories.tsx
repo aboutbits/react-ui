@@ -12,7 +12,7 @@ export default {
       description: {
         component:
           'This component adds an HTML-section element and applies basic shadow styling.<br> ' +
-          '***Important:*** the shadow only appears if the width of the section element is at least 1024px.',
+          '***Important:*** the shadow only appears if the width of the section element has at least the screen size `lg` from Tailwind.',
       },
     },
   },
