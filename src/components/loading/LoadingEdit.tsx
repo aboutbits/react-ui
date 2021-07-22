@@ -19,7 +19,7 @@ const LoadingEdit: React.FC<LoadingDetailsProps> = ({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContentTwoColumn tone={toneSectionBackground}>
+      <SectionContentTwoColumn backgroundColor={toneSectionBackground}>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
