@@ -1,8 +1,8 @@
 export type ToneBackgroundProps = {
   /**
-   * Defines the tone of the background. Basically, the colour, so be sure to have it defined in Tailwind.
+   * Defines the tone of the background. Basically, the color, so be sure to have it defined in Tailwind.
    * */
-  tone?: string
+  backgroundColor?: string
 }
 export type ClassNameProps = {
   /**

@@ -19,13 +19,16 @@ export default {
 } as ComponentMeta<typeof SectionComponent>
 
 const Template: ComponentStory<typeof SectionComponent> = (args) => (
-  <SectionComponent {...args} className="p-4" />
+  <SectionComponent {...args} />
 )
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  className: 'p-4',
+}
 
 export const TonePrimary = Template.bind({})
 TonePrimary.args = {
-  tone: Tone.primary,
+  className: 'p-4',
+  backgroundColor: Tone.primary,
 }
