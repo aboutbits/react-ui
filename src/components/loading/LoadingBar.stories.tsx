@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { LoadingBar as LoadingBarComponent } from './LoadingBar'
 
 export default {
-  title: 'Components/Loading/Bar',
+  title: 'Components/Loading/LoadingBar',
   component: LoadingBarComponent,
 } as ComponentMeta<typeof LoadingBarComponent>
 

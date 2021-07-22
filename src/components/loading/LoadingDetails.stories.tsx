@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { LoadingDetails as LoadingDetailsComponent } from './LoadingDetails'
 
 export default {
-  title: 'Components/Loading/Details',
+  title: 'Components/Loading/LoadingDetails',
   component: LoadingDetailsComponent,
 } as ComponentMeta<typeof LoadingDetailsComponent>
 

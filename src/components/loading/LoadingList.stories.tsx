@@ -1,11 +1,10 @@
-//https://tailwindcss.com/docs/animation#pulse
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { LoadingList as LoadingListComponent } from './LoadingList'
 
 export default {
-  title: 'Components/Loading/List',
+  title: 'Components/Loading/LoadingList',
   component: LoadingListComponent,
 } as ComponentMeta<typeof LoadingListComponent>
 

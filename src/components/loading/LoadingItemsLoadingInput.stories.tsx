@@ -1,11 +1,10 @@
-//https://tailwindcss.com/docs/animation#pulse
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { LoadingInput } from './LoadingItems'
 
 export default {
-  title: 'Components/Loading/Input',
+  title: 'Components/Loading/LoadingInput',
   component: LoadingInput,
 } as ComponentMeta<typeof LoadingInput>
 

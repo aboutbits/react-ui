@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { LoadingEdit as LoadingEditComponent } from './LoadingEdit'
 
 export default {
-  title: 'Components/Loading/Edit',
+  title: 'Components/Loading/LoadingEdit',
   component: LoadingEditComponent,
 } as ComponentMeta<typeof LoadingEditComponent>
 
