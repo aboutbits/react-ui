@@ -7,12 +7,10 @@ export const Section: React.FC<SectionProps> = ({
   backgroundColor = 'white',
   className,
   children,
-}) => {
-  return (
-    <section
-      className={classNames(className, `lg:shadow-md bg-${backgroundColor}`)}
-    >
-      {children}
-    </section>
-  )
-}
+}) => (
+  <section
+    className={classNames(className, `lg:shadow-md bg-${backgroundColor}`)}
+  >
+    {children}
+  </section>
+)
