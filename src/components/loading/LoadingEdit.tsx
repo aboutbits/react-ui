@@ -10,8 +10,8 @@ import React from 'react'
 const LoadingEdit: React.FC<LoadingDetailsProps> = ({
   numberOfItems,
   sectionHeader,
-  toneSectionBackground,
-  toneLoadingBar,
+  colorSectionBackground,
+  colorLoadingBar,
 }) => {
   return (
     <Section>
@@ -19,11 +19,11 @@ const LoadingEdit: React.FC<LoadingDetailsProps> = ({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContainerMultiColumn tone={toneSectionBackground}>
+      <SectionContainerMultiColumn tone={colorSectionBackground}>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <LoadingInput backgroundColor={toneLoadingBar} key={index} />
+            <LoadingInput backgroundColor={colorLoadingBar} key={index} />
           ))}
       </SectionContainerMultiColumn>
     </Section>

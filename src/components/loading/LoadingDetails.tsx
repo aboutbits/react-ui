@@ -20,8 +20,8 @@ export type LoadingDetailsProps = NumberOfItemsProps &
 const LoadingDetails: React.FC<LoadingDetailsProps> = ({
   numberOfItems,
   sectionHeader,
-  toneSectionBackground,
-  toneLoadingBar,
+  colorSectionBackground,
+  colorLoadingBar,
 }) => {
   return (
     <Section>
@@ -29,11 +29,11 @@ const LoadingDetails: React.FC<LoadingDetailsProps> = ({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContainerMultiColumn tone={toneSectionBackground}>
+      <SectionContainerMultiColumn tone={colorSectionBackground}>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <LoadingField backgroundColor={toneLoadingBar} key={index} />
+            <LoadingField backgroundColor={colorLoadingBar} key={index} />
           ))}
       </SectionContainerMultiColumn>
     </Section>

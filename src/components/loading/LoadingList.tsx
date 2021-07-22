@@ -10,8 +10,8 @@ import { LoadingBar, LoadingDetailsProps } from '.'
 const LoadingList: React.FC<LoadingDetailsProps> = ({
   numberOfItems,
   sectionHeader,
-  toneSectionBackground,
-  toneLoadingBar,
+  colorSectionBackground,
+  colorLoadingBar,
 }) => {
   return (
     <Section>
@@ -23,13 +23,13 @@ const LoadingList: React.FC<LoadingDetailsProps> = ({
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <SectionListItem tone={toneSectionBackground} key={index}>
+            <SectionListItem tone={colorSectionBackground} key={index}>
               <LoadingBar
-                backgroundColor={toneLoadingBar}
+                backgroundColor={colorLoadingBar}
                 className="p-4 mr-4 w-full"
               />
               <LoadingBar
-                backgroundColor={toneLoadingBar}
+                backgroundColor={colorLoadingBar}
                 className="p-4 w-12"
               />
             </SectionListItem>

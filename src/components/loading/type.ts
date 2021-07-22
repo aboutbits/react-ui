@@ -32,12 +32,12 @@ export type ToneSectionBackgroundProps = {
   /**
    * Defines the tone of the background. Basically the color, so be sure to have the colors defined in Tailwind.
    */
-  toneSectionBackground?: string
+  colorSectionBackground?: string
 }
 
 export type ToneLoadingBarProps = {
   /**
    * Defines the background color of the pulsing elements. Basically the color, so be sure to have the colors defined in Tailwind.
    */
-  toneLoadingBar?: string
+  colorLoadingBar?: string
 }
