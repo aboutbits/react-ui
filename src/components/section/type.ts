@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 export type BackgroundColorProps = {
   /**
-   * Defines the tone of the background. Basically the color, so be sure to have it defined in Tailwind.
+   * Defines the color of the background. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
    * */
   backgroundColor?: string
 }
