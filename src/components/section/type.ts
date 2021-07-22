@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-export type ToneBackgroundProps = {
+export type BackgroundColorProps = {
   /**
    * Defines the tone of the background. Basically the color, so be sure to have it defined in Tailwind.
    * */

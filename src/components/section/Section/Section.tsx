@@ -1,7 +1,7 @@
 import classNames from 'classnames'
-import { ClassNameProps, ToneBackgroundProps } from '../type'
+import { ClassNameProps, BackgroundColorProps } from '../type'
 
-export type SectionProps = ToneBackgroundProps & ClassNameProps
+export type SectionProps = BackgroundColorProps & ClassNameProps
 
 export const Section: React.FC<SectionProps> = ({
   backgroundColor = 'white',
