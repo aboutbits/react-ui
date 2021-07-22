@@ -2,7 +2,6 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { SectionContentList as SectionContentListComponent } from './SectionContentList'
-import { Tone } from '../../button/Button'
 import { SectionListItem } from '../SectionItem/SectionItem'
 
 export default {
@@ -19,6 +18,7 @@ export default {
   },
 } as ComponentMeta<typeof SectionContentListComponent>
 
+//What could be a better name for each list item
 const Template: ComponentStory<typeof SectionContentListComponent> = (args) => (
   <SectionContentListComponent {...args}>
     <SectionListItem>Element 1</SectionListItem>
@@ -30,7 +30,7 @@ const Template: ComponentStory<typeof SectionContentListComponent> = (args) => (
 export const Default = Template.bind({})
 Default.args = {}
 
-export const BackgroundColorPrimary = Template.bind({})
-BackgroundColorPrimary.args = {
-  backgroundColor: Tone.primary,
+export const BackgroundColorWhite = Template.bind({})
+BackgroundColorWhite.args = {
+  backgroundColor: 'white',
 }
