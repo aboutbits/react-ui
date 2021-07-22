@@ -5,8 +5,16 @@ import { SectionListEmpty as SectionListEmptyComponent } from './SectionList'
 import { Tone } from '../../button/Button'
 
 export default {
-  title: 'Components/Section/List Empty',
+  title: 'Components/Section/SectionListEmpty',
   component: SectionListEmptyComponent,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'This component adds a HTML-div element and applies some padding and text coloring.',
+      },
+    },
+  },
 } as ComponentMeta<typeof SectionListEmptyComponent>
 
 const Template: ComponentStory<typeof SectionListEmptyComponent> = (args) => (
@@ -18,5 +26,5 @@ Default.args = {}
 
 export const TonePrimary = Template.bind({})
 TonePrimary.args = {
-  tone: Tone.primary,
+  backgroundColor: Tone.primary,
 }
