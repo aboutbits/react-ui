@@ -3,13 +3,9 @@ import {
   SectionDescriptionItemVariant,
 } from '../section'
 import { LoadingBar } from './LoadingBar'
+import { ToneProps } from './type'
 
-type LoadingFieldProps = {
-  /**
-   * Defines the tone of the bar. Basically the color, so be sure to have the colors defined in Tailwind.
-   * */
-  tone?: string
-}
+type LoadingFieldProps = ToneProps
 
 const LoadingField: React.FC<LoadingFieldProps> = ({ tone }) => (
   <SectionDescriptionItem
