@@ -1,6 +1,6 @@
 import {
   Section,
-  SectionContainerMultiColumn,
+  SectionContentTwoColumn,
   SectionHeader,
   SectionTitle,
 } from '../section'
@@ -19,13 +19,13 @@ const LoadingEdit: React.FC<LoadingDetailsProps> = ({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContainerMultiColumn tone={toneSectionBackground}>
+      <SectionContentTwoColumn backgroundColor={toneSectionBackground}>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
             <LoadingInput tone={toneLoadingBar} key={index} />
           ))}
-      </SectionContainerMultiColumn>
+      </SectionContentTwoColumn>
     </Section>
   )
 }

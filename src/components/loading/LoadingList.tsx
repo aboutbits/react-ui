@@ -2,7 +2,7 @@ import {
   Section,
   SectionHeader,
   SectionListItem,
-  SectionListContainer,
+  SectionContentList,
   SectionTitle,
 } from '../section'
 import { LoadingBar, LoadingDetailsProps } from '.'
@@ -19,16 +19,19 @@ const LoadingList: React.FC<LoadingDetailsProps> = ({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionListContainer>
+      <SectionContentList>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <SectionListItem tone={toneSectionBackground} key={index}>
+            <SectionListItem
+              backgroundColor={toneSectionBackground}
+              key={index}
+            >
               <LoadingBar tone={toneLoadingBar} className="p-4 mr-4 w-full" />
               <LoadingBar tone={toneLoadingBar} className="p-4 w-12" />
             </SectionListItem>
           ))}
-      </SectionListContainer>
+      </SectionContentList>
     </Section>
   )
 }
