@@ -1,7 +1,10 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { SectionHeader as SectionHeaderComponent } from './SectionHeader'
+import {
+  SectionHeader as SectionHeaderComponent,
+  SectionTitle,
+} from './SectionHeader'
 
 export default {
   title: 'Components/Section/SectionHeader',
@@ -18,7 +21,9 @@ export default {
 } as ComponentMeta<typeof SectionHeaderComponent>
 
 const Template: ComponentStory<typeof SectionHeaderComponent> = (args) => (
-  <SectionHeaderComponent {...args} />
+  <SectionHeaderComponent {...args}>
+    <SectionTitle>Profile information</SectionTitle>
+  </SectionHeaderComponent>
 )
 
 export const Default = Template.bind({})
