@@ -27,13 +27,13 @@ type SectionListItemWithActionProps = SectionProps & {
 export const SectionListItem: React.FC<SectionProps> = ({
   className,
   children,
-  tone = 'gray-700',
+  backgroundColor = 'gray-700',
 }) => {
   return (
     <div
       className={classNames(
         className,
-        `flex items-center min-h-14 px-4 lg:px-5 text-white bg-${tone}`
+        `flex items-center min-h-14 px-4 lg:px-5 text-white bg-${backgroundColor}`
       )}
     >
       {children}
@@ -60,11 +60,11 @@ export const SectionListItemWithButton: React.FC<{ onClick: () => void }> = ({
 }
 
 export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps> =
-  ({ children, actionIcon, tone, className }) => {
+  ({ children, actionIcon, backgroundColor, className }) => {
     return (
       <SectionListItem
         className={classNames('justify-between space-x-4', className)}
-        tone={tone}
+        backgroundColor={backgroundColor}
       >
         {children}
         {actionIcon}
