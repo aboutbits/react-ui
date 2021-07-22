@@ -50,17 +50,15 @@ export const SectionListItemWithButton: React.FC<{ onClick: () => void }> = ({
 }
 
 export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps> =
-  ({ children, actionIcon, backgroundColor, className }) => {
-    return (
-      <SectionListItem
-        className={classNames('justify-between space-x-4', className)}
-        backgroundColor={backgroundColor}
-      >
-        {children}
-        {actionIcon}
-      </SectionListItem>
-    )
-  }
+  ({ children, actionIcon, backgroundColor, className }) => (
+    <SectionListItem
+      className={classNames('justify-between space-x-4', className)}
+      backgroundColor={backgroundColor}
+    >
+      {children}
+      {actionIcon}
+    </SectionListItem>
+  )
 
 export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
   title,

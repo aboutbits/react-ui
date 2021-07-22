@@ -4,8 +4,17 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { SectionDescriptionItem as SectionDescriptionItemComponent } from './SectionItem'
 
 export default {
-  title: 'Components/Section/Description Item',
+  title: 'Components/Section/SectionDescriptionItem',
   component: SectionDescriptionItemComponent,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'This component adds an HTML-section element and applies a border on the bottom.<br>' +
+          'Usually, it is used in combination with SectionContent.',
+      },
+    },
+  },
 } as ComponentMeta<typeof SectionDescriptionItemComponent>
 
 const Template: ComponentStory<typeof SectionDescriptionItemComponent> = (
@@ -13,9 +22,9 @@ const Template: ComponentStory<typeof SectionDescriptionItemComponent> = (
 ) => (
   <SectionDescriptionItemComponent
     {...args}
-    title={'I am a Title!'}
-    content={'I am Content!'}
-    className="bg-gray-700"
+    content="admin@aboutbits.it"
+    title="E-mail"
+    className="text-gray p-2"
   />
 )
 
