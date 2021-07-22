@@ -5,6 +5,7 @@ import {
   ActionIconProps,
   ClassNameProps,
   ContentReactProps,
+  OnClickVoidProps,
   TitleReactProps,
 } from '../type'
 
@@ -31,7 +32,7 @@ export const SectionListItem: React.FC<SectionProps> = ({
   )
 }
 
-export const SectionListItemWithButton: React.FC<{ onClick: () => void }> = ({
+export const SectionListItemWithButton: React.FC<OnClickVoidProps> = ({
   children,
   onClick,
 }) => {
