@@ -10,7 +10,7 @@ export default {
     docs: {
       description: {
         component:
-          'This component adds a HTML-`h1` element and applies some basic text styling.',
+          'This component adds a HTML-h1 element and applies some basic text styling.',
       },
     },
   },
