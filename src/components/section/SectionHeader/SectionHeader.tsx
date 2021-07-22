@@ -1,23 +1,10 @@
 import classNames from 'classnames'
-import { ReactNode } from 'react'
 
-type SectionHeaderWithActionProps = {
-  /**
-   * Defines the title of the section header.
-   * */
-  title: ReactNode
-  /**
-   * Defines a React element what could be a string, any, or a JSXElementConstructor.
-   * */
-  actionIcon: ReactNode
-}
+import { ActionIconProps, ClassNameProps, TitleReactProps } from '../type'
 
-type SectionHeaderProps = {
-  /**
-   * Adjusting individual the style with any CSS class.
-   * */
-  className?: string
-}
+type SectionHeaderWithActionProps = TitleReactProps & ActionIconProps
+
+type SectionHeaderProps = ClassNameProps
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
   className,
