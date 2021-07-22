@@ -6,6 +6,13 @@ import { LoadingEdit as LoadingEditComponent } from './LoadingEdit'
 export default {
   title: 'Components/Loading/LoadingEdit',
   component: LoadingEditComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: '',
+      },
+    },
+  },
 } as ComponentMeta<typeof LoadingEditComponent>
 
 const Template: ComponentStory<typeof LoadingEditComponent> = (args) => (

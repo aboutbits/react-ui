@@ -6,6 +6,13 @@ import { LoadingInput } from './LoadingItems'
 export default {
   title: 'Components/Loading/LoadingInput',
   component: LoadingInput,
+  parameters: {
+    docs: {
+      description: {
+        component: '',
+      },
+    },
+  },
 } as ComponentMeta<typeof LoadingInput>
 
 const Template: ComponentStory<typeof LoadingInput> = (args) => (

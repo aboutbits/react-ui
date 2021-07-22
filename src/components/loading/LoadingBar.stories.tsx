@@ -6,6 +6,13 @@ import { LoadingBar as LoadingBarComponent } from './LoadingBar'
 export default {
   title: 'Components/Loading/LoadingBar',
   component: LoadingBarComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: '',
+      },
+    },
+  },
 } as ComponentMeta<typeof LoadingBarComponent>
 
 const Template: ComponentStory<typeof LoadingBarComponent> = (args) => (

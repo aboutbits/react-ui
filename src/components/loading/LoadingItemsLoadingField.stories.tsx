@@ -6,6 +6,13 @@ import { LoadingField } from './LoadingItems'
 export default {
   title: 'Components/Loading/LoadingItemsField',
   component: LoadingField,
+  parameters: {
+    docs: {
+      description: {
+        component: '',
+      },
+    },
+  },
 } as ComponentMeta<typeof LoadingField>
 
 const Template: ComponentStory<typeof LoadingField> = (args) => (

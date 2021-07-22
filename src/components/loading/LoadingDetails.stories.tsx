@@ -6,6 +6,13 @@ import { LoadingDetails as LoadingDetailsComponent } from './LoadingDetails'
 export default {
   title: 'Components/Loading/LoadingDetails',
   component: LoadingDetailsComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: '',
+      },
+    },
+  },
 } as ComponentMeta<typeof LoadingDetailsComponent>
 
 const Template: ComponentStory<typeof LoadingDetailsComponent> = (args) => (

@@ -6,6 +6,13 @@ import { LoadingList as LoadingListComponent } from './LoadingList'
 export default {
   title: 'Components/Loading/LoadingList',
   component: LoadingListComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: '',
+      },
+    },
+  },
 } as ComponentMeta<typeof LoadingListComponent>
 
 const Template: ComponentStory<typeof LoadingListComponent> = (args) => (
