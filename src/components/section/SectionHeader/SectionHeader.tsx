@@ -1,27 +1,16 @@
 import classNames from 'classnames'
 
-import {
-  ActionIconProps,
-  ClassNameProps,
-  TitleReactProps,
-  BackgroundColorProps,
-} from '../type'
+import { ActionIconProps, ClassNameProps, TitleReactProps } from '../type'
 
 type SectionHeaderWithActionProps = TitleReactProps & ActionIconProps
 
-type SectionHeaderProps = ClassNameProps & BackgroundColorProps
+type SectionHeaderProps = ClassNameProps
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
   className,
   children,
-  backgroundColor = 'white',
 }) => (
-  <div
-    className={classNames(
-      `px-4 lg:px-5 pt-5 pb-3 bg-${backgroundColor}`,
-      className
-    )}
-  >
+  <div className={classNames(`px-4 lg:px-5 pt-5 pb-3 bg-white`, className)}>
     {children}
   </div>
 )
