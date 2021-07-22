@@ -2,7 +2,6 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { SectionHeader as SectionHeaderComponent } from './SectionHeader'
-import { Tone } from '../../button/Button'
 
 export default {
   title: 'Components/Section/SectionHeader',
@@ -19,13 +18,8 @@ export default {
 } as ComponentMeta<typeof SectionHeaderComponent>
 
 const Template: ComponentStory<typeof SectionHeaderComponent> = (args) => (
-  <SectionHeaderComponent {...args}>Profile information</SectionHeaderComponent>
+  <SectionHeaderComponent {...args} />
 )
 
 export const Default = Template.bind({})
 Default.args = {}
-
-export const BackgroundColorTone = Template.bind({})
-BackgroundColorTone.args = {
-  backgroundColor: Tone.primary,
-}
