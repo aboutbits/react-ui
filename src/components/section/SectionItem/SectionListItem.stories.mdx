@@ -1,0 +1,40 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SectionListItem } from './SectionItem'
+import { SectionContentList } from '../Section/SectionContentList'
+
+<Meta title="Components/Section/SectionListItem" component={SectionListItem} />
+
+# SectionListItem
+
+The SectionListItem defines a row in a list of items in a section.
+
+export const Template = ({ children }) => (
+  <SectionListItem>{children}</SectionListItem>
+)
+
+<Canvas>
+  <Story name="Default" args={{ children: 'Jane Doe' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `text-section-list-item`: Defines the default text color.
+- `bg-section-list-item`: Defines the default background color.
+
+## Example: Usage within SectionContentList
+
+<Canvas>
+  <Story name="Usage within Section">
+    <SectionContentList>
+      <SectionListItem>Jane Doe</SectionListItem>
+      <SectionListItem>John Doe</SectionListItem>
+      <SectionListItem>Mary Doe</SectionListItem>
+    </SectionContentList>
+  </Story>
+</Canvas>
