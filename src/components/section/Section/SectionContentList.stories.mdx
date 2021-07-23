@@ -1,0 +1,42 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SectionContentList } from './SectionContentList'
+import { SectionListItem } from '../SectionItem/SectionItem'
+
+<Meta
+  title="Components/Section/SectionContentList"
+  component={SectionContentList}
+/>
+
+# SectionContentList
+
+This component can be used to wrap list elements.
+It will place a 1px line between every item.
+
+export const Template = ({ children, ...args }) => (
+  <SectionContentList {...args}>{children}</SectionContentList>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      children: (
+        <>
+          <SectionListItem>john.doe@aboutbits.it</SectionListItem>
+          <SectionListItem>jane.doe@aboutbits.it</SectionListItem>
+          <SectionListItem>admin@aboutbits.it</SectionListItem>
+        </>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `bg-section-content-list`: Define the default background of the section content list. The background is usually only visible as the space between the items.
