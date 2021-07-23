@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 import { Button, Variant } from "./Button";
 
-<Meta title="Components/Button/Button" component={Button} />
+<Meta title="Components/Button/Button" component={Button} argTypes={{ onClick: { action: 'clicked' } }} />
 
 # Button
 
@@ -15,6 +15,11 @@ export const Template = ({children, ...args}) => <Button {...args}>{children}</B
 
 ### Props:
 <ArgsTable story="Default" />
+
+All the other externally defined props are
+```
+React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+```
 
 ## Variants
 The `Variant` determine if there is a background fill and a border. The `transparent` variant, while being transparent, still keep the same size as the others variants.
