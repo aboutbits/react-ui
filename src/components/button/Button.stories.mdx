@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
-import { Button, Variant } from "./Button";
+import {Button, Size, Variant} from "./Button";
 
 <Meta title="Components/Button/Button" component={Button} argTypes={{ onClick: { action: 'clicked' } }} />
 
@@ -26,13 +26,13 @@ The `Variant` determine if there is a background fill and a border. The `transpa
 
 <Canvas>
   <Story name="VariantSolid">
-    <Button variant="solid">Button Solid</Button>
+    <Button variant={Variant.solid}>Button Solid</Button>
    </Story>
    <Story name="VariantGhost">
-    <Button variant="ghost">Button Ghost</Button>
+    <Button variant={Variant.ghost}>Button Ghost</Button>
    </Story>
   <Story name="VariantTransparent">
-    <Button variant="transparent">Button Transparent</Button>
+    <Button variant={Variant.transparent}>Button Transparent</Button>
    </Story>
 </Canvas>
 
@@ -41,10 +41,10 @@ The size determine the padding between the button text and its border.
 
 <Canvas>
   <Story name="SizeMd">
-    <Button size="md">Medium Button</Button>
+    <Button size={Size.md}>Medium Button</Button>
    </Story>
   <Story name="SizeSm">
-    <Button size="sm">Small Button</Button>
+    <Button size={Size.sm}>Small Button</Button>
    </Story>
 </Canvas>
 
@@ -55,13 +55,13 @@ For additional information about Tailwind config, please refer to the [Tailwind 
 
 <Canvas>
   <Story name="Primary">
-    <Button tone="primary">Primary Button</Button>
+    <Button tone={Tone.primary}>Primary Button</Button>
    </Story>
   <Story name="Secondary">
-    <Button tone="secondary">Secondary Button</Button>
+    <Button tone={Tone.secondary}>Secondary Button</Button>
    </Story>
   <Story name="Critical">
-    <Button tone="critical">Critical Button</Button>
+    <Button tone={Tone.critical}>Critical Button</Button>
    </Story>
   <Story name="CustomGreen">
     <Button tone="green">Green Button</Button>
