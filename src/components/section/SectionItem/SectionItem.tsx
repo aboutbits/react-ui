@@ -16,7 +16,12 @@ type SectionDescriptionItemProps = {
    * Will be placed inside <dt>.
    */
   title: ReactNode
-} & ClassNameProps
+
+  /**
+   * The className will be applied on the `dl` element.
+   */
+  className?: string
+}
 
 type SectionListItemWithActionProps = {
   /**
@@ -97,14 +102,14 @@ export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
   className,
 }) => {
   return (
-    <div
+    <dl
       className={classNames(
-        'flex flex-col pb-2 space-y-1 text-white border-b border-gray-300',
+        'flex flex-col pb-2 space-y-1 text-section-description-item border-b border-section-description-item',
         className
       )}
     >
       <dt className="text-sm">{title}</dt>
       <dd>{content}</dd>
-    </div>
+    </dl>
   )
 }

@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SectionDescriptionItem } from './SectionItem'
+import { SectionContent } from '../Section/SectionContent'
+
+<Meta
+  title="Components/Section/SectionDescriptionItem"
+  component={SectionDescriptionItem}
+/>
+
+# SectionDescriptionItem
+
+The SectionDescriptionItem displays read only information with HTML description list element (`dl`) tag.
+
+export const Template = ({ title, content }) => (
+  <div className="bg-gray-700">
+    <SectionDescriptionItem title={title} content={content} />
+  </div>
+)
+
+<Canvas>
+  <Story name="Default" args={{ title: 'Name', content: 'John Doe' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `text-section-description-item`: Defines the default text color.
+- `border-section-description-item`: Defines the default border color.
+
+## Example: Usage within Section
+
+<Canvas>
+  <Story name="Usage within Section">
+    <SectionContent>
+      <SectionDescriptionItem content="Name" title="John Doe" />
+    </SectionContent>
+  </Story>
+</Canvas>
