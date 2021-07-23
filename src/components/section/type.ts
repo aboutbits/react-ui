@@ -22,7 +22,7 @@ export type ActionIconProps = {
   /**
    * Defines a React element what could be a string, any, or a JSXElementConstructor.
    * */
-  actionIcon: ReactNode
+  action: ReactNode
 }
 
 export type ContentReactProps = {

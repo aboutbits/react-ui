@@ -28,5 +28,5 @@ Default.args = {}
 
 export const Icon = Template.bind({})
 Icon.args = {
-  actionIcon: <IconAccessTime width="24" height="24" />,
+  action: <IconAccessTime width="24" height="24" />,
 }

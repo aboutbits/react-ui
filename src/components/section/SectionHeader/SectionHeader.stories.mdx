@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SectionHeader, SectionTitle } from './SectionHeader'
+
+<Meta title="Components/Section/SectionHeader" component={SectionHeader} />
+
+# SectionHeader
+
+This component defines the header container of a section.
+
+export const Template = ({ children, ...args }) => (
+  <SectionHeader {...args}>{children}</SectionHeader>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{ children: <SectionTitle>Profile information</SectionTitle> }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `bg-section-header`: Define the default background of the section header.
