@@ -1,6 +1,6 @@
 import {
   Section,
-  SectionContainerMultiColumn,
+  SectionContentTwoColumn,
   SectionHeader,
   SectionTitle,
 } from '../section'
@@ -37,13 +37,13 @@ const LoadingDetails: React.FC<LoadingDetailsProps> = ({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContainerMultiColumn tone={toneSectionBackground}>
+      <SectionContentTwoColumn backgroundColor={toneSectionBackground}>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
             <LoadingField tone={toneLoadingBar} key={index} />
           ))}
-      </SectionContainerMultiColumn>
+      </SectionContentTwoColumn>
     </Section>
   )
 }

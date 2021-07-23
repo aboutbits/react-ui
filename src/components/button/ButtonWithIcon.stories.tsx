@@ -14,7 +14,7 @@ export default {
       description: {
         component:
           'The ***default values*** for variant, size, and tone can be found in the [Button/Base](http://localhost:4000/?path=/docs/components-button-base--default) section. <br>' +
-          'The size of the icon is chancing with the property size. Size.md equals `w-4 h4` whereas Size.sm equals `w-3 h3`.',
+          'The size of the icon is chancing with the property size. Size.md equals `w-4 h-4` whereas Size.sm equals `w-3 h-3`.',
       },
     },
   },
