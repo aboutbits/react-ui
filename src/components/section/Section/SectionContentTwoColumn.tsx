@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { SectionContent } from './SectionContent'
-import { SectionProps } from './Section'
+import { Props as SectionProps } from './Section'
 
 type Props = SectionProps
 
