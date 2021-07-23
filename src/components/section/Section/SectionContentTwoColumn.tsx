@@ -2,7 +2,9 @@ import classNames from 'classnames'
 import { SectionContent } from './SectionContent'
 import { SectionProps } from './Section'
 
-export const SectionContentTwoColumn: React.FC<SectionProps> = ({
+type Props = SectionProps
+
+export const SectionContentTwoColumn: React.FC<Props> = ({
   children,
   className,
 }) => (
