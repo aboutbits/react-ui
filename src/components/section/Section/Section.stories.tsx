@@ -2,7 +2,6 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Section as SectionComponent } from './Section'
-import { Tone } from '../../button/Button'
 
 export default {
   title: 'Components/Section/Section',
@@ -27,8 +26,7 @@ Default.args = {
   className: 'p-4',
 }
 
-export const BackgroundColorPrimary = Template.bind({})
-BackgroundColorPrimary.args = {
-  className: 'p-4',
-  backgroundColor: Tone.primary,
+export const CustomCss = Template.bind({})
+CustomCss.args = {
+  className: 'p-4 bg-primary',
 }

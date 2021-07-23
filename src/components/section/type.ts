@@ -31,10 +31,3 @@ export type ContentReactProps = {
    * */
   content: ReactNode
 }
-
-export type OnClickVoidProps = {
-  /**
-   * Defines a function which will be triggered by clicking the element bound to it.
-   * */
-  onClick: () => void
-}

@@ -2,8 +2,6 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { SectionListItem as SectionListItemComponent } from './SectionItem'
-import { Tone } from '../../button/Button'
-import { SectionContentList } from '../Section/SectionContentList'
 
 export default {
   title: 'Components/Section/SectionListItem',
@@ -19,18 +17,22 @@ export default {
   },
 } as ComponentMeta<typeof SectionListItemComponent>
 
-const Template: ComponentStory<typeof SectionListItemComponent> = (args) => (
-  <SectionContentList>
-    <SectionListItemComponent {...args}>Element 1</SectionListItemComponent>
-    <SectionListItemComponent {...args}>Element 2</SectionListItemComponent>
-    <SectionListItemComponent {...args}>Element 3</SectionListItemComponent>
-  </SectionContentList>
-)
+const Template: ComponentStory<typeof SectionListItemComponent> = ({
+  children = 'john.doe@aboutbits.it',
+  ...args
+}) => <SectionListItemComponent {...args}>{children}</SectionListItemComponent>
 
 export const Default = Template.bind({})
 Default.args = {}
 
-export const TonePrimary = Template.bind({})
-TonePrimary.args = {
-  backgroundColor: Tone.primary,
+export const CustomCss = Template.bind({})
+CustomCss.args = {
+  className: 'bg-primary',
+}
+
+export const LongContent = Template.bind({})
+
+LongContent.args = {
+  children:
+    "This is a very long text. This text should wrap on screens very it doesn't fit in one line.",
 }

@@ -3,10 +3,9 @@ import { SectionProps } from './Section'
 
 export const SectionContentList: React.FC<SectionProps> = ({
   children,
-  backgroundColor = 'gray-300',
   className,
 }) => (
-  <div className={classNames(`space-y-px bg-${backgroundColor}`, className)}>
+  <div className={classNames('space-y-px bg-section-content-list', className)}>
     {children}
   </div>
 )
