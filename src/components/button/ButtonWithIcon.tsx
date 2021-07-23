@@ -17,7 +17,9 @@ const ButtonWithIcon = React.forwardRef<HTMLButtonElement, ButtonWithIconProps>(
         <div className="flex justify-center items-center">
           <Icon
             className={classNames(
-              `mr-1 fill-current ${props.size === 'sm' ? 'w-3 h-3' : 'w-4 h-4'}`
+              `fill-current ${
+                props.size === 'sm' ? 'mr-1 w-4 h-4' : 'mr-2 w-6 h-6'
+              }`
             )}
           />
           {children}

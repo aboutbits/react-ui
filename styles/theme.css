@@ -21,3 +21,19 @@
 .hover\:bg-section-list-item:hover {
   @apply bg-gray-600;
 }
+
+.bg-section-header {
+  @apply bg-white;
+}
+
+.text-section-title {
+  @apply text-black;
+}
+
+.text-section-description-item {
+  @apply text-white;
+}
+
+.border-section-description-item {
+  @apply border-gray-300;
+}

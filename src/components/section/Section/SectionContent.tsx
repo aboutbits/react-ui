@@ -1,17 +1,16 @@
 import classNames from 'classnames'
-import { SectionProps } from './Section'
 
-// Keep backgroundColor: Benefit that you can just pass another tailwind bg-... class and it will work
-// Remove backgroundColor: Less props and the user can change the background color by using className. A bit less explicit.
+type Props = {
+  /**
+   * Adjusting individual style with any CSS class.
+   * */
+  className?: string
+}
 
-export const SectionContent: React.FC<SectionProps> = ({
-  children,
-  className,
-  backgroundColor = 'bg-section-content',
-}) => (
+export const SectionContent: React.FC<Props> = ({ children, className }) => (
   <div
     className={classNames(
-      `pt-5 pb-10 px-4 lg:px-5 ${backgroundColor}`,
+      'pt-5 pb-10 px-4 lg:px-5 bg-section-content',
       className
     )}
   >
