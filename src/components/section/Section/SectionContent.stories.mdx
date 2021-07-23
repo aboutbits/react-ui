@@ -1,0 +1,30 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SectionContent } from './SectionContent'
+
+<Meta title="Components/Section/SectionContent" component={SectionContent} />
+
+# SectionContent
+
+This component adds a div element and applies basic padding to it.
+It is used as the container of the section content.
+
+export const Template = ({ children, ...args }) => (
+  <SectionContent {...args}>{children}</SectionContent>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{ children: <p className="text-white">Default Section Content</p> }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `bg-section-content`: Define the default background of the section content.
