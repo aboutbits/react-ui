@@ -7,8 +7,7 @@ import { Button, Variant } from '../../button/Button'
 const SectionError: React.FC = ({ children }) => (
   <div
     className={classNames(
-      'flex flex-col items-center justify-center overflow-hidden mx-auto my-15 lg:mt-20',
-      'width-minWidth.dialog'
+      'flex flex-col items-center justify-center overflow-hidden mx-auto my-15 lg:mt-20'
     )}
   >
     <div className="w-60 h-60">
@@ -23,7 +22,7 @@ const SectionError: React.FC = ({ children }) => (
     <Button
       variant={Variant.solid}
       onClick={() => window.location.reload()}
-      className="mt-20 w-full"
+      className="mt-10 lg:mt-20"
     >
       <FormattedMessage id="shared.button.reload" />
     </Button>
