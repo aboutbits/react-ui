@@ -1,7 +1,7 @@
 import classNames from 'classnames'
+import { FormattedMessage } from 'react-intl'
 
 import { Warning } from '../../svg/Warning'
-import { FormattedMessage } from 'react-intl'
 import { Button, Variant } from '../../button/Button'
 
 const SectionError: React.FC = ({ children }) => (
