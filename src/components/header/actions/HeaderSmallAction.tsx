@@ -1,18 +1,40 @@
 import React, { ComponentType } from 'react'
 import classNames from 'classnames'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
+import { ClassNameProps } from '../../types'
 
-const HeaderSmallAction: React.FC<{
+type Props = ClassNameProps & {
+  /**
+   * Defines the icon of the button.
+   * */
   icon: ComponentType<IconProps>
+  /**
+   * Sets a label for [aria-label](https://www.w3schools.com/accessibility/accessibility_labels.php).
+   * */
   label: string
-  disabled?: boolean
+  /**
+   * Defines which action should be executed on clicking.
+   * */
   onClick: () => void
-  className?: string
-}> = ({ icon: Icon, label, onClick, disabled = false, className }) => {
+  /**
+   *
+   * */
+  disabled?: boolean
+}
+
+const HeaderSmallAction: React.FC<Props> = ({
+  icon: Icon,
+  label,
+  onClick,
+  disabled = false,
+  className,
+}) => {
   return (
     <button
       className={classNames(
-        className ? className : 'hover:text-gray-700 focus:text-gray-700'
+        className
+          ? className
+          : 'text-header-action-hover text-header-action-focus'
       )}
       aria-label={label}
       disabled={disabled}
