@@ -1,0 +1,58 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
+import { Size, Tone, Variant } from '../../button/Button'
+import { SectionHeader, SectionHeaderWithAction } from './SectionHeader'
+import { ButtonWithIcon } from '../../button/ButtonWithIcon'
+
+<Meta
+  title="Components/Section/SectionHeaderWithAction"
+  component={SectionHeader}
+/>
+
+# SectionHeaderWithAction
+
+This component puts the title inside the `SectionTitle` of the `SectionHeader` and pushes the action all the way to the right.
+It is often used to trigger an action in the context of this section.
+
+export const Template = ({ title, action }) => (
+  <SectionHeaderWithAction title={title} action={action} />
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      title: 'Profile information',
+      action: <IconEdit width="24" height="24" />,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Example: Action as Button
+
+<Canvas>
+  <Story
+    name="Action as Button"
+    args={{
+      title: 'Profile information',
+      action: (
+        <ButtonWithIcon
+          size={Size.sm}
+          variant={Variant.transparent}
+          tone={Tone.secondary}
+          Icon={IconEdit}
+        >
+          Edit
+        </ButtonWithIcon>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

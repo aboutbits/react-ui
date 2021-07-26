@@ -45,7 +45,7 @@ const Template: ComponentStory<typeof ConfirmationDialogComponent> = (args) => {
           onConfirm={() => setToggle(!toggle)}
         />
       ) : (
-        <Button onClick={() => setToggle(!toggle)}>show dialog</Button>
+        <Button onClick={() => setToggle(!toggle)}>Reset settings</Button>
       )}
     </div>
   )
@@ -53,11 +53,8 @@ const Template: ComponentStory<typeof ConfirmationDialogComponent> = (args) => {
 
 export const Default = Template.bind({})
 Default.args = {
-  isOpen: true,
-  disableConfirm: false,
-  disableDismiss: true,
-  dismissButtonText: 'dismiss',
-  confirmButtonText: 'confirm',
-  body: <>I am the body</>,
-  title: 'I am a Confirmation Dialog',
+  dismissButtonText: 'Cancel',
+  confirmButtonText: 'Confirm',
+  body: 'Are you sure you want to reset your notification settings to the standard settings?',
+  title: 'Confirm reset notification settings',
 }

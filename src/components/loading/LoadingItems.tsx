@@ -1,7 +1,4 @@
-import {
-  SectionDescriptionItem,
-  SectionDescriptionItemVariant,
-} from '../section'
+import { SectionDescriptionItem } from '../section'
 import { LoadingBar } from './LoadingBar'
 import { ToneProps } from './type'
 
@@ -15,7 +12,6 @@ const LoadingField: React.FC<LoadingFieldProps> = ({ backgroundColor }) => (
     content={
       <LoadingBar backgroundColor={backgroundColor} className="p-3 w-full" />
     }
-    variant={SectionDescriptionItemVariant.loaded}
   />
 )
 

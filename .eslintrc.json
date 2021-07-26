@@ -22,6 +22,15 @@
     "plugin:import/typescript",
     "plugin:prettier/recommended"
   ],
+  "overrides": [
+    {
+      "files": ["*.mdx"],
+      "extends": "plugin:mdx/recommended",
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": "off"
+      }
+    }
+  ],
   "settings": {
     "react": {
       "version": "detect"

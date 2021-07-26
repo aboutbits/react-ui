@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { IntlProvider } from 'react-intl'
+
+import { SectionError } from './SectionError'
+import { Warning } from '../../svg/Warning'
+
+<Meta title="Components/Section/SectionError" component={SectionError} />
+
+# SectionError
+
+This component renders an error with a reload page button.
+This is very useful if your page has only one section.
+
+The component makes use of `react-intl` to translate the following message ids:
+
+- `shared.error.title`
+- `shared.button.reload`
+
+export const Template = ({ children }) => (
+  <IntlProvider
+    locale="en"
+    messages={{
+      'shared.button.reload': 'Reload page',
+      'shared.error.title': 'Error',
+    }}
+  >
+    <SectionError icon={<Warning />}>{children}</SectionError>
+  </IntlProvider>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      children: 'Failed to connect with server.',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

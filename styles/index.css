@@ -1,8 +1,9 @@
+@import "theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @tailwind screens;
-
 
 :root {
   --reach-dialog: 1;
