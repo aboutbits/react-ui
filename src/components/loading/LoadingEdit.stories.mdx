@@ -6,7 +6,8 @@ import { LoadingEdit } from './LoadingEdit'
 
 # LoadingEdit
 
-The component is used during the fetch process as a placeholder. The contrast to `LoadingDetails` is a different styling.
+The component is used during the fetch process as a placeholder.
+In contrast to [LoadingDetails](/docs/components-loading-loadingdetails--default-story) this component shows a loading form.
 
 It leverages on the work of [SectionContentTwoContainer](/docs/components-section-sectioncontenttwocolumn--default-story).
 
@@ -21,27 +22,3 @@ export const Template = ({ ...args }) => (
 ### Props
 
 <ArgsTable story="Default" />
-
-## Color Section Background
-
-<Canvas>
-  <Story name="Color Section Background">
-    <LoadingEdit
-      numberOfItems={2}
-      sectionHeader="Section Header!"
-      colorSectionBackground="critical"
-    />
-  </Story>
-</Canvas>
-
-## Color Loading Background
-
-<Canvas>
-  <Story name="Color Loading Background">
-    <LoadingEdit
-      numberOfItems={2}
-      sectionHeader="Section Header!"
-      colorLoadingBar="green"
-    />
-  </Story>
-</Canvas>

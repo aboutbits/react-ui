@@ -17,21 +17,11 @@ export type LoadingListProps = {
    * Defines the title of the section.
    */
   sectionHeader: ReactNode
-  /**
-   * Defines the color of the background. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
-   */
-  colorSectionBackground?: string
-  /**
-   * Defines the background color of the pulsing elements. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
-   */
-  colorLoadingBar?: string
 }
 
 const LoadingList: React.FC<LoadingListProps> = ({
   numberOfItems,
   sectionHeader,
-  colorSectionBackground,
-  colorLoadingBar,
 }) => {
   return (
     <Section>
@@ -43,18 +33,9 @@ const LoadingList: React.FC<LoadingListProps> = ({
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <SectionListItem
-              backgroundColor={colorSectionBackground}
-              key={index}
-            >
-              <LoadingBar
-                backgroundColor={colorLoadingBar}
-                className="p-4 mr-4 w-full"
-              />
-              <LoadingBar
-                backgroundColor={colorLoadingBar}
-                className="p-4 w-12"
-              />
+            <SectionListItem key={index}>
+              <LoadingBar className="p-4 mr-4 w-full" />
+              <LoadingBar className="p-4 w-12" />
             </SectionListItem>
           ))}
       </SectionContentList>

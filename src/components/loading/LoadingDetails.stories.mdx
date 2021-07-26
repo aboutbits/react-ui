@@ -11,7 +11,7 @@ The component is used during the fetch process as a placeholder.
 It leverages on the work of [SectionContentTwoContainer](/docs/components-section-sectioncontenttwocolumn--default-story).
 
 export const Template = ({ ...args }) => (
-  <LoadingDetails {...args} sectionHeader="Section Header!" numberOfItems={2} />
+  <LoadingDetails {...args} sectionHeader="Section Header" numberOfItems={2} />
 )
 
 <Canvas>
@@ -21,27 +21,3 @@ export const Template = ({ ...args }) => (
 ### Props
 
 <ArgsTable story="Default" />
-
-## Color Section Background
-
-<Canvas>
-  <Story name="Color Section Background">
-    <LoadingDetails
-      numberOfItems={2}
-      sectionHeader="Section Header!"
-      colorSectionBackground="critical"
-    />
-  </Story>
-</Canvas>
-
-## Color Loading Bar
-
-<Canvas>
-  <Story name="Color Loading Bar">
-    <LoadingDetails
-      numberOfItems={2}
-      sectionHeader="Section Header!"
-      colorLoadingBar="critical"
-    />
-  </Story>
-</Canvas>
