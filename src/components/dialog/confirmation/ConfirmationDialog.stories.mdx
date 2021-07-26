@@ -1,0 +1,143 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import {
+  ConfirmationDialog,
+  ConfirmationDialogVariant,
+} from './ConfirmationDialog'
+import { Button, Tone } from '../../button/Button'
+import { useState } from 'react'
+
+<Meta
+  title="Components/Dialog/ConfirmationDialog"
+  component={ConfirmationDialog}
+  argTypes={{
+    onConfirm: { action: 'confirmed' },
+    onDismiss: { action: 'dismissed' },
+  }}
+/>
+
+export const Template = ({ buttonText, buttonTone, ...args }) => {
+  const [toggle, setToggle] = useState(false)
+  return (
+    <div>
+      {toggle ? (
+        <ConfirmationDialog
+          {...args}
+          onDismiss={() => setToggle(!toggle)}
+          onConfirm={() => setToggle(!toggle)}
+        />
+      ) : (
+        <Button tone={buttonTone} onClick={() => setToggle(!toggle)}>
+          {buttonText}
+        </Button>
+      )}
+    </div>
+  )
+}
+
+# ConfirmationDialog
+
+This component uses the `Dialog` component from ReachUI. To install:
+
+```
+npm i @reach/dialog
+```
+
+Custom styling is also necessary for the component to work correctly, thus the following CSS snippet needs to be added to the root css file of the project:
+
+```css
+:root {
+  --reach-dialog: 1;
+}
+
+[data-reach-dialog-overlay] {
+  background: rgba(0, 0, 0, 0.36);
+  @apply fixed;
+  @apply inset-0;
+  @apply overflow-auto;
+}
+
+[data-reach-dialog-content] {
+  outline: none;
+}
+```
+
+**Note:** The component does not include the button. The button it is just used to activate the dialog changing the value of the prop `isOpen`.
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      dismissButtonText: 'Cancel',
+      confirmButtonText: 'Confirm',
+      body: 'Are you sure you want to reset your notification settings to the standard settings?',
+      title: 'Confirm reset notification settings',
+      buttonText: 'Reset Notification',
+      buttonTone: Tone.primary,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Usage
+
+```jsx
+const [toggle, setToggle] = useState(false)
+
+return (
+  <div>
+    {toggle ? (
+      <ConfirmationDialog
+        dismissButtonText="Cancel"
+        confirmButtonText="Confirm"
+        body="Are you sure you want to send the document?"
+        title="Confirm Save"
+        onDismiss={() => setToggle(!toggle)}
+        onConfirm={() => setToggle(!toggle)}
+      />
+    ) : (
+      <Button tone={buttonTone} onClick={() => setToggle(!toggle)}>
+        {buttonText}
+      </Button>
+    )}
+  </div>
+)
+```
+
+## Props:
+
+<ArgsTable story="Default" />
+
+## Variant
+
+The variant is used to change the color used as accent in the component. A use case would be a delete confirmation dialog that uses the `critical` variant:
+
+<Canvas>
+  <Story
+    name="NonCriticalVariant"
+    args={{
+      dismissButtonText: 'Cancel',
+      confirmButtonText: 'Confirm',
+      body: 'Are you sure you want to send the document?',
+      title: 'Confirm Save',
+      buttonText: 'Non Critical Variant',
+      buttonTone: Tone.primary,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="CriticalVariant"
+    args={{
+      dismissButtonText: 'Cancel',
+      confirmButtonText: 'Confirm',
+      body: 'Are you sure you want to delete the user?',
+      title: 'Delete User',
+      variant: ConfirmationDialogVariant.critical,
+      buttonText: 'Critical Variant',
+      buttonTone: Tone.critical,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
