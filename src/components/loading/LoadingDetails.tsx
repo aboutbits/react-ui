@@ -38,7 +38,7 @@ const LoadingDetails: React.FC<LoadingDetailsProps> = ({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContentTwoColumn tone={colorSectionBackground}>
+      <SectionContentTwoColumn backgroundColor={colorSectionBackground}>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (

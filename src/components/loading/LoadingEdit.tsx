@@ -38,7 +38,7 @@ const LoadingEdit: React.FC<LoadingEditProps> = ({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContentTwoColumn tone={colorSectionBackground}>
+      <SectionContentTwoColumn backgroundColor={colorSectionBackground}>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
