@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { ErrorMessage } from './ErrorMessage'
+
+<Meta title="Components/Form/ErrorMessage" component={ErrorMessage} />
+
+# ErrorMessage
+
+export const Template = ({ children, ...args }) => (
+  <ErrorMessage {...args}>{children}</ErrorMessage>
+)
+
+<Canvas>
+  <Story name="Default" args={{ children: 'Default error message.' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `bg-error-message`: Define the default background of the error message.
+- `text-error-message-content`: Define the default color of the error message content.
+- `text-error-message-icon`: Define the default color of the error message icon.
+- `bg-error-message-icon`: Define the default background color of the error message icon.
+
+## Very Long Message
+
+<Canvas>
+  <Story
+    name="Very Long Message"
+    args={{
+      children:
+        'Duis mauris ligula, aliquam id maximus at, aliquam ut dui. Morbi ac neque mattis libero cursus lobortis quis ac urna. Nullam vel augue vitae lacus fermentum ullamcorper eu eget sapien.',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
