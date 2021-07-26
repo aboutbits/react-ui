@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SectionContentListError } from './SectionContentList'
+
+<Meta
+  title="Components/Section/SectionContentListError"
+  component={SectionContentListError}
+/>
+
+# SectionListItem
+
+This component can be used to show the user that there was an error fetching data.
+
+It is often used on a page that consists of multiple sections. In such cases you often don't want to show the full [SectionError](/docs/components-section-sectionerror--default-story).
+
+The component is base on the [SectionListItem](/docs/components-section-sectionlistitem--default-story).
+
+export const Template = ({ children }) => (
+  <SectionContentListError>{children}</SectionContentListError>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{ children: 'Failed to fetch users from the server.' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `bg-section-content-list-error-icon`: Define the default background of the warning icon
+- `text-section-content-list-error-icon`: Define the color of the warning icon
+- `text-section-content-list-error`: Define the color of the warning message

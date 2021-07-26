@@ -37,3 +37,15 @@
 .border-section-description-item {
   @apply border-gray-300;
 }
+
+.bg-section-content-list-error-icon {
+  @apply bg-critical;
+}
+
+.text-section-content-list-error-icon {
+  @apply text-white;
+}
+
+.text-section-content-list-error {
+  @apply text-critical;
+}

@@ -6,8 +6,8 @@
     "dev": "start-storybook -p 4000",
     "build": "npm run build:esm",
     "build:esm": "tsc --project tsconfig.esnext.json",
-    "lint": "eslint --ext .js,.ts,.tsx,.jsx,.mdx .",
-    "lint:fix": "eslint --ext .js,.ts,.tsx,.jsx,.mdx --fix .",
+    "lint": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx .",
+    "lint:fix": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx --fix .",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --passWithNoTests --watch",
     "build-storybook": "build-storybook"
