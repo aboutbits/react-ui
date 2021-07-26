@@ -1,7 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { ButtonWithIcon } from './ButtonWithIcon'
 import Icon from '@aboutbits/react-material-icons/dist/IconError'
-import { LinkTo } from '@storybook/addon-links/react'
 import { Size } from './Button'
 import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import IconDelete from '@aboutbits/react-material-icons/dist/IconDelete'
@@ -12,15 +11,23 @@ import IconDelete from '@aboutbits/react-material-icons/dist/IconDelete'
   argTypes={{ onClick: { action: 'clicked' } }}
 />
 
-# ButtonWithIcon
-
-The **_default values_** for variant, size, and tone can be found in the <LinkTo kind="components-button-button--default-story">Button Section</LinkTo>.
-
-The size of the icon is determined by the `size` prop of the component using the height and width Tailwind classes to ensure proper scaling of the icon. `Size.md` will result in `w-4 h-4` to be passed to the icon component, while for `Size.sm` the classes applied are `w-3 h-3`.
-
 export const Template = ({ children, ...args }) => (
   <ButtonWithIcon {...args}>{children}</ButtonWithIcon>
 )
+
+# ButtonWithIcon
+
+The **_default values_** for variant, size, and tone can be found in the [Button Section](/docs/components-button-button--default-story).
+
+The size of the icon is determined by the `size` prop of the component using the height and width Tailwind classes to ensure proper scaling of the icon. `Size.md` will result in `w-6 h-6` to be passed to the icon component, while for `Size.sm` the classes applied are `w-4 h-4`.
+
+## Usage
+
+```jsx
+<ButtonWithIcon icon={Icon} onClick={() => console.log('Clicked')}>
+  Button With Icon
+</ButtonWithIcon>
+```
 
 <Canvas>
   <Story name="Default" args={{ children: 'Default Button', Icon: Icon }}>
