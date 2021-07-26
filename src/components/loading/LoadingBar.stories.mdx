@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+
+import { LoadingBar } from './LoadingBar'
+
+<Meta title="Components/Loading/LoadingBar" component={LoadingBar} />
+
+# LoadingBar
+
+Basic loading component, which is used in all other components to animate the loading process.
+
+export const Template = ({ ...args }) => (
+  <LoadingBar {...args} className="p-4" />
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+## Primary
+
+<Canvas>
+  <Story name="Primary">
+    <LoadingBar className="p-4" backgroundColor="primary" />
+  </Story>
+</Canvas>
