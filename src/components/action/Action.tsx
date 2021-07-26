@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { ClassNameProps } from '../section/type'
+import { ClassNameProps } from '../type'
 
 export enum ActionSectionVariant {
   right = 'right',

@@ -2,23 +2,13 @@ import classNames from 'classnames'
 import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 
 import { SectionListItem } from '../SectionItem/SectionItem'
-import { ClassNameProps } from '../type'
+import { ClassNameProps } from '../../type'
 
 type Props = ClassNameProps
 
-type SectionListEmptyProps = {
-  /**
-   * The className will be applied on the internal SectionListItem.
-   */
-  className?: string
-}
+type SectionListEmptyProps = ClassNameProps
 
-type SectionListErrorProps = {
-  /**
-   * The className will be applied on the internal SectionListItem.
-   */
-  className?: string
-}
+type SectionListErrorProps = ClassNameProps
 
 export const SectionContentList: React.FC<Props> = ({
   children,

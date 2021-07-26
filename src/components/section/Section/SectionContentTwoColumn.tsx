@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import { SectionContent } from './SectionContent'
-import { Props as SectionProps } from './Section'
+import { ClassNameProps } from '../../type'
 
-type Props = SectionProps & { backgroundColor?: string }
+type Props = ClassNameProps & { backgroundColor?: string }
 
 export const SectionContentTwoColumn: React.FC<Props> = ({
   children,

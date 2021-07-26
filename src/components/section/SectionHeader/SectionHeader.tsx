@@ -1,12 +1,8 @@
 import classNames from 'classnames'
 import React, { ReactNode } from 'react'
+import { ClassNameProps } from '../../type'
 
-type SectionHeaderProps = {
-  /**
-   * Adjusting individual style with any CSS class.
-   * */
-  className?: string
-}
+type SectionHeaderProps = ClassNameProps
 
 type SectionHeaderWithActionProps = {
   /**

@@ -1,13 +1,7 @@
 import classNames from 'classnames'
+import { ClassNameProps } from '../type'
 
-type LoadingBarProps = {
-  /**
-   * Adjusting individual the style with any css class.
-   */
-  className?: string
-}
-
-const LoadingBar: React.FC<LoadingBarProps> = ({ className }) => (
+const LoadingBar: React.FC<ClassNameProps> = ({ className }) => (
   <div
     className={classNames('rounded animate-pulse bg-loading-bar', className)}
   />
