@@ -2,12 +2,31 @@ import React, { ComponentType } from 'react'
 import classNames from 'classnames'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 
-const HeaderLargeAction: React.FC<{
+type Props = {
+  /**
+   * Defines the icon of the button.
+   * */
   icon: ComponentType<IconProps>
+  /**
+   * Sets a label for [aria-label](https://www.w3schools.com/accessibility/accessibility_labels.php).
+   * */
   label: string
+  /**
+   * Defines which action should be executed on clicking.
+   * */
   onClick: () => void
+  /** TODO: import from types after merge
+   *
+   * */
   className?: string
-}> = ({ icon: Icon, label, onClick, className }) => {
+}
+
+const HeaderLargeAction: React.FC<Props> = ({
+  icon: Icon,
+  label,
+  onClick,
+  className,
+}) => {
   return (
     <button
       className={classNames(
