@@ -30,7 +30,7 @@ export type LoadingListProps = {
 const LoadingList: React.FC<LoadingListProps> = ({
   numberOfItems,
   sectionHeader,
-  //colorSectionBackground,
+  colorSectionBackground,
   colorLoadingBar,
 }) => {
   return (
@@ -44,7 +44,7 @@ const LoadingList: React.FC<LoadingListProps> = ({
           .fill(null)
           .map((_, index) => (
             <SectionListItem
-              //tone={colorSectionBackground}
+              backgroundColor={colorSectionBackground}
               key={index}
             >
               <LoadingBar
