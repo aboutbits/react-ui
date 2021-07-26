@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
-import { ClassNameProps } from '../type'
+import { ClassNameProps } from '../../types'
 import { ReactNode } from 'react'
 
 type SectionListItemProps = ClassNameProps & {
@@ -10,7 +10,7 @@ type SectionListItemProps = ClassNameProps & {
   backgroundColor?: string
 }
 
-type SectionDescriptionItemProps = {
+type SectionDescriptionItemProps = ClassNameProps & {
   /**
    * Defines the content of the section description item.
    * Will be placed inside <dl>.
@@ -21,34 +21,20 @@ type SectionDescriptionItemProps = {
    * Will be placed inside <dt>.
    */
   title: ReactNode
-
-  /**
-   * The className will be applied on the `dl` element.
-   */
-  className?: string
 }
 
-type SectionListItemWithActionProps = {
+type SectionListItemWithActionProps = ClassNameProps & {
   /**
    * The react node will be pushed to the right side of the section list item.
    */
   action: ReactNode
-
-  /**
-   * The className will be applied on the internal <SectionListItem>.
-   * */
-  className?: string
 }
 
-type SectionListItemWithButton = {
+type SectionListItemWithButton = ClassNameProps & {
   /**
    * On Click handler for the button
    */
   onClick: () => void
-  /**
-   * This className will be forwarded to the <SectionListItem>.
-   */
-  className?: string
 }
 
 export const SectionListItem: React.FC<SectionListItemProps> = ({

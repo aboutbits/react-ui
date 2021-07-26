@@ -2,6 +2,7 @@ import Dialog from '@reach/dialog'
 import classnames from 'classnames'
 import { ReactNode } from 'react'
 import { Button, Size, Tone, Variant } from '../../button/Button'
+import { ClassNameProps } from '../../types'
 
 export enum ConfirmationDialogVariant {
   confirm = 'confirm',
@@ -18,7 +19,7 @@ const variantConfirmationButtonTone: Record<ConfirmationDialogVariant, Tone> = {
   [ConfirmationDialogVariant.critical]: Tone.critical,
 }
 
-type ConfirmDialogProps = {
+type ConfirmDialogProps = ClassNameProps & {
   /**
    * Defines if the dialog is open.
    * */
@@ -59,10 +60,6 @@ type ConfirmDialogProps = {
    * Defines the text for the conformation button in the dialog.
    * */
   dismissButtonText?: ReactNode
-  /**
-   * Adjusting individual the style with any css class.
-   * */
-  className?: string
 }
 
 const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({

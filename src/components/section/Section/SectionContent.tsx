@@ -1,11 +1,7 @@
 import classNames from 'classnames'
+import { ClassNameProps } from '../../types'
 
-type Props = {
-  /**
-   * Adjusting individual style with any CSS class.
-   * */
-  className?: string
-}
+type Props = ClassNameProps
 
 export const SectionContent: React.FC<Props> = ({ children, className }) => (
   <div
