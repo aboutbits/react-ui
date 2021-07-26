@@ -5,17 +5,26 @@ import {
   SectionTitle,
 } from '../section'
 import { LoadingField } from '.'
-import {
-  NumberOfItemsProps,
-  SectionHeaderReactProps,
-  ToneLoadingBarProps,
-  ToneSectionBackgroundProps,
-} from './type'
+import { ReactNode } from 'react'
 
-export type LoadingDetailsProps = NumberOfItemsProps &
-  SectionHeaderReactProps &
-  ToneSectionBackgroundProps &
-  ToneLoadingBarProps
+export type LoadingDetailsProps = {
+  /**
+   * Defines the number of items in the section.
+   */
+  numberOfItems: number
+  /**
+   * Defines the title of the section.
+   */
+  sectionHeader: ReactNode
+  /**
+   * Defines the color of the background. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
+   */
+  colorSectionBackground?: string
+  /**
+   * Defines the background color of the pulsing elements. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
+   */
+  colorLoadingBar?: string
+}
 
 const LoadingDetails: React.FC<LoadingDetailsProps> = ({
   numberOfItems,

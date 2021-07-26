@@ -1,8 +1,12 @@
 import { SectionDescriptionItem } from '../section'
 import { LoadingBar } from './LoadingBar'
-import { ToneProps } from './type'
 
-type LoadingFieldProps = ToneProps
+type LoadingFieldProps = {
+  /**
+   * Defines the background color of the bar. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
+   */
+  backgroundColor?: string
+}
 
 const LoadingField: React.FC<LoadingFieldProps> = ({ backgroundColor }) => (
   <SectionDescriptionItem

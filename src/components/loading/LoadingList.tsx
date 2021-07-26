@@ -5,9 +5,29 @@ import {
   SectionContentList,
   SectionTitle,
 } from '../section'
-import { LoadingBar, LoadingDetailsProps } from '.'
+import { LoadingBar } from '.'
+import { ReactNode } from 'react'
 
-const LoadingList: React.FC<LoadingDetailsProps> = ({
+export type LoadingListProps = {
+  /**
+   * Defines the number of items in the section.
+   */
+  numberOfItems: number
+  /**
+   * Defines the title of the section.
+   */
+  sectionHeader: ReactNode
+  /**
+   * Defines the color of the background. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
+   */
+  colorSectionBackground?: string
+  /**
+   * Defines the background color of the pulsing elements. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
+   */
+  colorLoadingBar?: string
+}
+
+const LoadingList: React.FC<LoadingListProps> = ({
   numberOfItems,
   sectionHeader,
   //colorSectionBackground,

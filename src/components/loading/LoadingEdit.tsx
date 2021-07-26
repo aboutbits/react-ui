@@ -4,10 +4,29 @@ import {
   SectionHeader,
   SectionTitle,
 } from '../section'
-import { LoadingDetailsProps, LoadingInput } from '.'
-import React from 'react'
+import { LoadingInput } from '.'
+import React, { ReactNode } from 'react'
 
-const LoadingEdit: React.FC<LoadingDetailsProps> = ({
+export type LoadingEditProps = {
+  /**
+   * Defines the number of items in the section.
+   */
+  numberOfItems: number
+  /**
+   * Defines the title of the section.
+   */
+  sectionHeader: ReactNode
+  /**
+   * Defines the color of the background. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
+   */
+  colorSectionBackground?: string
+  /**
+   * Defines the background color of the pulsing elements. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
+   */
+  colorLoadingBar?: string
+}
+
+const LoadingEdit: React.FC<LoadingEditProps> = ({
   numberOfItems,
   sectionHeader,
   colorSectionBackground,
