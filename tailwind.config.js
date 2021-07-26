@@ -64,6 +64,7 @@ module.exports = {
         700: '#881c27',
       },
       green: {
+        100: '#d8ffe4',
         DEFAULT: '#57a870',
         700: '#047857',
       },
