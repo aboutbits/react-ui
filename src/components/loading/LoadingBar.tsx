@@ -1,10 +1,11 @@
 import classNames from 'classnames'
 import { ClassNameProps } from '../types'
+import { ReactElement } from 'react'
 
-const LoadingBar: React.FC<ClassNameProps> = ({ className }) => (
-  <div
-    className={classNames('rounded animate-pulse bg-loading-bar', className)}
-  />
-)
-
-export { LoadingBar }
+export function LoadingBar({ className }: ClassNameProps): ReactElement {
+  return (
+    <div
+      className={classNames('rounded animate-pulse bg-loading-bar', className)}
+    />
+  )
+}
