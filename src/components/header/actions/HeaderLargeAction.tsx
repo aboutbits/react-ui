@@ -1,8 +1,9 @@
 import React, { ComponentType } from 'react'
 import classNames from 'classnames'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
+import { ClassNameProps } from '../../types'
 
-type Props = {
+type Props = ClassNameProps & {
   /**
    * Defines the icon of the button.
    * */
@@ -15,10 +16,6 @@ type Props = {
    * Defines which action should be executed on clicking.
    * */
   onClick: () => void
-  /** TODO: import from types after merge
-   *
-   * */
-  className?: string
 }
 
 const HeaderLargeAction: React.FC<Props> = ({
