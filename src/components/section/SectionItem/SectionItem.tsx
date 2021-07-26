@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
-import { ClassNameProps } from '../../type'
+import { ClassNameProps } from '../../types'
 import { ReactNode } from 'react'
 
 type SectionListItemProps = ClassNameProps & {

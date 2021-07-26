@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import React, { ReactNode } from 'react'
-import { ClassNameProps } from '../../type'
+import { ClassNameProps } from '../../types'
 
 type SectionHeaderProps = ClassNameProps
 
