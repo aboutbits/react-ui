@@ -1,0 +1,22 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+
+import { LoadingDescriptionItem } from './LoadingItems'
+
+<Meta
+  title="Components/Loading/LoadingDescriptionItem"
+  component={LoadingDescriptionItem}
+/>
+
+# LoadingDescriptionItem
+
+This component is used to show a loading [SectionDescriptionItem](/docs/components-section-sectiondescriptionitem--default-story).
+
+export const Template = ({ ...args }) => <LoadingDescriptionItem {...args} />
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

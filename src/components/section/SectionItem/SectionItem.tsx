@@ -3,7 +3,12 @@ import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKey
 import { ClassNameProps } from '../type'
 import { ReactNode } from 'react'
 
-type SectionListItemProps = ClassNameProps
+type SectionListItemProps = ClassNameProps & {
+  /**
+   * Defines the color of the background. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
+   * */
+  backgroundColor?: string
+}
 
 type SectionDescriptionItemProps = {
   /**
@@ -49,12 +54,13 @@ type SectionListItemWithButton = {
 export const SectionListItem: React.FC<SectionListItemProps> = ({
   className,
   children,
+  backgroundColor = 'section-list-item',
 }) => {
   return (
     <div
       className={classNames(
         className,
-        `flex items-center min-h-14 px-4 lg:px-5 text-section-list-item bg-section-list-item`
+        `flex items-center min-h-14 px-4 lg:px-5 text-section-list-item bg-${backgroundColor}`
       )}
     >
       {children}

@@ -4,7 +4,8 @@ import {
   SectionHeader,
   SectionTitle,
 } from '../section'
-import { LoadingField } from '.'
+import { LoadingDescriptionItem } from '.'
+import { ReactNode } from 'react'
 
 export type LoadingDetailsProps = {
   /**
@@ -14,22 +15,12 @@ export type LoadingDetailsProps = {
   /**
    * Defines the title of the section.
    */
-  sectionHeader: React.ReactNode
-  /**
-   * Defines the tone of the background. Basically the color, so be sure to have the colors defined in Tailwind.
-   */
-  toneSectionBackground?: string
-  /**
-   * Defines the background color of the pulsing elements. Basically the color, so be sure to have the colors defined in Tailwind.
-   */
-  toneLoadingBar?: string
+  sectionHeader: ReactNode
 }
 
 const LoadingDetails: React.FC<LoadingDetailsProps> = ({
   numberOfItems,
   sectionHeader,
-  toneSectionBackground,
-  toneLoadingBar,
 }) => {
   return (
     <Section>
@@ -37,11 +28,11 @@ const LoadingDetails: React.FC<LoadingDetailsProps> = ({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContentTwoColumn backgroundColor={toneSectionBackground}>
+      <SectionContentTwoColumn>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <LoadingField tone={toneLoadingBar} key={index} />
+            <LoadingDescriptionItem key={index} />
           ))}
       </SectionContentTwoColumn>
     </Section>

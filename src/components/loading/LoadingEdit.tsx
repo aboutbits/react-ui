@@ -4,14 +4,23 @@ import {
   SectionHeader,
   SectionTitle,
 } from '../section'
-import { LoadingDetailsProps, LoadingInput } from '.'
-import React from 'react'
+import { LoadingInput } from '.'
+import React, { ReactNode } from 'react'
 
-const LoadingEdit: React.FC<LoadingDetailsProps> = ({
+export type LoadingEditProps = {
+  /**
+   * Defines the number of items in the section.
+   */
+  numberOfItems: number
+  /**
+   * Defines the title of the section.
+   */
+  sectionHeader: ReactNode
+}
+
+const LoadingEdit: React.FC<LoadingEditProps> = ({
   numberOfItems,
   sectionHeader,
-  toneSectionBackground,
-  toneLoadingBar,
 }) => {
   return (
     <Section>
@@ -19,11 +28,11 @@ const LoadingEdit: React.FC<LoadingDetailsProps> = ({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContentTwoColumn backgroundColor={toneSectionBackground}>
+      <SectionContentTwoColumn>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <LoadingInput tone={toneLoadingBar} key={index} />
+            <LoadingInput key={index} />
           ))}
       </SectionContentTwoColumn>
     </Section>

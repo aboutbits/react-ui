@@ -1,0 +1,21 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+
+import { LoadingList } from './LoadingList'
+
+<Meta title="Components/Loading/LoadingList" component={LoadingList} />
+
+# LoadingList
+
+This component can be used as placeholders for lists during the fetch process.
+
+export const Template = ({ ...args }) => (
+  <LoadingList {...args} sectionHeader="Section Header" numberOfItems={2} />
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
