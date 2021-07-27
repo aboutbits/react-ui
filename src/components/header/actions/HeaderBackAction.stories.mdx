@@ -1,0 +1,26 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { HeaderBackAction } from './HeaderBackAction'
+import Icon from '@aboutbits/react-material-icons/dist/IconArrowBack'
+
+<Meta title="Components/Header/HeaderBackAction" component={HeaderBackAction} />
+
+# HeaderBackAction
+
+This component is used to add a `back action' in a header.
+
+It leverages on the work of [HeaderLargeAction](/docs/components-header-headerlargeaction--default-story), which adds the icon, and [HeaderLeftArea](/docs/components-header-headerleftarea--default-story) which is in charge of the positioning.
+
+export const Template = ({ ...args }) => (
+  <HeaderBackAction
+    {...args}
+    icon={Icon}
+    label="Return to previous page"
+    onClick={() => alert('Button got pressed')}
+  />
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Default" />
