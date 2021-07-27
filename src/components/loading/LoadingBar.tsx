@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import { ClassNameProps } from '../types'
 import { ReactElement } from 'react'
+import { ClassNameProps } from '../types'
 
 export function LoadingBar({ className }: ClassNameProps): ReactElement {
   return (

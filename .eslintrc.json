@@ -57,6 +57,12 @@
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "error"
+    "tailwindcss/classnames-order": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "unknown", "parent", "sibling", "index"]
+      }
+    ]
   }
 }

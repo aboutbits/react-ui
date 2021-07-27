@@ -1,3 +1,4 @@
+import React, { ReactElement, ReactNode } from 'react'
 import {
   Section,
   SectionContentTwoColumn,
@@ -5,7 +6,6 @@ import {
   SectionTitle,
 } from '../section'
 import { LoadingInput } from '.'
-import React, { ReactElement, ReactNode } from 'react'
 
 export type LoadingEditProps = {
   /**

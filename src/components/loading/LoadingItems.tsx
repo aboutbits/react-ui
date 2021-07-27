@@ -1,6 +1,6 @@
+import { ReactElement } from 'react'
 import { SectionDescriptionItem } from '../section'
 import { LoadingBar } from './LoadingBar'
-import { ReactElement } from 'react'
 
 export function LoadingDescriptionItem(): ReactElement {
   return (

@@ -1,3 +1,4 @@
+import { ReactElement, ReactNode } from 'react'
 import {
   Section,
   SectionHeader,
@@ -6,7 +7,6 @@ import {
   SectionTitle,
 } from '../section'
 import { LoadingBar } from '.'
-import { ReactElement, ReactNode } from 'react'
 
 export type LoadingListProps = {
   /**

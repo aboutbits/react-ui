@@ -1,9 +1,9 @@
 import classnames from 'classnames'
 import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
-import { ClassNameProps } from '../types'
 import { ComponentType } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
+import { ClassNameProps } from '../types'
 
 export enum Tone {
   critical = 'critical',

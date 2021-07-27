@@ -1,3 +1,4 @@
+import { ReactElement, ReactNode } from 'react'
 import {
   Section,
   SectionContentTwoColumn,
@@ -5,7 +6,6 @@ import {
   SectionTitle,
 } from '../section'
 import { LoadingDescriptionItem } from '.'
-import { ReactElement, ReactNode } from 'react'
 
 export type LoadingDetailsProps = {
   /**
