@@ -29,7 +29,7 @@ export const FormMessage: React.FC<Props> = ({ className, tone, children }) => {
   return (
     <div
       className={classnames(
-        `border border-form-message-${tone} bg-form-message-${tone} p-3 xl:col-span-2`,
+        `border border-form-message-${tone} bg-form-message-${tone} xl:col-span-2 p-3`,
         className
       )}
     >
