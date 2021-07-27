@@ -68,3 +68,23 @@
 .bg-header-area-lg {
   @apply lg:bg-transparent;
 }
+
+.bg-header-search {
+  @apply bg-gray-300;
+}
+
+.bg-header-search-lg {
+  @apply lg:bg-transparent
+}
+
+.text-header-search {
+  @apply text-black;
+}
+
+.delete-button-header-search-hover {
+  @apply hover:text-gray-700;
+}
+
+.delete-button-header-search-focus {
+  @apply focus:text-gray-700;
+}

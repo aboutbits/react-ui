@@ -12,12 +12,33 @@ import {
 } from './index'
 import { HeaderLargeAction } from './actions/HeaderLargeAction'
 
-const HeaderMainWithSearch: React.FC<{
+type HeaderMainWithSearchProps = {
+  /**
+   * Defines the title of the header.
+   * */
   title: string
-  searchPlaceholder: string
+  /**
+   * Sets a label ([aria-label](https://www.w3schools.com/accessibility/accessibility_labels.php)) for the search button.
+   * */
+  label: string
+  /**
+   * Defines the passed value for the search input.
+   * */
   search: string
+  /**
+   * Defines to functions:
+   * 1. `search`: returns the typed input as callback
+   * 2. `clear`: clears the search field
+   * */
   searchActions: { search: (query: string) => void; clear: () => void }
-}> = ({ title, searchPlaceholder, search, searchActions }) => {
+}
+
+const HeaderMainWithSearch: React.FC<HeaderMainWithSearchProps> = ({
+  title,
+  label,
+  search,
+  searchActions,
+}) => {
   const [searchShow, setSearchShow] = useState<boolean>(search !== '')
 
   const startSearch = (): void => setSearchShow(true)
@@ -42,7 +63,7 @@ const HeaderMainWithSearch: React.FC<{
         <HeaderRightArea>
           <HeaderSmallAction
             icon={IconSearch}
-            label={searchPlaceholder}
+            label={label}
             onClick={startSearch}
           />
         </HeaderRightArea>
@@ -78,7 +99,7 @@ const HeaderSearch: React.FC<{
         </HeaderLeftArea>
       }
     >
-      <div className="flex flex-1 lg:p-0 py-1 px-3 bg-gray-300 lg:bg-transparent rounded-full">
+      <div className="flex flex-1 lg:p-0 py-1 px-3 bg-header-search bg-header-search-lg rounded-full">
         <input
           ref={searchInput}
           value={text}
@@ -88,10 +109,10 @@ const HeaderSearch: React.FC<{
           placeholder={intl.formatMessage({
             id: 'shared.search.placeholder',
           })}
-          className="flex-1 w-full text-base lg:text-3xl placeholder-gray text-black bg-transparent border-none outline-none"
+          className="flex-1 w-full text-base lg:text-3xl placeholder-gray text-header-search bg-transparent border-none outline-none"
         />
         <button
-          className="lg:hidden hover:text-gray-700 focus:text-gray-700"
+          className="lg:hidden delete-button-header-search-hover delete-button-header-search-focus"
           aria-label={intl.formatMessage({
             id: 'shared.search.clear',
           })}
@@ -113,4 +134,4 @@ const HeaderSearch: React.FC<{
   )
 }
 
-export { HeaderMainWithSearch }
+export { HeaderMainWithSearch, HeaderSearch }
