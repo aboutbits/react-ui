@@ -33,11 +33,11 @@ export const SectionContentListError: React.FC<SectionListErrorProps> = ({
   className,
 }) => (
   <SectionListItem className={classNames('justify-center py-4', className)}>
-    <div className="mr-2 p-1.5 rounded-full bg-section-content-list-error-icon">
+    <div className="p-1.5 mr-2 rounded-full bg-section-content-list-error-icon">
       <IconWarning
         height={22}
         width={22}
-        className="text-section-content-list-error-icon fill-current"
+        className="fill-current text-section-content-list-error-icon"
       />
     </div>
     <span className="text-section-content-list-error">{children}</span>
