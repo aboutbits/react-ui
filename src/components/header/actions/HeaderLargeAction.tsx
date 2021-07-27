@@ -28,7 +28,7 @@ const HeaderLargeAction: React.FC<Props> = ({
     <button
       className={classNames(
         className,
-        'text-header-action-hover text-header-action-hover'
+        'hover:text-header-action focus:text-header-action'
       )}
       aria-label={label}
       onClick={onClick}

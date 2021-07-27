@@ -34,7 +34,7 @@ const HeaderSmallAction: React.FC<Props> = ({
       className={classNames(
         className
           ? className
-          : 'text-header-action-hover text-header-action-focus'
+          : 'hover:text-header-action focus:text-header-action'
       )}
       aria-label={label}
       disabled={disabled}

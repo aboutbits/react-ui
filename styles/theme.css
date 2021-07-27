@@ -54,12 +54,12 @@
   @apply bg-gray;
 }
 
-.text-header-action-hover {
-  @apply hover:text-gray-700;
+.hover\:text-header-action:hover {
+  @apply text-gray-700;
 }
 
-.text-header-action-focus {
-  @apply focus:text-gray-700;
+.focus\:text-header-action:focus {
+  @apply text-gray-700;
 }
 .bg-header-area {
   @apply bg-white;
@@ -73,7 +73,7 @@
   @apply bg-gray-300;
 }
 
-.bg-header-search-lg {
+.lg\:bg-header-search {
   @apply lg:bg-transparent
 }
 
@@ -81,10 +81,10 @@
   @apply text-black;
 }
 
-.delete-button-header-search-hover {
-  @apply hover:text-gray-700;
+.hover\:delete-button-header-search:hover {
+  @apply text-gray-700;
 }
 
-.delete-button-header-search-focus {
-  @apply focus:text-gray-700;
+.focus\:delete-button-header-search:focus {
+  @apply text-gray-700;
 }

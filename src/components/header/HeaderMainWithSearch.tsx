@@ -99,7 +99,7 @@ const HeaderSearch: React.FC<{
         </HeaderLeftArea>
       }
     >
-      <div className="flex flex-1 lg:p-0 py-1 px-3 bg-header-search bg-header-search-lg rounded-full">
+      <div className="flex flex-1 lg:p-0 py-1 px-3 bg-header-search lg:bg-header-search rounded-full">
         <input
           ref={searchInput}
           value={text}
@@ -112,7 +112,7 @@ const HeaderSearch: React.FC<{
           className="flex-1 w-full text-base lg:text-3xl placeholder-gray text-header-search bg-transparent border-none outline-none"
         />
         <button
-          className="lg:hidden delete-button-header-search-hover delete-button-header-search-focus"
+          className="lg:hidden hover:delete-button-header-search focus:delete-button-header-search"
           aria-label={intl.formatMessage({
             id: 'shared.search.clear',
           })}
