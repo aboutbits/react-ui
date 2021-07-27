@@ -1,27 +1,14 @@
 import { SubmitButton } from './SubmitButton'
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
-import { Form, Formik, Field } from 'formik'
 
 <Meta
-  title="MDX/Button/SubmitButton"
+  title="Components/Button/SubmitButton"
   component={SubmitButton}
   argTypes={{ onClick: { action: 'clicked' } }}
 />
 
 export const Template = ({ children, ...args }) => (
-  <Formik
-    initialValues={{ name: '', email: '' }}
-    onSubmit={async (values) => {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      alert(JSON.stringify(values, null, 2))
-    }}
-  >
-    <Form>
-      <Field name="name" type="text" />
-      <Field name="email" type="email" />
-      <SubmitButton {...args}>{children}</SubmitButton>
-    </Form>
-  </Formik>
+  <SubmitButton {...args}>{children}</SubmitButton>
 )
 
 # SubmitButton
@@ -33,7 +20,18 @@ The submit button uses `formik` to automatically disable during submitting.
 ## Usage
 
 ```jsx
-<SubmitButton>Submit</SubmitButton>
+<Formik
+  initialValues={{ name: '', email: '' }}
+  onSubmit={async (values) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    alert(JSON.stringify(values, null, 2))
+  }}
+>
+  <Form>
+    <Field name="email" type="email" />
+    <SubmitButton>Submit</SubmitButton>
+  </Form>
+</Formik>
 ```
 
 <Canvas>
@@ -51,6 +49,8 @@ All the other externally defined props are:
 ```
 React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & ButtonProps
 ```
+
+## Disabled
 
 <Canvas>
   <Story name="Disabled" args={{ children: 'Submit', disabled: true }}>
