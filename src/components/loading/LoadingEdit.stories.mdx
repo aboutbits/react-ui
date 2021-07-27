@@ -1,0 +1,24 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+
+import { LoadingEdit } from './LoadingEdit'
+
+<Meta title="Components/Loading/LoadingEdit" component={LoadingEdit} />
+
+# LoadingEdit
+
+The component is used during the fetch process as a placeholder.
+In contrast to [LoadingDetails](/docs/components-loading-loadingdetails--default-story) this component shows a loading form.
+
+It leverages on the work of [SectionContentTwoContainer](/docs/components-section-sectioncontenttwocolumn--default-story).
+
+export const Template = ({ ...args }) => (
+  <LoadingEdit {...args} sectionHeader="Section Header!" numberOfItems={2} />
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

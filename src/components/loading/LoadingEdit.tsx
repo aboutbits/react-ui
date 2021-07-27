@@ -4,30 +4,37 @@ import {
   SectionHeader,
   SectionTitle,
 } from '../section'
-import { LoadingDetailsProps, LoadingInput } from '.'
-import React from 'react'
+import { LoadingInput } from '.'
+import React, { ReactElement, ReactNode } from 'react'
 
-const LoadingEdit: React.FC<LoadingDetailsProps> = ({
+export type LoadingEditProps = {
+  /**
+   * Defines the number of items in the section.
+   */
+  numberOfItems: number
+  /**
+   * Defines the title of the section.
+   */
+  sectionHeader: ReactNode
+}
+
+export function LoadingEdit({
   numberOfItems,
   sectionHeader,
-  toneSectionBackground,
-  toneLoadingBar,
-}) => {
+}: LoadingEditProps): ReactElement {
   return (
     <Section>
       <SectionHeader>
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContentTwoColumn backgroundColor={toneSectionBackground}>
+      <SectionContentTwoColumn>
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <LoadingInput tone={toneLoadingBar} key={index} />
+            <LoadingInput key={index} />
           ))}
       </SectionContentTwoColumn>
     </Section>
   )
 }
-
-export { LoadingEdit }

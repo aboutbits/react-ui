@@ -5,14 +5,24 @@ import {
   SectionContentList,
   SectionTitle,
 } from '../section'
-import { LoadingBar, LoadingDetailsProps } from '.'
+import { LoadingBar } from '.'
+import { ReactElement, ReactNode } from 'react'
 
-const LoadingList: React.FC<LoadingDetailsProps> = ({
+export type LoadingListProps = {
+  /**
+   * Defines the number of items in the section.
+   */
+  numberOfItems: number
+  /**
+   * Defines the title of the section.
+   */
+  sectionHeader: ReactNode
+}
+
+export function LoadingList({
   numberOfItems,
   sectionHeader,
-  toneSectionBackground,
-  toneLoadingBar,
-}) => {
+}: LoadingListProps): ReactElement {
   return (
     <Section>
       <SectionHeader>
@@ -23,17 +33,12 @@ const LoadingList: React.FC<LoadingDetailsProps> = ({
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <SectionListItem
-              backgroundColor={toneSectionBackground}
-              key={index}
-            >
-              <LoadingBar tone={toneLoadingBar} className="p-4 mr-4 w-full" />
-              <LoadingBar tone={toneLoadingBar} className="p-4 w-12" />
+            <SectionListItem key={index}>
+              <LoadingBar className="p-4 mr-4 w-full" />
+              <LoadingBar className="p-4 w-12" />
             </SectionListItem>
           ))}
       </SectionContentList>
     </Section>
   )
 }
-
-export { LoadingList }

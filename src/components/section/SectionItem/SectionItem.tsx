@@ -1,11 +1,16 @@
 import classNames from 'classnames'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
-import { ClassNameProps } from '../type'
+import { ClassNameProps } from '../../types'
 import { ReactNode } from 'react'
 
-type SectionListItemProps = ClassNameProps
+type SectionListItemProps = ClassNameProps & {
+  /**
+   * Defines the color of the background. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
+   * */
+  backgroundColor?: string
+}
 
-type SectionDescriptionItemProps = {
+type SectionDescriptionItemProps = ClassNameProps & {
   /**
    * Defines the content of the section description item.
    * Will be placed inside <dl>.
@@ -16,45 +21,32 @@ type SectionDescriptionItemProps = {
    * Will be placed inside <dt>.
    */
   title: ReactNode
-
-  /**
-   * The className will be applied on the `dl` element.
-   */
-  className?: string
 }
 
-type SectionListItemWithActionProps = {
+type SectionListItemWithActionProps = ClassNameProps & {
   /**
    * The react node will be pushed to the right side of the section list item.
    */
   action: ReactNode
-
-  /**
-   * The className will be applied on the internal <SectionListItem>.
-   * */
-  className?: string
 }
 
-type SectionListItemWithButton = {
+type SectionListItemWithButton = ClassNameProps & {
   /**
    * On Click handler for the button
    */
   onClick: () => void
-  /**
-   * This className will be forwarded to the <SectionListItem>.
-   */
-  className?: string
 }
 
 export const SectionListItem: React.FC<SectionListItemProps> = ({
   className,
   children,
+  backgroundColor = 'section-list-item',
 }) => {
   return (
     <div
       className={classNames(
         className,
-        `flex items-center min-h-14 px-4 lg:px-5 text-section-list-item bg-section-list-item`
+        `flex items-center min-h-14 px-4 lg:px-5 text-section-list-item bg-${backgroundColor}`
       )}
     >
       {children}
