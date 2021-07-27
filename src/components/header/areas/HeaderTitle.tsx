@@ -1,9 +1,9 @@
 import classNames from 'classnames'
+import { ClassNameProps } from '../../types'
 
-const HeaderTitle: React.FC<{ className?: string }> = ({
-  className,
-  children,
-}) => {
+type Props = ClassNameProps
+
+const HeaderTitle: React.FC<Props> = ({ className, children }) => {
   return (
     <h1
       className={classNames(
