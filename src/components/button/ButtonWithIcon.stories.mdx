@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { ButtonWithIcon } from './ButtonWithIcon'
-import Icon from '@aboutbits/react-material-icons/dist/IconError'
+import IconError from '@aboutbits/react-material-icons/dist/IconError'
 import { Size } from './Button'
 import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import IconDelete from '@aboutbits/react-material-icons/dist/IconDelete'
@@ -30,8 +30,8 @@ The size of the icon is determined by the `size` prop of the component using the
 ```
 
 <Canvas>
-  <Story name="Default" args={{ children: 'Default Button', Icon: Icon }}>
-    {Template.bind({})}
+  <Story name="Default">
+    <ButtonWithIcon Icon={IconError}>Default Button With Icon</ButtonWithIcon>
   </Story>
 </Canvas>
 
@@ -48,36 +48,26 @@ React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButto
 ## Icon size
 
 <Canvas>
-  <Story
-    name="Icon medium size"
-    args={{ children: 'Medium Button', Icon: Icon }}
-  >
-    {Template.bind({})}
+  <Story name="Icon medium size">
+    <ButtonWithIcon Icon={IconError}>Medium Button</ButtonWithIcon>
   </Story>
-  <Story
-    name="Icon small size"
-    args={{ children: 'Small Button', Icon: Icon, size: Size.sm }}
-  >
-    {Template.bind({})}
+  <Story name="Icon small size">
+    <ButtonWithIcon size={Size.sm} Icon={IconError}>
+      Small Button
+    </ButtonWithIcon>
   </Story>
 </Canvas>
 
 ## Different Icons
 
 <Canvas>
-  <Story name="Error Icon" args={{ children: 'Error Button', Icon: Icon }}>
-    {Template.bind({})}
+  <Story name="Error Icon" args={{ children: 'Error Button', Icon: IconError }}>
+    <ButtonWithIcon Icon={IconError}>Error Button</ButtonWithIcon>
   </Story>
-  <Story
-    name="Warning Icon"
-    args={{ children: 'Warning Button', Icon: IconWarning }}
-  >
-    {Template.bind({})}
+  <Story name="Warning Icon">
+    <ButtonWithIcon Icon={IconWarning}>Warning Button</ButtonWithIcon>
   </Story>
-  <Story
-    name="Delete Icon"
-    args={{ children: 'Delete Button', Icon: IconDelete }}
-  >
-    {Template.bind({})}
+  <Story name="Delete Icon">
+    <ButtonWithIcon Icon={IconDelete}>Delete Button</ButtonWithIcon>
   </Story>
 </Canvas>
