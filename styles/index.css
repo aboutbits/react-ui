@@ -1,7 +1,166 @@
-@import "theme.css";
-
 @tailwind base;
 @tailwind components;
+
+.bg-section {
+  @apply bg-white;
+}
+
+.bg-section-content {
+  @apply bg-gray-700;
+}
+
+.bg-section-content-list {
+  @apply bg-gray-300;
+}
+
+.bg-section-list-item {
+  @apply bg-section-content;
+}
+
+.text-section-list-item {
+  @apply text-white;
+}
+
+.hover\:bg-section-list-item:hover {
+  @apply bg-gray-600;
+}
+
+.bg-section-header {
+  @apply bg-white;
+}
+
+.text-section-title {
+  @apply text-black;
+}
+
+.text-section-description-item {
+  @apply text-white;
+}
+
+.border-section-description-item {
+  @apply border-gray-300;
+}
+
+.bg-section-content-list-error-icon {
+  @apply bg-critical;
+}
+
+.text-section-content-list-error-icon {
+  @apply text-white;
+}
+
+.text-section-content-list-error {
+  @apply text-critical;
+}
+
+.bg-loading-bar {
+  @apply bg-gray;
+}
+
+.border-form-message-critical {
+  @apply border-critical;
+}
+
+.bg-form-message-critical {
+  @apply bg-critical-100;
+}
+
+.text-form-message-content-critical {
+  @apply text-black;
+}
+
+.text-form-message-icon-critical {
+  @apply text-white;
+}
+
+.bg-form-message-icon-critical {
+  @apply bg-critical;
+}
+
+.border-form-message-positive {
+  @apply border-green;
+}
+
+.bg-form-message-positive {
+  @apply bg-green-100;
+}
+
+.text-form-message-content-positive {
+  @apply text-black;
+}
+
+.text-form-message-icon-positive {
+  @apply text-white;
+}
+
+.bg-form-message-icon-positive {
+  @apply bg-green;
+}
+
+.text-field-error-message {
+  @apply text-critical;
+}
+
+/* Input and Select */
+
+.border-input {
+  @apply border-white;
+}
+
+.focus\:border-input:focus {
+  @apply focus:border-primary-400;
+}
+
+.bg-input {
+  @apply bg-transparent;
+}
+
+.text-input {
+  @apply text-white;
+}
+
+.placeholder-input {
+  @apply placeholder-gray-100;
+}
+
+.border-input-error {
+  @apply border-critical;
+}
+
+.focus\:border-input-error:focus {
+  @apply border-critical;
+}
+
+.text-input-disabled {
+  @apply text-gray;
+}
+
+.bg-input-disabled {
+  @apply bg-primary-50;
+}
+
+.border-input-disabled {
+  @apply border-gray;
+}
+
+/* InputLabel */
+
+.text-input-label {
+  @apply text-white;
+}
+
+.bg-input-error {
+  @apply bg-transparent;
+}
+
+.text-input-label-error {
+  @apply text-critical;
+}
+
+.text-input-label-disabled {
+  @apply text-gray;
+}
+
 @tailwind utilities;
 @tailwind screens;
 

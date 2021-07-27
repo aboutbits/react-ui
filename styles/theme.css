@@ -93,3 +93,67 @@
 .bg-form-message-icon-positive {
   @apply bg-green;
 }
+
+.text-field-error-message {
+  @apply text-critical;
+}
+
+/* Input and Select */
+
+.border-input {
+  @apply border-white;
+}
+
+.focus\:border-input:focus {
+  @apply focus:border-primary-400;
+}
+
+.bg-input {
+  @apply bg-transparent;
+}
+
+.text-input {
+  @apply text-white;
+}
+
+.placeholder-input {
+  @apply placeholder-gray-600;
+}
+
+.border-input-error {
+  @apply border-critical;
+}
+
+.focus\:border-input-error:focus {
+  @apply border-critical;
+}
+
+.text-input-disabled {
+  @apply text-gray;
+}
+
+.bg-input-disabled {
+  @apply bg-primary-50;
+}
+
+.border-input-disabled {
+  @apply border-gray;
+}
+
+/* InputLabel */
+
+.text-input-label {
+  @apply text-white;
+}
+
+.bg-input-error {
+  @apply bg-transparent;
+}
+
+.text-input-label-error {
+  @apply text-critical;
+}
+
+.text-input-label-disabled {
+  @apply text-gray;
+}
