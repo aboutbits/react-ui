@@ -1,6 +1,13 @@
 import { HeaderArea, HeaderTitle } from '../header'
 
-const HeaderMain: React.FC<{ title: string }> = ({ title }) => (
+type Props = {
+  /**
+   * Defines the title of the header.
+   * */
+  title: string
+}
+
+const HeaderMain: React.FC<Props> = ({ title }) => (
   <HeaderArea>
     <HeaderTitle>{title}</HeaderTitle>
   </HeaderArea>
