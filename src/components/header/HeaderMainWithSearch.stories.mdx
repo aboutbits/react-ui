@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { HeaderMainWithSearch } from './HeaderMainWithSearch'
+import { IntlProvider } from 'react-intl'
+import { MenuProvider } from './areas/MenuContext'
+import { useState } from 'react'
+
+<Meta
+  title="Components/Header/HeaderMainWithSearch"
+  component={HeaderMainWithSearch}
+/>
+
+# HeaderMainWithSearch
+
+This component is similar to [HeaderMain](/docs/components-header-headermain--default-story), but with the difference that on the right side a search button can be found.
+
+For the mobile view an adjusted interface for the search is provided.
+
+export const Template = ({ ...args }) => {
+  const [text, setText] = useState('')
+  const clearSearch = () => setText('')
+  return (
+    <IntlProvider
+      locale="en"
+      messages={{
+        'shared.search.placeholder': 'Search here',
+        'shared.search.clear': 'Clear input',
+        'shared.search.back': 'Delete input',
+        'app.nav.menu': 'Search for items',
+      }}
+    >
+      <MenuProvider>
+        <HeaderMainWithSearch
+          {...args}
+          search={text}
+          searchActions={{ search: setText, clear: clearSearch }}
+          label="open search"
+          title="Boots Shop"
+        />
+      </MenuProvider>
+    </IntlProvider>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Default" />
