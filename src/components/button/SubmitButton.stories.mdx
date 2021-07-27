@@ -1,0 +1,59 @@
+import { SubmitButton } from './SubmitButton'
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
+
+<Meta
+  title="Components/Button/SubmitButton"
+  component={SubmitButton}
+  argTypes={{ onClick: { action: 'clicked' } }}
+/>
+
+export const Template = ({ children, ...args }) => (
+  <SubmitButton {...args}>{children}</SubmitButton>
+)
+
+# SubmitButton
+
+The **_default values_** for variant, size, and tone can be found in the [Button Section](/docs/components-button-button--default-story).
+
+The submit button uses `formik` to automatically disable during submitting.
+
+## Usage
+
+```jsx
+<Formik
+  initialValues={{ name: '', email: '' }}
+  onSubmit={async (values) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    alert(JSON.stringify(values, null, 2))
+  }}
+>
+  <Form>
+    <Field name="email" type="email" />
+    <SubmitButton>Submit</SubmitButton>
+  </Form>
+</Formik>
+```
+
+<Canvas>
+  <Story name="Default" args={{ children: 'Submit' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props:
+
+<ArgsTable story="Default" />
+
+All the other externally defined props are:
+
+```
+React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & ButtonProps
+```
+
+## Disabled
+
+<Canvas>
+  <Story name="Disabled" args={{ children: 'Submit', disabled: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
