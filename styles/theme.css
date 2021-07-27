@@ -61,3 +61,10 @@
 .text-header-action-focus {
   @apply focus:text-gray-700;
 }
+.bg-header-area {
+  @apply bg-white;
+}
+
+.bg-header-area-lg {
+  @apply lg:bg-transparent;
+}

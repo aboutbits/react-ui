@@ -6,14 +6,19 @@ import { useMenuToggle } from './MenuContext'
 import { HeaderLargeAction } from '../actions/HeaderLargeAction'
 import { HeaderLeftArea } from './HeaderLeftArea'
 
-const HeaderArea: React.FC<{
+type Props = {
+  /**
+   * Defines a JSX-element which can be used to navigate to the previous page.
+   * */
   navigation?: ReactNode
-}> = ({ navigation = null, children }) => {
+}
+
+const HeaderArea: React.FC<Props> = ({ navigation = null, children }) => {
   const intl = useIntl()
   const menuToggle = useMenuToggle()
 
   return (
-    <div className="flex items-center p-4 lg:p-0 bg-white lg:bg-transparent">
+    <div className="flex items-center p-4 lg:p-0 bg-header-area bg-header-area-lg">
       {navigation === null ? (
         <HeaderLeftArea className="block lg:hidden">
           <HeaderLargeAction
