@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { HeaderMain } from './HeaderMain'
+import { IntlProvider } from 'react-intl'
+import { MenuProvider } from './areas/MenuContext'
+
+<Meta title="Components/Header/HeaderMain" component={HeaderMain} />
+
+# HeaderMain
+
+This component can be used to creat swiftly a header.
+
+**_Important_**: this component needs to be wrapped in a `IntlProvider` and `MenuProvider`. The detailed description of them can be found in the section of [HeaderArea](/docs/components-header-headerarea--default-story).
+
+export const Template = ({ ...args }) => (
+  <IntlProvider
+    locale="en"
+    messages={{
+      'app.nav.menu': 'Menu',
+    }}
+  >
+    <MenuProvider>
+      <HeaderMain {...args} title="Boots Shop" />
+    </MenuProvider>
+  </IntlProvider>
+)
+
+<Canvas>
+  <Story name="Default" args={{ children: 'Boots Shop' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Default" />
