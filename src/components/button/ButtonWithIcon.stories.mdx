@@ -30,8 +30,11 @@ The size of the icon is determined by the `size` prop of the component using the
 ```
 
 <Canvas>
-  <Story name="Default">
-    <ButtonWithIcon Icon={IconError}>Default Button With Icon</ButtonWithIcon>
+  <Story
+    name="Default"
+    args={{ children: 'Default Button With Icon', Icon: IconError }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 
