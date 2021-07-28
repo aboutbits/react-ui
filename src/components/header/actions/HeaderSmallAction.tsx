@@ -32,9 +32,8 @@ const HeaderSmallAction: React.FC<Props> = ({
   return (
     <button
       className={classNames(
-        className
-          ? className
-          : 'hover:text-header-action focus:text-header-action'
+        className,
+        'hover:text-header-action focus:text-header-action'
       )}
       aria-label={label}
       disabled={disabled}
