@@ -1,0 +1,19 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { MenuProvider } from './MenuContext'
+import { HeaderTitle } from './HeaderTitle'
+
+<Meta title="Components/Header/MenuProvider" component={MenuProvider} />
+
+# MenuProvider
+
+This component is used to provide a toggle for the mobile menu in the [HeaderArea](/docs/components-header-headerarea--default-story).
+
+export const Template = ({ ...args }) => (
+  <MenuProvider {...args}>
+    <HeaderTitle>HeaderTitle</HeaderTitle>
+  </MenuProvider>
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
