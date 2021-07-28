@@ -1,0 +1,67 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { FormMessage, Tone } from './FormMessage'
+
+<Meta title="Components/Form/FormMessage" component={FormMessage} />
+
+# FormMessage
+
+This component displays messages within a form with an icon and text.
+It supports different types of tones.
+
+export const Template = ({ children, ...args }) => (
+  <FormMessage {...args}>{children}</FormMessage>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{ children: 'Critical Message.', tone: Tone.critical }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `border-form-message-${tone}`: Define the default border color of the form message per tone.
+- `bg-error-message-${tone}`: Define the default background of the form message per tone.
+- `text-error-message-content-${tone}`: Define the default color of the form message content per tone.
+- `text-error-message-icon-${tone}`: Define the default color of the form message icon per tone.
+- `bg-error-message-icon-${tone}`: Define the default background color of the form message icon per tone.
+
+## Tone
+
+<Canvas>
+  <Story name="Critical">
+    <FormMessage tone={Tone.critical}>Critical Message</FormMessage>
+  </Story>
+  <Story name="Positive">
+    <FormMessage tone={Tone.positive}>Positive Message</FormMessage>
+  </Story>
+</Canvas>
+
+## Very Long Message
+
+<Canvas>
+  <Story name="Very Long Message">
+    <FormMessage tone={Tone.critical}>
+      Duis mauris ligula, aliquam id maximus at, aliquam ut dui. Morbi ac neque
+      mattis libero cursus lobortis quis ac urna. Nullam vel augue vitae lacus
+      fermentum ullamcorper eu eget sapien.
+    </FormMessage>
+  </Story>
+</Canvas>
+
+## Without border
+
+<Canvas>
+  <Story name="Without border">
+    <FormMessage tone={Tone.critical} className="border-transparent">
+      Critical message without border
+    </FormMessage>
+  </Story>
+</Canvas>

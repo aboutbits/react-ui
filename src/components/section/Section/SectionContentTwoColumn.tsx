@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import { SectionContent } from './SectionContent'
 import { ClassNameProps } from '../../types'
+import { SectionContent } from './SectionContent'
 
 type Props = ClassNameProps & { backgroundColor?: string }
 

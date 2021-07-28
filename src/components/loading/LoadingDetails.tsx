@@ -1,3 +1,4 @@
+import { ReactElement, ReactNode } from 'react'
 import {
   Section,
   SectionContentTwoColumn,
@@ -5,7 +6,6 @@ import {
   SectionTitle,
 } from '../section'
 import { LoadingDescriptionItem } from '.'
-import { ReactNode } from 'react'
 
 export type LoadingDetailsProps = {
   /**
@@ -18,10 +18,10 @@ export type LoadingDetailsProps = {
   sectionHeader: ReactNode
 }
 
-const LoadingDetails: React.FC<LoadingDetailsProps> = ({
+export function LoadingDetails({
   numberOfItems,
   sectionHeader,
-}) => {
+}: LoadingDetailsProps): ReactElement {
   return (
     <Section>
       <SectionHeader>
@@ -38,5 +38,3 @@ const LoadingDetails: React.FC<LoadingDetailsProps> = ({
     </Section>
   )
 }
-
-export { LoadingDetails }

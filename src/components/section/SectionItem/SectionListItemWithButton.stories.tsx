@@ -1,8 +1,8 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { SectionListItemWithButton as SectionListItemWithButtonComponent } from './SectionItem'
 import { SectionContentList } from '../Section/SectionContentList'
+import { SectionListItemWithButton as SectionListItemWithButtonComponent } from './SectionItem'
 
 export default {
   title: 'Components/Section/SectionListItemWithButton',

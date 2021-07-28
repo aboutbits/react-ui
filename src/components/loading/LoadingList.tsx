@@ -1,3 +1,4 @@
+import { ReactElement, ReactNode } from 'react'
 import {
   Section,
   SectionHeader,
@@ -6,7 +7,6 @@ import {
   SectionTitle,
 } from '../section'
 import { LoadingBar } from '.'
-import { ReactNode } from 'react'
 
 export type LoadingListProps = {
   /**
@@ -19,10 +19,10 @@ export type LoadingListProps = {
   sectionHeader: ReactNode
 }
 
-const LoadingList: React.FC<LoadingListProps> = ({
+export function LoadingList({
   numberOfItems,
   sectionHeader,
-}) => {
+}: LoadingListProps): ReactElement {
   return (
     <Section>
       <SectionHeader>
@@ -42,5 +42,3 @@ const LoadingList: React.FC<LoadingListProps> = ({
     </Section>
   )
 }
-
-export { LoadingList }
