@@ -3,7 +3,7 @@ import { ReactElement } from 'react'
 
 const FieldErrorMessage: React.FC = ({ children }) => {
   return (
-    <span className="block text-xs text-field-error-message">{children}</span>
+    <span className="block text-xs abui-field-error-message">{children}</span>
   )
 }
 

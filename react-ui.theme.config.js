@@ -31,6 +31,9 @@ const customTheme = plugin(function ({ addComponents, theme }) {
     '.abui-form-message-content-critical': {
       color: theme('colors.black'),
     },
+    '.abui-field-error-message': {
+      color: theme('colors.critical.DEFAULT'),
+    },
   }
 
   const themeStyles = {

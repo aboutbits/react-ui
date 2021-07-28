@@ -57,34 +57,6 @@
   @apply bg-gray;
 }
 
-.text-form-message-content-critical {
-  @apply text-black;
-}
-
-.text-form-message-icon-critical {
-  @apply text-white;
-}
-
-.bg-form-message-icon-critical {
-  @apply bg-critical;
-}
-
-.text-form-message-content-positive {
-  @apply text-black;
-}
-
-.text-form-message-icon-positive {
-  @apply text-white;
-}
-
-.bg-form-message-icon-positive {
-  @apply bg-green;
-}
-
-.text-field-error-message {
-  @apply text-critical;
-}
-
 /* Input and Select */
 
 .border-input {
