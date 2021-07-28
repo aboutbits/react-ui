@@ -109,7 +109,7 @@ const HeaderSearch: React.FC<{
           className="flex-1 w-full text-base lg:text-3xl placeholder-header-search text-header-search bg-transparent border-none outline-none"
         />
         <button
-          className="lg:hidden hover:delete-button-header-search focus:delete-button-header-search"
+          className="lg:hidden hover:text-header-search-delete-button focus:text-header-search-delete-button"
           aria-label={intl.formatMessage({
             id: 'shared.search.clear',
           })}

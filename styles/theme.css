@@ -81,11 +81,11 @@
   @apply text-black;
 }
 
-.hover\:delete-button-header-search:hover {
+.hover\:text-header-search-delete-button:hover {
   @apply text-gray-700;
 }
 
-.focus\:delete-button-header-search:focus {
+.focus\:text-header-search-delete-button:focus {
   @apply text-gray-700;
 }
 
