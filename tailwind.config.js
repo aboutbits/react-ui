@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { customTheme } = require('./react-ui.theme.config')
+
 module.exports = {
   purge: {
     content: [
@@ -76,5 +79,5 @@ module.exports = {
       textColor: ['disabled'],
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), customTheme],
 }
