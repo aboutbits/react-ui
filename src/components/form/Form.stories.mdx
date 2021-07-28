@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+
+import { Formik } from 'formik'
+import { Form } from './Form'
+
+<Meta title="Components/Form/Form" component={Form} />
+
+# Form
+
+This component is a wrapper around [Formik's form](https://formik.org/docs/api/form) component.
+It also applies a gap between its children.
+
+export const Template = ({ children, ...args }) => (
+  <Formik
+    onSubmit={(values) => {
+      console.log(values)
+    }}
+    initialValues={{ email: '' }}
+  >
+    <Form {...args}>{children}</Form>
+  </Formik>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      children: (
+        <>
+          <div className="p-4 bg-gray" />
+          <div className="p-4 bg-gray-100" />
+          <div className="p-4 bg-gray" />
+        </>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

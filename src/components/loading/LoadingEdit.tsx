@@ -1,3 +1,4 @@
+import React, { ReactElement, ReactNode } from 'react'
 import {
   Section,
   SectionContentTwoColumn,
@@ -5,7 +6,6 @@ import {
   SectionTitle,
 } from '../section'
 import { LoadingInput } from '.'
-import React, { ReactNode } from 'react'
 
 export type LoadingEditProps = {
   /**
@@ -18,10 +18,10 @@ export type LoadingEditProps = {
   sectionHeader: ReactNode
 }
 
-const LoadingEdit: React.FC<LoadingEditProps> = ({
+export function LoadingEdit({
   numberOfItems,
   sectionHeader,
-}) => {
+}: LoadingEditProps): ReactElement {
   return (
     <Section>
       <SectionHeader>
@@ -38,5 +38,3 @@ const LoadingEdit: React.FC<LoadingEditProps> = ({
     </Section>
   )
 }
-
-export { LoadingEdit }

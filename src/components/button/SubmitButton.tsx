@@ -1,8 +1,8 @@
 import { useFormikContext } from 'formik'
 import { FormattedMessage } from 'react-intl'
 
-import { Button, ButtonProps } from './Button'
 import React from 'react'
+import { Button, ButtonProps } from './Button'
 
 const SubmitButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (

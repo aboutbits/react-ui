@@ -91,4 +91,43 @@
 
 .placeholder-header-search {
   @apply placeholder-gray;
+
+.border-form-message-critical {
+  @apply border-critical;
+}
+
+.bg-form-message-critical {
+  @apply bg-critical-100;
+}
+
+.text-form-message-content-critical {
+  @apply text-black;
+}
+
+.text-form-message-icon-critical {
+  @apply text-white;
+}
+
+.bg-form-message-icon-critical {
+  @apply bg-critical;
+}
+
+.border-form-message-positive {
+  @apply border-green;
+}
+
+.bg-form-message-positive {
+  @apply bg-green-100;
+}
+
+.text-form-message-content-positive {
+  @apply text-black;
+}
+
+.text-form-message-icon-positive {
+  @apply text-white;
+}
+
+.bg-form-message-icon-positive {
+  @apply bg-green;
 }
