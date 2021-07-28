@@ -12,7 +12,7 @@ import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 
 This component defines the main logic of a page header. It adjusts its styling for mobile, such that a burger menu will appear.
 
-If the `navigation` property has a value assigned, it will always be displayed on the left of the title and on the mobile view, the burger menu will not appear.
+If the `navigation` prop has a `ReactNode` assigned, it will always be displayed on the left of the title on the mobile view, on desktop it is hidden. By default the "burger" menu icon will be shown.
 
 In any case, this component needs be wrapped in a `IntlProvider` and `MenuProvider`.
 
@@ -85,22 +85,29 @@ export const Template = ({ ...args }) => (
 
 <ArgsTable story="Default" />
 
-## Navigation
+## HeaderArea with custom navigation
 
 <Canvas>
-  <Story
-    name="Navigation"
-    args={{
-      navigation: (
-        <HeaderBackAction
-          icon={IconArrowBack}
-          label="Go to previous page"
-          onClick={() => alert('Back action was triggered')}
-        />
-      ),
-      children: <HeaderTitle>Sneakers</HeaderTitle>,
-    }}
-  >
-    {Template.bind({})}
+  <Story name="HeaderArea with custom navigation">
+    <IntlProvider
+      locale="en"
+      messages={{
+        'app.nav.menu': 'Menu',
+      }}
+    >
+      <MenuProvider>
+        <HeaderArea
+          navigation={
+            <HeaderBackAction
+              icon={IconArrowBack}
+              label="Go to previous page"
+              onClick={() => alert('Back action was triggered')}
+            />
+          }
+        >
+          <HeaderTitle>Header Title</HeaderTitle>
+        </HeaderArea>
+      </MenuProvider>
+    </IntlProvider>
   </Story>
 </Canvas>
