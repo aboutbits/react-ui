@@ -11,12 +11,9 @@ import {
   HeaderLeftArea,
 } from './index'
 import { HeaderLargeAction } from './actions/HeaderLargeAction'
+import { Props as TitleProps } from './HeaderMain'
 
-type HeaderMainWithSearchProps = {
-  /**
-   * Defines the title of the header.
-   * */
-  title: string
+type HeaderMainWithSearchProps = TitleProps & {
   /**
    * Sets a label ([aria-label](https://www.w3schools.com/accessibility/accessibility_labels.php)) for the search button.
    * */
