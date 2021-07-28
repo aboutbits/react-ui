@@ -1,7 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { HeaderRightArea } from './HeaderRightArea'
-import { HeaderSmallAction } from '../actions/HeaderSmallAction'
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 
 <Meta title="Components/Header/HeaderRightArea" component={HeaderRightArea} />
 
@@ -10,26 +8,14 @@ import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 This component is mostly used in the header and represents the children on the right side of the header. For example it is used to show the search button.
 It applies a margin to the left and displays the children in a row.
 
-export const Template = ({ ...args }) => <HeaderRightArea {...args} />
+export const Template = ({ ...args }) => (
+  <HeaderRightArea {...args}>
+    <div className="bg-primary p-4 w-full" />
+  </HeaderRightArea>
+)
 
 <Canvas>
-  <Story
-    name="Default"
-    args={{
-      children: (
-        <div>
-          <input type="search" placeholder="type...." className="w-auto" />
-          <HeaderSmallAction
-            icon={IconSearch}
-            label="start search"
-            onClick={() => alert('Clicked on search')}
-          />
-        </div>
-      ),
-    }}
-  >
-    {Template.bind({})}
-  </Story>
+  <Story name="Default">{Template.bind({})}</Story>
 </Canvas>
 
 ### Props
