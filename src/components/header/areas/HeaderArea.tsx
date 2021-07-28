@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react'
 import { useIntl } from 'react-intl'
 import IconMenu from '@aboutbits/react-material-icons/dist/IconMenu'
 // original path: ../../../layouts/app/menu/MenuContext
-import { useMenuToggle } from './MenuContext'
 import { HeaderLargeAction } from '../actions/HeaderLargeAction'
+import { useMenuToggle } from './MenuContext'
 import { HeaderLeftArea } from './HeaderLeftArea'
 
 type Props = {

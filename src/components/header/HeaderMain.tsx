@@ -1,5 +1,5 @@
-import { HeaderArea, HeaderTitle } from '../header'
 import React, { ReactNode } from 'react'
+import { HeaderArea, HeaderTitle } from '../header'
 
 export type Props = {
   /**

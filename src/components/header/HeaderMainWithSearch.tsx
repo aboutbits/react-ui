@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from 'react'
 import { useIntl } from 'react-intl'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
+import { HeaderLargeAction } from './actions/HeaderLargeAction'
+import { Props as TitleProps } from './HeaderMain'
 import {
   HeaderArea,
   HeaderRightArea,
@@ -10,8 +12,6 @@ import {
   HeaderTitle,
   HeaderLeftArea,
 } from './index'
-import { HeaderLargeAction } from './actions/HeaderLargeAction'
-import { Props as TitleProps } from './HeaderMain'
 
 type HeaderMainWithSearchProps = TitleProps & {
   /**
@@ -96,7 +96,7 @@ const HeaderSearch: React.FC<{
         </HeaderLeftArea>
       }
     >
-      <div className="flex flex-1 lg:p-0 py-1 px-3 bg-header-search lg:bg-header-search rounded-full">
+      <div className="flex flex-1 lg:p-0 py-1 px-3 rounded-full bg-header-search lg:bg-header-search">
         <input
           ref={searchInput}
           value={text}
@@ -106,7 +106,7 @@ const HeaderSearch: React.FC<{
           placeholder={intl.formatMessage({
             id: 'shared.search.placeholder',
           })}
-          className="flex-1 w-full text-base lg:text-3xl placeholder-header-search text-header-search bg-transparent border-none outline-none"
+          className="flex-1 w-full text-base lg:text-3xl bg-transparent border-none outline-none placeholder-header-search text-header-search"
         />
         <button
           className="lg:hidden hover:text-header-search-delete-button focus:text-header-search-delete-button"

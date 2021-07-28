@@ -65,7 +65,7 @@
   @apply bg-white;
 }
 
-.lg\:bg-header-area:lg {
+.lg\:bg-header-area {
   @apply lg:bg-transparent;
 }
 
@@ -91,6 +91,7 @@
 
 .placeholder-header-search {
   @apply placeholder-gray;
+}
 
 .border-form-message-critical {
   @apply border-critical;
