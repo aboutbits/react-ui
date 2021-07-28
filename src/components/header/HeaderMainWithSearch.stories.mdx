@@ -24,7 +24,7 @@ export const Template = ({ ...args }) => {
       messages={{
         'shared.search.placeholder': 'Search here',
         'shared.search.clear': 'Clear input',
-        'shared.search.back': 'Delete input',
+        'shared.search.back': 'Return to header',
         'app.nav.menu': 'Search for items',
       }}
     >
@@ -54,3 +54,10 @@ export const Template = ({ ...args }) => {
 - `hover:text-header-search-delete-button`: Define the color on hover
 - `focus:text-header-search-delete-button`: Define the color on focus
 - `text-header-search`: Define the text color of the search
+
+### React Intl
+
+- `app.nav.menu`: Accessibility label for burger menu
+- `shared.search.placeholder`: Placeholder text for search field
+- `shared.search.clear`: Accessibility label for clear button in the search field
+- `shared.search.back`: Accessibility label for return button (mobile only)
