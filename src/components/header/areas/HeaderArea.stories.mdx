@@ -1,0 +1,82 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { IntlProvider } from 'react-intl'
+import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import { HeaderBackAction } from '../actions/HeaderBackAction'
+import { HeaderArea } from './HeaderArea'
+import { MenuProvider } from './MenuContext'
+import { HeaderTitle } from './HeaderTitle'
+
+<Meta title="Components/Header/HeaderArea" component={HeaderArea} />
+
+# HeaderArea
+
+This component defines the main logic of a page header. It adjusts its styling for mobile, such that a burger menu will appear.
+
+If the `navigation` prop has a `ReactNode` assigned, it will always be displayed on the left of the title on the mobile view, on desktop it is hidden. By default the "burger" menu icon will be shown.
+
+In any case, this component needs be wrapped in a `IntlProvider` and `MenuProvider`.
+
+- IntlProvider is taken from `react-intl`
+- [MenuProvider](/docs/components-header-menucontext--default-story) is a self-written component
+
+export const Template = ({ ...args }) => (
+  <IntlProvider
+    locale="en"
+    messages={{
+      'app.nav.menu': 'Menu',
+    }}
+  >
+    <MenuProvider>
+      <HeaderArea {...args} />
+    </MenuProvider>
+  </IntlProvider>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{ children: <HeaderTitle>Header Title</HeaderTitle> }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `bg-header-area`: Define the background color.
+- `lg:bg-header-area`: Define the background color for the tailwind screen size `lg`
+
+### React Intl
+
+- `app.nav.menu`: Accessibility label for burger menu
+
+## HeaderArea with custom navigation
+
+<Canvas>
+  <Story name="HeaderArea with custom navigation">
+    <IntlProvider
+      locale="en"
+      messages={{
+        'app.nav.menu': 'Menu',
+      }}
+    >
+      <MenuProvider>
+        <HeaderArea
+          navigation={
+            <HeaderBackAction
+              icon={IconArrowBack}
+              label="Go to previous page"
+              onClick={() => alert('Back action was triggered')}
+            />
+          }
+        >
+          <HeaderTitle>Header Title</HeaderTitle>
+        </HeaderArea>
+      </MenuProvider>
+    </IntlProvider>
+  </Story>
+</Canvas>
