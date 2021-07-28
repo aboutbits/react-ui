@@ -71,6 +71,11 @@ module.exports = {
         DEFAULT: '#57a870',
         700: '#047857',
       },
+      positive: {
+        100: '#d8ffe4',
+        DEFAULT: '#57a870',
+        700: '#047857',
+      },
     },
   },
   variants: {

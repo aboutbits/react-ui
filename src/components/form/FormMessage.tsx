@@ -29,20 +29,20 @@ export const FormMessage: React.FC<Props> = ({ className, tone, children }) => {
   return (
     <div
       className={classnames(
-        `border border-form-message-${tone} bg-form-message-${tone} xl:col-span-2 p-3`,
+        `abui-form-message-${tone} xl:col-span-2 p-3`,
         className
       )}
     >
       <div className="flex items-center space-x-3">
         <div
-          className={`flex flex-shrink-0 justify-center items-center w-6 h-6 rounded-full bg-form-message-icon-${tone}`}
+          className={`abui-form-message-icon-container-${tone} flex flex-shrink-0 justify-center items-center w-6 h-6 rounded-full`}
         >
           <MessageIcon
-            className={`w-4 h-4 text-form-message-icon-${tone} fill-current`}
+            className={`abui-form-message-icon-${tone} w-4 h-4 fill-current`}
           />
         </div>
         <div
-          className={`text-form-message-content-${tone} overflow-hidden text-xs break-words`}
+          className={`abui-form-message-content-${tone} overflow-hidden text-xs break-words`}
         >
           {children}
         </div>
