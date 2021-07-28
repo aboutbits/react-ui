@@ -18,7 +18,7 @@ const HeaderArea: React.FC<Props> = ({ navigation = null, children }) => {
   const menuToggle = useMenuToggle()
 
   return (
-    <div className="flex items-center p-4 lg:p-0 bg-header-area bg-header-area-lg">
+    <div className="flex items-center p-4 lg:p-0 bg-header-area lg:bg-header-area">
       {navigation === null ? (
         <HeaderLeftArea className="block lg:hidden">
           <HeaderLargeAction

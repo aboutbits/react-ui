@@ -65,7 +65,7 @@
   @apply bg-white;
 }
 
-.bg-header-area-lg {
+.lg\:bg-header-area:lg {
   @apply lg:bg-transparent;
 }
 
