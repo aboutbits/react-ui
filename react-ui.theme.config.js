@@ -34,6 +34,37 @@ const customTheme = plugin(function ({ addComponents, theme }) {
     '.abui-field-error-message': {
       color: theme('colors.critical.DEFAULT'),
     },
+    '.abui-input': {
+      borderColor: theme('colors.white'),
+      backgroundColor: 'transparent',
+      color: theme('colors.white'),
+      '&::placeholder': {
+        color: theme('colors.gray.100'),
+      },
+      '&:focus': {
+        borderColor: theme('colors.primary.400'),
+      },
+    },
+    '.abui-input__error': {
+      borderColor: theme('colors.critical.DEFAULT'),
+      '&:focus': {
+        borderColor: theme('colors.critical.DEFAULT'),
+      },
+    },
+    '.abui-input__disabled': {
+      color: theme('colors.gray.DEFAULT'),
+      backgroundColor: theme('colors.gray.100'),
+      borderColor: theme('colors.gray.DEFAULT'),
+    },
+    '.abui-input-label': {
+      color: theme('colors.white'),
+    },
+    '.abui-input-label__error': {
+      color: theme('colors.critical.DEFAULT'),
+    },
+    '.abui-input-label__disabled': {
+      color: theme('colors.gray.DEFAULT'),
+    },
   }
 
   const themeStyles = {
