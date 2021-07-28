@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { HeaderSmallAction } from './HeaderSmallAction'
 import Icon from '@aboutbits/react-material-icons/dist/IconSearch'
+import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
 
 <Meta
   title="Components/Header/HeaderSmallAction"
@@ -32,3 +33,15 @@ export const Template = ({ ...args }) => (
 
 - `text-header-action`: Defines the color on hover
 - `text-header-action`: Defines the color on focus
+
+## Custom Icon
+
+<Canvas>
+  <Story name="Custom Icon">
+    <HeaderSmallAction
+      icon={IconEdit}
+      label="Edit"
+      onClick={() => alert('Button got pressed')}
+    />
+  </Story>
+</Canvas>
