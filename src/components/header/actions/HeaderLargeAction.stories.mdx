@@ -1,0 +1,47 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import Icon from '@aboutbits/react-material-icons/dist/IconSearch'
+import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
+import { HeaderLargeAction } from './HeaderLargeAction'
+
+<Meta
+  title="Components/Header/HeaderLargeAction"
+  component={HeaderLargeAction}
+/>
+
+# HeaderLargeAction
+
+This component is used to add a _large_ icon to the header. It applies some basic styling for the icon.
+
+export const Template = ({ ...args }) => (
+  <HeaderLargeAction
+    {...args}
+    icon={Icon}
+    label="Enter search term"
+    onClick={() => alert('Button got pressed')}
+  />
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `hover:text-header-action`: Define the color on hover
+- `focus:text-header-action`: Define the color on focus
+
+## Custom Icon
+
+<Canvas>
+  <Story name="Custom Icon">
+    <HeaderLargeAction
+      icon={IconEdit}
+      label="Edit"
+      onClick={() => alert('Button got pressed')}
+    />
+  </Story>
+</Canvas>

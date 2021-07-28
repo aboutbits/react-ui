@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
+import { action } from '@storybook/addon-actions'
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import { HeaderSmallAction } from '../actions/HeaderSmallAction'
+import { HeaderRightArea } from './HeaderRightArea'
+
+<Meta title="Components/Header/HeaderRightArea" component={HeaderRightArea} />
+
+# HeaderRightArea
+
+This component is mostly used in the header and represents the children on the right side of the header. For example it is used to show the search button.
+It applies a margin to the left and displays the children in a row.
+
+export const Template = ({ ...args }) => (
+  <HeaderRightArea {...args}>
+    <HeaderSmallAction
+      icon={IconEdit}
+      label="Edit"
+      onClick={action('onClick')}
+    />
+  </HeaderRightArea>
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+## Multiple children
+
+<Canvas>
+  <Story name="Multiple children">
+    <HeaderRightArea>
+      <HeaderSmallAction
+        icon={IconEdit}
+        label="Edit"
+        onClick={action('onClick')}
+      />
+      <HeaderSmallAction
+        icon={IconAdd}
+        label="Add"
+        onClick={action('onClick')}
+      />
+    </HeaderRightArea>
+  </Story>
+</Canvas>

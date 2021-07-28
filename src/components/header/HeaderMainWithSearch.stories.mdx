@@ -1,0 +1,63 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { IntlProvider } from 'react-intl'
+import { useState } from 'react'
+import { HeaderMainWithSearch } from './HeaderMainWithSearch'
+import { MenuProvider } from './areas/MenuContext'
+
+<Meta
+  title="Components/Header/HeaderMainWithSearch"
+  component={HeaderMainWithSearch}
+/>
+
+# HeaderMainWithSearch
+
+This component is similar to [HeaderMain](/docs/components-header-headermain--default-story), but with the difference that a search button can be found on the right side.
+
+For the mobile view, an adjusted interface for the search is provided.
+
+export const Template = ({ ...args }) => {
+  const [text, setText] = useState('')
+  const clearSearch = () => setText('')
+  return (
+    <IntlProvider
+      locale="en"
+      messages={{
+        'shared.search.placeholder': 'Search here',
+        'shared.search.clear': 'Clear input',
+        'shared.search.back': 'Return to header',
+        'app.nav.menu': 'Search for items',
+      }}
+    >
+      <MenuProvider>
+        <HeaderMainWithSearch
+          {...args}
+          search={text}
+          searchActions={{ search: setText, clear: clearSearch }}
+          label="open search"
+          title="Header Title"
+        />
+      </MenuProvider>
+    </IntlProvider>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `hover:text-header-search-delete-button`: Define the color on hover
+- `focus:text-header-search-delete-button`: Define the color on focus
+- `text-header-search`: Define the text color of the search
+
+### React Intl
+
+- `app.nav.menu`: Accessibility label for burger menu
+- `shared.search.placeholder`: Placeholder text for search field
+- `shared.search.clear`: Accessibility label for clear button in the search field
+- `shared.search.back`: Accessibility label for return button (mobile only)
