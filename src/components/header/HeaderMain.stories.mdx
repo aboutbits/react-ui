@@ -19,13 +19,13 @@ export const Template = ({ ...args }) => (
     }}
   >
     <MenuProvider>
-      <HeaderMain {...args} title="Boots Shop" />
+      <HeaderMain {...args} title="Header Title" />
     </MenuProvider>
   </IntlProvider>
 )
 
 <Canvas>
-  <Story name="Default" args={{ children: 'Boots Shop' }}>
+  <Story name="Default" args={{ children: 'Header Title' }}>
     {Template.bind({})}
   </Story>
 </Canvas>
