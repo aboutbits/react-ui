@@ -106,7 +106,7 @@ const HeaderSearch: React.FC<{
           placeholder={intl.formatMessage({
             id: 'shared.search.placeholder',
           })}
-          className="flex-1 w-full text-base lg:text-3xl placeholder-gray text-header-search bg-transparent border-none outline-none"
+          className="flex-1 w-full text-base lg:text-3xl placeholder-header-search text-header-search bg-transparent border-none outline-none"
         />
         <button
           className="lg:hidden hover:delete-button-header-search focus:delete-button-header-search"

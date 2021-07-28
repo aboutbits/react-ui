@@ -88,3 +88,7 @@
 .focus\:delete-button-header-search:focus {
   @apply text-gray-700;
 }
+
+.placeholder-header-search {
+  @apply placeholder-gray;
+}
