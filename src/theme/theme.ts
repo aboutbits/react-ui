@@ -12,7 +12,8 @@ const defaultTheme = {
       base: 'block w-full border p-3 focus:ring-0 appearance-none outline-none',
       normal:
         'border-white focus:border-primary-400 bg-transparent text-white placeholder-gray-100',
-      error: 'border-critical focus:border-critical',
+      error:
+        'border-critical focus:border-critical bg-transparent text-white placeholder-gray-100',
       disabled: 'border-gray text-gray bg-gray-100',
     },
     inputLabel: {

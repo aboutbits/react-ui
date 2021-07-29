@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
+import * as Yup from 'yup'
 import { SectionContentTwoColumn } from '../section'
 import { makeTheme } from '../../theme/theme'
 import { ThemeProvider } from '../../theme/ThemeProvider'
@@ -13,20 +14,27 @@ import { Form } from './Form'
 
 This component can be used to create inputs. This input already has a label and handles error messages in `formik` Forms.
 
-export const Template = ({ ...args }) => (
-  <ThemeProvider theme={makeTheme()}>
-    <Formik
-      initialValues={{ name: '' }}
-      onSubmit={(values) => action('onSubmit')(values)}
-    >
-      <Form>
-        <SectionContentTwoColumn>
-          <Input {...args} />
-        </SectionContentTwoColumn>
-      </Form>
-    </Formik>
-  </ThemeProvider>
-)
+export const Template = ({ ...args }) => {
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Required'),
+  })
+  return (
+    <ThemeProvider theme={makeTheme()}>
+      <Formik
+        initialValues={{ name: '' }}
+        validateOnChange={true}
+        validationSchema={validationSchema}
+        onSubmit={(values) => action('onSubmit')(values)}
+      >
+        <Form>
+          <SectionContentTwoColumn>
+            <Input {...args} />
+          </SectionContentTwoColumn>
+        </Form>
+      </Formik>
+    </ThemeProvider>
+  )
+}
 
 <Canvas>
   <Story
@@ -60,13 +68,16 @@ export const Template = ({ ...args }) => (
 
 ## States
 
+- In order to see the focus state please click into one of the elements.
+- For the error state just leave the input empty.
+
 <Canvas>
   <Story
     name="Placeholder"
     args={{
-      label: 'Name',
+      label: 'Name (Placeholder)',
       type: 'text',
-      placeholder: 'Firstname Lastname',
+      placeholder: 'Placeholder',
       name: 'name',
       value: '',
     }}
@@ -76,9 +87,9 @@ export const Template = ({ ...args }) => (
   <Story
     name="Filled"
     args={{
-      label: 'Name',
+      label: 'Name (Filled)',
       type: 'text',
-      placeholder: 'Firstname Lastname',
+      placeholder: 'Placeholder',
       name: 'name',
       value: 'John Doe',
     }}
@@ -86,13 +97,14 @@ export const Template = ({ ...args }) => (
     {Template.bind({})}
   </Story>
   <Story
-    name="Error"
+    name="Disabled"
     args={{
-      label: 'Name',
+      label: 'Name (Disabled)',
       type: 'text',
       placeholder: 'Firstname Lastname',
       name: 'name',
       value: '',
+      disabled: true,
     }}
   >
     {Template.bind({})}
