@@ -45,3 +45,44 @@ export const Template = ({ ...args }) => (
 ### Theme
 
 - `bg-example`: Define the default background of the example
+
+## States
+
+<Canvas>
+  <Story
+    name="Placeholder"
+    args={{
+      label: 'Name',
+      type: 'text',
+      placeholder: 'Firstname Lastname',
+      name: 'name',
+      value: '',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Filled"
+    args={{
+      label: 'Name',
+      type: 'text',
+      placeholder: 'Firstname Lastname',
+      name: 'name',
+      value: 'John Doe',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Error"
+    args={{
+      label: 'Name',
+      type: 'text',
+      placeholder: 'Firstname Lastname',
+      name: 'name',
+      value: '',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

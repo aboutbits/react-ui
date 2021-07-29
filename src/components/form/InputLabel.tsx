@@ -13,10 +13,7 @@ function InputLabel({
   label,
 }: Props): ReactElement | null {
   return label ? (
-    <label
-      htmlFor={inputId}
-      className={classNames(className, 'block pb-1 font-bold text-xs')}
-    >
+    <label htmlFor={inputId} className={classNames(className)}>
       {label}
     </label>
   ) : null
