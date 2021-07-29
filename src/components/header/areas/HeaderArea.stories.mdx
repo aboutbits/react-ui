@@ -1,5 +1,4 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { IntlProvider } from 'react-intl'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import { HeaderBackAction } from '../actions/HeaderBackAction'
 import { HeaderArea } from './HeaderArea'
@@ -20,16 +19,9 @@ In any case, this component needs be wrapped in a `IntlProvider` and `MenuProvid
 - [MenuProvider](/docs/components-header-menucontext--default-story) is a self-written component
 
 export const Template = ({ ...args }) => (
-  <IntlProvider
-    locale="en"
-    messages={{
-      'app.nav.menu': 'Menu',
-    }}
-  >
-    <MenuProvider>
-      <HeaderArea {...args} />
-    </MenuProvider>
-  </IntlProvider>
+  <MenuProvider>
+    <HeaderArea {...args} />
+  </MenuProvider>
 )
 
 <Canvas>
@@ -58,25 +50,18 @@ export const Template = ({ ...args }) => (
 
 <Canvas>
   <Story name="HeaderArea with custom navigation">
-    <IntlProvider
-      locale="en"
-      messages={{
-        'app.nav.menu': 'Menu',
-      }}
-    >
-      <MenuProvider>
-        <HeaderArea
-          navigation={
-            <HeaderBackAction
-              icon={IconArrowBack}
-              label="Go to previous page"
-              onClick={() => alert('Back action was triggered')}
-            />
-          }
-        >
-          <HeaderTitle>Header Title</HeaderTitle>
-        </HeaderArea>
-      </MenuProvider>
-    </IntlProvider>
+    <MenuProvider>
+      <HeaderArea
+        navigation={
+          <HeaderBackAction
+            icon={IconArrowBack}
+            label="Go to previous page"
+            onClick={() => alert('Back action was triggered')}
+          />
+        }
+      >
+        <HeaderTitle>Header Title</HeaderTitle>
+      </HeaderArea>
+    </MenuProvider>
   </Story>
 </Canvas>

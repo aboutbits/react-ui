@@ -3,8 +3,6 @@ import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { SectionContentTwoColumn } from '../section'
-import { makeTheme } from '../../theme/theme'
-import { ThemeProvider } from '../../theme/ThemeProvider'
 import { Input } from './Input'
 import { Form } from './Form'
 
@@ -19,20 +17,18 @@ export const Template = ({ ...args }) => {
     name: Yup.string().required('Required'),
   })
   return (
-    <ThemeProvider theme={makeTheme()}>
-      <Formik
-        initialValues={{ name: '' }}
-        validateOnChange={true}
-        validationSchema={validationSchema}
-        onSubmit={(values) => action('onSubmit')(values)}
-      >
-        <Form>
-          <SectionContentTwoColumn>
-            <Input {...args} />
-          </SectionContentTwoColumn>
-        </Form>
-      </Formik>
-    </ThemeProvider>
+    <Formik
+      initialValues={{ name: '' }}
+      validateOnChange={true}
+      validationSchema={validationSchema}
+      onSubmit={(values) => action('onSubmit')(values)}
+    >
+      <Form>
+        <SectionContentTwoColumn>
+          <Input {...args} />
+        </SectionContentTwoColumn>
+      </Form>
+    </Formik>
   )
 }
 
