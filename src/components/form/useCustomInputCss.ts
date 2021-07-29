@@ -1,43 +1,31 @@
 import { useField } from 'formik'
-
-const theme = {
-  input: {
-    base: 'border block p-3 w-full focus:ring-0 appearance-none outline-none',
-    default:
-      'border-white focus:border-primary-400 bg-transparent text-white placeholder-gray-100',
-    error: 'border-critical focus:border-critical',
-    disabled: 'border-gray text-gray bg-gray-100',
-  },
-  inputLabel: {
-    base: 'block pb-1 font-bold text-xs',
-    default: 'text-white',
-    error: 'text-critical',
-    disabled: 'text-gray',
-  },
-}
+import { useTheme } from '../../theme/ThemeProvider'
 
 const useCustomInputCss = (
   fieldName: string,
   fieldDisabled = false
 ): { inputCss: string; labelCss: string } => {
   const [, meta] = useField({ name: fieldName })
+  const {
+    form: { input, inputLabel },
+  } = useTheme()
 
-  let customInputCss = theme.input.default
-  let customLabelCss = theme.inputLabel.default
+  let customInputCss = input.normal
+  let customLabelCss = inputLabel.normal
 
   if (meta.touched && meta.error) {
-    customInputCss = theme.input.error
-    customLabelCss = theme.inputLabel.error
+    customInputCss = input.error
+    customLabelCss = inputLabel.error
   }
 
   if (fieldDisabled) {
-    customInputCss = theme.input.disabled
-    customLabelCss = theme.inputLabel.disabled
+    customInputCss = input.disabled
+    customLabelCss = inputLabel.disabled
   }
 
   return {
-    inputCss: theme.input.base + ' ' + customInputCss,
-    labelCss: theme.inputLabel.base + ' ' + customLabelCss,
+    inputCss: input.base + ' ' + customInputCss,
+    labelCss: inputLabel.base + ' ' + customLabelCss,
   }
 }
 
