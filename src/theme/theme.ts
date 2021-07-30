@@ -25,6 +25,6 @@ const defaultTheme = {
   },
 }
 
-export function makeTheme(ovveride?: OverrideTheme): Theme {
-  return merge(defaultTheme, ovveride)
+export function makeTheme(overrideTheme?: OverrideTheme): Theme {
+  return merge(defaultTheme, overrideTheme)
 }
