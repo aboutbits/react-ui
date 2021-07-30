@@ -47,7 +47,7 @@ const defaultTheme = {
         base: 'p-6 mt-1 mb-1 w-full border border-transparent',
       },
     },
-    description: {
+    descriptionItem: {
       upper: {
         base: 'p-2.5 w-40',
       },

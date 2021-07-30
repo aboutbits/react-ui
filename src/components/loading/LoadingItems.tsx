@@ -4,10 +4,11 @@ import { useTheme } from '../../theme/ThemeProvider'
 import { LoadingBar } from './LoadingBar'
 
 export function LoadingDescriptionItem(): ReactElement {
+  const { loading } = useTheme()
   return (
     <SectionDescriptionItem
-      title={<LoadingBar className="p-2.5 w-40" />}
-      content={<LoadingBar className="p-3 w-full" />}
+      title={<LoadingBar className={loading.descriptionItem.upper.base} />}
+      content={<LoadingBar className={loading.descriptionItem.lower.base} />}
     />
   )
 }
