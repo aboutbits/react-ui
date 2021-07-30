@@ -1,5 +1,17 @@
 import { Form as FormikForm } from 'formik'
+import classNames from 'classnames'
+import { useTheme } from '../../theme/ThemeProvider'
+import { ClassNameProps } from '../types'
 
-export const Form: React.FC = ({ children }) => (
-  <FormikForm className="space-y-8 lg:space-y-10">{children}</FormikForm>
-)
+type Props = ClassNameProps
+
+export const Form: React.FC<Props> = ({ className, children }) => {
+  const {
+    form: { form },
+  } = useTheme()
+  return (
+    <FormikForm className={classNames(className, form.base)}>
+      {children}
+    </FormikForm>
+  )
+}

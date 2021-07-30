@@ -22,7 +22,7 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={makeTheme()}>
+    <ThemeProvider theme={makeTheme({form: {input: { normal: 'text-red'}}})}>
       <IntlProvider
         locale="en"
         messages={enMessages}
