@@ -31,6 +31,14 @@ const defaultTheme = {
       base: 'rounded animate-pulse',
       normal: 'bg-gray',
     },
+    list: {
+      upper: {
+        base: 'p-4 mr-4 w-full',
+      },
+      lower: {
+        base: 'p-4 w-12',
+      },
+    },
   },
 }
 

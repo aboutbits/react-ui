@@ -6,6 +6,7 @@ import {
   SectionContentList,
   SectionTitle,
 } from '../section'
+import { useTheme } from '../../theme/ThemeProvider'
 import { LoadingBar } from '.'
 
 export type LoadingListProps = {
@@ -23,6 +24,7 @@ export function LoadingList({
   numberOfItems,
   sectionHeader,
 }: LoadingListProps): ReactElement {
+  const { loading } = useTheme()
   return (
     <Section>
       <SectionHeader>
@@ -34,8 +36,8 @@ export function LoadingList({
           .fill(null)
           .map((_, index) => (
             <SectionListItem key={index}>
-              <LoadingBar className="p-4 mr-4 w-full" />
-              <LoadingBar className="p-4 w-12" />
+              <LoadingBar className={loading.list.upper.base} />
+              <LoadingBar className={loading.list.upper.base} />
             </SectionListItem>
           ))}
       </SectionContentList>
