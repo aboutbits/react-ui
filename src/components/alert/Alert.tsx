@@ -19,7 +19,7 @@ const Icon: Record<Tone, ComponentType<IconProps>> = {
   [Tone.positive]: IconCheck,
 }
 
-export const FormMessage: React.FC<Props> = ({ className, tone, children }) => {
+export const Alert: React.FC<Props> = ({ className, tone, children }) => {
   if (!children) {
     return null
   }
