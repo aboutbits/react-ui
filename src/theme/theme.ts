@@ -39,6 +39,14 @@ const defaultTheme = {
         base: 'p-4 w-12',
       },
     },
+    input: {
+      upper: {
+        base: 'p-2 w-40',
+      },
+      lower: {
+        base: 'p-6 mt-1 mb-1 w-full border border-transparent',
+      },
+    },
   },
 }
 
