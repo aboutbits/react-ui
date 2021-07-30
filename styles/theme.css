@@ -50,10 +50,6 @@
   @apply text-critical;
 }
 
-.bg-loading-bar {
-  @apply bg-gray;
-}
-
 .hover\:text-header-action:hover {
   @apply text-gray-700;
 }

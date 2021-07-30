@@ -26,6 +26,12 @@ const defaultTheme = {
       base: 'space-y-8 lg:space-y-10',
     },
   },
+  loading: {
+    bar: {
+      base: 'rounded animate-pulse',
+      normal: 'bg-gray',
+    },
+  },
 }
 
 export function makeTheme(overrideTheme?: OverrideTheme): Theme {
