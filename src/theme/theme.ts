@@ -31,7 +31,7 @@ const defaultTheme = {
       base: 'rounded animate-pulse',
       normal: 'bg-gray',
     },
-    list: {
+    listItem: {
       upper: {
         base: 'p-4 mr-4 w-full',
       },
@@ -45,6 +45,14 @@ const defaultTheme = {
       },
       lower: {
         base: 'p-6 mt-1 mb-1 w-full border border-transparent',
+      },
+    },
+    description: {
+      upper: {
+        base: 'p-2.5 w-40',
+      },
+      lower: {
+        base: 'p-3 w-full',
       },
     },
   },
