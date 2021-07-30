@@ -22,6 +22,9 @@ const defaultTheme = {
       error: 'text-critical',
       disabled: 'text-gray',
     },
+    form: {
+      base: 'space-y-8 lg:space-y-10',
+    },
   },
 }
 
