@@ -6,40 +6,45 @@ import { SectionContentTwoColumn } from '../section'
 import { Input } from './Input'
 import { Form } from './Form'
 
-<Meta title="Components/Form/Input" component={Input} />
+<Meta
+  title="Components/Form/Input"
+  component={Input}
+  decorators={[
+    (Story) => {
+      const validationSchema = Yup.object().shape({
+        name: Yup.string().required('Required'),
+      })
+      return (
+        <Formik
+          initialValues={{ name: '' }}
+          validateOnChange={true}
+          validationSchema={validationSchema}
+          onSubmit={(values) => action('onSubmit')(values)}
+        >
+          <Form>
+            <SectionContentTwoColumn>
+              <Story />
+            </SectionContentTwoColumn>
+          </Form>
+        </Formik>
+      )
+    },
+  ]}
+/>
 
 # Input
 
 This component can be used to create inputs. This input already has a label and handles error messages in `formik` Forms.
 
-export const Template = ({ ...args }) => {
-  const validationSchema = Yup.object().shape({
-    name: Yup.string().required('Required'),
-  })
-  return (
-    <Formik
-      initialValues={{ name: '' }}
-      validateOnChange={true}
-      validationSchema={validationSchema}
-      onSubmit={(values) => action('onSubmit')(values)}
-    >
-      <Form>
-        <SectionContentTwoColumn>
-          <Input {...args} />
-        </SectionContentTwoColumn>
-      </Form>
-    </Formik>
-  )
-}
+export const Template = ({ ...args }) => (
+  <Input {...args} type="text" placeholder="Firstname Lastname" name="name" />
+)
 
 <Canvas>
   <Story
     name="Default"
     args={{
       label: 'Name',
-      type: 'text',
-      placeholder: 'Firstname Lastname',
-      name: 'name',
     }}
   >
     {Template.bind({})}
@@ -72,9 +77,6 @@ export const Template = ({ ...args }) => {
     name="Placeholder"
     args={{
       label: 'Name (Placeholder)',
-      type: 'text',
-      placeholder: 'Placeholder',
-      name: 'name',
       value: '',
     }}
   >
@@ -84,9 +86,6 @@ export const Template = ({ ...args }) => {
     name="Filled"
     args={{
       label: 'Name (Filled)',
-      type: 'text',
-      placeholder: 'Placeholder',
-      name: 'name',
       value: 'John Doe',
     }}
   >
@@ -96,9 +95,6 @@ export const Template = ({ ...args }) => {
     name="Disabled"
     args={{
       label: 'Name (Disabled)',
-      type: 'text',
-      placeholder: 'Firstname Lastname',
-      name: 'name',
       value: '',
       disabled: true,
     }}
