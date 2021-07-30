@@ -1,0 +1,104 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+import { SectionContent } from '../section'
+import { Input } from './Input'
+import { Form } from './Form'
+
+<Meta
+  title="Components/Form/Input"
+  component={Input}
+  decorators={[
+    (Story) => {
+      const validationSchema = Yup.object().shape({
+        name: Yup.string().required('Required'),
+      })
+      return (
+        <Formik
+          initialValues={{ name: '' }}
+          validateOnChange={true}
+          validationSchema={validationSchema}
+          onSubmit={(values) => action('onSubmit')(values)}
+        >
+          <Form>
+            <SectionContent>
+              <Story />
+            </SectionContent>
+          </Form>
+        </Formik>
+      )
+    },
+  ]}
+/>
+
+# Input
+
+This component can be used to create inputs. This input already has a label and handles error messages in `formik` Forms.
+
+export const Template = ({ ...args }) => (
+  <Input {...args} type="text" placeholder="Firstname Lastname" name="name" />
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      label: 'Name',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `form.input.base`: Defines base styles of the input, that will be applied in any state.
+- `form.input.normal`: Defines the normal styles of the input, they will be replaced in error or disabled states
+- `form.input.error`: Defines the error styles of the input.
+- `form.input.disabled`: Defines the disabled styles of the input.
+
+- `form.inputLabel.base`: Defines base styles of the input label, that will be applied in any state.
+- `form.inputLabel.normal`: Defines the normal styles of the input label, they will be replaced in error or disabled states
+- `form.inputLabel.error`: Defines the error styles of the input label.
+- `form.inputLabel.disabled`: Defines the disabled styles of the input.
+
+## States
+
+- In order to see the focus state please click into one of the elements.
+- For the error state just leave the input empty.
+
+<Canvas>
+  <Story
+    name="Placeholder"
+    args={{
+      label: 'Name (Placeholder)',
+      value: '',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Filled"
+    args={{
+      label: 'Name (Filled)',
+      value: 'John Doe',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="Disabled"
+    args={{
+      label: 'Name (Disabled)',
+      value: '',
+      disabled: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

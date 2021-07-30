@@ -1,5 +1,4 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs'
-import { IntlProvider } from 'react-intl'
 import { MenuProvider } from './MenuContext'
 import { HeaderTitle } from './HeaderTitle'
 import { HeaderArea } from './HeaderArea'
@@ -12,13 +11,11 @@ This component keeps track of state of the menu toggle using React Content API.
 The [HeaderArea](/docs/components-header-headerarea--default-story) expects to be nested inside a MenuProvider.
 
 export const Template = ({ ...args }) => (
-  <IntlProvider locale="en">
-    <MenuProvider {...args}>
-      <HeaderArea>
-        <HeaderTitle>Header Title</HeaderTitle>
-      </HeaderArea>
-    </MenuProvider>
-  </IntlProvider>
+  <MenuProvider {...args}>
+    <HeaderArea>
+      <HeaderTitle>Header Title</HeaderTitle>
+    </HeaderArea>
+  </MenuProvider>
 )
 
 <Canvas>

@@ -1,0 +1,66 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+import { SectionContent } from '../section'
+import { Select } from './Select'
+import { Form } from './Form'
+
+<Meta
+  title="Components/Form/Select"
+  component={Select}
+  decorators={[
+    (Story) => {
+      const validationSchema = Yup.object().shape({
+        right: Yup.string().required('Required'),
+      })
+      return (
+        <Formik
+          initialValues={{ right: '' }}
+          validateOnChange={true}
+          validationSchema={validationSchema}
+          onSubmit={(values) => action('onSubmit')(values)}
+        >
+          <Form>
+            <SectionContent>
+              <Story />
+            </SectionContent>
+          </Form>
+        </Formik>
+      )
+    },
+  ]}
+/>
+
+# Select
+
+This component can be used to create select fields. This input already has a label and handles error messages in `formik` Forms.
+
+export const Template = ({ ...args }) => (
+  <Select {...args}>
+    <option value="">Select user right</option>
+    <option value="ADMIN">ADMIN</option>
+    <option value="USER">USER</option>
+  </Select>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      label: 'User rights',
+      name: 'right',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+The Select component shares the styles with the Input component.
+For customization of the styles please checkout the [theme section](/docs/components-form-input--default-story#theme) of the Input component.
