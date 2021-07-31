@@ -49,7 +49,7 @@ export const Alert: React.FC<Props> = ({ className, tone, children }) => {
           />
         </div>
         <div
-          className={`abui-form-message-content-${tone} overflow-hidden text-xs break-words`}
+          className={classNames(alert.message.tone[tone], alert.message.base)}
         >
           {children}
         </div>

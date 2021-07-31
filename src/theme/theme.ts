@@ -57,6 +57,10 @@ const defaultTheme = {
         critical: 'text-white',
       },
     },
+    message: {
+      base: 'overflow-hidden text-xs break-words',
+      tone: { positive: 'text-black', critical: 'text-black' },
+    },
   },
 }
 
