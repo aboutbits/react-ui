@@ -27,17 +27,7 @@
   @apply border-gray-300;
 }
 
-.bg-section-content-list-error-icon {
-  @apply bg-critical;
-}
 
-.text-section-content-list-error-icon {
-  @apply text-white;
-}
-
-.text-section-content-list-error {
-  @apply text-critical;
-}
 
 .hover\:text-header-action:hover {
   @apply text-gray-700;

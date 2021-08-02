@@ -40,15 +40,22 @@ export const SectionContentListEmpty: React.FC<SectionListEmptyProps> = ({
 export const SectionContentListError: React.FC<SectionListErrorProps> = ({
   children,
   className,
-}) => (
-  <SectionListItem className={classNames('justify-center py-4', className)}>
-    <div className="p-1.5 mr-2 rounded-full bg-section-content-list-error-icon">
-      <IconWarning
-        height={22}
-        width={22}
-        className="fill-current text-section-content-list-error-icon"
-      />
-    </div>
-    <span className="text-section-content-list-error">{children}</span>
-  </SectionListItem>
-)
+}) => {
+  const { section } = useTheme()
+  return (
+    <SectionListItem
+      className={classNames(section.sectionContentList.error.base, className)}
+    >
+      <div className={section.sectionContentList.error.circle}>
+        <IconWarning
+          height={22}
+          width={22}
+          className={section.sectionContentList.error.icon}
+        />
+      </div>
+      <span className={section.sectionContentList.error.children}>
+        {children}
+      </span>
+    </SectionListItem>
+  )
+}

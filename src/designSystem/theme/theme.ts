@@ -72,6 +72,12 @@ const defaultTheme = {
     sectionContentList: {
       base: 'space-y-px bg-gray-300',
       empty: 'justify-center py-4',
+      error: {
+        base: 'justify-center py-4',
+        icon: 'fill-current text-white',
+        circle: 'p-1.5 mr-2 rounded-full bg-critical',
+        children: 'text-critical',
+      },
     },
   },
 }
