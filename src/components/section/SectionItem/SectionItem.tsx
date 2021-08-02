@@ -102,14 +102,10 @@ export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
   content,
   className,
 }) => {
+  const { section } = useTheme()
   return (
-    <dl
-      className={classNames(
-        'flex flex-col pb-2 space-y-1 text-section-description-item border-b border-section-description-item',
-        className
-      )}
-    >
-      <dt className="text-sm">{title}</dt>
+    <dl className={classNames(section.sectionDescriptionItem.base, className)}>
+      <dt className={section.sectionDescriptionItem.title}>{title}</dt>
       <dd>{content}</dd>
     </dl>
   )

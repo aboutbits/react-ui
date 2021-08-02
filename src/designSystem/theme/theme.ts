@@ -89,6 +89,10 @@ const defaultTheme = {
       base: 'justify-between space-x-4',
       action: 'flex flex-shrink-0',
     },
+    sectionDescriptionItem: {
+      base: 'flex flex-col pb-2 space-y-1 text-white border-black border-gray-300',
+      title: 'text-sm',
+    },
   },
 }
 

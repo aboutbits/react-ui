@@ -12,16 +12,6 @@
   @apply text-black;
 }
 
-.text-section-description-item {
-  @apply text-white;
-}
-
-.border-section-description-item {
-  @apply border-gray-300;
-}
-
-
-
 .hover\:text-header-action:hover {
   @apply text-gray-700;
 }
