@@ -71,6 +71,9 @@ const defaultTheme = {
       base: 'hover:text-gray-700 focus:text-gray-700',
       icon: { base: 'w-6 lg:w-8 h-6 lg:h-8 fill-current' },
     },
+    area: {
+      base: 'flex items-center p-4 lg:p-0 bg-white lg:bg-transparent',
+    },
   },
 }
 

@@ -50,14 +50,6 @@
   @apply text-critical;
 }
 
-.bg-header-area {
-  @apply bg-white;
-}
-
-.lg\:bg-header-area {
-  @apply lg:bg-transparent;
-}
-
 .bg-header-search {
   @apply bg-gray-300;
 }
