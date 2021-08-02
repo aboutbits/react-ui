@@ -64,7 +64,8 @@ const defaultTheme = {
   },
   section: {
     section: {
-      base: 'lg:shadow-md bg-white',
+      base: 'lg:shadow-md',
+      normal: 'bg-white',
     },
     content: {
       base: 'pt-5 pb-10 px-4 lg:px-5 bg-gray-700',
