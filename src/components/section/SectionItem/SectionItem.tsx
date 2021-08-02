@@ -4,13 +4,6 @@ import { ReactNode } from 'react'
 import { ClassNameProps } from '../../types'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
 
-type SectionListItemProps = ClassNameProps & {
-  /**
-   * Defines the color of the background. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
-   * */
-  backgroundColor?: string
-}
-
 type SectionDescriptionItemProps = ClassNameProps & {
   /**
    * Defines the content of the section description item.
@@ -38,10 +31,9 @@ type SectionListItemWithButton = ClassNameProps & {
   onClick: () => void
 }
 
-export const SectionListItem: React.FC<SectionListItemProps> = ({
+export const SectionListItem: React.FC<ClassNameProps> = ({
   className,
   children,
-  backgroundColor = 'bg-gray-700',
 }) => {
   const { section } = useTheme()
   return (
@@ -49,7 +41,7 @@ export const SectionListItem: React.FC<SectionListItemProps> = ({
       className={classNames(
         className,
         section.listItem.base,
-        `bg-${backgroundColor}`
+        section.listItem.normal
       )}
     >
       {children}

@@ -96,7 +96,8 @@ const defaultTheme = {
       base: 'grid xl:grid-cols-2 xl:gap-x-5 gap-y-5',
     },
     listItem: {
-      base: 'flex items-center min-h-14 px-4 lg:px-5 text-white',
+      base: 'flex items-center min-h-14 px-4 lg:px-5',
+      normal: 'bg-gray-700 text-white',
     },
     listItemWithAction: {
       base: 'justify-between space-x-4',
@@ -111,7 +112,8 @@ const defaultTheme = {
       },
     },
     listItemWithButton: {
-      base: 'justify-between space-x-4 hover:bg-gray-600',
+      base: 'justify-between space-x-4',
+      normal: 'hover:bg-gray-600',
     },
     error: {
       base: 'flex flex-col items-center justify-center overflow-hidden mx-auto my-15 lg:mt-20',
