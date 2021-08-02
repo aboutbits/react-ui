@@ -1,13 +1,9 @@
-.bg-section-content {
-  @apply bg-gray-700;
-}
-
 .bg-section-content-list {
   @apply bg-gray-300;
 }
 
 .bg-section-list-item {
-  @apply bg-section-content;
+  @apply bg-gray-700;
 }
 
 .text-section-list-item {
