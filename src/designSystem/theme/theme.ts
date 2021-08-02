@@ -62,6 +62,11 @@ const defaultTheme = {
       tone: { positive: 'text-black', critical: 'text-black' },
     },
   },
+  section: {
+    section: {
+      base: 'lg:shadow-md bg-white',
+    },
+  },
 }
 
 export function makeTheme(overrideTheme?: OverrideTheme): Theme {

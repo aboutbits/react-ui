@@ -1,7 +1,3 @@
-.bg-section {
-  @apply bg-white;
-}
-
 .bg-section-content {
   @apply bg-gray-700;
 }
