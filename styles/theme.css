@@ -1,11 +1,4 @@
 
-.bg-section-list-item {
-  @apply bg-gray-700;
-}
-
-.text-section-list-item {
-  @apply text-white;
-}
 
 .hover\:bg-section-list-item:hover {
   @apply bg-gray-600;

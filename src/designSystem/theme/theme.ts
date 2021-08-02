@@ -82,6 +82,9 @@ const defaultTheme = {
     sectionContentTwoColumn: {
       base: 'grid xl:grid-cols-2 xl:gap-x-5 gap-y-5',
     },
+    sectionListItem: {
+      base: 'flex items-center min-h-14 px-4 lg:px-5 text-white',
+    },
   },
 }
 

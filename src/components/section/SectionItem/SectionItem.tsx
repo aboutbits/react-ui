@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
 import { ReactNode } from 'react'
 import { ClassNameProps } from '../../types'
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 
 type SectionListItemProps = ClassNameProps & {
   /**
@@ -40,13 +41,15 @@ type SectionListItemWithButton = ClassNameProps & {
 export const SectionListItem: React.FC<SectionListItemProps> = ({
   className,
   children,
-  backgroundColor = 'section-list-item',
+  backgroundColor = 'bg-gray-700',
 }) => {
+  const { section } = useTheme()
   return (
     <div
       className={classNames(
         className,
-        `flex items-center min-h-14 px-4 lg:px-5 text-section-list-item bg-${backgroundColor}`
+        section.sectionListItem.base,
+        `bg-${backgroundColor}`
       )}
     >
       {children}
