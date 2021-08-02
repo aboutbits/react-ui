@@ -34,11 +34,14 @@ export const SectionTitle: React.FC = ({ children }) => {
 }
 
 export const SectionHeaderWithAction: React.FC<SectionHeaderWithActionProps> =
-  ({ title, action }) => (
-    <SectionHeader>
-      <div className="flex justify-between items-center space-x-4">
-        <SectionTitle>{title}</SectionTitle>
-        {action}
-      </div>
-    </SectionHeader>
-  )
+  ({ title, action }) => {
+    const { section } = useTheme()
+    return (
+      <SectionHeader>
+        <div className={section.sectionHeaderWithAction.base}>
+          <SectionTitle>{title}</SectionTitle>
+          {action}
+        </div>
+      </SectionHeader>
+    )
+  }

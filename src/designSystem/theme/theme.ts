@@ -115,6 +115,9 @@ const defaultTheme = {
     },
     sectionHeader: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white' },
     sectionTitle: { base: 'text-xs font-bold uppercase text-black' },
+    sectionHeaderWithAction: {
+      base: 'flex justify-between items-center space-x-4',
+    },
   },
 }
 
