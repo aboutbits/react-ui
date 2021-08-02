@@ -1,9 +1,9 @@
 import React from 'react'
 import { IntlProvider } from 'react-intl';
 import '../styles/index.css'
-import { ThemeProvider } from '../src/theme/ThemeProvider'
-import { makeTheme } from '../src/theme/theme'
+import { makeTheme } from '../src/designSystem/theme/theme'
 import enMessages from '../src/translations/shared.en.json'
+import {DesignSystemProvider} from "../src/designSystem/DesignSystemProvider";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -22,13 +22,13 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={makeTheme()}>
+    <DesignSystemProvider theme={makeTheme()}>
       <IntlProvider
         locale="en"
         messages={enMessages}
       >
         <Story />
       </IntlProvider>
-    </ThemeProvider>
+    </DesignSystemProvider>
   ),
 ];

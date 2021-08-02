@@ -1,5 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
+import { useLinkComponent } from '../../designSystem/link/LinkComponentContext'
+import { LinkComponentProps } from '../../designSystem/link/types'
 
 export enum Variant {
   solid = 'solid',
@@ -106,4 +108,41 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 // This improves readability in dev tools
 Button.displayName = 'Button'
 
-export { Button }
+type ButtonLinkProps = Pick<ButtonProps, 'variant' | 'size' | 'tone'> &
+  LinkComponentProps & {
+    disabled?: boolean
+  }
+
+const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
+  (
+    {
+      variant = Variant.solid,
+      size = Size.md,
+      tone = Tone.primary,
+      className = '',
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    const LinkComponent = useLinkComponent()
+    const toneStyles = calculateToneStyle({ variant, tone })
+
+    return (
+      <LinkComponent
+        {...props}
+        ref={ref}
+        className={classNames(
+          'focus:outline-none fill-current',
+          props.disabled ? toneStyles.toneClassDisabled : toneStyles.toneClass,
+          sizeStyles[size],
+          className
+        )}
+      >
+        {children}
+      </LinkComponent>
+    )
+  }
+)
+
+export { Button, ButtonLink }

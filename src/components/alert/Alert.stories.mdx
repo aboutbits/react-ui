@@ -5,7 +5,7 @@ import { Alert, Tone } from './Alert'
 
 # Alert
 
-This alert component can be used to
+This alert component can be used to highlight a message to the user.
 It supports different types of tones.
 
 export const Template = ({ children, ...args }) => (
@@ -27,11 +27,13 @@ export const Template = ({ children, ...args }) => (
 
 ### Theme
 
-- `border-form-message-${tone}`: Define the default border color of the form message per tone.
-- `bg-error-message-${tone}`: Define the default background of the form message per tone.
-- `text-error-message-content-${tone}`: Define the default color of the form message content per tone.
-- `text-error-message-icon-${tone}`: Define the default color of the form message icon per tone.
-- `bg-error-message-icon-${tone}`: Define the default background color of the form message icon per tone.
+- `alert.container.base`: Defines base styles of container
+- `alert.container.tone[$tone]`: Defines custom styles per tone of the container
+- `alert.content.base`: Defines base styles of content
+- `alert.iconContainer.base`: Defines base styles of icon container
+- `alert.iconContainer.tone[$tone]`: Defines custom styles per tone of the icon container
+- `alert.icon.base`: Defines base styles of icon
+- `alert.icon.tone[$tone]`: Defines custom styles per tone of the icon
 
 ## Tone
 
@@ -52,16 +54,6 @@ export const Template = ({ children, ...args }) => (
       Duis mauris ligula, aliquam id maximus at, aliquam ut dui. Morbi ac neque
       mattis libero cursus lobortis quis ac urna. Nullam vel augue vitae lacus
       fermentum ullamcorper eu eget sapien.
-    </Alert>
-  </Story>
-</Canvas>
-
-## Without border
-
-<Canvas>
-  <Story name="Without border">
-    <Alert tone={Tone.critical} className="border-transparent">
-      Critical message without border
     </Alert>
   </Story>
 </Canvas>
