@@ -28,9 +28,10 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   )
 }
 
-export const SectionTitle: React.FC = ({ children }) => (
-  <h1 className="text-xs font-bold uppercase text-section-title">{children}</h1>
-)
+export const SectionTitle: React.FC = ({ children }) => {
+  const { section } = useTheme()
+  return <h1 className={section.sectionTitle.base}>{children}</h1>
+}
 
 export const SectionHeaderWithAction: React.FC<SectionHeaderWithActionProps> =
   ({ title, action }) => (

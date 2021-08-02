@@ -114,6 +114,7 @@ const defaultTheme = {
       children: { base: 'mt-5 w-full text-xl text-center break-words' },
     },
     sectionHeader: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white' },
+    sectionTitle: { base: 'text-xs font-bold uppercase text-black' },
   },
 }
 

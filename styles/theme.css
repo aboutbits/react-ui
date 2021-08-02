@@ -1,9 +1,5 @@
 
 
-.text-section-title {
-  @apply text-black;
-}
-
 .hover\:text-header-action:hover {
   @apply text-gray-700;
 }
