@@ -26,11 +26,16 @@ export const SectionContentList: React.FC<Props> = ({
 export const SectionContentListEmpty: React.FC<SectionListEmptyProps> = ({
   children,
   className,
-}) => (
-  <SectionListItem className={classNames('justify-center py-4', className)}>
-    {children}
-  </SectionListItem>
-)
+}) => {
+  const { section } = useTheme()
+  return (
+    <SectionListItem
+      className={classNames(section.sectionContentList.empty, className)}
+    >
+      {children}
+    </SectionListItem>
+  )
+}
 
 export const SectionContentListError: React.FC<SectionListErrorProps> = ({
   children,

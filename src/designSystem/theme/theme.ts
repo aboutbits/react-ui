@@ -71,6 +71,7 @@ const defaultTheme = {
     },
     sectionContentList: {
       base: 'space-y-px bg-gray-300',
+      empty: 'justify-center py-4',
     },
   },
 }
