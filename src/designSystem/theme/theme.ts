@@ -77,6 +77,9 @@ const defaultTheme = {
     leftArea: {
       base: 'flex items-center mr-4 space-x-3 lg:space-x-4',
     },
+    rightArea: {
+      base: 'flex items-center ml-4 space-x-3 lg:space-x-4',
+    },
   },
 }
 
