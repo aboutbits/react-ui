@@ -17,7 +17,13 @@ export const SectionContentList: React.FC<Props> = ({
 }) => {
   const { section } = useTheme()
   return (
-    <div className={classNames(section.contentList.base, className)}>
+    <div
+      className={classNames(
+        section.contentList.base,
+        section.contentList.normal,
+        className
+      )}
+    >
       {children}
     </div>
   )
@@ -30,7 +36,7 @@ export const SectionContentListEmpty: React.FC<SectionListEmptyProps> = ({
   const { section } = useTheme()
   return (
     <SectionListItem
-      className={classNames(section.contentList.empty, className)}
+      className={classNames(section.contentList.empty.base, className)}
     >
       {children}
     </SectionListItem>

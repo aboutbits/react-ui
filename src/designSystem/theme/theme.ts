@@ -72,8 +72,11 @@ const defaultTheme = {
       normal: 'bg-gray-700',
     },
     contentList: {
-      base: 'space-y-px bg-gray-300',
-      empty: 'justify-center py-4',
+      base: 'space-y-px',
+      normal: 'bg-gray-300',
+      empty: {
+        base: 'justify-center py-4',
+      },
       error: {
         base: 'justify-center py-4',
         icon: {
