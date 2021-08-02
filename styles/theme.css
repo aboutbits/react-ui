@@ -50,13 +50,6 @@
   @apply text-critical;
 }
 
-.hover\:text-header-action:hover {
-  @apply text-gray-700;
-}
-
-.focus\:text-header-action:focus {
-  @apply text-gray-700;
-}
 .bg-header-area {
   @apply bg-white;
 }

@@ -62,6 +62,12 @@ const defaultTheme = {
       tone: { positive: 'text-black', critical: 'text-black' },
     },
   },
+  header: {
+    largeAction: {
+      base: 'hover:text-gray-700 focus:text-gray-700',
+      icon: { base: 'w-8 lg:w-10 h-8 lg:h-10 fill-current' },
+    },
+  },
 }
 
 export function makeTheme(overrideTheme?: OverrideTheme): Theme {
