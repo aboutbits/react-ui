@@ -15,15 +15,15 @@ type Props = {
 const SectionError: React.FC<Props> = ({ icon, children }) => {
   const { section } = useTheme()
   return (
-    <div className={classNames(section.sectionError.base)}>
-      <div className={section.sectionError.icon.base}>{icon}</div>
-      <div className={section.sectionError.title.base}>
+    <div className={classNames(section.error.base)}>
+      <div className={section.error.icon.base}>{icon}</div>
+      <div className={section.error.title.base}>
         <FormattedMessage id="shared.error.title" />
       </div>
-      <div className={section.sectionError.children.base}>{children}</div>
+      <div className={section.error.children.base}>{children}</div>
       <Button
         onClick={() => window.location.reload()}
-        className={section.sectionError.button.base}
+        className={section.error.button.base}
       >
         <FormattedMessage id="shared.button.reload" />
       </Button>

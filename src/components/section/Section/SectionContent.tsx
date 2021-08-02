@@ -7,7 +7,7 @@ type Props = ClassNameProps
 export const SectionContent: React.FC<Props> = ({ children, className }) => {
   const { section } = useTheme()
   return (
-    <div className={classNames(section.sectionContent.base, className)}>
+    <div className={classNames(section.content.base, className)}>
       {children}
     </div>
   )

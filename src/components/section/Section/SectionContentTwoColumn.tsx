@@ -14,7 +14,7 @@ export const SectionContentTwoColumn: React.FC<Props> = ({
   return (
     <SectionContent
       className={classNames(
-        section.sectionContentTwoColumn.base,
+        section.contentTwoColumn.base,
         `bg-${backgroundColor}`,
         className
       )}

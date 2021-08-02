@@ -66,10 +66,10 @@ const defaultTheme = {
     section: {
       base: 'lg:shadow-md bg-white',
     },
-    sectionContent: {
+    content: {
       base: 'pt-5 pb-10 px-4 lg:px-5 bg-gray-700',
     },
-    sectionContentList: {
+    contentList: {
       base: 'space-y-px bg-gray-300',
       empty: 'justify-center py-4',
       error: {
@@ -85,37 +85,37 @@ const defaultTheme = {
         },
       },
     },
-    sectionContentTwoColumn: {
+    contentTwoColumn: {
       base: 'grid xl:grid-cols-2 xl:gap-x-5 gap-y-5',
     },
-    sectionListItem: {
+    listItem: {
       base: 'flex items-center min-h-14 px-4 lg:px-5 text-white',
     },
-    sectionListItemWithAction: {
+    listItemWithAction: {
       base: 'justify-between space-x-4',
       action: {
         base: 'flex flex-shrink-0',
       },
     },
-    sectionDescriptionItem: {
+    descriptionItem: {
       base: 'flex flex-col pb-2 space-y-1 text-white border-black border-gray-300',
       title: {
         base: 'text-sm',
       },
     },
-    sectionListItemWithButton: {
+    listItemWithButton: {
       base: 'justify-between space-x-4 hover:bg-gray-600',
     },
-    sectionError: {
+    error: {
       base: 'flex flex-col items-center justify-center overflow-hidden mx-auto my-15 lg:mt-20',
       button: { base: 'mt-10 lg:mt-20' },
       icon: { base: 'w-60 h-60' },
       title: { base: 'mt-7 text-4xl font-bold' },
       children: { base: 'mt-5 w-full text-xl text-center break-words' },
     },
-    sectionHeader: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white' },
-    sectionTitle: { base: 'text-xs font-bold uppercase text-black' },
-    sectionHeaderWithAction: {
+    header: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white' },
+    title: { base: 'text-xs font-bold uppercase text-black' },
+    headerWithAction: {
       base: 'flex justify-between items-center space-x-4',
     },
   },

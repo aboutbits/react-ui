@@ -48,7 +48,7 @@ export const SectionListItem: React.FC<SectionListItemProps> = ({
     <div
       className={classNames(
         className,
-        section.sectionListItem.base,
+        section.listItem.base,
         `bg-${backgroundColor}`
       )}
     >
@@ -66,10 +66,7 @@ export const SectionListItemWithButton: React.FC<SectionListItemWithButton> = ({
   return (
     <button onClick={onClick} className="block w-full">
       <SectionListItem
-        className={classNames(
-          section.sectionListItemWithButton.base,
-          className
-        )}
+        className={classNames(section.listItemWithButton.base, className)}
       >
         {children}
         <IconKeyboardArrowRight
@@ -87,15 +84,10 @@ export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps>
     const { section } = useTheme()
     return (
       <SectionListItem
-        className={classNames(
-          section.sectionListItemWithAction.base,
-          className
-        )}
+        className={classNames(section.listItemWithAction.base, className)}
       >
         {children}
-        <div className={section.sectionListItemWithAction.action.base}>
-          {action}
-        </div>
+        <div className={section.listItemWithAction.action.base}>{action}</div>
       </SectionListItem>
     )
   }
@@ -107,8 +99,8 @@ export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
 }) => {
   const { section } = useTheme()
   return (
-    <dl className={classNames(section.sectionDescriptionItem.base, className)}>
-      <dt className={section.sectionDescriptionItem.title.base}>{title}</dt>
+    <dl className={classNames(section.descriptionItem.base, className)}>
+      <dt className={section.descriptionItem.title.base}>{title}</dt>
       <dd>{content}</dd>
     </dl>
   )
