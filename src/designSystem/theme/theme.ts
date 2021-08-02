@@ -82,8 +82,9 @@ const defaultTheme = {
         icon: {
           base: 'fill-current text-white',
         },
-        circle: {
-          base: 'p-1.5 mr-2 rounded-full bg-critical',
+        iconContainer: {
+          base: 'p-1.5 mr-2',
+          normal: 'rounded-full bg-critical',
         },
         children: {
           base: 'text-critical',
