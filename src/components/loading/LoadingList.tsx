@@ -6,7 +6,7 @@ import {
   SectionContentList,
   SectionTitle,
 } from '../section'
-import { useTheme } from '../../theme/ThemeProvider'
+import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { LoadingBar } from '.'
 
 export type LoadingListProps = {
