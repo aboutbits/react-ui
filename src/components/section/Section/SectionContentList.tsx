@@ -3,6 +3,7 @@ import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 
 import { SectionListItem } from '../SectionItem/SectionItem'
 import { ClassNameProps } from '../../types'
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 
 type Props = ClassNameProps
 
@@ -13,11 +14,14 @@ type SectionListErrorProps = ClassNameProps
 export const SectionContentList: React.FC<Props> = ({
   children,
   className,
-}) => (
-  <div className={classNames('space-y-px bg-section-content-list', className)}>
-    {children}
-  </div>
-)
+}) => {
+  const { section } = useTheme()
+  return (
+    <div className={classNames(section.sectionContentList.base, className)}>
+      {children}
+    </div>
+  )
+}
 
 export const SectionContentListEmpty: React.FC<SectionListEmptyProps> = ({
   children,

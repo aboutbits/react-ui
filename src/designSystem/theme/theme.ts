@@ -69,6 +69,9 @@ const defaultTheme = {
     sectionContent: {
       base: 'pt-5 pb-10 px-4 lg:px-5 bg-gray-700',
     },
+    sectionContentList: {
+      base: 'space-y-px bg-gray-300',
+    },
   },
 }
 
