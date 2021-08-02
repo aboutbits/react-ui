@@ -68,7 +68,8 @@ const defaultTheme = {
       normal: 'bg-white',
     },
     content: {
-      base: 'pt-5 pb-10 px-4 lg:px-5 bg-gray-700',
+      base: 'pt-5 pb-10 px-4 lg:px-5',
+      normal: 'bg-gray-700',
     },
     contentList: {
       base: 'space-y-px bg-gray-300',
