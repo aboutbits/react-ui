@@ -4,7 +4,7 @@ import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
 import classNames from 'classnames'
 import { ClassNameProps } from '../types'
-import { useTheme } from '../../theme/ThemeProvider'
+import { useTheme } from '../../designSystem/theme/ThemeContext'
 
 export enum Tone {
   critical = 'critical',

@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { ReactElement } from 'react'
 import { ClassNameProps } from '../types'
-import { useTheme } from '../../theme/ThemeProvider'
+import { useTheme } from '../../designSystem/theme/ThemeContext'
 
 export function LoadingBar({ className }: ClassNameProps): ReactElement {
   const { loading } = useTheme()
