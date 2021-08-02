@@ -28,7 +28,7 @@ const HeaderLargeAction: React.FC<Props> = ({
   const { header } = useTheme()
   return (
     <button
-      className={classNames(className, header.largeAction.base)}
+      className={classNames(className, header.largeAction.normal)}
       aria-label={label}
       onClick={onClick}
     >

@@ -64,11 +64,11 @@ const defaultTheme = {
   },
   header: {
     largeAction: {
-      base: 'hover:text-gray-700 focus:text-gray-700',
+      normal: 'hover:text-gray-700 focus:text-gray-700',
       icon: { base: 'w-8 lg:w-10 h-8 lg:h-10 fill-current' },
     },
     smallAction: {
-      base: 'hover:text-gray-700 focus:text-gray-700',
+      normal: 'hover:text-gray-700 focus:text-gray-700',
       icon: { base: 'w-6 lg:w-8 h-6 lg:h-8 fill-current' },
     },
     area: {
@@ -85,8 +85,8 @@ const defaultTheme = {
       base: 'flex-1 text-lg lg:text-3xl font-medium truncate',
     },
     mainWithSearch: {
-      base: 'flex flex-1 lg:p-0 py-1 px-3 rounded-full',
-      normal: 'bg-gray-300 lg:bg-transparent',
+      base: 'flex flex-1 lg:p-0 py-1 px-3',
+      normal: 'bg-gray-300 lg:bg-transparent rounded-full',
       input: {
         base: 'flex-1 w-full lg:text-3xl outline-none border-none',
         normal: 'bg-transparent border-none placeholder-gray text-black',

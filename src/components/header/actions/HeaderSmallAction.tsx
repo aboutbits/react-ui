@@ -33,7 +33,7 @@ const HeaderSmallAction: React.FC<Props> = ({
   const { header } = useTheme()
   return (
     <button
-      className={classNames(className, header.smallAction.base)}
+      className={classNames(className, header.smallAction.normal)}
       aria-label={label}
       disabled={disabled}
       onClick={onClick}
