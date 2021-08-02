@@ -58,7 +58,11 @@ export const SectionListItemWithButton: React.FC<SectionListItemWithButton> = ({
   return (
     <button onClick={onClick} className="block w-full">
       <SectionListItem
-        className={classNames(section.listItemWithButton.base, className)}
+        className={classNames(
+          section.listItemWithButton.base,
+          section.listItemWithButton.normal,
+          className
+        )}
       >
         {children}
         <IconKeyboardArrowRight
