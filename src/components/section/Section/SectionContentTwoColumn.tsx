@@ -3,21 +3,14 @@ import { ClassNameProps } from '../../types'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
 import { SectionContent } from './SectionContent'
 
-type Props = ClassNameProps & { backgroundColor?: string }
-
-export const SectionContentTwoColumn: React.FC<Props> = ({
+export const SectionContentTwoColumn: React.FC<ClassNameProps> = ({
   children,
   className,
-  backgroundColor,
 }) => {
   const { section } = useTheme()
   return (
     <SectionContent
-      className={classNames(
-        section.contentTwoColumn.base,
-        `bg-${backgroundColor}`,
-        className
-      )}
+      className={classNames(section.contentTwoColumn.base, className)}
     >
       {children}
     </SectionContent>
