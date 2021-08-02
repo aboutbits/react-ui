@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import classNames from 'classnames'
 import { FormattedMessage } from 'react-intl'
 
 import { Button } from '../../button/Button'
@@ -15,7 +14,7 @@ type Props = {
 const SectionError: React.FC<Props> = ({ icon, children }) => {
   const { section } = useTheme()
   return (
-    <div className={classNames(section.error.base)}>
+    <div className={section.error.base}>
       <div className={section.error.icon.base}>{icon}</div>
       <div className={section.error.title.base}>
         <FormattedMessage id="shared.error.title" />
