@@ -82,14 +82,20 @@ export const SectionListItemWithButton: React.FC<SectionListItemWithButton> = ({
 }
 
 export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps> =
-  ({ children, action, className }) => (
-    <SectionListItem
-      className={classNames('justify-between space-x-4', className)}
-    >
-      {children}
-      <div className="flex flex-shrink-0">{action}</div>
-    </SectionListItem>
-  )
+  ({ children, action, className }) => {
+    const { section } = useTheme()
+    return (
+      <SectionListItem
+        className={classNames(
+          section.sectionListItemWithAction.base,
+          className
+        )}
+      >
+        {children}
+        <div className={section.sectionListItemWithAction.action}>{action}</div>
+      </SectionListItem>
+    )
+  }
 
 export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
   title,

@@ -85,6 +85,10 @@ const defaultTheme = {
     sectionListItem: {
       base: 'flex items-center min-h-14 px-4 lg:px-5 text-white',
     },
+    sectionListItemWithAction: {
+      base: 'justify-between space-x-4',
+      action: 'flex flex-shrink-0',
+    },
   },
 }
 
