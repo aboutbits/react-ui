@@ -72,7 +72,8 @@ const defaultTheme = {
       icon: { base: 'w-6 lg:w-8 h-6 lg:h-8 fill-current' },
     },
     area: {
-      base: 'flex items-center p-4 lg:p-0 bg-white lg:bg-transparent',
+      base: 'flex items-center p-4 lg:p-0',
+      normal: 'bg-white lg:bg-transparent',
     },
     leftArea: {
       base: 'flex items-center mr-4 space-x-3 lg:space-x-4',
