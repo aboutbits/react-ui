@@ -50,25 +50,10 @@
   @apply text-critical;
 }
 
-.bg-header-search {
-  @apply bg-gray-300;
-}
-
-.lg\:bg-header-search {
-  @apply lg:bg-transparent
-}
-
 .text-header-search {
   @apply text-black;
 }
 
-.hover\:text-header-search-delete-button:hover {
-  @apply text-gray-700;
-}
-
-.focus\:text-header-search-delete-button:focus {
-  @apply text-gray-700;
-}
 
 .placeholder-header-search {
   @apply placeholder-gray;

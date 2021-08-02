@@ -84,6 +84,19 @@ const defaultTheme = {
     title: {
       base: 'flex-1 text-lg lg:text-3xl font-medium truncate',
     },
+    mainWithSearch: {
+      base: 'flex flex-1 lg:p-0 py-1 px-3 rounded-full',
+      normal: 'bg-gray-300 lg:bg-transparent',
+      input: {
+        base: 'flex-1 w-full lg:text-3xl outline-none border-none',
+        normal: 'bg-transparent border-none placeholder-gray text-black',
+      },
+      button: {
+        base: 'lg:hidden',
+        normal: 'hover:text-gray-700 focus:text-gray-700',
+      },
+      icon: { base: 'w-4 h-4 fill-current' },
+    },
   },
 }
 
