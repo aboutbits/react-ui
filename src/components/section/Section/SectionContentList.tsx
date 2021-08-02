@@ -64,7 +64,7 @@ export const SectionContentListError: React.FC<SectionListErrorProps> = ({
           className={section.contentList.error.icon.base}
         />
       </div>
-      <span className={section.contentList.error.children.base}>
+      <span className={section.contentList.error.children.normal}>
         {children}
       </span>
     </SectionListItem>

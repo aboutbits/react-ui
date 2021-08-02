@@ -87,7 +87,7 @@ const defaultTheme = {
           normal: 'rounded-full bg-critical',
         },
         children: {
-          base: 'text-critical',
+          normal: 'text-critical',
         },
       },
     },
