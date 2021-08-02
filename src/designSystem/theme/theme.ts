@@ -120,8 +120,8 @@ const defaultTheme = {
       title: { base: 'mt-7 text-4xl font-bold' },
       children: { base: 'mt-5 w-full text-xl text-center break-words' },
     },
-    header: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white' },
-    title: { base: 'text-xs font-bold uppercase text-black' },
+    header: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white', normal: 'bg-white' },
+    title: { base: 'text-xs font-bold uppercase', normal: 'text-black' },
     headerWithAction: {
       base: 'flex justify-between items-center space-x-4',
     },

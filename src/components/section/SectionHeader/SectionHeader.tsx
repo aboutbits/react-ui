@@ -22,13 +22,25 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   const { section } = useTheme()
   return (
-    <div className={classNames(section.header.base, className)}>{children}</div>
+    <div
+      className={classNames(
+        section.header.base,
+        section.header.normal,
+        className
+      )}
+    >
+      {children}
+    </div>
   )
 }
 
 export const SectionTitle: React.FC = ({ children }) => {
   const { section } = useTheme()
-  return <h1 className={section.title.base}>{children}</h1>
+  return (
+    <h1 className={classNames(section.title.base, section.title.normal)}>
+      {children}
+    </h1>
+  )
 }
 
 export const SectionHeaderWithAction: React.FC<SectionHeaderWithActionProps> =
