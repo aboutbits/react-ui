@@ -32,26 +32,26 @@ const defaultTheme = {
       normal: 'bg-gray',
     },
     listItem: {
-      upper: {
+      start: {
         base: 'p-4 mr-4 w-full',
       },
-      lower: {
+      end: {
         base: 'p-4 w-12',
       },
     },
     input: {
-      upper: {
+      start: {
         base: 'p-2 w-40',
       },
-      lower: {
+      end: {
         base: 'p-6 mt-1 mb-1 w-full border border-transparent',
       },
     },
     descriptionItem: {
-      upper: {
+      start: {
         base: 'p-2.5 w-40',
       },
-      lower: {
+      end: {
         base: 'p-3 w-full',
       },
     },

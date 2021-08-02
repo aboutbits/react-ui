@@ -36,8 +36,8 @@ export function LoadingList({
           .fill(null)
           .map((_, index) => (
             <SectionListItem key={index}>
-              <LoadingBar className={loading.listItem.upper.base} />
-              <LoadingBar className={loading.listItem.upper.base} />
+              <LoadingBar className={loading.listItem.start.base} />
+              <LoadingBar className={loading.listItem.end.base} />
             </SectionListItem>
           ))}
       </SectionContentList>
