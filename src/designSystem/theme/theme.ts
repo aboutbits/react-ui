@@ -79,6 +79,9 @@ const defaultTheme = {
         children: 'text-critical',
       },
     },
+    sectionContentTwoColumn: {
+      base: 'grid xl:grid-cols-2 xl:gap-x-5 gap-y-5',
+    },
   },
 }
 
