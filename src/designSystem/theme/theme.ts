@@ -80,7 +80,8 @@ const defaultTheme = {
       error: {
         base: 'justify-center py-4',
         icon: {
-          base: 'fill-current text-white',
+          base: 'fill-current',
+          normal: 'text-withe',
         },
         iconContainer: {
           base: 'p-1.5 mr-2',

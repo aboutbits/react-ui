@@ -61,7 +61,10 @@ export const SectionContentListError: React.FC<SectionListErrorProps> = ({
         <IconWarning
           height={22}
           width={22}
-          className={section.contentList.error.icon.base}
+          className={classNames(
+            section.contentList.error.icon.base,
+            section.contentList.error.icon.normal
+          )}
         />
       </div>
       <span className={section.contentList.error.children.normal}>
