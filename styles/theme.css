@@ -1,10 +1,5 @@
 
 
-
-.bg-section-header {
-  @apply bg-white;
-}
-
 .text-section-title {
   @apply text-black;
 }

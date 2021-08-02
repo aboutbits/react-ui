@@ -113,6 +113,7 @@ const defaultTheme = {
       title: { base: 'mt-7 text-4xl font-bold' },
       children: { base: 'mt-5 w-full text-xl text-center break-words' },
     },
+    sectionHeader: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white' },
   },
 }
 

@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import React, { ReactNode } from 'react'
 import { ClassNameProps } from '../../types'
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 
 type SectionHeaderProps = ClassNameProps
 
@@ -18,16 +19,14 @@ type SectionHeaderWithActionProps = {
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
   className,
   children,
-}) => (
-  <div
-    className={classNames(
-      `px-4 lg:px-5 pt-5 pb-3 bg-section-header`,
-      className
-    )}
-  >
-    {children}
-  </div>
-)
+}) => {
+  const { section } = useTheme()
+  return (
+    <div className={classNames(section.sectionHeader.base, className)}>
+      {children}
+    </div>
+  )
+}
 
 export const SectionTitle: React.FC = ({ children }) => (
   <h1 className="text-xs font-bold uppercase text-section-title">{children}</h1>
