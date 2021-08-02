@@ -1,8 +1,5 @@
 
 
-.hover\:bg-section-list-item:hover {
-  @apply bg-gray-600;
-}
 
 .bg-section-header {
   @apply bg-white;

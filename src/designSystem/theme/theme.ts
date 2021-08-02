@@ -74,9 +74,15 @@ const defaultTheme = {
       empty: 'justify-center py-4',
       error: {
         base: 'justify-center py-4',
-        icon: 'fill-current text-white',
-        circle: 'p-1.5 mr-2 rounded-full bg-critical',
-        children: 'text-critical',
+        icon: {
+          base: 'fill-current text-white',
+        },
+        circle: {
+          base: 'p-1.5 mr-2 rounded-full bg-critical',
+        },
+        children: {
+          base: 'text-critical',
+        },
       },
     },
     sectionContentTwoColumn: {
@@ -87,11 +93,18 @@ const defaultTheme = {
     },
     sectionListItemWithAction: {
       base: 'justify-between space-x-4',
-      action: 'flex flex-shrink-0',
+      action: {
+        base: 'flex flex-shrink-0',
+      },
     },
     sectionDescriptionItem: {
       base: 'flex flex-col pb-2 space-y-1 text-white border-black border-gray-300',
-      title: 'text-sm',
+      title: {
+        base: 'text-sm',
+      },
+    },
+    sectionListItemWithButton: {
+      base: 'justify-between space-x-4 hover:bg-gray-600',
     },
   },
 }

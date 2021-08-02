@@ -62,11 +62,12 @@ export const SectionListItemWithButton: React.FC<SectionListItemWithButton> = ({
   onClick,
   className,
 }) => {
+  const { section } = useTheme()
   return (
     <button onClick={onClick} className="block w-full">
       <SectionListItem
         className={classNames(
-          'justify-between space-x-4 hover:bg-section-list-item',
+          section.sectionListItemWithButton.base,
           className
         )}
       >
@@ -92,7 +93,9 @@ export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps>
         )}
       >
         {children}
-        <div className={section.sectionListItemWithAction.action}>{action}</div>
+        <div className={section.sectionListItemWithAction.action.base}>
+          {action}
+        </div>
       </SectionListItem>
     )
   }
@@ -105,7 +108,7 @@ export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
   const { section } = useTheme()
   return (
     <dl className={classNames(section.sectionDescriptionItem.base, className)}>
-      <dt className={section.sectionDescriptionItem.title}>{title}</dt>
+      <dt className={section.sectionDescriptionItem.title.base}>{title}</dt>
       <dd>{content}</dd>
     </dl>
   )
