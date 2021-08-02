@@ -7,6 +7,7 @@ import {
 
 <Meta
   title="Components/Section/SectionListItemWithButton"
+  argTypes={{ onClick: { action: 'onClick' } }}
   component={SectionListItemWithButton}
 />
 
@@ -19,13 +20,7 @@ export const Template = (args) => {
   return (
     <SectionContentList>
       {array.map((elem) => (
-        <SectionListItemWithButtonComponent
-          {...args}
-          key={elem}
-          onClick={() => {
-            alert(`Button ${elem} was clicked!`)
-          }}
-        >
+        <SectionListItemWithButtonComponent {...args} key={elem}>
           Button {elem}
         </SectionListItemWithButtonComponent>
       ))}
