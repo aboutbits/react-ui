@@ -80,6 +80,9 @@ const defaultTheme = {
     rightArea: {
       base: 'flex items-center ml-4 space-x-3 lg:space-x-4',
     },
+    title: {
+      base: 'flex-1 text-lg lg:text-3xl font-medium truncate',
+    },
   },
 }
 
