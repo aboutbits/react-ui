@@ -40,18 +40,18 @@ const defaultTheme = {
       },
     },
     input: {
-      start: {
+      upper: {
         base: 'p-2 w-40',
       },
-      end: {
+      lower: {
         base: 'p-6 mt-1 mb-1 w-full border border-transparent',
       },
     },
     descriptionItem: {
-      start: {
+      upper: {
         base: 'p-2.5 w-40',
       },
-      end: {
+      lower: {
         base: 'p-3 w-full',
       },
     },

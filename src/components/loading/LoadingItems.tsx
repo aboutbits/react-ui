@@ -7,8 +7,8 @@ export function LoadingDescriptionItem(): ReactElement {
   const { loading } = useTheme()
   return (
     <SectionDescriptionItem
-      title={<LoadingBar className={loading.descriptionItem.start.base} />}
-      content={<LoadingBar className={loading.descriptionItem.end.base} />}
+      title={<LoadingBar className={loading.descriptionItem.lower.base} />}
+      content={<LoadingBar className={loading.descriptionItem.upper.base} />}
     />
   )
 }
@@ -17,8 +17,8 @@ export function LoadingInput(): ReactElement {
   const { loading } = useTheme()
   return (
     <div>
-      <LoadingBar className={loading.input.start.base} />
-      <LoadingBar className={loading.input.end.base} />
+      <LoadingBar className={loading.input.lower.base} />
+      <LoadingBar className={loading.input.upper.base} />
     </div>
   )
 }
