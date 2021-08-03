@@ -10,6 +10,11 @@ export enum ConfirmationDialogVariant {
   critical = 'critical',
 }
 
+const variantConfirmationButtonTone: Record<ConfirmationDialogVariant, Tone> = {
+  [ConfirmationDialogVariant.confirm]: Tone.primary,
+  [ConfirmationDialogVariant.critical]: Tone.critical,
+}
+
 type ConfirmDialogProps = ClassNameProps & {
   /**
    * Defines if the dialog is open.
@@ -106,7 +111,7 @@ const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
         <Button
           variant={Variant.solid}
           size={Size.sm}
-          tone={dialog.confirmation.button.variant[variant]}
+          tone={variantConfirmationButtonTone[variant]}
           disabled={disableConfirm}
           onClick={onConfirm}
         >
