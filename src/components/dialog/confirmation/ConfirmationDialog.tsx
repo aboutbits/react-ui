@@ -83,7 +83,10 @@ const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
       )}
     >
       <h2
-        className={classnames(dialog.confirmation.variant[variant], 'text-xl')}
+        className={classnames(
+          dialog.confirmation.title.variant[variant],
+          dialog.confirmation.title.base
+        )}
       >
         {title}
       </h2>
