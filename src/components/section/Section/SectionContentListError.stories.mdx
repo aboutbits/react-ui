@@ -6,7 +6,7 @@ import { SectionContentListError } from './SectionContentList'
   component={SectionContentListError}
 />
 
-# SectionListItem
+# SectionListItemError
 
 This component can be used to show the user that there was an error fetching data.
 
@@ -33,6 +33,9 @@ export const Template = ({ children }) => (
 
 ### Theme
 
-- `bg-section-content-list-error-icon`: Define the default background of the warning icon
-- `text-section-content-list-error-icon`: Define the color of the warning icon
-- `text-section-content-list-error`: Define the color of the warning message
+- `section.contentList.error.base`: Define the base style of them error section content list.
+- `section.contentList.error.iconContainer.base`: Define the padding of the icon container in which the icon is placed.
+- `section.contentList.error.iconContainer.base`: Define the color of the icon container in which the icon is placed.
+- `section.contentList.error.icon.base`: Define the padding of the icon.
+- `section.contentList.error.icon.normal`: Define the color, and the shape of the icon.
+- `section.contentList.error.children.normal`: Define the text color of the passed children.

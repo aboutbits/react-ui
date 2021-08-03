@@ -2,13 +2,7 @@ import classNames from 'classnames'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
 import { ReactNode } from 'react'
 import { ClassNameProps } from '../../types'
-
-type SectionListItemProps = ClassNameProps & {
-  /**
-   * Defines the color of the background. It uses the tailwind background notation `bg-${backgroundColor}` under the hood.
-   * */
-  backgroundColor?: string
-}
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 
 type SectionDescriptionItemProps = ClassNameProps & {
   /**
@@ -37,16 +31,17 @@ type SectionListItemWithButton = ClassNameProps & {
   onClick: () => void
 }
 
-export const SectionListItem: React.FC<SectionListItemProps> = ({
+export const SectionListItem: React.FC<ClassNameProps> = ({
   className,
   children,
-  backgroundColor = 'section-list-item',
 }) => {
+  const { section } = useTheme()
   return (
     <div
       className={classNames(
         className,
-        `flex items-center min-h-14 px-4 lg:px-5 text-section-list-item bg-${backgroundColor}`
+        section.listItem.base,
+        section.listItem.normal
       )}
     >
       {children}
@@ -59,11 +54,13 @@ export const SectionListItemWithButton: React.FC<SectionListItemWithButton> = ({
   onClick,
   className,
 }) => {
+  const { section } = useTheme()
   return (
     <button onClick={onClick} className="block w-full">
       <SectionListItem
         className={classNames(
-          'justify-between space-x-4 hover:bg-section-list-item',
+          section.listItemWithButton.base,
+          section.listItemWithButton.normal,
           className
         )}
       >
@@ -79,28 +76,27 @@ export const SectionListItemWithButton: React.FC<SectionListItemWithButton> = ({
 }
 
 export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps> =
-  ({ children, action, className }) => (
-    <SectionListItem
-      className={classNames('justify-between space-x-4', className)}
-    >
-      {children}
-      <div className="flex flex-shrink-0">{action}</div>
-    </SectionListItem>
-  )
+  ({ children, action, className }) => {
+    const { section } = useTheme()
+    return (
+      <SectionListItem
+        className={classNames(section.listItemWithAction.base, className)}
+      >
+        {children}
+        <div className={section.listItemWithAction.action.base}>{action}</div>
+      </SectionListItem>
+    )
+  }
 
 export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
   title,
   content,
   className,
 }) => {
+  const { section } = useTheme()
   return (
-    <dl
-      className={classNames(
-        'flex flex-col pb-2 space-y-1 text-section-description-item border-b border-section-description-item',
-        className
-      )}
-    >
-      <dt className="text-sm">{title}</dt>
+    <dl className={classNames(section.descriptionItem.base, className)}>
+      <dt className={section.descriptionItem.title.base}>{title}</dt>
       <dd>{content}</dd>
     </dl>
   )
