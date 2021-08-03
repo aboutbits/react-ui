@@ -1,16 +1,11 @@
 import classNames from 'classnames'
 import { ClassNameProps } from '../types'
+import { useTheme } from '../../designSystem/theme/ThemeContext'
 
 export enum ActionSectionVariant {
   right = 'right',
   center = 'center',
   left = 'left',
-}
-
-const variantStyles: Record<ActionSectionVariant, string> = {
-  [ActionSectionVariant.right]: 'lg:justify-end',
-  [ActionSectionVariant.center]: 'lg:justify-center',
-  [ActionSectionVariant.left]: 'lg:justify-start',
 }
 
 type ActionProps = ClassNameProps & {
@@ -24,14 +19,17 @@ export const Actions: React.FC<ActionProps> = ({
   variant = ActionSectionVariant.right,
   children,
   className,
-}) => (
-  <div
-    className={classNames(
-      'flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mx-4 lg:mx-0',
-      variantStyles[variant],
-      className
-    )}
-  >
-    {children}
-  </div>
-)
+}) => {
+  const { action } = useTheme()
+  return (
+    <div
+      className={classNames(
+        action.action.base,
+        action.action.variant[variant],
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
+}
