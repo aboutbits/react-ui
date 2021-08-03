@@ -29,6 +29,27 @@ All the other externally defined props are
 React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 ```
 
+### Theme
+
+- `button.button.base`
+- `button.button.size.sm`: Define the size of the small size button.
+- `button.button.size.md`: Define the size of the medium size button.
+- `button.button.variantTone.solid.base`
+- `button.button.variantTone.solid.primary`: Define the color and interactions for the button with the variant solid and tone primary.
+- `button.button.variantTone.solid.critical`: Define the color and interactions for the button with the variant solid and tone critical.
+- `button.button.variantTone.solid.secondary`: Define the color and interactions for the button with the variant solid and tone secondary.
+- `button.button.variantTone.solid.disabled`: Define the status disabled for the button with the variant solid.
+- `button.button.variantTone.ghost.base`
+- `button.button.variantTone.ghost.primary`: Define the color and interactions for the button with the variant ghost and tone primary.
+- `button.button.variantTone.ghost.critical`: Define the color and interactions for the button with the variant ghost and tone critical.
+- `button.button.variantTone.ghost.secondary`: Define the color and interactions for the button with the variant ghost and tone secondary.
+- `button.button.variantTone.ghost.disabled`: Define the status disabled for the button with the variant ghost.
+- `button.button.variantTone.transparent.base`
+- `button.button.variantTone.transparent.primary`: Define the color and interactions for the button with the variant transparent and tone primary.
+- `button.button.variantTone.transparent.critical`: Define the color and interactions for the button with the variant transparent and tone critical.
+- `button.button.variantTone.transparent.secondary`: Define the color and interactions for the button with the variant transparent and tone secondary.
+- `button.button.variantTone.transparent.disabled`: Define the status disabled for the button with the variant transparent.
+
 ## Variants
 
 The `Variant` determine if there is a background fill and a border. The `transparent` variant, while being transparent, still keep the same size as the other variants.
@@ -74,6 +95,33 @@ For additional information about Tailwind config, please refer to the [Tailwind 
   <Story name="Critical">
     <Button tone={Tone.critical}>Critical Button</Button>
   </Story>
+</Canvas>
+
+## Tone Custom
+
+If the provided colors are not satisfying the needs of a project, it is possible to add your own colors. In the following example, it is moderated what needs to be passed to the function makeTheme.
+
+```
+const themeOverwrite = {
+  button: {
+    button: {
+      variantTone: {
+        solid: {
+          green: "border-transparent bg-green hover:bg-green-700 focus:bg-green-700 text-white font-bold",
+        },
+        ghost: {
+          green: "border-green hover:border-green-700 text-primary hover:text-green-700",
+        },
+        transparent: {
+          green: "text-green hover:text-green-700",
+        },
+      }
+    }
+  }
+}
+```
+
+<Canvas>
   <Story name="CustomGreen">
     <Button tone="green">Green Button</Button>
   </Story>
