@@ -1,21 +1,24 @@
 import { ReactElement } from 'react'
 import { SectionDescriptionItem } from '../section'
+import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { LoadingBar } from './LoadingBar'
 
 export function LoadingDescriptionItem(): ReactElement {
+  const { loading } = useTheme()
   return (
     <SectionDescriptionItem
-      title={<LoadingBar className="p-2.5 w-40" />}
-      content={<LoadingBar className="p-3 w-full" />}
+      title={<LoadingBar className={loading.descriptionItem.upper.base} />}
+      content={<LoadingBar className={loading.descriptionItem.lower.base} />}
     />
   )
 }
 
 export function LoadingInput(): ReactElement {
+  const { loading } = useTheme()
   return (
     <div>
-      <LoadingBar className="p-2 w-40" />
-      <LoadingBar className="p-6 mt-1 mb-1 w-full border border-transparent" />
+      <LoadingBar className={loading.input.upper.base} />
+      <LoadingBar className={loading.input.lower.base} />
     </div>
   )
 }

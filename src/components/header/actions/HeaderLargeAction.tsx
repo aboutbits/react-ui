@@ -2,6 +2,7 @@ import React, { ComponentType } from 'react'
 import classNames from 'classnames'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { ClassNameProps } from '../../types'
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 
 type Props = ClassNameProps & {
   /**
@@ -24,16 +25,14 @@ const HeaderLargeAction: React.FC<Props> = ({
   onClick,
   className,
 }) => {
+  const { header } = useTheme()
   return (
     <button
-      className={classNames(
-        className,
-        'hover:text-header-action focus:text-header-action'
-      )}
+      className={classNames(className, header.largeAction.normal)}
       aria-label={label}
       onClick={onClick}
     >
-      <Icon className="w-8 lg:w-10 h-8 lg:h-10 fill-current" />
+      <Icon className={header.largeAction.icon.base} />
     </button>
   )
 }

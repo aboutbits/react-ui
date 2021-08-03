@@ -2,7 +2,9 @@ import React, { ReactNode } from 'react'
 import { useIntl } from 'react-intl'
 import IconMenu from '@aboutbits/react-material-icons/dist/IconMenu'
 // original path: ../../../layouts/app/menu/MenuContext
+import classNames from 'classnames'
 import { HeaderLargeAction } from '../actions/HeaderLargeAction'
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 import { useMenuToggle } from './MenuContext'
 import { HeaderLeftArea } from './HeaderLeftArea'
 
@@ -16,9 +18,9 @@ type Props = {
 const HeaderArea: React.FC<Props> = ({ navigation = null, children }) => {
   const intl = useIntl()
   const menuToggle = useMenuToggle()
-
+  const { header } = useTheme()
   return (
-    <div className="flex items-center p-4 lg:p-0 bg-header-area lg:bg-header-area">
+    <div className={classNames(header.area.base, header.area.normal)}>
       {navigation === null ? (
         <HeaderLeftArea className="block lg:hidden">
           <HeaderLargeAction
