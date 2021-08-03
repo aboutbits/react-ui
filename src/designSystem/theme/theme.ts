@@ -97,9 +97,11 @@ const defaultTheme = {
           critical: 'text-critical',
         },
       },
-      variantButton: {
-        confirm: 'primary',
-        critical: 'critical',
+      button: {
+        variant: {
+          confirm: 'primary',
+          critical: 'critical',
+        },
       },
     },
   },

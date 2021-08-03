@@ -106,7 +106,7 @@ const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
         <Button
           variant={Variant.solid}
           size={Size.sm}
-          tone={dialog.confirmation.variantButton[variant]}
+          tone={dialog.confirmation.button.variant[variant]}
           disabled={disableConfirm}
           onClick={onConfirm}
         >
