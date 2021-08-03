@@ -2,6 +2,7 @@ import React, { ComponentType } from 'react'
 import classNames from 'classnames'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { ClassNameProps } from '../../types'
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 
 type Props = ClassNameProps & {
   /**
@@ -29,17 +30,15 @@ const HeaderSmallAction: React.FC<Props> = ({
   disabled = false,
   className,
 }) => {
+  const { header } = useTheme()
   return (
     <button
-      className={classNames(
-        className,
-        'hover:text-header-action focus:text-header-action'
-      )}
+      className={classNames(className, header.smallAction.normal)}
       aria-label={label}
       disabled={disabled}
       onClick={onClick}
     >
-      <Icon className="w-6 lg:w-8 h-6 lg:h-8 fill-current" title={label} />
+      <Icon className={header.smallAction.icon.base} title={label} />
     </button>
   )
 }
