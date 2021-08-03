@@ -86,6 +86,19 @@ const defaultTheme = {
       tone: { positive: 'text-black', critical: 'text-black' },
     },
   },
+  dialog: {
+    confirmation: {
+      base: 'absolute top-1/2 left-1/2 p-5 min-w-dialog max-w-min space-y-4 transform -translate-x-1/2 -translate-y-1/2 outline-none',
+      normal: 'bg-white',
+      title: {
+        base: 'text-xl',
+        variant: {
+          confirm: 'text-black',
+          critical: 'text-critical',
+        },
+      },
+    },
+  },
   action: {
     action: {
       base: 'flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mx-4 lg:mx-0',

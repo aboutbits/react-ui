@@ -3,15 +3,11 @@ import classnames from 'classnames'
 import { ReactNode } from 'react'
 import { Button, Size, Tone, Variant } from '../../button/Button'
 import { ClassNameProps } from '../../types'
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 
 export enum ConfirmationDialogVariant {
   confirm = 'confirm',
   critical = 'critical',
-}
-
-const variantStyles: Record<ConfirmationDialogVariant, string> = {
-  [ConfirmationDialogVariant.confirm]: 'text-black',
-  [ConfirmationDialogVariant.critical]: 'text-critical',
 }
 
 const variantConfirmationButtonTone: Record<ConfirmationDialogVariant, Tone> = {
@@ -75,6 +71,7 @@ const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
   dismissButtonText,
   className,
 }) => {
+  const { dialog } = useTheme()
   return (
     <Dialog
       isOpen={isOpen}
@@ -85,13 +82,21 @@ const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
       }}
       aria-label={title}
       className={classnames(
-        'absolute top-1/2 left-1/2 p-5 min-w-dialog max-w-min bg-white transform -translate-x-1/2 -translate-y-1/2 outline-none',
+        dialog.confirmation.base,
+        dialog.confirmation.normal,
         className
       )}
     >
-      <h2 className={classnames(variantStyles[variant], 'text-xl')}>{title}</h2>
-      <p className="mt-4">{body}</p>
-      <div className="mt-5 space-x-4 text-right">
+      <h2
+        className={classnames(
+          dialog.confirmation.title.variant[variant],
+          dialog.confirmation.title.base
+        )}
+      >
+        {title}
+      </h2>
+      <div>{body}</div>
+      <div className="space-x-4 text-right">
         {dismissButtonText && (
           <Button
             variant={Variant.ghost}
