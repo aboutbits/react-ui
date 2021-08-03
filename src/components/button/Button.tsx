@@ -40,35 +40,6 @@ export type ButtonProps = React.DetailedHTMLProps<
   tone?: Tone | string
 }
 
-function calculateToneStyle(
-  parameters: Required<Pick<ButtonProps, 'variant' | 'tone'>>
-): { toneClass: string; toneClassDisabled: string } {
-  const tone = {
-    toneClass: '',
-    toneClassDisabled: '',
-  }
-
-  if (parameters.variant === Variant.solid) {
-    tone.toneClass = `border-transparent bg-${parameters.tone} hover:bg-${parameters.tone}-700 focus:bg-${parameters.tone}-700 text-white font-bold`
-    tone.toneClassDisabled = `border-transparent bg-gray-50 text-gray`
-  } else if (parameters.variant === Variant.ghost) {
-    tone.toneClass = `border-${parameters.tone} hover:border-${parameters.tone}-700 bg-transparent text-${parameters.tone} hover:text-${parameters.tone}-700 font-bold`
-    tone.toneClassDisabled = `border-gray-500 bg-transparent text-gray`
-  } else if (parameters.variant === Variant.transparent) {
-    tone.toneClass = `border-transparent background-transparent text-${parameters.tone} hover:text-${parameters.tone}-700 underline`
-    tone.toneClassDisabled = `border-transparent background-gray-50 text-gray underline`
-  }
-
-  //double control if gradient is needed at all
-  //however, there is still a flaw within tailwind, such that the border is no transparent...
-  /*
-  if (parameters.gradient === true && parameters.variant === Variant.solid) {
-    tone.toneClass = `border-0 border-transparent bg-gradient-to-br from-${parameters.tone}-400 to-${parameters.tone}-700 hover:from-${parameters.tone}-700 hover:to-${parameters.tone}-900 focus:from-${parameters.tone}-700 focus:to-${parameters.tone}-900 text-white font-bold`
-  }
-  */
-  return tone
-}
-
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -82,13 +53,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const toneStyles = calculateToneStyle({ variant, tone })
     const { button } = useTheme()
     return (
       <button
         className={classNames(
           button.button.base,
-          props.disabled ? toneStyles.toneClassDisabled : toneStyles.toneClass,
+          button.button.variantTone[variant].base,
+          !props.disabled
+            /* eslint-disable */
+            ? // @ts-ignore
+              button.button.variantTone[variant][tone]
+            : button.button.variantTone[variant].disabled,
+            /* eslint-enable */
           button.button.size[size],
           className
         )}
@@ -123,7 +99,6 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     ref
   ) => {
     const LinkComponent = useLinkComponent()
-    const toneStyles = calculateToneStyle({ variant, tone })
     const { button } = useTheme()
 
     return (
@@ -131,8 +106,14 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         {...props}
         ref={ref}
         className={classNames(
-          button.buttonLink.base,
-          props.disabled ? toneStyles.toneClassDisabled : toneStyles.toneClass,
+          button.button.base,
+          button.button.variantTone[variant].base,
+          !props.disabled
+            /* eslint-disable */
+            ? // @ts-ignore
+              button.button.variantTone[variant][tone]
+            : button.button.variantTone[variant].disabled,
+            /* eslint-enable */
           button.buttonLink.size[size],
           className
         )}
@@ -142,5 +123,8 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     )
   }
 )
+
+// This improves readability in dev tools
+ButtonLink.displayName = 'ButtonLink'
 
 export { Button, ButtonLink }
