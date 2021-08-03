@@ -1,13 +1,13 @@
 import { ClassNameProps } from '../../types'
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 
 type Props = ClassNameProps
 
 const HeaderLeftArea: React.FC<Props> = ({ className, children }) => {
+  const { header } = useTheme()
   return (
     <div className={className}>
-      <div className="flex items-center mr-4 space-x-3 lg:space-x-4">
-        {children}
-      </div>
+      <div className={header.leftArea.base}>{children}</div>
     </div>
   )
 }

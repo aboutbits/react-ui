@@ -1,89 +1,9 @@
-.bg-section {
-  @apply bg-white;
-}
 
-.bg-section-content {
-  @apply bg-gray-700;
-}
-
-.bg-section-content-list {
-  @apply bg-gray-300;
-}
-
-.bg-section-list-item {
-  @apply bg-section-content;
-}
-
-.text-section-list-item {
-  @apply text-white;
-}
-
-.hover\:bg-section-list-item:hover {
-  @apply bg-gray-600;
-}
-
-.bg-section-header {
-  @apply bg-white;
-}
-
-.text-section-title {
-  @apply text-black;
-}
-
-.text-section-description-item {
-  @apply text-white;
-}
-
-.border-section-description-item {
-  @apply border-gray-300;
-}
-
-.bg-section-content-list-error-icon {
-  @apply bg-critical;
-}
-
-.text-section-content-list-error-icon {
-  @apply text-white;
-}
-
-.text-section-content-list-error {
-  @apply text-critical;
-}
-
-.hover\:text-header-action:hover {
-  @apply text-gray-700;
-}
-
-.focus\:text-header-action:focus {
-  @apply text-gray-700;
-}
-.bg-header-area {
-  @apply bg-white;
-}
-
-.lg\:bg-header-area {
-  @apply lg:bg-transparent;
-}
-
-.bg-header-search {
-  @apply bg-gray-300;
-}
-
-.lg\:bg-header-search {
-  @apply lg:bg-transparent
-}
 
 .text-header-search {
   @apply text-black;
 }
 
-.hover\:text-header-search-delete-button:hover {
-  @apply text-gray-700;
-}
-
-.focus\:text-header-search-delete-button:focus {
-  @apply text-gray-700;
-}
 
 .placeholder-header-search {
   @apply placeholder-gray;
