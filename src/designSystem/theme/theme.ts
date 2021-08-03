@@ -88,7 +88,7 @@ const defaultTheme = {
       base: 'flex flex-1 lg:p-0 py-1 px-3',
       normal: 'bg-gray-300 lg:bg-transparent rounded-full',
       input: {
-        base: 'flex-1 w-full lg:text-3xl outline-none border-none',
+        base: 'flex-1 w-full lg:text-3xl outline-none',
         normal: 'bg-transparent border-none placeholder-gray text-black',
       },
       button: {
