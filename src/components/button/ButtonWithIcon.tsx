@@ -1,6 +1,7 @@
 import React, { ComponentType } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import classNames from 'classnames'
+import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { Button, ButtonProps } from './Button'
 
 type ButtonWithIconProps = ButtonProps & {
@@ -12,9 +13,10 @@ type ButtonWithIconProps = ButtonProps & {
 
 const ButtonWithIcon = React.forwardRef<HTMLButtonElement, ButtonWithIconProps>(
   ({ children, Icon, ...props }, ref) => {
+    const { button } = useTheme()
     return (
       <Button {...props} ref={ref}>
-        <div className="flex justify-center items-center">
+        <div className={button.withIcon.iconContainer.base}>
           <Icon
             className={classNames(
               `fill-current ${

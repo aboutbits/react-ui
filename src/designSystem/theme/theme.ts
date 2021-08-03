@@ -122,6 +122,13 @@ const defaultTheme = {
       icon: { base: 'w-4 h-4 fill-current' },
     },
   },
+  button: {
+    withIcon: {
+      iconContainer: {
+        base: 'flex justify-center items-center',
+      },
+    },
+  },
 }
 
 export function makeTheme(overrideTheme?: OverrideTheme): Theme {
