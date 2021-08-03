@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import React from 'react'
 import { useLinkComponent } from '../../designSystem/link/LinkComponentContext'
 import { LinkComponentProps } from '../../designSystem/link/types'
+import { useTheme } from '../../designSystem/theme/ThemeContext'
 
 export enum Variant {
   solid = 'solid',
@@ -68,11 +69,6 @@ function calculateToneStyle(
   return tone
 }
 
-const sizeStyles: Record<Size, string> = {
-  [Size.sm]: 'border px-2 py-1',
-  [Size.md]: 'border-2 px-4 py-3 text-lg leading-normal',
-}
-
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -87,12 +83,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const toneStyles = calculateToneStyle({ variant, tone })
+    const { button } = useTheme()
     return (
       <button
         className={classNames(
-          'focus:outline-none fill-current',
+          button.button.base,
           props.disabled ? toneStyles.toneClassDisabled : toneStyles.toneClass,
-          sizeStyles[size],
+          button.button.size[size],
           className
         )}
         ref={ref}
@@ -127,15 +124,16 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   ) => {
     const LinkComponent = useLinkComponent()
     const toneStyles = calculateToneStyle({ variant, tone })
+    const { button } = useTheme()
 
     return (
       <LinkComponent
         {...props}
         ref={ref}
         className={classNames(
-          'focus:outline-none fill-current',
+          button.buttonLink.base,
           props.disabled ? toneStyles.toneClassDisabled : toneStyles.toneClass,
-          sizeStyles[size],
+          button.buttonLink.size[size],
           className
         )}
       >

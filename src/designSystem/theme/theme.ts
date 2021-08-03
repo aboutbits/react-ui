@@ -123,6 +123,20 @@ const defaultTheme = {
     },
   },
   button: {
+    button: {
+      base: 'focus:outline-none fill-current',
+      size: {
+        sm: 'border px-2 py-1',
+        md: 'border-2 px-4 py-3 text-lg leading-normal',
+      },
+    },
+    buttonLink: {
+      base: 'focus:outline-none fill-current',
+      size: {
+        sm: 'border px-2 py-1',
+        md: 'border-2 px-4 py-3 text-lg leading-normal',
+      },
+    },
     withIcon: {
       iconContainer: {
         base: 'flex justify-center items-center',
