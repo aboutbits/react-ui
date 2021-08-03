@@ -86,6 +86,11 @@ const defaultTheme = {
       tone: { positive: 'text-black', critical: 'text-black' },
     },
   },
+  content: {
+    area: {
+      base: 'space-y-8 lg:space-y-10',
+    },
+  },
 }
 
 export function makeTheme(overrideTheme?: OverrideTheme): Theme {
