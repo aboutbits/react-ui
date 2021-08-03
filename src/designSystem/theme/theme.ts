@@ -199,6 +199,13 @@ const defaultTheme = {
       iconContainer: {
         base: 'flex justify-center items-center',
       },
+      icon: {
+        base: 'fill-current',
+        size: {
+          sm: 'mr-1 w-4 h-4',
+          md: 'mr-2 w-6 h-6',
+        },
+      },
     },
   },
 }
