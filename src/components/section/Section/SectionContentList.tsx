@@ -3,6 +3,7 @@ import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 
 import { SectionListItem } from '../SectionItem/SectionItem'
 import { ClassNameProps } from '../../types'
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 
 type Props = ClassNameProps
 
@@ -13,33 +14,62 @@ type SectionListErrorProps = ClassNameProps
 export const SectionContentList: React.FC<Props> = ({
   children,
   className,
-}) => (
-  <div className={classNames('space-y-px bg-section-content-list', className)}>
-    {children}
-  </div>
-)
+}) => {
+  const { section } = useTheme()
+  return (
+    <div
+      className={classNames(
+        section.contentList.base,
+        section.contentList.normal,
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
+}
 
 export const SectionContentListEmpty: React.FC<SectionListEmptyProps> = ({
   children,
   className,
-}) => (
-  <SectionListItem className={classNames('justify-center py-4', className)}>
-    {children}
-  </SectionListItem>
-)
+}) => {
+  const { section } = useTheme()
+  return (
+    <SectionListItem
+      className={classNames(section.contentList.empty.base, className)}
+    >
+      {children}
+    </SectionListItem>
+  )
+}
 
 export const SectionContentListError: React.FC<SectionListErrorProps> = ({
   children,
   className,
-}) => (
-  <SectionListItem className={classNames('justify-center py-4', className)}>
-    <div className="p-1.5 mr-2 rounded-full bg-section-content-list-error-icon">
-      <IconWarning
-        height={22}
-        width={22}
-        className="fill-current text-section-content-list-error-icon"
-      />
-    </div>
-    <span className="text-section-content-list-error">{children}</span>
-  </SectionListItem>
-)
+}) => {
+  const { section } = useTheme()
+  return (
+    <SectionListItem
+      className={classNames(section.contentList.error.base, className)}
+    >
+      <div
+        className={classNames(
+          section.contentList.error.iconContainer.base,
+          section.contentList.error.iconContainer.normal
+        )}
+      >
+        <IconWarning
+          height={22}
+          width={22}
+          className={classNames(
+            section.contentList.error.icon.base,
+            section.contentList.error.icon.normal
+          )}
+        />
+      </div>
+      <span className={section.contentList.error.children.normal}>
+        {children}
+      </span>
+    </SectionListItem>
+  )
+}
