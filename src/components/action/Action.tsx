@@ -3,9 +3,9 @@ import { ClassNameProps } from '../types'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 
 export enum ActionSectionVariant {
-  right = 'right',
+  start = 'start',
   center = 'center',
-  left = 'left',
+  end = 'end',
 }
 
 type ActionProps = ClassNameProps & {
@@ -16,7 +16,7 @@ type ActionProps = ClassNameProps & {
 }
 
 export const Actions: React.FC<ActionProps> = ({
-  variant = ActionSectionVariant.right,
+  variant = ActionSectionVariant.end,
   children,
   className,
 }) => {
