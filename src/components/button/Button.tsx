@@ -106,15 +106,15 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         {...props}
         ref={ref}
         className={classNames(
-          button.buttonLink.base,
-          button.buttonLink.variantTone[variant].base,
+          button.button.base,
+          button.button.variantTone[variant].base,
           !props.disabled
             /* eslint-disable */
             ? // @ts-ignore
-              button.buttonLink.variantTone[variant][tone]
-            : button.buttonLink.variantTone[variant].disabled,
+              button.button.variantTone[variant][tone]
+            : button.button.variantTone[variant].disabled,
             /* eslint-enable */
-          button.buttonLink.size[size],
+          button.button.size[size],
           className
         )}
       >
