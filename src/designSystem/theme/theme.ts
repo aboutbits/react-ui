@@ -88,7 +88,7 @@ const defaultTheme = {
   },
   dialog: {
     confirmation: {
-      base: 'absolute top-1/2 left-1/2 p-5 min-w-dialog max-w-min transform -translate-x-1/2 -translate-y-1/2 outline-none',
+      base: 'absolute top-1/2 left-1/2 p-5 min-w-dialog max-w-min space-y-4 transform -translate-x-1/2 -translate-y-1/2 outline-none',
       normal: 'bg-white',
       variant: {
         confirm: 'text-black',

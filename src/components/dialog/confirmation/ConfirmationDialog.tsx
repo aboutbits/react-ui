@@ -87,8 +87,8 @@ const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
       >
         {title}
       </h2>
-      <p className="mt-4">{body}</p>
-      <div className="mt-5 space-x-4 text-right">
+      <div>{body}</div>
+      <div className="space-x-4 text-right">
         {dismissButtonText && (
           <Button
             variant={Variant.ghost}
