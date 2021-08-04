@@ -1,4 +1,4 @@
-# Next Boilerplate
+# React-UI
 
 ## Getting started
 
@@ -25,6 +25,18 @@ npm run dev
 
 The project will be served at http://localhost:3000.
 
+Install all dependencies by executing the following command:
+
+```bash
+npm run build-storybook
+```
+## Learn more
+
+To learn more about Storybook, take a look at the following resource:
+
+- [StoryBook Documentation](https://storybook.js.org/docs/react/get-started/introduction)
+
+
 ## Development
 
 For linting the source files, execute the following command:
@@ -47,12 +59,6 @@ npm run test
 npm run test:watch
 ```
 
-For analyzing the packages, execute the following command:
-
-```bash
-npm run analyze-packages
-```
-
 ## Docker Environment
 
 If you want to get up and running without installing all special requirements of the project locally on your machine, you can follow these steps to set up a preconfigured Docker environment.
@@ -65,33 +71,4 @@ This environment has also the advantage, that it serves the application with a c
 - [Docker Compose](https://docs.docker.com/compose/)
 - [Local Docker Environment](https://github.com/aboutbits/local-environment)
 
-### Setup
 
-Install all dependencies by executing the following command:
-
-```bash
-docker-compose run --rm node npm install
-```
-
-To start the Docker containers, execute the following command:
-
-```bash
-docker-compose up --detach
-
-# or if you want to force a rebuild of the containers
-
-docker-compose build --pull
-docker-compose up --detach
-```
-
-The project will be served at https://web.aboutbits.test.
-
-Afterwards, you can stop the containers using the following command:
-
-```bash
-docker-compose stop
-
-# or if you want to stop and delete the containers
-
-docker-compose down
-```
