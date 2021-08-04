@@ -213,7 +213,7 @@ const defaultTheme = {
         base: 'flex-1 w-full lg:text-3xl outline-none',
         normal: 'bg-transparent border-none placeholder-gray text-black',
       },
-      button: {
+      clearButton: {
         base: 'lg:hidden',
         normal: 'hover:text-gray-700 focus:text-gray-700',
       },

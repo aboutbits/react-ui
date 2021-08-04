@@ -74,8 +74,8 @@ const HeaderSearch: React.FC<Props> = ({
         />
         <button
           className={classNames(
-            header.search.button.base,
-            header.search.button.normal
+            header.search.clearButton.base,
+            header.search.clearButton.normal
           )}
           aria-label={intl.formatMessage({
             id: 'shared.search.clear',
