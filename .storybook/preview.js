@@ -20,9 +20,28 @@ export const parameters = {
   }
 }
 
+
+const themeOverwrite = {
+  button: {
+    button: {
+      variantTone: {
+        solid: {
+          green: "border-transparent bg-green hover:bg-green-700 focus:bg-green-700 text-white font-bold",
+        },
+        ghost: {
+          green: "border-green hover:border-green-700 text-primary hover:text-green-700",
+        },
+        transparent: {
+          green: "text-green hover:text-green-700",
+        },
+      }
+    }
+  }
+}
+
 export const decorators = [
   (Story) => (
-    <DesignSystemProvider theme={makeTheme()}>
+    <DesignSystemProvider theme={makeTheme(themeOverwrite)}>
       <IntlProvider
         locale="en"
         messages={enMessages}
