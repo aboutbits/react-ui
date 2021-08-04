@@ -16,7 +16,7 @@ type Props = {
    * */
   editHref: string
   /**
-   * Define the accessibility label for the icon.
+   * Define the accessibility label for the edit icon.
    * */
   editLabel: string
 }
