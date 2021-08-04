@@ -9,9 +9,7 @@ import { MenuProvider } from './areas/MenuContext'
 
 # HeaderBackWithEdit
 
-This component is similar to [HeaderMainWithSearch](http://localhost:4000/?path=/docs/components-header-headermainwithsearch--default-story), but instead of the search, an edit icon is placed at the right, which will forward a user to the (edit-)page.
-
-For the mobile view, an adjusted interface is provided.
+This component is specifically designed for detail pages, where you want to give the user the possibility to go back to the previous page and an edit link to update the content.
 
 export const Template = ({ ...args }) => {
   return (
@@ -36,5 +34,4 @@ export const Template = ({ ...args }) => {
 
 ### React Intl
 
-- `app.nav.menu`: Accessibility label for burger menu
 - `shared.button.goBack`: Accessibility label for arrow back

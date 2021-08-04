@@ -21,7 +21,7 @@ type Props = ClassNameProps & {
 }
 
 const HeaderBackAction: React.FC<Props> = ({
-  label,
+  label = 'Return to previous page',
   onClick,
   icon = IconArrowBack,
   className,

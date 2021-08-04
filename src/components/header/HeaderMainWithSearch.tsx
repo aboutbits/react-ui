@@ -19,9 +19,9 @@ type HeaderMainWithSearchProps = TitleProps & {
    * */
   search: string
   /**
-   * Defines to functions:
-   * 1. `search`: returns the typed input as callback
-   * 2. `clear`: clears the search field
+   * Defines two functions:
+   * `search`: returns the typed input as callback
+   * `clear`: clears the search field
    * */
   searchActions: { search: (query: string) => void; clear: () => void }
 }
