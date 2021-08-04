@@ -11,7 +11,7 @@ import { MenuProvider } from './areas/MenuContext'
 
 This component is similar to [HeaderMainWithSearch](http://localhost:4000/?path=/docs/components-header-headermainwithsearch--default-story), but instead of the search, an edit icon is placed at the right, which will forward a user to the (edit-)page.
 
-For the mobile view, an adjusted interface for the search is provided.
+For the mobile view, an adjusted interface is provided.
 
 export const Template = ({ ...args }) => {
   return (
@@ -19,7 +19,7 @@ export const Template = ({ ...args }) => {
       <HeaderBackWithEdit
         {...args}
         editHref="/?path=/docs/components-header-headerbackwithedit--default-story"
-        editLabel="Edit user"
+        editLabel="Edit the object"
         title="Header Title"
       />
     </MenuProvider>
