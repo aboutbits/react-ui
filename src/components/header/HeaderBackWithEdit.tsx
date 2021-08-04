@@ -19,12 +19,17 @@ type Props = {
    * Define the accessibility label for the edit icon.
    * */
   editLabel: string
+  /**
+   * Override default onBack action.
+   */
+  onBack?: () => void
 }
 
 const HeaderBackWithEdit: React.FC<Props> = ({
   title,
   editHref,
   editLabel,
+  onBack,
 }) => {
   const intl = useIntl()
   const router = useRouter()
@@ -35,7 +40,7 @@ const HeaderBackWithEdit: React.FC<Props> = ({
         <HeaderBackAction
           icon={IconArrowBack}
           label={intl.formatMessage({ id: 'shared.button.goBack' })}
-          onClick={router.back}
+          onClick={onBack || router.back}
         />
       }
     >

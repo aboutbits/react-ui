@@ -10,9 +10,14 @@ type Props = {
    * Define a header title.
    * */
   title: string
+
+  /**
+   * Override default onBack action.
+   */
+  onBack?: () => void
 }
 
-const HeaderBackWithoutAction: React.FC<Props> = ({ title }) => {
+const HeaderBackWithoutAction: React.FC<Props> = ({ title, onBack }) => {
   const intl = useIntl()
   const router = useRouter()
 
@@ -22,7 +27,7 @@ const HeaderBackWithoutAction: React.FC<Props> = ({ title }) => {
         <HeaderBackAction
           icon={IconArrowBack}
           label={intl.formatMessage({ id: 'shared.button.goBack' })}
-          onClick={router.back}
+          onClick={onBack || router.back}
         />
       }
     >
