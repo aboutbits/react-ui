@@ -1,9 +1,8 @@
 import classNames from 'classnames'
 import React from 'react'
-import { useLinkComponent } from '../../designSystem/link/LinkComponentContext'
-import { LinkComponentProps } from '../../designSystem/link/types'
+import { useLinkComponent } from '../../designSystem/router/LinkComponentContext'
+import { LinkComponentProps } from '../../designSystem/router/types'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
-
 
 export enum Variant {
   solid = 'solid',
