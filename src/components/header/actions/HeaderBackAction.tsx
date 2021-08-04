@@ -10,7 +10,7 @@ type Props = ClassNameProps & {
   /**
    * Defines the icon of the button.
    * */
-  icon: ComponentType<IconProps>
+  icon?: ComponentType<IconProps>
   /**
    * Sets a label for [aria-label](https://www.w3schools.com/accessibility/accessibility_labels.php).
    * */

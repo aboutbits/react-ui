@@ -1,4 +1,3 @@
-import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import { useRouter } from '../../designSystem/router/RouterContext'
 import { HeaderArea } from './areas/HeaderArea'
 import { HeaderBackAction } from './actions/HeaderBackAction'
@@ -21,12 +20,7 @@ const HeaderBackWithoutAction: React.FC<Props> = ({ title, onBack }) => {
 
   return (
     <HeaderArea
-      navigation={
-        <HeaderBackAction
-          icon={IconArrowBack}
-          onClick={onBack || router.back}
-        />
-      }
+      navigation={<HeaderBackAction onClick={onBack || router.back} />}
     >
       <HeaderTitle>{title}</HeaderTitle>
     </HeaderArea>
