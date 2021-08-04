@@ -1,8 +1,8 @@
-import Link from 'next/link'
 import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
 import classNames from 'classnames'
 import { HeaderRightArea } from '../areas/HeaderRightArea'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { useLinkComponent } from '../../../designSystem/router/LinkComponentContext'
 
 type Props = {
   /**
@@ -17,19 +17,18 @@ type Props = {
 
 const HeaderEditAction: React.FC<Props> = ({ href, label }) => {
   const { header } = useTheme()
+  const LinkComponent = useLinkComponent()
   return (
     <HeaderRightArea>
-      <Link href={href}>
-        <a>
-          <IconEdit
-            className={classNames(
-              header.editAction.base,
-              header.editAction.normal
-            )}
-            title={label}
-          />
-        </a>
-      </Link>
+      <LinkComponent href={href}>
+        <IconEdit
+          className={classNames(
+            header.editAction.base,
+            header.editAction.normal
+          )}
+          title={label}
+        />
+      </LinkComponent>
     </HeaderRightArea>
   )
 }

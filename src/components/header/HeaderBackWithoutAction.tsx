@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router'
 import { useIntl } from 'react-intl'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import { useRouter } from '../../designSystem/router/RouterContext'
 import { HeaderArea } from './areas/HeaderArea'
 import { HeaderBackAction } from './actions/HeaderBackAction'
 import { HeaderTitle } from './areas/HeaderTitle'
