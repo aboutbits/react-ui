@@ -10,7 +10,7 @@ import {
   HeaderLeftArea,
 } from '../header'
 import { HeaderLargeAction } from './actions/HeaderLargeAction'
-import { HeaderSearch } from './HeaderMainWithSearch'
+import { HeaderSearch } from './HeaderSearch'
 import { Props as TitleProps } from './HeaderMain'
 
 type HeaderCloseWithSearchProps = TitleProps & {

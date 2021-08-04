@@ -206,7 +206,7 @@ const defaultTheme = {
     title: {
       base: 'flex-1 text-lg lg:text-3xl font-medium truncate',
     },
-    mainWithSearch: {
+    search: {
       base: 'flex flex-1 lg:p-0 py-1 px-3',
       normal: 'bg-gray-300 lg:bg-transparent rounded-full',
       input: {

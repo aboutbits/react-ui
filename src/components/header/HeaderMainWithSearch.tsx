@@ -1,18 +1,12 @@
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
-import { useState, useEffect, useRef } from 'react'
-import { useIntl } from 'react-intl'
-import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
-import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import classNames from 'classnames'
-import { useTheme } from '../../designSystem/theme/ThemeContext'
-import { HeaderLargeAction } from './actions/HeaderLargeAction'
+import { useState } from 'react'
+import { HeaderSearch } from './HeaderSearch'
 import { Props as TitleProps } from './HeaderMain'
 import {
   HeaderArea,
   HeaderRightArea,
   HeaderSmallAction,
   HeaderTitle,
-  HeaderLeftArea,
 } from './index'
 
 type HeaderMainWithSearchProps = TitleProps & {
@@ -71,78 +65,4 @@ const HeaderMainWithSearch: React.FC<HeaderMainWithSearchProps> = ({
   }
 }
 
-const HeaderSearch: React.FC<{
-  text: string
-  setText: (string: string) => void
-  stopSearch: () => void
-  clearSearch: () => void
-}> = ({ text, setText, stopSearch, clearSearch }) => {
-  const intl = useIntl()
-  const searchInput = useRef<HTMLInputElement>(null)
-  const { header } = useTheme()
-
-  useEffect(() => {
-    if (searchInput.current !== null) {
-      searchInput.current.focus()
-    }
-  }, [])
-
-  return (
-    <HeaderArea
-      navigation={
-        <HeaderLeftArea className="lg:hidden">
-          <HeaderLargeAction
-            icon={IconArrowBack}
-            label={intl.formatMessage({ id: 'shared.search.back' })}
-            onClick={stopSearch}
-          />
-        </HeaderLeftArea>
-      }
-    >
-      <div
-        className={classNames(
-          header.mainWithSearch.base,
-          header.mainWithSearch.normal
-        )}
-      >
-        <input
-          ref={searchInput}
-          value={text}
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
-            setText(ev.target.value)
-          }
-          placeholder={intl.formatMessage({
-            id: 'shared.search.placeholder',
-          })}
-          className={classNames(
-            header.mainWithSearch.input.base,
-            header.mainWithSearch.input.normal
-          )}
-        />
-        <button
-          className={classNames(
-            header.mainWithSearch.button.base,
-            header.mainWithSearch.button.normal
-          )}
-          aria-label={intl.formatMessage({
-            id: 'shared.search.clear',
-          })}
-          onClick={clearSearch}
-        >
-          <IconClose className={header.mainWithSearch.icon.base} />
-        </button>
-      </div>
-      <HeaderRightArea className="hidden lg:block">
-        <HeaderSmallAction
-          icon={IconClose}
-          label={intl.formatMessage({
-            id: 'shared.search.back',
-          })}
-          onClick={stopSearch}
-        />
-      </HeaderRightArea>
-    </HeaderArea>
-  )
-}
-
-export { HeaderMainWithSearch, HeaderSearch }
+export { HeaderMainWithSearch }
