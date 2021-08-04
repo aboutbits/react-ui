@@ -1,17 +1,12 @@
 import React from 'react'
 import classNames from 'classnames'
 import Link, { LinkProps } from 'next/link'
+import { useTheme } from '../../designSystem/theme/ThemeContext'
 
 enum Variant {
   primary = 'primary',
   black = 'black',
   white = 'white',
-}
-
-const variantStyles: Record<Variant, { variantClass: string }> = {
-  [Variant.primary]: { variantClass: 'text-primary-700' },
-  [Variant.black]: { variantClass: 'text-black' },
-  [Variant.white]: { variantClass: 'text-white' },
 }
 
 type StyledLinkProps = React.DetailedHTMLProps<
@@ -23,14 +18,11 @@ type StyledLinkProps = React.DetailedHTMLProps<
 
 const TextLink = React.forwardRef<HTMLAnchorElement, StyledLinkProps>(
   ({ children, className, variant, ...props }, ref) => {
-    const variantCSS = variant ? variantStyles[variant] : { variantClass: '' }
+    const { textLink } = useTheme()
+    const variantCSS = variant ? textLink.variant[variant] : ''
     return (
       <a
-        className={classNames(
-          className,
-          variantCSS.variantClass,
-          'text-xs underline hover:opacity-60 active:opacity-60'
-        )}
+        className={classNames(className, variantCSS, textLink.base)}
         {...props}
         ref={ref}
       >
@@ -39,6 +31,8 @@ const TextLink = React.forwardRef<HTMLAnchorElement, StyledLinkProps>(
     )
   }
 )
+
+TextLink.displayName = 'TextLink'
 
 const NextStyledLink: React.FC<StyledLinkProps & Pick<LinkProps, 'href'>> = ({
   children,

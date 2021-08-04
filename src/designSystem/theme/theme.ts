@@ -266,6 +266,14 @@ const defaultTheme = {
       },
     },
   },
+  textLink: {
+    base: 'text-xs underline hover:opacity-60 active:opacity-60',
+    variant: {
+      primary: 'text-primary-700',
+      black: 'text-black',
+      white: 'text-white',
+    },
+  },
 }
 
 export function makeTheme(overrideTheme?: OverrideTheme): Theme {
