@@ -1,4 +1,3 @@
-import { useIntl } from 'react-intl'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import { useRouter } from '../../designSystem/router/RouterContext'
 import { HeaderArea } from './areas/HeaderArea'
@@ -31,7 +30,6 @@ const HeaderBackWithEdit: React.FC<Props> = ({
   editLabel,
   onBack,
 }) => {
-  const intl = useIntl()
   const router = useRouter()
 
   return (
@@ -39,7 +37,6 @@ const HeaderBackWithEdit: React.FC<Props> = ({
       navigation={
         <HeaderBackAction
           icon={IconArrowBack}
-          label={intl.formatMessage({ id: 'shared.button.goBack' })}
           onClick={onBack || router.back}
         />
       }
