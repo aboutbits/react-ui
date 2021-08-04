@@ -10,12 +10,31 @@ import { HeaderLargeAction } from './actions/HeaderLargeAction'
 import { HeaderRightArea } from './areas/HeaderRightArea'
 import { HeaderSmallAction } from './actions/HeaderSmallAction'
 
-const HeaderSearch: React.FC<{
+type Props = {
+  /**
+   * Defines the value for in input.
+   * */
   text: string
+  /**
+   * Define a callback function for the value of the input.
+   * */
   setText: (string: string) => void
+  /**
+   * Define a function which clears the search and closes the search.
+   * */
   stopSearch: () => void
+  /**
+   * Define a functions which will clear the input of the search.
+   * */
   clearSearch: () => void
-}> = ({ text, setText, stopSearch, clearSearch }) => {
+}
+
+const HeaderSearch: React.FC<Props> = ({
+  text,
+  setText,
+  stopSearch,
+  clearSearch,
+}) => {
   const intl = useIntl()
   const searchInput = useRef<HTMLInputElement>(null)
   const { header } = useTheme()
