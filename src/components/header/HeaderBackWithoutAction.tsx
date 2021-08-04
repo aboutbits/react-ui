@@ -22,7 +22,7 @@ const HeaderBackWithoutAction: React.FC<Props> = ({ title }) => {
         <HeaderBackAction
           icon={IconArrowBack}
           label={intl.formatMessage({ id: 'shared.button.goBack' })}
-          onClick={() => router.back()}
+          onClick={router.back}
         />
       }
     >

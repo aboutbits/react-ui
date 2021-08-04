@@ -35,7 +35,7 @@ const HeaderBackWithEdit: React.FC<Props> = ({
         <HeaderBackAction
           icon={IconArrowBack}
           label={intl.formatMessage({ id: 'shared.button.goBack' })}
-          onClick={() => router.back()}
+          onClick={router.back}
         />
       }
     >
