@@ -5,7 +5,14 @@ import { HeaderArea } from './areas/HeaderArea'
 import { HeaderBackAction } from './actions/HeaderBackAction'
 import { HeaderTitle } from './areas/HeaderTitle'
 
-const HeaderBackWithoutAction: React.FC<{ title: string }> = ({ title }) => {
+type Props = {
+  /**
+   * Define a header title.
+   * */
+  title: string
+}
+
+const HeaderBackWithoutAction: React.FC<Props> = ({ title }) => {
   const intl = useIntl()
   const router = useRouter()
 
