@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { HeaderBackWithEdit } from './HeaderBackWithEdit'
+import { MenuProvider } from './areas/MenuContext'
+
+<Meta
+  title="Components/Header/HeaderBackWithEdit"
+  component={HeaderBackWithEdit}
+/>
+
+# HeaderBackWithEdit
+
+This component is similar to [HeaderMainWithSearch](http://localhost:4000/?path=/docs/components-header-headermainwithsearch--default-story), but instead of the search, an edit icon is placed at the right, which will forward a user to the (edit-)page.
+
+export const Template = ({ ...args }) => {
+  return (
+    <MenuProvider>
+      <HeaderBackWithEdit
+        {...args}
+        editHref=""
+        editLabel=""
+        title="Header Title"
+      />
+    </MenuProvider>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### React Intl
+
+- `app.nav.menu`: Accessibility label for burger menu
+- `shared.button.goBack`: Placeholder text for search field

@@ -6,11 +6,26 @@ import { HeaderBackAction } from './actions/HeaderBackAction'
 import { HeaderTitle } from './areas/HeaderTitle'
 import { HeaderEditAction } from './actions/HeaderEditAction'
 
-const HeaderBackWithEdit: React.FC<{
+type Props = {
+  /**
+   * Define a header title.
+   * */
   title: string
+  /**
+   * Define where the user is redirected to.
+   * */
   editHref: string
+  /**
+   * Define the accessibility label for the icon.
+   * */
   editLabel: string
-}> = ({ title, editHref, editLabel }) => {
+}
+
+const HeaderBackWithEdit: React.FC<Props> = ({
+  title,
+  editHref,
+  editLabel,
+}) => {
   const intl = useIntl()
   const router = useRouter()
 
