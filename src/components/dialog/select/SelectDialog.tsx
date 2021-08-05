@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import { Dialog } from '@reach/dialog'
-import { useIntl } from 'react-intl'
 import { UseSearchQuery } from '../../types'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
 import { SelectDialogHeader } from './SelectDialogHeader'
@@ -22,6 +21,10 @@ type Props = {
    * Defines if the dialog is open.
    * */
   isOpen: boolean
+  /**
+   * Accessibility label for the dialog.
+   * */
+  dialogLabel: string
 } & UseSearchQuery
 
 const SelectDialog: React.FC<Props> = ({
@@ -29,19 +32,17 @@ const SelectDialog: React.FC<Props> = ({
   iconLabel,
   search,
   onDismiss,
-  searchActions,
+  actions,
   isOpen,
   children,
+  dialogLabel,
 }) => {
   const { dialog } = useTheme()
-  const intl = useIntl()
   return (
     <Dialog
       isOpen={isOpen}
       onDismiss={onDismiss}
-      aria-label={intl.formatMessage({
-        id: 'shared.organization.select.dialog.title',
-      })}
+      aria-label={dialogLabel}
       className={classNames(dialog.select.base, dialog.select.normal)}
     >
       <SelectDialogHeader
@@ -49,7 +50,7 @@ const SelectDialog: React.FC<Props> = ({
         title={title}
         iconLabel={iconLabel}
         search={search}
-        searchActions={searchActions}
+        actions={actions}
       />
       {children}
     </Dialog>

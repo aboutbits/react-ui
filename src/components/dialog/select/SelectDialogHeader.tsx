@@ -23,7 +23,7 @@ const SelectDialogHeader: React.FC<Props> = ({
   iconLabel,
   search,
   onDismiss,
-  searchActions,
+  actions,
 }) => {
   const { dialog } = useTheme()
 
@@ -37,7 +37,7 @@ const SelectDialogHeader: React.FC<Props> = ({
       <HeaderCloseWithSearch
         title={title}
         search={search}
-        searchActions={searchActions}
+        actions={actions}
         labelIcon={iconLabel}
         onClose={onDismiss}
       />

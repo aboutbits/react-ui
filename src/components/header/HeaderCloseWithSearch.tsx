@@ -12,29 +12,27 @@ import {
 import { UseSearchQuery } from '../types'
 import { HeaderLargeAction } from './actions/HeaderLargeAction'
 import { HeaderSearch } from './HeaderSearch'
-import { Props as TitleProps } from './HeaderMain'
 
-type HeaderCloseWithSearchProps = TitleProps &
-  UseSearchQuery & {
-    /**
-     *  Define a header title.
-     * */
-    title: string
-    /**
-     * Define the accessibility label for the search icon.
-     * */
-    labelIcon: string
-    /**
-     * Define which action should be executed on closing.
-     * */
-    onClose: () => void
-  }
+type HeaderCloseWithSearchProps = UseSearchQuery & {
+  /**
+   *  Define a header title.
+   * */
+  title: string
+  /**
+   * Define the accessibility label for the search icon.
+   * */
+  labelIcon: string
+  /**
+   * Define which action should be executed on closing.
+   * */
+  onClose: () => void
+}
 
 const HeaderCloseWithSearch: React.FC<HeaderCloseWithSearchProps> = ({
   title,
   labelIcon,
   search,
-  searchActions,
+  actions,
   onClose,
 }) => {
   const [searchShow, setSearchShow] = useState<boolean>(search !== '')
@@ -42,16 +40,16 @@ const HeaderCloseWithSearch: React.FC<HeaderCloseWithSearchProps> = ({
   const startSearch = (): void => setSearchShow(true)
   const stopSearch = (): void => {
     setSearchShow(false)
-    searchActions.clear()
+    actions.clear()
   }
 
   if (searchShow) {
     return (
       <HeaderSearch
         text={search}
-        setText={searchActions.search}
+        setText={actions.search}
         stopSearch={stopSearch}
-        clearSearch={searchActions.clear}
+        clearSearch={actions.clear}
       />
     )
   } else {

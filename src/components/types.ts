@@ -15,5 +15,5 @@ export type UseSearchQuery = {
    * `search`: returns the typed input as callback
    * `clear`: clears the search field
    * */
-  searchActions: { search: (query: string) => void; clear: () => void }
+  actions: { search: (query: string) => void; clear: () => void }
 }

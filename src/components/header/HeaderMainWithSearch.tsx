@@ -2,7 +2,7 @@ import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { useState } from 'react'
 import { UseSearchQuery } from '../types'
 import { HeaderSearch } from './HeaderSearch'
-import { Props as TitleProps } from './HeaderMain'
+import { Props as HeaderMainProps } from './HeaderMain'
 import {
   HeaderArea,
   HeaderRightArea,
@@ -10,7 +10,7 @@ import {
   HeaderTitle,
 } from './index'
 
-type HeaderMainWithSearchProps = TitleProps &
+type HeaderMainWithSearchProps = HeaderMainProps &
   UseSearchQuery & {
     /**
      * Sets a label ([aria-label](https://www.w3schools.com/accessibility/accessibility_labels.php)) for the search button.
@@ -22,23 +22,23 @@ const HeaderMainWithSearch: React.FC<HeaderMainWithSearchProps> = ({
   title,
   label,
   search,
-  searchActions,
+  actions,
 }) => {
   const [searchShow, setSearchShow] = useState<boolean>(search !== '')
 
   const startSearch = (): void => setSearchShow(true)
   const stopSearch = (): void => {
     setSearchShow(false)
-    searchActions.clear()
+    actions.clear()
   }
 
   if (searchShow) {
     return (
       <HeaderSearch
         text={search}
-        setText={searchActions.search}
+        setText={actions.search}
         stopSearch={stopSearch}
-        clearSearch={searchActions.clear}
+        clearSearch={actions.clear}
       />
     )
   } else {

@@ -30,7 +30,7 @@ export const Template = ({
           title={title}
           iconLabel={iconLabel}
           search={text}
-          searchActions={{ search: setText, clear: clearSearch }}
+          actions={{ search: setText, clear: clearSearch }}
           onDismiss={() => setToggle(!toggle)}
         />
       ) : (
@@ -64,7 +64,3 @@ export const Template = ({
 
 - `dialog.select.base`: Define the size of the select dialog window.
 - `dialog.select.normal`: Define the background color of the select dialog window.
-
-### React Intl
-
-- `shared.organization.select.dialog.title`: Accessibility label for the dialog.
