@@ -17,6 +17,7 @@ export const Template = ({
   buttonTone,
   title,
   iconLabel,
+  dialogLabel,
   ...args
 }) => {
   const [toggle, setToggle] = useState(false)
@@ -32,6 +33,7 @@ export const Template = ({
           search={text}
           actions={{ search: setText, clear: clearSearch }}
           onDismiss={() => setToggle(!toggle)}
+          dialogLabel={dialogLabel}
         />
       ) : (
         <Button tone={buttonTone} onClick={() => setToggle(!toggle)}>
@@ -50,6 +52,7 @@ export const Template = ({
       iconLabel: 'Open search',
       buttonText: 'Reset Notification',
       buttonTone: Tone.primary,
+      dialogLabel: 'Select dialog',
     }}
   >
     {Template.bind({})}
