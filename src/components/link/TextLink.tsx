@@ -1,54 +1,35 @@
 import React from 'react'
 import classNames from 'classnames'
-import Link, { LinkProps } from 'next/link'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
+import {
+  useLinkComponent,
+  LinkComponentProps,
+} from '../../designSystem/router/LinkComponentContext'
 
-enum Variant {
-  primary = 'primary',
-  black = 'black',
-  white = 'white',
-}
-
-type StyledLinkProps = React.DetailedHTMLProps<
-  React.AnchorHTMLAttributes<HTMLAnchorElement>,
-  HTMLAnchorElement
-> & {
-  variant?: Variant
-}
-
-const TextLink = React.forwardRef<HTMLAnchorElement, StyledLinkProps>(
-  ({ children, className, variant, ...props }, ref) => {
+const HTMLTextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
+  ({ children, className, ...props }, ref) => {
     const { textLink } = useTheme()
-    const variantCSS = variant ? textLink.variant[variant] : ''
     return (
-      <a
-        className={classNames(className, variantCSS, textLink.base)}
-        {...props}
-        ref={ref}
-      >
+      <a className={classNames(className, textLink.base)} {...props} ref={ref}>
         {children}
       </a>
     )
   }
 )
 
+HTMLTextLink.displayName = 'HTMLTextLink'
+
+const TextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
+  ({ children, ...props }, ref) => {
+    const LinkComponent = useLinkComponent()
+    return (
+      <LinkComponent {...props} ref={ref}>
+        {children}
+      </LinkComponent>
+    )
+  }
+)
+
 TextLink.displayName = 'TextLink'
 
-const NextStyledLink: React.FC<StyledLinkProps & Pick<LinkProps, 'href'>> = ({
-  children,
-  href,
-  ...props
-}) => {
-  return (
-    <Link href={href} passHref>
-      {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        <TextLink {...props}>{children}</TextLink>
-      }
-    </Link>
-  )
-}
-
-export { NextStyledLink, TextLink, Variant as StyledLinkVariant }
-export type { StyledLinkProps }
+export { TextLink, HTMLTextLink }

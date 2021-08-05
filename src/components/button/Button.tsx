@@ -1,7 +1,9 @@
 import classNames from 'classnames'
 import React from 'react'
-import { useLinkComponent } from '../../designSystem/router/LinkComponentContext'
-import { LinkComponentProps } from '../../designSystem/router/types'
+import {
+  useLinkComponent,
+  LinkComponentProps,
+} from '../../designSystem/router/LinkComponentContext'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 
 export enum Variant {
