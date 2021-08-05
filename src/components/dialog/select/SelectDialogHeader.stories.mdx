@@ -1,0 +1,69 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { useState } from 'react'
+import { Button, Tone } from '../../button/Button'
+import { MenuProvider } from '../../header/areas/MenuContext'
+import { SelectDialogHeader } from './SelectDialogHeader'
+
+<Meta
+  title="Components/Dialog/SelectDialogHeader"
+  component={SelectDialogHeader}
+/>
+
+# SelectDialogHeader
+
+This component is mainly used in the [SelectDialog](/docs/components-header-selectdialog--default-story) to provide there an easy convenient solution of adding a search.
+
+It leverages on the component [HeaderSearch](/docs/components-header-headersearch--default-story) which provides the search logic.
+
+export const Template = ({
+  buttonText,
+  buttonTone,
+  title,
+  iconLabel,
+  ...args
+}) => {
+  const [toggle, setToggle] = useState(false)
+  const [text, setText] = useState('')
+  const clearSearch = () => setText('')
+  return (
+    <MenuProvider>
+      {toggle ? (
+        <SelectDialogHeader
+          {...args}
+          title={title}
+          iconLabel={iconLabel}
+          search={text}
+          searchActions={{ search: setText, clear: clearSearch }}
+          onDismiss={() => setToggle(!toggle)}
+        />
+      ) : (
+        <Button tone={buttonTone} onClick={() => setToggle(!toggle)}>
+          {buttonText}
+        </Button>
+      )}
+    </MenuProvider>
+  )
+}
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      title: 'Select Dialog Header',
+      iconLabel: 'Open search',
+      buttonText: 'Reset Notification',
+      buttonTone: Tone.primary,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props:
+
+<ArgsTable story="Default" />
+
+### Theme:
+
+- `dialog.select.header.base`: Define the padding of the select dialog window.
+- `dialog.select.header.normal`: Define the background and border of the select dialog window.
