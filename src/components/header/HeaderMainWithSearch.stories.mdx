@@ -22,8 +22,8 @@ export const Template = ({ ...args }) => {
       <HeaderMainWithSearch
         {...args}
         search={text}
-        searchActions={{ search: setText, clear: clearSearch }}
-        label="open search"
+        actions={{ search: setText, clear: clearSearch }}
+        label="Open search"
         title="Header Title"
       />
     </MenuProvider>
