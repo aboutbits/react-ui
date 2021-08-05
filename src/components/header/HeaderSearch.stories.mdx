@@ -1,0 +1,52 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { useState } from 'react'
+import { HeaderSearch } from './HeaderSearch'
+import { MenuProvider } from './areas/MenuContext'
+
+<Meta title="Components/Header/HeaderSearch" component={HeaderSearch} />
+
+# HeaderSearch
+
+This component contains the logic for a search functionality. It is used e.g., in the component [HeaderMainWithSearch](http://localhost:4000/?path=/docs/components-header-headermainwithsearch--default-story).
+
+Furthermore, an adjusted interface for the mobile view is provided.
+
+export const Template = ({ ...args }) => {
+  const [text, setText] = useState('')
+  const clearSearch = () => setText('')
+  return (
+    <MenuProvider>
+      <HeaderSearch
+        {...args}
+        text={text}
+        setText={setText}
+        clearSearch={clearSearch}
+        stopSearch={clearSearch}
+      />
+    </MenuProvider>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `header.search.base`: Define the padding of the component.
+- `header.search.normal`: Define the background of the component.
+- `header.search.input.base`: Define the padding of the input.
+- `header.search.input.normal`: Define the background, placeholder-, and text-color or the input.
+- `header.search.clearButton.base`
+- `header.search.clearButton.normal`: Define the hover and focus interaction for the button.
+- `header.search.icon.base`: Define the default width and height of the icon.
+
+### React Intl
+
+- `shared.search.placeholder`: Placeholder text for search field
+- `shared.search.clear`: Accessibility label for clear button in the search field
+- `shared.search.back`: Accessibility label for return button (mobile only)

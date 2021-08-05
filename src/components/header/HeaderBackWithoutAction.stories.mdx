@@ -1,0 +1,30 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { HeaderBackWithoutAction } from './HeaderBackWithoutAction'
+import { MenuProvider } from './areas/MenuContext'
+
+<Meta
+  title="Components/Header/HeaderBackWithoutAction"
+  component={HeaderBackWithoutAction}
+/>
+
+# HeaderBackWithoutAction
+
+This component is similar to [HeaderMain](/docs/components-header-headermain--default-story), but with the difference that on the left an arrow back can be found instead of a menu.
+
+It leverages on the component [HeaderBackAction](/docs/components-header-headerbackaction--default-story) and [HeaderArea](/docs/components-header-headerarea--default-story).
+
+export const Template = ({ ...args }) => {
+  return (
+    <MenuProvider>
+      <HeaderBackWithoutAction {...args} title="Header Title" />
+    </MenuProvider>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

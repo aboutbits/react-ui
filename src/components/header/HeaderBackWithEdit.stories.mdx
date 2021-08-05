@@ -1,0 +1,35 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { HeaderBackWithEdit } from './HeaderBackWithEdit'
+import { MenuProvider } from './areas/MenuContext'
+
+<Meta
+  title="Components/Header/HeaderBackWithEdit"
+  component={HeaderBackWithEdit}
+/>
+
+# HeaderBackWithEdit
+
+This component is specifically designed for detail pages, where you want to give the user the possibility to go back to the previous page, and an edit link to update the content.
+
+It leverages on the components [HeaderBackAction](/docs/components-header-headerbackaction--default-story), [HeaderArea](/docs/components-header-headerarea--default-story), and [HeaderEditAction](/docs/components-header-headereditaction--default-story).
+
+export const Template = ({ ...args }) => {
+  return (
+    <MenuProvider>
+      <HeaderBackWithEdit
+        {...args}
+        editHref="/?path=/docs/components-header-headerbackwithedit--default-story"
+        editLabel="Edit the object"
+        title="Header Title"
+      />
+    </MenuProvider>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

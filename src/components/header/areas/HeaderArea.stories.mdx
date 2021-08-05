@@ -13,9 +13,8 @@ This component defines the main logic of a page header. It adjusts its styling f
 
 If the `navigation` prop has a `ReactNode` assigned, it will always be displayed on the left of the title on the mobile view, on desktop it is hidden. By default the "burger" menu icon will be shown.
 
-In any case, this component needs be wrapped in a `IntlProvider` and `MenuProvider`.
+In any case, this component needs be wrapped in a `MenuProvider`.
 
-- IntlProvider is taken from `react-intl`
 - [MenuProvider](/docs/components-header-menucontext--default-story) is a self-written component
 
 export const Template = ({ ...args }) => (
