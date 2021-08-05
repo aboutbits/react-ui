@@ -3,6 +3,7 @@ import { Dialog } from '@reach/dialog'
 import { useIntl } from 'react-intl'
 import { UseSearchQuery } from '../../types'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { SelectDialogHeader } from './SelectDialogHeader'
 
 type Props = {
   /**
@@ -17,20 +18,25 @@ type Props = {
    * Define the accessibility label for the search icon.
    * */
   iconLabel: string
+  /**
+   * Defines if the dialog is open.
+   * */
+  isOpen: boolean
 } & UseSearchQuery
 
-const SelectDialogHeader: React.FC<Props> = ({
+const SelectDialog: React.FC<Props> = ({
   title,
   iconLabel,
   search,
   onDismiss,
   searchActions,
+  isOpen,
 }) => {
   const { dialog } = useTheme()
   const intl = useIntl()
   return (
     <Dialog
-      //isOpen={isOpen}
+      isOpen={isOpen}
       onDismiss={onDismiss}
       aria-label={intl.formatMessage({
         id: 'shared.organization.select.dialog.title',
@@ -48,4 +54,4 @@ const SelectDialogHeader: React.FC<Props> = ({
   )
 }
 
-export { SelectDialogHeader }
+export { SelectDialog }
