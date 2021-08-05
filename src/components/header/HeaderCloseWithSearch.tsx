@@ -9,34 +9,26 @@ import {
   HeaderTitle,
   HeaderLeftArea,
 } from '../header'
+import { UseSearchQuery } from '../types'
 import { HeaderLargeAction } from './actions/HeaderLargeAction'
 import { HeaderSearch } from './HeaderSearch'
 import { Props as TitleProps } from './HeaderMain'
 
-type HeaderCloseWithSearchProps = TitleProps & {
-  /**
-   *  Define a header title.
-   * */
-  title: string
-  /**
-   * Define the accessibility label for the search icon.
-   * */
-  labelIcon: string
-  /**
-   * Defines the passed value for the search input.
-   * */
-  search: string
-  /**
-   * Defines tow functions:
-   * `search`: returns the typed input as callback
-   * `clear`: clears the search field
-   * */
-  searchActions: { search: (query: string) => void; clear: () => void }
-  /**
-   * Define which action should be executed on closing.
-   * */
-  onClose: () => void
-}
+type HeaderCloseWithSearchProps = TitleProps &
+  UseSearchQuery & {
+    /**
+     *  Define a header title.
+     * */
+    title: string
+    /**
+     * Define the accessibility label for the search icon.
+     * */
+    labelIcon: string
+    /**
+     * Define which action should be executed on closing.
+     * */
+    onClose: () => void
+  }
 
 const HeaderCloseWithSearch: React.FC<HeaderCloseWithSearchProps> = ({
   title,

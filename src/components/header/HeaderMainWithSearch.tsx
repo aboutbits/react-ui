@@ -1,5 +1,6 @@
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { useState } from 'react'
+import { UseSearchQuery } from '../types'
 import { HeaderSearch } from './HeaderSearch'
 import { Props as TitleProps } from './HeaderMain'
 import {
@@ -9,22 +10,13 @@ import {
   HeaderTitle,
 } from './index'
 
-type HeaderMainWithSearchProps = TitleProps & {
-  /**
-   * Sets a label ([aria-label](https://www.w3schools.com/accessibility/accessibility_labels.php)) for the search button.
-   * */
-  label: string
-  /**
-   * Defines the passed value for the search input.
-   * */
-  search: string
-  /**
-   * Defines two functions:
-   * `search`: returns the typed input as callback
-   * `clear`: clears the search field
-   * */
-  searchActions: { search: (query: string) => void; clear: () => void }
-}
+type HeaderMainWithSearchProps = TitleProps &
+  UseSearchQuery & {
+    /**
+     * Sets a label ([aria-label](https://www.w3schools.com/accessibility/accessibility_labels.php)) for the search button.
+     * */
+    label: string
+  }
 
 const HeaderMainWithSearch: React.FC<HeaderMainWithSearchProps> = ({
   title,

@@ -4,3 +4,16 @@ export type ClassNameProps = {
    * */
   className?: string
 }
+
+export type UseSearchQuery = {
+  /**
+   * Defines the passed value for the search input.
+   * */
+  search: string
+  /**
+   * Defines two functions:
+   * `search`: returns the typed input as callback
+   * `clear`: clears the search field
+   * */
+  searchActions: { search: (query: string) => void; clear: () => void }
+}
