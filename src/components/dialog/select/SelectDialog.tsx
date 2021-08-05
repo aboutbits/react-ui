@@ -31,6 +31,7 @@ const SelectDialog: React.FC<Props> = ({
   onDismiss,
   searchActions,
   isOpen,
+  children,
 }) => {
   const { dialog } = useTheme()
   const intl = useIntl()
@@ -50,6 +51,7 @@ const SelectDialog: React.FC<Props> = ({
         search={search}
         searchActions={searchActions}
       />
+      {children}
     </Dialog>
   )
 }
