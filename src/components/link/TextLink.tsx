@@ -10,7 +10,11 @@ const HTMLTextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
   ({ children, className, ...props }, ref) => {
     const { textLink } = useTheme()
     return (
-      <a className={classNames(className, textLink.base)} {...props} ref={ref}>
+      <a
+        className={classNames(className, textLink.html.base)}
+        {...props}
+        ref={ref}
+      >
         {children}
       </a>
     )
