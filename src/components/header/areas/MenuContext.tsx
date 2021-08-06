@@ -22,6 +22,16 @@ const MenuProvider: React.FC = ({ children }) => {
   )
 }
 
+const useMenuState = (): MenuState => {
+  const context = React.useContext(MenuStateContext)
+
+  if (context === undefined) {
+    throw new Error('useMenuState must be used within a MenuProvider')
+  }
+
+  return context
+}
+
 const useMenuToggle = (): MenuToggle => {
   const context = React.useContext(MenuToggleContext)
 
@@ -32,4 +42,4 @@ const useMenuToggle = (): MenuToggle => {
   return context
 }
 
-export { MenuProvider, useMenuToggle }
+export { MenuProvider, useMenuToggle, useMenuState }
