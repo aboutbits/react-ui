@@ -278,6 +278,14 @@ const defaultTheme = {
       },
     },
   },
+  menu: {
+    button: {
+      base: 'flex flex-row items-center py-3 lg:py-4 px-4 lg:px-5 outline-none',
+      normal: 'text-gray-700 hover:bg-gray-100 focus:bg-primary-50 ',
+      icon: { base: 'mr-4 w-6 h-6 fill-current' },
+      text: { base: 'flex-1 text-left' },
+    },
+  },
 }
 
 export function makeTheme(overrideTheme?: OverrideTheme): Theme {
