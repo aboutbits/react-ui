@@ -196,6 +196,12 @@ const defaultTheme = {
           current: 'font-bold',
         },
       },
+      router: {
+        link: {
+          disabled: 'text-gray cursor-not-allowed pointer-events-none',
+          current: 'text-black font-bold hover:underline',
+        },
+      },
     },
   },
   content: {

@@ -2,8 +2,9 @@ import { stringify } from 'query-string'
 import classNames from 'classnames'
 import { calculatePagination, IndexType } from '@aboutbits/pagination'
 import { useIntl } from 'react-intl'
-import { useRouter } from 'next/router'
 import { useLinkComponent } from '../../../designSystem/router/LinkComponentContext'
+import { useRouter } from '../../../designSystem/router/RouterContext'
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 import {
   SectionPaginationContainer,
   SectionPaginationNextContent,
@@ -26,14 +27,26 @@ const calculateLink = (
   return routerUrl + '?' + params.toString()
 }
 
-const SectionPaginationRouter: React.FC<{
+type Props = {
+  /**
+   * Defines the current page.
+   * */
   page: number
+  /**
+   * Defines the number of elements per page.
+   * */
   size: number
+  /**
+   * Defines the total number of elements.
+   * */
   total: number
-}> = ({ page, size, total }) => {
+}
+
+const SectionPaginationRouter: React.FC<Props> = ({ page, size, total }) => {
   const intl = useIntl()
 
   const LinkComponent = useLinkComponent()
+  const { section } = useTheme()
 
   const router = useRouter()
   const routeQuery = stringify(router.query)
@@ -43,9 +56,6 @@ const SectionPaginationRouter: React.FC<{
   const pagination = calculatePagination(page, size, total, config)
 
   if (pagination === null) return null
-
-  const disabledLink = 'text-gray cursor-not-allowed pointer-events-none'
-  const currentLink = 'text-black font-bold hover:underline'
 
   return (
     <SectionPaginationContainer>
@@ -63,7 +73,9 @@ const SectionPaginationRouter: React.FC<{
           role="previous-link"
           className={classNames(
             'flex items-center',
-            pagination.previous.isDisabled ? disabledLink : 'hover:underline'
+            pagination.previous.isDisabled
+              ? section.pagination.router.link.disabled
+              : 'hover:underline'
           )}
         >
           <SectionPaginationPreviousContent />
@@ -89,7 +101,9 @@ const SectionPaginationRouter: React.FC<{
                     { page: page.displayNumber }
                   )}
                   className={classNames(
-                    page.isCurrent ? currentLink : 'text-gray hover:underline'
+                    page.isCurrent
+                      ? section.pagination.router.link.current
+                      : 'text-gray hover:underline'
                   )}
                 >
                   {page.displayNumber}
@@ -114,7 +128,9 @@ const SectionPaginationRouter: React.FC<{
           role="next-link"
           className={classNames(
             'flex items-center',
-            pagination.next.isDisabled ? disabledLink : 'hover:underline'
+            pagination.next.isDisabled
+              ? section.pagination.router.link.disabled
+              : 'hover:underline'
           )}
         >
           <SectionPaginationNextContent />
