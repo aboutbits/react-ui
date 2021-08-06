@@ -2,8 +2,8 @@ import { stringify } from 'query-string'
 import classNames from 'classnames'
 import { calculatePagination, IndexType } from '@aboutbits/pagination'
 import { useIntl } from 'react-intl'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useLinkComponent } from '../../../designSystem/router/LinkComponentContext'
 import {
   SectionPaginationContainer,
   SectionPaginationNextContent,
@@ -32,6 +32,9 @@ const SectionPaginationRouter: React.FC<{
   total: number
 }> = ({ page, size, total }) => {
   const intl = useIntl()
+
+  const LinkComponent = useLinkComponent()
+
   const router = useRouter()
   const routeQuery = stringify(router.query)
   const routerUrl = router.pathname
@@ -46,7 +49,7 @@ const SectionPaginationRouter: React.FC<{
 
   return (
     <SectionPaginationContainer>
-      <Link
+      <LinkComponent
         href={calculateLink(
           routerUrl,
           routeQuery,
@@ -65,13 +68,13 @@ const SectionPaginationRouter: React.FC<{
         >
           <SectionPaginationPreviousContent />
         </a>
-      </Link>
+      </LinkComponent>
 
       <SectionPaginationPagesList>
         {pagination.pages.map((page) => {
           return (
             <SectionPaginationPagesListItem key={page.indexNumber}>
-              <Link
+              <LinkComponent
                 href={calculateLink(
                   routerUrl,
                   routeQuery,
@@ -91,13 +94,13 @@ const SectionPaginationRouter: React.FC<{
                 >
                   {page.displayNumber}
                 </a>
-              </Link>
+              </LinkComponent>
             </SectionPaginationPagesListItem>
           )
         })}
       </SectionPaginationPagesList>
 
-      <Link
+      <LinkComponent
         href={calculateLink(
           routerUrl,
           routeQuery,
@@ -116,7 +119,7 @@ const SectionPaginationRouter: React.FC<{
         >
           <SectionPaginationNextContent />
         </a>
-      </Link>
+      </LinkComponent>
     </SectionPaginationContainer>
   )
 }
