@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { IntlProvider } from 'react-intl'
+import { DesignSystemProvider } from '../designSystem/DesignSystemProvider'
+import { makeTheme } from '../designSystem/theme/theme'
+import enMessages from '../translations/shared.en.json'
+
+<Meta title="Examples/Section" component={DesignSystemProvider} />
+
+# test
+
+export const Template = () => {
+  return (
+    <DesignSystemProvider theme={makeTheme()}>
+      <IntlProvider locale="en" messages={enMessages}>
+        Example set up
+      </IntlProvider>
+    </DesignSystemProvider>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
