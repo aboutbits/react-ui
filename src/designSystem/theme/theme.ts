@@ -182,6 +182,14 @@ const defaultTheme = {
     headerWithAction: {
       base: 'flex justify-between items-center space-x-4',
     },
+    pagination: {
+      container: {
+        base: 'flex justify-between lg:p-4 py-4 px-3',
+      },
+      previousContent: { base: 'inline-block w-6 h-6 fill-current' },
+      nextContent: { icon: { base: 'inline-block w-6 h-6 fill-current' } },
+      pagesList: { base: 'flex items-center space-x-4' },
+    },
   },
   content: {
     area: {
