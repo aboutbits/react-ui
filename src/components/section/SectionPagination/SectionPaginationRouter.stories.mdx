@@ -1,39 +1,27 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { useState } from 'react'
-import { SectionPaginationInMemory } from './SectionPaginationInMemory'
+import { SectionPaginationRouter } from './SectionPaginationRouter'
 
 <Meta
-  title="Components/Section/SectionPaginationInMemory"
-  component={SectionPaginationInMemory}
+  title="Components/Section/SectionPaginationRouter"
+  component={SectionPaginationRouter}
 />
 
 # SectionPaginationInMemory
 
-This component is used for an in-memory pagination.
+This component is used for a router pagination e.g., next/router.
 
 It leverages on the components [SectionPaginationContainer](/docs/components-section-SectionPaginationContainer--default-story), [SectionPaginationNextContent](/docs/components-section-SectionPaginationNextContent--default-story), [SectionPaginationPreviousContent](/docs/components-section-SectionPaginationPreviousContent--default-story) , [SectionPaginationPagesList](/docs/components-section-SectionPaginationPagesList--default-story), and [SectionPaginationPagesListItem](/docs/components-section-SectionPaginationPagesListItem--default-story).
 
 export const Template = ({ children, ...args }) => {
-  const [page, setPage] = useState(1)
   return (
-    <SectionPaginationInMemory
-      {...args}
-      size={5}
-      page={page}
-      total={60}
-      nextLabel="Next page"
-      previousLabel="Previous page"
-      paginationActions={{ setPage: setPage }}
-    >
+    <SectionPaginationRouter {...args} size={5} page={1} total={60}>
       {children}
-    </SectionPaginationInMemory>
+    </SectionPaginationRouter>
   )
 }
 
 <Canvas>
-  <Story name="Default" args={{ className: 'bg-primary' }}>
-    {Template.bind({})}
-  </Story>
+  <Story name="Default">{Template.bind({})}</Story>
 </Canvas>
 
 ### Props
@@ -42,10 +30,10 @@ export const Template = ({ children, ...args }) => {
 
 ### Theme
 
-- `section.pagination.inMemory.link.enabled`
-- `section.pagination.inMemory.link.disabled`
-- `section.pagination.inMemory.link.current`
+- `section.pagination.router.link.disabled`
+- `section.pagination.router.link.current`
 
 ### React Intl
 
-- `shared.pagination.page`: Accessibility label for the page counter.
+- `shared.pagination.next`: Define the description text for the arrow next.
+- `shared.pagination.prev`: Define the description text for the arrow back.
