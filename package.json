@@ -13,6 +13,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@aboutbits/pagination": "^1.1.0",
     "@aboutbits/react-material-icons": "^1.0.0",
     "@reach/dialog": "^0.15.3",
     "@tailwindcss/forms": "^0.3.3",
@@ -20,6 +21,7 @@
     "formik": "^2.2.9",
     "lodash.merge": "^4.6.2",
     "next": "^10.0.6",
+    "query-string": "^7.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-intl": "^5.20.4",
