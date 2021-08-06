@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { MenuProvider } from '../header/areas/MenuContext'
+import { MobileMenu } from './MobileMenu'
+
+<Meta title="Components/Menu/MobileMenu" component={MobileMenu} />
+
+# MobileMenu
+
+export const Template = ({ ...args }) => (
+  <MenuProvider>
+    <MobileMenu {...args} />
+  </MenuProvider>
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `menu.mobile.base`:
+- `menu.mobile.menu.base`:
+- `menu.mobile.menu.button.base`: Define the padding and interactions for hover and active of the button.
+- `menu.mobile.menu.button.icon.base`: Define the color of the icon.
