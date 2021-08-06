@@ -292,6 +292,16 @@ const defaultTheme = {
       inactive: 'text-gray-700',
       icon: { base: 'mr-4 w-6 h-6 fill-current' },
     },
+    mobile: {
+      base: 'flex flex-row items-stretch min-h-screen',
+      menu: {
+        base: 'relative mr-14 w-full max-w-sm',
+        button: {
+          base: 'absolute right-0 p-4 hover:opacity-60 active:opacity-60',
+          icon: { base: 'text-white fill-current' },
+        },
+      },
+    },
   },
 }
 
