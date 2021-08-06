@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import IconAccountCircle from '@aboutbits/react-material-icons/dist/IconAccountCircle'
+import { MenuButton } from './MenuButton'
+
+<Meta title="Components/Menu/MenuButton" component={MenuButton} />
+
+# MenuButton
+
+This component is used to added to a [Menu](/docs/components-menu-menu--default-story).
+
+export const Template = ({ ...args }) => (
+  <MenuButton {...args} text="Button" icon={IconAccountCircle} />
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `menu.button.base`: Define the padding for the button.
+- `menu.button.normal`: Define the background color and interaction for hover and focus
+- `menu.button.icon.base`: Define the size of the icon.
+- `menu.button.text.base`: Define the floating direction of the text.
