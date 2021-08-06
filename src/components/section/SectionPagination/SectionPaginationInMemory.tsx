@@ -1,6 +1,7 @@
 import { useIntl } from 'react-intl'
 import classNames from 'classnames'
 import { calculatePagination } from '@aboutbits/pagination'
+import { useTheme } from '../../../designSystem/theme/ThemeContext'
 import {
   SectionPaginationContainer,
   SectionPaginationNextContent,
@@ -10,10 +11,30 @@ import {
 } from './SectionPagination'
 
 type Props = {
+  /**
+   * Defines the current page.
+   * */
   page: number
+  /**
+   * Defines the number of elements per page.
+   * */
   size: number
+  /**
+   * Defines the total number of elements.
+   * */
   total: number
+  /**
+   * Defines the action to change the page.
+   * */
   paginationActions: { setPage: (page: number) => void }
+  /**
+   * Defines the accessibility label for the previous button.
+   * */
+  previousLabel: string
+  /**
+   * Defines the accessibility label for the next button.
+   * */
+  nextLabel: string
 }
 
 const SectionPaginationInMemory: React.FC<Props> = ({
@@ -21,24 +42,27 @@ const SectionPaginationInMemory: React.FC<Props> = ({
   size,
   total,
   paginationActions,
+  previousLabel,
+  nextLabel,
 }) => {
   const intl = useIntl()
   const pagination = calculatePagination(page, size, total)
 
   if (pagination === null) return null
 
-  const enabledLink = 'hover:underline'
-  const disabledLink = 'text-gray-500 cursor-not-allowed pointer-events-none'
-  const currentLink = 'font-bold'
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { section } = useTheme()
 
   return (
     <SectionPaginationContainer>
       <button
-        aria-label={intl.formatMessage({ id: 'shared.pagination.previous' })}
+        aria-label={previousLabel}
         aria-disabled={pagination.previous.isDisabled}
         className={classNames(
           'flex items-center',
-          pagination.previous.isDisabled ? disabledLink : enabledLink
+          pagination.previous.isDisabled
+            ? section.pagination.inMemory.link.disabled
+            : section.pagination.inMemory.link.enabled
         )}
         onClick={() => {
           paginationActions.setPage(pagination.previous.indexNumber)
@@ -58,8 +82,8 @@ const SectionPaginationInMemory: React.FC<Props> = ({
                   { page: page.displayNumber }
                 )}
                 className={classNames(
-                  enabledLink,
-                  page.isCurrent ? currentLink : ''
+                  section.pagination.inMemory.link.enabled,
+                  page.isCurrent ? section.pagination.inMemory.link.current : ''
                 )}
                 onClick={() => {
                   paginationActions.setPage(page.indexNumber)
@@ -73,11 +97,13 @@ const SectionPaginationInMemory: React.FC<Props> = ({
       </SectionPaginationPagesList>
 
       <button
-        aria-label={intl.formatMessage({ id: 'shared.pagination.next' })}
+        aria-label={nextLabel}
         aria-disabled={pagination.next.isDisabled}
         className={classNames(
           'flex items-center',
-          pagination.next.isDisabled ? disabledLink : enabledLink
+          pagination.next.isDisabled
+            ? section.pagination.inMemory.link.disabled
+            : section.pagination.inMemory.link.enabled
         )}
         onClick={() => {
           paginationActions.setPage(pagination.next.indexNumber)

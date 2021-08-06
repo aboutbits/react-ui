@@ -189,6 +189,13 @@ const defaultTheme = {
       previousContent: { base: 'inline-block w-6 h-6 fill-current' },
       nextContent: { icon: { base: 'inline-block w-6 h-6 fill-current' } },
       pagesList: { base: 'flex items-center space-x-4' },
+      inMemory: {
+        link: {
+          enabled: 'hover:underline',
+          disabled: 'text-gray-500 cursor-not-allowed pointer-events-none',
+          current: 'font-bold',
+        },
+      },
     },
   },
   content: {
