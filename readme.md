@@ -1,4 +1,4 @@
-# React-UI
+# Next Boilerplate
 
 ## Getting started
 
@@ -71,4 +71,33 @@ This environment has also the advantage, that it serves the application with a c
 - [Docker Compose](https://docs.docker.com/compose/)
 - [Local Docker Environment](https://github.com/aboutbits/local-environment)
 
+### Setup
 
+Install all dependencies by executing the following command:
+
+```bash
+docker-compose run --rm node npm install
+```
+
+To start the Docker containers, execute the following command:
+
+```bash
+docker-compose up --detach
+
+# or if you want to force a rebuild of the containers
+
+docker-compose build --pull
+docker-compose up --detach
+```
+
+The project will be served at https://web.aboutbits.test.
+
+Afterwards, you can stop the containers using the following command:
+
+```bash
+docker-compose stop
+
+# or if you want to stop and delete the containers
+
+docker-compose down
+```

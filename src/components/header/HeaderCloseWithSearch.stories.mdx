@@ -1,16 +1,16 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
-import { HeaderMainWithSearch } from './HeaderMainWithSearch'
+import { HeaderCloseWithSearch } from './HeaderCloseWithSearch'
 import { MenuProvider } from './areas/MenuContext'
 
 <Meta
-  title="Components/Header/HeaderMainWithSearch"
-  component={HeaderMainWithSearch}
+  title="Components/Header/HeaderCloseWithSearch"
+  component={HeaderCloseWithSearch}
 />
 
-# HeaderMainWithSearch
+# HeaderCloseWithSearch
 
-This component is similar to [HeaderMain](/docs/components-header-headermain--default-story), but with the difference that a search button can be found on the right side.
+This component is similar to [HeaderMainWithSearch](http://localhost:4000/?path=/docs/components-header-headermainwithsearch--default-story), but instead of the back button a close button is placed on the left side.
 
 It leverages on the component [HeaderSearch](/docs/components-header-headersearch--default-story).
 
@@ -19,11 +19,11 @@ export const Template = ({ ...args }) => {
   const clearSearch = () => setText('')
   return (
     <MenuProvider>
-      <HeaderMainWithSearch
+      <HeaderCloseWithSearch
         {...args}
         search={text}
+        labelIcon="Open search"
         actions={{ search: setText, clear: clearSearch }}
-        label="Open search"
         title="Header Title"
       />
     </MenuProvider>
@@ -37,3 +37,7 @@ export const Template = ({ ...args }) => {
 ### Props
 
 <ArgsTable story="Default" />
+
+### Theme
+
+The variants are the same as for the [HeaderMainWithSearch](http://localhost:4000/?path=/docs/components-header-headermainwithsearch--default-story#theme).
