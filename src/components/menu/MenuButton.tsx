@@ -2,6 +2,7 @@ import React, { ComponentType } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import classNames from 'classnames'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { ClassNameProps } from '../types'
 
 export type MenuLinkButtonProps = {
   /**
@@ -12,14 +13,16 @@ export type MenuLinkButtonProps = {
    * Defines the icon for the button.
    * */
   icon: ComponentType<IconProps>
-} & React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->
+} & ClassNameProps &
+  React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >
 
 const MenuButton: React.FC<MenuLinkButtonProps> = ({
   text,
   icon: Icon,
+  className,
   ...props
 }) => {
   const { menu } = useTheme()
@@ -27,7 +30,7 @@ const MenuButton: React.FC<MenuLinkButtonProps> = ({
   return (
     <button
       {...props}
-      className={classNames(menu.button.base, menu.button.normal)}
+      className={classNames(className, menu.button.base, menu.button.normal)}
     >
       <Icon className={menu.button.icon.base} />
       <div className={menu.button.text.base}>{text}</div>
