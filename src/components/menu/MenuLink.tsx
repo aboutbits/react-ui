@@ -4,6 +4,7 @@ import { ComponentType } from 'react'
 import classNames from 'classnames'
 import { useLinkComponent } from '../../designSystem/router/LinkComponentContext'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { useRouter } from '../../designSystem/router/RouterContext'
 
 declare type Url = string | UrlObject
 
@@ -17,18 +18,16 @@ export type MenuLinkProps = {
 const MenuLink: React.FC<MenuLinkProps> = ({
   text,
   icon: Icon,
-  //strict = false,
+  strict = false,
   ...props
 }) => {
   const LinkComponent = useLinkComponent()
-  /*
+  const router = useRouter()
+
   const active = strict
     ? router.asPath === props.href
     : router.asPath.startsWith(props.href.toString())
 
-
-   */
-  const active = true
   const { menu } = useTheme()
 
   return (
