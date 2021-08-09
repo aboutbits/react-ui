@@ -33,7 +33,7 @@ npm run dev
 
 The project will be served at http://localhost:4000.
 
-Install all dependencies by executing the following command:
+Generate static build by executing the following command:
 
 ```bash
 npm run build-storybook
