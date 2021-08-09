@@ -3,8 +3,8 @@
 ## Table of content
 
 - [Usage](#usage)
-- [Learn more](#learn more)
-- [Development](#development)
+  - [Learn more](#learn-more)
+  - [Development](#development)
 - [Build & Publish](#build--publish)
 - [Information](#information)
 
@@ -31,7 +31,7 @@ Next, you can start the application:
 npm run dev
 ```
 
-The project will be served at http://localhost:3000.
+The project will be served at http://localhost:4000.
 
 Install all dependencies by executing the following command:
 
@@ -130,8 +130,8 @@ For support, please contact [info@aboutbits.it](mailto:info@aboutbits.it).
 
 ### Credits
 
-- [Alex Lanz](https://github.com/alexlanz)
 - [Martin Malfertheiner](https://github.com/mmalfertheiner)
+- [Natan Cieplinski](https://github.com/NatanCieplinski)
 - [All Contributors](../../contributors)
 
 ### License
