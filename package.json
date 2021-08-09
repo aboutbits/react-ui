@@ -13,8 +13,10 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@aboutbits/internationalization": "^0.2.1",
     "@aboutbits/react-material-icons": "^1.0.0",
     "@reach/dialog": "^0.15.3",
+    "@reach/menu-button": "^0.16.1",
     "@tailwindcss/forms": "^0.3.3",
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
