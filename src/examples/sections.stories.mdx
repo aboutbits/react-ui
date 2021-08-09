@@ -1,18 +1,50 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs'
-import { IntlProvider } from 'react-intl'
+import { IntlProvider, useIntl } from 'react-intl'
 import { DesignSystemProvider } from '../designSystem/DesignSystemProvider'
-import { makeTheme } from '../designSystem/theme/theme'
-import enMessages from '../translations/shared.en.json'
+import { Button } from '../components/button/Button'
 
 <Meta title="Examples/Section" component={DesignSystemProvider} />
 
 # test
 
 export const Template = () => {
+  const intl = useIntl()
+  const theme = {
+    button: {
+      button: {
+        base: 'focus:outline-none fill-current',
+        size: {
+          sm: 'border px-2 py-1',
+          md: 'border-2 px-4 py-3 text-lg leading-normal',
+        },
+        variantTone: {
+          solid: {
+            green:
+              'border-transparent bg-green hover:bg-green-700 focus:bg-green-700 text-white font-bold',
+          },
+          ghost: {
+            green:
+              'border-green hover:border-green-700 text-primary hover:text-green-700',
+          },
+          transparent: {
+            green: 'text-green hover:text-green-700',
+          },
+        },
+      },
+    },
+  }
   return (
-    <DesignSystemProvider theme={makeTheme()}>
-      <IntlProvider locale="en" messages={enMessages}>
-        Example set up
+    <DesignSystemProvider theme={theme}>
+      <IntlProvider
+        locale="en"
+        messages={{ 'shared.search.clear': 'Clear search' }}
+      >
+        <Button tone="green">
+          {intl.formatMessage({ id: 'shared.search.back' })}
+        </Button>
+        <Button tone="primary">
+          {intl.formatMessage({ id: 'shared.search.clear' })}
+        </Button>
       </IntlProvider>
     </DesignSystemProvider>
   )
