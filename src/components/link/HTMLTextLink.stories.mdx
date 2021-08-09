@@ -1,22 +1,28 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { HTMLTextLink } from './TextLink'
+import { HtmlTextLink } from './TextLink'
 
-<Meta title="Components/Link/HTMLTextLink" component={HTMLTextLink} />
+<Meta title="Components/Link/HTMLTextLink" component={HtmlTextLink} />
 
-# HTMLTextLink
+# HtmlTextLink
 
 This component is used to create a link to an external page.
 
 It leverages on the HTML anchor (`a`).
 
 export const Template = ({ children, href, ...args }) => (
-  <HTMLTextLink {...args} href={href}>
+  <HtmlTextLink {...args} href={href}>
     {children}
-  </HTMLTextLink>
+  </HtmlTextLink>
 )
 
 <Canvas>
-  <Story name="Default" args={{ children: 'External link', href: '#TextLink' }}>
+  <Story
+    name="Default"
+    args={{
+      children: 'External link',
+      href: '/?path=/docs/components-link-htmltextlink--default-story',
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

@@ -6,28 +6,29 @@ import {
   LinkComponentProps,
 } from '../../designSystem/router/LinkComponentContext'
 
-const HTMLTextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
+const HtmlTextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
   ({ children, className, ...props }, ref) => {
     const { textLink } = useTheme()
     return (
-      <a
-        className={classNames(className, textLink.html.base)}
-        {...props}
-        ref={ref}
-      >
+      <a className={classNames(className, textLink.base)} {...props} ref={ref}>
         {children}
       </a>
     )
   }
 )
 
-HTMLTextLink.displayName = 'HTMLTextLink'
+HtmlTextLink.displayName = 'HtmlTextLink'
 
 const TextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
-  ({ children, ...props }, ref) => {
+  ({ children, className, ...props }, ref) => {
     const LinkComponent = useLinkComponent()
+    const { textLink } = useTheme()
     return (
-      <LinkComponent {...props} ref={ref}>
+      <LinkComponent
+        {...props}
+        ref={ref}
+        className={classNames(className, textLink.base)}
+      >
         {children}
       </LinkComponent>
     )
@@ -36,4 +37,4 @@ const TextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
 
 TextLink.displayName = 'TextLink'
 
-export { TextLink, HTMLTextLink }
+export { TextLink, HtmlTextLink }

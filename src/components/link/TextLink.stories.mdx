@@ -16,7 +16,13 @@ export const Template = ({ href, children, ...args }) => (
 )
 
 <Canvas>
-  <Story name="Default" args={{ children: 'Internal link', href: '#TextLink' }}>
+  <Story
+    name="Default"
+    args={{
+      children: 'Internal link',
+      href: '/?path=/docs/components-link-textlink--default-story',
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

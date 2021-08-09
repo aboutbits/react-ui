@@ -279,9 +279,7 @@ const defaultTheme = {
     },
   },
   textLink: {
-    html: {
-      base: 'text-xs underline hover:opacity-60 active:opacity-60',
-    },
+    base: 'text-xs underline hover:opacity-60 active:opacity-60',
   },
 }
 
