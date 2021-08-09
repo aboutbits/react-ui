@@ -2,6 +2,9 @@ name: Test
 
 on: push
 
+env:
+  PROJECT_URL: storybook.aboutbits.it
+
 jobs:
   setup:
     runs-on: ubuntu-20.04
@@ -48,3 +51,28 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
       - run: npm ci
       - run: npm run test
+
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - test
+      - lint
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - name: Build
+        run: npm run build-storybook
+      - name: Add CNAME file
+        run: echo ${{ env.PROJECT_URL }} > storybook-static/CNAME
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          branch: gh-pages
+          folder: storybook-static
+          clean: true
+
