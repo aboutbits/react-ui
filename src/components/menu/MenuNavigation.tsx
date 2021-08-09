@@ -1,14 +1,23 @@
 import classNames from 'classnames'
-import { useIntl } from 'react-intl'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../types'
 
-const MenuNavigation: React.FC<ClassNameProps> = ({ children, className }) => {
-  const intl = useIntl()
+type MenuNavigationProps = ClassNameProps & {
+  /**
+   * Define the accessibility label for the navigation.
+   * */
+  navLabel: string
+}
+
+const MenuNavigation: React.FC<MenuNavigationProps> = ({
+  children,
+  className,
+  navLabel,
+}) => {
   const { menu } = useTheme()
   return (
     <nav
-      aria-label={intl.formatMessage({ id: 'app.nav.accessibility.main' })}
+      aria-label={navLabel}
       className={classNames(className, menu.navigation.base)}
     >
       {children}
