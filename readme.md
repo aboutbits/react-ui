@@ -1,6 +1,14 @@
-# Next Boilerplate
+# React-UI
 
-## Getting started
+## Table of content
+
+- [Usage](#usage)
+- [Learn more](#learn more)
+- [Development](#development)
+- [Build & Publish](#build--publish)
+- [Information](#information)
+
+## Usage
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing
 purposes.
@@ -59,19 +67,19 @@ npm run test
 npm run test:watch
 ```
 
-## Docker Environment
+### Docker Environment
 
 If you want to get up and running without installing all special requirements of the project locally on your machine, you can follow these steps to set up a preconfigured Docker environment.
 
 This environment has also the advantage, that it serves the application with a custom domain name and through HTTPS with valid SSL certificate.
 
-### Prerequisites
+#### Prerequisites
 
 - [Docker](https://www.docker.com) / [Docker for Mac](https://docs.docker.com/docker-for-mac/) / [Docker for Windows](https://docs.docker.com/docker-for-windows/)
 - [Docker Compose](https://docs.docker.com/compose/)
 - [Local Docker Environment](https://github.com/aboutbits/local-environment)
 
-### Setup
+#### Setup
 
 Install all dependencies by executing the following command:
 
@@ -101,3 +109,31 @@ docker-compose stop
 
 docker-compose down
 ```
+
+## Build & Publish
+
+To build and publish the package, simply commit all changes and push them to master. Then run one of the following commands locally:
+
+```bash
+npm version patch
+npm version minor
+npm version major
+```
+
+## Information
+
+About Bits is a company based in South Tyrol, Italy. You can find more information about us on [our website](https://aboutbits.it).
+
+### Support
+
+For support, please contact [info@aboutbits.it](mailto:info@aboutbits.it).
+
+### Credits
+
+- [Alex Lanz](https://github.com/alexlanz)
+- [Martin Malfertheiner](https://github.com/mmalfertheiner)
+- [All Contributors](../../contributors)
+
+### License
+
+The MIT License (MIT). Please see the [license file](license.md) for more information.
