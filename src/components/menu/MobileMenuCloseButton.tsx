@@ -6,9 +6,9 @@ const MobileMenuCloseButton: React.FC = () => {
   const menuToggle = useMenuToggle()
   const { menu } = useTheme()
   return (
-    <button className={menu.mobile.menu.button.base} onClick={menuToggle}>
+    <button className={menu.mobile.closeButton.base} onClick={menuToggle}>
       <IconClose
-        className={menu.mobile.menu.button.icon.base}
+        className={menu.mobile.closeButton.icon.base}
         width="24"
         height="24"
       />
