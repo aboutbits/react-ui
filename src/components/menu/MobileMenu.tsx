@@ -1,11 +1,10 @@
 import { useIntl } from 'react-intl'
 import { Dialog } from '@reach/dialog'
-import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import { useMenuToggle, useMenuState } from '../header/areas/MenuContext'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
-import { Menu } from './Menu'
+import { MobileMenuCloseButton } from './MobileMenuCloseButton'
 
-const MobileMenu: React.FC = () => {
+const MobileMenu: React.FC = ({ children }) => {
   const intl = useIntl()
   const menuState = useMenuState()
   const menuToggle = useMenuToggle()
@@ -19,15 +18,8 @@ const MobileMenu: React.FC = () => {
       aria-label={intl.formatMessage({ id: 'app.nav.accessibility.main' })}
     >
       <div className={menu.mobile.base}>
-        <Menu className={menu.mobile.menu.base}>
-          <button className={menu.mobile.menu.button.base} onClick={menuToggle}>
-            <IconClose
-              className={menu.mobile.menu.button.icon.base}
-              width="24"
-              height="24"
-            />
-          </button>
-        </Menu>
+        {children}
+        <MobileMenuCloseButton />
       </div>
     </Dialog>
   )
