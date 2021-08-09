@@ -13,7 +13,7 @@ export const Template = ({ ...args }) => {
   return (
     <MenuProvider>
       {toggle ? (
-        <MobileMenu {...args} />
+        <MobileMenu {...args} dialogLabel="Mobile Menu" />
       ) : (
         <Button tone={Tone.primary} onClick={() => setToggle(!toggle)}>
           Reset Dialog
@@ -34,6 +34,3 @@ export const Template = ({ ...args }) => {
 ### Theme
 
 - `menu.mobile.base`:
-- `menu.mobile.menu.base`:
-- `menu.mobile.menu.button.base`: Define the padding and interactions for hover and active of the button.
-- `menu.mobile.menu.button.icon.base`: Define the color of the icon.
