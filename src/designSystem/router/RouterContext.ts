@@ -12,12 +12,8 @@ const defaultRouter: { back: () => void } = {
   },
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  query: () => {
-    window && window.location.href
-  },
-  pathname: () => {
-    window && window.location.pathname
-  },
+  query: window && window.location.href,
+  pathname: window && window.location.pathname,
 }
 
 export const RouterContext = createContext<Router>(<Router>defaultRouter)
