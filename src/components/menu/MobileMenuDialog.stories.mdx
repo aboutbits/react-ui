@@ -1,26 +1,26 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { MenuProvider } from '../header/areas/MenuContext'
 import { HeaderMain } from '../header'
-import { MobileMenu } from './MobileMenu'
-import { MenuContainer } from './MenuContainer'
+import { MobileMenuDialog } from './MobileMenuDialog'
+import { DrawerContainer } from './DrawerContainer'
 
-<Meta title="Components/Menu/MobileMenu" component={MobileMenu} />
+<Meta title="Components/Menu/MobileMenuDialog" component={MobileMenuDialog} />
 
-# MobileMenu
+# MobileMenuDialog
 
 This component is used to provide a mobile menu.
 
-It leverages on the component [MobileMenuCloseButton](/docs/components-menu-mobilemenuclosebutton--default-story)
+It leverages on the component [MobileMenuDialogCloseButton](/docs/components-menu-MobileMenuDialogCloseButton--default-story)
 
 _**Important**_: this storybook is only available for a mobile view. Go to Canvas -> change the size of the preview -> Small mobile.
 
 export const Template = ({ ...args }) => {
   return (
     <MenuProvider>
-      <MenuContainer>
+      <DrawerContainer>
         <HeaderMain title="Only mobile view!" />
-        <MobileMenu {...args} dialogLabel="Mobile Menu" />
-      </MenuContainer>
+        <MobileMenuDialog {...args} dialogLabel="Mobile Menu" />
+      </DrawerContainer>
     </MenuProvider>
   )
 }
@@ -35,4 +35,4 @@ export const Template = ({ ...args }) => {
 
 ### Theme
 
-- `menu.mobile.base`:
+- `menu.mobile.base`: Define the positioning, and the background gradiant for the mobile menu.

@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { useMenuToggle, useMenuState } from '../header/areas/MenuContext'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../types'
-import { MobileMenuCloseButton } from './MobileMenuCloseButton'
+import { MobileMenuDialogCloseButton } from './MobileMenuDialogCloseButton'
 
 type MobileMenuProps = ClassNameProps & {
   /**
@@ -12,7 +12,7 @@ type MobileMenuProps = ClassNameProps & {
   dialogLabel: string
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({
+const MobileMenuDialog: React.FC<MobileMenuProps> = ({
   children,
   className,
   dialogLabel,
@@ -26,10 +26,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     <Dialog isOpen={menuState} onDismiss={menuToggle} aria-label={dialogLabel}>
       <div className={classNames(menu.mobile.base, className)}>
         {children}
-        <MobileMenuCloseButton />
+        <MobileMenuDialogCloseButton />
       </div>
     </Dialog>
   )
 }
 
-export { MobileMenu }
+export { MobileMenuDialog }

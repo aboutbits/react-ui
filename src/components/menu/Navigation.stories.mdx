@@ -1,20 +1,20 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconArrowDropDownCircle from '@aboutbits/react-material-icons/dist/IconArrowDropDownCircle'
-import { MenuNavigation } from './MenuNavigation'
-import { MenuButton } from './MenuButton'
+import { Navigation } from './Navigation'
+import { NavigationItemButton } from './NavigationItemButton'
 
-<Meta title="Components/Menu/MenuNavigation" component={MenuNavigation} />
+<Meta title="Components/Menu/Navigation" component={Navigation} />
 
-# MenuNavigation
+# Navigation
 
 This component is used to provide an HTML-`nav` element for a menu.
 
 export const Template = ({ ...args }) => (
-  <MenuNavigation navLabel="Navigation" {...args}>
-    <MenuButton text="Button 1" icon={IconArrowDropDownCircle} />
-    <MenuButton text="Button 2" icon={IconArrowDropDownCircle} />
-    <MenuButton text="Button 3" icon={IconArrowDropDownCircle} />
-  </MenuNavigation>
+  <Navigation navLabel="Navigation" {...args}>
+    <NavigationItemButton text="Button 1" icon={IconArrowDropDownCircle} />
+    <NavigationItemButton text="Button 2" icon={IconArrowDropDownCircle} />
+    <NavigationItemButton text="Button 3" icon={IconArrowDropDownCircle} />
+  </Navigation>
 )
 
 <Canvas>

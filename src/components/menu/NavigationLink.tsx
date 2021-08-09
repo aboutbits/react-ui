@@ -12,7 +12,7 @@ export type MenuLinkProps = {
   href: string
 }
 
-const MenuLink: React.FC<MenuLinkProps> = ({
+const NavigationLink: React.FC<MenuLinkProps> = ({
   text,
   icon: Icon,
   strict = false,
@@ -44,4 +44,4 @@ const MenuLink: React.FC<MenuLinkProps> = ({
   )
 }
 
-export { MenuLink }
+export { NavigationLink }

@@ -4,7 +4,9 @@ import { useMenuToggle } from '../header/areas/MenuContext'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../types'
 
-const MobileMenuCloseButton: React.FC<ClassNameProps> = ({ className }) => {
+const MobileMenuDialogCloseButton: React.FC<ClassNameProps> = ({
+  className,
+}) => {
   const menuToggle = useMenuToggle()
   const { menu } = useTheme()
   return (
@@ -21,4 +23,4 @@ const MobileMenuCloseButton: React.FC<ClassNameProps> = ({ className }) => {
   )
 }
 
-export { MobileMenuCloseButton }
+export { MobileMenuDialogCloseButton }

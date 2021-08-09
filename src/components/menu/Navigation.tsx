@@ -9,7 +9,7 @@ type MenuNavigationProps = ClassNameProps & {
   navLabel: string
 }
 
-const MenuNavigation: React.FC<MenuNavigationProps> = ({
+const Navigation: React.FC<MenuNavigationProps> = ({
   children,
   className,
   navLabel,
@@ -25,4 +25,4 @@ const MenuNavigation: React.FC<MenuNavigationProps> = ({
   )
 }
 
-export { MenuNavigation }
+export { Navigation }

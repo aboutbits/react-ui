@@ -1,14 +1,14 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { MenuContainer } from './MenuContainer'
+import { DrawerContainer } from './DrawerContainer'
 
-<Meta title="Components/Menu/MenuContainer" component={MenuContainer} />
+<Meta title="Components/Menu/DrawerContainer" component={DrawerContainer} />
 
-# MenuContainer
+# DrawerContainer
 
 This component is used to generate a container for a menu, its main purpose is to apply the shadow and the flexbox.
 
 export const Template = ({ ...args }) => (
-  <MenuContainer {...args} className="py-4" />
+  <DrawerContainer {...args} className="py-4" />
 )
 
 <Canvas>
@@ -21,5 +21,5 @@ export const Template = ({ ...args }) => (
 
 ### Theme
 
-- `menu.container.base`: Define the flexbox and show for the menu container.
-- `menu.container.normal`: Define the background color for the menu container.
+- `menu.container.base`: Define the flexbox and show for the DrawerContainer.
+- `menu.container.normal`: Define the background color for the DrawerContainer.

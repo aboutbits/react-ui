@@ -19,7 +19,7 @@ export type MenuLinkButtonProps = {
     HTMLButtonElement
   >
 
-const MenuButton: React.FC<MenuLinkButtonProps> = ({
+const NavigationItemButton: React.FC<MenuLinkButtonProps> = ({
   text,
   icon: Icon,
   className,
@@ -38,4 +38,4 @@ const MenuButton: React.FC<MenuLinkButtonProps> = ({
   )
 }
 
-export { MenuButton }
+export { NavigationItemButton }

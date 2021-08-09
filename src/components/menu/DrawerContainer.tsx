@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../types'
 
-const MenuContainer: React.FC<ClassNameProps> = ({ children, className }) => {
+const DrawerContainer: React.FC<ClassNameProps> = ({ children, className }) => {
   const { menu } = useTheme()
   return (
     <div
@@ -17,4 +17,4 @@ const MenuContainer: React.FC<ClassNameProps> = ({ children, className }) => {
   )
 }
 
-export { MenuContainer }
+export { DrawerContainer }
