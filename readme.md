@@ -130,8 +130,6 @@ For support, please contact [info@aboutbits.it](mailto:info@aboutbits.it).
 
 ### Credits
 
-- [Martin Malfertheiner](https://github.com/mmalfertheiner)
-- [Natan Cieplinski](https://github.com/NatanCieplinski)
 - [All Contributors](../../contributors)
 
 ### License
