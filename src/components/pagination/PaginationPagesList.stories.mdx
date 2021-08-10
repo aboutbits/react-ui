@@ -1,15 +1,15 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import {
-  SectionPaginationPagesList,
-  SectionPaginationPagesListItem,
-} from './SectionPagination'
+  PaginationPagesList,
+  PaginationPagesListItem,
+} from './PaginationPagesList'
 
 <Meta
-  title="Components/Section/SectionPaginationPagesList"
-  component={SectionPaginationPagesList}
+  title="Components/Pagination/PaginationPagesList"
+  component={PaginationPagesList}
 />
 
-# SectionPaginationContainer
+# PaginationPagesList
 
 This component is used to provide an unordered list.
 
@@ -20,13 +20,11 @@ _**Important:**_ the single items for the list are created with [SelectPaginatio
 export const Template = ({ ...args }) => {
   const listItem = [1, 2, 3, '...']
   return (
-    <SectionPaginationPagesList {...args}>
+    <PaginationPagesList {...args}>
       {listItem.map((elem, i) => (
-        <SectionPaginationPagesListItem key={i}>
-          {elem}
-        </SectionPaginationPagesListItem>
+        <PaginationPagesListItem key={i}>{elem}</PaginationPagesListItem>
       ))}
-    </SectionPaginationPagesList>
+    </PaginationPagesList>
   )
 }
 

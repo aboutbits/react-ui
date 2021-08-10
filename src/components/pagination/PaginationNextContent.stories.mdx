@@ -1,18 +1,16 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { SectionPaginationNextContent } from './SectionPagination'
+import { PaginationNextContent } from './PaginationPreviousNextContent'
 
 <Meta
-  title="Components/Section/SectionPaginationNextContent"
-  component={SectionPaginationNextContent}
+  title="Components/Pagination/PaginationNextContent"
+  component={PaginationNextContent}
 />
 
-# SectionPaginationNextContent
+# PaginationNextContent
 
 This component is used to generate the arrow next, to a following page, within the pagination.
 
-export const Template = ({ ...args }) => (
-  <SectionPaginationNextContent {...args} />
-)
+export const Template = ({ ...args }) => <PaginationNextContent {...args} />
 
 <Canvas>
   <Story name="Default">{Template.bind({})}</Story>

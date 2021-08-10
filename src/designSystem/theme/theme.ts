@@ -186,15 +186,21 @@ const defaultTheme = {
       container: {
         base: 'flex justify-between lg:p-4 py-4 px-3',
       },
-      previousContent: { base: 'inline-block w-6 h-6 fill-current' },
-      nextContent: { icon: { base: 'inline-block w-6 h-6 fill-current' } },
-      pagesList: { base: 'flex items-center space-x-4' },
-      inMemory: {
-        link: {
-          enabled: 'hover:underline',
-          disabled: 'text-gray-500 cursor-not-allowed pointer-events-none',
-          current: 'font-bold',
+      prevNext: {
+        icon: {
+          base: 'inline-block w-6 h-6 fill-current',
         },
+        text: {
+          base: 'hidden lg:block',
+        },
+      },
+      pagesList: { base: 'flex items-center' },
+      page: {
+        base: 'flex items-center',
+        normal: 'px-2',
+        enabled: 'hover:underline',
+        disabled: 'text-gray-500 cursor-not-allowed pointer-events-none',
+        current: 'font-bold',
       },
       router: {
         link: {
