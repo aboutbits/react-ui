@@ -278,7 +278,7 @@ const defaultTheme = {
       },
     },
   },
-  languagePicker: {
+  menu: {
     menuButton: {
       base: 'flex items-center text-xs hover:opacity-60 active:opacity-60',
       text: {
@@ -290,12 +290,12 @@ const defaultTheme = {
         normal: 'fill-current text-primary-700 lg:text-white',
       },
     },
+    menuLink: {
+      base: 'block py-1 px-4 hover:bg-primary-100 cursor-pointer',
+    },
     menuList: {
       base: 'py-3 mb-1 w-32 text-sm bg-white shadow-languageSelector focus:outline-none',
       normal: 'bg-white',
-      menuLink: {
-        base: 'block py-1 px-4 hover:bg-primary-100 cursor-pointer',
-      },
     },
   },
 }

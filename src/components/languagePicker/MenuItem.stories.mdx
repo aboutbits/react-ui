@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { MenuItem } from './MenuItem'
+import { Menu } from './Menu'
+
+<Meta title="Components/Menu/MenuItem" component={MenuItem} />
+
+# MenuItem
+
+This component is used to add an item to the [Menu](/docs/components-menu-menu--default-story).
+
+It leverages on the npm package [@reach/menu-button](https://www.npmjs.com/package/@reach/menu-button).
+
+export const Template = () => (
+  <Menu menuLabel="Menu" text="Menu" className="lg:bg-primary">
+    <MenuItem onClick={() => alert(`Menu item 1 was pressed`)} key={1}>
+      {`Menu item 1`}
+    </MenuItem>
+  </Menu>
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `menu.menuLink.base`: Define the padding and interaction with hover for the menu item.
