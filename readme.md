@@ -1,16 +1,30 @@
 # React-UI
 
-Try it out on our [homepage](https://storybook.aboutbits.it/)!
+React UI is a very opinionated design library, that is based on React and TailwindCSS.
+The build in theming solution, allows you to change the look and feel of all components.
+
+Discover futher details about this design library on our [homepage](https://storybook.aboutbits.it/).
 
 ## Table of content
 
 - [Usage](#usage)
+- [Contribute](#contribute)
   - [Learn more](#learn-more)
   - [Development](#development)
 - [Build & Publish](#build--publish)
 - [Information](#information)
 
 ## Usage
+
+First, you have to install the package:
+
+```
+npm install @aboutbits/react-ui
+```
+
+Further documentation of each component can be found [here](https://storybook.aboutbits.it/).
+
+## Contribute
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing
 purposes.
