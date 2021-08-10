@@ -31,9 +31,13 @@ type Props = {
    * */
   onChangePage: (page: number) => void
   /**
-   * Defines whether the pagination is zero or one based.
+   * Configure the pagination function.
+   * For reference checkout: https://github.com/aboutbits/pagination/#usage
    */
-  indexType?: IndexType
+  config?: {
+    indexType?: IndexType
+    maxPages?: number
+  }
 }
 
 type SectionPaginationInMemoryButtonProps = {
@@ -53,16 +57,16 @@ const SectionPaginationInMemoryButton: React.FC<SectionPaginationInMemoryButtonP
     children,
     ...props
   }) => {
-    const { section } = useTheme()
+    const { pagination: paginationTheme } = useTheme()
     return (
       <button
         aria-disabled={disabled}
         disabled={disabled}
         className={classNames(
-          section.pagination.page.base,
+          paginationTheme.page.base,
           disabled
-            ? section.pagination.page.disabled
-            : section.pagination.page.enabled,
+            ? paginationTheme.page.disabled
+            : paginationTheme.page.enabled,
           className
         )}
         onClick={() => {
@@ -80,11 +84,11 @@ const PaginationInMemory: React.FC<Props> = ({
   size,
   total,
   onChangePage,
-  indexType = IndexType.ZERO_BASED,
+  config,
 }) => {
   const intl = useIntl()
-  const { section } = useTheme()
-  const pagination = calculatePagination(page, size, total, { indexType })
+  const { pagination: paginationTheme } = useTheme()
+  const pagination = calculatePagination(page, size, total, config)
 
   if (pagination === null) return null
 
@@ -110,8 +114,8 @@ const PaginationInMemory: React.FC<Props> = ({
                   { page: page.displayNumber }
                 )}
                 className={classNames(
-                  section.pagination.page.normal,
-                  page.isCurrent ? section.pagination.page.current : ''
+                  paginationTheme.page.normal,
+                  page.isCurrent ? paginationTheme.page.current : ''
                 )}
                 onChangePage={onChangePage}
                 pageIndex={page.indexNumber}

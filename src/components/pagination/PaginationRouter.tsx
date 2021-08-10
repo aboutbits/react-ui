@@ -35,9 +35,13 @@ type Props = {
     href: string
   }
   /**
-   * Defines whether the pagination is zero or one based.
+   * Configure the pagination function.
+   * For reference checkout: https://github.com/aboutbits/pagination/#usage
    */
-  indexType?: IndexType
+  config?: {
+    indexType?: IndexType
+    maxPages?: number
+  }
 }
 
 const PaginationRouter: React.FC<Props> = ({
@@ -45,14 +49,14 @@ const PaginationRouter: React.FC<Props> = ({
   size,
   total,
   linkProps,
-  indexType = IndexType.ZERO_BASED,
+  config,
 }) => {
   const intl = useIntl()
 
   const LinkComponent = useLinkComponent()
-  const { section } = useTheme()
+  const { pagination: paginationTheme } = useTheme()
 
-  const pagination = calculatePagination(page, size, total, { indexType })
+  const pagination = calculatePagination(page, size, total, config)
 
   if (pagination === null) return null
 
@@ -64,9 +68,9 @@ const PaginationRouter: React.FC<Props> = ({
         aria-disabled={pagination.previous.isDisabled}
         role="previous-link"
         className={classNames(
-          section.pagination.page.base,
+          paginationTheme.page.base,
           pagination.previous.isDisabled
-            ? section.pagination.router.link.disabled
+            ? paginationTheme.router.link.disabled
             : 'hover:underline'
         )}
       >
@@ -88,9 +92,9 @@ const PaginationRouter: React.FC<Props> = ({
                   { page: page.displayNumber }
                 )}
                 className={classNames(
-                  section.pagination.page.base,
+                  paginationTheme.page.base,
                   page.isCurrent
-                    ? section.pagination.router.link.current
+                    ? paginationTheme.router.link.current
                     : 'text-gray hover:underline'
                 )}
               >
@@ -110,9 +114,9 @@ const PaginationRouter: React.FC<Props> = ({
         aria-disabled={pagination.next.isDisabled}
         role="next-link"
         className={classNames(
-          section.pagination.page.base,
+          paginationTheme.page.base,
           pagination.next.isDisabled
-            ? section.pagination.router.link.disabled
+            ? paginationTheme.router.link.disabled
             : 'hover:underline'
         )}
       >

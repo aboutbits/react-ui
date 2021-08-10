@@ -6,10 +6,10 @@ export const PaginationContainer: React.FC<ClassNameProps> = ({
   className,
   children,
 }) => {
-  const { section } = useTheme()
+  const { pagination } = useTheme()
 
   return (
-    <div className={classNames(section.pagination.container.base, className)}>
+    <div className={classNames(pagination.container.base, className)}>
       {children}
     </div>
   )

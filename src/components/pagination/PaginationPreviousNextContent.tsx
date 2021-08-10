@@ -5,14 +5,12 @@ import IconKeyboardArrowLeft from '@aboutbits/react-material-icons/dist/IconKeyb
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 
 export function PaginationPreviousContent(): ReactElement {
-  const { section } = useTheme()
+  const { pagination } = useTheme()
 
   return (
     <>
-      <IconKeyboardArrowLeft
-        className={section.pagination.prevNext.icon.base}
-      />
-      <span className={section.pagination.prevNext.text.base}>
+      <IconKeyboardArrowLeft className={pagination.prevNext.icon.base} />
+      <span className={pagination.prevNext.text.base}>
         <FormattedMessage id="shared.pagination.prev" />
       </span>
     </>
@@ -20,16 +18,14 @@ export function PaginationPreviousContent(): ReactElement {
 }
 
 export function PaginationNextContent(): ReactElement {
-  const { section } = useTheme()
+  const { pagination } = useTheme()
 
   return (
     <>
-      <span className={section.pagination.prevNext.text.base}>
+      <span className={pagination.prevNext.text.base}>
         <FormattedMessage id="shared.pagination.next" />
       </span>
-      <IconKeyboardArrowRight
-        className={section.pagination.prevNext.icon.base}
-      />
+      <IconKeyboardArrowRight className={pagination.prevNext.icon.base} />
     </>
   )
 }
