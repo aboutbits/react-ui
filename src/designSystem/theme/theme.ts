@@ -295,11 +295,17 @@ const defaultTheme = {
     navigation: {
       base: 'flex flex-col flex-1 justify-between py-3 lg:py-8 px-3 lg:px-4',
     },
+  },
+  navigation: {
     mobile: {
-      base: 'flex flex-row items-stretch min-h-screen relative mr-14 w-full max-w-sm bg-gradient-to-b from-primary-100 to-white',
-      closeButton: {
-        base: 'absolute right-0 p-4 hover:opacity-60 active:opacity-60',
-        icon: { base: 'text-white fill-current' },
+      dialog: {
+        base: 'flex flex-row items-stretch min-h-screen relative mr-14 w-full max-w-sm',
+        normal: 'bg-gradient-to-b from-primary-100 to-white',
+        closeButton: {
+          base: 'absolute right-0 p-4',
+          normal: 'hover:opacity-60 active:opacity-60',
+          icon: { base: 'fill-current' },
+        },
       },
     },
   },

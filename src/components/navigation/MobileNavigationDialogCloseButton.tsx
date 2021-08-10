@@ -8,14 +8,18 @@ const MobileNavigationDialogCloseButton: React.FC<ClassNameProps> = ({
   className,
 }) => {
   const menuToggle = useMenuToggle()
-  const { menu } = useTheme()
+  const { navigation } = useTheme()
   return (
     <button
-      className={classNames(menu.mobile.closeButton.base, className)}
+      className={classNames(
+        navigation.mobile.dialog.closeButton.base,
+        navigation.mobile.dialog.closeButton.normal,
+        className
+      )}
       onClick={menuToggle}
     >
       <IconClose
-        className={menu.mobile.closeButton.icon.base}
+        className={navigation.mobile.dialog.closeButton.icon.base}
         width="24"
         height="24"
       />

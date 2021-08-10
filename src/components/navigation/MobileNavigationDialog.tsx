@@ -22,7 +22,7 @@ const MobileNavigationDialog: React.FC<MobileNavigationDialogProps> = ({
   const menuState = useMenuState()
   const menuToggle = useMenuToggle()
 
-  const { menu } = useTheme()
+  const { navigation } = useTheme()
 
   return (
     <Dialog
@@ -32,7 +32,13 @@ const MobileNavigationDialog: React.FC<MobileNavigationDialogProps> = ({
         dialogLabel || intl.formatMessage({ id: 'app.nav.accessibility.main' })
       }
     >
-      <div className={classNames(menu.mobile.base, className)}>
+      <div
+        className={classNames(
+          navigation.mobile.dialog.base,
+          navigation.mobile.dialog.normal,
+          className
+        )}
+      >
         {children}
         <MobileNavigationDialogCloseButton />
       </div>
