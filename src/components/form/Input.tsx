@@ -28,9 +28,6 @@ export const Input = forwardRef<HTMLInputElement, Props>(
     const customCss = useCustomInputCss(name, disabled)
     const [field] = useField(name)
 
-    console.log(customCss)
-    console.log(field)
-
     return (
       <div>
         <InputLabel inputId={id} label={label} className={customCss.labelCss} />
