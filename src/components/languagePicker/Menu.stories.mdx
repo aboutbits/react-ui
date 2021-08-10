@@ -57,10 +57,10 @@ export const Template = ({ menuLabel, className, ...args }) => {
 
 ## LanguagePicker
 
-With the menu component it is easily possible to convert it to a language picker. Such a new component will detect the default languages of a browser and if needed change it to english.
-Furthermore, it will allow the user to switch among the provided languages.
+With the menu component it is easy to implement a language picker. Such a new component detects the default languages of a browser and changes it to English if needed.
+It also allows the user to switch between the provided languages.
 
-For the implementation the following package is require `@aboutbits/internationalization`
+The following package is required for the implementation: [@aboutbits/internationalization](https://www.npmjs.com/package/@aboutbits/internationalization)
 
 ```JSX
 const intl = useIntl()
