@@ -3,13 +3,24 @@ import { useField } from 'formik'
 import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
 import { useCustomInputCss } from './useCustomInputCss'
+import { InputProps } from './Input'
 
-type Props = React.DetailedHTMLProps<
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-  HTMLTextAreaElement
-> & { id: string; label?: string; name: string }
+type TextAreaProps = InputProps & {
+  /**
+   * Defines the number of rows within the textarea.
+   * */
+  rows: number
+  /**
+   * Defines the maximum length of the input.
+   * */
+  maxlength: number
+  /**
+   * Defines if the spellchecker is enabled.
+   * */
+  spellcheck: boolean
+}
 
-export const TextArea = forwardRef<HTMLTextAreaElement, Props>(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ label, ...props }, ref) => {
     const customCss = useCustomInputCss(props.name, props.disabled)
     const [field] = useField(props.name)
