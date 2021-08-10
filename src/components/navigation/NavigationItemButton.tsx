@@ -1,4 +1,4 @@
-import React, { ComponentType } from 'react'
+import React, { ComponentType, ReactNode } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import classNames from 'classnames'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
@@ -8,7 +8,7 @@ export type MenuLinkButtonProps = {
   /**
    * Defines the text for the button.
    * */
-  text: string
+  content: ReactNode
   /**
    * Defines the icon for the button.
    * */
@@ -20,20 +20,24 @@ export type MenuLinkButtonProps = {
   >
 
 const NavigationItemButton: React.FC<MenuLinkButtonProps> = ({
-  text,
+  content,
   icon: Icon,
   className,
   ...props
 }) => {
-  const { menu } = useTheme()
+  const { navigation } = useTheme()
 
   return (
     <button
       {...props}
-      className={classNames(className, menu.button.base, menu.button.normal)}
+      className={classNames(
+        className,
+        navigation.item.base,
+        props.disabled ? navigation.item.disabled : navigation.item.normal
+      )}
     >
-      <Icon className={menu.button.icon.base} />
-      <div className={menu.button.text.base}>{text}</div>
+      <Icon className={navigation.item.icon.base} />
+      <div className={navigation.item.content.base}>{content}</div>
     </button>
   )
 }

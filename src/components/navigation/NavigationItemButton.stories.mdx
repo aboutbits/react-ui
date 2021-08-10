@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import IconAccountCircle from '@aboutbits/react-material-icons/dist/IconAccountCircle'
+import IconLogout from '@aboutbits/react-material-icons/dist/IconLogout'
 import { NavigationItemButton } from './NavigationItemButton'
 
 <Meta
@@ -9,10 +9,10 @@ import { NavigationItemButton } from './NavigationItemButton'
 
 # NavigationItemButton
 
-This component is used to added to a [Menu](/docs/components-menu-menu--default-story).
+This button can be placed inside the navigation. E.g. Logout
 
 export const Template = ({ ...args }) => (
-  <NavigationItemButton {...args} text="Button" icon={IconAccountCircle} />
+  <NavigationItemButton {...args} content="Log out" icon={IconLogout} />
 )
 
 <Canvas>
@@ -25,7 +25,25 @@ export const Template = ({ ...args }) => (
 
 ### Theme
 
-- `menu.button.base`: Define the padding for the button.
-- `menu.button.normal`: Define the background color and interaction for hover and focus
-- `menu.button.icon.base`: Define the size of the icon.
-- `menu.button.text.base`: Define the floating direction of the text.
+- `navigation.item.base`: Define the padding for the button.
+- `navigation.item.normal`: Define the background color and interaction for hover and focus
+- `navigation.item.icon.base`: Define the size of the icon.
+- `navigation.item.content.base`: Define the floating direction of the content.
+
+## Examples
+
+<Canvas>
+  <Story name="Very long text">
+    <NavigationItemButton
+      content={'Click here to log out from your account.'}
+      icon={IconLogout}
+    />
+  </Story>
+  <Story name="Disabled">
+    <NavigationItemButton
+      disabled={true}
+      content={'Disabled'}
+      icon={IconLogout}
+    />
+  </Story>
+</Canvas>
