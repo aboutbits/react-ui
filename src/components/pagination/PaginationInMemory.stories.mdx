@@ -36,9 +36,7 @@ export const Template = ({ children, ...args }) => {
 }
 
 <Canvas>
-  <Story name="Default" args={{ className: 'bg-primary' }}>
-    {Template.bind({})}
-  </Story>
+  <Story name="Default">{Template.bind({})}</Story>
 </Canvas>
 
 ### Props
