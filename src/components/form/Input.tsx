@@ -4,7 +4,7 @@ import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
 import { useCustomInputCss } from './useCustomInputCss'
 
-type Props = {
+export type InputProps = {
   /**
    * Defines the htmlFor for the label.
    * */
@@ -23,7 +23,7 @@ type Props = {
   disabled?: boolean
 }
 
-export const Input = forwardRef<HTMLInputElement, Props>(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, id, name, disabled, ...props }, ref) => {
     const customCss = useCustomInputCss(name, disabled)
     const [field] = useField(name)
