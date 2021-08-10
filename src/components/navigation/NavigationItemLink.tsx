@@ -35,18 +35,16 @@ export function NavigationItemLink({
   const { navigation } = useTheme()
 
   return (
-    <li>
-      <LinkComponent
-        className={classNames(
-          className,
-          navigation.item.base,
-          active ? navigation.item.active : navigation.item.normal
-        )}
-        {...props}
-      >
-        <Icon className={navigation.item.icon.base} />
-        <div className={navigation.item.content.base}>{content}</div>
-      </LinkComponent>
-    </li>
+    <LinkComponent
+      className={classNames(
+        className,
+        navigation.item.base,
+        active ? navigation.item.active : navigation.item.normal
+      )}
+      {...props}
+    >
+      <Icon className={navigation.item.icon.base} />
+      <div className={navigation.item.content.base}>{content}</div>
+    </LinkComponent>
   )
 }

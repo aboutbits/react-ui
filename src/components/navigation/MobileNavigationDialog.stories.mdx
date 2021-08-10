@@ -1,7 +1,11 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import IconInbox from '@aboutbits/react-material-icons/dist/IconInbox'
+import IconContacts from '@aboutbits/react-material-icons/dist/IconContacts'
 import { MenuProvider } from '../header/areas/MenuContext'
 import { HeaderMain } from '../header'
 import { MobileNavigationDialog } from './MobileNavigationDialog'
+import { NavigationItemLink } from './NavigationItemLink'
+import { Navigation } from './Navigation'
 
 <Meta
   title="Components/Menu/MobileNavigationDialog"
@@ -21,7 +25,16 @@ export const Template = ({ ...args }) => {
     <MenuProvider>
       <div>
         <HeaderMain title="Home" />
-        <MobileNavigationDialog {...args} dialogLabel="Mobile Menu" />
+        <MobileNavigationDialog {...args} dialogLabel="Mobile Menu">
+          <Navigation navLabel={'Main Navigation'} className={'mt-14'}>
+            <NavigationItemLink content={'Inbox'} icon={IconInbox} href={'/'} />
+            <NavigationItemLink
+              content={'Contacts'}
+              icon={IconContacts}
+              href={'/'}
+            />
+          </Navigation>
+        </MobileNavigationDialog>
       </div>
     </MenuProvider>
   )

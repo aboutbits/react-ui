@@ -280,7 +280,7 @@ const defaultTheme = {
   },
   navigation: {
     navigation: {
-      base: 'flex flex-col flex-1 justify-between',
+      base: 'flex flex-col flex-1',
     },
     item: {
       base: 'flex flex-row items-center w-full py-3 lg:py-4 px-4 lg:px-5 outline-none',
