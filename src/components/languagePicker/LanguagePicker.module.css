@@ -1,9 +1,0 @@
-.svg {
-  fill: theme('colors.primary.700')
-}
-
-@screen lg {
-  .svg {
-    fill: white
-  }
-}

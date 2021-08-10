@@ -5,9 +5,19 @@ import '@reach/menu-button/styles.css'
 import { useIntl } from 'react-intl'
 import { i18n, locales } from '../../translations/i18n'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
-import styles from './LanguagePicker.module.css'
+import { ClassNameProps } from '../types'
 
-const LanguagePicker: React.FC<{ menuLabel: string }> = ({ menuLabel }) => {
+type LanguagePickerProps = ClassNameProps & {
+  /**
+   * Defines the accessibility label for the menu.
+   * */
+  menuLabel: string
+}
+
+const LanguagePicker: React.FC<LanguagePickerProps> = ({
+  menuLabel,
+  className,
+}) => {
   const intl = useIntl()
   const { languagePicker } = useTheme()
 
@@ -20,7 +30,7 @@ const LanguagePicker: React.FC<{ menuLabel: string }> = ({ menuLabel }) => {
           <MenuButton
             id="navigation.language.desktop"
             aria-label={menuLabel}
-            className={languagePicker.menuButton.base}
+            className={classNames(languagePicker.menuButton.base, className)}
           >
             <span
               className={classNames(
@@ -34,8 +44,8 @@ const LanguagePicker: React.FC<{ menuLabel: string }> = ({ menuLabel }) => {
               <IconArrowDropUp
                 className={classNames(
                   languagePicker.menuButton.icon.base,
-                  !isExpanded && 'transform rotate-180',
-                  styles.svg
+                  languagePicker.menuButton.icon.normal,
+                  !isExpanded && 'transform rotate-180'
                 )}
               />
             </span>

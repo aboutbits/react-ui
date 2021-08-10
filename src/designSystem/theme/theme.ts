@@ -287,11 +287,12 @@ const defaultTheme = {
       },
       icon: {
         base: 'w-6 h-6',
+        normal: 'fill-current text-primary-700 lg:text-white',
       },
     },
     menuList: {
       base: 'py-3 mb-1 w-32 text-sm bg-white shadow-languageSelector focus:outline-none',
-      normal: 'bg-white ',
+      normal: 'bg-white',
       menuLink: {
         base: 'block py-1 px-4 hover:bg-primary-100 cursor-pointer',
       },
