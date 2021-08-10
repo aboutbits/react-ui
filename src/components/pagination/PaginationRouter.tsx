@@ -3,6 +3,7 @@ import { calculatePagination, IndexType } from '@aboutbits/pagination'
 import { useIntl } from 'react-intl'
 import { useLinkComponent } from '../../designSystem/router/LinkComponentContext'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { ClassNameProps } from '../types'
 import { PaginationContainer } from './PaginationContainer'
 import {
   PaginationNextContent,
@@ -13,7 +14,7 @@ import {
   PaginationPagesListItem,
 } from './PaginationPagesList'
 
-type Props = {
+type Props = ClassNameProps & {
   /**
    * Defines the current page.
    * */
@@ -50,6 +51,7 @@ const PaginationRouter: React.FC<Props> = ({
   total,
   linkProps,
   config,
+  className,
 }) => {
   const intl = useIntl()
 
@@ -61,7 +63,7 @@ const PaginationRouter: React.FC<Props> = ({
   if (pagination === null) return null
 
   return (
-    <PaginationContainer>
+    <PaginationContainer className={className}>
       <LinkComponent
         {...linkProps({ pageIndex: pagination.previous.indexNumber, size })}
         aria-label={intl.formatMessage({ id: 'shared.pagination.prev' })}
