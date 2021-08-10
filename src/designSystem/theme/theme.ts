@@ -292,11 +292,11 @@ const defaultTheme = {
       inactive: 'text-gray-700',
       icon: { base: 'mr-4 w-6 h-6 fill-current' },
     },
-    navigation: {
-      base: 'flex flex-col flex-1 justify-between py-3 lg:py-8 px-3 lg:px-4',
-    },
   },
   navigation: {
+    navigation: {
+      base: 'flex flex-col flex-1 justify-between',
+    },
     mobile: {
       dialog: {
         base: 'flex flex-row items-stretch min-h-screen relative mr-14 w-full max-w-sm',

@@ -2,27 +2,25 @@ import classNames from 'classnames'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../types'
 
-type MenuNavigationProps = ClassNameProps & {
+type Props = ClassNameProps & {
   /**
    * Define the accessibility label for the navigation.
    * */
   navLabel: string
 }
 
-const Navigation: React.FC<MenuNavigationProps> = ({
+export const Navigation: React.FC<Props> = ({
   children,
   className,
   navLabel,
 }) => {
-  const { menu } = useTheme()
+  const { navigation } = useTheme()
   return (
     <nav
       aria-label={navLabel}
-      className={classNames(className, menu.navigation.base)}
+      className={classNames(className, navigation.navigation.base)}
     >
       {children}
     </nav>
   )
 }
-
-export { Navigation }
