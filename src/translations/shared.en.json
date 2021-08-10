@@ -1,5 +1,6 @@
 {
   "app.nav.menu": "Menu",
+  "app.nav.accessibility.main": "Main navigation",
   "shared.field.email": "Email",
   "shared.field.password": "Password",
   "shared.field.newPassword": "New Password",
