@@ -5,6 +5,13 @@ import { MobileNavigationDialogCloseButton } from './MobileNavigationDialogClose
 <Meta
   title="Components/Menu/MobileNavigationDialogCloseButton"
   component={MobileNavigationDialogCloseButton}
+  decorators={[
+    (Story) => (
+      <div className="relative w-full h-20 text-black bg-gray-100">
+        <Story />
+      </div>
+    ),
+  ]}
 />
 
 # MobileNavigationDialogCloseButton
@@ -13,7 +20,7 @@ This component is used to provide a close button for the mobile menu dialog wind
 
 export const Template = ({ ...args }) => (
   <MenuProvider>
-    <MobileNavigationDialogCloseButton {...args} className="bg-primary" />
+    <MobileNavigationDialogCloseButton {...args} />
   </MenuProvider>
 )
 
