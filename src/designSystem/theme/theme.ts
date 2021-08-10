@@ -203,12 +203,6 @@ const defaultTheme = {
       disabled: 'text-gray-500 cursor-not-allowed pointer-events-none',
       current: 'font-bold',
     },
-    router: {
-      link: {
-        disabled: 'text-gray cursor-not-allowed pointer-events-none',
-        current: 'text-black font-bold hover:underline',
-      },
-    },
   },
   content: {
     area: {

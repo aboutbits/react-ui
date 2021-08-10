@@ -70,8 +70,8 @@ const PaginationRouter: React.FC<Props> = ({
         className={classNames(
           paginationTheme.page.base,
           pagination.previous.isDisabled
-            ? paginationTheme.router.link.disabled
-            : 'hover:underline'
+            ? paginationTheme.page.disabled
+            : paginationTheme.page.enabled
         )}
       >
         <PaginationPreviousContent />
@@ -93,9 +93,9 @@ const PaginationRouter: React.FC<Props> = ({
                 )}
                 className={classNames(
                   paginationTheme.page.base,
-                  page.isCurrent
-                    ? paginationTheme.router.link.current
-                    : 'text-gray hover:underline'
+                  paginationTheme.page.normal,
+                  paginationTheme.page.enabled,
+                  page.isCurrent ? paginationTheme.page.current : ''
                 )}
               >
                 {page.displayNumber}
@@ -116,8 +116,8 @@ const PaginationRouter: React.FC<Props> = ({
         className={classNames(
           paginationTheme.page.base,
           pagination.next.isDisabled
-            ? paginationTheme.router.link.disabled
-            : 'hover:underline'
+            ? paginationTheme.page.disabled
+            : paginationTheme.page.enabled
         )}
       >
         <PaginationNextContent />
