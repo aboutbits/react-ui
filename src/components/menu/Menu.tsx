@@ -1,11 +1,10 @@
 import IconArrowDropUp from '@aboutbits/react-material-icons/dist/IconArrowDropUp'
 import { Menu as MenuReach, MenuButton, MenuList } from '@reach/menu-button'
 import classNames from 'classnames'
-import '@reach/menu-button/styles.css'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../types'
 
-type LanguagePickerProps = ClassNameProps & {
+type MenuProps = ClassNameProps & {
   /**
    * Defines the accessibility label for the menu.
    * */
@@ -16,7 +15,7 @@ type LanguagePickerProps = ClassNameProps & {
   text: string
 }
 
-const Menu: React.FC<LanguagePickerProps> = ({
+const Menu: React.FC<MenuProps> = ({
   menuLabel,
   className,
   text,

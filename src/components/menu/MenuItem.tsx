@@ -1,10 +1,9 @@
 import { MenuLink } from '@reach/menu-button'
 import classNames from 'classnames'
-import '@reach/menu-button/styles.css'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../types'
 
-type LanguagePickerProps = ClassNameProps & {
+type MenuItemProps = ClassNameProps & {
   /**
    * Defines the accessibility label for the menu.
    * */
@@ -15,7 +14,7 @@ type LanguagePickerProps = ClassNameProps & {
   key: string
 }
 
-const MenuItem: React.FC<LanguagePickerProps> = ({
+const MenuItem: React.FC<MenuItemProps> = ({
   children,
   className,
   ...props
