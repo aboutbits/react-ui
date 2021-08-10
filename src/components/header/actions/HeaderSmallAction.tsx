@@ -18,7 +18,7 @@ type Props = ClassNameProps & {
    * */
   onClick: () => void
   /**
-   *
+   * Defines the disable status of the input.
    * */
   disabled?: boolean
 }
