@@ -6,15 +6,31 @@ import { PaginationRouter } from './PaginationRouter'
   component={PaginationRouter}
 />
 
-# PaginationInMemory
+# PaginationRouter
 
-This component is used for a router pagination e.g., next/router.
+This component supports pagination based on the browser URL. It will use the `LinkComponent` to create the anchor tags.
 
 It leverages on the components [PaginationContainer](/docs/components-section-PaginationContainer--default-story), [SectionPaginationNextContent](/docs/components-section-SectionPaginationNextContent--default-story), [SectionPaginationPreviousContent](/docs/components-section-SectionPaginationPreviousContent--default-story) , [PaginationPagesList](/docs/components-section-PaginationPagesList--default-story), and [SectionPaginationPagesListItem](/docs/components-section-SectionPaginationPagesListItem--default-story).
 
 export const Template = ({ children, ...args }) => {
+  const currentParams = new URLSearchParams(window.parent.location.search)
+  const currentPage = parseInt(currentParams.get('page'), 10) || 1
+  const currentSize = parseInt(currentParams.get('size'), 10) || 10
   return (
-    <PaginationRouter {...args} size={5} page={1} total={60}>
+    <PaginationRouter
+      {...args}
+      linkProps={({ pageIndex, size }) => {
+        const params = new URLSearchParams(window.parent.location.search)
+        params.set('page', String(pageIndex))
+        params.set('size', String(size))
+        return {
+          href: window.parent.location.pathname + '?' + params.toString(),
+        }
+      }}
+      size={currentSize}
+      page={currentPage}
+      total={60}
+    >
       {children}
     </PaginationRouter>
   )
