@@ -1,22 +1,30 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconAccountCircle from '@aboutbits/react-material-icons/dist/IconAccountCircle'
-import { NavigationLink } from './NavigationLink'
+import { NavigationItemLink } from './NavigationItemLink'
 
-<Meta title="Components/Menu/NavigationLink" component={NavigationLink} />
+<Meta
+  title="Components/Menu/NavigationItemLink"
+  component={NavigationItemLink}
+  decorators={[
+    (Story) => (
+      <ul>
+        <Story />
+      </ul>
+    ),
+  ]}
+/>
 
-# NavigationLink
+# NavigationItemLink
 
 This component is used to added to a [Menu](/docs/components-menu-menu--default-story).
 
 export const Template = ({ ...args }) => (
-  <ul>
-    <NavigationLink
-      {...args}
-      href="/?path=/story/components-menu-menulink--default-story"
-      text="Button"
-      icon={IconAccountCircle}
-    />
-  </ul>
+  <NavigationItemLink
+    {...args}
+    href="/?path=/story/components-menu-menulink--default-story"
+    content="Navigation Link"
+    icon={IconAccountCircle}
+  />
 )
 
 <Canvas>
@@ -29,8 +37,28 @@ export const Template = ({ ...args }) => (
 
 ### Theme
 
-- `menu.button.base`: Define the padding for the button.
-- `menu.button.normal`: Define the background color and interaction for hover and focus
-- `menu.button.active`: Define the background color and interaction for hover and focus
-- `menu.button.inactive`: Define the background color and interaction for hover and focus
-- `menu.button.icon.base`: Define the size of the icon.
+- `navigation.item.base`: Define the base style of the link, that is shared between different states.
+- `navigation.item.normal`: Define the normal style of the link.
+- `navigation.item.active`: Define the active style of the link.
+- `navigation.item.icon.base`: Define the size of the icon.
+- `navigation.item.content.base`: Define the floating direction of the content.
+
+## Examples
+
+<Canvas>
+  <Story name="Very long text">
+    <NavigationItemLink
+      content={'Open your profile and check it out.'}
+      icon={IconAccountCircle}
+      href={'/'}
+    />
+  </Story>
+  <Story name="Active">
+    <NavigationItemLink
+      active={true}
+      content={'Active Link'}
+      icon={IconAccountCircle}
+      href={'/'}
+    />
+  </Story>
+</Canvas>
