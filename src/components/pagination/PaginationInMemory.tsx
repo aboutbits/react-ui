@@ -13,7 +13,7 @@ import {
   PaginationPagesListItem,
 } from './PaginationPagesList'
 
-type Props = {
+type Props = ClassNameProps & {
   /**
    * Defines the current page.
    * */
@@ -49,14 +49,7 @@ type SectionPaginationInMemoryButtonProps = {
   ClassNameProps
 
 const SectionPaginationInMemoryButton: React.FC<SectionPaginationInMemoryButtonProps> =
-  ({
-    disabled,
-    onChangePage,
-    pageIndex,
-    className = '',
-    children,
-    ...props
-  }) => {
+  ({ disabled, onChangePage, pageIndex, className, children, ...props }) => {
     const { pagination: paginationTheme } = useTheme()
     return (
       <button
@@ -85,6 +78,7 @@ const PaginationInMemory: React.FC<Props> = ({
   total,
   onChangePage,
   config,
+  className,
 }) => {
   const intl = useIntl()
   const { pagination: paginationTheme } = useTheme()
@@ -93,7 +87,7 @@ const PaginationInMemory: React.FC<Props> = ({
   if (pagination === null) return null
 
   return (
-    <PaginationContainer>
+    <PaginationContainer className={className}>
       <SectionPaginationInMemoryButton
         aria-label={intl.formatMessage({ id: 'shared.pagination.prev' })}
         disabled={pagination.previous.isDisabled}
