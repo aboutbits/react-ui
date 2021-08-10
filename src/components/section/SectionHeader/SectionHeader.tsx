@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import React, { ReactNode } from 'react'
-import { ClassNameProps } from '../../types'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { ClassNameProps } from '../../types'
 
 type SectionHeaderProps = ClassNameProps
 

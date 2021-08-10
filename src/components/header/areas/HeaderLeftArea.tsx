@@ -1,5 +1,5 @@
-import { ClassNameProps } from '../../types'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { ClassNameProps } from '../../types'
 
 type Props = ClassNameProps
 

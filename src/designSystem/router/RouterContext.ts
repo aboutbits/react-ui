@@ -4,13 +4,13 @@ export type Router = {
   back: () => void
 }
 
-const defaultRouter: Router = {
+const defaultRouter: { back: () => void } = {
   back: () => {
     window && window.history.back()
   },
 }
 
-export const RouterContext = createContext<Router>(defaultRouter)
+export const RouterContext = createContext<Router>(<Router>defaultRouter)
 
 export function useRouter(): Router {
   return useContext(RouterContext)

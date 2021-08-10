@@ -183,6 +183,27 @@ const defaultTheme = {
       base: 'flex justify-between items-center space-x-4',
     },
   },
+  pagination: {
+    container: {
+      base: 'flex justify-between lg:p-4 py-4 px-3',
+    },
+    prevNext: {
+      icon: {
+        base: 'inline-block w-6 h-6 fill-current',
+      },
+      text: {
+        base: 'hidden lg:block',
+      },
+    },
+    pagesList: { base: 'flex items-center' },
+    page: {
+      base: 'flex items-center',
+      normal: 'px-2',
+      enabled: 'hover:underline',
+      disabled: 'text-gray-500 cursor-not-allowed pointer-events-none',
+      current: 'font-bold',
+    },
+  },
   content: {
     area: {
       base: 'space-y-8 lg:space-y-10',

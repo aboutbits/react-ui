@@ -4,7 +4,6 @@ export type ClassNameProps = {
    * */
   className?: string
 }
-
 export type UseSearchQuery = {
   /**
    * Defines the passed value for the search input.
