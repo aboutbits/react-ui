@@ -278,6 +278,25 @@ const defaultTheme = {
       },
     },
   },
+  languagePicker: {
+    menuButton: {
+      base: 'flex items-center text-xs hover:opacity-60 active:opacity-60',
+      text: {
+        base: 'underline capitalize',
+        normal: 'text-primary-700 lg:text-white',
+      },
+      icon: {
+        base: 'w-6 h-6',
+      },
+    },
+    menuList: {
+      base: 'py-3 mb-1 w-32 text-sm bg-white shadow-languageSelector focus:outline-none',
+      normal: 'bg-white ',
+      menuLink: {
+        base: 'block py-1 px-4 hover:bg-primary-100 cursor-pointer',
+      },
+    },
+  },
 }
 
 export function makeTheme(overrideTheme?: OverrideTheme): Theme {

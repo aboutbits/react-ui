@@ -1,13 +1,15 @@
 import IconArrowDropUp from '@aboutbits/react-material-icons/dist/IconArrowDropUp'
 import { Menu, MenuButton, MenuLink, MenuList } from '@reach/menu-button'
 import classNames from 'classnames'
-
+import '@reach/menu-button/styles.css'
 import { useIntl } from 'react-intl'
-import { i18n, locales } from './i18n'
+import { i18n, locales } from '../../translations/i18n'
+import { useTheme } from '../../designSystem/theme/ThemeContext'
 import styles from './LanguagePicker.module.css'
 
-const LanguagePicker: React.FC = () => {
+const LanguagePicker: React.FC<{ menuLabel: string }> = ({ menuLabel }) => {
   const intl = useIntl()
+  const { languagePicker } = useTheme()
 
   const currentLocale = intl.locale
 
@@ -17,18 +19,21 @@ const LanguagePicker: React.FC = () => {
         <>
           <MenuButton
             id="navigation.language.desktop"
-            aria-label={intl.formatMessage({
-              id: 'shared.footer.languagePicker.selectLanguage',
-            })}
-            className="flex items-center text-xs hover:opacity-60 active:opacity-60"
+            aria-label={menuLabel}
+            className={languagePicker.menuButton.base}
           >
-            <span className="text-primary-700 lg:text-white underline capitalize">
+            <span
+              className={classNames(
+                languagePicker.menuButton.text.base,
+                languagePicker.menuButton.text.normal
+              )}
+            >
               {currentLocale}
             </span>
             <span aria-hidden>
               <IconArrowDropUp
                 className={classNames(
-                  'w-6 h-6',
+                  languagePicker.menuButton.icon.base,
                   !isExpanded && 'transform rotate-180',
                   styles.svg
                 )}
@@ -36,17 +41,20 @@ const LanguagePicker: React.FC = () => {
             </span>
           </MenuButton>
 
-          <MenuList className="py-3 mb-1 w-32 text-sm bg-white shadow-languageSelector focus:outline-none">
+          <MenuList
+            className={classNames(
+              languagePicker.menuList.base,
+              languagePicker.menuList.normal
+            )}
+          >
             {i18n.supportedLanguages.map((supportedLanguage, index) => (
               <MenuLink
                 key={index}
-                onClick={(): void => {
+                onClick={() => {
                   i18n.setLanguage(supportedLanguage)
                   window.location.reload()
                 }}
-                className={classNames(
-                  'block py-1 px-4 hover:bg-primary-100 cursor-pointer'
-                )}
+                className={languagePicker.menuList.menuLink.base}
               >
                 {locales[supportedLanguage]}
               </MenuLink>
