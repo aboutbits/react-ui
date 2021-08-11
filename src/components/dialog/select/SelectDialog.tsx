@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { Dialog } from '@reach/dialog'
-import { UseSearchQuery } from '../../types'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { UseSearchQuery } from '../../types'
 import { SelectDialogHeader } from './SelectDialogHeader'
 
 type Props = {

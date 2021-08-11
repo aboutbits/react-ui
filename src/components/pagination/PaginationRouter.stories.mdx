@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { PaginationRouter } from './PaginationRouter'
+
+<Meta
+  title="Components/Pagination/PaginationRouter"
+  component={PaginationRouter}
+/>
+
+# PaginationRouter
+
+This component supports pagination based on the browser URL. It will use the `LinkComponent` to create the anchor tags.
+In order to use this component you have to install the following package.
+
+```
+npm i @aboutbits/pagination
+```
+
+It leverages on the components [PaginationContainer](/docs/components-section-PaginationContainer--default-story), [SectionPaginationNextContent](/docs/components-section-SectionPaginationNextContent--default-story), [SectionPaginationPreviousContent](/docs/components-section-SectionPaginationPreviousContent--default-story) , [PaginationPagesList](/docs/components-section-PaginationPagesList--default-story), and [SectionPaginationPagesListItem](/docs/components-section-SectionPaginationPagesListItem--default-story).
+
+export const Template = ({ children, ...args }) => {
+  const currentParams = new URLSearchParams(window.parent.location.search)
+  const currentPage = parseInt(currentParams.get('page'), 10) || 1
+  const currentSize = parseInt(currentParams.get('size'), 10) || 10
+  return (
+    <PaginationRouter
+      {...args}
+      linkProps={({ pageIndex, size }) => {
+        const params = new URLSearchParams(window.parent.location.search)
+        params.set('page', String(pageIndex))
+        params.set('size', String(size))
+        return {
+          href: window.parent.location.pathname + '?' + params.toString(),
+        }
+      }}
+      size={currentSize}
+      page={currentPage}
+      total={60}
+    >
+      {children}
+    </PaginationRouter>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `pagination.page.base`
+- `pagination.page.normal`
+- `pagination.page.enabled`
+- `pagination.page.disabled`
+- `pagination.page.current`
+
+### React Intl
+
+- `shared.pagination.page`: Accessibility label for the page counter.
+- `shared.pagination.prev`: Accessibility label for previous page.
+- `shared.pagination.next`: Accessibility label for next page.

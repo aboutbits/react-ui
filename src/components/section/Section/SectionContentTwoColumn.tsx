@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import { ClassNameProps } from '../../types'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { ClassNameProps } from '../../types'
 import { SectionContent } from './SectionContent'
 
 export const SectionContentTwoColumn: React.FC<ClassNameProps> = ({
