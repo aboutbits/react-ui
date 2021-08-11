@@ -1,0 +1,53 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import IconInbox from '@aboutbits/react-material-icons/dist/IconInbox'
+import IconContacts from '@aboutbits/react-material-icons/dist/IconContacts'
+import { MenuProvider } from '../header/areas/MenuContext'
+import { HeaderMain } from '../header'
+import { MobileNavigationDialog } from './MobileNavigationDialog'
+import { NavigationItemLink } from './NavigationItemLink'
+import { Navigation } from './Navigation'
+
+<Meta
+  title="Components/Navigation/MobileNavigationDialog"
+  component={MobileNavigationDialog}
+/>
+
+# MobileNavigationDialog
+
+This component is a dialog for a mobile menu. It will cover the full app.
+The close button of the menu is customizable. It makes use of the [MobileNavigationDialogCloseButton](/docs/components-navigation-MobileNavigationDialogCloseButton--default-story) component.
+
+_**Important**_: This storybook is only available for a mobile view. Go to Canvas -> change the size of the preview -> Small mobile.
+
+export const Template = ({ ...args }) => {
+  return (
+    <MenuProvider>
+      <div>
+        <HeaderMain title="Home" />
+        <MobileNavigationDialog {...args} dialogLabel="Mobile Menu">
+          <Navigation navLabel={'Main Navigation'} className={'mt-14'}>
+            <NavigationItemLink content={'Inbox'} icon={IconInbox} href={'/'} />
+            <NavigationItemLink
+              content={'Contacts'}
+              icon={IconContacts}
+              href={'/'}
+            />
+          </Navigation>
+        </MobileNavigationDialog>
+      </div>
+    </MenuProvider>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `navigation.mobile.dialog.base`
+- `navigation.mobile.dialog.normal`

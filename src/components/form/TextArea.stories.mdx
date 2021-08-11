@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+import { SectionContent } from '../section'
+import { TextArea } from './TextArea'
+import { Form } from './Form'
+
+<Meta
+  title="Components/Form/TextArea"
+  component={TextArea}
+  decorators={[
+    (Story) => {
+      const validationSchema = Yup.object().shape({
+        description: Yup.string().required('Required'),
+      })
+      return (
+        <Formik
+          initialValues={{ right: '' }}
+          validateOnChange={true}
+          validationSchema={validationSchema}
+          onSubmit={(values) => action('onSubmit')(values)}
+        >
+          <Form>
+            <SectionContent>
+              <Story />
+            </SectionContent>
+          </Form>
+        </Formik>
+      )
+    },
+  ]}
+/>
+
+# TextArea
+
+This component can be used to create textarea fields. This input already has a label and handles error messages in `formik` Forms.
+
+export const Template = ({ ...args }) => <TextArea {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      label: 'Description',
+      name: 'description',
+      rows: 4,
+      cols: 5,
+      maxlength: 240,
+      spellcheck: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+The TextArea component shares the styles with the Input component.
+For customization of the styles please checkout the [theme section](/docs/components-form-input--default-story#theme) of the Input component.

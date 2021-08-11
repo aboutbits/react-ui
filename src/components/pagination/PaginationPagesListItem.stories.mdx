@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { PaginationPagesListItem } from './PaginationPagesList'
+
+<Meta
+  title="Components/Section/SectionPaginationPagesListItem"
+  component={PaginationPagesListItem}
+/>
+
+# SectionPaginationPagesListItem
+
+This component is used to provide a list item for [SectionPaginationList](/docs/components-section-sectionpaginationpageslist--default-story).
+
+It leverages on the HTML `li`-tag.
+
+export const Template = ({ ...args }) => (
+  <ul>
+    <PaginationPagesListItem {...args}>1</PaginationPagesListItem>
+  </ul>
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>

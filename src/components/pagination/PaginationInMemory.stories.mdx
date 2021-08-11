@@ -1,0 +1,60 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { useState } from 'react'
+import { PaginationInMemory } from './PaginationInMemory'
+
+<Meta
+  title="Components/Pagination/PaginationInMemory"
+  component={PaginationInMemory}
+/>
+
+# PaginationInMemory
+
+This component is used for an in-memory pagination.
+In order to use this component you have to install the following package.
+
+```
+npm i @aboutbits/pagination
+```
+
+It leverages on the components [PaginationContainer](/docs/components-section-PaginationContainer--default-story), [SectionPaginationNextContent](/docs/components-section-SectionPaginationNextContent--default-story), [SectionPaginationPreviousContent](/docs/components-section-SectionPaginationPreviousContent--default-story) , [PaginationPagesList](/docs/components-section-PaginationPagesList--default-story), and [SectionPaginationPagesListItem](/docs/components-section-SectionPaginationPagesListItem--default-story).
+
+export const Template = ({ children, ...args }) => {
+  const [page, setPage] = useState(1)
+  return (
+    <PaginationInMemory
+      {...args}
+      size={5}
+      page={page}
+      total={60}
+      nextLabel="Next page"
+      previousLabel="Previous page"
+      onChangePage={setPage}
+    >
+      {children}
+    </PaginationInMemory>
+  )
+}
+
+<Canvas>
+  <Story name="Default" args={{ className: 'bg-primary' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `pagination.page.base`
+- `pagination.page.normal`
+- `pagination.page.enabled`
+- `pagination.page.disabled`
+- `pagination.page.current`
+
+### React Intl
+
+- `shared.pagination.page`: Accessibility label for the page counter.
+- `shared.pagination.prev`: Accessibility label for previous page.
+- `shared.pagination.next`: Accessibility label for next page.
