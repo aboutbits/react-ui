@@ -10,7 +10,7 @@ const navigationReducer = (state: MenuState): MenuState => {
   return !state
 }
 
-const MenuProvider: React.FC = ({ children }) => {
+export const MenuProvider: React.FC = ({ children }) => {
   const [state, toggle] = React.useReducer(navigationReducer, false)
 
   return (
@@ -22,7 +22,17 @@ const MenuProvider: React.FC = ({ children }) => {
   )
 }
 
-const useMenuToggle = (): MenuToggle => {
+export function useMenuState(): MenuState {
+  const context = React.useContext(MenuStateContext)
+
+  if (context === undefined) {
+    throw new Error('useMenuState must be used within a MenuProvider')
+  }
+
+  return context
+}
+
+export function useMenuToggle(): MenuToggle {
   const context = React.useContext(MenuToggleContext)
 
   if (context === undefined) {
@@ -31,5 +41,3 @@ const useMenuToggle = (): MenuToggle => {
 
   return context
 }
-
-export { MenuProvider, useMenuToggle }

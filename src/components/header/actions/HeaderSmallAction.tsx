@@ -1,8 +1,8 @@
 import React, { ComponentType } from 'react'
 import classNames from 'classnames'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
-import { ClassNameProps } from '../../types'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { ClassNameProps } from '../../types'
 
 type Props = ClassNameProps & {
   /**

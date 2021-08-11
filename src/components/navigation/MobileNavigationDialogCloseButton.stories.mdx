@@ -1,0 +1,39 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { MenuProvider } from '../header/areas/MenuContext'
+import { MobileNavigationDialogCloseButton } from './MobileNavigationDialogCloseButton'
+
+<Meta
+  title="Components/Navigation/MobileNavigationDialogCloseButton"
+  component={MobileNavigationDialogCloseButton}
+  decorators={[
+    (Story) => (
+      <div className="relative w-full h-20 text-black bg-gray-100">
+        <Story />
+      </div>
+    ),
+  ]}
+/>
+
+# MobileNavigationDialogCloseButton
+
+This component is used to provide a close button for the mobile menu dialog window.
+
+export const Template = ({ ...args }) => (
+  <MenuProvider>
+    <MobileNavigationDialogCloseButton {...args} />
+  </MenuProvider>
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `navigation.mobile.dialog.closeButton.base`
+- `navigation.mobile.dialog.closeButton.normal`
+- `navigation.mobile.dialog.closeButton.icon.base`

@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import IconLogout from '@aboutbits/react-material-icons/dist/IconLogout'
+import { NavigationItemButton } from './NavigationItemButton'
+
+<Meta
+  title="Components/Navigation/NavigationItemButton"
+  component={NavigationItemButton}
+/>
+
+# NavigationItemButton
+
+This button can be placed inside the navigation. E.g. Logout
+
+export const Template = ({ ...args }) => (
+  <NavigationItemButton {...args} content="Log out" icon={IconLogout} />
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `navigation.item.base`: Define the base style of the button, that is shared between different states.
+- `navigation.item.normal`: Define the normal style of the button.
+- `navigation.item.disabled`: Define the disabled style of the button.
+- `navigation.item.icon.base`: Define the size of the icon.
+- `navigation.item.content.base`: Define the floating direction of the content.
+
+## Examples
+
+<Canvas>
+  <Story name="Very long text">
+    <NavigationItemButton
+      content={'Click here to log out from your account.'}
+      icon={IconLogout}
+    />
+  </Story>
+  <Story name="Disabled">
+    <NavigationItemButton
+      disabled={true}
+      content={'Disabled'}
+      icon={IconLogout}
+    />
+  </Story>
+</Canvas>

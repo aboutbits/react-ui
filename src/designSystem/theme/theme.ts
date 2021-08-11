@@ -183,6 +183,27 @@ const defaultTheme = {
       base: 'flex justify-between items-center space-x-4',
     },
   },
+  pagination: {
+    container: {
+      base: 'flex justify-between lg:p-4 py-4 px-3',
+    },
+    prevNext: {
+      icon: {
+        base: 'inline-block w-6 h-6 fill-current',
+      },
+      text: {
+        base: 'hidden lg:block',
+      },
+    },
+    pagesList: { base: 'flex items-center' },
+    page: {
+      base: 'flex items-center',
+      normal: 'px-2',
+      enabled: 'hover:underline',
+      disabled: 'text-gray-500 cursor-not-allowed pointer-events-none',
+      current: 'font-bold',
+    },
+  },
   content: {
     area: {
       base: 'space-y-8 lg:space-y-10',
@@ -280,6 +301,30 @@ const defaultTheme = {
   },
   textLink: {
     base: 'underline hover:text-gray active:text-gray',
+  },
+  navigation: {
+    navigation: {
+      base: 'flex flex-col flex-1',
+    },
+    item: {
+      base: 'flex flex-row items-center w-full py-3 lg:py-4 px-4 lg:px-5 outline-none',
+      normal: 'text-gray-700 hover:bg-gray-100 focus:bg-primary-50',
+      disabled: 'text-gray',
+      active: 'text-white from-primary bg-gradient-to-r to-primary-700',
+      icon: { base: 'mr-4 w-6 h-6 fill-current' },
+      content: { base: 'flex-1 text-left' },
+    },
+    mobile: {
+      dialog: {
+        base: 'flex flex-row items-stretch min-h-screen relative mr-14 w-full max-w-sm',
+        normal: 'bg-gradient-to-b from-primary-100 to-white',
+        closeButton: {
+          base: 'absolute right-0 p-4',
+          normal: 'hover:opacity-60 active:opacity-60',
+          icon: { base: 'fill-current' },
+        },
+      },
+    },
   },
 }
 
