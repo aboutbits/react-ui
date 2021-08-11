@@ -38,15 +38,9 @@ This component can be used to create select fields. This input already has a lab
 
 export const Template = ({ ...args }) => (
   <Select {...args}>
-    <option className="bg-gray-600" value="">
-      Select user right
-    </option>
-    <option className="bg-gray-600" value="ADMIN">
-      ADMIN
-    </option>
-    <option className="bg-gray-600" value="USER">
-      USER
-    </option>
+    <option value="">Select user right</option>
+    <option value="ADMIN">ADMIN</option>
+    <option value="USER">USER</option>
   </Select>
 )
 

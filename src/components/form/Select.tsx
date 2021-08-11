@@ -4,22 +4,32 @@ import React, { forwardRef } from 'react'
 import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
 import { useCustomInputCss } from './useCustomInputCss'
-import { InputProps } from './Input'
 
-type SelectProps = InputProps
+type Props = React.DetailedHTMLProps<
+  React.SelectHTMLAttributes<HTMLSelectElement>,
+  HTMLSelectElement
+> & {
+  id: string
+  label?: string
+  name: string
+}
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  ({ id, name, disabled, label, children, ...props }, ref) => {
-    const customCss = useCustomInputCss(name, disabled)
-    const [field] = useField(name)
+export const Select = forwardRef<HTMLSelectElement, Props>(
+  ({ label, children, ...props }, ref) => {
+    const customCss = useCustomInputCss(props.name, props.disabled)
+    const [field] = useField(props.name)
 
     return (
       <div>
-        <InputLabel inputId={id} label={label} className={customCss.labelCss} />
+        <InputLabel
+          inputId={props.id}
+          label={label}
+          className={customCss.labelCss}
+        />
         <select {...field} {...props} ref={ref} className={customCss.inputCss}>
           {children}
         </select>
-        <InputError name={name} className="mt-1" />
+        <InputError name={props.name} className="mt-1" />
       </div>
     )
   }
