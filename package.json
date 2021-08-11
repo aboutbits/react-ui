@@ -15,7 +15,6 @@
   "dependencies": {
     "@aboutbits/react-material-icons": "^1.0.0",
     "@reach/dialog": "^0.15.3",
-    "@reach/menu-button": "^0.16.1",
     "@tailwindcss/forms": "^0.3.3",
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
@@ -28,6 +27,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
+    "@reach/menu-button": "^0.16.1",
     "@storybook/addon-actions": "^6.3.4",
     "@storybook/addon-essentials": "^6.3.4",
     "@storybook/addon-links": "^6.3.4",
