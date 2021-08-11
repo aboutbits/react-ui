@@ -333,7 +333,7 @@ const defaultTheme = {
         base: 'w-6 h-6 fill-current',
       },
     },
-    menuLink: {
+    menuItem: {
       base: 'block py-1 px-4 cursor-pointer',
       normal: 'hover:bg-primary-100',
     },

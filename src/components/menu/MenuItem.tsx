@@ -1,4 +1,4 @@
-import { MenuLink } from '@reach/menu-button'
+import { MenuItem as ReachMenuItem } from '@reach/menu-button'
 import classNames from 'classnames'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../types'
@@ -13,21 +13,21 @@ type MenuItemProps = ClassNameProps & {
 const MenuItem: React.FC<MenuItemProps> = ({
   children,
   className,
-  ...props
+  onClick,
 }) => {
   const { menu } = useTheme()
 
   return (
-    <MenuLink
+    <ReachMenuItem
       className={classNames(
-        menu.menuLink.base,
-        menu.menuLink.normal,
+        menu.menuItem.base,
+        menu.menuItem.normal,
         className
       )}
-      {...props}
+      onSelect={onClick}
     >
       {children}
-    </MenuLink>
+    </ReachMenuItem>
   )
 }
 
