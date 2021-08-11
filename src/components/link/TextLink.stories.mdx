@@ -1,0 +1,32 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { TextLink } from './TextLink'
+
+<Meta title="Components/Link/TextLink" component={TextLink} />
+
+# TextLink
+
+This component is used to link to an internal page.
+
+It leverages on the LinkComponent in which a specific router for a project can be defined e.g. next/router.
+
+export const Template = ({ href, children, ...args }) => (
+  <TextLink {...args} href={href}>
+    {children}
+  </TextLink>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      children: 'Internal link',
+      href: '/?path=/docs/components-link-textlink--default-story',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

@@ -299,6 +299,9 @@ const defaultTheme = {
       },
     },
   },
+  textLink: {
+    base: 'underline hover:text-gray active:text-gray',
+  },
   navigation: {
     navigation: {
       base: 'flex flex-col flex-1',
