@@ -2,10 +2,9 @@ import { Dialog } from '@reach/dialog'
 import classNames from 'classnames'
 import { useMenuToggle, useMenuState } from '../header/areas/MenuContext'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
-import { ClassNameProps } from '../types'
 import { MobileNavigationDialogCloseButton } from './MobileNavigationDialogCloseButton'
 
-type MobileNavigationDialogProps = ClassNameProps & {
+type MobileNavigationDialogProps = {
   /**
    * Define accessibility label for the dialog.
    * */
@@ -14,7 +13,6 @@ type MobileNavigationDialogProps = ClassNameProps & {
 
 const MobileNavigationDialog: React.FC<MobileNavigationDialogProps> = ({
   children,
-  className,
   dialogLabel,
 }) => {
   const menuState = useMenuState()
@@ -27,8 +25,7 @@ const MobileNavigationDialog: React.FC<MobileNavigationDialogProps> = ({
       <div
         className={classNames(
           navigation.mobile.dialog.base,
-          navigation.mobile.dialog.normal,
-          className
+          navigation.mobile.dialog.normal
         )}
       >
         {children}

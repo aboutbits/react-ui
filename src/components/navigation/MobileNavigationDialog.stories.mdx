@@ -14,11 +14,10 @@ import { Navigation } from './Navigation'
 
 # MobileNavigationDialog
 
-This component is used to provide a mobile menu.
+This component is a dialog for a mobile menu. It will cover the full app.
+The close button of the menu is customizable. It makes use of the [MobileNavigationDialogCloseButton](/docs/components-menu-MobileNavigationDialogCloseButton--default-story) component.
 
-It leverages on the component [MobileNavigationDialogCloseButton](/docs/components-menu-MobileNavigationDialogCloseButton--default-story)
-
-_**Important**_: this storybook is only available for a mobile view. Go to Canvas -> change the size of the preview -> Small mobile.
+_**Important**_: This storybook is only available for a mobile view. Go to Canvas -> change the size of the preview -> Small mobile.
 
 export const Template = ({ ...args }) => {
   return (
@@ -50,4 +49,5 @@ export const Template = ({ ...args }) => {
 
 ### Theme
 
-- `menu.mobile.base`: Define the positioning, and the background gradiant for the mobile menu.
+- `navigation.mobile.dialog.base`
+- `navigation.mobile.dialog.normal`
