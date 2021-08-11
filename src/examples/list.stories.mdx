@@ -1,0 +1,156 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { IntlProvider } from 'react-intl'
+import { useState } from 'react'
+import { DesignSystemProvider } from '../designSystem/DesignSystemProvider'
+import {
+  Section,
+  SectionContentList,
+  SectionContentListEmpty,
+  SectionHeader,
+  SectionListItemWithButton,
+  SectionTitle,
+} from '../components/section'
+import { PaginationInMemory } from '../components/pagination/PaginationInMemory'
+
+<Meta title="Examples/List" component={DesignSystemProvider} />
+
+# List
+
+The following example shows how multiple section components and the in memory pagination are used to create an overview list.
+
+Changing the properties `numberOfTotalItems` and `numberOfItemsPerPage` will change the number of pages and/or the number the of items per page.
+
+Setting `numberOfTotalItems` to 0 will reveal the placeholder for the empty list.
+
+export const Template = ({
+  title,
+  numberOfTotalItems,
+  numberOfItemsPerPage,
+}) => {
+  const content = Array.from(Array(numberOfTotalItems).keys())
+  const [page, setPage] = useState(1)
+  const theme = {
+    pagination: {
+      container: {
+        base: 'flex justify-between lg:p-4 py-4 px-3',
+      },
+      prevNext: {
+        icon: {
+          base: 'inline-block w-6 h-6 fill-current',
+        },
+        text: {
+          base: 'hidden lg:block',
+        },
+      },
+      pagesList: { base: 'flex items-center' },
+      page: {
+        base: 'flex items-center',
+        normal: 'px-2',
+        enabled: 'hover:underline',
+        disabled: 'text-gray-500 cursor-not-allowed pointer-events-none',
+        current: 'font-bold',
+      },
+    },
+    section: {
+      section: {
+        base: 'lg:shadow-md',
+        normal: 'bg-white',
+      },
+      content: {
+        base: 'pt-5 pb-10 px-4 lg:px-5',
+        normal: 'bg-gray-700',
+      },
+      contentList: {
+        base: 'space-y-px',
+        normal: 'bg-gray-300',
+        empty: {
+          base: 'justify-center py-4',
+        },
+      },
+      listItem: {
+        base: 'flex items-center min-h-14 px-4 lg:px-5',
+        normal: 'bg-gray-700 text-white',
+      },
+      listItemWithButton: {
+        base: 'justify-between space-x-4',
+        normal: 'hover:bg-gray-600',
+      },
+      header: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white', normal: 'bg-white' },
+      title: { base: 'text-xs font-bold uppercase', normal: 'text-black' },
+    },
+  }
+  const messages = {
+    'shared.pagination.prev': 'Prev',
+    'shared.pagination.next': 'Next',
+    'shared.pagination.page': 'Page {page}',
+  }
+  return (
+    <DesignSystemProvider theme={theme}>
+      <IntlProvider locale="en" messages={messages}>
+        <Section>
+          <SectionHeader>
+            <SectionTitle>{title}</SectionTitle>
+          </SectionHeader>
+          <SectionContentList>
+            {content.length > 0 &&
+              content
+                .filter(
+                  (_, index) =>
+                    index >= (page - 1) * numberOfItemsPerPage &&
+                    index < page * numberOfItemsPerPage
+                )
+                .map((item) => (
+                  <SectionListItemWithButton key={item}>
+                    {`User ${item + 1}`}
+                  </SectionListItemWithButton>
+                ))}
+            {content.length === 0 && (
+              <SectionContentListEmpty>
+                No users found in database.
+              </SectionContentListEmpty>
+            )}
+          </SectionContentList>
+          <PaginationInMemory
+            page={page}
+            size={numberOfItemsPerPage}
+            total={numberOfTotalItems}
+            onChangePage={setPage}
+          />
+        </Section>
+      </IntlProvider>
+    </DesignSystemProvider>
+  )
+}
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      title: 'Header Title',
+      numberOfTotalItems: 10,
+      numberOfItemsPerPage: 5,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Components used
+
+[Section](/docs/components-section-section--default-story): Defines the overall container.
+
+[SectionHeader](/docs/components-section-SectionHeader--default-story): Defines the header of the list.
+
+[SectionTitle](/docs/components-section-SectionTitle--default-story): Defines the title of the list.
+
+[SectionContentList](/docs/components-section-SectionContentList--default-story): Defines the container for the list.
+
+[SectionListItemWithButton](/docs/components-section-SectionListItemWithButton--default-story): Defines each list item.
+
+[SectionContentListEmpty](/docs/components-section-SectionContentListEmpty--default-story): Defines the placeholder if no input was given.
+
+[PaginationInMemory](/docs/components-pagination-paginationinmemory--default-story): Defines the pagination of the example.
