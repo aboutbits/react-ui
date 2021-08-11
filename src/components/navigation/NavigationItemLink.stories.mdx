@@ -3,18 +3,19 @@ import IconAccountCircle from '@aboutbits/react-material-icons/dist/IconAccountC
 import { NavigationItemLink } from './NavigationItemLink'
 
 <Meta
-  title="Components/Menu/NavigationItemLink"
+  title="Components/Navigation/NavigationItemLink"
   component={NavigationItemLink}
 />
 
 # NavigationItemLink
 
-This component is used to added to a [Menu](/docs/components-menu-menu--default-story).
+The NavigationItemLink can be placed inside a menu for in-app routing.
+It will make use of the specified LinkComponent in the DesignSystemProvider.
 
 export const Template = ({ ...args }) => (
   <NavigationItemLink
     {...args}
-    href="/?path=/story/components-menu-menulink--default-story"
+    href="#"
     content="Navigation Link"
     icon={IconAccountCircle}
   />
@@ -43,7 +44,7 @@ export const Template = ({ ...args }) => (
     <NavigationItemLink
       content={'Open your profile and check it out.'}
       icon={IconAccountCircle}
-      href={'/'}
+      href="#"
     />
   </Story>
   <Story name="Active">
@@ -51,7 +52,7 @@ export const Template = ({ ...args }) => (
       active={true}
       content={'Active Link'}
       icon={IconAccountCircle}
-      href={'/'}
+      href="#"
     />
   </Story>
 </Canvas>

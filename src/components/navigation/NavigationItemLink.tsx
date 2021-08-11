@@ -24,6 +24,12 @@ export type Props = {
   href: string
 } & ClassNameProps
 
+type HtmlLinkProps = Props &
+  React.DetailedHTMLProps<
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+  >
+
 export function NavigationItemLink({
   content,
   icon: Icon,
@@ -46,5 +52,29 @@ export function NavigationItemLink({
       <Icon className={navigation.item.icon.base} />
       <div className={navigation.item.content.base}>{content}</div>
     </LinkComponent>
+  )
+}
+
+export function NavigationItemHtmlLink({
+  content,
+  icon: Icon,
+  active = false,
+  className = '',
+  ...props
+}: HtmlLinkProps): ReactElement {
+  const { navigation } = useTheme()
+
+  return (
+    <a
+      className={classNames(
+        className,
+        navigation.item.base,
+        active ? navigation.item.active : navigation.item.normal
+      )}
+      {...props}
+    >
+      <Icon className={navigation.item.icon.base} />
+      <div className={navigation.item.content.base}>{content}</div>
+    </a>
   )
 }
