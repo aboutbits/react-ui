@@ -1,11 +1,18 @@
 import {
+  AnchorHTMLAttributes,
   ComponentType,
   createContext,
   forwardRef,
   ForwardRefRenderFunction,
   useContext,
 } from 'react'
-import { LinkComponentProps } from './types'
+
+export type LinkComponentProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  /**
+   * Define the href for the Link.
+   * */
+  href: string
+}
 
 export const makeLinkComponent = (
   render: ForwardRefRenderFunction<HTMLAnchorElement, LinkComponentProps>

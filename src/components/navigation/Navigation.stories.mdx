@@ -1,0 +1,40 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import IconArrowDropDownCircle from '@aboutbits/react-material-icons/dist/IconArrowDropDownCircle'
+import { Navigation } from './Navigation'
+import { NavigationItemButton } from './NavigationItemButton'
+import { NavigationItemLink } from './NavigationItemLink'
+
+<Meta title="Components/Navigation/Navigation" component={Navigation} />
+
+# Navigation
+
+This component is used to provide an HTML-`nav` element for a menu.
+
+export const Template = ({ ...args }) => (
+  <Navigation navLabel="Navigation" {...args}>
+    <NavigationItemLink
+      href={'/'}
+      content="Link 1"
+      icon={IconArrowDropDownCircle}
+    />
+    <NavigationItemLink
+      href={'/'}
+      content="Link 2"
+      icon={IconArrowDropDownCircle}
+    />
+    <NavigationItemButton content="Button 1" icon={IconArrowDropDownCircle} />
+    <NavigationItemButton content="Button 2" icon={IconArrowDropDownCircle} />
+  </Navigation>
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `navigation.navigation.base`

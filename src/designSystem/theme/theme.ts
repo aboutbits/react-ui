@@ -293,8 +293,35 @@ const defaultTheme = {
       icon: {
         base: 'fill-current',
         size: {
-          sm: 'mr-1 w-4 h-4',
-          md: 'mr-2 w-6 h-6',
+          sm: 'mr-2 w-4 h-4',
+          md: 'mr-3 w-6 h-6',
+        },
+      },
+    },
+  },
+  textLink: {
+    base: 'underline hover:text-gray active:text-gray',
+  },
+  navigation: {
+    navigation: {
+      base: 'flex flex-col flex-1',
+    },
+    item: {
+      base: 'flex flex-row items-center w-full py-3 lg:py-4 px-4 lg:px-5 outline-none',
+      normal: 'text-gray-700 hover:bg-gray-100 focus:bg-primary-50',
+      disabled: 'text-gray',
+      active: 'text-white from-primary bg-gradient-to-r to-primary-700',
+      icon: { base: 'mr-4 w-6 h-6 fill-current' },
+      content: { base: 'flex-1 text-left' },
+    },
+    mobile: {
+      dialog: {
+        base: 'flex flex-row items-stretch min-h-screen relative mr-14 w-full max-w-sm',
+        normal: 'bg-gradient-to-b from-primary-100 to-white',
+        closeButton: {
+          base: 'absolute right-0 p-4',
+          normal: 'hover:opacity-60 active:opacity-60',
+          icon: { base: 'fill-current' },
         },
       },
     },
