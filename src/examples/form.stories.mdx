@@ -1,0 +1,254 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { IntlProvider, useIntl } from 'react-intl'
+import { Formik } from 'formik'
+import { DesignSystemProvider } from '../designSystem/DesignSystemProvider'
+import { ContentArea } from '../components/content/ContentArea'
+import { Form } from '../components/form/Form'
+import {
+  Section,
+  SectionContentTwoColumn,
+  SectionHeader,
+  SectionTitle,
+} from '../components/section'
+import { Input } from '../components/form/Input'
+import { Select } from '../components/form/Select'
+import { Actions } from '../components/action/Action'
+import { SubmitButton } from '../components/button/SubmitButton'
+import { Tone } from '../components/button/Button'
+import { i18n, locales } from './i18n'
+
+<Meta title="Examples/Form" component={DesignSystemProvider} />
+
+# Form
+
+export const Template = ({ title }) => {
+  const intl = useIntl()
+  const theme = {
+    button: {
+      button: {
+        base: 'focus:outline-none fill-current',
+        size: {
+          sm: 'border px-2 py-1',
+          md: 'border-2 px-4 py-3 text-lg leading-normal',
+        },
+        variantTone: {
+          solid: {
+            base: 'border-transparent font-bold',
+            primary:
+              'bg-primary hover:bg-primary-700 focus:bg-primary-700 text-white',
+            critical:
+              'bg-critical hover:bg-critical-700 focus:bg-critical-700 text-white',
+            secondary:
+              'bg-secondary hover:bg-secondary-700 focus:bg-secondary-700 text-white',
+            disabled: 'bg-gray-50 text-gray',
+          },
+          ghost: {
+            base: 'font-bold bg-transparent',
+            primary:
+              'border-primary hover:border-primary-700 text-primary hover:text-primary-700',
+            critical:
+              'border-critical hover:border-critical-700 text-critical hover:text-critical-700',
+            secondary:
+              'border-secondary hover:border-secondary-700 text-secondary hover:text-secondary-700',
+            disabled: 'border-gray-500 text-gray',
+          },
+          transparent: {
+            base: 'underline border-transparent background-transparent',
+            primary: 'text-primary hover:text-primary-700',
+            critical: 'text-critical hover:text-critical-700 underline',
+            secondary: 'text-secondary hover:text-secondary-700 ',
+            disabled: ' background-gray-50 text-gray',
+          },
+        },
+      },
+      withIcon: {
+        iconContainer: {
+          base: 'flex justify-center items-center',
+        },
+        icon: {
+          base: 'fill-current',
+          size: {
+            sm: 'mr-2 w-4 h-4',
+            md: 'mr-3 w-6 h-6',
+          },
+        },
+      },
+    },
+    action: {
+      action: {
+        base: 'flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mx-4 lg:mx-0',
+        variant: {
+          start: 'lg:justify-start',
+          center: 'lg:justify-center',
+          end: 'lg:justify-end',
+        },
+      },
+    },
+    section: {
+      section: {
+        base: 'lg:shadow-md',
+        normal: 'bg-white',
+      },
+      content: {
+        base: 'pt-5 pb-10 px-4 lg:px-5',
+        normal: 'bg-gray-700',
+      },
+      contentList: {
+        base: 'space-y-px',
+        normal: 'bg-gray-300',
+        empty: {
+          base: 'justify-center py-4',
+        },
+        error: {
+          base: 'justify-center py-4',
+          icon: {
+            base: 'fill-current',
+            normal: 'text-withe',
+          },
+          iconContainer: {
+            base: 'p-1.5 mr-2',
+            normal: 'rounded-full bg-critical',
+          },
+          children: {
+            normal: 'text-critical',
+          },
+        },
+      },
+      contentTwoColumn: {
+        base: 'grid xl:grid-cols-2 xl:gap-x-5 gap-y-5',
+      },
+      listItem: {
+        base: 'flex items-center min-h-14 px-4 lg:px-5',
+        normal: 'bg-gray-700 text-white',
+      },
+      listItemWithAction: {
+        base: 'justify-between space-x-4',
+        action: {
+          base: 'flex flex-shrink-0',
+        },
+      },
+      descriptionItem: {
+        base: 'flex flex-col pb-2 space-y-1 text-white border-black border-gray-300',
+        title: {
+          base: 'text-sm',
+        },
+      },
+      listItemWithButton: {
+        base: 'justify-between space-x-4',
+        normal: 'hover:bg-gray-600',
+      },
+      error: {
+        base: 'flex flex-col items-center justify-center overflow-hidden mx-auto my-15 lg:mt-20',
+        button: { base: 'mt-10 lg:mt-20' },
+        icon: { base: 'w-60 h-60' },
+        title: { base: 'mt-7 text-4xl font-bold' },
+        children: { base: 'mt-5 w-full text-xl text-center break-words' },
+      },
+      header: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white', normal: 'bg-white' },
+      title: { base: 'text-xs font-bold uppercase', normal: 'text-black' },
+      headerWithAction: {
+        base: 'flex justify-between items-center space-x-4',
+      },
+    },
+    content: {
+      area: {
+        base: 'space-y-8 lg:space-y-10',
+      },
+    },
+    form: {
+      input: {
+        base: 'block w-full border p-3 focus:ring-0 appearance-none outline-none',
+        normal:
+          'border-white focus:border-primary-400 bg-transparent text-white placeholder-gray-100',
+        error:
+          'border-critical focus:border-critical bg-transparent text-white placeholder-gray-100',
+        disabled: 'border-gray text-gray bg-gray-100',
+      },
+      inputLabel: {
+        base: 'block pb-1 font-bold text-xs',
+        normal: 'text-white',
+        error: 'text-critical',
+        disabled: 'text-gray',
+      },
+      form: {
+        base: 'space-y-8 lg:space-y-10',
+      },
+    },
+  }
+  const messages = {
+    'shared.field.name': 'Name',
+    'shared.field.email': 'Email',
+    'shared.field.language': 'Language',
+  }
+  return (
+    <DesignSystemProvider theme={theme}>
+      <IntlProvider locale="en" messages={messages}>
+        <ContentArea>
+          <Formik>
+            <Form>
+              <Section>
+                <SectionHeader>
+                  <SectionTitle>{title}</SectionTitle>
+                </SectionHeader>
+              </Section>
+              <SectionContentTwoColumn>
+                <Input
+                  id="name"
+                  type="text"
+                  autoCapitalize="none"
+                  name="name"
+                  placeholder={intl.formatMessage({ id: 'shared.field.name' })}
+                  label={intl.formatMessage({ id: 'shared.field.name' })}
+                />
+                <Input
+                  id="email"
+                  type="email"
+                  autoCapitalize="none"
+                  name="email"
+                  placeholder={intl.formatMessage({ id: 'shared.field.email' })}
+                  label={intl.formatMessage({ id: 'shared.field.email' })}
+                />
+                <Select
+                  id="language"
+                  autoCapitalize="none"
+                  name="language"
+                  label={intl.formatMessage({ id: 'shared.field.language' })}
+                >
+                  {i18n.supportedLanguages.map((supportedLanguage, index) => (
+                    <option key={index} value={supportedLanguage}>
+                      {locales[supportedLanguage]}
+                    </option>
+                  ))}
+                </Select>
+                <Select
+                  id="role"
+                  autoCapitalize="none"
+                  name="role"
+                  label="role"
+                >
+                  <option value="ADMIN">admin</option>
+                  <option value="USER">user</option>
+                </Select>
+              </SectionContentTwoColumn>
+              <Actions>
+                <SubmitButton variant={Tone.primary}>Save</SubmitButton>
+              </Actions>
+            </Form>
+          </Formik>
+        </ContentArea>
+      </IntlProvider>
+    </DesignSystemProvider>
+  )
+}
+
+<Canvas>
+  <Story name="Default" args={{ title: 'User edit' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Components used
