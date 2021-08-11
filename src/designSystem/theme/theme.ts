@@ -293,8 +293,8 @@ const defaultTheme = {
       icon: {
         base: 'fill-current',
         size: {
-          sm: 'mr-1 w-4 h-4',
-          md: 'mr-2 w-6 h-6',
+          sm: 'mr-2 w-4 h-4',
+          md: 'mr-3 w-6 h-6',
         },
       },
     },
