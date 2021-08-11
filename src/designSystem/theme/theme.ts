@@ -326,6 +326,22 @@ const defaultTheme = {
       },
     },
   },
+  menu: {
+    menuButton: {
+      base: 'flex items-center hover:opacity-60 active:opacity-60',
+      icon: {
+        base: 'w-6 h-6 fill-current',
+      },
+    },
+    menuItem: {
+      base: 'block py-1 px-4 cursor-pointer',
+      normal: 'hover:bg-primary-100',
+    },
+    menuList: {
+      base: 'py-3 mb-1 w-32 shadow-sm focus:outline-none',
+      normal: 'bg-white',
+    },
+  },
 }
 
 export function makeTheme(overrideTheme?: OverrideTheme): Theme {
