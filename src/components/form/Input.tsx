@@ -4,35 +4,25 @@ import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
 import { useCustomInputCss } from './useCustomInputCss'
 
-type Props = {
-  /**
-   * Defines the htmlFor for the label.
-   * */
-  id: string
-  /**
-   * Defines the label on the top left corner.
-   * */
-  label?: string
-  /**
-   * Defines the value for the input.
-   * */
-  name: string
-  /**
-   * Defines the disable status of the input.
-   * */
-  disabled?: boolean
-}
+type Props = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & { id: string; label?: string; name: string }
 
 export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label, id, name, disabled, ...props }, ref) => {
-    const customCss = useCustomInputCss(name, disabled)
-    const [field] = useField(name)
+  ({ label, ...props }, ref) => {
+    const customCss = useCustomInputCss(props.name, props.disabled)
+    const [field] = useField(props.name)
 
     return (
       <div>
-        <InputLabel inputId={id} label={label} className={customCss.labelCss} />
+        <InputLabel
+          inputId={props.id}
+          label={label}
+          className={customCss.labelCss}
+        />
         <input {...field} {...props} ref={ref} className={customCss.inputCss} />
-        <InputError name={name} className="mt-1" />
+        <InputError name={props.name} className="mt-1" />
       </div>
     )
   }
