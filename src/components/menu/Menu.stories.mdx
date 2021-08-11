@@ -1,12 +1,9 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
 import { Menu } from './Menu'
 import { MenuItem } from './MenuItem'
 
-<Meta
-  title="Components/Menu/Menu"
-  component={Menu}
-  argTypes={{ onClick: { action: 'clicked' } }}
-/>
+<Meta title="Components/Menu/Menu" component={Menu} />
 
 # Menu
 
@@ -23,7 +20,10 @@ export const Template = ({ menuLabel, className, ...args }) => {
   return (
     <Menu {...args} menuLabel={menuLabel} className={className}>
       {array.map((item, index) => (
-        <MenuItem key={index}>{`Menu item ${item}`}</MenuItem>
+        <MenuItem
+          key={index}
+          onClick={action('onClick')}
+        >{`Menu item ${item}`}</MenuItem>
       ))}
     </Menu>
   )
