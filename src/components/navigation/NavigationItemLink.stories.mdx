@@ -1,0 +1,60 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import IconAccountCircle from '@aboutbits/react-material-icons/dist/IconAccountCircle'
+import { NavigationItemLink } from './NavigationItemLink'
+
+<Meta
+  title="Components/Navigation/NavigationItemLink"
+  component={NavigationItemLink}
+/>
+
+# NavigationItemLink
+
+The NavigationItemLink can be placed inside a menu for in-app routing.
+It will make use of the specified LinkComponent in the DesignSystemProvider.
+
+If you are looking to create a regular HTML anchor link, please checkout [NavigationItemHtmlLink](/docs/components-navigation-navigationitemhtmllink--default-story).
+
+export const Template = ({ ...args }) => (
+  <NavigationItemLink
+    {...args}
+    href="#"
+    content="Navigation Link"
+    icon={IconAccountCircle}
+  />
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `navigation.item.base`: Define the base style of the link, that is shared between different states.
+- `navigation.item.normal`: Define the normal style of the link.
+- `navigation.item.active`: Define the active style of the link.
+- `navigation.item.icon.base`: Define the size of the icon.
+- `navigation.item.content.base`: Define the floating direction of the content.
+
+## Examples
+
+<Canvas>
+  <Story name="Very long text">
+    <NavigationItemLink
+      content={'Open your profile and check it out.'}
+      icon={IconAccountCircle}
+      href="#"
+    />
+  </Story>
+  <Story name="Active">
+    <NavigationItemLink
+      active={true}
+      content={'Active Link'}
+      icon={IconAccountCircle}
+      href="#"
+    />
+  </Story>
+</Canvas>
