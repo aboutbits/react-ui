@@ -6,6 +6,7 @@ import { HeaderLargeAction } from './HeaderLargeAction'
 <Meta
   title="Components/Header/HeaderLargeAction"
   component={HeaderLargeAction}
+  argTypes={{ onClick: { action: 'clicked' } }}
 />
 
 # HeaderLargeAction
@@ -13,12 +14,7 @@ import { HeaderLargeAction } from './HeaderLargeAction'
 This component is used to add a _large_ icon to the header. It applies some basic styling for the icon.
 
 export const Template = ({ ...args }) => (
-  <HeaderLargeAction
-    {...args}
-    icon={Icon}
-    label="Enter search term"
-    onClick={() => alert('Button got pressed')}
-  />
+  <HeaderLargeAction {...args} icon={Icon} label="Enter search term" />
 )
 
 <Canvas>
@@ -38,10 +34,6 @@ export const Template = ({ ...args }) => (
 
 <Canvas>
   <Story name="Custom Icon">
-    <HeaderLargeAction
-      icon={IconEdit}
-      label="Edit"
-      onClick={() => alert('Button got pressed')}
-    />
+    <HeaderLargeAction icon={IconEdit} label="Edit" />
   </Story>
 </Canvas>

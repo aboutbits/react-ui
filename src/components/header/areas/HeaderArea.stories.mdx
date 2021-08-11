@@ -5,7 +5,11 @@ import { HeaderArea } from './HeaderArea'
 import { MenuProvider } from './MenuContext'
 import { HeaderTitle } from './HeaderTitle'
 
-<Meta title="Components/Header/HeaderArea" component={HeaderArea} />
+<Meta
+  title="Components/Header/HeaderArea"
+  component={HeaderArea}
+  argTypes={{ onClick: { action: 'clicked' } }}
+/>
 
 # HeaderArea
 
@@ -52,11 +56,7 @@ export const Template = ({ ...args }) => (
     <MenuProvider>
       <HeaderArea
         navigation={
-          <HeaderBackAction
-            icon={IconArrowBack}
-            label="Go to previous page"
-            onClick={() => alert('Back action was triggered')}
-          />
+          <HeaderBackAction icon={IconArrowBack} label="Go to previous page" />
         }
       >
         <HeaderTitle>Header Title</HeaderTitle>

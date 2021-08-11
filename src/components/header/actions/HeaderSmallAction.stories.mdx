@@ -6,6 +6,7 @@ import { HeaderSmallAction } from './HeaderSmallAction'
 <Meta
   title="Components/Header/HeaderSmallAction"
   component={HeaderSmallAction}
+  argTypes={{ onClick: { action: 'clicked' } }}
 />
 
 # HeaderSmallAction
@@ -13,12 +14,7 @@ import { HeaderSmallAction } from './HeaderSmallAction'
 This component is used to add a _small_ icon to the header. It applies some basic styling for the icon.
 
 export const Template = ({ ...args }) => (
-  <HeaderSmallAction
-    {...args}
-    icon={Icon}
-    label="Enter search term"
-    onClick={() => alert('Button got pressed')}
-  />
+  <HeaderSmallAction {...args} icon={Icon} label="Enter search term" />
 )
 
 <Canvas>
@@ -38,10 +34,6 @@ export const Template = ({ ...args }) => (
 
 <Canvas>
   <Story name="Custom Icon">
-    <HeaderSmallAction
-      icon={IconEdit}
-      label="Edit"
-      onClick={() => alert('Button got pressed')}
-    />
+    <HeaderSmallAction icon={IconEdit} label="Edit" />
   </Story>
 </Canvas>
