@@ -18,7 +18,14 @@ const MenuItem: React.FC<MenuItemProps> = ({
   const { menu } = useTheme()
 
   return (
-    <MenuLink className={classNames(menu.menuLink.base, className)} {...props}>
+    <MenuLink
+      className={classNames(
+        menu.menuLink.base,
+        menu.menuLink.normal,
+        className
+      )}
+      {...props}
+    >
       {children}
     </MenuLink>
   )
