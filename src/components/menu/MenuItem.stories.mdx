@@ -2,7 +2,11 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { MenuItem } from './MenuItem'
 import { Menu } from './Menu'
 
-<Meta title="Components/Menu/MenuItem" component={MenuItem} />
+<Meta
+  title="Components/Menu/MenuItem"
+  component={MenuItem}
+  argTypes={{ onClick: { action: 'clicked' } }}
+/>
 
 # MenuItem
 
@@ -10,11 +14,13 @@ This component is used to add an item to the [Menu](/docs/components-menu-menu--
 
 It leverages on the npm package [@reach/menu-button](https://www.npmjs.com/package/@reach/menu-button).
 
+```bash
+npm i @reach/menu-button
+```
+
 export const Template = () => (
   <Menu menuLabel="Menu" text="Menu" className="lg:bg-primary">
-    <MenuItem onClick={() => alert(`Menu item 1 was pressed`)} key={1}>
-      {`Menu item 1`}
-    </MenuItem>
+    <MenuItem key={1}>{`Menu item 1`}</MenuItem>
   </Menu>
 )
 
