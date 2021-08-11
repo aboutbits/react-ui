@@ -5,7 +5,7 @@ import { ClassNameProps } from '../types'
 
 type MenuItemProps = ClassNameProps & {
   /**
-   * Defines the accessibility label for the menu.
+   * Defines which action should be executed on clicking.
    * */
   onClick: () => void
 }
