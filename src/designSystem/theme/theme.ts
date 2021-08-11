@@ -328,21 +328,17 @@ const defaultTheme = {
   },
   menu: {
     menuButton: {
-      base: 'flex items-center text-xs hover:opacity-60 active:opacity-60',
-      text: {
-        base: 'underline capitalize',
-        normal: 'text-primary-700 lg:text-white',
-      },
+      base: 'flex items-center hover:opacity-60 active:opacity-60',
       icon: {
-        base: 'w-6 h-6',
-        normal: 'fill-current text-primary-700 lg:text-white',
+        base: 'w-6 h-6 fill-current',
       },
     },
     menuLink: {
-      base: 'block py-1 px-4 hover:bg-primary-100 cursor-pointer',
+      base: 'block py-1 px-4 cursor-pointer',
+      normal: 'hover:bg-primary-100',
     },
     menuList: {
-      base: 'py-3 mb-1 w-32 text-sm bg-white shadow-languageSelector focus:outline-none',
+      base: 'py-3 mb-1 w-32 shadow-sm focus:outline-none',
       normal: 'bg-white',
     },
   },

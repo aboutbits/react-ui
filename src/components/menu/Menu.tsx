@@ -38,19 +38,11 @@ const Menu: React.FC<MenuProps> = ({
             aria-label={menuLabel}
             className={classNames(menu.menuButton.base, className)}
           >
-            <div
-              className={classNames(
-                menu.menuButton.text.base,
-                menu.menuButton.text.normal
-              )}
-            >
-              {menuButtonContent}
-            </div>
+            {menuButtonContent}
             <span aria-hidden>
               <IconArrowDropUp
                 className={classNames(
                   menu.menuButton.icon.base,
-                  menu.menuButton.icon.normal,
                   !isExpanded && 'transform rotate-180'
                 )}
               />
