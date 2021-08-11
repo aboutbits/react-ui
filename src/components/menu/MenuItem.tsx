@@ -8,10 +8,6 @@ type MenuItemProps = ClassNameProps & {
    * Defines the accessibility label for the menu.
    * */
   onClick: () => void
-  /**
-   * Defines the accessibility label for the menu.
-   * */
-  key: string
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({
