@@ -15,7 +15,7 @@ const ButtonWithIcon = React.forwardRef<HTMLButtonElement, ButtonWithIconProps>(
   ({ children, Icon, size = Size.md, ...props }, ref) => {
     const { button } = useTheme()
     return (
-      <Button {...props} ref={ref}>
+      <Button size={size} {...props} ref={ref}>
         <div className={button.withIcon.iconContainer.base}>
           <Icon
             className={classNames(

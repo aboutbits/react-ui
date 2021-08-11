@@ -1,8 +1,8 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconError from '@aboutbits/react-material-icons/dist/IconError'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
-import IconDelete from '@aboutbits/react-material-icons/dist/IconDelete'
-import { Size } from './Button'
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
+import { Size, Tone, Variant } from './Button'
 import { ButtonWithIcon } from './ButtonWithIcon'
 
 <Meta
@@ -55,7 +55,7 @@ React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButto
 - `button.withIcon.icon.size.sm`: Define the size of the icon of button with icon.
 - `button.withIcon.icon.size.md`: Define the size of the icon of button with icon.
 
-## Icon size
+## Size
 
 <Canvas>
   <Story name="Icon medium size">
@@ -68,16 +68,26 @@ React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButto
   </Story>
 </Canvas>
 
-## Different Icons
+## Examples
 
 <Canvas>
   <Story name="Error Icon" args={{ children: 'Error Button', Icon: IconError }}>
-    <ButtonWithIcon Icon={IconError}>Error Button</ButtonWithIcon>
+    <ButtonWithIcon Icon={IconError} tone={Tone.critical}>
+      Error Button
+    </ButtonWithIcon>
   </Story>
-  <Story name="Warning Icon">
-    <ButtonWithIcon Icon={IconWarning}>Warning Button</ButtonWithIcon>
+  <Story name="Secondary Ghost">
+    <ButtonWithIcon
+      Icon={IconAdd}
+      tone={Tone.secondary}
+      variant={Variant.ghost}
+    >
+      Add Button
+    </ButtonWithIcon>
   </Story>
-  <Story name="Delete Icon">
-    <ButtonWithIcon Icon={IconDelete}>Delete Button</ButtonWithIcon>
+  <Story name="Custom Tone">
+    <ButtonWithIcon Icon={IconCheck} tone="green">
+      Success Button
+    </ButtonWithIcon>
   </Story>
 </Canvas>
