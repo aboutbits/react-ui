@@ -13,6 +13,10 @@ type MenuProps = ClassNameProps & {
    * Defines the text to the left of the arrow button.
    * */
   text: string
+  /**
+   * Defines the id attribute for the menu button.
+   * */
+  menuButtonId?: string
 }
 
 const Menu: React.FC<MenuProps> = ({
@@ -20,6 +24,7 @@ const Menu: React.FC<MenuProps> = ({
   className,
   text,
   children,
+  menuButtonId,
 }) => {
   const { menu } = useTheme()
 
@@ -28,7 +33,7 @@ const Menu: React.FC<MenuProps> = ({
       {({ isExpanded }) => (
         <>
           <MenuButton
-            id="navigation.language.desktop"
+            id={menuButtonId}
             aria-label={menuLabel}
             className={classNames(menu.menuButton.base, className)}
           >
