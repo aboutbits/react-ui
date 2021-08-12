@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import { actions } from '@storybook/addon-actions'
 import { HeaderBackAction } from '../actions/HeaderBackAction'
 import { HeaderArea } from './HeaderArea'
 import { MenuProvider } from './MenuContext'
@@ -19,7 +20,7 @@ In any case, this component needs be wrapped in a `MenuProvider`.
 
 export const Template = ({ ...args }) => (
   <MenuProvider>
-    <HeaderArea {...args} />
+    <HeaderArea {...args} onClick={actions('clicked')} />
   </MenuProvider>
 )
 
@@ -52,11 +53,7 @@ export const Template = ({ ...args }) => (
     <MenuProvider>
       <HeaderArea
         navigation={
-          <HeaderBackAction
-            icon={IconArrowBack}
-            label="Go to previous page"
-            onClick={() => alert('Back action was triggered')}
-          />
+          <HeaderBackAction icon={IconArrowBack} label="Go to previous page" />
         }
       >
         <HeaderTitle>Header Title</HeaderTitle>

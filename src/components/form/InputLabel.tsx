@@ -1,19 +1,19 @@
-import classNames from 'classnames'
-import { ReactElement } from 'react'
+import { ClassNameProps } from '../types'
 
-export type Props = {
+export type Props = ClassNameProps & {
+  /**
+   * Defines the htmlFor of the label.
+   * */
   inputId: string
-  className?: string
+  /**
+   * Defines the body of the label.
+   * */
   label?: string
 }
 
-function InputLabel({
-  inputId,
-  className = '',
-  label,
-}: Props): ReactElement | null {
+const InputLabel: React.FC<Props> = ({ label, inputId, className }) => {
   return label ? (
-    <label htmlFor={inputId} className={classNames(className)}>
+    <label htmlFor={inputId} className={className}>
       {label}
     </label>
   ) : null

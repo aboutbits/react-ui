@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import Icon from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import { actions } from '@storybook/addon-actions'
 import { HeaderBackAction } from './HeaderBackAction'
 
 <Meta title="Components/Header/HeaderBackAction" component={HeaderBackAction} />
@@ -14,8 +15,8 @@ export const Template = ({ ...args }) => (
   <HeaderBackAction
     {...args}
     icon={Icon}
+    onClick={actions('clicked')}
     label="Return to previous page"
-    onClick={() => alert('Button got pressed')}
   />
 )
 

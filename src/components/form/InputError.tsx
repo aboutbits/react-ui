@@ -1,5 +1,12 @@
 import { ErrorMessage } from 'formik'
-import { ReactElement } from 'react'
+import { ClassNameProps } from '../types'
+
+type InputErrorProps = ClassNameProps & {
+  /**
+   * Define the error message.
+   * */
+  name: string
+}
 
 const FieldErrorMessage: React.FC = ({ children }) => {
   return (
@@ -7,16 +14,12 @@ const FieldErrorMessage: React.FC = ({ children }) => {
   )
 }
 
-export function InputError({
-  name,
-  className = '',
-}: {
-  name: string
-  className?: string
-}): ReactElement {
+const InputError: React.FC<InputErrorProps> = ({ name, className }) => {
   return (
     <div className={className}>
       <ErrorMessage name={name} component={FieldErrorMessage} />
     </div>
   )
 }
+
+export { InputError }
