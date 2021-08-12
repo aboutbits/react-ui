@@ -2,7 +2,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
 import { Button, Tone } from '../../button/Button'
 import { MenuProvider } from '../../header/areas/MenuContext'
-import { LoadingList } from '../../loading'
+import { SectionContentList, SectionListItem } from '../../section'
 import { SelectDialog } from './SelectDialog'
 
 <Meta title="Components/Dialog/SelectDialog" component={SelectDialog} />
@@ -24,6 +24,7 @@ export const Template = ({
   const [toggle, setToggle] = useState(false)
   const [text, setText] = useState('')
   const clearSearch = () => setText('')
+  const userList = ['User 1', 'User 2', 'User 3']
   return (
     <MenuProvider>
       {toggle ? (
@@ -36,7 +37,13 @@ export const Template = ({
           onDismiss={() => setToggle(!toggle)}
           dialogLabel={dialogLabel}
         >
-          <LoadingList numberOfItems={3} sectionHeader="Loading..." />
+          <SectionContentList>
+            {userList
+              .filter((user) => user.toLowerCase().includes(text.toLowerCase()))
+              .map((user, index) => (
+                <SectionListItem key={index}>{user}</SectionListItem>
+              ))}
+          </SectionContentList>
         </SelectDialog>
       ) : (
         <Button tone={buttonTone} onClick={() => setToggle(!toggle)}>
