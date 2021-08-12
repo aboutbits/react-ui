@@ -1,15 +1,12 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import { actions } from '@storybook/addon-actions'
 import { HeaderBackAction } from '../actions/HeaderBackAction'
 import { HeaderArea } from './HeaderArea'
 import { MenuProvider } from './MenuContext'
 import { HeaderTitle } from './HeaderTitle'
 
-<Meta
-  title="Components/Header/HeaderArea"
-  component={HeaderArea}
-  argTypes={{ onClick: { action: 'clicked' } }}
-/>
+<Meta title="Components/Header/HeaderArea" component={HeaderArea} />
 
 # HeaderArea
 
@@ -23,7 +20,7 @@ In any case, this component needs be wrapped in a `MenuProvider`.
 
 export const Template = ({ ...args }) => (
   <MenuProvider>
-    <HeaderArea {...args} />
+    <HeaderArea {...args} onClick={actions('clicked')} />
   </MenuProvider>
 )
 

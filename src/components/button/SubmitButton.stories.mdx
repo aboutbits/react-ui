@@ -1,14 +1,13 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
+import { actions } from '@storybook/addon-actions'
 import { SubmitButton } from './SubmitButton'
 
-<Meta
-  title="Components/Button/SubmitButton"
-  component={SubmitButton}
-  argTypes={{ onClick: { action: 'clicked' } }}
-/>
+<Meta title="Components/Button/SubmitButton" component={SubmitButton} />
 
 export const Template = ({ children, ...args }) => (
-  <SubmitButton {...args}>{children}</SubmitButton>
+  <SubmitButton {...args} onClick={actions('clicked')}>
+    {children}
+  </SubmitButton>
 )
 
 # SubmitButton

@@ -1,12 +1,12 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import Icon from '@aboutbits/react-material-icons/dist/IconSearch'
 import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
+import { actions } from '@storybook/addon-actions'
 import { HeaderLargeAction } from './HeaderLargeAction'
 
 <Meta
   title="Components/Header/HeaderLargeAction"
   component={HeaderLargeAction}
-  argTypes={{ onClick: { action: 'clicked' } }}
 />
 
 # HeaderLargeAction
@@ -14,7 +14,12 @@ import { HeaderLargeAction } from './HeaderLargeAction'
 This component is used to add a _large_ icon to the header. It applies some basic styling for the icon.
 
 export const Template = ({ ...args }) => (
-  <HeaderLargeAction {...args} icon={Icon} label="Enter search term" />
+  <HeaderLargeAction
+    {...args}
+    icon={Icon}
+    onClick={actions('clicked')}
+    label="Enter search term"
+  />
 )
 
 <Canvas>
