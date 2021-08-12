@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { IntlProvider, useIntl } from 'react-intl'
 import { Formik } from 'formik'
+import * as Yup from 'yup'
 import { DesignSystemProvider } from '../designSystem/DesignSystemProvider'
 import { ContentArea } from '../components/content/ContentArea'
 import { Form } from '../components/form/Form'
@@ -14,12 +15,21 @@ import { Input } from '../components/form/Input'
 import { Select } from '../components/form/Select'
 import { Actions } from '../components/action/Action'
 import { SubmitButton } from '../components/button/SubmitButton'
-import { Tone } from '../components/button/Button'
 import { i18n, locales } from './i18n'
 
 <Meta title="Examples/Form" component={DesignSystemProvider} />
 
 # Form
+
+The following example shows how a potential form could look like.
+
+`formik` is used to handle the form.
+
+As schema validator `yup` is used.
+
+```
+npm install yup
+```
 
 export const Template = ({ title }) => {
   const intl = useIntl()
@@ -61,18 +71,6 @@ export const Template = ({ title }) => {
           },
         },
       },
-      withIcon: {
-        iconContainer: {
-          base: 'flex justify-center items-center',
-        },
-        icon: {
-          base: 'fill-current',
-          size: {
-            sm: 'mr-2 w-4 h-4',
-            md: 'mr-3 w-6 h-6',
-          },
-        },
-      },
     },
     action: {
       action: {
@@ -99,56 +97,12 @@ export const Template = ({ title }) => {
         empty: {
           base: 'justify-center py-4',
         },
-        error: {
-          base: 'justify-center py-4',
-          icon: {
-            base: 'fill-current',
-            normal: 'text-withe',
-          },
-          iconContainer: {
-            base: 'p-1.5 mr-2',
-            normal: 'rounded-full bg-critical',
-          },
-          children: {
-            normal: 'text-critical',
-          },
-        },
       },
       contentTwoColumn: {
         base: 'grid xl:grid-cols-2 xl:gap-x-5 gap-y-5',
       },
-      listItem: {
-        base: 'flex items-center min-h-14 px-4 lg:px-5',
-        normal: 'bg-gray-700 text-white',
-      },
-      listItemWithAction: {
-        base: 'justify-between space-x-4',
-        action: {
-          base: 'flex flex-shrink-0',
-        },
-      },
-      descriptionItem: {
-        base: 'flex flex-col pb-2 space-y-1 text-white border-black border-gray-300',
-        title: {
-          base: 'text-sm',
-        },
-      },
-      listItemWithButton: {
-        base: 'justify-between space-x-4',
-        normal: 'hover:bg-gray-600',
-      },
-      error: {
-        base: 'flex flex-col items-center justify-center overflow-hidden mx-auto my-15 lg:mt-20',
-        button: { base: 'mt-10 lg:mt-20' },
-        icon: { base: 'w-60 h-60' },
-        title: { base: 'mt-7 text-4xl font-bold' },
-        children: { base: 'mt-5 w-full text-xl text-center break-words' },
-      },
       header: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white', normal: 'bg-white' },
       title: { base: 'text-xs font-bold uppercase', normal: 'text-black' },
-      headerWithAction: {
-        base: 'flex justify-between items-center space-x-4',
-      },
     },
     content: {
       area: {
@@ -180,59 +134,88 @@ export const Template = ({ title }) => {
     'shared.field.email': 'Email',
     'shared.field.language': 'Language',
   }
+  const initialValues = {
+    email: 'info@aboutbits.it',
+    name: 'John Doe',
+    language: 'EN',
+    role: 'USER',
+  }
+  const schema = Yup.object().shape({
+    email: Yup.string().email().required(),
+    name: Yup.string().required(),
+    language: Yup.string().required(),
+    role: Yup.string().required(),
+  })
   return (
     <DesignSystemProvider theme={theme}>
       <IntlProvider locale="en" messages={messages}>
         <ContentArea>
-          <Formik>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={schema}
+            validateOnBlur={true}
+            validateOnChange={true}
+          >
             <Form>
               <Section>
                 <SectionHeader>
                   <SectionTitle>{title}</SectionTitle>
                 </SectionHeader>
-              </Section>
-              <SectionContentTwoColumn>
-                <Input
-                  id="name"
-                  type="text"
-                  autoCapitalize="none"
-                  name="name"
-                  placeholder={intl.formatMessage({ id: 'shared.field.name' })}
-                  label={intl.formatMessage({ id: 'shared.field.name' })}
-                />
-                <Input
-                  id="email"
-                  type="email"
-                  autoCapitalize="none"
-                  name="email"
-                  placeholder={intl.formatMessage({ id: 'shared.field.email' })}
-                  label={intl.formatMessage({ id: 'shared.field.email' })}
-                />
-                <Select
-                  id="language"
-                  autoCapitalize="none"
-                  name="language"
-                  label={intl.formatMessage({ id: 'shared.field.language' })}
-                >
-                  {i18n.supportedLanguages.map((supportedLanguage, index) => (
-                    <option key={index} value={supportedLanguage}>
-                      {locales[supportedLanguage]}
+                <SectionContentTwoColumn>
+                  <Input
+                    id="name"
+                    type="text"
+                    autoCapitalize="none"
+                    name="name"
+                    placeholder={intl.formatMessage({
+                      id: 'shared.field.name',
+                    })}
+                    label={intl.formatMessage({ id: 'shared.field.name' })}
+                  />
+                  <Input
+                    id="email"
+                    type="email"
+                    autoCapitalize="none"
+                    name="email"
+                    placeholder={intl.formatMessage({
+                      id: 'shared.field.email',
+                    })}
+                    label={intl.formatMessage({ id: 'shared.field.email' })}
+                  />
+                  <Select
+                    id="language"
+                    autoCapitalize="none"
+                    name="language"
+                    label={intl.formatMessage({ id: 'shared.field.language' })}
+                  >
+                    {i18n.supportedLanguages.map((supportedLanguage, index) => (
+                      <option
+                        className="bg-gray-600"
+                        key={index}
+                        value={supportedLanguage}
+                      >
+                        {locales[supportedLanguage]}
+                      </option>
+                    ))}
+                  </Select>
+                  <Select
+                    id="role"
+                    autoCapitalize="none"
+                    name="role"
+                    label="role"
+                  >
+                    <option className="bg-gray-600" value="ADMIN">
+                      Admin
                     </option>
-                  ))}
-                </Select>
-                <Select
-                  id="role"
-                  autoCapitalize="none"
-                  name="role"
-                  label="role"
-                >
-                  <option value="ADMIN">admin</option>
-                  <option value="USER">user</option>
-                </Select>
-              </SectionContentTwoColumn>
-              <Actions>
-                <SubmitButton variant={Tone.primary}>Save</SubmitButton>
-              </Actions>
+                    <option className="bg-gray-600" value="USER">
+                      User
+                    </option>
+                  </Select>
+                </SectionContentTwoColumn>
+                <Actions>
+                  <SubmitButton>Save changes</SubmitButton>
+                </Actions>
+              </Section>
             </Form>
           </Formik>
         </ContentArea>
@@ -252,3 +235,14 @@ export const Template = ({ title }) => {
 <ArgsTable story="Default" />
 
 ### Components used
+
+- [ContentArea](/docs/components-content-contentarea--default-story):
+- [Form](/docs/components-form-form--default-story)
+- [Section](/docs/components-section-section--default-story)
+- [SectionHeader](/docs/components-section-sectionheader--default-story)
+- [SectionTitle](/docs/components-section-sectiontitle--default-story)
+- [SectionContentTwoColumn](/docs/components-section-sectioncontenttwocolumn--default-story)
+- [Input](/docs/components-form-input--default-story)
+- [Select](/docs/components-form-select--default-story)
+- [Action](/docs/components-action-actions--default-story)
+- [SubmitButton](/docs/components-button-submitbutton--default-story)

@@ -1,4 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { actions } from '@storybook/addon-actions'
 import { IntlProvider } from 'react-intl'
 import { useState } from 'react'
 import { DesignSystemProvider } from '../designSystem/DesignSystemProvider'
@@ -100,7 +101,10 @@ export const Template = ({
                     index < page * numberOfItemsPerPage
                 )
                 .map((item) => (
-                  <SectionListItemWithButton key={item}>
+                  <SectionListItemWithButton
+                    key={item}
+                    onClick={actions('onClick')}
+                  >
                     {`User ${item + 1}`}
                   </SectionListItemWithButton>
                 ))}
@@ -141,16 +145,10 @@ export const Template = ({
 
 ### Components used
 
-[Section](/docs/components-section-section--default-story): Defines the overall container.
-
-[SectionHeader](/docs/components-section-SectionHeader--default-story): Defines the header of the list.
-
-[SectionTitle](/docs/components-section-SectionTitle--default-story): Defines the title of the list.
-
-[SectionContentList](/docs/components-section-SectionContentList--default-story): Defines the container for the list.
-
-[SectionListItemWithButton](/docs/components-section-SectionListItemWithButton--default-story): Defines each list item.
-
-[SectionContentListEmpty](/docs/components-section-SectionContentListEmpty--default-story): Defines the placeholder if no input was given.
-
-[PaginationInMemory](/docs/components-pagination-paginationinmemory--default-story): Defines the pagination of the example.
+- [Section](/docs/components-section-section--default-story)
+- [SectionHeader](/docs/components-section-SectionHeader--default-story)
+- [SectionTitle](/docs/components-section-SectionTitle--default-story)
+- [SectionContentList](/docs/components-section-SectionContentList--default-story)
+- [SectionListItemWithButton](/docs/components-section-SectionListItemWithButton--default-story)
+- [SectionContentListEmpty](/docs/components-section-SectionContentListEmpty--default-story)
+- [PaginationInMemory](/docs/components-pagination-paginationinmemory--default-story)
