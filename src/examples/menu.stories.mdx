@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { IntlProvider, useIntl } from 'react-intl'
+import { DesignSystemProvider } from '../designSystem/DesignSystemProvider'
+import { Menu } from '../components/menu/Menu'
+import { MenuItem } from '../components/menu/MenuItem'
+import { useTheme } from '../designSystem/theme/ThemeContext'
+import enMessages from '../translations/shared.en.json'
+import { i18n, locales } from './i18n'
+
+<Meta title="Examples/Menu" component={DesignSystemProvider} />
+
+# Menu
+
+The following example provides a language picker using the menu components. It allows the user to switch among the provided languages.
+
+export const Template = () => {
+  const intl = useIntl()
+  const currentLocale = intl.locale.toUpperCase()
+  return (
+    <DesignSystemProvider theme={useTheme()}>
+      <IntlProvider locale="en" messages={enMessages}>
+        <Menu menuButtonContent={currentLocale}>
+          {i18n.supportedLanguages.map((supportedLanguage, index) => (
+            <MenuItem
+              onClick={() => {
+                i18n.setLanguage(supportedLanguage)
+                window.location.reload()
+              }}
+              key={index}
+            >
+              {locales[supportedLanguage]}
+            </MenuItem>
+          ))}
+        </Menu>
+      </IntlProvider>
+    </DesignSystemProvider>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Components used
+
+- [Menu](/docs/components-menu-menu--default-story)
+- [MenuItem](/docs/components-menu-menuitem--default-story)
