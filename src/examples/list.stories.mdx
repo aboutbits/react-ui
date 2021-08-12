@@ -12,6 +12,8 @@ import {
   SectionTitle,
 } from '../components/section'
 import { PaginationInMemory } from '../components/pagination/PaginationInMemory'
+import { useTheme } from '../designSystem/theme/ThemeContext'
+import enMessages from '../translations/shared.en.json'
 
 <Meta title="Examples/List" component={DesignSystemProvider} />
 
@@ -30,64 +32,9 @@ export const Template = ({
 }) => {
   const content = Array.from(Array(numberOfTotalItems).keys())
   const [page, setPage] = useState(1)
-  const theme = {
-    pagination: {
-      container: {
-        base: 'flex justify-between lg:p-4 py-4 px-3',
-      },
-      prevNext: {
-        icon: {
-          base: 'inline-block w-6 h-6 fill-current',
-        },
-        text: {
-          base: 'hidden lg:block',
-        },
-      },
-      pagesList: { base: 'flex items-center' },
-      page: {
-        base: 'flex items-center',
-        normal: 'px-2',
-        enabled: 'hover:underline',
-        disabled: 'text-gray-500 cursor-not-allowed pointer-events-none',
-        current: 'font-bold',
-      },
-    },
-    section: {
-      section: {
-        base: 'lg:shadow-md',
-        normal: 'bg-white',
-      },
-      content: {
-        base: 'pt-5 pb-10 px-4 lg:px-5',
-        normal: 'bg-gray-700',
-      },
-      contentList: {
-        base: 'space-y-px',
-        normal: 'bg-gray-300',
-        empty: {
-          base: 'justify-center py-4',
-        },
-      },
-      listItem: {
-        base: 'flex items-center min-h-14 px-4 lg:px-5',
-        normal: 'bg-gray-700 text-white',
-      },
-      listItemWithButton: {
-        base: 'justify-between space-x-4',
-        normal: 'hover:bg-gray-600',
-      },
-      header: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white', normal: 'bg-white' },
-      title: { base: 'text-xs font-bold uppercase', normal: 'text-black' },
-    },
-  }
-  const messages = {
-    'shared.pagination.prev': 'Prev',
-    'shared.pagination.next': 'Next',
-    'shared.pagination.page': 'Page {page}',
-  }
   return (
-    <DesignSystemProvider theme={theme}>
-      <IntlProvider locale="en" messages={messages}>
+    <DesignSystemProvider theme={useTheme()}>
+      <IntlProvider locale="en" messages={enMessages}>
         <Section>
           <SectionHeader>
             <SectionTitle>{title}</SectionTitle>
