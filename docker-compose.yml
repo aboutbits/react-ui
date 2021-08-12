@@ -11,6 +11,8 @@ services:
     command: npm run dev
     environment:
       NEXT_TELEMETRY_DISABLED: 1
+    ports:
+      - 4000:4000
     networks:
       - internal
       - proxy
