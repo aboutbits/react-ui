@@ -1,8 +1,6 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs'
-import { IntlProvider, useIntl } from 'react-intl'
+import { useIntl } from 'react-intl'
 import { DesignSystemProvider } from '../designSystem/DesignSystemProvider'
-import { useTheme } from '../designSystem/theme/ThemeContext'
-import enMessages from '../translations/shared.en.json'
 import { ContentArea } from '../components/content/ContentArea'
 import {
   Section,
@@ -21,30 +19,26 @@ The following example shows how a detailed view could look like, e.g. from a use
 export const Template = ({ title }) => {
   const intl = useIntl()
   return (
-    <DesignSystemProvider theme={useTheme()}>
-      <IntlProvider locale="en" messages={enMessages}>
-        <ContentArea>
-          <Section>
-            <SectionHeader>
-              <SectionTitle>{title}</SectionTitle>
-            </SectionHeader>
-            <SectionContentTwoColumn>
-              <SectionDescriptionItem
-                content="John Doe"
-                title={intl.formatMessage({ id: 'shared.field.name' })}
-              />
-              <SectionDescriptionItem
-                content="info@aboutbits.it"
-                title={intl.formatMessage({ id: 'shared.field.email' })}
-              />
-              <SectionDescriptionItem content="admin" title="Role" />
-              <SectionDescriptionItem content="active" title="State" />
-              <SectionDescriptionItem content="English" title="Language" />
-            </SectionContentTwoColumn>
-          </Section>
-        </ContentArea>
-      </IntlProvider>
-    </DesignSystemProvider>
+    <ContentArea>
+      <Section>
+        <SectionHeader>
+          <SectionTitle>{title}</SectionTitle>
+        </SectionHeader>
+        <SectionContentTwoColumn>
+          <SectionDescriptionItem
+            content="John Doe"
+            title={intl.formatMessage({ id: 'shared.field.name' })}
+          />
+          <SectionDescriptionItem
+            content="info@aboutbits.it"
+            title={intl.formatMessage({ id: 'shared.field.email' })}
+          />
+          <SectionDescriptionItem content="admin" title="Role" />
+          <SectionDescriptionItem content="active" title="State" />
+          <SectionDescriptionItem content="English" title="Language" />
+        </SectionContentTwoColumn>
+      </Section>
+    </ContentArea>
   )
 }
 
@@ -53,12 +47,3 @@ export const Template = ({ title }) => {
     {Template.bind({})}
   </Story>
 </Canvas>
-
-### Components used
-
-- [ContentArea](/docs/components-content-contentarea--default-story)
-- [Section](/docs/components-section-section--default-story)
-- [SectionHeader](/docs/components-section-SectionHeader--default-story)
-- [SectionTitle](/docs/components-section-SectionTitle--default-story)
-- [SectionContentTwoColumn](/docs/components-section-SectionContentTwoColumn--default-story)
-- [SectionDescriptionItem](/docs/components-section-SectionDescriptionItem--default-story)

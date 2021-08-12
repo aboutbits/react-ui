@@ -1,6 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { actions } from '@storybook/addon-actions'
-import { IntlProvider } from 'react-intl'
 import { useState } from 'react'
 import { DesignSystemProvider } from '../designSystem/DesignSystemProvider'
 import {
@@ -12,8 +11,6 @@ import {
   SectionTitle,
 } from '../components/section'
 import { PaginationInMemory } from '../components/pagination/PaginationInMemory'
-import { useTheme } from '../designSystem/theme/ThemeContext'
-import enMessages from '../translations/shared.en.json'
 
 <Meta title="Examples/List" component={DesignSystemProvider} />
 
@@ -33,43 +30,39 @@ export const Template = ({
   const content = Array.from(Array(numberOfTotalItems).keys())
   const [page, setPage] = useState(1)
   return (
-    <DesignSystemProvider theme={useTheme()}>
-      <IntlProvider locale="en" messages={enMessages}>
-        <Section>
-          <SectionHeader>
-            <SectionTitle>{title}</SectionTitle>
-          </SectionHeader>
-          <SectionContentList>
-            {content.length > 0 &&
-              content
-                .filter(
-                  (_, index) =>
-                    index >= (page - 1) * numberOfItemsPerPage &&
-                    index < page * numberOfItemsPerPage
-                )
-                .map((item) => (
-                  <SectionListItemWithButton
-                    key={item}
-                    onClick={actions('onClick')}
-                  >
-                    {`User ${item + 1}`}
-                  </SectionListItemWithButton>
-                ))}
-            {content.length === 0 && (
-              <SectionContentListEmpty>
-                No users found in database.
-              </SectionContentListEmpty>
-            )}
-          </SectionContentList>
-          <PaginationInMemory
-            page={page}
-            size={numberOfItemsPerPage}
-            total={numberOfTotalItems}
-            onChangePage={setPage}
-          />
-        </Section>
-      </IntlProvider>
-    </DesignSystemProvider>
+    <Section>
+      <SectionHeader>
+        <SectionTitle>{title}</SectionTitle>
+      </SectionHeader>
+      <SectionContentList>
+        {content.length > 0 &&
+          content
+            .filter(
+              (_, index) =>
+                index >= (page - 1) * numberOfItemsPerPage &&
+                index < page * numberOfItemsPerPage
+            )
+            .map((item) => (
+              <SectionListItemWithButton
+                key={item}
+                onClick={actions('onClick')}
+              >
+                {`User ${item + 1}`}
+              </SectionListItemWithButton>
+            ))}
+        {content.length === 0 && (
+          <SectionContentListEmpty>
+            No users found in database.
+          </SectionContentListEmpty>
+        )}
+      </SectionContentList>
+      <PaginationInMemory
+        page={page}
+        size={numberOfItemsPerPage}
+        total={numberOfTotalItems}
+        onChangePage={setPage}
+      />
+    </Section>
   )
 }
 
@@ -89,13 +82,3 @@ export const Template = ({
 ### Props
 
 <ArgsTable story="Default" />
-
-### Components used
-
-- [Section](/docs/components-section-section--default-story)
-- [SectionHeader](/docs/components-section-SectionHeader--default-story)
-- [SectionTitle](/docs/components-section-SectionTitle--default-story)
-- [SectionContentList](/docs/components-section-SectionContentList--default-story)
-- [SectionListItemWithButton](/docs/components-section-SectionListItemWithButton--default-story)
-- [SectionContentListEmpty](/docs/components-section-SectionContentListEmpty--default-story)
-- [PaginationInMemory](/docs/components-pagination-paginationinmemory--default-story)
