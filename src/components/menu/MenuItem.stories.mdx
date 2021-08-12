@@ -1,0 +1,37 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { MenuItem } from './MenuItem'
+import { Menu } from './Menu'
+
+<Meta title="Components/Menu/MenuItem" component={MenuItem} />
+
+# MenuItem
+
+This component is used to add an item to the [Menu](/docs/components-menu-menu--default-story).
+
+It leverages on the npm package [@reach/menu-button](https://www.npmjs.com/package/@reach/menu-button).
+
+```bash
+npm i @reach/menu-button
+```
+
+export const Template = () => (
+  <Menu menuLabel="Menu" menuButtonContent="Menu">
+    <MenuItem key={1} onClick={action('click')}>
+      Menu Item
+    </MenuItem>
+  </Menu>
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `menu.menuItem.base`
+- `menu.menuItem.normal`

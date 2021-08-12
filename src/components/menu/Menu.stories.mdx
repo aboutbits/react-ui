@@ -1,0 +1,56 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { Menu } from './Menu'
+import { MenuItem } from './MenuItem'
+
+<Meta title="Components/Menu/Menu" component={Menu} />
+
+# Menu
+
+This component can be used to generate a simple dropdown menu.
+
+It leverages on the component [MenuItem](/docs/components-menu-menuitem--default-story) and the npm package [@reach/menu-button](https://www.npmjs.com/package/@reach/menu-button).
+
+```bash
+npm i @reach/menu-button
+```
+
+export const Template = ({ menuLabel, className, ...args }) => {
+  const array = [1, 2, 3]
+  return (
+    <Menu {...args} menuLabel={menuLabel} className={className}>
+      {array.map((item, index) => (
+        <MenuItem
+          key={index}
+          onClick={action('onClick')}
+        >{`Menu item ${item}`}</MenuItem>
+      ))}
+    </Menu>
+  )
+}
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      menuLabel: 'Menu',
+      menuButtonContent: 'Menu',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `menu.menuButton.base`: Define the flexbox and the interactions with hover and active for the menu button.
+- `menu.menuButton.text.base`
+- `menu.menuButton.text.normal`: Define the text color for the language to the left of the icon.
+- `menu.menuButton.icon.base`: Define the width and height for the icon.
+- `menu.menuButton.icon.normal`: Define the color for the icon.
+- `menu.menuList.base`: Define the margin and padding for the menu list.
+- `menu.menuList.normal`: Define the background color of the menu list.
