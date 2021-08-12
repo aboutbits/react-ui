@@ -264,7 +264,7 @@ const defaultTheme = {
           critical:
             'bg-critical hover:bg-critical-700 focus:bg-critical-700 text-white',
           secondary:
-            'bg-secondary hover:bg-secondary-700 focus:bg-secondary-700 text-white',
+            'bg-secondary hover:bg-secondary-100 focus:bg-secondary-100 text-white',
           disabled: 'bg-gray-50 text-gray',
         },
         ghost: {
@@ -274,14 +274,14 @@ const defaultTheme = {
           critical:
             'border-critical hover:border-critical-700 text-critical hover:text-critical-700',
           secondary:
-            'border-secondary hover:border-secondary-700 text-secondary hover:text-secondary-700',
+            'border-secondary hover:border-secondary-100 text-secondary hover:text-secondary-100',
           disabled: 'border-gray-500 text-gray',
         },
         transparent: {
           base: 'underline border-transparent background-transparent',
           primary: 'text-primary hover:text-primary-700',
           critical: 'text-critical hover:text-critical-700 underline',
-          secondary: 'text-secondary hover:text-secondary-700 ',
+          secondary: 'text-secondary hover:text-secondary-100 ',
           disabled: ' background-gray-50 text-gray',
         },
       },
