@@ -1,0 +1,77 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { actions } from '@storybook/addon-actions'
+import { useState } from 'react'
+import {
+  Section,
+  SectionContentList,
+  SectionContentListEmpty,
+  SectionHeader,
+  SectionListItemWithButton,
+  SectionTitle,
+} from '../components/section'
+import { PaginationInMemory } from '../components/pagination/PaginationInMemory'
+
+<Meta title="Examples/List" />
+
+# List
+
+The following example shows how multiple section components and the in memory pagination are used to create an overview list.
+
+Changing the properties `numberOfTotalItems` and `numberOfItemsPerPage` will change the number of pages and/or the number the of items per page.
+
+Setting `numberOfTotalItems` to 0 will reveal the placeholder for the empty list.
+
+export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
+  const content = Array.from(Array(numberOfTotalItems).keys())
+  const [page, setPage] = useState(1)
+  return (
+    <Section>
+      <SectionHeader>
+        <SectionTitle>List of users</SectionTitle>
+      </SectionHeader>
+      <SectionContentList>
+        {content.length > 0 &&
+          content
+            .slice(
+              (page - 1) * numberOfItemsPerPage,
+              (page - 1) * numberOfItemsPerPage + numberOfItemsPerPage
+            )
+            .map((item) => (
+              <SectionListItemWithButton
+                key={item}
+                onClick={actions('onClick')}
+              >
+                {`User ${item + 1}`}
+              </SectionListItemWithButton>
+            ))}
+        {content.length === 0 && (
+          <SectionContentListEmpty>
+            No users found in database.
+          </SectionContentListEmpty>
+        )}
+      </SectionContentList>
+      <PaginationInMemory
+        page={page}
+        size={numberOfItemsPerPage}
+        total={numberOfTotalItems}
+        onChangePage={setPage}
+      />
+    </Section>
+  )
+}
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      numberOfTotalItems: 10,
+      numberOfItemsPerPage: 5,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

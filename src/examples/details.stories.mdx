@@ -1,0 +1,52 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { useIntl } from 'react-intl'
+import { ContentArea } from '../components/content/ContentArea'
+import {
+  Section,
+  SectionContentTwoColumn,
+  SectionDescriptionItem,
+  SectionHeader,
+  SectionTitle,
+} from '../components/section'
+
+<Meta title="Examples/Details" />
+
+# Details
+
+The following example shows how a detailed view could look like, e.g. from a user.
+
+export const Template = ({ title }) => {
+  const intl = useIntl()
+  return (
+    <ContentArea>
+      <Section>
+        <SectionHeader>
+          <SectionTitle>{title}</SectionTitle>
+        </SectionHeader>
+        <SectionContentTwoColumn>
+          <SectionDescriptionItem
+            content="John Doe"
+            title={intl.formatMessage({ id: 'shared.field.name' })}
+          />
+          <SectionDescriptionItem
+            content="info@aboutbits.it"
+            title={intl.formatMessage({ id: 'shared.field.email' })}
+          />
+          <SectionDescriptionItem content="admin" title="Role" />
+          <SectionDescriptionItem content="English" title="Language" />
+          <SectionDescriptionItem
+            className="col-span-2"
+            content="John is a software engineer from Bolzano, Italy."
+            title="Bio"
+          />
+        </SectionContentTwoColumn>
+      </Section>
+    </ContentArea>
+  )
+}
+
+<Canvas>
+  <Story name="Default" args={{ title: 'Detailed user view' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -15,12 +15,12 @@ type Props = React.DetailedHTMLProps<
 }
 
 export const Select = forwardRef<HTMLSelectElement, Props>(
-  ({ label, children, ...props }, ref) => {
+  ({ label, children, className, ...props }, ref) => {
     const customCss = useCustomInputCss(props.name, props.disabled)
     const [field] = useField(props.name)
 
     return (
-      <div>
+      <div className={className}>
         <InputLabel
           inputId={props.id}
           label={label}

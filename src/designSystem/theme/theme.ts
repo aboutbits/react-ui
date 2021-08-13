@@ -161,7 +161,7 @@ const defaultTheme = {
       },
     },
     descriptionItem: {
-      base: 'flex flex-col pb-2 space-y-1 text-white border-black border-gray-300',
+      base: 'flex flex-col pb-2 space-y-1 text-white border-b border-gray-300',
       title: {
         base: 'text-sm',
       },
