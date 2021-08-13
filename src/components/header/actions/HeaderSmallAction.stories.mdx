@@ -39,6 +39,10 @@ export const Template = ({ ...args }) => (
 
 <Canvas>
   <Story name="Custom Icon">
-    <HeaderSmallAction icon={IconEdit} label="Edit" />
+    <HeaderSmallAction
+      icon={IconEdit}
+      label="Edit"
+      onClick={action('onClick')}
+    />
   </Story>
 </Canvas>
