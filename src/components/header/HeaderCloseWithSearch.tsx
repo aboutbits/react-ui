@@ -1,6 +1,5 @@
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import React, { ReactNode, useState } from 'react'
-import { useIntl } from 'react-intl'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import {
   HeaderArea,
@@ -10,6 +9,7 @@ import {
   HeaderLeftArea,
 } from '../header'
 import { UseSearchQuery } from '../types'
+import { useInternationalization } from '../../designSystem/internationalization/InternationalizationContext'
 import { HeaderLargeAction } from './actions/HeaderLargeAction'
 import { HeaderSearch } from './HeaderSearch'
 import { Props as HeaderMainProps } from './HeaderMain'
@@ -68,7 +68,7 @@ const HeaderNotSearching: React.FC<{
   startSearch: () => void
   onClose: () => void
 }> = ({ title, labelIcon, startSearch, onClose }) => {
-  const intl = useIntl()
+  const internationalization = useInternationalization()
 
   return (
     <HeaderArea
@@ -76,7 +76,7 @@ const HeaderNotSearching: React.FC<{
         <HeaderLeftArea>
           <HeaderLargeAction
             icon={IconClose}
-            label={intl.formatMessage({ id: 'shared.search.close' })}
+            label={internationalization.translate('shared.search.close')}
             onClick={onClose}
           />
         </HeaderLeftArea>

@@ -10,11 +10,6 @@ import { SectionError } from './SectionError'
 This component renders an error with a reload page button.
 This is very useful if your page has only one section.
 
-The component makes use of `react-intl` to translate the following message ids:
-
-- `shared.error.title`
-- `shared.button.reload`
-
 export const Template = ({ children }) => (
   <SectionError icon={<Warning />}>{children}</SectionError>
 )
@@ -40,3 +35,8 @@ export const Template = ({ children }) => (
 - `section.error.icon.base`: Define the style of the icon.
 - `section.error.title.base`: Define the style of the title.
 - `section.error.children.base`: Define the style of the passed children.
+
+### Internationalization
+
+- `shared.error.title`
+- `shared.button.reload`

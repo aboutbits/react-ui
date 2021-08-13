@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import { useRouter } from '../../designSystem/router/RouterContext'
 import { HeaderArea } from './areas/HeaderArea'
 import { HeaderBackAction } from './actions/HeaderBackAction'
@@ -21,24 +22,30 @@ type Props = {
    * Override default onBack action.
    */
   onBack?: () => void
+
+  /**
+   * Override default accessibility label for back action.
+   */
+  backLabel?: string
 }
 
-const HeaderBackWithEdit: React.FC<Props> = ({
+export function HeaderBackWithEdit({
   title,
   editHref,
   editLabel,
   onBack,
-}) => {
+  backLabel,
+}: Props): ReactElement {
   const router = useRouter()
 
   return (
     <HeaderArea
-      navigation={<HeaderBackAction onClick={onBack || router.back} />}
+      navigation={
+        <HeaderBackAction onClick={onBack || router.back} label={backLabel} />
+      }
     >
       <HeaderTitle>{title}</HeaderTitle>
       <HeaderEditAction href={editHref} label={editLabel} />
     </HeaderArea>
   )
 }
-
-export { HeaderBackWithEdit }

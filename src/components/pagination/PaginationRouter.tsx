@@ -1,9 +1,9 @@
 import classNames from 'classnames'
 import { calculatePagination, IndexType } from '@aboutbits/pagination'
-import { useIntl } from 'react-intl'
 import { useLinkComponent } from '../../designSystem/router/LinkComponentContext'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../types'
+import { useInternationalization } from '../../designSystem/internationalization/InternationalizationContext'
 import { PaginationContainer } from './PaginationContainer'
 import {
   PaginationNextContent,
@@ -53,7 +53,7 @@ const PaginationRouter: React.FC<Props> = ({
   config,
   className,
 }) => {
-  const intl = useIntl()
+  const internationalization = useInternationalization()
 
   const LinkComponent = useLinkComponent()
   const { pagination: paginationTheme } = useTheme()
@@ -66,7 +66,7 @@ const PaginationRouter: React.FC<Props> = ({
     <PaginationContainer className={className}>
       <LinkComponent
         {...linkProps({ pageIndex: pagination.previous.indexNumber, size })}
-        aria-label={intl.formatMessage({ id: 'shared.pagination.prev' })}
+        aria-label={internationalization.translate('shared.pagination.prev')}
         aria-disabled={pagination.previous.isDisabled}
         role="previous-link"
         className={classNames(
@@ -89,8 +89,8 @@ const PaginationRouter: React.FC<Props> = ({
                   size,
                 })}
                 aria-current={page.isCurrent ? 'page' : false}
-                aria-label={intl.formatMessage(
-                  { id: 'shared.pagination.page' },
+                aria-label={internationalization.translate(
+                  'shared.pagination.page',
                   { page: page.displayNumber }
                 )}
                 className={classNames(
@@ -112,7 +112,7 @@ const PaginationRouter: React.FC<Props> = ({
           pageIndex: pagination.next.indexNumber,
           size,
         })}
-        aria-label={intl.formatMessage({ id: 'shared.pagination.next' })}
+        aria-label={internationalization.translate('shared.pagination.next')}
         aria-disabled={pagination.next.isDisabled}
         role="next-link"
         className={classNames(

@@ -6,31 +6,43 @@ import {
   LinkComponentContext,
 } from './router/LinkComponentContext'
 import { RouterContext, Router, useRouter } from './router/RouterContext'
+import {
+  Internationalization,
+  InternationalizationContext,
+  useInternationalization,
+} from './internationalization/InternationalizationContext'
 
 type Props = {
   theme: Theme
   linkComponent?: LinkComponent
   router?: Router
+  internationalization?: Internationalization
 }
 
 export const DesignSystemProvider: React.FC<Props> = ({
   theme,
   linkComponent,
   router,
+  internationalization,
   children,
 }) => {
   const linkComponentFromContext = useContext(LinkComponentContext)
   const routerComponentFromContext = useRouter()
+  const internationalizationFromContext = useInternationalization()
 
   return (
     <ThemeContext.Provider value={theme}>
-      <RouterContext.Provider value={router || routerComponentFromContext}>
-        <LinkComponentContext.Provider
-          value={linkComponent || linkComponentFromContext}
-        >
-          {children}
-        </LinkComponentContext.Provider>
-      </RouterContext.Provider>
+      <InternationalizationContext.Provider
+        value={internationalization || internationalizationFromContext}
+      >
+        <RouterContext.Provider value={router || routerComponentFromContext}>
+          <LinkComponentContext.Provider
+            value={linkComponent || linkComponentFromContext}
+          >
+            {children}
+          </LinkComponentContext.Provider>
+        </RouterContext.Provider>
+      </InternationalizationContext.Provider>
     </ThemeContext.Provider>
   )
 }

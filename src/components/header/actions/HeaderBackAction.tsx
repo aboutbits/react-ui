@@ -1,12 +1,12 @@
-import React, { ComponentType } from 'react'
+import React, { ComponentType, ReactElement } from 'react'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
-import { useIntl } from 'react-intl'
 import { HeaderLargeAction } from '../index'
 import { HeaderLeftArea } from '../areas/HeaderLeftArea'
 import { ClassNameProps } from '../../types'
+import { useInternationalization } from '../../../designSystem/internationalization/InternationalizationContext'
 
-type Props = ClassNameProps & {
+export type Props = ClassNameProps & {
   /**
    * Defines the icon of the button.
    * */
@@ -21,24 +21,22 @@ type Props = ClassNameProps & {
   onClick: () => void
 }
 
-const HeaderBackAction: React.FC<Props> = ({
+export function HeaderBackAction({
   label,
   onClick,
   icon = IconArrowBack,
   className,
-}) => {
-  const intl = useIntl()
+}: Props): ReactElement {
+  const internationalization = useInternationalization()
 
   return (
     <HeaderLeftArea>
       <HeaderLargeAction
         icon={icon}
-        label={label || intl.formatMessage({ id: 'shared.button.goBack' })}
+        label={label || internationalization.translate('shared.button.goBack')}
         onClick={onClick}
         className={className}
       />
     </HeaderLeftArea>
   )
 }
-
-export { HeaderBackAction }

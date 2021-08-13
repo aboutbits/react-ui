@@ -1,9 +1,9 @@
 import React from 'react'
-import { IntlProvider } from 'react-intl';
+import {IntlProvider, useIntl} from 'react-intl';
 import '../styles/index.css'
 import { makeTheme } from '../src/designSystem/theme/theme'
 import enMessages from '../src/translations/shared.en.json'
-import {DesignSystemProvider} from "../src/designSystem/DesignSystemProvider";
+import { DesignSystemProvider } from "../src/designSystem/DesignSystemProvider";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -40,14 +40,23 @@ const themeOverwrite = {
 }
 
 export const decorators = [
-  (Story) => (
-    <DesignSystemProvider theme={makeTheme(themeOverwrite)}>
-      <IntlProvider
-        locale="en"
-        messages={enMessages}
-      >
+  (Story) => {
+    const intl = useIntl()
+    const internationalization = {
+      translate: (key, values) => intl.formatMessage({id: key}, values)
+    }
+    return (
+      <DesignSystemProvider theme={makeTheme(themeOverwrite)} internationalization={internationalization}>
         <Story />
-      </IntlProvider>
-    </DesignSystemProvider>
-  ),
+      </DesignSystemProvider>
+    )
+  },
+  (Story) => (
+    <IntlProvider
+      locale="en"
+      messages={enMessages}
+    >
+      <Story />
+    </IntlProvider>
+  )
 ];
