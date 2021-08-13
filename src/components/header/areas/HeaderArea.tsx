@@ -1,10 +1,9 @@
 import React, { ReactNode } from 'react'
-import { useIntl } from 'react-intl'
 import IconMenu from '@aboutbits/react-material-icons/dist/IconMenu'
-// original path: ../../../layouts/app/menu/MenuContext
 import classNames from 'classnames'
 import { HeaderLargeAction } from '../actions/HeaderLargeAction'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { useInternationalization } from '../../../designSystem/internationalization/InternationalizationContext'
 import { useMenuToggle } from './MenuContext'
 import { HeaderLeftArea } from './HeaderLeftArea'
 
@@ -16,7 +15,7 @@ type Props = {
 }
 
 const HeaderArea: React.FC<Props> = ({ navigation = null, children }) => {
-  const intl = useIntl()
+  const intl = useInternationalization()
   const menuToggle = useMenuToggle()
   const { header } = useTheme()
   return (
@@ -25,7 +24,7 @@ const HeaderArea: React.FC<Props> = ({ navigation = null, children }) => {
         <HeaderLeftArea className="block lg:hidden">
           <HeaderLargeAction
             icon={IconMenu}
-            label={intl.formatMessage({ id: 'app.nav.menu' })}
+            label={intl.translate('app.nav.menu')}
             onClick={menuToggle}
           />
         </HeaderLeftArea>
