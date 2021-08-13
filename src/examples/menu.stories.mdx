@@ -19,7 +19,7 @@ export const Template = () => {
   return (
     <DesignSystemProvider theme={useTheme()}>
       <IntlProvider locale="en" messages={enMessages}>
-        <Menu menuButtonContent={currentLocale}>
+        <Menu menuButtonContent={currentLocale} menuLabel="">
           {i18n.supportedLanguages.map((supportedLanguage, index) => (
             <MenuItem
               onClick={() => {

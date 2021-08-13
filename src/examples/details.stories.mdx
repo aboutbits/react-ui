@@ -1,6 +1,5 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs'
 import { useIntl } from 'react-intl'
-import { DesignSystemProvider } from '../designSystem/DesignSystemProvider'
 import { ContentArea } from '../components/content/ContentArea'
 import {
   Section,
@@ -10,7 +9,7 @@ import {
   SectionTitle,
 } from '../components/section'
 
-<Meta title="Examples/Details" component={DesignSystemProvider} />
+<Meta title="Examples/Details" />
 
 # Details
 
@@ -34,8 +33,12 @@ export const Template = ({ title }) => {
             title={intl.formatMessage({ id: 'shared.field.email' })}
           />
           <SectionDescriptionItem content="admin" title="Role" />
-          <SectionDescriptionItem content="active" title="State" />
           <SectionDescriptionItem content="English" title="Language" />
+          <SectionDescriptionItem
+            className="col-span-2"
+            content="John is a software engineer from Bolzano, Italy."
+            title="Bio"
+          />
         </SectionContentTwoColumn>
       </Section>
     </ContentArea>

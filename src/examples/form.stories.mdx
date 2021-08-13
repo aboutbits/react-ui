@@ -3,7 +3,6 @@ import { useIntl } from 'react-intl'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { actions } from '@storybook/addon-actions'
-import { DesignSystemProvider } from '../designSystem/DesignSystemProvider'
 import { ContentArea } from '../components/content/ContentArea'
 import { Form } from '../components/form/Form'
 import {
@@ -16,9 +15,10 @@ import { Input } from '../components/form/Input'
 import { Select } from '../components/form/Select'
 import { Actions } from '../components/action/Action'
 import { SubmitButton } from '../components/button/SubmitButton'
+import { TextArea } from '../components/form/TextArea'
 import { i18n, locales } from './i18n'
 
-<Meta title="Examples/Form" component={DesignSystemProvider} />
+<Meta title="Examples/Form" />
 
 # Form
 
@@ -39,12 +39,14 @@ export const Template = ({ title }) => {
     name: 'John Doe',
     language: 'EN',
     role: 'USER',
+    bio: 'John is a software engineer from Bolzano, Italy.',
   }
   const schema = Yup.object().shape({
     email: Yup.string().email().required(),
     name: Yup.string().required(),
     language: Yup.string().required(),
     role: Yup.string().required(),
+    bio: Yup.string(),
   })
   return (
     <ContentArea>
@@ -108,10 +110,17 @@ export const Template = ({ title }) => {
                   User
                 </option>
               </Select>
+              <TextArea
+                id="bio"
+                rows="3"
+                className="col-span-2"
+                name="bio"
+                label="Bio"
+              />
             </SectionContentTwoColumn>
           </Section>
           <Actions>
-            <SubmitButton>Save changes</SubmitButton>
+            <SubmitButton>Save</SubmitButton>
           </Actions>
         </Form>
       </Formik>

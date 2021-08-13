@@ -10,12 +10,12 @@ type Props = React.DetailedHTMLProps<
 > & { id: string; label?: string; name: string }
 
 export const TextArea = forwardRef<HTMLTextAreaElement, Props>(
-  ({ label, ...props }, ref) => {
+  ({ label, className, ...props }, ref) => {
     const customCss = useCustomInputCss(props.name, props.disabled)
     const [field] = useField(props.name)
 
     return (
-      <div>
+      <div className={className}>
         <InputLabel
           inputId={props.id}
           label={label}
