@@ -1,8 +1,8 @@
-import { useIntl } from 'react-intl'
 import classNames from 'classnames'
 import { calculatePagination, IndexType } from '@aboutbits/pagination'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../types'
+import { useInternationalization } from '../../designSystem/internationalization/InternationalizationContext'
 import { PaginationContainer } from './PaginationContainer'
 import {
   PaginationNextContent,
@@ -80,7 +80,7 @@ const PaginationInMemory: React.FC<Props> = ({
   config,
   className,
 }) => {
-  const intl = useIntl()
+  const internationalization = useInternationalization()
   const { pagination: paginationTheme } = useTheme()
   const pagination = calculatePagination(page, size, total, config)
 
@@ -89,7 +89,7 @@ const PaginationInMemory: React.FC<Props> = ({
   return (
     <PaginationContainer className={className}>
       <SectionPaginationInMemoryButton
-        aria-label={intl.formatMessage({ id: 'shared.pagination.prev' })}
+        aria-label={internationalization.translate('shared.pagination.prev')}
         disabled={pagination.previous.isDisabled}
         onChangePage={onChangePage}
         pageIndex={pagination.previous.indexNumber}
@@ -103,8 +103,8 @@ const PaginationInMemory: React.FC<Props> = ({
             <PaginationPagesListItem key={page.indexNumber}>
               <SectionPaginationInMemoryButton
                 aria-current={page.isCurrent ? 'page' : false}
-                aria-label={intl.formatMessage(
-                  { id: 'shared.pagination.page' },
+                aria-label={internationalization.translate(
+                  'shared.pagination.page',
                   { page: page.displayNumber }
                 )}
                 className={classNames(
@@ -123,7 +123,7 @@ const PaginationInMemory: React.FC<Props> = ({
       </PaginationPagesList>
 
       <SectionPaginationInMemoryButton
-        aria-label={intl.formatMessage({ id: 'shared.pagination.next' })}
+        aria-label={internationalization.translate('shared.pagination.next')}
         disabled={pagination.next.isDisabled}
         onChangePage={onChangePage}
         pageIndex={pagination.next.indexNumber}

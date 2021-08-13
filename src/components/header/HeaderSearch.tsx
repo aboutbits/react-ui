@@ -1,9 +1,9 @@
-import { useIntl } from 'react-intl'
 import { useEffect, useRef } from 'react'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import classNames from 'classnames'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { useInternationalization } from '../../designSystem/internationalization/InternationalizationContext'
 import { HeaderArea } from './areas/HeaderArea'
 import { HeaderLeftArea } from './areas/HeaderLeftArea'
 import { HeaderLargeAction } from './actions/HeaderLargeAction'
@@ -35,7 +35,7 @@ const HeaderSearch: React.FC<Props> = ({
   stopSearch,
   clearSearch,
 }) => {
-  const intl = useIntl()
+  const internationalization = useInternationalization()
   const searchInput = useRef<HTMLInputElement>(null)
   const { header } = useTheme()
 
@@ -51,7 +51,7 @@ const HeaderSearch: React.FC<Props> = ({
         <HeaderLeftArea className="lg:hidden">
           <HeaderLargeAction
             icon={IconArrowBack}
-            label={intl.formatMessage({ id: 'shared.search.back' })}
+            label={internationalization.translate('shared.search.back')}
             onClick={stopSearch}
           />
         </HeaderLeftArea>
@@ -64,9 +64,9 @@ const HeaderSearch: React.FC<Props> = ({
           onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
             setText(ev.target.value)
           }
-          placeholder={intl.formatMessage({
-            id: 'shared.search.placeholder',
-          })}
+          placeholder={internationalization.translate(
+            'shared.search.placeholder'
+          )}
           className={classNames(
             header.search.input.base,
             header.search.input.normal
@@ -77,9 +77,7 @@ const HeaderSearch: React.FC<Props> = ({
             header.search.clearButton.base,
             header.search.clearButton.normal
           )}
-          aria-label={intl.formatMessage({
-            id: 'shared.search.clear',
-          })}
+          aria-label={internationalization.translate('shared.search.clear')}
           onClick={clearSearch}
         >
           <IconClose className={header.search.icon.base} />
@@ -88,9 +86,7 @@ const HeaderSearch: React.FC<Props> = ({
       <HeaderRightArea className="hidden lg:block">
         <HeaderSmallAction
           icon={IconClose}
-          label={intl.formatMessage({
-            id: 'shared.search.back',
-          })}
+          label={internationalization.translate('shared.search.back')}
           onClick={stopSearch}
         />
       </HeaderRightArea>

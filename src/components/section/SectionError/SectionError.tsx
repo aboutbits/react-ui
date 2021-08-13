@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
-import { FormattedMessage } from 'react-intl'
 
 import { Button } from '../../button/Button'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { useInternationalization } from '../../../designSystem/internationalization/InternationalizationContext'
 
 type Props = {
   /**
@@ -11,22 +11,22 @@ type Props = {
   icon: ReactNode
 }
 
-const SectionError: React.FC<Props> = ({ icon, children }) => {
+export const SectionError: React.FC<Props> = ({ icon, children }) => {
   const { section } = useTheme()
+  const internationalization = useInternationalization()
   return (
     <div className={section.error.base}>
       <div className={section.error.icon.base}>{icon}</div>
       <div className={section.error.title.base}>
-        <FormattedMessage id="shared.error.title" />
+        {internationalization.translate('shared.error.title')}
       </div>
       <div className={section.error.children.base}>{children}</div>
       <Button
         onClick={() => window.location.reload()}
         className={section.error.button.base}
       >
-        <FormattedMessage id="shared.button.reload" />
+        {internationalization.translate('shared.button.reload')}
       </Button>
     </div>
   )
 }
-export { SectionError }
