@@ -1,4 +1,4 @@
-import Dialog from '@reach/dialog'
+import { Dialog } from '@reach/dialog'
 import classnames from 'classnames'
 import { ReactNode } from 'react'
 import { Button, Size, Tone, Variant } from '../../button/Button'
