@@ -1,6 +1,6 @@
 {
   "name": "@aboutbits/react-ui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "module": "esm/index.js",
   "main": "index.js",
   "types": "index.d.ts",
