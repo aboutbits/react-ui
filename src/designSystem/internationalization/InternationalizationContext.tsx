@@ -4,7 +4,7 @@ export type Internationalization = {
   translate: (key: string, values?: unknown) => string
 }
 
-const defaultInternationalization: Internationalization = {
+export const defaultInternationalization: Internationalization = {
   translate: (key) => key,
 }
 

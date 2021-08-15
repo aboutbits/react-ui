@@ -4,7 +4,7 @@ export type Router = {
   back: () => void
 }
 
-const defaultRouter: { back: () => void } = {
+export const defaultRouter: { back: () => void } = {
   back: () => {
     window && window.history.back()
   },

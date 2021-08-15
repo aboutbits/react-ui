@@ -5,11 +5,10 @@ import {
   LinkComponent,
   LinkComponentContext,
 } from './router/LinkComponentContext'
-import { RouterContext, Router, useRouter } from './router/RouterContext'
+import { RouterContext, Router } from './router/RouterContext'
 import {
   Internationalization,
   InternationalizationContext,
-  useInternationalization,
 } from './internationalization/InternationalizationContext'
 
 type Props = {
@@ -27,8 +26,10 @@ export const DesignSystemProvider: React.FC<Props> = ({
   children,
 }) => {
   const linkComponentFromContext = useContext(LinkComponentContext)
-  const routerComponentFromContext = useRouter()
-  const internationalizationFromContext = useInternationalization()
+  const routerComponentFromContext = useContext(RouterContext)
+  const internationalizationFromContext = useContext(
+    InternationalizationContext
+  )
 
   return (
     <ThemeContext.Provider value={theme}>

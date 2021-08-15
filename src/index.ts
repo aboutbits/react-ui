@@ -1,3 +1,1 @@
-import { Button } from './components/button/Button'
-
-export { Button }
+export * from './designSystem/DesignSystemProvider'

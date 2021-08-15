@@ -22,7 +22,7 @@ export type LinkComponent =
   | ReturnType<typeof makeLinkComponent>
   | ComponentType<LinkComponentProps>
 
-const DefaultLinkComponent = makeLinkComponent((props, ref) => (
+export const DefaultLinkComponent = makeLinkComponent((props, ref) => (
   <a ref={ref} {...props} />
 ))
 

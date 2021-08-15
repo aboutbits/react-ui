@@ -3,7 +3,7 @@ import {IntlProvider, useIntl} from 'react-intl';
 import '../styles/index.css'
 import { makeTheme } from '../src/designSystem/theme/theme'
 import enMessages from '../src/translations/shared.en.json'
-import { DesignSystemProvider } from "../src/designSystem/DesignSystemProvider";
+import { DesignSystemProvider } from "../src";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

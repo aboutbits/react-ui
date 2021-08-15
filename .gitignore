@@ -32,4 +32,18 @@ yarn-error.log*
 /.vscode
 
 # Build
-/dist
+components
+designSystem
+esm
+action.d.ts
+action.js
+alert.d.ts
+alert.js
+button.js
+button.d.ts
+content.d.ts
+content.js
+index.d.ts
+index.js
+submitButton.d.ts
+submitButton.js
