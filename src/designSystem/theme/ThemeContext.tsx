@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react'
-import { Theme } from './theme'
+import { defaultTheme, Theme } from './theme'
 
-export const ThemeContext = createContext<Theme | null>(null)
+export const ThemeContext = createContext<Theme>(defaultTheme)
 
 export function useTheme(): Theme {
   const theme = useContext(ThemeContext)

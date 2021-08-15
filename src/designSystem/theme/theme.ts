@@ -6,7 +6,7 @@ type RecursivePartial<T> = {
 }
 export type OverrideTheme = RecursivePartial<Theme>
 
-const defaultTheme = {
+export const defaultTheme = {
   form: {
     input: {
       base: 'block w-full border p-3 focus:ring-0 appearance-none outline-none',
