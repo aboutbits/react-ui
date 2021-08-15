@@ -1,5 +1,5 @@
 {
-  "name": "react-ui",
+  "name": "@aboutbits/react-ui",
   "version": "0.0.0",
   "module": "esm/index.js",
   "main": "index.js",
