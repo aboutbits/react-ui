@@ -63,10 +63,5 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {
-      backgroundImage: ['hover', 'focus'],
-    },
-  },
   plugins: [require('@tailwindcss/forms')],
 }
