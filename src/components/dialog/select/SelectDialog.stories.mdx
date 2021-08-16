@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
 import { Button, Tone } from '../../button/Button'
-import { MenuProvider } from '../../header/areas/MenuContext'
+import { NavigationProvider } from '../../navigation/NavigationContext'
 import { SectionContentList, SectionListItem } from '../../section'
 import { SelectDialog } from './SelectDialog'
 
@@ -26,7 +26,7 @@ export const Template = ({
   const clearSearch = () => setText('')
   const userList = ['User 1', 'User 2', 'User 3']
   return (
-    <MenuProvider>
+    <NavigationProvider>
       {toggle ? (
         <SelectDialog
           {...args}
@@ -50,7 +50,7 @@ export const Template = ({
           {buttonText}
         </Button>
       )}
-    </MenuProvider>
+    </NavigationProvider>
   )
 }
 

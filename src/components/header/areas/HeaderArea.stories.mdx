@@ -2,8 +2,8 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import { action, actions } from '@storybook/addon-actions'
 import { HeaderBackAction } from '../actions/HeaderBackAction'
+import { NavigationProvider } from '../../navigation/NavigationContext'
 import { HeaderArea } from './HeaderArea'
-import { MenuProvider } from './MenuContext'
 import { HeaderTitle } from './HeaderTitle'
 
 <Meta title="Components/Header/HeaderArea" component={HeaderArea} />
@@ -19,9 +19,9 @@ In any case, this component needs be wrapped in a `MenuProvider`.
 - [MenuProvider](/docs/components-header-menucontext--default-story) is a self-written component
 
 export const Template = ({ ...args }) => (
-  <MenuProvider>
+  <NavigationProvider>
     <HeaderArea {...args} onClick={actions('clicked')} />
-  </MenuProvider>
+  </NavigationProvider>
 )
 
 <Canvas>
@@ -50,7 +50,7 @@ export const Template = ({ ...args }) => (
 
 <Canvas>
   <Story name="HeaderArea with custom navigation">
-    <MenuProvider>
+    <NavigationProvider>
       <HeaderArea
         navigation={
           <HeaderBackAction
@@ -62,6 +62,6 @@ export const Template = ({ ...args }) => (
       >
         <HeaderTitle>Header Title</HeaderTitle>
       </HeaderArea>
-    </MenuProvider>
+    </NavigationProvider>
   </Story>
 </Canvas>

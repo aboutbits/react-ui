@@ -1,1 +1,2 @@
-export * from './ContentArea'
+export * from './ContentArea/ContentArea'
+export * from './ContentError/ContentError'

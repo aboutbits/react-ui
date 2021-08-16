@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { HeaderLargeAction } from '../actions/HeaderLargeAction'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
 import { useInternationalization } from '../../../designSystem/internationalization/InternationalizationContext'
-import { useMenuToggle } from './MenuContext'
+import { useNavigationToggle } from '../../navigation/NavigationContext'
 import { HeaderLeftArea } from './HeaderLeftArea'
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
 
 const HeaderArea: React.FC<Props> = ({ navigation = null, children }) => {
   const intl = useInternationalization()
-  const menuToggle = useMenuToggle()
+  const menuToggle = useNavigationToggle()
   const { header } = useTheme()
   return (
     <div className={classNames(header.area.base, header.area.normal)}>

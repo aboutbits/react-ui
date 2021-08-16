@@ -1,17 +1,17 @@
-import React, { ReactNode } from 'react'
+import React, { ReactElement, ReactNode } from 'react'
 import { HeaderArea, HeaderTitle } from '../header'
 
-export type Props = {
+export type HeaderMainProps = {
   /**
    * Defines the title of the header.
    * */
   title: ReactNode
 }
 
-const HeaderMain: React.FC<Props> = ({ title }) => (
-  <HeaderArea>
-    <HeaderTitle>{title}</HeaderTitle>
-  </HeaderArea>
-)
-
-export { HeaderMain }
+export function HeaderMain({ title }: HeaderMainProps): ReactElement {
+  return (
+    <HeaderArea>
+      <HeaderTitle>{title}</HeaderTitle>
+    </HeaderArea>
+  )
+}

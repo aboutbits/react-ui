@@ -1,13 +1,13 @@
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import classNames from 'classnames'
-import { useMenuToggle } from '../header/areas/MenuContext'
 import { useTheme } from '../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../types'
+import { useNavigationToggle } from './NavigationContext'
 
 const MobileNavigationDialogCloseButton: React.FC<ClassNameProps> = ({
   className,
 }) => {
-  const menuToggle = useMenuToggle()
+  const menuToggle = useNavigationToggle()
   const { navigation } = useTheme()
   return (
     <button

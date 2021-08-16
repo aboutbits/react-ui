@@ -2,7 +2,7 @@ import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { useState } from 'react'
 import { UseSearchQuery } from '../types'
 import { HeaderSearch } from './HeaderSearch'
-import { Props as HeaderMainProps } from './HeaderMain'
+import { HeaderMainProps as HeaderMainProps } from './HeaderMain'
 import {
   HeaderArea,
   HeaderRightArea,

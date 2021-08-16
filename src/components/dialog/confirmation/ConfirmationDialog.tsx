@@ -1,7 +1,7 @@
 import { Dialog } from '@reach/dialog'
 import classnames from 'classnames'
 import { ReactNode } from 'react'
-import { Button, Size, Tone, Variant } from '../../button/Button'
+import { Button, Size, Tone, Variant } from '../../button'
 import { useTheme } from '../../../designSystem/theme/ThemeContext'
 import { ClassNameProps } from '../../types'
 

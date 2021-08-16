@@ -1,8 +1,8 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconInbox from '@aboutbits/react-material-icons/dist/IconInbox'
 import IconContacts from '@aboutbits/react-material-icons/dist/IconContacts'
-import { MenuProvider } from '../header/areas/MenuContext'
 import { HeaderMain } from '../header'
+import { NavigationProvider } from './NavigationContext'
 import { MobileNavigationDialog } from './MobileNavigationDialog'
 import { NavigationItemLink } from './NavigationItemLink'
 import { Navigation } from './Navigation'
@@ -21,7 +21,7 @@ _**Important**_: This storybook is only available for a mobile view. Go to Canva
 
 export const Template = ({ ...args }) => {
   return (
-    <MenuProvider>
+    <NavigationProvider>
       <div>
         <HeaderMain title="Home" />
         <MobileNavigationDialog {...args} dialogLabel="Mobile Menu">
@@ -35,7 +35,7 @@ export const Template = ({ ...args }) => {
           </Navigation>
         </MobileNavigationDialog>
       </div>
-    </MenuProvider>
+    </NavigationProvider>
   )
 }
 

@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { NavigationProvider } from '../navigation/NavigationContext'
 import { HeaderMain } from './HeaderMain'
-import { MenuProvider } from './areas/MenuContext'
 
 <Meta title="Components/Header/HeaderMain" component={HeaderMain} />
 
@@ -11,9 +11,9 @@ This component can be used to create swiftly a header. The Header Main should be
 **_Important_**: This component needs to be wrapped in a "IntlProvider" and "MenuProvider". The detailed description of them can be found in the section of [HeaderArea](/docs/components-header-headerarea--default-story).
 
 export const Template = ({ ...args }) => (
-  <MenuProvider>
+  <NavigationProvider>
     <HeaderMain {...args} title="Header Title" />
-  </MenuProvider>
+  </NavigationProvider>
 )
 
 <Canvas>

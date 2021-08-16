@@ -6,7 +6,7 @@ import { HeaderLeftArea } from '../areas/HeaderLeftArea'
 import { ClassNameProps } from '../../types'
 import { useInternationalization } from '../../../designSystem/internationalization/InternationalizationContext'
 
-export type Props = ClassNameProps & {
+export type HeaderBackActionProps = ClassNameProps & {
   /**
    * Defines the icon of the button.
    * */
@@ -26,7 +26,7 @@ export function HeaderBackAction({
   onClick,
   icon = IconArrowBack,
   className,
-}: Props): ReactElement {
+}: HeaderBackActionProps): ReactElement {
   const internationalization = useInternationalization()
 
   return (

@@ -12,7 +12,7 @@ import { UseSearchQuery } from '../types'
 import { useInternationalization } from '../../designSystem/internationalization/InternationalizationContext'
 import { HeaderLargeAction } from './actions/HeaderLargeAction'
 import { HeaderSearch } from './HeaderSearch'
-import { Props as HeaderMainProps } from './HeaderMain'
+import { HeaderMainProps as HeaderMainProps } from './HeaderMain'
 
 type HeaderCloseWithSearchProps = UseSearchQuery &
   HeaderMainProps & {

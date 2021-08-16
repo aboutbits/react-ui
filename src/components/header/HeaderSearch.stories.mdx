@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
+import { NavigationProvider } from '../navigation/NavigationContext'
 import { HeaderSearch } from './HeaderSearch'
-import { MenuProvider } from './areas/MenuContext'
 
 <Meta title="Components/Header/HeaderSearch" component={HeaderSearch} />
 
@@ -15,7 +15,7 @@ export const Template = ({ ...args }) => {
   const [text, setText] = useState('')
   const clearSearch = () => setText('')
   return (
-    <MenuProvider>
+    <NavigationProvider>
       <HeaderSearch
         {...args}
         text={text}
@@ -23,7 +23,7 @@ export const Template = ({ ...args }) => {
         clearSearch={clearSearch}
         stopSearch={clearSearch}
       />
-    </MenuProvider>
+    </NavigationProvider>
   )
 }
 

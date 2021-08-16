@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
 import { Button, Tone } from '../../button/Button'
-import { MenuProvider } from '../../header/areas/MenuContext'
+import { NavigationProvider } from '../../navigation/NavigationContext'
 import { SelectDialogHeader } from './SelectDialogHeader'
 
 <Meta
@@ -26,7 +26,7 @@ export const Template = ({
   const [text, setText] = useState('')
   const clearSearch = () => setText('')
   return (
-    <MenuProvider>
+    <NavigationProvider>
       {toggle ? (
         <SelectDialogHeader
           {...args}
@@ -41,7 +41,7 @@ export const Template = ({
           {buttonText}
         </Button>
       )}
-    </MenuProvider>
+    </NavigationProvider>
   )
 }
 
