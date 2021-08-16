@@ -14,7 +14,8 @@
     "**/__tests__/*",
     "**/*.stories.tsx",
     "**/*.stories.ts",
-    "src/examples/*"
+    "src/examples/*",
+    "src/svg/*"
   ],
   "include": [
     "src"
