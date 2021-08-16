@@ -4,7 +4,7 @@ import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { HeaderLargeAction } from '../index'
 import { HeaderLeftArea } from '../areas/HeaderLeftArea'
 import { ClassNameProps } from '../../types'
-import { useInternationalization } from '../../../designSystem/internationalization/InternationalizationContext'
+import { useInternationalization } from '../../../framework/internationalization/InternationalizationContext'
 
 export type HeaderBackActionProps = ClassNameProps & {
   /**

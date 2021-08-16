@@ -1,1 +1,1 @@
-export * from './designSystem/DesignSystemProvider'
+export * from './framework'

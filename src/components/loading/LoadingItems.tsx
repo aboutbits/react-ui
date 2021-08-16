@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import { SectionDescriptionItem } from '../section'
-import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { useTheme } from '../../framework/theme/ThemeContext'
 import { LoadingBar } from './LoadingBar'
 
 export function LoadingDescriptionItem(): ReactElement {

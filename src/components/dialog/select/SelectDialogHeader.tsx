@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { HeaderCloseWithSearch } from '../../header/HeaderCloseWithSearch'
-import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { useTheme } from '../../../framework/theme/ThemeContext'
 import { UseSearchQuery } from '../../types'
 
 type Props = {

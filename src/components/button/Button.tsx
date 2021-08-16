@@ -3,8 +3,8 @@ import React from 'react'
 import {
   useLinkComponent,
   LinkComponentProps,
-} from '../../designSystem/router/LinkComponentContext'
-import { useTheme } from '../../designSystem/theme/ThemeContext'
+} from '../../framework/router/LinkComponentContext'
+import { useTheme } from '../../framework/theme/ThemeContext'
 
 export enum Variant {
   solid = 'solid',

@@ -1,8 +1,8 @@
 import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
 import classNames from 'classnames'
 import { HeaderRightArea } from '../areas/HeaderRightArea'
-import { useTheme } from '../../../designSystem/theme/ThemeContext'
-import { useLinkComponent } from '../../../designSystem/router/LinkComponentContext'
+import { useTheme } from '../../../framework/theme/ThemeContext'
+import { useLinkComponent } from '../../../framework/router/LinkComponentContext'
 
 type Props = {
   /**

@@ -1,4 +1,4 @@
-import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { useTheme } from '../../../framework/theme/ThemeContext'
 
 const ContentArea: React.FC = ({ children }) => {
   const { content } = useTheme()

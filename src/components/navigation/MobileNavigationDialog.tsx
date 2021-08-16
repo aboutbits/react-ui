@@ -1,6 +1,6 @@
 import { Dialog } from '@reach/dialog'
 import classNames from 'classnames'
-import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { useTheme } from '../../framework/theme/ThemeContext'
 import { useNavigationToggle, useNavigationState } from './NavigationContext'
 import { MobileNavigationDialogCloseButton } from './MobileNavigationDialogCloseButton'
 

@@ -2,7 +2,7 @@ import IconArrowDropUp from '@aboutbits/react-material-icons/dist/IconArrowDropU
 import { Menu as MenuReach, MenuButton, MenuList } from '@reach/menu-button'
 import classNames from 'classnames'
 import { ReactNode } from 'react'
-import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { useTheme } from '../../framework/theme/ThemeContext'
 import { ClassNameProps } from '../types'
 
 type MenuProps = ClassNameProps & {

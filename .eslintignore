@@ -2,7 +2,7 @@ node_modules
 .next
 out
 /components
-/designSystem
+/framework
 /esm
 action.js
 action.d.ts

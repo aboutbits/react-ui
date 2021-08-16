@@ -1,10 +1,10 @@
 import React from 'react'
 import classNames from 'classnames'
-import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { useTheme } from '../../framework/theme/ThemeContext'
 import {
   useLinkComponent,
   LinkComponentProps,
-} from '../../designSystem/router/LinkComponentContext'
+} from '../../framework/router/LinkComponentContext'
 
 const HtmlTextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
   ({ children, className, ...props }, ref) => {

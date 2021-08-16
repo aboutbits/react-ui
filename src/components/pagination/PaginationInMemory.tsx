@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import { calculatePagination, IndexType } from '@aboutbits/pagination'
-import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { useTheme } from '../../framework/theme/ThemeContext'
 import { ClassNameProps } from '../types'
-import { useInternationalization } from '../../designSystem/internationalization/InternationalizationContext'
+import { useInternationalization } from '../../framework/internationalization/InternationalizationContext'
 import { PaginationContainer } from './PaginationContainer'
 import {
   PaginationNextContent,

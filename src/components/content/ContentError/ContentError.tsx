@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
 
 import { Button } from '../../button'
-import { useTheme } from '../../../designSystem/theme/ThemeContext'
-import { useInternationalization } from '../../../designSystem/internationalization/InternationalizationContext'
+import { useTheme } from '../../../framework/theme/ThemeContext'
+import { useInternationalization } from '../../../framework/internationalization/InternationalizationContext'
 
 type Props = {
   /**

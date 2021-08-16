@@ -85,7 +85,7 @@
   "sideEffects": false,
   "files": [
     "components/**/*",
-    "designSystem/**/*",
+    "framework/**/*",
     "esm/**/*",
     "action.js",
     "action.d.ts",

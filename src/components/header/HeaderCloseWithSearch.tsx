@@ -9,7 +9,7 @@ import {
   HeaderLeftArea,
 } from '../header'
 import { UseSearchQuery } from '../types'
-import { useInternationalization } from '../../designSystem/internationalization/InternationalizationContext'
+import { useInternationalization } from '../../framework/internationalization/InternationalizationContext'
 import { HeaderLargeAction } from './actions/HeaderLargeAction'
 import { HeaderSearch } from './HeaderSearch'
 import { HeaderMainProps as HeaderMainProps } from './HeaderMain'

@@ -2,7 +2,7 @@ import { Dialog } from '@reach/dialog'
 import classnames from 'classnames'
 import { ReactNode } from 'react'
 import { Button, Size, Tone, Variant } from '../../button'
-import { useTheme } from '../../../designSystem/theme/ThemeContext'
+import { useTheme } from '../../../framework/theme/ThemeContext'
 import { ClassNameProps } from '../../types'
 
 export enum ConfirmationDialogVariant {

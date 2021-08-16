@@ -1,8 +1,8 @@
 import { ReactElement } from 'react'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
 import IconKeyboardArrowLeft from '@aboutbits/react-material-icons/dist/IconKeyboardArrowLeft'
-import { useTheme } from '../../designSystem/theme/ThemeContext'
-import { useInternationalization } from '../../designSystem/internationalization/InternationalizationContext'
+import { useTheme } from '../../framework/theme/ThemeContext'
+import { useInternationalization } from '../../framework/internationalization/InternationalizationContext'
 
 export function PaginationPreviousContent(): ReactElement {
   const { pagination } = useTheme()

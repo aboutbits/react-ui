@@ -1,9 +1,8 @@
 import React from 'react'
 import {IntlProvider, useIntl} from 'react-intl';
 import '../styles/index.css'
-import { makeTheme } from '../src/designSystem/theme/theme'
 import enMessages from '../src/translations/shared.en.json'
-import { DesignSystemProvider } from "../src";
+import { ReactUIProvider } from "../src";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -46,9 +45,9 @@ export const decorators = [
       translate: (key, values) => intl.formatMessage({id: key}, values)
     }
     return (
-      <DesignSystemProvider theme={makeTheme(themeOverwrite)} internationalization={internationalization}>
+      <ReactUIProvider theme={themeOverwrite} internationalization={internationalization}>
         <Story />
-      </DesignSystemProvider>
+      </ReactUIProvider>
     )
   },
   (Story) => (

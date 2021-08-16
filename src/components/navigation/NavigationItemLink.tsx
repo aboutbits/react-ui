@@ -1,8 +1,8 @@
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import React, { ComponentType, ReactElement, ReactNode } from 'react'
 import classNames from 'classnames'
-import { useLinkComponent } from '../../designSystem/router/LinkComponentContext'
-import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { useLinkComponent } from '../../framework/router/LinkComponentContext'
+import { useTheme } from '../../framework/theme/ThemeContext'
 import { ClassNameProps } from '../types'
 
 export type Props = {

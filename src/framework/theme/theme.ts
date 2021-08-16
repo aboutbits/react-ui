@@ -1,10 +1,23 @@
-import merge from 'lodash.merge'
-
 export type Theme = typeof defaultTheme
 type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>
 }
-export type OverrideTheme = RecursivePartial<Theme>
+export type OverrideTheme = RecursivePartial<Theme> & {
+  button?: {
+    button?: {
+      variantTone?: {
+        solid?: Partial<typeof defaultTheme.button.button.variantTone.solid> &
+          Record<string, string>
+        ghost?: Partial<typeof defaultTheme.button.button.variantTone.ghost> &
+          Record<string, string>
+        transparent?: Partial<
+          typeof defaultTheme.button.button.variantTone.transparent
+        > &
+          Record<string, string>
+      }
+    }
+  }
+}
 
 export const defaultTheme = {
   form: {
@@ -342,8 +355,4 @@ export const defaultTheme = {
       normal: 'bg-white',
     },
   },
-}
-
-export function makeTheme(overrideTheme?: OverrideTheme): Theme {
-  return merge(defaultTheme, overrideTheme)
 }

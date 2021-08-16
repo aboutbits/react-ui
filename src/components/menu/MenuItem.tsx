@@ -1,6 +1,6 @@
 import { MenuItem as ReachMenuItem } from '@reach/menu-button'
 import classNames from 'classnames'
-import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { useTheme } from '../../framework/theme/ThemeContext'
 import { ClassNameProps } from '../types'
 
 type MenuItemProps = ClassNameProps & {

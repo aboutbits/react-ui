@@ -1,7 +1,7 @@
 import React, { ComponentType, ReactNode } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import classNames from 'classnames'
-import { useTheme } from '../../designSystem/theme/ThemeContext'
+import { useTheme } from '../../framework/theme/ThemeContext'
 import { ClassNameProps } from '../types'
 
 export type MenuLinkButtonProps = {

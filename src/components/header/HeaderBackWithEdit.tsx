@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import { useRouter } from '../../designSystem/router/RouterContext'
+import { useRouter } from '../../framework/router/RouterContext'
 import { HeaderArea } from './areas/HeaderArea'
 import { HeaderBackAction } from './actions/HeaderBackAction'
 import { HeaderTitle } from './areas/HeaderTitle'
