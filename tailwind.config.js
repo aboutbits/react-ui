@@ -11,21 +11,8 @@ module.exports = {
 
   theme: {
     extend: {
-      boxShadow: {
-        guestContainer: '0 3px 50px 0 rgba(0, 0, 0, 0.3)',
-        languageSelector: '0 3px 6px 0 rgba(0, 0, 0, 0.14)',
-      },
-      spacing: {
-        13: '3.25rem',
-        15: '3.75rem',
-        18: '4.5rem',
-      },
-      maxWidth: {
-        content: '60rem',
-      },
       minWidth: {
         dialog: '17.5rem',
-        50: '12.5rem',
       },
       minHeight: {
         14: '3.5rem',
@@ -79,7 +66,6 @@ module.exports = {
   variants: {
     extend: {
       backgroundImage: ['hover', 'focus'],
-      textColor: ['disabled'],
     },
   },
   plugins: [require('@tailwindcss/forms')],
