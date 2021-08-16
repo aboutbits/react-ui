@@ -1,0 +1,25 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { HeaderTitle, HeaderArea } from '../header'
+import { NavigationProvider } from './NavigationContext'
+
+<Meta
+  title="Components/Navigation/NavigationProvider"
+  component={NavigationProvider}
+/>
+
+# NavigationProvider
+
+This component keeps track of state of the navigation toggle using React Content API.
+The [HeaderArea](/docs/components-header-headerarea--default-story) expects to be nested inside a NavigationProvider.
+
+export const Template = ({ ...args }) => (
+  <NavigationProvider {...args}>
+    <HeaderArea>
+      <HeaderTitle>Header Title</HeaderTitle>
+    </HeaderArea>
+  </NavigationProvider>
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
