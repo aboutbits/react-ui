@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+
+import { ContentArea } from './ContentArea'
+
+<Meta title="Components/Content/ContentArea" component={ContentArea} />
+
+# ContentArea
+
+This component makes sure that there is enough space between multiple sections and actions on a page.
+
+export const Template = ({ children }) => <ContentArea>{children}</ContentArea>
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      children: (
+        <>
+          <div className="bg-gray-100">Block A</div>
+          <div className="bg-gray-50">Block B</div>
+          <div className="bg-gray-100">Block C</div>
+        </>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `content.area.base`: Define space between children of the content area.
