@@ -1,16 +1,21 @@
 import { AxiosError } from 'axios'
 import { useState } from 'react'
+import { useInternationalization } from '../../framework'
 import { ErrorBody } from './types'
 
 export function useDeletion<Response>(
-  deleteFun: () => Promise<Response>,
-  onSuccess: () => void
+  deleteAction: () => Promise<Response>,
+  onSuccess: () => void,
+  options?: {
+    apiFallbackErrorMessageId?: string
+  }
 ): {
   apiErrorMessage: string | null
   isDeleting: boolean
   onDelete: () => Promise<void>
 } {
   const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null)
+  const internationalization = useInternationalization()
 
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
 
@@ -18,14 +23,18 @@ export function useDeletion<Response>(
     try {
       setApiErrorMessage(null)
       setIsDeleting(true)
-      await deleteFun()
+      await deleteAction()
       onSuccess()
     } catch (error) {
-      const { response }: AxiosError<ErrorBody> = error
-      if (response?.data.message) {
-        setApiErrorMessage(response.data.message)
-      } else if (typeof error === 'string') {
-        setApiErrorMessage(error)
+      const maybeAxiosError: AxiosError<ErrorBody> = error
+      if (maybeAxiosError?.response?.data.message) {
+        setApiErrorMessage(maybeAxiosError?.response.data.message)
+      } else if (options?.apiFallbackErrorMessageId) {
+        setApiErrorMessage(
+          internationalization.translate(options.apiFallbackErrorMessageId)
+        )
+      } else {
+        setApiErrorMessage(internationalization.translate('shared.error.api'))
       }
     } finally {
       setIsDeleting(false)

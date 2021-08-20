@@ -7,7 +7,7 @@ import { ErrorBody } from './types'
 import { joinFieldErrorMessages } from './utils'
 
 export function useMutation<FormValues, Response>(
-  mutate: (body: FormValues) => Promise<Response>,
+  mutateAction: (body: FormValues) => Promise<Response>,
   onSuccess: (response: Response, values: FormValues) => void,
   options?: {
     apiFallbackErrorMessageId?: string
@@ -29,24 +29,23 @@ export function useMutation<FormValues, Response>(
     try {
       setApiErrorMessage(null)
       setSubmitting(true)
-      const response = await mutate(values)
+      const response = await mutateAction(values)
       onSuccess(response, values)
     } catch (error) {
-      const { response }: AxiosError<ErrorBody> = error
+      const maybeAxiosError: AxiosError<ErrorBody> = error
 
-      if (response?.data?.errors) {
-        setErrors(joinFieldErrorMessages(response.data.errors))
+      if (maybeAxiosError?.response?.data?.errors) {
+        setErrors(joinFieldErrorMessages(maybeAxiosError.response.data.errors))
       }
 
-      if (options?.apiFallbackErrorMessageId && !response?.data.message) {
+      if (maybeAxiosError?.response?.data.message) {
+        setApiErrorMessage(maybeAxiosError.response.data.message)
+      } else if (options?.apiFallbackErrorMessageId) {
         setApiErrorMessage(
           internationalization.translate(options.apiFallbackErrorMessageId)
         )
       } else {
-        setApiErrorMessage(
-          response?.data.message ||
-            internationalization.translate('shared.error.api')
-        )
+        setApiErrorMessage(internationalization.translate('shared.error.api'))
       }
     } finally {
       setSubmitting(false)

@@ -8,10 +8,16 @@ describe('useDeletion', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const onSuccess = () => {}
 
-  const onDeleteError = () =>
+  const onDeleteWithErrorResponse = () =>
     new Promise((resolve, reject) =>
-      setTimeout(() => reject('Server Error'), 100)
+      setTimeout(
+        () => reject({ response: { data: { message: 'Server Error' } } }),
+        100
+      )
     )
+
+  const onDeleteWithoutErrorResponse = () =>
+    new Promise((resolve, reject) => setTimeout(() => reject(), 100))
 
   test('should return initial state on first render', () => {
     const { result } = renderHook(() => useDeletion(onDelete, onSuccess))
@@ -41,8 +47,10 @@ describe('useDeletion', () => {
     expect(onSuccess).toHaveBeenCalledTimes(1)
   })
 
-  test('should set apiErrorMessage on error', async () => {
-    const { result } = renderHook(() => useDeletion(onDeleteError, onSuccess))
+  test('should set apiErrorMessage on error with response', async () => {
+    const { result } = renderHook(() =>
+      useDeletion(onDeleteWithErrorResponse, onSuccess)
+    )
 
     await act(() => result.current.onDelete())
 
@@ -50,7 +58,9 @@ describe('useDeletion', () => {
   })
 
   test('should reset apiErrorMessage before calling onDelete', async () => {
-    const { result } = renderHook(() => useDeletion(onDeleteError, onSuccess))
+    const { result } = renderHook(() =>
+      useDeletion(onDeleteWithErrorResponse, onSuccess)
+    )
 
     await act(() => result.current.onDelete())
 
@@ -62,5 +72,27 @@ describe('useDeletion', () => {
 
     expect(result.current.apiErrorMessage).toBe(null)
     await waitFor(() => expect(result.current.isDeleting).toBeFalsy())
+  })
+
+  test('should set apiErrorMessage to fallbackErrorId on error without response', async () => {
+    const { result } = renderHook(() =>
+      useDeletion(onDeleteWithoutErrorResponse, onSuccess, {
+        apiFallbackErrorMessageId: 'error.server.failed',
+      })
+    )
+
+    await act(() => result.current.onDelete())
+
+    expect(result.current.apiErrorMessage).toBe('error.server.failed')
+  })
+
+  test('should set default error message on error without response', async () => {
+    const { result } = renderHook(() =>
+      useDeletion(onDeleteWithoutErrorResponse, onSuccess)
+    )
+
+    await act(() => result.current.onDelete())
+
+    expect(result.current.apiErrorMessage).toBe('shared.error.api')
   })
 })
