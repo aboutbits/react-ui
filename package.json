@@ -1,7 +1,6 @@
 {
   "name": "@aboutbits/react-ui",
   "version": "0.0.11",
-  "module": "esm/index.js",
   "main": "index.js",
   "types": "index.d.ts",
   "private": false,
@@ -18,9 +17,7 @@
   "homepage": "https://storybook.aboutbits.it",
   "scripts": {
     "dev": "start-storybook -p 4000",
-    "build": "npm run build:esm & npm run build:cjs",
-    "build:esm": "tsc --project tsconfig.build.json",
-    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir .",
+    "build": "tsc --project tsconfig.build.json",
     "lint": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx .",
     "lint:fix": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx --fix .",
     "test": "jest --passWithNoTests",
@@ -86,7 +83,6 @@
   "files": [
     "components/**/*",
     "framework/**/*",
-    "esm/**/*",
     "action.js",
     "action.d.ts",
     "alert.js",
