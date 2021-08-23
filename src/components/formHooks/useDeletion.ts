@@ -27,6 +27,7 @@ export function useDeletion<Response>(
       onSuccess()
     } catch (error) {
       const maybeAxiosError: AxiosError<ErrorBody> = error
+
       if (maybeAxiosError?.response?.data.message) {
         setApiErrorMessage(maybeAxiosError?.response.data.message)
       } else if (options?.apiFallbackErrorMessageId) {
