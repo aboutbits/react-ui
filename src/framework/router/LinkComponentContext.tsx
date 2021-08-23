@@ -29,6 +29,7 @@ export const DefaultLinkComponent = makeLinkComponent((props, ref) => (
 export const LinkComponentContext =
   createContext<LinkComponent>(DefaultLinkComponent)
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function useLinkComponent() {
   const linkComponent = useContext(LinkComponentContext)
 
