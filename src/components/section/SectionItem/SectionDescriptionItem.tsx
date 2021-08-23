@@ -15,6 +15,7 @@ type SectionDescriptionItemProps = ClassNameProps & {
    */
   title: ReactNode
 }
+
 export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
   title,
   content,
