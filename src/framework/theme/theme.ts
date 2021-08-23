@@ -169,6 +169,7 @@ export const defaultTheme = {
     },
     listItemWithAction: {
       base: 'justify-between space-x-4',
+      normal: 'hover:opacity-80 active:opacity-80',
       action: {
         base: 'flex flex-shrink-0',
       },

@@ -80,7 +80,11 @@ export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps>
     const { section } = useTheme()
     return (
       <SectionListItem
-        className={classNames(section.listItemWithAction.base, className)}
+        className={classNames(
+          section.listItemWithAction.base,
+          section.listItemWithAction.normal,
+          className
+        )}
       >
         {children}
         <div className={section.listItemWithAction.action.base}>{action}</div>
