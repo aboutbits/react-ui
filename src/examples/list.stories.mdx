@@ -6,7 +6,7 @@ import {
   SectionContentList,
   SectionContentListEmpty,
   SectionHeader,
-  SectionListItemWithButton,
+  SectionListItemButton,
   SectionTitle,
 } from '../components/section'
 import { PaginationInMemory } from '../components/pagination/PaginationInMemory'
@@ -37,12 +37,9 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
               (page - 1) * numberOfItemsPerPage + numberOfItemsPerPage
             )
             .map((item) => (
-              <SectionListItemWithButton
-                key={item}
-                onClick={actions('onClick')}
-              >
+              <SectionListItemButton key={item} onClick={actions('onClick')}>
                 {`User ${item + 1}`}
-              </SectionListItemWithButton>
+              </SectionListItemButton>
             ))}
         {content.length === 0 && (
           <SectionContentListEmpty>

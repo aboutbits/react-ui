@@ -1,21 +1,12 @@
 import classNames from 'classnames'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
-import { ReactNode } from 'react'
-import { useTheme } from '../../../framework/theme/ThemeContext'
+import React, { ReactNode } from 'react'
+import {
+  LinkComponentProps,
+  useLinkComponent,
+  useTheme,
+} from '../../../framework'
 import { ClassNameProps } from '../../types'
-
-type SectionDescriptionItemProps = ClassNameProps & {
-  /**
-   * Defines the content of the section description item.
-   * Will be placed inside <dl>.
-   */
-  content: ReactNode
-  /**
-   * Defines the title of section description item.
-   * Will be placed inside <dt>.
-   */
-  title: ReactNode
-}
 
 type SectionListItemWithActionProps = ClassNameProps & {
   /**
@@ -24,7 +15,7 @@ type SectionListItemWithActionProps = ClassNameProps & {
   action: ReactNode
 }
 
-type SectionListItemWithButton = ClassNameProps & {
+type SectionListItemButtonProps = ClassNameProps & {
   /**
    * On Click handler for the button
    */
@@ -49,18 +40,17 @@ export const SectionListItem: React.FC<ClassNameProps> = ({
   )
 }
 
-export const SectionListItemWithButton: React.FC<SectionListItemWithButton> = ({
-  children,
-  onClick,
-  className,
-}) => {
+export const SectionListItemButton = React.forwardRef<
+  HTMLButtonElement,
+  SectionListItemButtonProps
+>(({ children, onClick, className, ...props }, ref) => {
   const { section } = useTheme()
   return (
-    <button onClick={onClick} className="block w-full">
+    <button onClick={onClick} className="block w-full" ref={ref} {...props}>
       <SectionListItem
         className={classNames(
-          section.listItemWithButton.base,
-          section.listItemWithButton.normal,
+          section.listItemButton.base,
+          section.listItemButton.normal,
           className
         )}
       >
@@ -73,7 +63,37 @@ export const SectionListItemWithButton: React.FC<SectionListItemWithButton> = ({
       </SectionListItem>
     </button>
   )
-}
+})
+
+SectionListItemButton.displayName = 'SectionListItemButton'
+
+export const SectionListItemLink = React.forwardRef<
+  HTMLAnchorElement,
+  LinkComponentProps
+>(({ children, className, ...props }, ref) => {
+  const LinkComponent = useLinkComponent()
+  const { section } = useTheme()
+  return (
+    <LinkComponent className="block" ref={ref} {...props}>
+      <SectionListItem
+        className={classNames(
+          section.listItemLink.base,
+          section.listItemLink.normal,
+          className
+        )}
+      >
+        {children}
+        <IconKeyboardArrowRight
+          width="24"
+          height="24"
+          className="fill-current"
+        />
+      </SectionListItem>
+    </LinkComponent>
+  )
+})
+
+SectionListItemLink.displayName = 'SectionListItemLink'
 
 export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps> =
   ({ children, action, className }) => {
@@ -87,17 +107,3 @@ export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps>
       </SectionListItem>
     )
   }
-
-export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
-  title,
-  content,
-  className,
-}) => {
-  const { section } = useTheme()
-  return (
-    <dl className={classNames(section.descriptionItem.base, className)}>
-      <dt className={section.descriptionItem.title.base}>{title}</dt>
-      <dd>{content}</dd>
-    </dl>
-  )
-}

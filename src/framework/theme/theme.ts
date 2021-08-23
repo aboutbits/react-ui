@@ -179,9 +179,13 @@ export const defaultTheme = {
         base: 'text-sm',
       },
     },
-    listItemWithButton: {
+    listItemButton: {
       base: 'justify-between space-x-4',
       normal: 'hover:bg-gray-600',
+    },
+    listItemLink: {
+      base: 'justify-between space-x-4',
+      normal: 'hover:bg-gray-600 active:bg-gray-600',
     },
     header: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white', normal: 'bg-white' },
     title: { base: 'text-xs font-bold uppercase', normal: 'text-black' },
