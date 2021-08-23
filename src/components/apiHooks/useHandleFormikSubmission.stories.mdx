@@ -12,6 +12,12 @@ The useHandleFormikSubmission hook reduces the boilerplate code to handle a form
 While the request is pending it sets the formik `isSubmitting` property to true.
 The success callback will be called if the request was successful, otherwise the hook will try to extract validation errors and global errors.
 
+This component expects the following libraries to be installed:
+
+```sh
+npm i axios formik
+```
+
 ### Parameter
 
 | parameter                           | type                      | description                                                                                                       |
@@ -60,11 +66,12 @@ function UpdateUserForm(): ReactElement {
 
 ### With fallback error message
 
-If you are not sure, whether the backend always returns the error message in an appropriate
+If you are not sure, whether the backend always returns the error message in an appropriate format, you can define a fallback message id.
 
 ```ts
 import { useHandleRequest } from '@aboutbits/react-ui/apiHooks'
-import Axios, { AxiosResponse } from 'axios' import {useHandleFormikSubmission} from "./useHandleFormikSubmission";
+import Axios, { AxiosResponse } from 'axios'
+import { useHandleFormikSubmission } from './useHandleFormikSubmission'
 
 const updateUser = Axios.put<void, AxiosResponse<void>>(
   'http://localhost:8080/users/1'

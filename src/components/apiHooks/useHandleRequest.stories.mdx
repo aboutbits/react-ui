@@ -12,6 +12,12 @@ The useHandleRequest hook reduces the boilerplate code to handle a request again
 It takes a function that fires a request, and a success callback function as parameters.
 The hook will then return a function that fires the request and handles the error and intermediate state.
 
+This component expects the following libraries to be installed:
+
+```sh
+npm i axios
+```
+
 ### Parameter
 
 | parameter                           | type                      | description                                                                                                       |
@@ -62,7 +68,7 @@ function DeleteUser(): ReactElement {
 
 ### With fallback error message
 
-If you are not sure, whether the backend always returns the error message in an appropriate
+If you are not sure, whether the backend always returns the error message in an appropriate format, you can define a fallback message id.
 
 ```ts
 import { useHandleRequest } from '@aboutbits/react-ui/apiHooks'
