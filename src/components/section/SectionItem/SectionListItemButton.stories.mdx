@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SectionListItemButton } from './SectionItem'
+
+<Meta
+  title="Components/Section/SectionListItemButton"
+  argTypes={{ onClick: { action: 'onClick' } }}
+  component={SectionListItemButton}
+/>
+
+# SectionListItemButton
+
+This component adds an HTML-button element and applies basic styling.
+
+export const Template = ({ children, ...args }) => {
+  return <SectionListItemButton {...args}>{children}</SectionListItemButton>
+}
+
+<Canvas>
+  <Story name="Default" args={{ children: 'List item button' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `section.listItemButton.base`: Define the base style of the component.
+- `section.listItemButton.action`: Define the base style of the action.
