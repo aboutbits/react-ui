@@ -4,6 +4,13 @@ import { ReactNode } from 'react'
 import { useTheme } from '../../../framework/theme/ThemeContext'
 import { ClassNameProps } from '../../types'
 
+type SectionListItem = ClassNameProps & {
+  /**
+   * On Click handler for the div.
+   */
+  onClick: () => void
+}
+
 type SectionDescriptionItemProps = ClassNameProps & {
   /**
    * Defines the content of the section description item.
@@ -22,6 +29,10 @@ type SectionListItemWithActionProps = ClassNameProps & {
    * The react node will be pushed to the right side of the section list item.
    */
   action: ReactNode
+  /**
+   * On Click handler for the div.
+   */
+  onClick: () => void
 }
 
 type SectionListItemWithButton = ClassNameProps & {
