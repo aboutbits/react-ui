@@ -26,7 +26,7 @@ type SectionListItemWithActionProps = ClassNameProps & {
 
 type SectionListItemWithButton = ClassNameProps & {
   /**
-   * On Click handler for the button
+   * On Click handler for the button.
    */
   onClick: () => void
 }
@@ -34,6 +34,7 @@ type SectionListItemWithButton = ClassNameProps & {
 export const SectionListItem: React.FC<ClassNameProps> = ({
   className,
   children,
+  ...props
 }) => {
   const { section } = useTheme()
   return (
@@ -43,6 +44,7 @@ export const SectionListItem: React.FC<ClassNameProps> = ({
         section.listItem.base,
         section.listItem.normal
       )}
+      {...props}
     >
       {children}
     </div>
@@ -76,7 +78,7 @@ export const SectionListItemWithButton: React.FC<SectionListItemWithButton> = ({
 }
 
 export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps> =
-  ({ children, action, className }) => {
+  ({ children, action, className, ...props }) => {
     const { section } = useTheme()
     return (
       <SectionListItem
@@ -85,6 +87,7 @@ export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps>
           section.listItemWithAction.normal,
           className
         )}
+        {...props}
       >
         {children}
         <div className={section.listItemWithAction.action.base}>{action}</div>
