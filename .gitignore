@@ -34,7 +34,6 @@ yarn-error.log*
 # Build
 components
 framework
-esm
 action.js
 action.d.ts
 alert.js

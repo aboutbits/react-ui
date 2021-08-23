@@ -3,7 +3,6 @@ node_modules
 out
 /components
 /framework
-/esm
 action.js
 action.d.ts
 alert.js
