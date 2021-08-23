@@ -29,6 +29,9 @@ export const defaultTheme = {
         'border-critical focus:border-critical bg-transparent text-white placeholder-gray-100',
       disabled: 'border-gray text-gray bg-gray-100',
     },
+    inputError: {
+      base: 'block text-xs text-critical',
+    },
     inputLabel: {
       base: 'block pb-1 font-bold text-xs',
       normal: 'text-white',
