@@ -1,10 +1,6 @@
 import classNames from 'classnames'
 import React from 'react'
-import {
-  useLinkComponent,
-  LinkComponentProps,
-} from '../../framework/router/LinkComponentContext'
-import { useTheme } from '../../framework/theme/ThemeContext'
+import { useLinkComponent, LinkComponentProps, useTheme } from '../../framework'
 
 export enum Variant {
   solid = 'solid',
