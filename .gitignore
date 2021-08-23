@@ -46,6 +46,8 @@ dialog.js
 dialog.d.ts
 form.js
 form.d.ts
+formHooks.js
+formHooks.d.ts
 header.js
 header.d.ts
 index.js
