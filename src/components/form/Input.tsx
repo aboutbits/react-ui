@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { useField } from 'formik'
+import classNames from 'classnames'
 import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
 import { useCustomInputCss } from './useCustomInputCss'
@@ -22,7 +23,10 @@ export const Input = forwardRef<HTMLInputElement, Props>(
           className={customCss.labelCss}
         />
         <input {...field} {...props} ref={ref} className={customCss.inputCss} />
-        <InputError name={props.name} className="mt-1" />
+        <InputError
+          name={props.name}
+          className={classNames(customCss.labelCss, 'mt-1')}
+        />
       </div>
     )
   }

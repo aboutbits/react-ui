@@ -9,9 +9,7 @@ type InputErrorProps = ClassNameProps & {
 }
 
 const FieldErrorMessage: React.FC = ({ children }) => {
-  return (
-    <span className="block text-xs abui-field-error-message">{children}</span>
-  )
+  return <span>{children}</span>
 }
 
 const InputError: React.FC<InputErrorProps> = ({ name, className }) => {

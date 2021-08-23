@@ -8,17 +8,23 @@ type MenuItemProps = ClassNameProps & {
    * Defines which action should be executed on clicking.
    * */
   onClick: () => void
+  /**
+   * Define accessibility label for the menu item.
+   * */
+  menuItemLabel: string
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({
   children,
   className,
   onClick,
+  menuItemLabel,
 }) => {
   const { menu } = useTheme()
 
   return (
     <ReachMenuItem
+      aria-label={menuItemLabel}
       className={classNames(
         menu.menuItem.base,
         menu.menuItem.normal,
