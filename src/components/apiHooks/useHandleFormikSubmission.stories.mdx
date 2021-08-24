@@ -1,0 +1,103 @@
+import { Meta } from '@storybook/addon-docs'
+import { useHandleFormikSubmission } from './useHandleFormikSubmission'
+
+<Meta
+  title="Components/APIHooks/useHandleFormikSubmission"
+  component={useHandleFormikSubmission}
+/>
+
+# useHandleFormikSubmission
+
+The useHandleFormikSubmission hook reduces the boilerplate code to handle a formik submission.
+While the request is pending it sets the formik `isSubmitting` property to true.
+The success callback will be called if the request was successful, otherwise the hook will try to extract validation errors and global errors.
+
+This component expects the following libraries to be installed:
+
+```sh
+npm i axios formik
+```
+
+### Parameter
+
+| parameter                           | type                      | description                                                                                                       |
+| ----------------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| submitAction                        | `() => Promise<Response>` | The function that makes the actual request against the backend.                                                   |
+| onSuccess                           | `() => void`              | Callback function after successful request.                                                                       |
+| options?.apiFallbackErrorMessageId? | `string`                  | Allows you to pass an optional string that gets injected into the translation function of the framework provider. |
+
+### Return value
+
+| property        | type                                                                              | description                                              |
+| --------------- | --------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| apiErrorMessage | `string OR null`                                                                  | Error message of the API request.                        |
+| onSubmit        | `(values: FormValues, formikHelpers: FormikHelpers<FormValues>) => Promise<void>` | Function to set as the submit function on a formik form. |
+
+## Usage
+
+```tsx
+import { Formik } from 'formik'
+import Axios, { AxiosResponse } from 'axios'
+import { useHandleFormikSubmission } from '@aboutbits/react-ui/apiHooks'
+import { ReactElement } from 'react'
+
+const updateUser = Axios.put<void, AxiosResponse<void>>(
+  'http://localhost:8080/users/1'
+)
+
+const onSuccess = () => {
+  console.log('Success')
+}
+
+function UpdateUserForm(): ReactElement {
+  const { apiErrorMessage, onSubmit } = useHandleFormikSubmission(
+    updateUser,
+    onSuccess
+  )
+
+  return (
+    <Formik onSubmit={onSubmit}>
+      <button type="submit">Save form</button>
+      {apiErrorMessage && <span>{apiErrorMessage}</span>}
+    </Formik>
+  )
+}
+```
+
+### With fallback error message
+
+If you are not sure, whether the backend always returns the error message in an appropriate format, you can define a fallback message id.
+
+```ts
+import { useHandleRequest } from '@aboutbits/react-ui/apiHooks'
+import Axios, { AxiosResponse } from 'axios'
+import { useHandleFormikSubmission } from './useHandleFormikSubmission'
+
+const updateUser = Axios.put<void, AxiosResponse<void>>(
+  'http://localhost:8080/users/1'
+)
+
+const onSuccess = () => {
+  console.log('Success')
+}
+
+const { apiErrorMessage, onSubmit } = useHandleFormikSubmission(
+  updateUser,
+  onSuccess,
+  {
+    apiFallbackErrorMessageId: 'error.server.failed',
+  }
+)
+```
+
+### Validation errors per field
+
+The `useHandleFormikSubmission` hook expects an error of the following type to do proper per error handling.
+The `errors` property will be used to extract validation errors per field, whereas the `message` property will be used for global error messages.
+
+```ts
+export type ErrorBody = {
+  message?: string
+  errors?: Record<string, string[]>
+}
+```
