@@ -22,10 +22,6 @@ type SectionListItemWithActionProps = ClassNameProps & {
    * The react node will be pushed to the right side of the section list item.
    */
   action: ReactNode
-  /**
-   * On Click handler for the div.
-   */
-  onClick: () => void
 }
 
 type SectionListItemWithButton = ClassNameProps & {
