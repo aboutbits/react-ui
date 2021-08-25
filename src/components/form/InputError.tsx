@@ -1,5 +1,6 @@
 import { ErrorMessage } from 'formik'
 import { ClassNameProps } from '../types'
+import { useTheme } from '../../framework'
 
 type InputErrorProps = ClassNameProps & {
   /**
@@ -9,9 +10,8 @@ type InputErrorProps = ClassNameProps & {
 }
 
 const FieldErrorMessage: React.FC = ({ children }) => {
-  return (
-    <span className="block text-xs abui-field-error-message">{children}</span>
-  )
+  const { form } = useTheme()
+  return <span className={form.inputError.base}>{children}</span>
 }
 
 const InputError: React.FC<InputErrorProps> = ({ name, className }) => {
