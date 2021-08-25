@@ -4,13 +4,6 @@ import { ReactNode } from 'react'
 import { useTheme } from '../../../framework/theme/ThemeContext'
 import { ClassNameProps } from '../../types'
 
-type SectionListItem = ClassNameProps & {
-  /**
-   * On Click handler for the div.
-   */
-  onClick: () => void
-}
-
 type SectionDescriptionItemProps = ClassNameProps & {
   /**
    * Defines the content of the section description item.
@@ -45,7 +38,6 @@ type SectionListItemWithButton = ClassNameProps & {
 export const SectionListItem: React.FC<ClassNameProps> = ({
   className,
   children,
-  ...props
 }) => {
   const { section } = useTheme()
   return (
@@ -55,7 +47,6 @@ export const SectionListItem: React.FC<ClassNameProps> = ({
         section.listItem.base,
         section.listItem.normal
       )}
-      {...props}
     >
       {children}
     </div>
@@ -89,16 +80,11 @@ export const SectionListItemWithButton: React.FC<SectionListItemWithButton> = ({
 }
 
 export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps> =
-  ({ children, action, className, ...props }) => {
+  ({ children, action, className }) => {
     const { section } = useTheme()
     return (
       <SectionListItem
-        className={classNames(
-          section.listItemWithAction.base,
-          section.listItemWithAction.normal,
-          className
-        )}
-        {...props}
+        className={classNames(section.listItemWithAction.base, className)}
       >
         {children}
         <div className={section.listItemWithAction.action.base}>{action}</div>

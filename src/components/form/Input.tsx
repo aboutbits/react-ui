@@ -22,7 +22,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
           className={customCss.labelCss}
         />
         <input {...field} {...props} ref={ref} className={customCss.inputCss} />
-        <InputError name={props.name} className={'mt-1'} />
+        <InputError name={props.name} className="mt-1" />
       </div>
     )
   }
