@@ -1,6 +1,9 @@
 import classNames from 'classnames'
 import { calculatePagination, IndexType } from '@aboutbits/pagination'
-import { useLinkComponent } from '../../framework/router/LinkComponentContext'
+import {
+  LinkComponentProps,
+  useLinkComponent,
+} from '../../framework/router/LinkComponentContext'
 import { useTheme } from '../../framework/theme/ThemeContext'
 import { ClassNameProps } from '../types'
 import { useInternationalization } from '../../framework/internationalization/InternationalizationContext'
@@ -32,9 +35,10 @@ type Props = ClassNameProps & {
    *
    * @param parameter
    */
-  linkProps: (parameter: { pageIndex: number; size: number }) => {
-    href: string
-  }
+  linkProps: (parameter: {
+    pageIndex: number
+    size: number
+  }) => LinkComponentProps
   /**
    * Configure the pagination function.
    * For reference checkout: https://github.com/aboutbits/pagination/#usage
@@ -65,6 +69,7 @@ const PaginationRouter: React.FC<Props> = ({
   return (
     <PaginationContainer className={className}>
       <LinkComponent
+        internal={true}
         {...linkProps({ pageIndex: pagination.previous.indexNumber, size })}
         aria-label={internationalization.translate('shared.pagination.prev')}
         aria-disabled={pagination.previous.isDisabled}
@@ -84,6 +89,7 @@ const PaginationRouter: React.FC<Props> = ({
           return (
             <PaginationPagesListItem key={page.indexNumber}>
               <LinkComponent
+                internal={true}
                 {...linkProps({
                   pageIndex: page.indexNumber,
                   size,
@@ -108,6 +114,7 @@ const PaginationRouter: React.FC<Props> = ({
       </PaginationPagesList>
 
       <LinkComponent
+        internal={true}
         {...linkProps({
           pageIndex: pagination.next.indexNumber,
           size,

@@ -70,11 +70,11 @@ SectionListItemButton.displayName = 'SectionListItemButton'
 export const SectionListItemLink = React.forwardRef<
   HTMLAnchorElement,
   LinkComponentProps
->(({ children, className, ...props }, ref) => {
+>(({ children, className, internal = true, ...props }, ref) => {
   const LinkComponent = useLinkComponent()
   const { section } = useTheme()
   return (
-    <LinkComponent className="block" ref={ref} {...props}>
+    <LinkComponent className="block" internal={internal} ref={ref} {...props}>
       <SectionListItem
         className={classNames(
           section.listItemLink.base,

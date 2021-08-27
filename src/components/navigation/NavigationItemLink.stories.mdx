@@ -12,8 +12,6 @@ import { NavigationItemLink } from './NavigationItemLink'
 The NavigationItemLink can be placed inside a menu for in-app routing.
 It will make use of the specified LinkComponent in the ReactUIProvider.
 
-If you are looking to create a regular HTML anchor link, please checkout [NavigationItemHtmlLink](/docs/components-navigation-navigationitemhtmllink--default-story).
-
 export const Template = ({ ...args }) => (
   <NavigationItemLink
     {...args}
@@ -52,6 +50,15 @@ export const Template = ({ ...args }) => (
   <Story name="Active">
     <NavigationItemLink
       active={true}
+      content={'Active Link'}
+      icon={IconAccountCircle}
+      href="#"
+    />
+  </Story>
+  <Story name="External Link">
+    <NavigationItemLink
+      active={true}
+      internal={false}
       content={'Active Link'}
       icon={IconAccountCircle}
       href="#"

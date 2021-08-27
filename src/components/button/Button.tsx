@@ -92,6 +92,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       tone = Tone.primary,
       className = '',
       children,
+      internal = true,
       ...props
     },
     ref
@@ -102,6 +103,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     return (
       <LinkComponent
         {...props}
+        internal={internal}
         ref={ref}
         className={classNames(
           button.button.base,

@@ -28,7 +28,7 @@ export const Template = ({ ...args }) => (
 
 ### Props
 
-<ArgsTable story="Default" />
+<ArgsTable of={HeaderLargeAction} />
 
 ### Theme
 
@@ -39,6 +39,10 @@ export const Template = ({ ...args }) => (
 
 <Canvas>
   <Story name="Custom Icon">
-    <HeaderLargeAction icon={IconEdit} label="Edit" />
+    <HeaderLargeAction
+      icon={IconEdit}
+      label="Edit"
+      onClick={action('onClick')}
+    />
   </Story>
 </Canvas>

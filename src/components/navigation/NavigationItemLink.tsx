@@ -1,8 +1,7 @@
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import React, { ComponentType, ReactElement, ReactNode } from 'react'
 import classNames from 'classnames'
-import { useLinkComponent } from '../../framework/router/LinkComponentContext'
-import { useTheme } from '../../framework/theme/ThemeContext'
+import { LinkComponentProps, useLinkComponent, useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 
 export type Props = {
@@ -18,23 +17,15 @@ export type Props = {
    * Is the current link active.
    */
   active?: boolean
-  /**
-   * Href of the link.
-   */
-  href: string
-} & ClassNameProps
-
-type HtmlLinkProps = Props &
-  React.DetailedHTMLProps<
-    React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    HTMLAnchorElement
-  >
+} & ClassNameProps &
+  LinkComponentProps
 
 export function NavigationItemLink({
   content,
   icon: Icon,
   active = false,
   className = '',
+  internal = true,
   ...props
 }: Props): ReactElement {
   const LinkComponent = useLinkComponent()
@@ -47,34 +38,11 @@ export function NavigationItemLink({
         navigation.item.base,
         active ? navigation.item.active : navigation.item.normal
       )}
+      internal={internal}
       {...props}
     >
       <Icon className={navigation.item.icon.base} />
       <div className={navigation.item.content.base}>{content}</div>
     </LinkComponent>
-  )
-}
-
-export function NavigationItemHtmlLink({
-  content,
-  icon: Icon,
-  active = false,
-  className = '',
-  ...props
-}: HtmlLinkProps): ReactElement {
-  const { navigation } = useTheme()
-
-  return (
-    <a
-      className={classNames(
-        className,
-        navigation.item.base,
-        active ? navigation.item.active : navigation.item.normal
-      )}
-      {...props}
-    >
-      <Icon className={navigation.item.icon.base} />
-      <div className={navigation.item.content.base}>{content}</div>
-    </a>
   )
 }

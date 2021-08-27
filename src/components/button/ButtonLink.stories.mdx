@@ -15,7 +15,11 @@ export const Template = ({ children, ...args }) => (
 <Canvas>
   <Story
     name="Default"
-    args={{ children: 'Default ButtonLink', href: '#ButtonLink' }}
+    args={{
+      children: 'Default ButtonLink',
+      href: '#ButtonLink',
+      internal: true,
+    }}
   >
     {Template.bind({})}
   </Story>
@@ -34,6 +38,16 @@ AnchorHTMLAttributes<HTMLAnchorElement>
 ### Theme
 
 The themes are the same as for the [Button](/docs/components-button-button--default-story#theme).
+
+## Examples
+
+<Canvas>
+  <Story name="External link">
+    <ButtonLink href="/" internal={false}>
+      External link
+    </ButtonLink>
+  </Story>
+</Canvas>
 
 ## Variants
 

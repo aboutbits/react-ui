@@ -1,26 +1,29 @@
 import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
 import classNames from 'classnames'
 import { HeaderRightArea } from '../areas/HeaderRightArea'
-import { useTheme } from '../../../framework/theme/ThemeContext'
-import { useLinkComponent } from '../../../framework/router/LinkComponentContext'
+import {
+  useTheme,
+  useLinkComponent,
+  LinkComponentProps,
+} from '../../../framework'
 
 type Props = {
-  /**
-   * Define where the user is redirected to.
-   * */
-  href: string
   /**
    * Define the accessibility label for the icon.
    * */
   label: string
-}
+} & LinkComponentProps
 
-const HeaderEditAction: React.FC<Props> = ({ href, label }) => {
+const HeaderEditAction: React.FC<Props> = ({
+  href,
+  internal = true,
+  label,
+}) => {
   const { header } = useTheme()
   const LinkComponent = useLinkComponent()
   return (
     <HeaderRightArea>
-      <LinkComponent href={href}>
+      <LinkComponent href={href} internal={internal}>
         <IconEdit
           className={classNames(
             header.editAction.base,

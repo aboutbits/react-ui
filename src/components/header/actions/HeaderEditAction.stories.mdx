@@ -9,18 +9,20 @@ This component is used to have navigation to a previous page. It is at a leaf of
 
 It leverages on the component [HeaderRightArea](/docs/components-header-headerrightarea--default-story).
 
-export const Template = ({ ...args }) => (
-  <HeaderEditAction
-    {...args}
-    label="Edit the object"
-    href="/?path=/docs/components-header-headereditaction--default-story"
-  />
-)
+export const Template = ({ ...args }) => <HeaderEditAction {...args} />
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{
+      label: 'Edit the object',
+      href: '/?path=/docs/components-header-headereditaction--default-story',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props
 
-<ArgsTable story="Default" />
+<ArgsTable of={HeaderEditAction} />
