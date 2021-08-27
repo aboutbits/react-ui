@@ -24,7 +24,7 @@ export const defaultTheme = {
     input: {
       base: 'block w-full border p-3 focus:ring-0 appearance-none outline-none rounded-md',
       normal:
-        'border-black focus:border-primary-400 bg-transparent text-black placeholder-gray-700',
+        'border-gray-700 focus:border-primary-400 bg-transparent text-black placeholder-gray-700',
       error:
         'border-critical focus:border-critical bg-transparent text-black placeholder-gray-700',
       disabled: 'border-gray-700 text-gray-700 bg-gray-100',
