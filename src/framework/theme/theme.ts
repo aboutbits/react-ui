@@ -271,38 +271,40 @@ export const defaultTheme = {
   },
   button: {
     button: {
-      base: 'focus:outline-none fill-current',
+      base: 'focus:outline-none focus:ring-2 focus:ring-offset-2 fill-current',
       size: {
-        sm: 'border px-2 py-1',
-        md: 'border-2 px-4 py-3 text-lg leading-normal',
+        sm: 'border px-2 py-1 rounded',
+        md: 'border-2 px-4 py-3 text-lg leading-normal rounded-md',
       },
       variantTone: {
         solid: {
           base: 'border-transparent font-bold',
           primary:
-            'bg-primary hover:bg-primary-700 focus:bg-primary-700 text-white',
+            'bg-primary hover:bg-primary-700 focus:bg-primary-700 focus:ring-primary text-white',
           critical:
-            'bg-critical hover:bg-critical-700 focus:bg-critical-700 text-white',
+            'bg-critical hover:bg-critical-700 focus:bg-critical-700 focus:ring-critical text-white',
           secondary:
-            'bg-secondary hover:bg-secondary-100 focus:bg-secondary-100 text-white',
+            'bg-secondary hover:bg-secondary-100 focus:bg-secondary-100 focus:ring-secondary text-white',
           disabled: 'bg-gray-50 text-gray',
         },
         ghost: {
           base: 'font-bold bg-transparent',
           primary:
-            'border-primary hover:border-primary-700 text-primary hover:text-primary-700',
+            'border-primary hover:border-primary-700 text-primary hover:text-primary-700 focus:ring-primary',
           critical:
-            'border-critical hover:border-critical-700 text-critical hover:text-critical-700',
+            'border-critical hover:border-critical-700 text-critical hover:text-critical-700 focus:ring-critical',
           secondary:
-            'border-secondary hover:border-secondary-100 text-secondary hover:text-secondary-100',
+            'border-secondary hover:border-secondary-100 text-secondary hover:text-secondary-100 focus:ring-secondary',
           disabled: 'border-gray-500 text-gray',
         },
         transparent: {
           base: 'underline border-transparent background-transparent',
-          primary: 'text-primary hover:text-primary-700',
-          critical: 'text-critical hover:text-critical-700 underline',
-          secondary: 'text-secondary hover:text-secondary-100 ',
-          disabled: ' background-gray-50 text-gray',
+          primary: 'text-primary hover:text-primary-700 focus:ring-primary',
+          critical:
+            'text-critical hover:text-critical-700 focus:ring-critical underline',
+          secondary:
+            'text-secondary hover:text-secondary-100 focus:ring-secondary',
+          disabled: 'background-gray-50 text-gray',
         },
       },
     },

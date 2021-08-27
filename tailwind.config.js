@@ -57,6 +57,11 @@ module.exports = {
         DEFAULT: '#00D3B2',
         700: '#00C8A2',
       },
+      green: {
+        100: '#B3F2E8',
+        DEFAULT: '#00D3B2',
+        700: '#00C8A2',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms')],
