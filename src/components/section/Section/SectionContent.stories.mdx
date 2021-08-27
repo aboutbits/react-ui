@@ -13,10 +13,7 @@ export const Template = ({ children, ...args }) => (
 )
 
 <Canvas>
-  <Story
-    name="Default"
-    args={{ children: <p className="text-white">Default Section Content</p> }}
-  >
+  <Story name="Default" args={{ children: <p>Default Section Content</p> }}>
     {Template.bind({})}
   </Story>
 </Canvas>

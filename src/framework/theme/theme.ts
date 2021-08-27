@@ -135,7 +135,7 @@ export const defaultTheme = {
   },
   section: {
     section: {
-      base: 'lg:shadow-md',
+      base: 'lg:shadow-md rounded-md overflow-hidden',
       normal: 'bg-white',
     },
     content: {
@@ -144,7 +144,7 @@ export const defaultTheme = {
     },
     contentList: {
       base: 'space-y-px',
-      normal: 'bg-gray-300',
+      normal: 'bg-gray',
       empty: {
         base: 'justify-center py-4',
       },
@@ -152,7 +152,7 @@ export const defaultTheme = {
         base: 'justify-center py-4',
         icon: {
           base: 'fill-current',
-          normal: 'text-withe',
+          normal: 'text-white',
         },
         iconContainer: {
           base: 'p-1.5 mr-2',
@@ -168,7 +168,7 @@ export const defaultTheme = {
     },
     listItem: {
       base: 'flex items-center min-h-14 px-4 lg:px-5',
-      normal: 'bg-gray-700 text-white',
+      normal: 'bg-white text-black',
     },
     listItemWithAction: {
       base: 'justify-between space-x-4',
@@ -177,20 +177,23 @@ export const defaultTheme = {
       },
     },
     descriptionItem: {
-      base: 'flex flex-col pb-2 space-y-1 text-white border-b border-gray-300',
+      base: 'flex flex-col pb-2 space-y-1 text-black border-b border-gray',
       title: {
         base: 'text-sm',
       },
     },
     listItemButton: {
       base: 'justify-between space-x-4',
-      normal: 'hover:bg-gray-600',
+      normal: 'hover:bg-primary-50',
     },
     listItemLink: {
       base: 'justify-between space-x-4',
-      normal: 'hover:bg-gray-600 active:bg-gray-600',
+      normal: 'hover:bg-primary-50 active:bg-primary-50',
     },
-    header: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white', normal: 'bg-white' },
+    header: {
+      base: 'px-4 lg:px-5 pt-5 pb-3',
+      normal: 'bg-gray-300 border-b border-gray',
+    },
     title: { base: 'text-xs font-bold uppercase', normal: 'text-black' },
     headerWithAction: {
       base: 'flex justify-between items-center space-x-4',
