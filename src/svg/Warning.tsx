@@ -18,8 +18,8 @@ const Warning: React.FC<IconProps> = (props) => {
           y2=".389"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stopColor="#48505f" />
-          <stop offset="1" stopColor="#48505f" stopOpacity="0" />
+          <stop offset="0" stopColor="#4c6ee8" />
+          <stop offset="1" stopColor="#4c6ee8" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="a6uxmgdjzb"
@@ -28,8 +28,8 @@ const Warning: React.FC<IconProps> = (props) => {
           y2=".859"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stopColor="#19509c" />
-          <stop offset="1" stopColor="#082855" />
+          <stop offset="0" stopColor="#183bb9" />
+          <stop offset="1" stopColor="#0b1b51" />
         </linearGradient>
       </defs>
       <g transform="translate(-68 -109)">

@@ -22,21 +22,21 @@ export type OverrideTheme = RecursivePartial<Theme> & {
 export const defaultTheme = {
   form: {
     input: {
-      base: 'block w-full border p-3 focus:ring-0 appearance-none outline-none',
+      base: 'block w-full border p-3 focus:ring-0 appearance-none outline-none rounded-md',
       normal:
-        'border-white focus:border-primary-400 bg-transparent text-white placeholder-gray-100',
+        'border-gray-700 focus:border-primary-400 bg-transparent text-black placeholder-gray-700',
       error:
-        'border-critical focus:border-critical bg-transparent text-white placeholder-gray-100',
-      disabled: 'border-gray text-gray bg-gray-100',
+        'border-critical focus:border-critical bg-transparent text-black placeholder-gray-700',
+      disabled: 'border-gray-700 text-gray-700 bg-gray-100',
     },
     inputError: {
       base: 'block text-xs text-critical',
     },
     inputLabel: {
       base: 'block pb-1 font-bold text-xs',
-      normal: 'text-white',
+      normal: 'text-black',
       error: 'text-critical',
-      disabled: 'text-gray',
+      disabled: 'text-gray-700',
     },
     form: {
       base: 'space-y-8 lg:space-y-10',
@@ -105,7 +105,7 @@ export const defaultTheme = {
   dialog: {
     confirmation: {
       base: 'absolute top-1/2 left-1/2 p-5 min-w-dialog max-w-min space-y-4 transform -translate-x-1/2 -translate-y-1/2 outline-none',
-      normal: 'bg-white',
+      normal: 'bg-white rounded',
       title: {
         base: 'text-xl',
         variant: {
@@ -116,7 +116,7 @@ export const defaultTheme = {
     },
     select: {
       base: 'md:my-20 mx-auto md:w-full md:max-w-3xl',
-      normal: 'bg-white md:bg-transparent',
+      normal: 'bg-white md:bg-transparent rounded-md overflow-hidden',
       header: {
         base: 'p-0 lg:p-4',
         normal: 'bg-white border-b border-gray-600',
@@ -125,7 +125,7 @@ export const defaultTheme = {
   },
   action: {
     action: {
-      base: 'flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mx-4 lg:mx-0',
+      base: 'flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mx-0',
       variant: {
         start: 'lg:justify-start',
         center: 'lg:justify-center',
@@ -135,16 +135,16 @@ export const defaultTheme = {
   },
   section: {
     section: {
-      base: 'lg:shadow-md',
+      base: '-mx-4 lg:mx-0 lg:shadow-md lg:rounded-md overflow-hidden',
       normal: 'bg-white',
     },
     content: {
       base: 'pt-5 pb-10 px-4 lg:px-5',
-      normal: 'bg-gray-700',
+      normal: 'bg-white',
     },
     contentList: {
       base: 'space-y-px',
-      normal: 'bg-gray-300',
+      normal: 'bg-gray',
       empty: {
         base: 'justify-center py-4',
       },
@@ -152,7 +152,7 @@ export const defaultTheme = {
         base: 'justify-center py-4',
         icon: {
           base: 'fill-current',
-          normal: 'text-withe',
+          normal: 'text-white',
         },
         iconContainer: {
           base: 'p-1.5 mr-2',
@@ -168,7 +168,7 @@ export const defaultTheme = {
     },
     listItem: {
       base: 'flex items-center min-h-14 px-4 lg:px-5',
-      normal: 'bg-gray-700 text-white',
+      normal: 'bg-white text-black',
     },
     listItemWithAction: {
       base: 'justify-between space-x-4',
@@ -177,20 +177,23 @@ export const defaultTheme = {
       },
     },
     descriptionItem: {
-      base: 'flex flex-col pb-2 space-y-1 text-white border-b border-gray-300',
+      base: 'flex flex-col pb-2 space-y-1 text-black border-b border-gray',
       title: {
         base: 'text-sm',
       },
     },
     listItemButton: {
       base: 'justify-between space-x-4',
-      normal: 'hover:bg-gray-600',
+      normal: 'hover:bg-primary-50',
     },
     listItemLink: {
       base: 'justify-between space-x-4',
-      normal: 'hover:bg-gray-600 active:bg-gray-600',
+      normal: 'hover:bg-primary-50 active:bg-primary-50',
     },
-    header: { base: 'px-4 lg:px-5 pt-5 pb-3 bg-white', normal: 'bg-white' },
+    header: {
+      base: 'px-4 lg:px-5 pt-5 pb-3',
+      normal: 'bg-gray-300 border-b border-gray',
+    },
     title: { base: 'text-xs font-bold uppercase', normal: 'text-black' },
     headerWithAction: {
       base: 'flex justify-between items-center space-x-4',
@@ -273,8 +276,8 @@ export const defaultTheme = {
     button: {
       base: 'focus:outline-none fill-current',
       size: {
-        sm: 'border px-2 py-1',
-        md: 'border-2 px-4 py-3 text-lg leading-normal',
+        sm: 'border px-2 py-1 rounded',
+        md: 'border-2 px-4 py-3 text-lg leading-normal rounded-md',
       },
       variantTone: {
         solid: {
@@ -301,8 +304,8 @@ export const defaultTheme = {
           base: 'underline border-transparent background-transparent',
           primary: 'text-primary hover:text-primary-700',
           critical: 'text-critical hover:text-critical-700 underline',
-          secondary: 'text-secondary hover:text-secondary-100 ',
-          disabled: ' background-gray-50 text-gray',
+          secondary: 'text-secondary hover:text-secondary-100',
+          disabled: 'background-gray-50 text-gray',
         },
       },
     },

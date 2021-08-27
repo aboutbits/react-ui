@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { Dialog } from '@reach/dialog'
-import { useTheme } from '../../../framework/theme/ThemeContext'
+import { useTheme } from '../../../framework'
 import { UseSearchQuery } from '../../types'
 import { SelectDialogHeader } from './SelectDialogHeader'
 
