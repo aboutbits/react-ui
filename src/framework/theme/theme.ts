@@ -22,21 +22,21 @@ export type OverrideTheme = RecursivePartial<Theme> & {
 export const defaultTheme = {
   form: {
     input: {
-      base: 'block w-full border p-3 focus:ring-0 appearance-none outline-none',
+      base: 'block w-full border p-3 focus:ring-0 appearance-none outline-none rounded-md',
       normal:
-        'border-white focus:border-primary-400 bg-transparent text-white placeholder-gray-100',
+        'border-black focus:border-primary-400 bg-transparent text-black placeholder-gray-700',
       error:
-        'border-critical focus:border-critical bg-transparent text-white placeholder-gray-100',
-      disabled: 'border-gray text-gray bg-gray-100',
+        'border-critical focus:border-critical bg-transparent text-black placeholder-gray-700',
+      disabled: 'border-gray-700 text-gray-700 bg-gray-100',
     },
     inputError: {
       base: 'block text-xs text-critical',
     },
     inputLabel: {
       base: 'block pb-1 font-bold text-xs',
-      normal: 'text-white',
+      normal: 'text-black',
       error: 'text-critical',
-      disabled: 'text-gray',
+      disabled: 'text-gray-700',
     },
     form: {
       base: 'space-y-8 lg:space-y-10',
@@ -140,7 +140,7 @@ export const defaultTheme = {
     },
     content: {
       base: 'pt-5 pb-10 px-4 lg:px-5',
-      normal: 'bg-gray-700',
+      normal: 'bg-white',
     },
     contentList: {
       base: 'space-y-px',
