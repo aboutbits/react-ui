@@ -320,7 +320,7 @@ export const defaultTheme = {
     },
   },
   textLink: {
-    base: 'underline hover:text-gray active:text-gray',
+    base: 'underline focus:no-underline focus:outline-none focus:ring',
   },
   navigation: {
     navigation: {
