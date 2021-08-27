@@ -116,7 +116,7 @@ export const defaultTheme = {
     },
     select: {
       base: 'md:my-20 mx-auto md:w-full md:max-w-3xl',
-      normal: 'bg-white md:bg-transparent',
+      normal: 'bg-white md:bg-transparent rounded-md overflow-hidden',
       header: {
         base: 'p-0 lg:p-4',
         normal: 'bg-white border-b border-gray-600',
