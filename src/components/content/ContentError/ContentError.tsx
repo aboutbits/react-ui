@@ -1,8 +1,7 @@
 import { ReactNode } from 'react'
 
 import { Button } from '../../button'
-import { useTheme } from '../../../framework/theme/ThemeContext'
-import { useInternationalization } from '../../../framework/internationalization/InternationalizationContext'
+import { useTheme, useInternationalization } from '../../../framework'
 
 type Props = {
   /**
