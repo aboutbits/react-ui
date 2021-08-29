@@ -351,7 +351,7 @@ export const defaultTheme = {
   },
   menu: {
     menuButton: {
-      base: 'flex items-center hover:opacity-60 active:opacity-60',
+      base: 'flex items-center hover:underline',
       icon: {
         base: 'w-6 h-6 fill-current',
       },
@@ -361,7 +361,7 @@ export const defaultTheme = {
       normal: 'hover:bg-primary-100',
     },
     menuList: {
-      base: 'py-3 mb-1 w-32 shadow-sm focus:outline-none',
+      base: 'py-2 mb-1 w-32 shadow focus:outline-none',
       normal: 'bg-white',
     },
   },
