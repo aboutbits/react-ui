@@ -199,8 +199,7 @@ export const defaultTheme = {
       base: 'flex justify-between items-center space-x-4',
     },
     footer: {
-      base: 'pt-10 pb-5 px-4 lg:px-5',
-      normal: 'bg-white',
+      normal: 'bg-gray-300 border-b border-gray',
     },
   },
   pagination: {
