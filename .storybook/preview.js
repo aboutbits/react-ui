@@ -3,6 +3,7 @@ import {IntlProvider, useIntl} from 'react-intl';
 import '../styles/index.css'
 import enMessages from '../src/translations/shared.en.json'
 import { ReactUIProvider } from "../src";
+import { makeLinkComponent } from '../framework'
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -38,6 +39,14 @@ const themeOverwrite = {
   }
 }
 
+const LinkComponent = makeLinkComponent(
+  ({ children, internal, href, ...props }, ref) => (
+      <a ref={ref} href={href} {...props}>
+        {children}
+      </a>
+  )
+)
+
 export const decorators = [
   (Story) => {
     const intl = useIntl()
@@ -45,7 +54,7 @@ export const decorators = [
       translate: (key, values) => intl.formatMessage({id: key}, values)
     }
     return (
-      <ReactUIProvider theme={themeOverwrite} internationalization={internationalization}>
+      <ReactUIProvider theme={themeOverwrite} internationalization={internationalization} linkComponent={LinkComponent}>
         <Story />
       </ReactUIProvider>
     )
