@@ -324,6 +324,7 @@ export const defaultTheme = {
   },
   textLink: {
     base: 'underline focus:no-underline focus:outline-none focus:ring',
+    normal: 'text-center block',
   },
   navigation: {
     navigation: {

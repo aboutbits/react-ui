@@ -11,7 +11,7 @@ const TextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
         {...props}
         internal={internal}
         ref={ref}
-        className={classNames(className, textLink.base)}
+        className={classNames(className, textLink.base, textLink.normal)}
       >
         {children}
       </LinkComponent>
