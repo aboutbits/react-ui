@@ -116,10 +116,10 @@ export const defaultTheme = {
     },
     select: {
       base: 'md:my-20 mx-auto md:w-full md:max-w-3xl',
-      normal: 'bg-white md:bg-transparent rounded-md overflow-hidden',
+      normal: 'bg-white md:bg-transparent md:rounded-md overflow-hidden',
       header: {
         base: 'p-0 lg:p-4',
-        normal: 'bg-white border-b border-gray-600',
+        normal: 'bg-gray-300 border-b border-gray-600',
       },
     },
   },
@@ -327,20 +327,21 @@ export const defaultTheme = {
   },
   navigation: {
     navigation: {
-      base: 'flex flex-col flex-1',
+      base: 'flex flex-col flex-1 space-y-1',
     },
     item: {
-      base: 'flex flex-row items-center w-full py-3 lg:py-4 px-4 lg:px-5 outline-none',
-      normal: 'text-gray-700 hover:bg-gray-100 focus:bg-primary-50',
+      base: 'flex flex-row items-center w-full py-2 lg:py-3 px-4 lg:px-5 outline-none',
+      normal:
+        'text-gray-800 hover:text-black hover:bg-gray-100 focus:text-black focus:bg-gray-100 focus:ring',
       disabled: 'text-gray',
-      active: 'text-white from-primary bg-gradient-to-r to-primary-700',
+      active: 'text-primary bg-primary-50',
       icon: { base: 'mr-4 w-6 h-6 fill-current' },
       content: { base: 'flex-1 text-left' },
     },
     mobile: {
       dialog: {
         base: 'flex flex-row items-stretch min-h-screen relative mr-14 w-full max-w-sm',
-        normal: 'bg-gradient-to-b from-primary-100 to-white',
+        normal: 'bg-white',
         closeButton: {
           base: 'absolute right-0 p-4',
           normal: 'hover:opacity-60 active:opacity-60',
@@ -351,7 +352,7 @@ export const defaultTheme = {
   },
   menu: {
     menuButton: {
-      base: 'flex items-center hover:opacity-60 active:opacity-60',
+      base: 'flex items-center underline focus:no-underline focus:outline-none focus:ring',
       icon: {
         base: 'w-6 h-6 fill-current',
       },
@@ -361,7 +362,7 @@ export const defaultTheme = {
       normal: 'hover:bg-primary-100',
     },
     menuList: {
-      base: 'py-3 mb-1 w-32 shadow-sm focus:outline-none',
+      base: 'py-2 mb-1 w-32 shadow focus:outline-none',
       normal: 'bg-white',
     },
   },
