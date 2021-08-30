@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SectionFooter } from './index'
+
+<Meta title="Components/Section/SectionFooter" component={SectionFooter} />
+
+# SectionFooter
+
+The section footer is component that should be placed at the bottom of a section.
+It is used as a container for the section footer where, for example, the pagination can be placed.
+
+export const Template = ({ children, ...args }) => (
+  <SectionFooter {...args}>{children}</SectionFooter>
+)
+
+<Canvas>
+  <Story name="Section Footer" args={{ children: 'Default Section Footer' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `section.footer.base`: Define the padding of the section footer.
+- `section.footer.normal`: Define the background color of the section footer.
