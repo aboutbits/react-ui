@@ -309,6 +309,9 @@ export const defaultTheme = {
         },
       },
     },
+    buttonLink: {
+      base: 'text-center',
+    },
     withIcon: {
       iconContainer: {
         base: 'flex justify-center items-center',

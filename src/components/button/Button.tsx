@@ -106,6 +106,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         internal={internal}
         ref={ref}
         className={classNames(
+          button.buttonLink.base,
           button.button.base,
           button.button.variantTone[variant].base,
           !props.disabled
