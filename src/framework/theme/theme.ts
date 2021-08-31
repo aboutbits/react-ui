@@ -135,7 +135,7 @@ export const defaultTheme = {
   },
   section: {
     section: {
-      base: '-mx-4 lg:mx-0 lg:shadow-md lg:rounded-md overflow-hidden',
+      base: 'lg:shadow-md lg:rounded-md overflow-hidden',
       normal: 'bg-white',
     },
     content: {
