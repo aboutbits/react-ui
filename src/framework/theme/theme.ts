@@ -239,14 +239,14 @@ export const defaultTheme = {
   header: {
     largeAction: {
       normal: 'hover:text-gray-700 focus:text-gray-700',
-      icon: { base: 'w-8 lg:w-10 h-8 lg:h-10 fill-current' },
+      icon: { base: 'w-7 lg:w-9 h-7 lg:h-9 fill-current' },
     },
     smallAction: {
       normal: 'hover:text-gray-700 focus:text-gray-700',
       icon: { base: 'w-6 lg:w-8 h-6 lg:h-8 fill-current' },
     },
     editAction: {
-      base: 'w-6 lg:w-8 h-6 lg:h-8 fill-current',
+      base: 'w-7 lg:w-9 h-7 lg:h-9 fill-current',
       normal: 'hover:text-gray-700 focus:text-gray-700',
     },
     area: {
