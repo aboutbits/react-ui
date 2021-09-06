@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { FormError } from './FormError'
+
+<Meta title="Components/Form/FormError" component={FormError} />
+
+# FormError
+
+This component is a variation of the [Alert](/docs/components-alert-alert--default-story) component.
+Its main purpose is to show an error in a form. The default style applies `col-span-2`, so that the error message is shown in one line in `SectionContentTwoColumn` forms.
+
+export const Template = ({ children, ...args }) => (
+  <FormError {...args}>{children}</FormError>
+)
+
+<Canvas>
+  <Story name="Default" args={{ children: 'Critical Message.' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `form.formError.base`: Defines base styles of container

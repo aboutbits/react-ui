@@ -21,6 +21,9 @@ export type OverrideTheme = RecursivePartial<Theme> & {
 
 export const defaultTheme = {
   form: {
+    formError: {
+      base: 'col-span-2',
+    },
     input: {
       base: 'block w-full border p-3 focus:ring-0 appearance-none outline-none rounded-md',
       normal:
