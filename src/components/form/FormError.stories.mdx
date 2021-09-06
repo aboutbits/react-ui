@@ -6,7 +6,7 @@ import { FormError } from './FormError'
 # FormError
 
 This component is a variation of the [Alert](/docs/components-alert-alert--default-story) component.
-Its main purpose is to provide an Alert which goes over to 2 columns, and it is used in combination with the component [SectionContentTwoColumn](/docs/components-section-sectioncontenttwocolumn--default-story).
+Its main purpose is to show an error in a form. The default style applies `col-span-2`, so that the error message is shown in one line in `SectionContentTwoColumn` forms.
 
 export const Template = ({ children, ...args }) => (
   <FormError {...args}>{children}</FormError>
