@@ -42,7 +42,7 @@ export const SectionListItem: React.FC<ClassNameProps> = ({
 
 export const SectionListItemButton = React.forwardRef<
   HTMLButtonElement,
-  SectionListItemButtonProps
+  React.PropsWithChildren<SectionListItemButtonProps>
 >(({ children, onClick, className, ...props }, ref) => {
   const { section } = useTheme()
   return (
