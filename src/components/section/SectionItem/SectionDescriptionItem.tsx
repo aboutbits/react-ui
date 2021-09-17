@@ -14,18 +14,28 @@ type SectionDescriptionItemProps = ClassNameProps & {
    * Will be placed inside <dt>.
    */
   title: ReactNode
+  /**
+   * Defines if the component appears or not depending if the content is empty (null) or not.
+   * */
+  hideIfEmpty?: boolean
 }
 
 export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
   title,
   content,
   className,
+  hideIfEmpty = false,
 }) => {
   const { section } = useTheme()
+
   return (
-    <dl className={classNames(section.descriptionItem.base, className)}>
-      <dt className={section.descriptionItem.title.base}>{title}</dt>
-      <dd>{content}</dd>
-    </dl>
+    <>
+      {((hideIfEmpty && content) || !hideIfEmpty) && (
+        <dl className={classNames(section.descriptionItem.base, className)}>
+          <dt className={section.descriptionItem.title.base}>{title}</dt>
+          <dd>{content}</dd>
+        </dl>
+      )}
+    </>
   )
 }
