@@ -11,14 +11,21 @@ import { SectionDescriptionItem } from './SectionDescriptionItem'
 
 The SectionDescriptionItem displays read only information with HTML description list element (`dl`) tag.
 
-export const Template = ({ title, content }) => (
+export const Template = ({ title, content, hideIfEmpty }) => (
   <div className="bg-gray-700">
-    <SectionDescriptionItem title={title} content={content} />
+    <SectionDescriptionItem
+      title={title}
+      content={content}
+      hideIfEmpty={hideIfEmpty}
+    />
   </div>
 )
 
 <Canvas>
-  <Story name="Default" args={{ title: 'Name', content: 'John Doe' }}>
+  <Story
+    name="Default"
+    args={{ title: 'Name', content: 'John Doe', hideIfEmpty: false }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -30,6 +37,17 @@ export const Template = ({ title, content }) => (
 ### Theme
 
 - `section.descriptionItem.base`: Define the base style of the component, e.g., text color or background color.
+
+## Example: Usage of `hideIfEmpty`
+
+<Canvas>
+  <Story
+    name="Hide if empty"
+    args={{ title: 'Name', content: null, hideIfEmpty: true }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
 
 ## Example: Usage within Section
 
