@@ -15,7 +15,7 @@ type SectionDescriptionItemProps = ClassNameProps & {
    */
   title: ReactNode
   /**
-   * Defines if the component appears or not depending if the content is empty (null) or not.
+   * Defines if the component appears or not depending on if the content is empty (null) or not.
    * */
   hideIfEmpty?: boolean
 }
