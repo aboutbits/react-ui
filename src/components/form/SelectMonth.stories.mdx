@@ -1,0 +1,91 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+import { SectionContent } from '../section'
+import { month, monthNames, SelectMonth } from './SelectMonth'
+import { Form } from './Form'
+
+<Meta
+  title="Components/Form/SelectMonth"
+  component={SelectMonth}
+  decorators={[
+    (Story) => {
+      const validationSchema = Yup.object().shape({
+        birthMonth: Yup.string().required('Required'),
+      })
+      return (
+        <Formik
+          initialValues={{
+            birthMonth: month[monthNames[new Date().getMonth()]],
+          }}
+          validateOnChange={true}
+          validationSchema={validationSchema}
+          onSubmit={(values) => action('onSubmit')(values)}
+        >
+          <Form>
+            <SectionContent>
+              <Story />
+            </SectionContent>
+          </Form>
+        </Formik>
+      )
+    },
+  ]}
+/>
+
+# Select
+
+This component leverages on the [Select](/docs/components-form-select--default-story) component. It can be conveniently used to create a select field for months.
+
+The component works with the custom enum `month` which will return a string for the selected value.
+
+```
+enum month {
+  JANUARY = 'JANUARY',
+  FEBRUARY = 'FEBRUARY',
+  MARCH = 'MARCH',
+  APRIL = 'APRIL',
+  MAY = 'MAY',
+  JUNE = 'JUNE',
+  JULY = 'JULY',
+  AUGUST = 'AUGUST',
+  SEPTEMBER = 'SEPTEMBER',
+  OCTOBER = 'OCTOBER',
+  NOVEMBER = 'NOVEMBER',
+  DECEMBER = 'DECEMBER',
+}
+```
+
+Setting the current month as default value can be done with the following code snipped:
+
+```
+<Formik
+  initialValues={{ birthMonth: month[monthNames[new Date().getMonth()]] }}
+  ...
+>
+```
+
+export const Template = ({ ...args }) => <SelectMonth {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      label: 'User birth month',
+      name: 'birthMonth',
+      id: 'birthMonth',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+The SelectMonth component shares the styles with the Input component.
+For customization of the styles please checkout the [theme section](/docs/components-form-input--default-story#theme) of the Input component.
