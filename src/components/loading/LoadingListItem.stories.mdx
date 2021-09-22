@@ -1,0 +1,20 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+
+import { LoadingListItem } from './LoadingListItem'
+
+<Meta title="Components/Loading/LoadingListItem" component={LoadingListItem} />
+
+# LoadingList
+
+This component can be used as placeholders for items during the fetch process. It is mainly used together with [LoadingList](/docs/components-loading-loadinglist--default-story) to generate a placeholder for lists during the fetch process.
+
+export const Template = ({ ...args }) => <LoadingListItem {...args} />
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Theme
+
+- `loading.listItem.start.base`: Define the padding, and the width for the start (left) loading bar
+- `loading.listItem.end.base`: Define the padding, and the width for the end (right) loading bar.

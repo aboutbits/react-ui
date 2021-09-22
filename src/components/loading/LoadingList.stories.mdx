@@ -6,7 +6,7 @@ import { LoadingList } from './LoadingList'
 
 # LoadingList
 
-This component can be used as placeholders for lists during the fetch process.
+This component can be used as placeholders for lists during the fetch process. Internally it leverages on the component [LoadingListItem](/docs/components-loading-loadinglistitem--default-story).
 
 export const Template = ({ ...args }) => (
   <LoadingList {...args} sectionHeader="Section Header" numberOfItems={2} />
@@ -19,8 +19,3 @@ export const Template = ({ ...args }) => (
 ### Props
 
 <ArgsTable story="Default" />
-
-### Theme
-
-- `loading.listItem.start.base`: Define the padding, and the width for the start (left) loading bar
-- `loading.listItem.end.base`: Define the padding, and the width for the end (right) loading bar.
