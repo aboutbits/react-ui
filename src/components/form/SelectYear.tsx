@@ -15,13 +15,13 @@ export const SelectYear: React.FC<Props> = ({ from, to, ...props }) => {
     return null
   }
 
-  const selectOptionsYear = Array(to - from + 1)
+  const selectOptions = Array(to - from + 1)
     .fill(0)
     .map((_, index: number) => index + from)
 
   return (
     <Select {...props}>
-      {selectOptionsYear.map((year: number) => (
+      {selectOptions.map((year: number) => (
         <option key={`${props.name}-${year}`} value={year}>
           {year}
         </option>
