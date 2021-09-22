@@ -1,0 +1,67 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+import { SectionContent } from '../section'
+import { SelectYear } from './SelectYear'
+import { Form } from './Form'
+
+<Meta
+  title="Components/Form/SelectYear"
+  component={SelectYear}
+  decorators={[
+    (Story) => {
+      const validationSchema = Yup.object().shape({
+        yearOfBirth: Yup.number().required(),
+      })
+      return (
+        <Formik
+          initialValues={{ yearOfBirth: '' }}
+          validateOnChange={true}
+          validationSchema={validationSchema}
+          onSubmit={(values) => action('onSubmit')(values)}
+        >
+          <Form>
+            <SectionContent>
+              <Story />
+            </SectionContent>
+          </Form>
+        </Formik>
+      )
+    },
+  ]}
+/>
+
+# Select
+
+This component leverages on the [Select](/docs/components-form-select--default-story) component. It can be conveniently used to create a select field for years.
+
+With the parameters `from` and `to`, the corresponding start and end year can be set.
+
+If `from` equal to `to` only that year is displayed.
+However, if `from` is greater than `to` the component will report `null`.
+
+export const Template = ({ ...args }) => <SelectYear {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      label: 'User year of birth',
+      name: 'yearOfBirth',
+      from: 2018,
+      to: new Date().getFullYear(),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+The SelectYear component shares the styles with the Input component.
+For customization of the styles please checkout the [theme section](/docs/components-form-input--default-story#theme) of the Input component.
