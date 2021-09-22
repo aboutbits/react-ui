@@ -6,7 +6,13 @@ type Props = ClassNameProps & {
   id: string
   label?: string
   name: string
+  /**
+   * Defines the start year of the select component.
+   * */
   from: number
+  /**
+   * Defines the end year of the select component.
+   * */
   to: number
 }
 
