@@ -1,4 +1,5 @@
 import { useIntl } from 'react-intl'
+import { forwardRef } from 'react'
 import { ClassNameProps } from '../types'
 import { Select } from './Select'
 
@@ -52,18 +53,22 @@ export const monthNames: [
   'DECEMBER',
 ]
 
-export const SelectMonth: React.FC<Props> = ({ ...props }) => {
-  const intl = useIntl()
+export const SelectMonth = forwardRef<HTMLSelectElement, Props>(
+  ({ ...props }, ref) => {
+    const intl = useIntl()
 
-  return (
-    <Select {...props}>
-      {Object.keys(month).map((element: string) => (
-        <option key={element} value={element}>
-          {intl.formatMessage({
-            id: `shared.month.${element}`,
-          })}
-        </option>
-      ))}
-    </Select>
-  )
-}
+    return (
+      <Select {...props} ref={ref}>
+        {Object.keys(month).map((element: string) => (
+          <option key={element} value={element}>
+            {intl.formatMessage({
+              id: `shared.month.${element}`,
+            })}
+          </option>
+        ))}
+      </Select>
+    )
+  }
+)
+
+SelectMonth.displayName = 'SelectMonth'
