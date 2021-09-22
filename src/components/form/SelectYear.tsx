@@ -1,37 +1,36 @@
-import React from 'react'
-import { ClassNameProps } from '../types'
+import React, { forwardRef } from 'react'
 import { Select } from './Select'
 
-type Props = ClassNameProps & {
+type Props = React.DetailedHTMLProps<
+  React.SelectHTMLAttributes<HTMLSelectElement>,
+  HTMLSelectElement
+> & {
   id: string
   label?: string
   name: string
-  /**
-   * Defines the start year of the select component.
-   * */
   from: number
-  /**
-   * Defines the end year of the select component.
-   * */
   to: number
 }
 
-export const SelectYear: React.FC<Props> = ({ from, to, ...props }) => {
-  if (from > to) {
-    return null
+export const SelectYear = forwardRef<HTMLSelectElement, Props>(
+  ({ from, to, ...props }, ref) => {
+    if (from > to) {
+      return null
+    }
+    const selectOptions = Array(to - from + 1)
+      .fill(0)
+      .map((_, index: number) => index + from)
+
+    return (
+      <Select {...props} ref={ref}>
+        {selectOptions.map((year: number) => (
+          <option key={`${props.name}-${year}`} value={year}>
+            {year}
+          </option>
+        ))}
+      </Select>
+    )
   }
+)
 
-  const selectOptions = Array(to - from + 1)
-    .fill(0)
-    .map((_, index: number) => index + from)
-
-  return (
-    <Select {...props}>
-      {selectOptions.map((year: number) => (
-        <option key={`${props.name}-${year}`} value={year}>
-          {year}
-        </option>
-      ))}
-    </Select>
-  )
-}
+SelectYear.displayName = 'SelectYear'
