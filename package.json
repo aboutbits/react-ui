@@ -37,6 +37,7 @@
     "@aboutbits/internationalization": "^0.2.1",
     "@aboutbits/pagination": "^1.1.0",
     "@aboutbits/react-material-icons": "^1.0.1",
+    "@aboutbits/react-pagination": "0.0.8",
     "@babel/core": "^7.14.6",
     "@reach/dialog": "^0.16.0",
     "@reach/menu-button": "^0.16.1",

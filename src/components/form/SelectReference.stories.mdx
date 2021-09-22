@@ -1,0 +1,114 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { Formik, useField } from 'formik'
+import * as Yup from 'yup'
+import { useState } from 'react'
+import { useSearchAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
+import {
+  SectionContent,
+  SectionContentList,
+  SectionListItemButton,
+} from '../section'
+import { SelectDialog } from '../dialog/select/SelectDialog'
+import { SelectReference } from './SelectReference'
+import { Form } from './Form'
+
+<Meta
+  title="Components/Form/SelectReference"
+  component={SelectReference}
+  decorators={[
+    (Story) => {
+      const validationSchema = Yup.object().shape({
+        user: Yup.object().shape({
+          id: Yup.number(),
+          name: Yup.string(),
+          label: Yup.string(),
+        }),
+      })
+      return (
+        <Formik
+          initialValues={{ user: { id: 0, name: '', label: '' } }}
+          validateOnChange={true}
+          validationSchema={validationSchema}
+          onSubmit={(values) => action('onSubmit')(values)}
+        >
+          <Form>
+            <SectionContent>
+              <Story />
+            </SectionContent>
+          </Form>
+        </Formik>
+      )
+    },
+  ]}
+/>
+
+# SelectReference
+
+This component can be used to create select fields. This input already has a label and handles error messages in `formik` Forms.
+
+export const Template = ({ ...args }) => {
+  const [showDialog, setShowDialog] = useState(false)
+  const [, , helpersClient] = useField(args.name)
+  const [, , helpersClientId] = useField(args.name + '.id')
+  const [, , search, actions] = useSearchAndPagination()
+  return (
+    <>
+      <SelectReference {...args} setShowDialog={setShowDialog} />
+      <SelectDialog
+        onDismiss={() => {
+          helpersClientId.setTouched(true)
+          setShowDialog(false)
+        }}
+        isOpen={showDialog}
+        title={''}
+        iconLabel={''}
+        search={search}
+        actions={actions}
+        dialogLabel={''}
+      >
+        <SectionContentList>
+          {data.items.map((client, index) => (
+            <SectionListItemButton
+              key={index}
+              onClick={() => {
+                helpersClientId.setTouched(true)
+                helpersClient.setValue(client)
+                setShowDialog(false)
+              }}
+            >
+              <div className="flex flex-1 justify-between">
+                <div>{client.name}</div>
+              </div>
+            </SectionListItemButton>
+          ))}
+        </SectionContentList>
+      </SelectDialog>
+    </>
+  )
+}
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      id: 'user',
+      name: 'user',
+      label: '',
+      placeholder: '',
+      disabled: false,
+      defaultValue: { id: 0, name: '', label: '' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+The Select component shares the styles with the Input component.
+For customization of the styles please checkout the [theme section](/docs/components-form-input--default-story#theme) of the Input component.
