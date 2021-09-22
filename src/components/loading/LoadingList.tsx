@@ -2,12 +2,10 @@ import { ReactElement, ReactNode } from 'react'
 import {
   Section,
   SectionHeader,
-  SectionListItem,
   SectionContentList,
   SectionTitle,
 } from '../section'
-import { useTheme } from '../../framework'
-import { LoadingBar } from '.'
+import { LoadingListItem } from './LoadingListItem'
 
 export type LoadingListProps = {
   /**
@@ -24,7 +22,6 @@ export function LoadingList({
   numberOfItems,
   sectionHeader,
 }: LoadingListProps): ReactElement {
-  const { loading } = useTheme()
   return (
     <Section>
       <SectionHeader>
@@ -35,10 +32,7 @@ export function LoadingList({
         {Array(numberOfItems)
           .fill(null)
           .map((_, index) => (
-            <SectionListItem key={index}>
-              <LoadingBar className={loading.listItem.start.base} />
-              <LoadingBar className={loading.listItem.end.base} />
-            </SectionListItem>
+            <LoadingListItem key={index} />
           ))}
       </SectionContentList>
     </Section>
