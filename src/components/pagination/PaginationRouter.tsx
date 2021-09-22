@@ -17,7 +17,7 @@ import {
   PaginationPagesListItem,
 } from './PaginationPagesList'
 
-type Props = ClassNameProps & {
+export type PaginationRouterProps = ClassNameProps & {
   /**
    * Defines the current page.
    * */
@@ -49,7 +49,7 @@ type Props = ClassNameProps & {
   }
 }
 
-const PaginationRouter: React.FC<Props> = ({
+const PaginationRouter: React.FC<PaginationRouterProps> = ({
   page,
   size,
   total,
