@@ -1,6 +1,6 @@
-import { useIntl } from 'react-intl'
 import { forwardRef } from 'react'
 import { ClassNameProps } from '../types'
+import { useInternationalization } from '../../framework'
 import { Select } from './Select'
 
 type Props = ClassNameProps & {
@@ -55,15 +55,13 @@ export const monthNames: [
 
 export const SelectMonth = forwardRef<HTMLSelectElement, Props>(
   ({ ...props }, ref) => {
-    const intl = useIntl()
+    const internationalization = useInternationalization()
 
     return (
       <Select {...props} ref={ref}>
         {Object.keys(month).map((element: string) => (
           <option key={element} value={element}>
-            {intl.formatMessage({
-              id: `shared.month.${element}`,
-            })}
+            {internationalization.translate(`shared.month.${element}`)}
           </option>
         ))}
       </Select>
