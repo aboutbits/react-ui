@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 import { PaginationRouter, PaginationRouterProps } from '../../pagination'
 import { SectionFooter } from './SectionFooter'
 
-export function SectionFooterWithPagination({
+export function SectionFooterWithPaginationRouter({
   page,
   size,
   total,

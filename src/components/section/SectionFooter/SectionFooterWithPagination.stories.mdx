@@ -1,12 +1,12 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { SectionFooterWithPagination } from '../index'
+import { SectionFooterWithPaginationRouter } from '../index'
 
 <Meta
-  title="Components/Section/SectionFooterWithPagination"
-  component={SectionFooterWithPagination}
+  title="Components/Section/SectionFooterWithPaginationRouter"
+  component={SectionFooterWithPaginationRouter}
 />
 
-# SectionFooterWithPagination
+# SectionFooterWithPaginationRouter
 
 This component can conveniently be used to add a pagination with a section footer. This component leverages on [SectionFooter](/docs/components-section-sectionfooter--section-footer) and [PaginationRouter](/docs/components-pagination-paginationrouter--default-story).
 
@@ -15,7 +15,7 @@ export const Template = () => {
   const currentPage = parseInt(currentParams.get('page'), 10) || 1
   const currentSize = parseInt(currentParams.get('size'), 10) || 10
   return (
-    <SectionFooterWithPagination
+    <SectionFooterWithPaginationRouter
       linkProps={({ pageIndex, size }) => {
         const params = new URLSearchParams(window.parent.location.search)
         params.set('page', String(pageIndex))
