@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
-import { PaginationInMemory, PaginationInMemoryProps } from '../../pagination'
-import { SectionFooter } from './SectionFooter'
+import { PaginationInMemory, PaginationInMemoryProps } from '../index'
+import { SectionFooter } from '../../section'
 
 export function SectionFooterWithPaginationInMemory({
   page,
