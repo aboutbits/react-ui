@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import { ClassNameProps } from '../types'
-import { useTheme } from '../../framework'
+import { ClassNameProps } from '../../types'
+import { useTheme } from '../../../framework'
 
 type Props = ClassNameProps
 
