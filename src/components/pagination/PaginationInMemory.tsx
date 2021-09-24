@@ -13,7 +13,7 @@ import {
   PaginationPagesListItem,
 } from './PaginationPagesList'
 
-type Props = ClassNameProps & {
+export type PaginationInMemoryProps = ClassNameProps & {
   /**
    * Defines the current page.
    * */
@@ -45,7 +45,7 @@ type SectionPaginationInMemoryButtonProps = {
   'aria-current'?: boolean | 'page'
   disabled: boolean
   pageIndex: number
-} & Pick<Props, 'onChangePage'> &
+} & Pick<PaginationInMemoryProps, 'onChangePage'> &
   ClassNameProps
 
 const SectionPaginationInMemoryButton: React.FC<SectionPaginationInMemoryButtonProps> =
@@ -72,7 +72,7 @@ const SectionPaginationInMemoryButton: React.FC<SectionPaginationInMemoryButtonP
     )
   }
 
-const PaginationInMemory: React.FC<Props> = ({
+const PaginationInMemory: React.FC<PaginationInMemoryProps> = ({
   page,
   size,
   total,
