@@ -4,11 +4,7 @@ import { Formik, useField } from 'formik'
 import * as Yup from 'yup'
 import { useState } from 'react'
 import { useSearchAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
-import {
-  SectionContent,
-  SectionContentList,
-  SectionListItemButton,
-} from '../section'
+import { SectionContentList, SectionListItemButton } from '../section'
 import { SelectDialog } from '../dialog/select/SelectDialog'
 import { SelectReference } from './SelectReference'
 import { Form } from './Form'
@@ -33,9 +29,7 @@ import { Form } from './Form'
           onSubmit={(values) => action('onSubmit')(values)}
         >
           <Form>
-            <SectionContent>
-              <Story />
-            </SectionContent>
+            <Story />
           </Form>
         </Formik>
       )
@@ -48,6 +42,14 @@ import { Form } from './Form'
 This component can be used to create select fields. This input already has a label and handles error messages in `formik` Forms.
 
 export const Template = ({ ...args }) => {
+  //console.log(useField('user'))
+  return (
+    <>
+      {Object.keys(args).map((key, index) => {
+        return <div key={index}>{`${index}.: ${key} - ${args[key]}`}</div>
+      })}
+    </>
+  )
   const [showDialog, setShowDialog] = useState(false)
   const [, , helpersClient] = useField(args.name)
   const [, , helpersClientId] = useField(args.name + '.id')
@@ -91,6 +93,20 @@ export const Template = ({ ...args }) => {
 <Canvas>
   <Story
     name="Default"
+    args={{
+      id: 'user',
+      name: 'user',
+      label: '',
+      placeholder: '',
+      disabled: false,
+      defaultValue: { id: 0, name: '', label: '' },
+    }}
+  ></Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="DefaultTemplate"
     args={{
       id: 'user',
       name: 'user',
