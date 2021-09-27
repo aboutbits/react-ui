@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { SectionContent } from '../section'
-import { month, monthNames, SelectMonth } from './SelectMonth'
+import { Month, MonthNames, SelectMonth } from './SelectMonth'
 import { Form } from './Form'
 
 <Meta
@@ -17,7 +17,7 @@ import { Form } from './Form'
       return (
         <Formik
           initialValues={{
-            birthMonth: month[monthNames[new Date().getMonth()]],
+            birthMonth: Month[MonthNames[new Date().getMonth()]],
           }}
           validateOnChange={true}
           validationSchema={validationSchema}
@@ -41,7 +41,7 @@ This component leverages on the [Select](/docs/components-form-select--default-s
 The component works with the custom enum `month` which will return a string for the selected value.
 
 ```
-enum month {
+enum Month {
   JANUARY = 'JANUARY',
   FEBRUARY = 'FEBRUARY',
   MARCH = 'MARCH',
@@ -61,7 +61,7 @@ Setting the current month as default value can be done with the following code s
 
 ```
 <Formik
-  initialValues={{ birthMonth: month[monthNames[new Date().getMonth()]] }}
+  initialValues={{ birthMonth: Month[MonthNames[new Date().getMonth()]] }}
   ...
 >
 ```
