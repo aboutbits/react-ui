@@ -10,7 +10,7 @@ type Props = ClassNameProps & {
   className?: string
 }
 
-export enum month {
+export enum Month {
   JANUARY = 'JANUARY',
   FEBRUARY = 'FEBRUARY',
   MARCH = 'MARCH',
@@ -25,7 +25,7 @@ export enum month {
   DECEMBER = 'DECEMBER',
 }
 
-export const monthNames: [
+export const MonthNames: [
   'JANUARY',
   'FEBRUARY',
   'MARCH',
@@ -59,7 +59,7 @@ export const SelectMonth = forwardRef<HTMLSelectElement, Props>(
 
     return (
       <Select {...props} ref={ref}>
-        {Object.keys(month).map((element: string) => (
+        {Object.keys(Month).map((element: string) => (
           <option key={element} value={element}>
             {internationalization.translate(`shared.month.${element}`)}
           </option>
