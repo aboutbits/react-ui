@@ -11,16 +11,14 @@ import {
 import { LoadingBar } from '../../loading'
 import { Alert, Tone } from '../../alert'
 import { useInternationalization } from '../../../framework'
+import { PaginationInMemoryProps } from '../../pagination'
 import { ReferenceObject } from './SelectItem'
 
 type SearchQueryParameters = {
   query?: string
 } & PaginationQueryParameters
 
-type PaginationQueryParameters = {
-  page?: number
-  size?: number
-}
+type PaginationQueryParameters = Pick<PaginationInMemoryProps, 'page' | 'size'>
 
 type PaginatedResponse<T> = {
   items: T[]
