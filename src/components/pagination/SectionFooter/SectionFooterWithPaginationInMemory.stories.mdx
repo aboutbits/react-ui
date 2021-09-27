@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { useState } from 'react'
+import { SectionFooterWithPaginationInMemory } from './SectionFooterWithPaginationInMemory'
+
+<Meta
+  title="Components/Pagination/SectionFooterWithPaginationInMemory"
+  component={SectionFooterWithPaginationInMemory}
+/>
+
+# SectionFooterWithPaginationInMemory
+
+This component can conveniently be used to add a pagination with a section footer. This component leverages on [SectionFooter](/docs/components-section-sectionfooter--section-footer) and [PaginationInMemory](/docs/components-pagination-paginationinmemory--default-story).
+
+export const Template = () => {
+  const [page, setPage] = useState(1)
+  return (
+    <SectionFooterWithPaginationInMemory
+      size={5}
+      page={page}
+      total={60}
+      nextLabel="Next page"
+      previousLabel="Previous page"
+      onChangePage={setPage}
+    />
+  )
+}
+
+<Canvas>
+  <Story name="Section Footer with Pagination">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Section Footer with Pagination" />
+
+### Theme
+
+The theme of this component leverages on the components [SectionFooter](/docs/components-section-sectionfooter--section-footer#theme) and [PaginationInMemory](/docs/components-pagination-paginationinmemory--default-story#theme).

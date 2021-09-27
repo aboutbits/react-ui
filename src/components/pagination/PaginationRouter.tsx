@@ -3,10 +3,10 @@ import { calculatePagination, IndexType } from '@aboutbits/pagination'
 import {
   LinkComponentProps,
   useLinkComponent,
-} from '../../framework/router/LinkComponentContext'
-import { useTheme } from '../../framework/theme/ThemeContext'
+  useTheme,
+  useInternationalization,
+} from '../../framework'
 import { ClassNameProps } from '../types'
-import { useInternationalization } from '../../framework/internationalization/InternationalizationContext'
 import { PaginationContainer } from './PaginationContainer'
 import {
   PaginationNextContent,
@@ -17,7 +17,7 @@ import {
   PaginationPagesListItem,
 } from './PaginationPagesList'
 
-type Props = ClassNameProps & {
+export type PaginationRouterProps = ClassNameProps & {
   /**
    * Defines the current page.
    * */
@@ -35,7 +35,7 @@ type Props = ClassNameProps & {
    *
    * @param parameter
    */
-  linkProps: (parameter: {
+  linkProps?: (parameter: {
     pageIndex: number
     size: number
   }) => LinkComponentProps
@@ -49,13 +49,20 @@ type Props = ClassNameProps & {
   }
 }
 
-const PaginationRouter: React.FC<Props> = ({
+const PaginationRouter: React.FC<PaginationRouterProps> = ({
   page,
   size,
   total,
-  linkProps,
   config,
   className,
+  linkProps = ({ pageIndex, size }) => {
+    const params = new URLSearchParams(window.parent.location.search)
+    params.set('page', String(pageIndex))
+    params.set('size', String(size))
+    return {
+      href: window.parent.location.pathname + '?' + params.toString(),
+    }
+  },
 }) => {
   const internationalization = useInternationalization()
 
