@@ -1,4 +1,3 @@
-import { useIntl } from 'react-intl'
 import { useSearchAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
 import { AsyncView } from '@aboutbits/react-toolbox'
 import React, { ReactElement, ReactNode } from 'react'
@@ -11,6 +10,7 @@ import {
 } from '../section'
 import { LoadingBar } from '../loading'
 import { Alert, Tone } from '../alert'
+import { useInternationalization } from '../../framework'
 import { ReferenceObject } from './SelectItem'
 
 type SearchQueryParameters = {
@@ -58,22 +58,20 @@ export function SelectItemSearchableDialog<
   dialogLabel,
   noSearchResults,
 }: Props<ItemType, Error>): ReactElement {
-  const intl = useIntl()
+  const internationalization = useInternationalization()
   const { page, size, search, actions } = useSearchAndPagination()
   const { data, error } = useGetData({ query: search, page, size })
 
   const searching = search !== ''
   const empty = searching
-    ? intl.formatMessage({
-        id: 'shared.select.search.empty',
-      })
+    ? internationalization.translate('shared.select.search.empty')
     : noSearchResults
 
   return (
     <SelectDialog
       isOpen={isOpen}
       title={dialogTitle}
-      iconLabel={intl.formatMessage({ id: 'shared.search.label' })}
+      iconLabel={internationalization.translate('shared.search.label')}
       search={search}
       actions={actions}
       onDismiss={onDismiss}
