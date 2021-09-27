@@ -1,16 +1,16 @@
 import { useSearchAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
 import { AsyncView } from '@aboutbits/react-toolbox'
 import React, { ReactElement, ReactNode } from 'react'
-import { SelectDialog } from '../dialog/select/SelectDialog'
+import { SelectDialog } from '../../dialog/select/SelectDialog'
 import {
   SectionContentList,
   SectionContentListEmpty,
   SectionListItem,
   SectionListItemButton,
-} from '../section'
-import { LoadingBar } from '../loading'
-import { Alert, Tone } from '../alert'
-import { useInternationalization } from '../../framework'
+} from '../../section'
+import { LoadingBar } from '../../loading'
+import { Alert, Tone } from '../../alert'
+import { useInternationalization } from '../../../framework'
 import { ReferenceObject } from './SelectItem'
 
 type SearchQueryParameters = {
@@ -44,7 +44,7 @@ export type Props<ItemType extends ReferenceObject, Error> = {
   noSearchResults: string
 }
 
-export function SelectItemSearchableDialog<
+export function SelectItemDialogWithSearch<
   ItemType extends ReferenceObject,
   Error
 >({

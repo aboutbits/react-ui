@@ -1,0 +1,65 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+import { SectionContent } from '../../section'
+import { Form } from '../Form'
+import { SelectItem } from './SelectItem'
+
+<Meta
+  title="Components/Form/SelectItem"
+  component={SelectItem}
+  decorators={[
+    (Story) => {
+      const validationSchema = Yup.object().shape({
+        user: Yup.string().required('Required'),
+      })
+      return (
+        <Formik
+          initialValues={{ user: '' }}
+          validateOnChange={true}
+          validationSchema={validationSchema}
+          onSubmit={(values) => action('onSubmit')(values)}
+        >
+          <Form>
+            <SectionContent>
+              <Story />
+            </SectionContent>
+          </Form>
+        </Formik>
+      )
+    },
+  ]}
+/>
+
+# SelectItem
+
+export const Template = ({ ...args }) => {
+  return <SelectItem {...args} />
+}
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      id: 'user',
+      name: 'user',
+      label: 'SelectUser',
+      placeholder: 'User',
+      defaultValue: { id: 0, name: '', label: '' },
+      dialogTitle: 'Users',
+      dialogLabel: 'Users',
+      noSearchResult: 'No users available.',
+      renderListItem: (item) => item.name,
+      renderErrorMessage: (error) => error?.response?.data.message,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme

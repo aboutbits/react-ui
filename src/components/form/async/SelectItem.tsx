@@ -4,21 +4,21 @@ import classnames from 'classnames'
 import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyboardArrowDown'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 
-import { useInternationalization } from '../../framework'
+import { useInternationalization } from '../../../framework'
+import { useCustomInputCss } from '../useCustomInputCss'
+import { InputLabel } from '../InputLabel'
+import { InputError } from '../InputError'
 import {
-  SelectItemSearchableDialog,
+  SelectItemDialogWithSearch,
   Props as DialogProps,
-} from './SelectItemSearchableDialog'
-import { useCustomInputCss } from './useCustomInputCss'
-import { InputLabel } from './InputLabel'
-import { InputError } from './InputError'
+} from './SelectItemDialogWithSearch'
 
 type Props<ItemType extends ReferenceObject, Error> = {
-  disabled?: boolean
   id: string
   name: string
   label: string
   placeholder: string
+  disabled?: boolean
   defaultValue: ItemType
 } & Pick<
   DialogProps<ItemType, Error>,
@@ -108,7 +108,7 @@ export function SelectItem<ItemType extends ReferenceObject, Error>({
         <InputError name={field.name + '.id'} className="mt-1" />
       </div>
       {showDialog && (
-        <SelectItemSearchableDialog
+        <SelectItemDialogWithSearch
           onDismiss={() => {
             helpersId.setTouched(true)
             setShowDialog(false)
