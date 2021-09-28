@@ -4,16 +4,15 @@ import { SelectDialog } from '../../dialog/select/SelectDialog'
 import {
   SectionContentList,
   SectionContentListEmpty,
-  SectionListItem,
   SectionListItemButton,
 } from '../../section'
-import { LoadingBar } from '../../loading'
 import { Alert, Tone } from '../../alert'
 import { useInternationalization } from '../../../framework'
 import {
   PaginationInMemoryProps,
   SectionFooterWithPaginationInMemory,
 } from '../../pagination'
+import { LoadingListItem } from '../../loading/LoadingListItem'
 import { ReferenceObject } from './SelectItem'
 
 type SearchQueryParameters = {
@@ -86,15 +85,9 @@ export function SelectItemDialogWithSearch<
         error={error}
         renderLoading={
           <SectionContentList>
-            <SectionListItem>
-              <LoadingBar className="p-4 w-full" />
-            </SectionListItem>
-            <SectionListItem>
-              <LoadingBar className="p-4 w-full" />
-            </SectionListItem>
-            <SectionListItem>
-              <LoadingBar className="p-4 w-full" />
-            </SectionListItem>
+            <LoadingListItem />
+            <LoadingListItem />
+            <LoadingListItem />
           </SectionContentList>
         }
         renderSuccess={(data) => (
