@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import { useEffect } from 'react'
 import { SectionContent } from '../../section'
 import { Form } from '../Form'
+import { NavigationProvider } from '../../navigation'
 import { SelectItem } from './SelectItem'
 
 <Meta
@@ -44,7 +45,11 @@ npm install @aboutbits/react-toolbox @aboutbits/react-pagination
 ```
 
 export const Template = ({ ...args }) => {
-  return <SelectItem {...args} useGetData={useEffect} />
+  return (
+    <NavigationProvider>
+      <SelectItem {...args} useGetData={useEffect} />
+    </NavigationProvider>
+  )
 }
 
 <Canvas>
