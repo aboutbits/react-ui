@@ -7,6 +7,8 @@ export function SectionFooterWithPaginationRouter({
   size,
   total,
   config,
+  className,
+  linkProps,
 }: PaginationRouterProps): ReactElement | null {
   if (total <= size) {
     return null
@@ -14,7 +16,14 @@ export function SectionFooterWithPaginationRouter({
 
   return (
     <SectionFooter>
-      <PaginationRouter page={page} size={size} total={total} config={config} />
+      <PaginationRouter
+        page={page}
+        size={size}
+        total={total}
+        config={config}
+        className={className}
+        linkProps={linkProps}
+      />
     </SectionFooter>
   )
 }
