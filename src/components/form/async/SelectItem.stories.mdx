@@ -2,6 +2,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { useEffect } from 'react'
 import { SectionContent } from '../../section'
 import { Form } from '../Form'
 import { SelectItem } from './SelectItem'
@@ -34,8 +35,16 @@ import { SelectItem } from './SelectItem'
 
 # SelectItem
 
+The component can be conveniently used to create a reference to another object.
+
+It leverages on [SelectDialog](/docs/components-dialog-selectdialog--default-story) and the following two components:
+
+```
+npm install @aboutbits/react-toolbox @aboutbits/react-pagination
+```
+
 export const Template = ({ ...args }) => {
-  return <SelectItem {...args} />
+  return <SelectItem {...args} useGetData={useEffect} />
 }
 
 <Canvas>
