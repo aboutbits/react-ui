@@ -42,6 +42,36 @@ export type ReferenceObject = {
 
 type ItemType = ReferenceObject
 
+/**
+ * Converts tailwindcss classes from placeholder to text.
+ *
+ * Some tailwind classes (e.g. text-left) are excluded from the transformation as they are not linked to the text color.
+ * */
+export const helper = (css: string): string => {
+  let result = css
+  if (
+    (css.includes('placeholder') && css.includes('text')) ||
+    css.includes('placeholder')
+  ) {
+    result = css
+      .split(' ')
+      //removes tailwindcss text-<color>
+      .filter((item) =>
+        item.includes('text')
+          ? !!item.match(/(text-(left|center|right|justify)|text-opacity-.*)/g)
+          : true
+      )
+      //transforms tailwindcss placeholder to text
+      .map((item) =>
+        item.includes('placeholder')
+          ? item.replace('placeholder', 'text')
+          : item
+      )
+      .join(' ')
+  }
+  return result
+}
+
 export const SelectItem = React.forwardRef<
   HTMLButtonElement,
   Props<ItemType, Error>
@@ -69,6 +99,7 @@ export const SelectItem = React.forwardRef<
     const [showDialog, setShowDialog] = useState<boolean>(false)
     const customCss = useCustomInputCss(`${field.name}.id`, disabled)
     const internationalization = useInternationalization()
+
     return (
       <>
         <div>
@@ -84,9 +115,11 @@ export const SelectItem = React.forwardRef<
               onClick={() => {
                 setShowDialog(true)
               }}
-              className={classnames(
-                customCss.inputCss,
-                'flex flex-row text-left text-gray-700'
+              className={helper(
+                classnames(
+                  customCss.inputCss,
+                  'flex flex-row text-left text-gray-700'
+                )
               )}
               {...ref}
             >
