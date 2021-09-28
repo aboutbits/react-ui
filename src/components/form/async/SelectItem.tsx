@@ -41,7 +41,10 @@ export type ReferenceObject = {
 
 type ItemType = ReferenceObject
 
-const SelectItem = React.forwardRef<HTMLButtonElement, Props<ItemType, Error>>(
+export const SelectItem = React.forwardRef<
+  HTMLButtonElement,
+  Props<ItemType, Error>
+>(
   (
     {
       disabled = false,
