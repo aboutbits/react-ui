@@ -116,10 +116,7 @@ export const SelectItem = React.forwardRef<
                 setShowDialog(true)
               }}
               className={helper(
-                classnames(
-                  customCss.inputCss,
-                  'flex flex-row text-left text-gray-700'
-                )
+                classnames(customCss.inputCss, 'flex flex-row text-left')
               )}
               {...ref}
             >
