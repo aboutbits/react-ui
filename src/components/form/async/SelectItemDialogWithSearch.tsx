@@ -98,22 +98,24 @@ export function SelectItemDialogWithSearch<
           </SectionContentList>
         }
         renderSuccess={(data) => (
-          <SectionContentList>
-            {data.items.map((item, index) => (
-              <SectionListItemButton
-                key={index}
-                onClick={() => {
-                  onConfirm(item)
-                }}
-              >
-                <div className="flex flex-1 justify-between">
-                  {renderListItem(item)}
-                </div>
-              </SectionListItemButton>
-            ))}
-            {data.items.length === 0 && (
-              <SectionContentListEmpty>{empty}</SectionContentListEmpty>
-            )}
+          <>
+            <SectionContentList>
+              {data.items.map((item, index) => (
+                <SectionListItemButton
+                  key={index}
+                  onClick={() => {
+                    onConfirm(item)
+                  }}
+                >
+                  <div className="flex flex-1 justify-between">
+                    {renderListItem(item)}
+                  </div>
+                </SectionListItemButton>
+              ))}
+              {data.items.length === 0 && (
+                <SectionContentListEmpty>{empty}</SectionContentListEmpty>
+              )}
+            </SectionContentList>
             <SectionFooterWithPaginationInMemory
               page={data.currentPage}
               size={data.perPage}
@@ -121,7 +123,7 @@ export function SelectItemDialogWithSearch<
               onChangePage={setPage}
               config={paginationConfig}
             />
-          </SectionContentList>
+          </>
         )}
         renderError={(error) => (
           <SectionContentListEmpty>
