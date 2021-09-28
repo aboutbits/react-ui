@@ -31,6 +31,7 @@ type Props<ItemType extends ReferenceObject, Error> = React.DetailedHTMLProps<
     | 'noSearchResults'
     | 'renderListItem'
     | 'renderErrorMessage'
+    | 'paginationConfig'
   >
 
 export type ReferenceObject = {
@@ -59,6 +60,7 @@ export const SelectItem = React.forwardRef<
       noSearchResults,
       renderListItem,
       renderErrorMessage,
+      paginationConfig,
     },
     ref
   ) => {
@@ -143,6 +145,7 @@ export const SelectItem = React.forwardRef<
             dialogTitle={dialogTitle}
             dialogLabel={dialogLabel}
             noSearchResults={noSearchResults}
+            paginationConfig={paginationConfig}
           />
         )}
       </>

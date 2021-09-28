@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { useEffect } from 'react'
+import { IndexType } from '@aboutbits/pagination'
 import { SectionContent } from '../../section'
 import { Form } from '../Form'
 import { NavigationProvider } from '../../navigation'
@@ -38,10 +39,10 @@ import { SelectItem } from './SelectItem'
 
 The component can be conveniently used to create a reference to another object.
 
-It leverages on [SelectDialog](/docs/components-dialog-selectdialog--default-story) and the following two components:
+It leverages on [SelectDialog](/docs/components-dialog-selectdialog--default-story) and the package `@aboutbits/react-toolbox`.
 
 ```
-npm install @aboutbits/react-toolbox @aboutbits/react-pagination
+npm install @aboutbits/react-toolbox
 ```
 
 export const Template = ({ ...args }) => {
@@ -66,6 +67,7 @@ export const Template = ({ ...args }) => {
       noSearchResult: 'No users available.',
       renderListItem: (item) => item.name,
       renderErrorMessage: (error) => error?.response?.data.message,
+      paginationConfig: { indexType: IndexType.ZERO_BASED },
     }}
   >
     {Template.bind({})}

@@ -1,6 +1,5 @@
-import { useSearchAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
 import { AsyncView } from '@aboutbits/react-toolbox'
-import React, { ReactElement, ReactNode } from 'react'
+import React, { ReactElement, ReactNode, useState } from 'react'
 import { SelectDialog } from '../../dialog/select/SelectDialog'
 import {
   SectionContentList,
@@ -11,7 +10,10 @@ import {
 import { LoadingBar } from '../../loading'
 import { Alert, Tone } from '../../alert'
 import { useInternationalization } from '../../../framework'
-import { PaginationInMemoryProps } from '../../pagination'
+import {
+  PaginationInMemoryProps,
+  SectionFooterWithPaginationInMemory,
+} from '../../pagination'
 import { ReferenceObject } from './SelectItem'
 
 type SearchQueryParameters = {
@@ -40,6 +42,7 @@ export type Props<ItemType extends ReferenceObject, Error> = {
   dialogTitle: string
   dialogLabel: string
   noSearchResults: string
+  paginationConfig: { indexType: number }
 }
 
 export function SelectItemDialogWithSearch<
@@ -55,10 +58,13 @@ export function SelectItemDialogWithSearch<
   dialogTitle,
   dialogLabel,
   noSearchResults,
+  paginationConfig,
 }: Props<ItemType, Error>): ReactElement {
   const internationalization = useInternationalization()
-  const { page, size, search, actions } = useSearchAndPagination()
-  const { data, error } = useGetData({ query: search, page, size })
+  const [search, setSearch] = useState('')
+  const clearSearch = () => setSearch('')
+  const [page, setPage] = useState(paginationConfig.indexType)
+  const { data, error } = useGetData({ query: search, page, size: 15 })
 
   const searching = search !== ''
   const empty = searching
@@ -71,7 +77,7 @@ export function SelectItemDialogWithSearch<
       title={dialogTitle}
       iconLabel={internationalization.translate('shared.search.label')}
       search={search}
-      actions={actions}
+      actions={{ search: setSearch, clear: clearSearch }}
       onDismiss={onDismiss}
       dialogLabel={dialogLabel}
     >
@@ -108,6 +114,13 @@ export function SelectItemDialogWithSearch<
             {data.items.length === 0 && (
               <SectionContentListEmpty>{empty}</SectionContentListEmpty>
             )}
+            <SectionFooterWithPaginationInMemory
+              page={data.currentPage}
+              size={data.perPage}
+              total={data.total}
+              onChangePage={setPage}
+              config={paginationConfig}
+            />
           </SectionContentList>
         )}
         renderError={(error) => (
