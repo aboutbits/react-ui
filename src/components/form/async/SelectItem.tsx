@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useField } from 'formik'
 import classnames from 'classnames'
 import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyboardArrowDown'
@@ -47,29 +47,31 @@ type ItemType = ReferenceObject
  *
  * Some tailwind classes (e.g. text-left) are excluded from the transformation as they are not linked to the text color.
  * */
-export const helper = (css: string): string => {
-  let result = css
-  if (
-    (css.includes('placeholder') && css.includes('text')) ||
-    css.includes('placeholder')
-  ) {
-    result = css
-      .split(' ')
-      //removes tailwindcss text-<color>
-      .filter((item) =>
-        item.includes('text')
-          ? !!item.match(/(text-(left|center|right|justify)|text-opacity-.*)/g)
-          : true
-      )
-      //transforms tailwindcss placeholder to text
-      .map((item) =>
-        item.includes('placeholder')
-          ? item.replace('placeholder', 'text')
-          : item
-      )
-      .join(' ')
+export const replacePlaceholderColorWithTextColor = (css: string) => {
+  if (!css.includes('placeholder')) {
+    return css
   }
-  return result
+  if (css.includes('placeholder')) {
+    return (
+      css
+        .split(' ')
+        //removes tailwindcss text-<color>
+        .filter((item) =>
+          item.includes('text')
+            ? !!item.match(
+                /(text-(left|center|right|justify)|text-opacity-.*)/g
+              )
+            : true
+        )
+        //transforms tailwindcss placeholder to text
+        .map((item) =>
+          item.includes('placeholder')
+            ? item.replace('placeholder', 'text')
+            : item
+        )
+        .join(' ')
+    )
+  }
 }
 
 export const SelectItem = React.forwardRef<
@@ -99,6 +101,10 @@ export const SelectItem = React.forwardRef<
     const [showDialog, setShowDialog] = useState<boolean>(false)
     const customCss = useCustomInputCss(`${field.name}.id`, disabled)
     const internationalization = useInternationalization()
+    const customCssInputCss = useMemo(
+      () => replacePlaceholderColorWithTextColor(customCss.inputCss),
+      [customCss.inputCss]
+    )
 
     return (
       <>
@@ -115,8 +121,9 @@ export const SelectItem = React.forwardRef<
               onClick={() => {
                 setShowDialog(true)
               }}
-              className={helper(
-                classnames(customCss.inputCss, 'flex flex-row text-left')
+              className={classnames(
+                customCssInputCss,
+                'flex flex-row text-left'
               )}
               {...ref}
             >
