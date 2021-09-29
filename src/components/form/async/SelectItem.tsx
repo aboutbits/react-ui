@@ -47,31 +47,27 @@ type ItemType = ReferenceObject
  *
  * Some tailwind classes (e.g. text-left) are excluded from the transformation as they are not linked to the text color.
  * */
-export const replacePlaceholderColorWithTextColor = (css: string) => {
+export const replacePlaceholderColorWithTextColor = (css: string): string => {
   if (!css.includes('placeholder')) {
     return css
   }
-  if (css.includes('placeholder')) {
-    return (
-      css
-        .split(' ')
-        //removes tailwindcss text-<color>
-        .filter((item) =>
-          item.includes('text')
-            ? !!item.match(
-                /(text-(left|center|right|justify)|text-opacity-.*)/g
-              )
-            : true
-        )
-        //transforms tailwindcss placeholder to text
-        .map((item) =>
-          item.includes('placeholder')
-            ? item.replace('placeholder', 'text')
-            : item
-        )
-        .join(' ')
-    )
-  }
+  return (
+    css
+      .split(' ')
+      //removes tailwindcss text-<color>
+      .filter((item) =>
+        item.includes('text')
+          ? !!item.match(/(text-(left|center|right|justify)|text-opacity-.*)/g)
+          : true
+      )
+      //transforms tailwindcss placeholder to text
+      .map((item) =>
+        item.includes('placeholder')
+          ? item.replace('placeholder', 'text')
+          : item
+      )
+      .join(' ')
+  )
 }
 
 export const SelectItem = React.forwardRef<
