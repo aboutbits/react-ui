@@ -1,0 +1,84 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+import { useEffect } from 'react'
+import { IndexType } from '@aboutbits/pagination'
+import { SectionContent } from '../../section'
+import { Form } from '../Form'
+import { NavigationProvider } from '../../navigation'
+import { SelectItem } from './SelectItem'
+
+<Meta
+  title="Components/Form/SelectItem"
+  component={SelectItem}
+  decorators={[
+    (Story) => {
+      const validationSchema = Yup.object().shape({
+        user: Yup.string().required('Required'),
+      })
+      return (
+        <Formik
+          initialValues={{ user: '' }}
+          validateOnChange={true}
+          validationSchema={validationSchema}
+          onSubmit={(values) => action('onSubmit')(values)}
+        >
+          <Form>
+            <SectionContent>
+              <Story />
+            </SectionContent>
+          </Form>
+        </Formik>
+      )
+    },
+  ]}
+/>
+
+# SelectItem
+
+The component can be conveniently used to create a reference to another object.
+
+It leverages on [SelectDialog](/docs/components-dialog-selectdialog--default-story) and the package `@aboutbits/react-toolbox`.
+
+```
+npm install @aboutbits/react-toolbox
+```
+
+export const Template = ({ ...args }) => {
+  return (
+    <NavigationProvider>
+      <SelectItem {...args} useGetData={useEffect} />
+    </NavigationProvider>
+  )
+}
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      id: 'user',
+      name: 'user',
+      label: 'SelectUser',
+      placeholder: 'User',
+      defaultValue: { id: 0, name: '', label: '' },
+      dialogTitle: 'Users',
+      dialogLabel: 'Users',
+      noSearchResult: 'No users available.',
+      renderListItem: (item) => item.name,
+      renderErrorMessage: (error) => error?.response?.data.message,
+      paginationConfig: { indexType: IndexType.ZERO_BASED },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+The SelectItem component shares the styles with the Input component.
+For customization of the styles please checkout the [theme section](/docs/components-form-input--default-story#theme) of the Input component.
