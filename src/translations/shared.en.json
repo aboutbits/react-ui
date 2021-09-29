@@ -38,5 +38,6 @@
   "shared.month.SEPTEMBER": "September",
   "shared.month.OCTOBER": "October",
   "shared.month.NOVEMBER": "November",
-  "shared.month.DECEMBER": "December"
+  "shared.month.DECEMBER": "December",
+  "shared.select.search.empty": "No search results found."
 }

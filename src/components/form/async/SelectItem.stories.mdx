@@ -2,7 +2,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { IndexType } from '@aboutbits/pagination'
 import { SectionContent } from '../../section'
 import { Form } from '../Form'
@@ -45,10 +45,26 @@ It leverages on [SelectDialog](/docs/components-dialog-selectdialog--default-sto
 npm install @aboutbits/react-toolbox
 ```
 
-export const Template = ({ ...args }) => {
+export const Template = ({ defaultData, defaultErrorMessage, ...args }) => {
+  const [data, setData] = useState(null)
+  const [error, setError] = useState(null)
+  useEffect(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1500)).then(() => {
+      setData(defaultData)
+      setError(defaultErrorMessage)
+    })
+  })
   return (
     <NavigationProvider>
-      <SelectItem {...args} useGetData={useEffect} />
+      <SelectItem
+        {...args}
+        useGetData={() => {
+          return {
+            data: data,
+            error: error,
+          }
+        }}
+      />
     </NavigationProvider>
   )
 }
@@ -61,13 +77,23 @@ export const Template = ({ ...args }) => {
       name: 'user',
       label: 'SelectUser',
       placeholder: 'User',
-      defaultValue: { id: 0, name: '', label: '' },
+      defaultValue: { id: 0, name: '' },
       dialogTitle: 'Users',
       dialogLabel: 'Users',
-      noSearchResult: 'No users available.',
+      noSearchResults: 'No users available.',
       renderListItem: (item) => item.name,
-      renderErrorMessage: (error) => error?.response?.data.message,
+      renderErrorMessage: (error) => error.message,
       paginationConfig: { indexType: IndexType.ZERO_BASED },
+      defaultErrorMessage: null,
+      defaultData: {
+        items: [
+          { id: 1, name: 'John Doe' },
+          { id: 2, name: 'Jane Doe' },
+        ],
+        currentPage: 0,
+        perPage: 15,
+        total: 0,
+      },
     }}
   >
     {Template.bind({})}
@@ -82,3 +108,59 @@ export const Template = ({ ...args }) => {
 
 The SelectItem component shares the styles with the Input component.
 For customization of the styles please checkout the [theme section](/docs/components-form-input--default-story#theme) of the Input component.
+
+<Canvas>
+  <Story
+    name="Error message"
+    args={{
+      id: 'user',
+      name: 'user',
+      label: 'SelectUser',
+      placeholder: 'User',
+      defaultValue: { id: 0, name: '' },
+      dialogTitle: 'Users',
+      dialogLabel: 'Users',
+      noSearchResults: 'No users available.',
+      renderListItem: (item) => item.name,
+      renderErrorMessage: (error) => error.message,
+      paginationConfig: { indexType: IndexType.ZERO_BASED },
+      defaultErrorMessage: { message: 'The API could not handle the request!' },
+      defaultData: {
+        items: [],
+        currentPage: 0,
+        perPage: 15,
+        total: 0,
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Empty list"
+    args={{
+      id: 'user',
+      name: 'user',
+      label: 'SelectUser',
+      placeholder: 'User',
+      defaultValue: { id: 0, name: '' },
+      dialogTitle: 'Users',
+      dialogLabel: 'Users',
+      noSearchResults: 'No users available.',
+      renderListItem: (item) => item.name,
+      renderErrorMessage: (error) => error.message,
+      paginationConfig: { indexType: IndexType.ZERO_BASED },
+      defaultErrorMessage: null,
+      defaultData: {
+        items: [],
+        currentPage: 0,
+        perPage: 15,
+        total: 0,
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
