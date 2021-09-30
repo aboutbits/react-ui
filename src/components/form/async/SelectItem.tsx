@@ -13,11 +13,11 @@ import {
 } from './SelectItemDialogWithSearch'
 
 type Props<ItemType extends ReferenceObject, Error> = {
-  disabled?: boolean
   id: string
   name: string
   label: string
   placeholder: string
+  disabled?: boolean
   defaultValue: ItemType
 } & Pick<
   DialogProps<ItemType, Error>,
