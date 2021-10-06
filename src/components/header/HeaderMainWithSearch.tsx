@@ -14,7 +14,7 @@ type HeaderMainWithSearchProps = HeaderMainProps &
   UseSearchQuery & {
     /**
      * Sets a label ([aria-label](https://www.w3schools.com/accessibility/accessibility_labels.php)) for the search button.
-     * */
+     **/
     label: string
   }
 

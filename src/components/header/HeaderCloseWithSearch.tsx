@@ -9,7 +9,7 @@ import {
   HeaderLeftArea,
 } from '../header'
 import { UseSearchQuery } from '../types'
-import { useInternationalization } from '../../framework/internationalization/InternationalizationContext'
+import { useInternationalization } from '../../framework'
 import { HeaderLargeAction } from './actions/HeaderLargeAction'
 import { HeaderSearch } from './HeaderSearch'
 import { HeaderMainProps as HeaderMainProps } from './HeaderMain'
@@ -18,11 +18,11 @@ type HeaderCloseWithSearchProps = UseSearchQuery &
   HeaderMainProps & {
     /**
      * Define the accessibility label for the search icon.
-     * */
+     **/
     labelIcon: string
     /**
      * Define which action should be executed on closing.
-     * */
+     **/
     onClose: () => void
   }
 

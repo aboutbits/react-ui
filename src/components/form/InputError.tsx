@@ -5,7 +5,7 @@ import { useTheme } from '../../framework'
 type InputErrorProps = ClassNameProps & {
   /**
    * Define the error message.
-   * */
+   **/
   name: string
 }
 

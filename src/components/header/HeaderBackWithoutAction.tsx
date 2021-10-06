@@ -1,4 +1,4 @@
-import { useRouter } from '../../framework/router/RouterContext'
+import { useRouter } from '../../framework'
 import { HeaderArea } from './areas/HeaderArea'
 import { HeaderBackAction } from './actions/HeaderBackAction'
 import { HeaderTitle } from './areas/HeaderTitle'
@@ -6,12 +6,12 @@ import { HeaderTitle } from './areas/HeaderTitle'
 type Props = {
   /**
    * Define a header title.
-   * */
+   **/
   title: string
 
   /**
    * Override default onBack action.
-   */
+   **/
   onBack?: () => void
 }
 

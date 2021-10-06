@@ -4,20 +4,20 @@ import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { HeaderLargeAction } from '../index'
 import { HeaderLeftArea } from '../areas/HeaderLeftArea'
 import { ClassNameProps } from '../../types'
-import { useInternationalization } from '../../../framework/internationalization/InternationalizationContext'
+import { useInternationalization } from '../../../framework'
 
 export type HeaderBackActionProps = ClassNameProps & {
   /**
    * Defines the icon of the button.
-   * */
+   **/
   icon?: ComponentType<IconProps>
   /**
    * Sets a label for [aria-label](https://www.w3schools.com/accessibility/accessibility_labels.php).
-   * */
+   **/
   label?: string
   /**
    * Defines which action should be executed on clicking.
-   * */
+   **/
   onClick: () => void
 }
 

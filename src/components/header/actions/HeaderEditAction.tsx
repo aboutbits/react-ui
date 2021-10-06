@@ -10,7 +10,7 @@ import {
 type Props = {
   /**
    * Define the accessibility label for the icon.
-   * */
+   **/
   label: string
 } & LinkComponentProps
 

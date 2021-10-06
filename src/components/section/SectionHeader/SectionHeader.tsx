@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import React, { ReactNode } from 'react'
-import { useTheme } from '../../../framework/theme/ThemeContext'
+import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 type SectionHeaderProps = ClassNameProps
@@ -8,11 +8,11 @@ type SectionHeaderProps = ClassNameProps
 type SectionHeaderWithActionProps = {
   /**
    * Section title
-   */
+   **/
   title: ReactNode
   /**
    * The react node will be pushed to the right side of the section header.
-   */
+   **/
   action: ReactNode
 }
 

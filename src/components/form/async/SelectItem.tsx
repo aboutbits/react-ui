@@ -46,7 +46,7 @@ type ItemType = ReferenceObject
  * Converts tailwindcss classes from placeholder to text.
  *
  * Some tailwind classes (e.g. text-left) are excluded from the transformation as they are not linked to the text color.
- * */
+ **/
 export const replacePlaceholderColorWithTextColor = (css: string): string => {
   if (!css.includes('placeholder')) {
     return css

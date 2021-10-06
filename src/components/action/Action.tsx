@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { useTheme } from '../../framework/theme/ThemeContext'
+import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 
 export enum ActionSectionVariant {
@@ -11,7 +11,7 @@ export enum ActionSectionVariant {
 type ActionProps = ClassNameProps & {
   /**
    * Defines the variant of the action.
-   * */
+   **/
   variant?: ActionSectionVariant
 }
 

@@ -1,8 +1,7 @@
 import classNames from 'classnames'
 import { calculatePagination, IndexType } from '@aboutbits/pagination'
-import { useTheme } from '../../framework/theme/ThemeContext'
+import { useTheme, useInternationalization } from '../../framework'
 import { ClassNameProps } from '../types'
-import { useInternationalization } from '../../framework/internationalization/InternationalizationContext'
 import { PaginationContainer } from './PaginationContainer'
 import {
   PaginationNextContent,
@@ -16,24 +15,24 @@ import {
 export type PaginationInMemoryProps = ClassNameProps & {
   /**
    * Defines the current page.
-   * */
+   **/
   page: number
   /**
    * Defines the number of elements per page.
-   * */
+   **/
   size: number
   /**
    * Defines the total number of elements.
-   * */
+   **/
   total: number
   /**
    * Defines the action to change the page.
-   * */
+   **/
   onChangePage: (page: number) => void
   /**
    * Configure the pagination function.
    * For reference checkout: https://github.com/aboutbits/pagination/#usage
-   */
+   **/
   config?: {
     indexType?: IndexType
     maxPages?: number

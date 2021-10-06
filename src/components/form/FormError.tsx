@@ -1,4 +1,4 @@
-import { useTheme } from '../../framework/theme/ThemeContext'
+import { useTheme } from '../../framework'
 import { Alert, Tone } from '../alert'
 
 export const FormError: React.FC = ({ children }) => {

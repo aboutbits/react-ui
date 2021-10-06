@@ -1,12 +1,12 @@
 import { MenuItem as ReachMenuItem } from '@reach/menu-button'
 import classNames from 'classnames'
-import { useTheme } from '../../framework/theme/ThemeContext'
+import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 
 type MenuItemProps = ClassNameProps & {
   /**
    * Defines which action should be executed on clicking.
-   * */
+   **/
   onClick: () => void
 }
 
