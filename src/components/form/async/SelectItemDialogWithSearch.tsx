@@ -12,7 +12,7 @@ import {
   PaginationInMemoryProps,
   SectionFooterWithPaginationInMemory,
 } from '../../pagination'
-import { LoadingListItem } from '../../loading/LoadingListItem'
+import { LoadingListItem } from '../../loading'
 import { ReferenceObject } from './SelectItem'
 
 type SearchQueryParameters = {

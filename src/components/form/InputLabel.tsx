@@ -3,11 +3,11 @@ import { ClassNameProps } from '../types'
 export type Props = ClassNameProps & {
   /**
    * Defines the htmlFor of the label.
-   * */
+   **/
   inputId: string
   /**
    * Defines the body of the label.
-   * */
+   **/
   label?: string
 }
 

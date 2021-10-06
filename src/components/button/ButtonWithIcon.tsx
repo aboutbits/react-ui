@@ -1,13 +1,13 @@
 import React, { ComponentType } from 'react'
 import classNames from 'classnames'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
-import { useTheme } from '../../framework/theme/ThemeContext'
+import { useTheme } from '../../framework'
 import { Button, ButtonProps, Size } from './Button'
 
 type ButtonWithIconProps = ButtonProps & {
   /**
    * Defines the icon of the button.
-   */
+   **/
   Icon: ComponentType<IconProps>
 }
 

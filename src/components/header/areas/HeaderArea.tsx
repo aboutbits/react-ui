@@ -2,15 +2,14 @@ import React, { ReactNode } from 'react'
 import IconMenu from '@aboutbits/react-material-icons/dist/IconMenu'
 import classNames from 'classnames'
 import { HeaderLargeAction } from '../actions/HeaderLargeAction'
-import { useTheme } from '../../../framework/theme/ThemeContext'
-import { useInternationalization } from '../../../framework/internationalization/InternationalizationContext'
-import { useNavigationToggle } from '../../navigation/NavigationContext'
+import { useTheme, useInternationalization } from '../../../framework'
+import { useNavigationToggle } from '../../navigation'
 import { HeaderLeftArea } from './HeaderLeftArea'
 
 type Props = {
   /**
    * Defines a JSX-element which can be used to navigate to the previous page.
-   * */
+   **/
   navigation?: ReactNode
 }
 

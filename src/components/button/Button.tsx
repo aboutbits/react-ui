@@ -25,16 +25,16 @@ export type ButtonProps = React.DetailedHTMLProps<
 > & {
   /**
    * Defines the variant of the button.
-   */
+   **/
   variant?: Variant
   /**
    * Defines the size of the button.
-   */
+   **/
   size?: Size
   /**
    * Defines the tone of the button. Basically the color, so be sure to have the colors defined in Tailwind.
    * You need at least: DEFAULT, 700
-   */
+   **/
   tone?: Tone | string
 }
 

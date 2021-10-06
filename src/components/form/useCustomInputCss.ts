@@ -1,5 +1,5 @@
 import { useField } from 'formik'
-import { useTheme } from '../../framework/theme/ThemeContext'
+import { useTheme } from '../../framework'
 
 const useCustomInputCss = (
   fieldName: string,

@@ -10,11 +10,11 @@ import { LoadingListItem } from './LoadingListItem'
 export type LoadingListProps = {
   /**
    * Defines the number of items in the section.
-   */
+   **/
   numberOfItems: number
   /**
    * Defines the title of the section.
-   */
+   **/
   sectionHeader: ReactNode
 }
 
