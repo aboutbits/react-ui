@@ -1,0 +1,52 @@
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import { ReactUIProvider } from '../framework'
+
+<Meta title="General/Getting Started" docsOnly component={ReactUIProvider} />
+
+# Getting Started
+
+Install the library using the following command:
+
+```shell
+npm install @aboutbits/react-ui
+```
+
+## Set up Provider
+
+For React-UI to work properly you need to setup the `ReactUIProvider` at the root of your project:
+
+```jsx
+import * as React from 'react'
+
+// 1. import `ReactUIProvider` component
+import { ReactUIProvider } from '@aboutbits/react-ui'
+
+function App({ Component }) {
+  // 2. Use at the root of your app
+  return (
+    <ReactUIProvider>
+      <Component />
+    </ReactUIProvider>
+  )
+}
+```
+
+If you are using NextJS go to `pages/_app.js` or `pages/_app.tsx` (create if it doesn't exist) and add this:
+
+```jsx
+import { ReactUIProvider } from '@aboutbits/react-ui'
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <ReactUIProvider>
+      <Component {...pageProps} />
+    </ReactUIProvider>
+  )
+}
+
+export default MyApp
+```
+
+### ReactUIProvider props
+
+<ArgsTable of={ReactUIProvider} />

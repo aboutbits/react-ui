@@ -13,9 +13,21 @@ import {
 } from './internationalization/InternationalizationContext'
 
 type Props = {
+  /**
+   * Defines a custom theme that overrides the default one.
+   **/
   theme?: OverrideTheme
+  /**
+   * Defines a link component to be used for client side navigation
+   **/
   linkComponent?: LinkComponent
+  /**
+   * Defines a router
+   **/
   router?: Router
+  /**
+   * Defines a custom theme that overrides the default one.
+   **/
   internationalization?: Internationalization
 }
 
