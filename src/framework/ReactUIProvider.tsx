@@ -18,11 +18,11 @@ type Props = {
    **/
   theme?: OverrideTheme
   /**
-   * Defines a link component to be used for client side navigation
+   * Defines a link component to be used for client side navigation.
    **/
   linkComponent?: LinkComponent
   /**
-   * Defines a router
+   * Defines a router.
    **/
   router?: Router
   /**
