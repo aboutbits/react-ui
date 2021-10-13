@@ -17,7 +17,7 @@ type SectionListItemWithActionProps = ClassNameProps & {
 
 type SectionListItemButtonProps = ClassNameProps & {
   /**
-   * On Click handler for the button.
+   * On click handler for the button.
    */
   onClick: () => void
 }

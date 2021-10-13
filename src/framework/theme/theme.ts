@@ -195,12 +195,21 @@ export const defaultTheme = {
       normal: 'hover:bg-primary-50 active:bg-primary-50',
     },
     header: {
-      base: 'px-4 lg:px-5 pt-5 pb-3',
+      base: 'px-4 lg:px-5 py-5 flex justify-between items-center space-x-2',
       normal: 'bg-gray-300 border-b border-gray',
     },
-    title: { base: 'text-xs font-bold uppercase', normal: 'text-black' },
-    headerWithAction: {
-      base: 'flex justify-between items-center space-x-4',
+    title: { base: 'flex-1 text-sm font-bold uppercase', normal: 'text-black' },
+    search: {
+      input: {
+        base: 'flex-1 text-base border-none outline-none p-0',
+        normal: 'bg-transparent placeholder-gray-600 text-black',
+      },
+    },
+    action: {
+      base: 'fill-current',
+      normal: 'text-black hover:text-gray-700 focus:text-gray-700',
+      disabled: 'text-gray-400',
+      icon: 'w-6',
     },
     footer: {
       base: 'lg:p-4 py-4 px-3',

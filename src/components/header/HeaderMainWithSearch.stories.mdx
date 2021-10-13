@@ -15,14 +15,14 @@ This component is similar to [HeaderMain](/docs/components-header-headermain--de
 It leverages on the component [HeaderSearch](/docs/components-header-headersearch--default-story).
 
 export const Template = ({ ...args }) => {
-  const [text, setText] = useState('')
-  const clearSearch = () => setText('')
+  const [search, setSearch] = useState('')
+  const clearSearch = () => setSearch('')
   return (
     <NavigationProvider>
       <HeaderMainWithSearch
         {...args}
-        search={text}
-        actions={{ search: setText, clear: clearSearch }}
+        search={search}
+        actions={{ search: setSearch, clear: clearSearch }}
         label="Open search"
         title="Header Title"
       />

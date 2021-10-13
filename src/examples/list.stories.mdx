@@ -1,13 +1,15 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { actions } from '@storybook/addon-actions'
+import { action } from '@storybook/addon-actions'
 import { useState } from 'react'
+import IconFilterList from '@aboutbits/react-material-icons/dist/IconFilterList'
 import {
   Section,
   SectionContentList,
   SectionContentListEmpty,
   SectionHeader,
+  SectionSearch,
+  SectionAction,
   SectionListItemButton,
-  SectionTitle,
   SectionFooter,
 } from '../components/section'
 import { PaginationInMemory } from '../components/pagination/PaginationInMemory'
@@ -23,12 +25,27 @@ Changing the properties `numberOfTotalItems` and `numberOfItemsPerPage` will cha
 Setting `numberOfTotalItems` to 0 will reveal the placeholder for the empty list.
 
 export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
-  const content = Array.from(Array(numberOfTotalItems).keys())
   const [page, setPage] = useState(1)
+  const [search, setSearch] = useState('')
+  const [filterShow, setFilterShow] = useState(false)
+  const content = Array.from(Array(numberOfTotalItems).keys())
+    .map((item) => `User ${item + 1}`)
+    .filter((item) => item.includes(search))
   return (
     <Section>
       <SectionHeader>
-        <SectionTitle>List of users</SectionTitle>
+        <SectionSearch
+          title="List of users"
+          search={search}
+          actions={{ search: setSearch, clear: () => setSearch('') }}
+        />
+        <SectionAction
+          Icon={IconFilterList}
+          label="Filter"
+          onClick={() => {
+            setFilterShow(!filterShow)
+          }}
+        />
       </SectionHeader>
       <SectionContentList>
         {content.length > 0 &&
@@ -38,8 +55,11 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
               (page - 1) * numberOfItemsPerPage + numberOfItemsPerPage
             )
             .map((item) => (
-              <SectionListItemButton key={item} onClick={actions('onClick')}>
-                {`User ${item + 1}`}
+              <SectionListItemButton
+                key={item}
+                onClick={() => action('clicked')}
+              >
+                {item}
               </SectionListItemButton>
             ))}
         {content.length === 0 && (
@@ -52,7 +72,7 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
         <PaginationInMemory
           page={page}
           size={numberOfItemsPerPage}
-          total={numberOfTotalItems}
+          total={content.length}
           onChangePage={setPage}
         />
       </SectionFooter>
@@ -64,7 +84,7 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
   <Story
     name="Default"
     args={{
-      numberOfTotalItems: 10,
+      numberOfTotalItems: 1000,
       numberOfItemsPerPage: 5,
     }}
   >

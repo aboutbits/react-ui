@@ -2,14 +2,14 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconError from '@aboutbits/react-material-icons/dist/IconError'
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
-import { actions } from '@storybook/addon-actions'
+import { action } from '@storybook/addon-actions'
 import { Size, Tone, Variant } from './Button'
 import { ButtonWithIcon } from './ButtonWithIcon'
 
 <Meta title="Components/Button/ButtonWithIcon" component={ButtonWithIcon} />
 
 export const Template = ({ children, ...args }) => (
-  <ButtonWithIcon {...args} onClick={actions('clicked')}>
+  <ButtonWithIcon {...args} onClick={action('clicked')}>
     {children}
   </ButtonWithIcon>
 )
