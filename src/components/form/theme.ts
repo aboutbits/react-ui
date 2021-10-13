@@ -4,16 +4,6 @@ export default {
   },
   input: {
     base: 'block w-full border p-3 focus:ring-0 appearance-none outline-none rounded-md',
-    light: {
-      normal: '',
-      error: '',
-      disabled: '',
-    },
-    dark: {
-      normal: '',
-      error: '',
-      disabled: '',
-    },
     normal:
       'border-gray-700 focus:border-primary-400 bg-transparent text-black placeholder-gray-700',
     error:
