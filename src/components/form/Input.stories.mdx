@@ -2,7 +2,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { SectionContent } from '../section'
+import { Mode } from '../types'
 import { Input } from './Input'
 import { Form } from './Form'
 
@@ -22,9 +22,7 @@ import { Form } from './Form'
           onSubmit={(values) => action('onSubmit')(values)}
         >
           <Form>
-            <SectionContent>
-              <Story />
-            </SectionContent>
+            <Story />
           </Form>
         </Formik>
       )
@@ -36,15 +34,16 @@ import { Form } from './Form'
 
 This component can be used to create inputs. This input already has a label and handles error messages in `formik` Forms.
 
-export const Template = ({ ...args }) => (
-  <Input {...args} type="text" placeholder="Firstname Lastname" name="name" />
-)
+export const Template = ({ ...args }) => <Input {...args} name="name" />
 
 <Canvas>
   <Story
     name="Default"
     args={{
       label: 'Name',
+      placeholder: 'Your Name',
+      type: 'text',
+      mode: Mode.light,
     }}
   >
     {Template.bind({})}

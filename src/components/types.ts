@@ -4,6 +4,16 @@ export type ClassNameProps = {
    **/
   className?: string
 }
+
+export enum Mode {
+  light = 'light',
+  dark = 'dark',
+}
+
+export type ModeProps = {
+  mode?: Mode
+}
+
 export type UseSearchQuery = {
   /**
    * Defines the passed value for the search input.
