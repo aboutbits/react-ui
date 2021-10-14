@@ -1,4 +1,7 @@
 export default {
+  form: {
+    base: 'space-y-8 lg:space-y-10',
+  },
   formError: {
     base: 'col-span-2',
   },
@@ -19,9 +22,6 @@ export default {
       disabled: 'border-gray-700 text-gray-700 bg-gray-100',
     },
   },
-  inputError: {
-    base: 'block text-xs text-critical',
-  },
   inputLabel: {
     base: 'block pb-1 font-bold text-xs',
     light: {
@@ -35,7 +35,10 @@ export default {
       disabled: 'text-gray-700',
     },
   },
-  form: {
-    base: 'space-y-8 lg:space-y-10',
+  inputError: {
+    base: 'block text-xs text-critical',
+  },
+  option: {
+    base: 'bg-transparent text-black',
   },
 }

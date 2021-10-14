@@ -6,7 +6,7 @@ import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
 import { useCustomInputCss } from './useCustomInputCss'
 
-type Props = React.DetailedHTMLProps<
+type SelectProps = React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement
 > &
@@ -16,7 +16,7 @@ type Props = React.DetailedHTMLProps<
     name: string
   }
 
-export const Select = forwardRef<HTMLSelectElement, Props>(
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ label, mode = Mode.light, children, className, ...props }, ref) => {
     const customCss = useCustomInputCss(props.name, props.disabled, mode)
     const [field] = useField(props.name)

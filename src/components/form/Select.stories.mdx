@@ -4,6 +4,7 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { Mode } from '../types'
 import { Select } from './Select'
+import { Option } from './Option'
 import { Form } from './Form'
 
 <Meta
@@ -36,11 +37,11 @@ This component can be used to create select fields. This input already has a lab
 
 export const Template = ({ ...args }) => (
   <Select {...args} name="right">
-    <option value="" hidden>
+    <Option value="" hidden>
       Select user right
-    </option>
-    <option value="ADMIN">ADMIN</option>
-    <option value="USER">USER</option>
+    </Option>
+    <Option value="ADMIN">ADMIN</Option>
+    <Option value="USER">USER</Option>
   </Select>
 )
 
