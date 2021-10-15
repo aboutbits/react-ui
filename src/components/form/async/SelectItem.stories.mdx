@@ -45,7 +45,7 @@ npm install @aboutbits/react-toolbox
 ```
 
 export const TemplateNormal = ({ ...args }) => {
-  const useGetData = ({ query, page = 1, size }) => {
+  const useGetData = ({ query, page, size }) => {
     const data = Array.from(Array(200).keys())
       .map((index) => {
         return {
