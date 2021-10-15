@@ -209,7 +209,7 @@ export const defaultTheme = {
       base: 'fill-current',
       normal: 'text-black hover:text-gray-700 focus:text-gray-700',
       disabled: 'text-gray-400',
-      icon: 'w-6',
+      icon: 'h-5',
     },
     footer: {
       base: 'lg:p-4 py-4 px-3',
