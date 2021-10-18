@@ -59,7 +59,10 @@ export default {
     base: 'px-4 lg:px-5 py-5 flex justify-between items-center space-x-2',
     normal: 'bg-gray-300 border-b border-gray',
   },
-  title: { base: 'flex-1 text-sm font-bold uppercase', normal: 'text-black' },
+  title: {
+    base: 'py-0.5 flex-1 text-sm font-bold uppercase',
+    normal: 'text-black',
+  },
   search: {
     input: {
       base: 'flex-1 text-base border-none outline-none p-0',
@@ -70,7 +73,7 @@ export default {
     base: 'fill-current',
     normal: 'text-black hover:text-gray-700 focus:text-gray-700',
     disabled: 'text-gray-400',
-    icon: 'w-6',
+    icon: 'h-6',
   },
   footer: {
     base: 'lg:p-4 py-4 px-3',
