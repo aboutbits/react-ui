@@ -35,8 +35,8 @@ const HeaderSearch: React.FC<Props> = ({
   clearSearch,
 }) => {
   const internationalization = useInternationalization()
-  const searchInput = useRef<HTMLInputElement>(null)
   const { header } = useTheme()
+  const searchInput = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (searchInput.current !== null) {
