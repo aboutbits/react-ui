@@ -36,9 +36,21 @@ export default {
     },
   },
   inputError: {
-    base: 'block text-xs text-critical',
+    base: 'block text-xs',
+    light: {
+      normal: 'text-critical',
+    },
+    dark: {
+      normal: 'text-critical',
+    },
   },
   option: {
-    base: 'bg-transparent text-black',
+    base: 'bg-transparent',
+    light: {
+      normal: 'text-black',
+    },
+    dark: {
+      normal: 'text-black',
+    },
   },
 }

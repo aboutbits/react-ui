@@ -27,7 +27,7 @@ export const SelectYear = forwardRef<HTMLSelectElement, Props>(
     return (
       <Select mode={mode} {...props} ref={ref}>
         {selectOptions.map((year: number) => (
-          <Option key={`${props.name}-${year}`} value={year}>
+          <Option mode={mode} key={`${props.name}-${year}`} value={year}>
             {year}
           </Option>
         ))}

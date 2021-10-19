@@ -66,7 +66,7 @@ export const SelectMonth = forwardRef<HTMLSelectElement, SelectMonthProps>(
     return (
       <Select mode={mode} {...props} ref={ref}>
         {Object.keys(Month).map((element: string) => (
-          <Option key={element} value={element}>
+          <Option mode={mode} key={element} value={element}>
             {internationalization.translate(`shared.month.${element}`)}
           </Option>
         ))}

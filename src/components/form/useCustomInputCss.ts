@@ -12,25 +12,17 @@ const useCustomInputCss = (
     form: { input, inputLabel },
   } = useTheme()
 
-  let customInputCss =
-    fieldMode === Mode.light ? input.light.normal : input.dark.normal
-  let customLabelCss =
-    fieldMode === Mode.light ? inputLabel.light.normal : inputLabel.dark.normal
+  let customInputCss = input[fieldMode].normal
+  let customLabelCss = inputLabel[fieldMode].normal
 
   if (meta.touched && meta.error) {
-    customInputCss =
-      fieldMode === Mode.light ? input.light.error : input.dark.error
-    customLabelCss =
-      fieldMode === Mode.light ? inputLabel.light.error : inputLabel.dark.error
+    customInputCss = input[fieldMode].error
+    customLabelCss = inputLabel[fieldMode].error
   }
 
   if (fieldDisabled) {
-    customInputCss =
-      fieldMode === Mode.light ? input.light.disabled : input.dark.disabled
-    customLabelCss =
-      fieldMode === Mode.light
-        ? inputLabel.light.disabled
-        : inputLabel.dark.disabled
+    customInputCss = input[fieldMode].disabled
+    customLabelCss = inputLabel[fieldMode].disabled
   }
 
   return {
