@@ -31,7 +31,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <select {...field} {...props} ref={ref} className={customCss.inputCss}>
           {children}
         </select>
-        <InputError name={props.name} className="mt-1" />
+        <InputError name={props.name} className={customCss.errorCss} />
       </div>
     )
   }

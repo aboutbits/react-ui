@@ -136,7 +136,7 @@ export function SelectItem<ItemType extends ReferenceObject, Error>({
             </button>
           </div>
         )}
-        <InputError name={field.name + '.id'} className="mt-1" />
+        <InputError name={field.name + '.id'} className={customCss.errorCss} />
       </div>
       {showDialog && (
         <SelectItemDialogWithSearch

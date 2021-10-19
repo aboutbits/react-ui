@@ -36,7 +36,7 @@ export default {
     },
   },
   inputError: {
-    base: 'block text-xs',
+    base: 'mt-1 block text-xs',
     light: {
       normal: 'text-critical',
     },

@@ -29,7 +29,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, Props>(
           ref={ref}
           className={customCss.inputCss}
         />
-        <InputError name={props.name} className="mt-1" />
+        <InputError name={props.name} className={customCss.errorCss} />
       </div>
     )
   }
