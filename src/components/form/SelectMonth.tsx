@@ -1,14 +1,20 @@
-import { forwardRef } from 'react'
-import { ClassNameProps } from '../types'
+import React, { forwardRef } from 'react'
+import { ClassNameProps, Mode, ModeProps } from '../types'
 import { useInternationalization } from '../../framework'
 import { Select } from './Select'
+import { Option } from './Option'
 
-type Props = ClassNameProps & {
-  id: string
-  name: string
-  label?: string
-  className?: string
-}
+type SelectMonthProps = React.DetailedHTMLProps<
+  React.SelectHTMLAttributes<HTMLSelectElement>,
+  HTMLSelectElement
+> &
+  ClassNameProps &
+  ModeProps & {
+    id: string
+    name: string
+    label?: string
+    className?: string
+  }
 
 export enum Month {
   JANUARY = 'JANUARY',
@@ -53,16 +59,16 @@ export const MonthNames: [
   'DECEMBER',
 ]
 
-export const SelectMonth = forwardRef<HTMLSelectElement, Props>(
-  ({ ...props }, ref) => {
+export const SelectMonth = forwardRef<HTMLSelectElement, SelectMonthProps>(
+  ({ mode = Mode.light, ...props }, ref) => {
     const internationalization = useInternationalization()
 
     return (
-      <Select {...props} ref={ref}>
+      <Select mode={mode} {...props} ref={ref}>
         {Object.keys(Month).map((element: string) => (
-          <option key={element} value={element}>
+          <Option mode={mode} key={element} value={element}>
             {internationalization.translate(`shared.month.${element}`)}
-          </option>
+          </Option>
         ))}
       </Select>
     )
