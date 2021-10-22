@@ -5,8 +5,12 @@ import * as Yup from 'yup'
 import { IndexType } from '@aboutbits/pagination'
 import { SectionContent } from '../../section'
 import { Form } from '../Form'
-import { NavigationProvider } from '../../navigation'
 import { SelectItem } from './SelectItem'
+import {
+  TemplateNormal,
+  TemplateError,
+  TemplateEmpty,
+} from './SelectItem.templates'
 
 <Meta
   title="Components/Form/SelectItem"
@@ -44,39 +48,6 @@ It leverages on [SelectDialog](/docs/components-dialog-selectdialog--default-sto
 npm install @aboutbits/react-toolbox
 ```
 
-export const TemplateNormal = ({ ...args }) => {
-  const useGetData = ({ query, page, size }) => {
-    const data = Array.from(Array(200).keys())
-      .map((index) => {
-        return {
-          id: index,
-          name: `User ${index}`,
-        }
-      })
-      .filter((user) => {
-        if (query) {
-          return user.name.includes(query)
-        } else {
-          return true
-        }
-      })
-    return {
-      data: {
-        items: data.slice(page * size, page * size + size),
-        currentPage: page,
-        perPage: size,
-        total: data.length,
-      },
-      error: null,
-    }
-  }
-  return (
-    <NavigationProvider>
-      <SelectItem {...args} useGetData={useGetData} />
-    </NavigationProvider>
-  )
-}
-
 <Canvas>
   <Story
     name="Default"
@@ -107,21 +78,6 @@ export const TemplateNormal = ({ ...args }) => {
 The SelectItem component shares the styles with the Input component.
 For customization of the styles please checkout the [theme section](/docs/components-form-input--default-story#theme) of the Input component.
 
-export const TemplateError = ({ ...args }) => {
-  const useGetData = () => {
-    return {
-      error: {
-        message: 'Something went wrong',
-      },
-    }
-  }
-  return (
-    <NavigationProvider>
-      <SelectItem {...args} useGetData={useGetData} />
-    </NavigationProvider>
-  )
-}
-
 <Canvas>
   <Story
     name="Error"
@@ -142,25 +98,6 @@ export const TemplateError = ({ ...args }) => {
     {TemplateError.bind({})}
   </Story>
 </Canvas>
-
-export const TemplateEmpty = ({ ...args }) => {
-  const useGetData = () => {
-    return {
-      data: {
-        items: [],
-        currentPage: 0,
-        perPage: 15,
-        total: 0,
-      },
-      error: null,
-    }
-  }
-  return (
-    <NavigationProvider>
-      <SelectItem {...args} useGetData={useGetData} />
-    </NavigationProvider>
-  )
-}
 
 <Canvas>
   <Story

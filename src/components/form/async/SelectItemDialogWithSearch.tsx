@@ -15,13 +15,16 @@ import {
 import { LoadingListItem } from '../../loading'
 import { ReferenceObject } from './SelectItem'
 
-type SearchQueryParameters = {
+export type SearchQueryParameters = {
   query?: string
 } & PaginationQueryParameters
 
-type PaginationQueryParameters = Pick<PaginationInMemoryProps, 'page' | 'size'>
+export type PaginationQueryParameters = Pick<
+  PaginationInMemoryProps,
+  'page' | 'size'
+>
 
-type PaginatedResponse<T> = {
+export type PaginatedResponse<T> = {
   items: T[]
   total: number
   currentPage: number
