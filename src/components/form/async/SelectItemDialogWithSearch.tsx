@@ -64,8 +64,15 @@ export function SelectItemDialogWithSearch<
 }: Props<ItemType, Error>): ReactElement {
   const internationalization = useInternationalization()
   const [search, setSearch] = useState('')
-  const clearSearch = () => setSearch('')
   const [page, setPage] = useState(paginationConfig.indexType)
+  const typeSearch = (query: string) => {
+    setSearch(query)
+    setPage(paginationConfig.indexType)
+  }
+  const clearSearch = () => {
+    setSearch('')
+    setPage(paginationConfig.indexType)
+  }
   const { data, error } = useGetData({ query: search, page, size: 15 })
 
   const searching = search !== ''
@@ -79,7 +86,7 @@ export function SelectItemDialogWithSearch<
       title={dialogTitle}
       iconLabel={internationalization.translate('shared.search.label')}
       search={search}
-      actions={{ search: setSearch, clear: clearSearch }}
+      actions={{ search: typeSearch, clear: clearSearch }}
       onDismiss={onDismiss}
       dialogLabel={dialogLabel}
     >
