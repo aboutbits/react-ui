@@ -7,15 +7,15 @@ import { ClassNameProps } from '../types'
 export type Props = {
   /**
    * Defines the content for the link.
-   * */
+   **/
   content: ReactNode
   /**
    * Defines the icon on the start.
-   */
+   **/
   icon: ComponentType<IconProps>
   /**
    * Is the current link active.
-   */
+   **/
   active?: boolean
 } & ClassNameProps &
   LinkComponentProps

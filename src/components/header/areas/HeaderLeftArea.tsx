@@ -1,4 +1,4 @@
-import { useTheme } from '../../../framework/theme/ThemeContext'
+import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 type Props = ClassNameProps

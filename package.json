@@ -1,6 +1,6 @@
 {
   "name": "@aboutbits/react-ui",
-  "version": "0.0.26",
+  "version": "0.0.28",
   "main": "index.js",
   "types": "index.d.ts",
   "private": false,
@@ -41,7 +41,6 @@
     "@babel/core": "^7.14.6",
     "@reach/dialog": "^0.16.0",
     "@reach/menu-button": "^0.16.1",
-    "@storybook/addon-actions": "^6.3.4",
     "@storybook/addon-essentials": "^6.3.4",
     "@storybook/addon-links": "^6.3.4",
     "@storybook/react": "^6.3.4",

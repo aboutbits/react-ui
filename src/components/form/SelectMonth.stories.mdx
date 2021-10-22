@@ -2,7 +2,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { SectionContent } from '../section'
+import { Mode } from '../types'
 import { Month, MonthNames, SelectMonth } from './SelectMonth'
 import { Form } from './Form'
 
@@ -24,9 +24,7 @@ import { Form } from './Form'
           onSubmit={(values) => action('onSubmit')(values)}
         >
           <Form>
-            <SectionContent>
-              <Story />
-            </SectionContent>
+            <Story />
           </Form>
         </Formik>
       )
@@ -66,15 +64,16 @@ Setting the current month as default value can be done with the following code s
 >
 ```
 
-export const Template = ({ ...args }) => <SelectMonth {...args} />
+export const Template = ({ ...args }) => (
+  <SelectMonth {...args} name="birthMonth" />
+)
 
 <Canvas>
   <Story
     name="Default"
     args={{
-      label: 'User birth month',
-      name: 'birthMonth',
-      id: 'birthMonth',
+      label: 'Month of birth',
+      mode: Mode.light,
     }}
   >
     {Template.bind({})}

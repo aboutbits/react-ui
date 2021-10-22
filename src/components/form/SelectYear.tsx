@@ -1,19 +1,22 @@
 import React, { forwardRef } from 'react'
+import { Mode, ModeProps } from '../types'
 import { Select } from './Select'
+import { Option } from './Option'
 
 type Props = React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement
-> & {
-  id: string
-  label?: string
-  name: string
-  from: number
-  to: number
-}
+> &
+  ModeProps & {
+    id: string
+    label?: string
+    name: string
+    from: number
+    to: number
+  }
 
 export const SelectYear = forwardRef<HTMLSelectElement, Props>(
-  ({ from, to, ...props }, ref) => {
+  ({ from, to, mode = Mode.light, ...props }, ref) => {
     if (from > to) {
       return null
     }
@@ -22,11 +25,11 @@ export const SelectYear = forwardRef<HTMLSelectElement, Props>(
       .map((_, index: number) => index + from)
 
     return (
-      <Select {...props} ref={ref}>
+      <Select mode={mode} {...props} ref={ref}>
         {selectOptions.map((year: number) => (
-          <option key={`${props.name}-${year}`} value={year}>
+          <Option mode={mode} key={`${props.name}-${year}`} value={year}>
             {year}
-          </option>
+          </Option>
         ))}
       </Select>
     )

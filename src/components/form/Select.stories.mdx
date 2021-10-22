@@ -2,8 +2,9 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { SectionContent } from '../section'
+import { Mode } from '../types'
 import { Select } from './Select'
+import { Option } from './Option'
 import { Form } from './Form'
 
 <Meta
@@ -22,9 +23,7 @@ import { Form } from './Form'
           onSubmit={(values) => action('onSubmit')(values)}
         >
           <Form>
-            <SectionContent>
-              <Story />
-            </SectionContent>
+            <Story />
           </Form>
         </Formik>
       )
@@ -37,16 +36,12 @@ import { Form } from './Form'
 This component can be used to create select fields. This input already has a label and handles error messages in `formik` Forms.
 
 export const Template = ({ ...args }) => (
-  <Select {...args}>
-    <option className="bg-gray-600" value="">
+  <Select {...args} name="right">
+    <Option value="" hidden>
       Select user right
-    </option>
-    <option className="bg-gray-600" value="ADMIN">
-      ADMIN
-    </option>
-    <option className="bg-gray-600" value="USER">
-      USER
-    </option>
+    </Option>
+    <Option value="ADMIN">ADMIN</Option>
+    <Option value="USER">USER</Option>
   </Select>
 )
 
@@ -55,7 +50,7 @@ export const Template = ({ ...args }) => (
     name="Default"
     args={{
       label: 'User rights',
-      name: 'right',
+      mode: Mode.light,
     }}
   >
     {Template.bind({})}

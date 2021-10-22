@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { ClassNameProps } from '../types'
-import { useTheme } from '../../framework/theme/ThemeContext'
+import { useTheme } from '../../framework'
 
 export const PaginationPagesList: React.FC<ClassNameProps> = ({
   className,

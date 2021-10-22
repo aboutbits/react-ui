@@ -5,13 +5,13 @@ import { useTheme, useLinkComponent, LinkComponentProps } from '../../framework'
 const TextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
   ({ children, className, internal = true, ...props }, ref) => {
     const LinkComponent = useLinkComponent()
-    const { textLink } = useTheme()
+    const { link } = useTheme()
     return (
       <LinkComponent
         {...props}
         internal={internal}
         ref={ref}
-        className={classNames(className, textLink.base)}
+        className={classNames(className, link.textLink.base)}
       >
         {children}
       </LinkComponent>

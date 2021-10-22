@@ -8,15 +8,15 @@ import { ClassNameProps } from '../types'
 type MenuProps = ClassNameProps & {
   /**
    * Defines the accessibility label for the menu.
-   * */
+   **/
   menuLabel: string
   /**
    * Defines the content to the left of the arrow button.
-   * */
+   **/
   menuButtonContent: ReactNode
   /**
    * Defines the id attribute for the menu button.
-   * */
+   **/
   menuButtonId?: string
 }
 

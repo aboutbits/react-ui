@@ -1,22 +1,24 @@
 import { useField } from 'formik'
 
 import React, { forwardRef } from 'react'
+import { Mode, ModeProps } from '../types'
 import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
 import { useCustomInputCss } from './useCustomInputCss'
 
-type Props = React.DetailedHTMLProps<
+type SelectProps = React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement
-> & {
-  id: string
-  label?: string
-  name: string
-}
+> &
+  ModeProps & {
+    id: string
+    label?: string
+    name: string
+  }
 
-export const Select = forwardRef<HTMLSelectElement, Props>(
-  ({ label, children, className, ...props }, ref) => {
-    const customCss = useCustomInputCss(props.name, props.disabled)
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+  ({ label, mode = Mode.light, children, className, ...props }, ref) => {
+    const customCss = useCustomInputCss(props.name, props.disabled, mode)
     const [field] = useField(props.name)
 
     return (
@@ -29,7 +31,7 @@ export const Select = forwardRef<HTMLSelectElement, Props>(
         <select {...field} {...props} ref={ref} className={customCss.inputCss}>
           {children}
         </select>
-        <InputError name={props.name} className="mt-1" />
+        <InputError name={props.name} className={customCss.errorCss} />
       </div>
     )
   }

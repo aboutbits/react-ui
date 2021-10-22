@@ -6,7 +6,7 @@ import { useTheme, useInternationalization } from '../../../framework'
 type Props = {
   /**
    * Warning icon
-   */
+   **/
   icon: ReactNode
 }
 

@@ -1,6 +1,6 @@
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import classNames from 'classnames'
-import { useTheme } from '../../framework/theme/ThemeContext'
+import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 import { useNavigationToggle } from './NavigationContext'
 

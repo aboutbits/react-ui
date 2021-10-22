@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 
 import { SectionListItem } from '../SectionItem/SectionItem'
-import { useTheme } from '../../../framework/theme/ThemeContext'
+import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 type Props = ClassNameProps

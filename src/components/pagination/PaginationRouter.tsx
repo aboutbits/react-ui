@@ -20,21 +20,21 @@ import {
 export type PaginationRouterProps = ClassNameProps & {
   /**
    * Defines the current page.
-   * */
+   **/
   page: number
   /**
    * Defines the number of elements per page.
-   * */
+   **/
   size: number
   /**
    * Defines the total number of elements.
-   * */
+   **/
   total: number
   /**
    * Calculate the href based on pageIndex and size.
    *
    * @param parameter
-   */
+   **/
   linkProps?: (parameter: {
     pageIndex: number
     size: number
@@ -42,7 +42,7 @@ export type PaginationRouterProps = ClassNameProps & {
   /**
    * Configure the pagination function.
    * For reference checkout: https://github.com/aboutbits/pagination/#usage
-   */
+   **/
   config?: {
     indexType?: IndexType
     maxPages?: number

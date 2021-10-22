@@ -2,7 +2,7 @@ import { Dialog } from '@reach/dialog'
 import classnames from 'classnames'
 import { ReactNode } from 'react'
 import { Button, Size, Tone, Variant } from '../../button'
-import { useTheme } from '../../../framework/theme/ThemeContext'
+import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 export enum ConfirmationDialogVariant {
@@ -18,43 +18,43 @@ const variantConfirmationButtonTone: Record<ConfirmationDialogVariant, Tone> = {
 type ConfirmDialogProps = ClassNameProps & {
   /**
    * Defines if the dialog is open.
-   * */
+   **/
   isOpen: boolean
   /**
    * Defines if the entire dialog is dismissible. This includes escaping, clicking the button, and clicking outside of the dialog.
-   * */
+   **/
   disableDismiss?: boolean
   /**
    * Defines if the confirmation button is disabled. It is
-   * */
+   **/
   disableConfirm?: boolean
   /**
    * Defines which action should be executed on dismissing.
-   * */
+   **/
   onDismiss: () => void
   /**
    * Defines which action should be executed on confirmation.
-   * */
+   **/
   onConfirm: () => void
   /**
    * Defines the variant of the dialog.
-   * */
+   **/
   variant?: ConfirmationDialogVariant
   /**
    * Defines the title of the dialog.
-   * */
+   **/
   title: string
   /**
    * Further information can be placed in the dialog.
-   * */
+   **/
   body: ReactNode
   /**
    * Defines the text for the confirmation button in the dialog.
-   * */
+   **/
   confirmButtonText: ReactNode
   /**
    * Defines the text for the conformation button in the dialog.
-   * */
+   **/
   dismissButtonText?: ReactNode
 }
 

@@ -1,13 +1,13 @@
 import { Dialog } from '@reach/dialog'
 import classNames from 'classnames'
-import { useTheme } from '../../framework/theme/ThemeContext'
+import { useTheme } from '../../framework'
 import { useNavigationToggle, useNavigationState } from './NavigationContext'
 import { MobileNavigationDialogCloseButton } from './MobileNavigationDialogCloseButton'
 
 type MobileNavigationDialogProps = {
   /**
    * Define accessibility label for the dialog.
-   * */
+   **/
   dialogLabel: string
 }
 

@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { useTheme } from '../../../framework/theme/ThemeContext'
+import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 import { SectionContent } from './SectionContent'
 

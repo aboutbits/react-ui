@@ -7,16 +7,16 @@ type SectionDescriptionItemProps = ClassNameProps & {
   /**
    * Defines the content of the section description item.
    * Will be placed inside <dl>.
-   */
+   **/
   content: ReactNode
   /**
    * Defines the title of section description item.
    * Will be placed inside <dt>.
-   */
+   **/
   title: ReactNode
   /**
    * Defines if the component appears or not depending on if the content is empty (null) or not.
-   * */
+   **/
   hideIfEmpty?: boolean
 }
 

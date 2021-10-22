@@ -2,8 +2,7 @@ import { useEffect, useRef } from 'react'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import classNames from 'classnames'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import { useTheme } from '../../framework/theme/ThemeContext'
-import { useInternationalization } from '../../framework/internationalization/InternationalizationContext'
+import { useTheme, useInternationalization } from '../../framework'
 import { HeaderArea } from './areas/HeaderArea'
 import { HeaderLeftArea } from './areas/HeaderLeftArea'
 import { HeaderLargeAction } from './actions/HeaderLargeAction'
@@ -13,19 +12,19 @@ import { HeaderSmallAction } from './actions/HeaderSmallAction'
 type Props = {
   /**
    * Defines the value for in input.
-   * */
+   **/
   text: string
   /**
    * Define a callback function for the value of the input.
-   * */
+   **/
   setText: (string: string) => void
   /**
    * Define a function which clears the search and closes the search.
-   * */
+   **/
   stopSearch: () => void
   /**
    * Define a functions which will clear the input of the search.
-   * */
+   **/
   clearSearch: () => void
 }
 
@@ -36,8 +35,8 @@ const HeaderSearch: React.FC<Props> = ({
   clearSearch,
 }) => {
   const internationalization = useInternationalization()
-  const searchInput = useRef<HTMLInputElement>(null)
   const { header } = useTheme()
+  const searchInput = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (searchInput.current !== null) {

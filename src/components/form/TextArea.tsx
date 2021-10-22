@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { useField } from 'formik'
+import { Mode, ModeProps } from '../types'
 import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
 import { useCustomInputCss } from './useCustomInputCss'
@@ -7,11 +8,12 @@ import { useCustomInputCss } from './useCustomInputCss'
 type Props = React.DetailedHTMLProps<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>,
   HTMLTextAreaElement
-> & { id: string; label?: string; name: string }
+> &
+  ModeProps & { id: string; label?: string; name: string }
 
 export const TextArea = forwardRef<HTMLTextAreaElement, Props>(
-  ({ label, className, ...props }, ref) => {
-    const customCss = useCustomInputCss(props.name, props.disabled)
+  ({ label, mode = Mode.light, className, ...props }, ref) => {
+    const customCss = useCustomInputCss(props.name, props.disabled, mode)
     const [field] = useField(props.name)
 
     return (
@@ -27,7 +29,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, Props>(
           ref={ref}
           className={customCss.inputCss}
         />
-        <InputError name={props.name} className="mt-1" />
+        <InputError name={props.name} className={customCss.errorCss} />
       </div>
     )
   }
