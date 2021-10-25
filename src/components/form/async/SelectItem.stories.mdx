@@ -2,12 +2,15 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { useEffect } from 'react'
 import { IndexType } from '@aboutbits/pagination'
 import { SectionContent } from '../../section'
 import { Form } from '../Form'
-import { NavigationProvider } from '../../navigation'
 import { SelectItem } from './SelectItem'
+import {
+  TemplateNormal,
+  TemplateError,
+  TemplateEmpty,
+} from './SelectItem.templates'
 
 <Meta
   title="Components/Form/SelectItem"
@@ -45,14 +48,6 @@ It leverages on [SelectDialog](/docs/components-dialog-selectdialog--default-sto
 npm install @aboutbits/react-toolbox
 ```
 
-export const Template = ({ ...args }) => {
-  return (
-    <NavigationProvider>
-      <SelectItem {...args} useGetData={useEffect} />
-    </NavigationProvider>
-  )
-}
-
 <Canvas>
   <Story
     name="Default"
@@ -61,16 +56,16 @@ export const Template = ({ ...args }) => {
       name: 'user',
       label: 'SelectUser',
       placeholder: 'User',
-      defaultValue: { id: 0, name: '', label: '' },
+      defaultValue: { id: 0, name: '' },
       dialogTitle: 'Users',
       dialogLabel: 'Users',
-      noSearchResult: 'No users available.',
+      noSearchResults: 'No users available.',
       renderListItem: (item) => item.name,
-      renderErrorMessage: (error) => error?.response?.data.message,
+      renderErrorMessage: (error) => error.message,
       paginationConfig: { indexType: IndexType.ZERO_BASED },
     }}
   >
-    {Template.bind({})}
+    {TemplateNormal.bind({})}
   </Story>
 </Canvas>
 
@@ -82,3 +77,45 @@ export const Template = ({ ...args }) => {
 
 The SelectItem component shares the styles with the Input component.
 For customization of the styles please checkout the [theme section](/docs/components-form-input--default-story#theme) of the Input component.
+
+<Canvas>
+  <Story
+    name="Error"
+    args={{
+      id: 'user',
+      name: 'user',
+      label: 'SelectUser',
+      placeholder: 'User',
+      defaultValue: { id: 0, name: '' },
+      dialogTitle: 'Users',
+      dialogLabel: 'Users',
+      noSearchResults: 'No users available.',
+      renderListItem: (item) => item.name,
+      renderErrorMessage: (error) => error.message,
+      paginationConfig: { indexType: IndexType.ZERO_BASED },
+    }}
+  >
+    {TemplateError.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Empty list"
+    args={{
+      id: 'user',
+      name: 'user',
+      label: 'SelectUser',
+      placeholder: 'User',
+      defaultValue: { id: 0, name: '' },
+      dialogTitle: 'Users',
+      dialogLabel: 'Users',
+      noSearchResults: 'No users available.',
+      renderListItem: (item) => item.name,
+      renderErrorMessage: (error) => error.message,
+      paginationConfig: { indexType: IndexType.ZERO_BASED },
+    }}
+  >
+    {TemplateEmpty.bind({})}
+  </Story>
+</Canvas>

@@ -12,7 +12,7 @@ import {
   Props as DialogProps,
 } from './SelectItemDialogWithSearch'
 
-type Props<ItemType extends ReferenceObject, Error> = {
+export type SelectItemProps<ItemType extends ReferenceObject, Error> = {
   id: string
   name: string
   label: string
@@ -78,7 +78,7 @@ export function SelectItem<ItemType extends ReferenceObject, Error>({
   renderListItem,
   renderErrorMessage,
   paginationConfig,
-}: Props<ItemType, Error>): ReactElement {
+}: SelectItemProps<ItemType, Error>): ReactElement {
   const [field, , helpers] = useField<ItemType>(name)
   const [, , helpersId] = useField<ItemType>(name + '.id')
   const [showDialog, setShowDialog] = useState<boolean>(false)
