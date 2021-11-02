@@ -36,7 +36,13 @@ const themeOverwrite = {
         },
       }
     }
-  }
+  },
+  section: {
+    footer: {
+      base: 'p-3',
+      normal: 'bg-gray-100',
+    },
+  },
 }
 
 const LinkComponent = makeLinkComponent(
