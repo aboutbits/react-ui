@@ -4,7 +4,7 @@ import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-type SectionActionProps = ClassNameProps & {
+export type SectionActionProps = ClassNameProps & {
   /**
    * Defines icon of the action.
    **/
