@@ -83,5 +83,9 @@ export default {
     trigger: {
       base: 'absolute -right-1.5 p-1 bg-primary rounded-full',
     },
+    container: {
+      base: 'px-4 lg:px-5 py-5 grid grid-cols-1 gap-4 lg:gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
+      normal: 'bg-gray-300 border-b border-gray',
+    },
   },
 }

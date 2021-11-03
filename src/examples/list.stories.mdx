@@ -11,7 +11,10 @@ import {
   SectionFooter,
 } from '../components/section'
 import { PaginationInMemory } from '../components/pagination'
-import { SectionFilterTrigger } from '../components/section/SectionFilter'
+import {
+  SectionFilter,
+  SectionFilterTrigger,
+} from '../components/section/SectionFilter'
 
 <Meta title="Examples/List" />
 
@@ -42,8 +45,17 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
           onClick={() => {
             setFilterShow(!filterShow)
           }}
+          isFiltering={true}
         />
       </SectionHeader>
+      {filterShow && (
+        <SectionFilter>
+          <div className="p-4 bg-gray" />
+          <div className="p-8 bg-primary" />
+          <div className="p-12 bg-secondary" />
+          <div className="p-3 bg-primary-800" />
+        </SectionFilter>
+      )}
       <SectionContentList>
         {content.length > 0 &&
           content
