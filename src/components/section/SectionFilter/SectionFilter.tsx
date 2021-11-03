@@ -1,20 +1,46 @@
 import classNames from 'classnames'
+import { Form, Formik, useFormikContext } from 'formik'
+import { ReactChildren, ReactElement, useEffect } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-type Props = ClassNameProps
+type Props<T> = ClassNameProps & {
+  initialValues: T
+  onFilter: (values: T) => void
+  children: ReactChildren
+}
 
-export const SectionFilter: React.FC<Props> = ({ className, children }) => {
+function SubmitOnChange(): null {
+  const formik = useFormikContext()
+
+  useEffect(() => {
+    if (formik.isValid && formik.dirty) {
+      formik.submitForm()
+    }
+  }, [formik.isValid, formik.dirty, formik.values])
+
+  return null
+}
+
+export function SectionFilter<T>({
+  className,
+  initialValues,
+  onFilter,
+  children,
+}: Props<T>): ReactElement {
   const { section } = useTheme()
   return (
-    <div
-      className={classNames(
-        section.filter.container.base,
-        section.filter.container.normal,
-        className
-      )}
-    >
-      {children}
-    </div>
+    <Formik<T> initialValues={initialValues} onSubmit={onFilter}>
+      <Form
+        className={classNames(
+          section.filter.container.base,
+          section.filter.container.normal,
+          className
+        )}
+      >
+        <SubmitOnChange />
+        {children}
+      </Form>
+    </Formik>
   )
 }

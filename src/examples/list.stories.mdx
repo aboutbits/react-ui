@@ -15,6 +15,7 @@ import {
   SectionFilter,
   SectionFilterTrigger,
 } from '../components/section/SectionFilter'
+import { Select } from '../components/form'
 
 <Meta title="Examples/List" />
 
@@ -49,11 +50,34 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
         />
       </SectionHeader>
       {filterShow && (
-        <SectionFilter>
-          <div className="p-4 bg-gray" />
-          <div className="p-8 bg-primary" />
-          <div className="p-12 bg-secondary" />
-          <div className="p-3 bg-primary-800" />
+        <SectionFilter
+          initialValues={{ role: '', department: '' }}
+          onFilter={(values) => console.log(values)}
+        >
+          <Select id="role" autoCapitalize="none" name="role" label="Role">
+            <option className="bg-gray-600" value="ADMIN">
+              Admin
+            </option>
+            <option className="bg-gray-600" value="USER">
+              User
+            </option>
+          </Select>
+          <Select
+            id="department"
+            autoCapitalize="none"
+            name="department"
+            label="Department"
+          >
+            <option className="bg-gray-600" value="HR">
+              Human Resources
+            </option>
+            <option className="bg-gray-600" value="IT">
+              Engineering
+            </option>
+            <option className="bg-gray-600" value="SALES">
+              Sales
+            </option>
+          </Select>
         </SectionFilter>
       )}
       <SectionContentList>
