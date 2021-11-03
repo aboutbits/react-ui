@@ -71,7 +71,8 @@ export default {
   },
   action: {
     base: 'fill-current',
-    normal: 'text-black hover:text-gray-700 focus:text-gray-700',
+    normal:
+      'text-black hover:bg-gray focus:bg-gray rounded-full hover:ring focus:ring ring-gray',
     disabled: 'text-gray-400',
     icon: 'h-6',
   },
