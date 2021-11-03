@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactElement, ReactNode } from 'react'
 import IconMenu from '@aboutbits/react-material-icons/dist/IconMenu'
 import classNames from 'classnames'
 import { HeaderLargeAction } from '../actions/HeaderLargeAction'
@@ -13,26 +13,37 @@ type Props = {
   navigation?: ReactNode
 }
 
-const HeaderArea: React.FC<Props> = ({ navigation = null, children }) => {
-  const intl = useInternationalization()
+function ToggleNavigation(): ReactElement {
   const menuToggle = useNavigationToggle()
+  const intl = useInternationalization()
+
+  return (
+    <HeaderLeftArea className="block lg:hidden">
+      <HeaderLargeAction
+        icon={IconMenu}
+        label={intl.translate('app.nav.menu')}
+        onClick={menuToggle}
+      />
+    </HeaderLeftArea>
+  )
+}
+
+const HeaderAreaContainer: React.FC = ({ children }) => {
   const { header } = useTheme()
   return (
     <div className={classNames(header.area.base, header.area.normal)}>
-      {navigation === null ? (
-        <HeaderLeftArea className="block lg:hidden">
-          <HeaderLargeAction
-            icon={IconMenu}
-            label={intl.translate('app.nav.menu')}
-            onClick={menuToggle}
-          />
-        </HeaderLeftArea>
-      ) : (
-        navigation
-      )}
       {children}
     </div>
   )
 }
 
-export { HeaderArea }
+const HeaderArea: React.FC<Props> = ({ navigation = null, children }) => {
+  return (
+    <HeaderAreaContainer>
+      {navigation === null ? <ToggleNavigation /> : navigation}
+      {children}
+    </HeaderAreaContainer>
+  )
+}
+
+export { HeaderArea, HeaderAreaContainer }

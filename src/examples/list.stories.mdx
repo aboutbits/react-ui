@@ -53,6 +53,8 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
         <SectionFilter
           initialValues={{ role: '', department: '' }}
           onFilter={(values) => console.log(values)}
+          showFilterPopupBelowBreakpoint={480}
+          onCloseFilter={() => setFilterShow(false)}
         >
           <Select id="role" autoCapitalize="none" name="role" label="Role">
             <option className="bg-gray-600" value="ADMIN">
