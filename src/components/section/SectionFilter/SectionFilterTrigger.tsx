@@ -4,20 +4,31 @@ import {
   SectionAction,
   SectionActionProps,
 } from '../SectionHeader/SectionAction'
-import { useInternationalization } from '../../../framework'
+import { useInternationalization, useTheme } from '../../../framework'
 
 type Props = Pick<SectionActionProps, 'onClick'> &
-  Partial<Pick<SectionActionProps, 'label' | 'Icon'>>
+  Partial<Pick<SectionActionProps, 'label' | 'Icon'>> & {
+    isFiltering: boolean
+  }
 
-function SectionFilterTrigger({ onClick, label, Icon }: Props): ReactElement {
+function SectionFilterTrigger({
+  onClick,
+  label,
+  Icon,
+  isFiltering,
+}: Props): ReactElement {
   const internationalization = useInternationalization()
+  const { section } = useTheme()
 
   return (
-    <SectionAction
-      Icon={Icon || IconFilterList}
-      label={label || internationalization.translate('shared.filter.label')}
-      onClick={onClick}
-    />
+    <div className="flex relative items-center">
+      <SectionAction
+        Icon={Icon || IconFilterList}
+        label={label || internationalization.translate('shared.filter.label')}
+        onClick={onClick}
+      />
+      {isFiltering && <div className={section.filter.trigger.base} />}
+    </div>
   )
 }
 

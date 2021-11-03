@@ -79,4 +79,9 @@ export default {
     base: 'lg:p-4 py-4 px-3',
     normal: 'bg-gray-300 border-t border-gray',
   },
+  filter: {
+    trigger: {
+      base: 'absolute -right-1.5 p-1 bg-primary rounded-full',
+    },
+  },
 }
