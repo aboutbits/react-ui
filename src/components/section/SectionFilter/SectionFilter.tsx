@@ -60,8 +60,8 @@ export function SectionFilter<T>({
   className,
   initialValues,
   onFilter,
-  onCloseFilter,
-  showFilterPopupBelowBreakpoint = 768,
+  onClose,
+  showPopupBelowBreakpoint = 768,
   confirmationButtonContent,
   children,
 }: Props<T>): ReactElement {
