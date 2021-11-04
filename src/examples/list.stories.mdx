@@ -30,10 +30,21 @@ Setting `numberOfTotalItems` to 0 will reveal the placeholder for the empty list
 export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState('')
+  const [filter, setFilter] = useState({ role: '', department: '' })
   const [filterShow, setFilterShow] = useState(false)
   const content = Array.from(Array(numberOfTotalItems).keys())
-    .map((item) => `User ${item + 1}`)
-    .filter((item) => item.includes(search))
+    .map((item, index) => ({
+      name: `User ${item + 1}`,
+      role: index % 8 === 0 ? 'ADMIN' : 'USER',
+      department: index % 3 === 0 ? 'HR' : 'SALES',
+    }))
+    .filter((item) => {
+      return (
+        item.name.includes(search) &&
+        (filter.role === '' || item.role === filter.role) &&
+        (filter.department === '' || item.department === filter.department)
+      )
+    })
   return (
     <Section>
       <SectionHeader>
@@ -46,17 +57,20 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
           onClick={() => {
             setFilterShow(!filterShow)
           }}
-          isFiltering={true}
+          isFiltering={filter.department !== '' || filter.role !== ''}
         />
       </SectionHeader>
       {filterShow && (
         <SectionFilter
-          initialValues={{ role: '', department: '' }}
-          onFilter={(values) => console.log(values)}
-          showFilterPopupBelowBreakpoint={480}
+          initialValues={filter}
+          onFilter={setFilter}
           onCloseFilter={() => setFilterShow(false)}
+          confirmationButtonContent="Apply filter"
         >
           <Select id="role" autoCapitalize="none" name="role" label="Role">
+            <option className="bg-gray-600" value="">
+              All
+            </option>
             <option className="bg-gray-600" value="ADMIN">
               Admin
             </option>
@@ -70,6 +84,9 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
             name="department"
             label="Department"
           >
+            <option className="bg-gray-600" value="">
+              All
+            </option>
             <option className="bg-gray-600" value="HR">
               Human Resources
             </option>
@@ -91,10 +108,10 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
             )
             .map((item) => (
               <SectionListItemButton
-                key={item}
+                key={item.name}
                 onClick={() => action('clicked')}
               >
-                {item}
+                {`${item.name} (${item.role} - ${item.department})`}
               </SectionListItemButton>
             ))}
         {content.length === 0 && (
