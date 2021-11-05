@@ -11,7 +11,7 @@ type Props = Pick<SectionActionProps, 'onClick'> &
     isFiltering: boolean
   }
 
-function SectionFilterTrigger({
+function SectionFilterAction({
   onClick,
   label,
   Icon,
@@ -32,4 +32,4 @@ function SectionFilterTrigger({
   )
 }
 
-export { SectionFilterTrigger }
+export { SectionFilterAction }

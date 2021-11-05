@@ -1,2 +1,2 @@
-export * from './SectionFilterTrigger'
+export * from './SectionFilterAction'
 export * from './SectionFilter'

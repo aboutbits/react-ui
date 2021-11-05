@@ -1,12 +1,7 @@
 import classNames from 'classnames'
 import { Form, Formik, useFormikContext } from 'formik'
-import {
-  ReactChildren,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useState,
-} from 'react'
+import { ReactChildren, ReactElement, ReactNode, useEffect } from 'react'
+import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 import { SubmitButton } from '../../button/SubmitButton'
@@ -16,7 +11,7 @@ type Props<T> = ClassNameProps & {
   initialValues: T
   onFilter: (values: T) => void
   onCloseFilter: () => void
-  showFilterPopupBelowBreakpoint?: number
+  showPopupMediaQuery?: string
   confirmationButtonContent: ReactNode
   children: ReactChildren
 }
@@ -34,46 +29,24 @@ function SubmitOnChange(): null {
   return null
 }
 
-function useBelowBreakpoint(breakpoint: number): boolean {
-  const isWindowClient = typeof window === 'object'
-
-  const [windowSize, setWindowSize] = useState<number | undefined>(
-    isWindowClient ? window.innerWidth : undefined
-  )
-
-  useEffect(() => {
-    function setSize() {
-      setWindowSize(window.innerWidth)
-    }
-
-    if (isWindowClient) {
-      window.addEventListener('resize', setSize)
-
-      return () => window.removeEventListener('resize', setSize)
-    }
-  }, [isWindowClient, setWindowSize])
-
-  return !!windowSize && breakpoint > windowSize
-}
-
 export function SectionFilter<T>({
   className,
   initialValues,
   onFilter,
   onClose,
-  showPopupBelowBreakpoint = 768,
+  showPopupMediaQuery = '(max-width: 768px)',
   confirmationButtonContent,
   children,
 }: Props<T>): ReactElement {
   const { section } = useTheme()
-  const showFilterPopup = useBelowBreakpoint(showFilterPopupBelowBreakpoint)
+  const showFilterPopup = useMatchMediaQuery(showPopupMediaQuery)
   return showFilterPopup ? (
-    <FilterDialog onDismiss={onCloseFilter} dialogLabel="Filter">
+    <FilterDialog onDismiss={onClose} dialogLabel="Filter">
       <Formik<T>
         initialValues={initialValues}
         onSubmit={(values) => {
           onFilter(values)
-          onCloseFilter()
+          onClose()
         }}
       >
         <Form
