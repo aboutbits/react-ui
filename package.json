@@ -29,7 +29,6 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "@aboutbits/react-toolbox": "^0.1.2",
     "classnames": "^2.3.1",
     "lodash.merge": "^4.6.2",
     "lodash.set": "^4.3.2"
@@ -38,6 +37,7 @@
     "@aboutbits/internationalization": "^0.2.1",
     "@aboutbits/pagination": "^1.1.0",
     "@aboutbits/react-material-icons": "^1.0.1",
+    "@aboutbits/react-toolbox": "^0.1.2",
     "@babel/core": "^7.14.6",
     "@reach/dialog": "^0.16.0",
     "@reach/menu-button": "^0.16.1",
