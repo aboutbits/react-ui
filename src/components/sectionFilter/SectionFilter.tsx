@@ -1,12 +1,6 @@
 import classNames from 'classnames'
 import { Form, Formik, useFormikContext } from 'formik'
-import {
-  ReactChildren,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useRef,
-} from 'react'
+import { ReactElement, ReactNode, useEffect, useRef } from 'react'
 import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
@@ -33,7 +27,7 @@ type Props<T> = ClassNameProps & {
   /**
    * Input fields of your filter.
    */
-  children: ReactChildren
+  children: ReactNode
   /**
    * The dialog props are required, if you want to show the filter in form of a dialog on certain screen sizes.
    */
