@@ -1,18 +1,18 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { useState } from 'react'
-import IconFilterList from '@aboutbits/react-material-icons/dist/IconFilterList'
 import {
   Section,
   SectionContentList,
   SectionContentListEmpty,
   SectionHeader,
   SectionSearch,
-  SectionAction,
   SectionListItemButton,
   SectionFooter,
 } from '../components/section'
-import { PaginationInMemory } from '../components/pagination/PaginationInMemory'
+import { PaginationInMemory } from '../components/pagination'
+import { SectionFilter, SectionFilterAction } from '../components/sectionFilter'
+import { Select } from '../components/form'
 
 <Meta title="Examples/List" />
 
@@ -27,10 +27,21 @@ Setting `numberOfTotalItems` to 0 will reveal the placeholder for the empty list
 export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState('')
+  const [filter, setFilter] = useState({ role: '', department: '' })
   const [filterShow, setFilterShow] = useState(false)
   const content = Array.from(Array(numberOfTotalItems).keys())
-    .map((item) => `User ${item + 1}`)
-    .filter((item) => item.includes(search))
+    .map((item, index) => ({
+      name: `User ${item + 1}`,
+      role: index % 8 === 0 ? 'ADMIN' : 'USER',
+      department: index % 3 === 0 ? 'HR' : 'SALES',
+    }))
+    .filter((item) => {
+      return (
+        item.name.includes(search) &&
+        (filter.role === '' || item.role === filter.role) &&
+        (filter.department === '' || item.department === filter.department)
+      )
+    })
   return (
     <Section>
       <SectionHeader>
@@ -39,14 +50,54 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
           search={search}
           actions={{ search: setSearch, clear: () => setSearch('') }}
         />
-        <SectionAction
-          Icon={IconFilterList}
-          label="Filter"
+        <SectionFilterAction
           onClick={() => {
             setFilterShow(!filterShow)
           }}
+          isFiltering={filter.department !== '' || filter.role !== ''}
         />
       </SectionHeader>
+      {filterShow && (
+        <SectionFilter
+          initialValues={filter}
+          onFilter={setFilter}
+          dialogProps={{
+            onDismiss: () => setFilterShow(false),
+            confirmationButtonContent: 'Apply filter',
+          }}
+        >
+          <Select id="role" autoCapitalize="none" name="role" label="Role">
+            <option className="bg-gray-600" value="">
+              All
+            </option>
+            <option className="bg-gray-600" value="ADMIN">
+              Admin
+            </option>
+            <option className="bg-gray-600" value="USER">
+              User
+            </option>
+          </Select>
+          <Select
+            id="department"
+            autoCapitalize="none"
+            name="department"
+            label="Department"
+          >
+            <option className="bg-gray-600" value="">
+              All
+            </option>
+            <option className="bg-gray-600" value="HR">
+              Human Resources
+            </option>
+            <option className="bg-gray-600" value="IT">
+              Engineering
+            </option>
+            <option className="bg-gray-600" value="SALES">
+              Sales
+            </option>
+          </Select>
+        </SectionFilter>
+      )}
       <SectionContentList>
         {content.length > 0 &&
           content
@@ -56,10 +107,10 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
             )
             .map((item) => (
               <SectionListItemButton
-                key={item}
+                key={item.name}
                 onClick={() => action('clicked')}
               >
-                {item}
+                {`${item.name} (${item.role} - ${item.department})`}
               </SectionListItemButton>
             ))}
         {content.length === 0 && (

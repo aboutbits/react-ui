@@ -71,12 +71,26 @@ export default {
   },
   action: {
     base: 'fill-current',
-    normal: 'text-black hover:text-gray-700 focus:text-gray-700',
+    normal:
+      'text-black hover:bg-gray focus:bg-gray rounded-full hover:ring focus:ring ring-gray',
     disabled: 'text-gray-400',
     icon: 'h-6',
   },
   footer: {
     base: 'lg:p-4 py-4 px-3',
     normal: 'bg-gray-300 border-t border-gray',
+  },
+  filter: {
+    trigger: {
+      base: 'absolute -right-2 p-1 bg-primary rounded-full',
+    },
+    container: {
+      base: 'px-4 lg:px-5 py-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5',
+      normal: 'bg-gray-300 border-b border-gray',
+    },
+    dialog: {
+      base: 'px-4 lg:px-5 py-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8',
+      normal: 'bg-white border-b border-gray',
+    },
   },
 }

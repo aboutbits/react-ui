@@ -28,12 +28,7 @@ const SelectDialogHeader: React.FC<Props> = ({
   const { dialog } = useTheme()
 
   return (
-    <div
-      className={classNames(
-        dialog.select.header.base,
-        dialog.select.header.normal
-      )}
-    >
+    <div className={classNames(dialog.header.base, dialog.header.normal)}>
       <HeaderCloseWithSearch
         title={title}
         search={search}
