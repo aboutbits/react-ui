@@ -25,6 +25,7 @@ type Props<T> = ClassNameProps & {
   onClose: () => void
   /**
    * Visualize the filter options in a popup, if it matches the provided media query.
+   * e.g. '(max-width: 768px)'
    */
   asPopupMediaQuery?: string
   /**
