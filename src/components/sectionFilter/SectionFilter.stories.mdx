@@ -1,0 +1,134 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { useState } from 'react'
+import { action } from '@storybook/addon-actions'
+import {
+  Section,
+  SectionContentList,
+  SectionHeader,
+  SectionListItemButton,
+  SectionTitle,
+} from '../section'
+import { Select } from '../form'
+import { SectionFilter } from './SectionFilter'
+import { SectionFilterAction } from './SectionFilterAction'
+
+<Meta
+  title="Components/Section/SectionFilter"
+  component={SectionFilter}
+  decorators={[
+    (Story) => (
+      <Section>
+        <Story />
+      </Section>
+    ),
+  ]}
+/>
+
+# SectionFilter
+
+You can use the SectionFilter component to create a filter on a specific Section.
+It supports two modes out off the box. The popup mode shows the filter in a popup, which is very convenient on mobile devices, whereas the drop under mode shows the filter in a collapsible fashion.
+
+This component is based on two libraries that you need to install in your project as well:
+
+```
+npm i @reach/dialog @aboutbits/react-toolbox
+```
+
+export const Template = () => {
+  const [filter, setFilter] = useState({ role: '', department: '' })
+  const [filterShow, setFilterShow] = useState(false)
+  const content = Array.from(Array(10).keys())
+    .map((item, index) => ({
+      name: `User ${item + 1}`,
+      role: index % 8 === 0 ? 'ADMIN' : 'USER',
+      department: index % 3 === 0 ? 'HR' : 'SALES',
+    }))
+    .filter((item) => {
+      return (
+        (filter.role === '' || item.role === filter.role) &&
+        (filter.department === '' || item.department === filter.department)
+      )
+    })
+  return (
+    <>
+      <SectionHeader>
+        <SectionTitle>Users</SectionTitle>
+        <SectionFilterAction
+          onClick={() => {
+            setFilterShow(!filterShow)
+          }}
+          isFiltering={filter.department !== '' || filter.role !== ''}
+        />
+      </SectionHeader>
+      {filterShow && (
+        <SectionFilter
+          initialValues={filter}
+          onFilter={(values) => {
+            console.log({ values })
+            setFilter(values)
+          }}
+          onClose={() => setFilterShow(false)}
+          confirmationButtonContent="Apply filter"
+        >
+          <Select id="role" autoCapitalize="none" name="role" label="Role">
+            <option className="bg-gray-600" value="">
+              All
+            </option>
+            <option className="bg-gray-600" value="ADMIN">
+              Admin
+            </option>
+            <option className="bg-gray-600" value="USER">
+              User
+            </option>
+          </Select>
+          <Select
+            id="department"
+            autoCapitalize="none"
+            name="department"
+            label="Department"
+          >
+            <option className="bg-gray-600" value="">
+              All
+            </option>
+            <option className="bg-gray-600" value="HR">
+              Human Resources
+            </option>
+            <option className="bg-gray-600" value="IT">
+              Engineering
+            </option>
+            <option className="bg-gray-600" value="SALES">
+              Sales
+            </option>
+          </Select>
+        </SectionFilter>
+      )}
+      <SectionContentList>
+        {content.map((item) => (
+          <SectionListItemButton
+            key={item.name}
+            onClick={() => action('clicked')}
+          >
+            {`${item.name} (${item.role} - ${item.department})`}
+          </SectionListItemButton>
+        ))}
+      </SectionContentList>
+    </>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `section.filter.trigger.base`: styles of the indicator of applied filters
+- `section.filter.container.base`: base styles for the pop under form container
+- `section.filter.container.normal`: color styles for the pop under form container
+- `section.filter.popup.base`: base styles for the dialog form container
+- `section.filter.popup.normal`: color styles for the dialog form container

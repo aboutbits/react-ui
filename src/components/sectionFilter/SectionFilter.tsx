@@ -1,6 +1,12 @@
 import classNames from 'classnames'
 import { Form, Formik, useFormikContext } from 'formik'
-import { ReactChildren, ReactElement, ReactNode, useEffect } from 'react'
+import {
+  ReactChildren,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useRef,
+} from 'react'
 import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
@@ -40,13 +46,16 @@ type Props<T> = ClassNameProps & {
 
 function SubmitOnChange(): null {
   const formik = useFormikContext()
+  const initialRender = useRef<boolean>(true)
 
   useEffect(() => {
-    if (formik.isValid && formik.dirty) {
+    if (initialRender.current) {
+      initialRender.current = false
+    } else if (formik.isValid) {
       formik.submitForm()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formik.isValid, formik.dirty, formik.values])
+  }, [formik.isValid, formik.values])
 
   return null
 }
