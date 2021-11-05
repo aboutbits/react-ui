@@ -119,6 +119,8 @@
     "pagination.d.ts",
     "section.js",
     "section.d.ts",
+    "sectionFilter.js",
+    "sectionFilter.d.ts",
     "selectDialog.js",
     "selectDialog.d.ts",
     "submitButton.js",

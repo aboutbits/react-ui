@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { Dialog, DialogProps } from '@reach/dialog'
-import { useInternationalization, useTheme } from '../../../framework'
-import { DialogHeader, DialogHeaderProps } from '../../dialog'
+import { useInternationalization, useTheme } from '../../framework'
+import { DialogHeader, DialogHeaderProps } from '../dialog'
 
 type Props = Partial<Pick<DialogHeaderProps, 'title'>> &
   Pick<DialogHeaderProps, 'onDismiss'> &

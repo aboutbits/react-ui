@@ -1,10 +1,7 @@
 import IconFilterList from '@aboutbits/react-material-icons/dist/IconFilterList'
 import { ReactElement } from 'react'
-import {
-  SectionAction,
-  SectionActionProps,
-} from '../SectionHeader/SectionAction'
-import { useInternationalization, useTheme } from '../../../framework'
+import { SectionAction, SectionActionProps } from '../section'
+import { useInternationalization, useTheme } from '../../framework'
 
 type Props = Pick<SectionActionProps, 'onClick'> &
   Partial<Pick<SectionActionProps, 'label' | 'Icon'>> & {

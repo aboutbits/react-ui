@@ -2,9 +2,9 @@ import classNames from 'classnames'
 import { Form, Formik, useFormikContext } from 'formik'
 import { ReactChildren, ReactElement, ReactNode, useEffect } from 'react'
 import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
-import { useTheme } from '../../../framework'
-import { ClassNameProps } from '../../types'
-import { SubmitButton } from '../../button/SubmitButton'
+import { useTheme } from '../../framework'
+import { ClassNameProps } from '../types'
+import { SubmitButton } from '../button/SubmitButton'
 import { FilterDialog } from './FilterDialog'
 
 type Props<T> = ClassNameProps & {
