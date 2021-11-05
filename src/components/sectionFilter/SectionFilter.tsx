@@ -26,10 +26,10 @@ type Props<T> = ClassNameProps & {
    */
   onFilter: (values: T) => void
   /**
-   * Visualize the filter options in a popup, if it matches the provided media query.
+   * Visualize the filter options in a dialog, if it matches the provided media query.
    * e.g. '(max-width: 768px)'
    */
-  asPopupMediaQuery?: string
+  asDialogMediaQuery?: string
   /**
    * Input fields of your filter.
    */
@@ -65,14 +65,14 @@ export function SectionFilter<T>({
   className,
   initialValues,
   onFilter,
-  asPopupMediaQuery = '(max-width: 768px)',
+  asDialogMediaQuery = '(max-width: 768px)',
   dialogProps,
   children,
 }: Props<T>): ReactElement {
   const { section } = useTheme()
-  const showFilterPopup = useMatchMediaQuery(asPopupMediaQuery)
+  const showFilterDialog = useMatchMediaQuery(asDialogMediaQuery)
 
-  if (showFilterPopup && dialogProps) {
+  if (showFilterDialog && dialogProps) {
     const { confirmationButtonContent, onDismiss, ...filterDialogProps } =
       dialogProps
 
@@ -87,8 +87,8 @@ export function SectionFilter<T>({
         >
           <Form
             className={classNames(
-              section.filter.popup.base,
-              section.filter.popup.normal,
+              section.filter.dialog.base,
+              section.filter.dialog.normal,
               className
             )}
           >

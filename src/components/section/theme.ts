@@ -88,7 +88,7 @@ export default {
       base: 'px-4 lg:px-5 py-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5',
       normal: 'bg-gray-300 border-b border-gray',
     },
-    popup: {
+    dialog: {
       base: 'px-4 lg:px-5 py-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8',
       normal: 'bg-white border-b border-gray',
     },
