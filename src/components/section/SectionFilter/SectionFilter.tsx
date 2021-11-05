@@ -10,7 +10,7 @@ import { FilterDialog } from './FilterDialog'
 type Props<T> = ClassNameProps & {
   initialValues: T
   onFilter: (values: T) => void
-  onCloseFilter: () => void
+  onClose: () => void
   showPopupMediaQuery?: string
   confirmationButtonContent: ReactNode
   children: ReactChildren
