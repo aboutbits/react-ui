@@ -64,7 +64,7 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
         <SectionFilter
           initialValues={filter}
           onFilter={setFilter}
-          onCloseFilter={() => setFilterShow(false)}
+          onClose={() => setFilterShow(false)}
           confirmationButtonContent="Apply filter"
         >
           <Select id="role" autoCapitalize="none" name="role" label="Role">

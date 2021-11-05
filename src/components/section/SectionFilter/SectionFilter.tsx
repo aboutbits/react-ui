@@ -8,11 +8,32 @@ import { SubmitButton } from '../../button/SubmitButton'
 import { FilterDialog } from './FilterDialog'
 
 type Props<T> = ClassNameProps & {
+  /**
+   * Initial values of the filter.
+   */
   initialValues: T
+  /**
+   * Callback when filters are applied.
+   * Popup mode: Only called on confirmation button press.
+   * Collapsible mode: Called on every change of an input value.
+   * @param values T
+   */
   onFilter: (values: T) => void
+  /**
+   * Close filter
+   */
   onClose: () => void
-  showPopupMediaQuery?: string
-  confirmationButtonContent: ReactNode
+  /**
+   * Visualize the filter options in a popup, if it matches the provided media query.
+   */
+  asPopupMediaQuery?: string
+  /**
+   * Defines the content of the confirmation button, which is displayed in the popup.
+   */
+  confirmationButtonContent?: ReactNode
+  /**
+   * Input fields of your filter.
+   */
   children: ReactChildren
 }
 
@@ -34,12 +55,12 @@ export function SectionFilter<T>({
   initialValues,
   onFilter,
   onClose,
-  showPopupMediaQuery = '(max-width: 768px)',
+  asPopupMediaQuery = '(max-width: 768px)',
   confirmationButtonContent,
   children,
 }: Props<T>): ReactElement {
   const { section } = useTheme()
-  const showFilterPopup = useMatchMediaQuery(showPopupMediaQuery)
+  const showFilterPopup = useMatchMediaQuery(asPopupMediaQuery)
   return showFilterPopup ? (
     <FilterDialog onDismiss={onClose} dialogLabel="Filter">
       <Formik<T>
