@@ -11,7 +11,7 @@ import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 import { SubmitButton } from '../button/SubmitButton'
-import { FilterDialog } from './FilterDialog'
+import { FilterDialog, FilterDialogProps } from './FilterDialog'
 
 type Props<T> = ClassNameProps & {
   /**
@@ -26,22 +26,23 @@ type Props<T> = ClassNameProps & {
    */
   onFilter: (values: T) => void
   /**
-   * Close filter
-   */
-  onClose: () => void
-  /**
    * Visualize the filter options in a popup, if it matches the provided media query.
    * e.g. '(max-width: 768px)'
    */
   asPopupMediaQuery?: string
   /**
-   * Defines the content of the confirmation button, which is displayed in the popup.
-   */
-  confirmationButtonContent?: ReactNode
-  /**
    * Input fields of your filter.
    */
   children: ReactChildren
+  /**
+   * The dialog props are required, if you want to show the filter in form of a dialog on certain screen sizes.
+   */
+  dialogProps?: FilterDialogProps & {
+    /**
+     * Defines the content of the confirmation button, which is displayed in the popup.
+     */
+    confirmationButtonContent?: ReactNode
+  }
 }
 
 function SubmitOnChange(): null {
@@ -64,39 +65,46 @@ export function SectionFilter<T>({
   className,
   initialValues,
   onFilter,
-  onClose,
   asPopupMediaQuery = '(max-width: 768px)',
-  confirmationButtonContent,
+  dialogProps,
   children,
 }: Props<T>): ReactElement {
   const { section } = useTheme()
   const showFilterPopup = useMatchMediaQuery(asPopupMediaQuery)
-  return showFilterPopup ? (
-    <FilterDialog onDismiss={onClose} dialogLabel="Filter">
-      <Formik<T>
-        initialValues={initialValues}
-        onSubmit={(values) => {
-          onFilter(values)
-          onClose()
-        }}
-      >
-        <Form
-          className={classNames(
-            section.filter.popup.base,
-            section.filter.popup.normal,
-            className
-          )}
+
+  if (showFilterPopup && dialogProps) {
+    const { confirmationButtonContent, onDismiss, ...filterDialogProps } =
+      dialogProps
+
+    return (
+      <FilterDialog onDismiss={onDismiss} {...filterDialogProps}>
+        <Formik<T>
+          initialValues={initialValues}
+          onSubmit={(values) => {
+            onFilter(values)
+            onDismiss()
+          }}
         >
-          {children}
-          <div className="col-span-full">
-            <SubmitButton className="w-full">
-              {confirmationButtonContent}
-            </SubmitButton>
-          </div>
-        </Form>
-      </Formik>
-    </FilterDialog>
-  ) : (
+          <Form
+            className={classNames(
+              section.filter.popup.base,
+              section.filter.popup.normal,
+              className
+            )}
+          >
+            {children}
+            <div className="col-span-full">
+              <SubmitButton className="w-full">
+                {confirmationButtonContent}
+              </SubmitButton>
+            </div>
+          </Form>
+        </Formik>
+      </FilterDialog>
+    )
+  }
+
+  return (
     <Formik<T> initialValues={initialValues} onSubmit={onFilter}>
       <Form
         className={classNames(

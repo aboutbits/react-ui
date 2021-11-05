@@ -65,11 +65,12 @@ export const Template = () => {
         <SectionFilter
           initialValues={filter}
           onFilter={(values) => {
-            console.log({ values })
             setFilter(values)
           }}
-          onClose={() => setFilterShow(false)}
-          confirmationButtonContent="Apply filter"
+          dialogProps={{
+            confirmationButtonContent: 'Apply filter',
+            onDismiss: () => setFilterShow(false),
+          }}
         >
           <Select id="role" autoCapitalize="none" name="role" label="Role">
             <option className="bg-gray-600" value="">

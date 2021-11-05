@@ -61,8 +61,10 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
         <SectionFilter
           initialValues={filter}
           onFilter={setFilter}
-          onClose={() => setFilterShow(false)}
-          confirmationButtonContent="Apply filter"
+          dialogProps={{
+            onDismiss: () => setFilterShow(false),
+            confirmationButtonContent: 'Apply filter',
+          }}
         >
           <Select id="role" autoCapitalize="none" name="role" label="Role">
             <option className="bg-gray-600" value="">

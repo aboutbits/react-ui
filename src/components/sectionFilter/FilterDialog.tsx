@@ -1,21 +1,19 @@
 import classNames from 'classnames'
-import { Dialog, DialogProps } from '@reach/dialog'
+import { Dialog } from '@reach/dialog'
 import { useInternationalization, useTheme } from '../../framework'
 import { DialogHeader, DialogHeaderProps } from '../dialog'
 
-type Props = Partial<Pick<DialogHeaderProps, 'title'>> &
-  Pick<DialogHeaderProps, 'onDismiss'> &
-  Pick<DialogProps, 'isOpen'> & {
+export type FilterDialogProps = Partial<Pick<DialogHeaderProps, 'title'>> &
+  Pick<DialogHeaderProps, 'onDismiss'> & {
     /**
      * Accessibility label for the dialog.
      **/
-    dialogLabel: string
+    dialogLabel?: string
   }
 
-const FilterDialog: React.FC<Props> = ({
+const FilterDialog: React.FC<FilterDialogProps> = ({
   title,
   onDismiss,
-  isOpen,
   children,
   dialogLabel,
 }) => {
@@ -23,9 +21,12 @@ const FilterDialog: React.FC<Props> = ({
   const { dialog } = useTheme()
   return (
     <Dialog
-      isOpen={isOpen}
       onDismiss={onDismiss}
-      aria-label={dialogLabel}
+      aria-label={
+        dialogLabel ||
+        title ||
+        internationalization.translate('shared.filter.label')
+      }
       className={classNames(dialog.select.base, dialog.select.normal)}
     >
       <DialogHeader
