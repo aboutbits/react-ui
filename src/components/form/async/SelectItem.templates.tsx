@@ -12,7 +12,7 @@ type User = {
 }
 
 const useGetData = ({
-  query,
+  search,
   page,
   size,
 }: SearchQueryParameters): {
@@ -33,15 +33,15 @@ const useGetData = ({
             }
           })
           .filter((user) => {
-            if (query) {
-              return user.name.includes(query)
+            if (search) {
+              return user.name.includes(search)
             } else {
               return true
             }
           })
       )
     }, 1000)
-  }, [query, page, size])
+  }, [search, page, size])
 
   if (data === undefined) {
     return {}

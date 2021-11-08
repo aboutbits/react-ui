@@ -1,5 +1,6 @@
 import { AsyncView } from '@aboutbits/react-toolbox'
-import React, { ReactElement, ReactNode, useState } from 'react'
+import React, { ReactElement, ReactNode } from 'react'
+import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
 import { SelectDialog } from '../../dialog/select/SelectDialog'
 import {
   SectionContentList,
@@ -13,10 +14,9 @@ import {
   SectionFooterWithPaginationInMemory,
 } from '../../pagination'
 import { LoadingListItem } from '../../loading'
-import { ReferenceObject } from './SelectItem'
 
 export type SearchQueryParameters = {
-  query?: string
+  search?: string
 } & PaginationQueryParameters
 
 export type PaginationQueryParameters = Pick<
@@ -31,7 +31,7 @@ export type PaginatedResponse<T> = {
   perPage: number
 }
 
-export type Props<ItemType extends ReferenceObject, Error> = {
+export type Props<ItemType, Error> = {
   onDismiss: (event?: React.SyntheticEvent<Element, Event> | undefined) => void
   isOpen: boolean
   onConfirm: (item: ItemType) => void
@@ -47,10 +47,7 @@ export type Props<ItemType extends ReferenceObject, Error> = {
   paginationConfig: { indexType: number }
 }
 
-export function SelectItemDialogWithSearch<
-  ItemType extends ReferenceObject,
-  Error
->({
+export function SelectItemDialogWithSearch<ItemType, Error>({
   onDismiss,
   onConfirm,
   isOpen,
@@ -63,30 +60,34 @@ export function SelectItemDialogWithSearch<
   paginationConfig,
 }: Props<ItemType, Error>): ReactElement {
   const internationalization = useInternationalization()
-  const [search, setSearch] = useState('')
-  const [page, setPage] = useState(paginationConfig.indexType)
-  const typeSearch = (query: string) => {
-    setSearch(query)
-    setPage(paginationConfig.indexType)
-  }
-  const clearSearch = () => {
-    setSearch('')
-    setPage(paginationConfig.indexType)
-  }
-  const { data, error } = useGetData({ query: search, page, size: 15 })
+  const { queryParameters, page, size, actions } = useQueryAndPagination({
+    ...paginationConfig,
+    defaultQueryParameters: { search: '' },
+  })
 
-  const searching = search !== ''
+  const { data, error } = useGetData({
+    search: queryParameters.search,
+    page,
+    size,
+  })
+
+  const searching = queryParameters.search !== ''
   const empty = searching
     ? internationalization.translate('shared.select.search.empty')
     : noSearchResults
+
+  console.log({ search: queryParameters.search })
 
   return (
     <SelectDialog
       isOpen={isOpen}
       title={dialogTitle}
       iconLabel={internationalization.translate('shared.search.label')}
-      search={search}
-      actions={{ search: typeSearch, clear: clearSearch }}
+      search={queryParameters.search}
+      actions={{
+        search: (value) => actions.updateQuery({ search: value }),
+        clear: actions.clear,
+      }}
       onDismiss={onDismiss}
       dialogLabel={dialogLabel}
     >
@@ -123,7 +124,7 @@ export function SelectItemDialogWithSearch<
               page={data.currentPage}
               size={data.perPage}
               total={data.total}
-              onChangePage={setPage}
+              onChangePage={actions.setPage}
               config={paginationConfig}
             />
           </>

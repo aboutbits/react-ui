@@ -18,11 +18,11 @@ import {
   decorators={[
     (Story) => {
       const validationSchema = Yup.object().shape({
-        user: Yup.string().required('Required'),
+        userId: Yup.string().required('Required'),
       })
       return (
         <Formik
-          initialValues={{ user: '' }}
+          initialValues={{ userId: '3' }}
           validateOnChange={true}
           validationSchema={validationSchema}
           onSubmit={(values) => action('onSubmit')(values)}
@@ -52,14 +52,14 @@ npm install @aboutbits/react-toolbox
   <Story
     name="Default"
     args={{
-      id: 'user',
-      name: 'user',
+      id: 'userId',
+      name: 'userId',
       label: 'SelectUser',
       placeholder: 'User',
-      defaultValue: { id: 0, name: '' },
       dialogTitle: 'Users',
       dialogLabel: 'Users',
       noSearchResults: 'No users available.',
+      extractIdFromItem: (item) => item.id,
       renderListItem: (item) => item.name,
       renderErrorMessage: (error) => error.message,
       paginationConfig: { indexType: IndexType.ZERO_BASED },
@@ -80,13 +80,34 @@ For customization of the styles please checkout the [theme section](/docs/compon
 
 <Canvas>
   <Story
-    name="Error"
+    name="With initial item"
     args={{
-      id: 'user',
-      name: 'user',
+      id: 'userId',
+      name: 'userId',
       label: 'SelectUser',
       placeholder: 'User',
-      defaultValue: { id: 0, name: '' },
+      initialItem: { id: 3, name: 'User 3' },
+      extractIdFromItem: (item) => item.id,
+      dialogTitle: 'Users',
+      dialogLabel: 'Users',
+      noSearchResults: 'No users available.',
+      renderListItem: (item) => item.name,
+      renderErrorMessage: (error) => error.message,
+      paginationConfig: { indexType: IndexType.ZERO_BASED },
+    }}
+  >
+    {TemplateNormal.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Error"
+    args={{
+      id: 'userId',
+      name: 'userId',
+      label: 'SelectUser',
+      placeholder: 'User',
       dialogTitle: 'Users',
       dialogLabel: 'Users',
       noSearchResults: 'No users available.',
@@ -103,11 +124,10 @@ For customization of the styles please checkout the [theme section](/docs/compon
   <Story
     name="Empty list"
     args={{
-      id: 'user',
-      name: 'user',
+      id: 'userId',
+      name: 'userId',
       label: 'SelectUser',
       placeholder: 'User',
-      defaultValue: { id: 0, name: '' },
       dialogTitle: 'Users',
       dialogLabel: 'Users',
       noSearchResults: 'No users available.',
