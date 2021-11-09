@@ -21,11 +21,25 @@ import {
 export type SelectItemProps<ItemType, Error> = {
   id: string
   name: string
+  /**
+   * The initialItem allows you to pass the component the lookup object on first render.
+   * Afterwards on changed selection the component will handle it by itself.
+   */
   initialItem?: ItemType
+  /**
+   * Specify what you want to render in the input, once a value has been selected.
+   * If nothing is specified it will try to render it the same way as the list item.
+   *
+   * If no lookup value is available, it will render the id.
+   */
   renderInputValue?: (item: ItemType) => ReactNode
   label: string
   placeholder: string
   disabled?: boolean
+  /**
+   * This function will be used to extract the id value from the selected item.
+   * @param item
+   */
   extractIdFromItem: (item: ItemType) => string
 } & Pick<
   DialogProps<ItemType, Error>,

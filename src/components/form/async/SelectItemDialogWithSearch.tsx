@@ -76,8 +76,6 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
     ? internationalization.translate('shared.select.search.empty')
     : noSearchResults
 
-  console.log({ search: queryParameters.search })
-
   return (
     <SelectDialog
       isOpen={isOpen}
