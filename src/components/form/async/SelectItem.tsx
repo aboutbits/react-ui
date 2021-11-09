@@ -1,4 +1,10 @@
-import React, { ReactElement, useMemo, useState } from 'react'
+import React, {
+  ReactElement,
+  ReactNode,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useField } from 'formik'
 import classnames from 'classnames'
 import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyboardArrowDown'
@@ -12,13 +18,29 @@ import {
   Props as DialogProps,
 } from './SelectItemDialogWithSearch'
 
-export type SelectItemProps<ItemType extends ReferenceObject, Error> = {
+export type SelectItemProps<ItemType, Error> = {
   id: string
   name: string
+  /**
+   * The initialItem allows you to pass the component the lookup object on first render.
+   * Afterwards on changed selection the component will handle it by itself.
+   */
+  initialItem?: ItemType
+  /**
+   * Specify what you want to render in the input, once a value has been selected.
+   * If nothing is specified it will try to render it the same way as the list item.
+   *
+   * If no lookup value is available, it will render the id.
+   */
+  renderInputValue?: (item: ItemType) => ReactNode
   label: string
   placeholder: string
   disabled?: boolean
-  defaultValue: ItemType
+  /**
+   * This function will be used to extract the id value from the selected item.
+   * @param item
+   */
+  extractIdFromItem: (item: ItemType) => string
 } & Pick<
   DialogProps<ItemType, Error>,
   | 'useGetData'
@@ -29,12 +51,6 @@ export type SelectItemProps<ItemType extends ReferenceObject, Error> = {
   | 'renderErrorMessage'
   | 'paginationConfig'
 >
-
-export type ReferenceObject = {
-  id: string | number
-  name: string
-  label?: string
-}
 
 /**
  * Converts tailwindcss classes from placeholder to text.
@@ -64,13 +80,14 @@ export const replacePlaceholderColorWithTextColor = (css: string): string => {
   )
 }
 
-export function SelectItem<ItemType extends ReferenceObject, Error>({
+export function SelectItem<ItemType, Error>({
   disabled = false,
   id,
   name,
+  initialItem,
+  renderInputValue,
   label,
   placeholder,
-  defaultValue,
   useGetData,
   dialogTitle,
   dialogLabel,
@@ -78,11 +95,12 @@ export function SelectItem<ItemType extends ReferenceObject, Error>({
   renderListItem,
   renderErrorMessage,
   paginationConfig,
+  extractIdFromItem,
 }: SelectItemProps<ItemType, Error>): ReactElement {
-  const [field, , helpers] = useField<ItemType>(name)
-  const [, , helpersId] = useField<ItemType>(name + '.id')
+  const [field, , helpers] = useField<string>(name)
   const [showDialog, setShowDialog] = useState<boolean>(false)
-  const customCss = useCustomInputCss(`${field.name}.id`, disabled)
+  const selectedItem = useRef<ItemType | undefined>(initialItem)
+  const customCss = useCustomInputCss(name, disabled)
   const internationalization = useInternationalization()
   const customCssInputCss = useMemo(
     () => replacePlaceholderColorWithTextColor(customCss.inputCss),
@@ -93,7 +111,7 @@ export function SelectItem<ItemType extends ReferenceObject, Error>({
     <>
       <div>
         <InputLabel inputId={id} label={label} className={customCss.labelCss} />
-        {field.value.id === '' || field.value.id === 0 ? (
+        {field.value === '' ? (
           <button
             type="button"
             id={id}
@@ -118,14 +136,20 @@ export function SelectItem<ItemType extends ReferenceObject, Error>({
               onClick={() => setShowDialog(true)}
               className="flex-1 text-left"
             >
-              <span>{field.value.name}</span>
+              <span>
+                {renderInputValue && selectedItem.current
+                  ? renderInputValue(selectedItem.current)
+                  : selectedItem.current && !renderInputValue
+                  ? renderListItem(selectedItem.current)
+                  : field.value}
+              </span>
             </button>
             <button
               type="button"
               onClick={() => {
                 helpers.setTouched(true)
-                helpersId.setTouched(true)
-                helpers.setValue(defaultValue)
+                helpers.setValue('')
+                selectedItem.current = undefined
               }}
               className="pl-2"
             >
@@ -136,18 +160,19 @@ export function SelectItem<ItemType extends ReferenceObject, Error>({
             </button>
           </div>
         )}
-        <InputError name={field.name + '.id'} className={customCss.errorCss} />
+        <InputError name={name} className={customCss.errorCss} />
       </div>
       {showDialog && (
         <SelectItemDialogWithSearch
           onDismiss={() => {
-            helpersId.setTouched(true)
+            helpers.setTouched(true)
             setShowDialog(false)
           }}
           isOpen={showDialog}
           onConfirm={(item: ItemType) => {
-            helpersId.setTouched(true)
-            helpers.setValue(item)
+            helpers.setTouched(true)
+            helpers.setValue(extractIdFromItem(item))
+            selectedItem.current = item
             setShowDialog(false)
           }}
           useGetData={useGetData}
