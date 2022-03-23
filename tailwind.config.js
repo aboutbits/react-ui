@@ -1,5 +1,4 @@
 module.exports = {
-  purge: {
     content: [
       './src/**/*.js',
       './src/**/*.jsx',
@@ -7,7 +6,6 @@ module.exports = {
       './src/**/*.tsx',
       './.storybook/preview.js',
     ],
-  },
 
   theme: {
     extend: {
@@ -66,10 +64,7 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {
-      ringWidth: ['hover', 'active'],
-    },
-  },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
