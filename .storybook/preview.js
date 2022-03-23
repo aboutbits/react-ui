@@ -35,8 +35,13 @@ const themeOverwrite = {
           green: "text-green hover:text-green-700",
         },
       }
-    }
-  }
+    },
+  },
+  section: {
+    header: {
+      base: 'p-5 lg:p-10',
+    },
+  },
 }
 
 const LinkComponent = makeLinkComponent(

@@ -1,5 +1,6 @@
 import { useContext } from 'react'
-import merge from 'lodash.merge'
+import { twMerge } from 'tailwind-merge'
+import mergeWith from 'lodash.mergewith'
 import { ThemeContext } from './theme/ThemeContext'
 import { defaultTheme, OverrideTheme, Theme } from './theme/theme'
 import {
@@ -20,7 +21,13 @@ type Props = {
 }
 
 function mergeWithDefaultTheme(overrideTheme?: OverrideTheme): Theme {
-  return merge(defaultTheme, overrideTheme)
+  return mergeWith(defaultTheme, overrideTheme, (values, srcValues) => {
+    console.log(values, srcValues)
+    if (typeof values === 'string' && typeof srcValues === 'string') {
+      console.log(values, srcValues)
+      return twMerge(values, srcValues)
+    }
+  })
 }
 
 export const ReactUIProvider: React.FC<Props> = ({

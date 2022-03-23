@@ -28,13 +28,7 @@ export const SectionListItem: React.FC<ClassNameProps> = ({
 }) => {
   const { section } = useTheme()
   return (
-    <div
-      className={classNames(
-        className,
-        section.listItem.base,
-        section.listItem.normal
-      )}
-    >
+    <div className={classNames(className, section.listItem.base)}>
       {children}
     </div>
   )
@@ -48,11 +42,7 @@ export const SectionListItemButton = React.forwardRef<
   return (
     <button onClick={onClick} className="block w-full" ref={ref} {...props}>
       <SectionListItem
-        className={classNames(
-          section.listItemButton.base,
-          section.listItemButton.normal,
-          className
-        )}
+        className={classNames(section.listItemButton.base, className)}
       >
         {children}
         <IconKeyboardArrowRight
@@ -76,11 +66,7 @@ export const SectionListItemLink = React.forwardRef<
   return (
     <LinkComponent className="block" internal={internal} ref={ref} {...props}>
       <SectionListItem
-        className={classNames(
-          section.listItemLink.base,
-          section.listItemLink.normal,
-          className
-        )}
+        className={classNames(section.listItemLink.base, className)}
       >
         {children}
         <IconKeyboardArrowRight

@@ -79,13 +79,7 @@ export function SectionFilter<T>({
             onDismiss()
           }}
         >
-          <Form
-            className={classNames(
-              section.filter.dialog.base,
-              section.filter.dialog.normal,
-              className
-            )}
-          >
+          <Form className={classNames(section.filter.dialog.base, className)}>
             {children}
             <div className="col-span-full">
               <SubmitButton className="w-full">
@@ -100,13 +94,7 @@ export function SectionFilter<T>({
 
   return (
     <Formik<T> initialValues={initialValues} onSubmit={onFilter}>
-      <Form
-        className={classNames(
-          section.filter.container.base,
-          section.filter.container.normal,
-          className
-        )}
-      >
+      <Form className={classNames(section.filter.container.base, className)}>
         <SubmitOnChange />
         {children}
       </Form>
