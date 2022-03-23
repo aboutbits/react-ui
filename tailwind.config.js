@@ -1,13 +1,11 @@
 module.exports = {
-  purge: {
-    content: [
-      './src/**/*.js',
-      './src/**/*.jsx',
-      './src/**/*.ts',
-      './src/**/*.tsx',
-      './.storybook/preview.js',
-    ],
-  },
+  content: [
+    './src/**/*.js',
+    './src/**/*.jsx',
+    './src/**/*.ts',
+    './src/**/*.tsx',
+    './.storybook/preview.js',
+  ],
 
   theme: {
     extend: {
@@ -64,11 +62,6 @@ module.exports = {
         DEFAULT: '#00D3B2',
         700: '#00C8A2',
       },
-    },
-  },
-  variants: {
-    extend: {
-      ringWidth: ['hover', 'active'],
     },
   },
   plugins: [require('@tailwindcss/forms')],
