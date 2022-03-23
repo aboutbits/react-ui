@@ -36,6 +36,11 @@ const themeOverwrite = {
         },
       }
     }
+  },
+  section: {
+    header: {
+      base: 'p-5 lg:p-10'
+    } 
   }
 }
 

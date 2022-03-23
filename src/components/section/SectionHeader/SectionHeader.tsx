@@ -12,14 +12,6 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   const { section } = useTheme()
 
   return (
-    <div
-      className={classNames(
-        section.header.base,
-        section.header.normal,
-        className
-      )}
-    >
-      {children}
-    </div>
+    <div className={classNames(section.header.base, className)}>{children}</div>
   )
 }

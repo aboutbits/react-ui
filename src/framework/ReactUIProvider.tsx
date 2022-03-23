@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import merge from 'lodash.merge'
+import mergeWith from 'lodash.mergewith'
 import { ThemeContext } from './theme/ThemeContext'
 import { defaultTheme, OverrideTheme, Theme } from './theme/theme'
 import {
@@ -20,7 +20,11 @@ type Props = {
 }
 
 function mergeWithDefaultTheme(overrideTheme?: OverrideTheme): Theme {
-  return merge(defaultTheme, overrideTheme)
+  return mergeWith(defaultTheme, overrideTheme, (value, srcValue) => {
+    if (typeof value === 'string' && typeof srcValue === 'string') {
+      return `${value} ${srcValue}`
+    }
+  })
 }
 
 export const ReactUIProvider: React.FC<Props> = ({

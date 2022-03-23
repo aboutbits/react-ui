@@ -1,11 +1,11 @@
 module.exports = {
-    content: [
-      './src/**/*.js',
-      './src/**/*.jsx',
-      './src/**/*.ts',
-      './src/**/*.tsx',
-      './.storybook/preview.js',
-    ],
+  content: [
+    './src/**/*.js',
+    './src/**/*.jsx',
+    './src/**/*.ts',
+    './src/**/*.tsx',
+    './.storybook/preview.js',
+  ],
 
   theme: {
     extend: {
@@ -66,5 +66,8 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
+    function ({ addVariant }) {
+      addVariant('initial', 'html :where(&)')
+    },
   ],
 }

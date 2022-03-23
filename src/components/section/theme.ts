@@ -1,96 +1,79 @@
 export default {
   section: {
-    base: 'lg:shadow-md lg:rounded-md overflow-hidden',
-    normal: 'bg-white',
+    base: 'initial:lg:shadow-md initial:lg:rounded-md initial:overflow-hidden initial:bg-white',
   },
   content: {
-    base: 'pt-5 pb-10 px-4 lg:px-5',
-    normal: 'bg-white',
+    base: 'initial:pt-5 initial:pb-10 initial:px-4 initial:lg:px-5 initial:bg-white',
   },
   contentList: {
-    base: 'space-y-px',
-    normal: 'bg-gray',
+    base: 'initial:space-y-px initial:bg-gray',
     empty: {
-      base: 'justify-center py-4',
+      base: 'initial:justify-center initial:py-4',
     },
     error: {
-      base: 'justify-center py-4',
+      base: 'initial:justify-center initial:py-4',
       icon: {
-        base: 'fill-current',
-        normal: 'text-white',
+        base: 'initial:fill-current initial:text-white',
       },
       iconContainer: {
-        base: 'p-1.5 mr-2',
-        normal: 'rounded-full bg-critical',
+        base: 'initial:p-1.5 initial:mr-2 initial:rounded-full initial:bg-critical',
       },
       children: {
-        normal: 'text-critical',
+        base: 'initial:text-critical',
       },
     },
   },
   contentTwoColumn: {
-    base: 'grid xl:grid-cols-2 xl:gap-x-5 gap-y-5',
+    base: 'initial:grid initial:xl:grid-cols-2 initial:xl:gap-x-5 initial:gap-y-5',
   },
   listItem: {
-    base: 'flex items-center min-h-14 px-4 lg:px-5',
-    normal: 'bg-white text-black',
+    base: 'initial:flex items-center initial:min-h-14 initial:px-4 initial:lg:px-5 initial:bg-white initial:text-black',
   },
   listItemWithAction: {
-    base: 'justify-between space-x-4',
+    base: 'initial:justify-between initial:space-x-4',
     action: {
-      base: 'flex flex-shrink-0',
+      base: 'initial:flex initial:flex-shrink-0',
     },
   },
   descriptionItem: {
-    base: 'flex flex-col pb-2 space-y-1 text-black border-b border-gray',
+    base: 'initial:flex initial:flex-col initial:pb-2 initial:space-y-1 initial:text-black initial:border-b initial:border-gray',
     title: {
-      base: 'text-sm',
+      base: 'initial:text-sm',
     },
   },
   listItemButton: {
-    base: 'justify-between space-x-4',
-    normal: 'hover:bg-primary-50',
+    base: 'initial:justify-between initial:space-x-4 initial:hover:bg-primary-50',
   },
   listItemLink: {
-    base: 'justify-between space-x-4',
-    normal: 'hover:bg-primary-50 active:bg-primary-50',
+    base: 'initial:justify-between initial:space-x-4 initial:hover:bg-primary-50 initial:active:bg-primary-50',
   },
   header: {
-    base: 'px-4 lg:px-5 py-5 flex justify-between items-center space-x-2',
-    normal: 'bg-gray-300 border-b border-gray',
+    base: 'initial:px-4 initial:lg:px-5 initial:py-5 initial:flex initial:justify-between initial:items-center initial:space-x-2 initial:bg-gray-300 initial:border-b initial:border-gray',
   },
   title: {
-    base: 'py-0.5 flex-1 text-sm font-bold uppercase',
-    normal: 'text-black',
+    base: 'initial:py-0.5 initial:flex-1 initial:text-sm initial:font-bold initial:uppercase initial:text-black',
   },
   search: {
     input: {
-      base: 'flex-1 text-base border-none outline-none p-0',
-      normal: 'bg-transparent placeholder-gray-600 text-black',
+      base: 'initial:flex-1 initial:text-base initial:border-none initial:outline-none initial:p-0 initial:bg-transparent initial:placeholder-gray-600 initial:text-black',
     },
   },
   action: {
-    base: 'fill-current',
-    normal:
-      'text-black hover:bg-gray focus:bg-gray rounded-full hover:ring focus:ring ring-gray',
-    disabled: 'text-gray-400',
-    icon: 'h-6',
+    base: 'initial:fill-current text-black initial:hover:bg-gray initial:focus:bg-gray initial:rounded-full initial:hover:ring initial:focus:ring initial:ring-gray initial:disabled:text-gray-400',
+    icon: 'initial:h-6',
   },
   footer: {
-    base: 'lg:p-4 py-4 px-3',
-    normal: 'bg-gray-300 border-t border-gray',
+    base: 'initial:lg:p-4 initial:py-4 initial:px-3 initial:bg-gray-300 initial:border-t initial:border-gray',
   },
   filter: {
     trigger: {
-      base: 'absolute -right-2 p-1 bg-primary rounded-full',
+      base: 'initial:absolute initial:-right-2 initial:p-1 initial:bg-primary initial:rounded-full',
     },
     container: {
-      base: 'px-4 lg:px-5 py-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5',
-      normal: 'bg-gray-300 border-b border-gray',
+      base: 'initial:px-4 initial:lg:px-5 initial:py-5 initial:grid initial:grid-cols-1 initial:md:grid-cols-2 initial:xl:grid-cols-3 initial:gap-4 initial:lg:gap-5 initial:bg-gray-300 initial:border-b initial:border-gray',
     },
     dialog: {
-      base: 'px-4 lg:px-5 py-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8',
-      normal: 'bg-white border-b border-gray',
+      base: 'initial:px-4 initial:lg:px-5 initial:py-5 initial:grid initial:grid-cols-1 initial:md:grid-cols-2 initial:xl:grid-cols-3 initial:gap-8 initial:bg-white initial:border-b initial:border-gray',
     },
   },
 }

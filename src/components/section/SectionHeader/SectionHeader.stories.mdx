@@ -27,5 +27,18 @@ export const Template = ({ children, ...args }) => (
 
 ### Theme
 
-- `section.header.base`: Define the padding for the section heading.
-- `section.header.normal`: Define the background color for the section heading.
+- `section.header.base`: Define the styles for the section heading.
+
+## Theme Overwrite
+
+It is possible to overwrite the styles. In the following example, it is moderated what needs to be passed to the function makeTheme.
+
+```js
+const themeOverwrite = {
+  section: {
+    header: {
+      base: 'p-5 lg:p-10',
+    },
+  },
+}
+```

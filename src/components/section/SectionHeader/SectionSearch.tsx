@@ -47,10 +47,7 @@ export function SectionSearch({
           placeholder={internationalization.translate(
             'shared.search.placeholder'
           )}
-          className={classNames(
-            section.search.input.base,
-            section.search.input.normal
-          )}
+          className={classNames(section.search.input.base)}
         />
         <SectionAction
           Icon={IconClose}
