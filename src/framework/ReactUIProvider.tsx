@@ -12,6 +12,8 @@ import {
   InternationalizationContext,
 } from './internationalization/InternationalizationContext'
 
+declare let __REACTUI__THEME: any
+
 type Props = {
   theme?: OverrideTheme
   linkComponent?: LinkComponent
@@ -36,8 +38,12 @@ export const ReactUIProvider: React.FC<Props> = ({
     InternationalizationContext
   )
 
+  const finalTheme = theme
+    ? mergeWithDefaultTheme(theme)
+    : __REACTUI__THEME || {}
+
   return (
-    <ThemeContext.Provider value={mergeWithDefaultTheme(theme)}>
+    <ThemeContext.Provider value={finalTheme}>
       <InternationalizationContext.Provider
         value={internationalization || internationalizationFromContext}
       >
