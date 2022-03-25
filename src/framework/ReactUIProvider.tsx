@@ -12,10 +12,9 @@ import {
   InternationalizationContext,
 } from './internationalization/InternationalizationContext'
 
-declare let __REACTUI__THEME: any
-
 type Props = {
-  theme?: OverrideTheme
+  theme?: Theme
+  overrideTheme?: OverrideTheme
   linkComponent?: LinkComponent
   router?: Router
   internationalization?: Internationalization
@@ -27,6 +26,7 @@ function mergeWithDefaultTheme(overrideTheme?: OverrideTheme): Theme {
 
 export const ReactUIProvider: React.FC<Props> = ({
   theme,
+  overrideTheme,
   linkComponent,
   router,
   internationalization,
@@ -38,9 +38,7 @@ export const ReactUIProvider: React.FC<Props> = ({
     InternationalizationContext
   )
 
-  const finalTheme = theme
-    ? mergeWithDefaultTheme(theme)
-    : __REACTUI__THEME || {}
+  const finalTheme = theme || mergeWithDefaultTheme(overrideTheme) || {}
 
   return (
     <ThemeContext.Provider value={finalTheme}>
