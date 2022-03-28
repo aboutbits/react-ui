@@ -22,9 +22,7 @@ type Props = {
 
 function mergeWithDefaultTheme(overrideTheme?: OverrideTheme): Theme {
   return mergeWith(defaultTheme, overrideTheme, (values, srcValues) => {
-    console.log(values, srcValues)
     if (typeof values === 'string' && typeof srcValues === 'string') {
-      console.log(values, srcValues)
       return twMerge(values, srcValues)
     }
   })
