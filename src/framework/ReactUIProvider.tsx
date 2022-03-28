@@ -20,7 +20,7 @@ type Props = {
 }
 
 function mergeWithDefaultTheme(overrideTheme?: OverrideTheme): Theme {
-  return mergeWith(defaultTheme, overrideTheme, (value, srcValue) => {
+  return mergeWith({}, defaultTheme, overrideTheme, (value, srcValue) => {
     if (typeof value === 'string' && typeof srcValue === 'string') {
       return `${value} ${srcValue}`
     }
