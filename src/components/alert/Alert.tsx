@@ -69,13 +69,12 @@ export const AlertContent: React.FC<ClassNameProps> = ({
   )
 }
 
-export const Alert: React.FC<Props> = ({ className, tone, children }) => {
+export const AlertContainer: React.FC<Props> = ({
+  className,
+  tone,
+  children,
+}) => {
   const { alert } = useTheme()
-
-  if (!children) {
-    return null
-  }
-
   return (
     <div
       className={classNames(
@@ -84,10 +83,22 @@ export const Alert: React.FC<Props> = ({ className, tone, children }) => {
         className
       )}
     >
+      {children}
+    </div>
+  )
+}
+
+export const Alert: React.FC<Props> = ({ className, tone, children }) => {
+  if (!children) {
+    return null
+  }
+
+  return (
+    <AlertContainer tone={tone} className={className}>
       <AlertContent>
         <AlertIcon tone={tone} />
         <AlertMessage tone={tone}>{children}</AlertMessage>
       </AlertContent>
-    </div>
+    </AlertContainer>
   )
 }
