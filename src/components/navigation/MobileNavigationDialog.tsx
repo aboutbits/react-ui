@@ -1,5 +1,4 @@
 import { Dialog } from '@reach/dialog'
-import classNames from 'classnames'
 import { useTheme } from '../../framework'
 import { useNavigationToggle, useNavigationState } from './NavigationContext'
 import { MobileNavigationDialogCloseButton } from './MobileNavigationDialogCloseButton'
@@ -22,12 +21,7 @@ const MobileNavigationDialog: React.FC<MobileNavigationDialogProps> = ({
 
   return (
     <Dialog isOpen={menuState} onDismiss={menuToggle} aria-label={dialogLabel}>
-      <div
-        className={classNames(
-          navigation.mobile.dialog.base,
-          navigation.mobile.dialog.normal
-        )}
-      >
+      <div className={navigation.mobileDialog.base}>
         {children}
         <MobileNavigationDialogCloseButton />
       </div>

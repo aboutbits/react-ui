@@ -1,6 +1,6 @@
-import classNames from 'classnames'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import React, { ReactElement } from 'react'
+import classNames from 'classnames'
 import {
   HeaderAreaContainer,
   HeaderRightArea,
@@ -8,6 +8,7 @@ import {
   HeaderTitle,
 } from '../header'
 import { useInternationalization, useTheme } from '../../framework'
+import { ClassNameProps } from '../types'
 
 export type DialogHeaderProps = {
   /**
@@ -18,14 +19,18 @@ export type DialogHeaderProps = {
    * Defines the title of the header.
    **/
   title: string
-}
+} & ClassNameProps
 
-function DialogHeader({ title, onDismiss }: DialogHeaderProps): ReactElement {
+function DialogHeader({
+  title,
+  onDismiss,
+  className,
+}: DialogHeaderProps): ReactElement {
   const { dialog } = useTheme()
   const internationalization = useInternationalization()
 
   return (
-    <div className={classNames(dialog.header.base, dialog.header.normal)}>
+    <div className={classNames(dialog.header.base, className)}>
       <HeaderAreaContainer>
         <HeaderTitle>{title}</HeaderTitle>
         <HeaderRightArea>

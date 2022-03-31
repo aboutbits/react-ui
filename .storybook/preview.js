@@ -2,7 +2,7 @@ import React from 'react'
 import {IntlProvider, useIntl} from 'react-intl';
 import '../styles/index.css'
 import enMessages from '../src/translations/shared.en.json'
-import { ReactUIProvider } from "../src";
+import { ReactUIProvider, defaultTheme } from "../src";
 import { makeLinkComponent } from '../framework'
 
 export const parameters = {
@@ -17,25 +17,6 @@ export const parameters = {
     source: {
       excludeDecorators: true,
     },
-  }
-}
-
-
-const themeOverwrite = {
-  button: {
-    button: {
-      variantTone: {
-        solid: {
-          green: "border-transparent bg-green hover:bg-green-700 focus:bg-green-700 text-white font-bold",
-        },
-        ghost: {
-          green: "border-green hover:border-green-700 text-primary hover:text-green-700",
-        },
-        transparent: {
-          green: "text-green hover:text-green-700",
-        },
-      }
-    }
   }
 }
 
@@ -54,7 +35,7 @@ export const decorators = [
       translate: (key, values) => intl.formatMessage({id: key}, values)
     }
     return (
-      <ReactUIProvider theme={themeOverwrite} internationalization={internationalization} linkComponent={LinkComponent}>
+      <ReactUIProvider theme={defaultTheme} internationalization={internationalization} linkComponent={LinkComponent}>
         <Story />
       </ReactUIProvider>
     )

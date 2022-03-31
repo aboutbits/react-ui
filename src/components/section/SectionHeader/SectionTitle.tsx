@@ -1,13 +1,15 @@
 import React from 'react'
 import classNames from 'classnames'
 import { useTheme } from '../../../framework'
+import { ClassNameProps } from '../../types'
 
-export const SectionTitle: React.FC = ({ children }) => {
+export const SectionTitle: React.FC<ClassNameProps> = ({
+  children,
+  className,
+}) => {
   const { section } = useTheme()
 
   return (
-    <h2 className={classNames(section.title.base, section.title.normal)}>
-      {children}
-    </h2>
+    <h2 className={classNames(section.title.base, className)}>{children}</h2>
   )
 }

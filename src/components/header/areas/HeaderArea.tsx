@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { HeaderLargeAction } from '../actions/HeaderLargeAction'
 import { useTheme, useInternationalization } from '../../../framework'
 import { useNavigationToggle } from '../../navigation'
+import { ClassNameProps } from '../../types'
 import { HeaderLeftArea } from './HeaderLeftArea'
 
 type Props = {
@@ -28,12 +29,13 @@ function ToggleNavigation(): ReactElement {
   )
 }
 
-const HeaderAreaContainer: React.FC = ({ children }) => {
+const HeaderAreaContainer: React.FC<ClassNameProps> = ({
+  children,
+  className,
+}) => {
   const { header } = useTheme()
   return (
-    <div className={classNames(header.area.base, header.area.normal)}>
-      {children}
-    </div>
+    <div className={classNames(header.area.base, className)}>{children}</div>
   )
 }
 

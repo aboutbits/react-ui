@@ -1,7 +1,6 @@
 import { useContext } from 'react'
-import merge from 'lodash.merge'
 import { ThemeContext } from './theme/ThemeContext'
-import { defaultTheme, OverrideTheme, Theme } from './theme/theme'
+import { Theme } from './theme/theme'
 import {
   LinkComponent,
   LinkComponentContext,
@@ -13,14 +12,10 @@ import {
 } from './internationalization/InternationalizationContext'
 
 type Props = {
-  theme?: OverrideTheme
+  theme?: Theme
   linkComponent?: LinkComponent
   router?: Router
   internationalization?: Internationalization
-}
-
-function mergeWithDefaultTheme(overrideTheme?: OverrideTheme): Theme {
-  return merge(defaultTheme, overrideTheme)
 }
 
 export const ReactUIProvider: React.FC<Props> = ({
@@ -37,7 +32,7 @@ export const ReactUIProvider: React.FC<Props> = ({
   )
 
   return (
-    <ThemeContext.Provider value={mergeWithDefaultTheme(theme)}>
+    <ThemeContext.Provider value={theme}>
       <InternationalizationContext.Provider
         value={internationalization || internationalizationFromContext}
       >

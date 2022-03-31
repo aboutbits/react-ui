@@ -20,6 +20,18 @@ type SectionDescriptionItemProps = ClassNameProps & {
   hideIfEmpty?: boolean
 }
 
+export const SectionDescriptionItemTitle: React.FC<ClassNameProps> = ({
+  children,
+  className,
+}) => {
+  const { section } = useTheme()
+  return (
+    <dt className={classNames(section.descriptionItemTitle.base, className)}>
+      {children}
+    </dt>
+  )
+}
+
 export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
   title,
   content,
@@ -32,7 +44,7 @@ export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
     <>
       {((hideIfEmpty && content) || !hideIfEmpty) && (
         <dl className={classNames(section.descriptionItem.base, className)}>
-          <dt className={section.descriptionItem.title.base}>{title}</dt>
+          <SectionDescriptionItemTitle>{title}</SectionDescriptionItemTitle>
           <dd>{content}</dd>
         </dl>
       )}

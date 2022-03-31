@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react'
 import { useField } from 'formik'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyboardArrowDown'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import { useCustomInputCss } from '../useCustomInputCss'
@@ -118,14 +118,14 @@ export function SelectItem<ItemType, Error>({
             onClick={() => {
               setShowDialog(true)
             }}
-            className={classnames(customCssInputCss, 'flex flex-row text-left')}
+            className={classNames(customCssInputCss, 'flex flex-row text-left')}
           >
             <span className="flex-1">{placeholder}</span>
             <IconKeyboardArrowDown className="w-6 h-6" />
           </button>
         ) : (
           <div
-            className={classnames(
+            className={classNames(
               customCss.inputCss,
               'flex flex-row text-left'
             )}

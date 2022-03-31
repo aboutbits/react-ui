@@ -19,11 +19,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
   return (
     <ReachMenuItem
-      className={classNames(
-        menu.menuItem.base,
-        menu.menuItem.normal,
-        className
-      )}
+      className={classNames(menu.menuItem.base, className)}
       onSelect={onClick}
     >
       {children}

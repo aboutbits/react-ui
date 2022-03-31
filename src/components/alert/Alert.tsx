@@ -20,15 +20,61 @@ const Icon: Record<Tone, ComponentType<IconProps>> = {
   [Tone.positive]: IconCheck,
 }
 
-export const Alert: React.FC<Props> = ({ className, tone, children }) => {
+export const AlertIcon: React.FC<Props> = ({ className, tone }) => {
   const { alert } = useTheme()
-
-  if (!children) {
-    return null
-  }
 
   const MessageIcon = Icon[tone]
 
+  return (
+    <div
+      className={classNames(
+        alert.iconContainer.base,
+        alert.iconContainer.tone[tone],
+        className
+      )}
+    >
+      <MessageIcon
+        className={classNames(alert.icon.base, alert.icon.tone[tone])}
+      />
+    </div>
+  )
+}
+
+export const AlertMessage: React.FC<Props> = ({
+  className,
+  tone,
+  children,
+}) => {
+  const { alert } = useTheme()
+  return (
+    <div
+      className={classNames(
+        alert.message.tone[tone],
+        alert.message.base,
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
+}
+
+export const AlertContent: React.FC<ClassNameProps> = ({
+  children,
+  className,
+}) => {
+  const { alert } = useTheme()
+  return (
+    <div className={classNames(alert.content.base, className)}>{children}</div>
+  )
+}
+
+export const AlertContainer: React.FC<Props> = ({
+  className,
+  tone,
+  children,
+}) => {
+  const { alert } = useTheme()
   return (
     <div
       className={classNames(
@@ -37,23 +83,22 @@ export const Alert: React.FC<Props> = ({ className, tone, children }) => {
         className
       )}
     >
-      <div className={alert.content.base}>
-        <div
-          className={classNames(
-            alert.iconContainer.base,
-            alert.iconContainer.tone[tone]
-          )}
-        >
-          <MessageIcon
-            className={classNames(alert.icon.base, alert.icon.tone[tone])}
-          />
-        </div>
-        <div
-          className={classNames(alert.message.tone[tone], alert.message.base)}
-        >
-          {children}
-        </div>
-      </div>
+      {children}
     </div>
+  )
+}
+
+export const Alert: React.FC<Props> = ({ className, tone, children }) => {
+  if (!children) {
+    return null
+  }
+
+  return (
+    <AlertContainer tone={tone} className={className}>
+      <AlertContent>
+        <AlertIcon tone={tone} />
+        <AlertMessage tone={tone}>{children}</AlertMessage>
+      </AlertContent>
+    </AlertContainer>
   )
 }
