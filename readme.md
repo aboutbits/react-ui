@@ -26,6 +26,8 @@ You can use the `tailwind-preset.js` file as preset in your project's `tailwind.
 
 Further documentation of each component can be found [here](https://storybook.aboutbits.it/).
 
+**Hint**: If you're using Next.js or Webpack in your project, you can use the [ReactUI integrations](https://github.com/aboutbits/react-ui-integrations) to easily integrate ReactUI.
+
 ## Contribute
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing
