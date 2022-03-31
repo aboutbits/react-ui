@@ -11,14 +11,14 @@ export default {
       normal:
         'border-gray-700 focus:border-primary-400 bg-transparent text-black placeholder-gray-700',
       error:
-        'border-critical focus:border-critical bg-transparent text-black placeholder-gray-700',
+        'border-critical-500 focus:border-critical-500 bg-transparent text-black placeholder-gray-700',
       disabled: 'border-gray-700 text-gray-700 bg-gray-100',
     },
     dark: {
       normal:
         'border-white focus:border-primary-400 bg-transparent text-white placeholder-white',
       error:
-        'border-critical focus:border-critical bg-transparent text-white placeholder-white',
+        'border-critical-500 focus:border-critical-500 bg-transparent text-white placeholder-white',
       disabled: 'border-gray-700 text-gray-700 bg-gray-100',
     },
   },
@@ -26,22 +26,22 @@ export default {
     base: 'block pb-1 font-bold text-xs',
     light: {
       normal: 'text-black',
-      error: 'text-critical',
+      error: 'text-critical-500',
       disabled: 'text-gray-700',
     },
     dark: {
       normal: 'text-white',
-      error: 'text-critical',
+      error: 'text-critical-500',
       disabled: 'text-gray-700',
     },
   },
   inputError: {
     base: 'mt-1 block text-xs',
     light: {
-      normal: 'text-critical',
+      normal: 'text-critical-500',
     },
     dark: {
-      normal: 'text-critical',
+      normal: 'text-critical-500',
     },
   },
   option: {

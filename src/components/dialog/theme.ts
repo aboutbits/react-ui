@@ -5,7 +5,7 @@ export default {
       base: 'text-xl',
       variant: {
         confirm: 'text-black',
-        critical: 'text-critical',
+        critical: 'text-critical-500',
       },
     },
   },

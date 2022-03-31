@@ -25,7 +25,7 @@ export default {
   search: {
     base: 'flex flex-1 lg:p-0 py-1 px-3 bg-gray-300 lg:bg-transparent rounded-full',
     input: {
-      base: 'flex-1 w-full lg:text-3xl outline-none bg-transparent border-none placeholder-gray text-black',
+      base: 'flex-1 w-full lg:text-3xl outline-none bg-transparent border-none placeholder-gray-500 text-black',
     },
     clearButton: {
       base: 'lg:hidden hover:text-gray-700 focus:text-gray-700',
