@@ -1,7 +1,6 @@
 import { ReactElement, useEffect, useRef, useState } from 'react'
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import classNames from 'classnames'
 import { UseSearchQuery } from '../../types'
 import { useInternationalization, useTheme } from '../../../framework'
 import { SectionAction } from './SectionAction'
@@ -47,10 +46,7 @@ export function SectionSearch({
           placeholder={internationalization.translate(
             'shared.search.placeholder'
           )}
-          className={classNames(
-            section.search.input.base,
-            section.search.input.normal
-          )}
+          className={section.search.input.base}
         />
         <SectionAction
           Icon={IconClose}

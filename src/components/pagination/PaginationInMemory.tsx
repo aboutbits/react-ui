@@ -107,7 +107,7 @@ const PaginationInMemory: React.FC<PaginationInMemoryProps> = ({
                   { page: page.displayNumber }
                 )}
                 className={classNames(
-                  paginationTheme.page.normal,
+                  paginationTheme.page.number,
                   page.isCurrent ? paginationTheme.page.current : ''
                 )}
                 onChangePage={onChangePage}

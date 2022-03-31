@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { HeaderCloseWithSearch } from '../../header'
 import { useTheme } from '../../../framework'
-import { UseSearchQuery } from '../../types'
+import { ClassNameProps, UseSearchQuery } from '../../types'
 
 type Props = {
   /**
@@ -16,7 +16,8 @@ type Props = {
    * Define the accessibility label for the search icon.
    **/
   iconLabel: string
-} & UseSearchQuery
+} & UseSearchQuery &
+  ClassNameProps
 
 const SelectDialogHeader: React.FC<Props> = ({
   title,
@@ -24,11 +25,12 @@ const SelectDialogHeader: React.FC<Props> = ({
   search,
   onDismiss,
   actions,
+  className,
 }) => {
   const { dialog } = useTheme()
 
   return (
-    <div className={classNames(dialog.header.base, dialog.header.normal)}>
+    <div className={classNames(dialog.header.base, className)}>
       <HeaderCloseWithSearch
         title={title}
         search={search}

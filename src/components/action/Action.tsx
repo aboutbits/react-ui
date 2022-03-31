@@ -25,7 +25,6 @@ export const Actions: React.FC<ActionProps> = ({
     <div
       className={classNames(
         action.action.base,
-        action.action.normal,
         action.action.variant[variant],
         className
       )}

@@ -108,7 +108,7 @@ const PaginationRouter: React.FC<PaginationRouterProps> = ({
                 )}
                 className={classNames(
                   paginationTheme.page.base,
-                  paginationTheme.page.normal,
+                  paginationTheme.page.number,
                   paginationTheme.page.enabled,
                   page.isCurrent ? paginationTheme.page.current : ''
                 )}

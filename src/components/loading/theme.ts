@@ -1,7 +1,6 @@
 export default {
   bar: {
-    base: 'rounded animate-pulse',
-    normal: 'bg-gray',
+    base: 'rounded animate-pulse bg-gray',
   },
   listItem: {
     start: {

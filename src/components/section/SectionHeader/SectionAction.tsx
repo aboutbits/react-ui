@@ -34,11 +34,7 @@ export function SectionAction({
 
   return (
     <button
-      className={classNames(
-        section.action.base,
-        disabled ? section.action.disabled : section.action.normal,
-        className
-      )}
+      className={classNames(section.action.base, className)}
       onClick={onClick}
       disabled={disabled}
     >

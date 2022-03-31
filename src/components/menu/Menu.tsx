@@ -48,11 +48,7 @@ const Menu: React.FC<MenuProps> = ({
               />
             </span>
           </MenuButton>
-          <MenuList
-            className={classNames(menu.menuList.base, menu.menuList.normal)}
-          >
-            {children}
-          </MenuList>
+          <MenuList className={menu.menuList.base}>{children}</MenuList>
         </>
       )}
     </MenuReach>

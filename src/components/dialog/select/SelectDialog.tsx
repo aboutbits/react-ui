@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { Dialog } from '@reach/dialog'
 import { useTheme } from '../../../framework'
-import { UseSearchQuery } from '../../types'
+import { ClassNameProps, UseSearchQuery } from '../../types'
 import { SelectDialogHeader } from './SelectDialogHeader'
 
 type Props = {
@@ -25,7 +25,8 @@ type Props = {
    * Accessibility label for the dialog.
    **/
   dialogLabel: string
-} & UseSearchQuery
+} & UseSearchQuery &
+  ClassNameProps
 
 const SelectDialog: React.FC<Props> = ({
   title,
@@ -36,6 +37,7 @@ const SelectDialog: React.FC<Props> = ({
   isOpen,
   children,
   dialogLabel,
+  className,
 }) => {
   const { dialog } = useTheme()
   return (
@@ -43,7 +45,7 @@ const SelectDialog: React.FC<Props> = ({
       isOpen={isOpen}
       onDismiss={onDismiss}
       aria-label={dialogLabel}
-      className={classNames(dialog.select.base, dialog.select.normal)}
+      className={classNames(dialog.select.base, className)}
     >
       <SelectDialogHeader
         onDismiss={onDismiss}

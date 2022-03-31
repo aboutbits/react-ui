@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
-import classNames from 'classnames'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import { useTheme, useInternationalization } from '../../framework'
 import { HeaderArea } from './areas/HeaderArea'
@@ -56,7 +55,7 @@ const HeaderSearch: React.FC<Props> = ({
         </HeaderLeftArea>
       }
     >
-      <div className={classNames(header.search.base, header.search.normal)}>
+      <div className={header.search.base}>
         <input
           ref={searchInput}
           value={text}
@@ -66,16 +65,10 @@ const HeaderSearch: React.FC<Props> = ({
           placeholder={internationalization.translate(
             'shared.search.placeholder'
           )}
-          className={classNames(
-            header.search.input.base,
-            header.search.input.normal
-          )}
+          className={header.search.input.base}
         />
         <button
-          className={classNames(
-            header.search.clearButton.base,
-            header.search.clearButton.normal
-          )}
+          className={header.search.clearButton.base}
           aria-label={internationalization.translate('shared.search.clear')}
           onClick={clearSearch}
         >

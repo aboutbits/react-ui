@@ -17,13 +17,7 @@ export const SectionContentList: React.FC<Props> = ({
 }) => {
   const { section } = useTheme()
   return (
-    <div
-      className={classNames(
-        section.contentList.base,
-        section.contentList.normal,
-        className
-      )}
-    >
+    <div className={classNames(section.contentList.base, className)}>
       {children}
     </div>
   )
@@ -36,7 +30,7 @@ export const SectionContentListEmpty: React.FC<SectionListEmptyProps> = ({
   const { section } = useTheme()
   return (
     <SectionListItem
-      className={classNames(section.contentList.empty.base, className)}
+      className={classNames(section.contentListEmpty.base, className)}
     >
       {children}
     </SectionListItem>
@@ -50,26 +44,16 @@ export const SectionContentListError: React.FC<SectionListErrorProps> = ({
   const { section } = useTheme()
   return (
     <SectionListItem
-      className={classNames(section.contentList.error.base, className)}
+      className={classNames(section.contentListError.base, className)}
     >
-      <div
-        className={classNames(
-          section.contentList.error.iconContainer.base,
-          section.contentList.error.iconContainer.normal
-        )}
-      >
+      <div className={section.contentListError.iconContainer.base}>
         <IconWarning
           height={22}
           width={22}
-          className={classNames(
-            section.contentList.error.icon.base,
-            section.contentList.error.icon.normal
-          )}
+          className={section.contentListError.icon.base}
         />
       </div>
-      <span className={section.contentList.error.children.normal}>
-        {children}
-      </span>
+      <span className={section.contentListError.children.base}>{children}</span>
     </SectionListItem>
   )
 }

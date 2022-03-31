@@ -6,11 +6,9 @@ export default {
     },
   },
   menuItem: {
-    base: 'block py-1 px-4 cursor-pointer',
-    normal: 'hover:bg-primary-100',
+    base: 'block py-1 px-4 cursor-pointer hover:bg-primary-100',
   },
   menuList: {
-    base: 'py-2 mb-1 w-32 shadow focus:outline-none',
-    normal: 'bg-white',
+    base: 'py-2 mb-1 w-32 shadow focus:outline-none bg-white',
   },
 }

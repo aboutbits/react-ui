@@ -1,8 +1,13 @@
+import classnames from 'classnames'
 import { useTheme } from '../../../framework'
+import { ClassNameProps } from '../../types'
 
-const ContentArea: React.FC = ({ children }) => {
+export const ContentArea: React.FC<ClassNameProps> = ({
+  className,
+  children,
+}) => {
   const { content } = useTheme()
-  return <div className={content.area.base}>{children}</div>
+  return (
+    <div className={classnames(content.area.base, className)}>{children}</div>
+  )
 }
-
-export { ContentArea }

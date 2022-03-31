@@ -13,7 +13,7 @@ export default {
   pagesList: { base: 'flex items-center' },
   page: {
     base: 'flex items-center',
-    normal: 'px-2',
+    number: 'px-2',
     enabled: 'hover:underline',
     disabled: 'text-gray-500 cursor-not-allowed pointer-events-none',
     current: 'font-bold',

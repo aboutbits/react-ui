@@ -81,11 +81,7 @@ const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
         }
       }}
       aria-label={title}
-      className={classnames(
-        dialog.confirmation.base,
-        dialog.confirmation.normal,
-        className
-      )}
+      className={classnames(dialog.confirmation.base, className)}
     >
       <h2
         className={classnames(

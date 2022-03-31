@@ -1,5 +1,4 @@
 import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
-import classNames from 'classnames'
 import { HeaderRightArea } from '../areas/HeaderRightArea'
 import {
   useTheme,
@@ -24,13 +23,7 @@ const HeaderEditAction: React.FC<Props> = ({
   return (
     <HeaderRightArea>
       <LinkComponent href={href} internal={internal}>
-        <IconEdit
-          className={classNames(
-            header.editAction.base,
-            header.editAction.normal
-          )}
-          title={label}
-        />
+        <IconEdit className={header.editAction.base} title={label} />
       </LinkComponent>
     </HeaderRightArea>
   )
