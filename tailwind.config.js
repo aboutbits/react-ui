@@ -8,14 +8,6 @@ module.exports = {
   ],
 
   theme: {
-    extend: {
-      minWidth: {
-        dialog: '17.5rem',
-      },
-      minHeight: {
-        14: '3.5rem',
-      },
-    },
     colors: {
       white: '#FFFFFF',
       black: '#000000',

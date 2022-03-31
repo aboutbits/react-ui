@@ -1,6 +1,6 @@
 export default {
   confirmation: {
-    base: 'absolute top-1/2 left-1/2 p-5 min-w-dialog max-w-min space-y-4 transform -translate-x-1/2 -translate-y-1/2 outline-none bg-white rounded',
+    base: 'absolute top-1/2 left-1/2 p-5 min-w-[17.5rem] max-w-min space-y-4 transform -translate-x-1/2 -translate-y-1/2 outline-none bg-white rounded',
     title: {
       base: 'text-xl',
       variant: {

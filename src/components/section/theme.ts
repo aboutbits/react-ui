@@ -27,7 +27,7 @@ export default {
     base: 'grid xl:grid-cols-2 xl:gap-x-5 gap-y-5',
   },
   listItem: {
-    base: 'flex items-center min-h-14 px-4 lg:px-5 bg-white text-black',
+    base: 'flex items-center min-h-[3.5rem] px-4 lg:px-5 bg-white text-black',
   },
   listItemWithAction: {
     base: 'justify-between space-x-4',
