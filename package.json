@@ -52,6 +52,7 @@
     "@types/lodash.set": "^4.3.6",
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.0",
+    "@types/tailwindcss": "^3.0.10",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
     "autoprefixer": "^10.4.4",
@@ -123,6 +124,7 @@
     "selectDialog.js",
     "selectDialog.d.ts",
     "submitButton.js",
-    "submitButton.d.ts"
+    "submitButton.d.ts",
+    "tailwind-preset.js"
   ]
 }

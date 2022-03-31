@@ -22,6 +22,8 @@ First, you have to install the package:
 npm install @aboutbits/react-ui
 ```
 
+You can use the `tailwind-preset.js` file as preset in your project's `tailwind.config.js`to load the default colors.
+
 Further documentation of each component can be found [here](https://storybook.aboutbits.it/).
 
 ## Contribute
