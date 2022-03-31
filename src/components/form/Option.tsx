@@ -1,5 +1,5 @@
 import React from 'react'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import { useTheme } from '../../framework'
 import { Mode, ModeProps } from '../types'
 
@@ -19,7 +19,7 @@ export const Option: React.FC<OptionProps> = ({
 
   return (
     <option
-      className={classnames(
+      className={classNames(
         form.option.base,
         form.option[mode].normal,
         className

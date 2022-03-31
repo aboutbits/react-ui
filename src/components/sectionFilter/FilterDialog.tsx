@@ -1,5 +1,5 @@
 import { Dialog } from '@reach/dialog'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import { useInternationalization, useTheme } from '../../framework'
 import { DialogHeader, DialogHeaderProps } from '../dialog'
 import { ClassNameProps } from '../types'
@@ -29,7 +29,7 @@ const FilterDialog: React.FC<FilterDialogProps> = ({
         title ||
         internationalization.translate('shared.filter.label')
       }
-      className={classnames(dialog.select.base, className)}
+      className={classNames(dialog.select.base, className)}
     >
       <DialogHeader
         onDismiss={onDismiss}

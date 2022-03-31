@@ -1,4 +1,4 @@
-import classnames from 'classnames'
+import classNames from 'classnames'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
@@ -8,6 +8,6 @@ export const ContentArea: React.FC<ClassNameProps> = ({
 }) => {
   const { content } = useTheme()
   return (
-    <div className={classnames(content.area.base, className)}>{children}</div>
+    <div className={classNames(content.area.base, className)}>{children}</div>
   )
 }

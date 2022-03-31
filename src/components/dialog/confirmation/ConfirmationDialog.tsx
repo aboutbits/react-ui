@@ -1,5 +1,5 @@
 import { Dialog } from '@reach/dialog'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import { ReactNode } from 'react'
 import { Button, Size, Tone, Variant } from '../../button'
 import { useTheme } from '../../../framework'
@@ -81,10 +81,10 @@ const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
         }
       }}
       aria-label={title}
-      className={classnames(dialog.confirmation.base, className)}
+      className={classNames(dialog.confirmation.base, className)}
     >
       <h2
-        className={classnames(
+        className={classNames(
           dialog.confirmation.title.variant[variant],
           dialog.confirmation.title.base
         )}

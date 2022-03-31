@@ -1,6 +1,6 @@
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import React, { ReactElement } from 'react'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import {
   HeaderAreaContainer,
   HeaderRightArea,
@@ -30,7 +30,7 @@ function DialogHeader({
   const internationalization = useInternationalization()
 
   return (
-    <div className={classnames(dialog.header.base, className)}>
+    <div className={classNames(dialog.header.base, className)}>
       <HeaderAreaContainer>
         <HeaderTitle>{title}</HeaderTitle>
         <HeaderRightArea>

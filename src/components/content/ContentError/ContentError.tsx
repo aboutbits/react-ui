@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import classnames from 'classnames'
+import classNames from 'classnames'
 import { Button } from '../../button'
 import { useTheme, useInternationalization } from '../../../framework'
 import { ClassNameProps } from '../../types'
@@ -20,7 +20,7 @@ export const ContentError: React.FC<Props> = ({
   const { content } = useTheme()
   const internationalization = useInternationalization()
   return (
-    <div className={classnames(content.error.base, className)}>
+    <div className={classNames(content.error.base, className)}>
       <div className={content.error.icon.base}>{icon}</div>
       <div className={content.error.title.base}>
         {internationalization.translate('shared.error.title')}

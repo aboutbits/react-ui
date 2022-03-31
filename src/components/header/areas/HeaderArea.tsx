@@ -1,6 +1,6 @@
 import React, { ReactElement, ReactNode } from 'react'
 import IconMenu from '@aboutbits/react-material-icons/dist/IconMenu'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import { HeaderLargeAction } from '../actions/HeaderLargeAction'
 import { useTheme, useInternationalization } from '../../../framework'
 import { useNavigationToggle } from '../../navigation'
@@ -35,7 +35,7 @@ const HeaderAreaContainer: React.FC<ClassNameProps> = ({
 }) => {
   const { header } = useTheme()
   return (
-    <div className={classnames(header.area.base, className)}>{children}</div>
+    <div className={classNames(header.area.base, className)}>{children}</div>
   )
 }
 
