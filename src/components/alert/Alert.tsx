@@ -59,9 +59,14 @@ export const AlertMessage: React.FC<Props> = ({
   )
 }
 
-export const AlertContent: React.FC<ClassNameProps> = ({ children }) => {
+export const AlertContent: React.FC<ClassNameProps> = ({
+  children,
+  className,
+}) => {
   const { alert } = useTheme()
-  return <div className={alert.content.base}>{children}</div>
+  return (
+    <div className={classNames(alert.content.base, className)}>{children}</div>
+  )
 }
 
 export const Alert: React.FC<Props> = ({ className, tone, children }) => {
