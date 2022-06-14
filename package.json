@@ -73,6 +73,7 @@
     "eslint-plugin-tailwindcss": "^3.5.2",
     "formik": "^2.2.9",
     "jest": "^28.1.1",
+    "jest-environment-jsdom": "^28.1.1",
     "next": "^12.1.6",
     "postcss": "^8.4.14",
     "prettier": "^2.7.0",
