@@ -47,29 +47,28 @@ type SectionPaginationInMemoryButtonProps = {
 } & Pick<PaginationInMemoryProps, 'onChangePage'> &
   ClassNameProps
 
-const SectionPaginationInMemoryButton: React.FC<SectionPaginationInMemoryButtonProps> =
-  ({ disabled, onChangePage, pageIndex, className, children, ...props }) => {
-    const { pagination: paginationTheme } = useTheme()
-    return (
-      <button
-        aria-disabled={disabled}
-        disabled={disabled}
-        className={classNames(
-          paginationTheme.page.base,
-          disabled
-            ? paginationTheme.page.disabled
-            : paginationTheme.page.enabled,
-          className
-        )}
-        onClick={() => {
-          onChangePage(pageIndex)
-        }}
-        {...props}
-      >
-        {children}
-      </button>
-    )
-  }
+const SectionPaginationInMemoryButton: React.FC<
+  SectionPaginationInMemoryButtonProps
+> = ({ disabled, onChangePage, pageIndex, className, children, ...props }) => {
+  const { pagination: paginationTheme } = useTheme()
+  return (
+    <button
+      aria-disabled={disabled}
+      disabled={disabled}
+      className={classNames(
+        paginationTheme.page.base,
+        disabled ? paginationTheme.page.disabled : paginationTheme.page.enabled,
+        className
+      )}
+      onClick={() => {
+        onChangePage(pageIndex)
+      }}
+      {...props}
+    >
+      {children}
+    </button>
+  )
+}
 
 const PaginationInMemory: React.FC<PaginationInMemoryProps> = ({
   page,

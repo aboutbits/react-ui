@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 import { waitFor } from '@testing-library/react'
-import { FormikHelpers } from 'formik/dist/types'
+import type { FormikHelpers } from 'formik/dist/types'
 import { useHandleFormikSubmission } from '../useHandleFormikSubmission'
 
 describe('useHandleFormikSubmission', () => {

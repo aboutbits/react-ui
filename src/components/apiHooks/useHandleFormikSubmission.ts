@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios'
-import { FormikHelpers } from 'formik/dist/types'
+import type { FormikHelpers } from 'formik/dist/types'
 import { useState } from 'react'
 
 import { useInternationalization } from '../../framework'
@@ -32,7 +32,7 @@ export function useHandleFormikSubmission<FormValues, Response>(
       const response = await submitAction(values)
       onSuccess(response, values)
     } catch (error) {
-      const maybeAxiosError: AxiosError<ErrorBody> = error
+      const maybeAxiosError = error as AxiosError<ErrorBody>
 
       if (maybeAxiosError?.response?.data?.errors) {
         setErrors(joinFieldErrorMessages(maybeAxiosError.response.data.errors))

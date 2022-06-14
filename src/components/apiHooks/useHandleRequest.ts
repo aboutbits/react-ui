@@ -26,7 +26,7 @@ export function useHandleRequest<Response>(
       await requestAction()
       onSuccess()
     } catch (error) {
-      const maybeAxiosError: AxiosError<ErrorBody> = error
+      const maybeAxiosError = error as AxiosError<ErrorBody>
 
       if (maybeAxiosError?.response?.data.message) {
         setApiErrorMessage(maybeAxiosError?.response.data.message)

@@ -81,15 +81,16 @@ export const SectionListItemLink = React.forwardRef<
 
 SectionListItemLink.displayName = 'SectionListItemLink'
 
-export const SectionListItemWithAction: React.FC<SectionListItemWithActionProps> =
-  ({ children, action, className }) => {
-    const { section } = useTheme()
-    return (
-      <SectionListItem
-        className={classNames(section.listItemWithAction.base, className)}
-      >
-        {children}
-        <div className={section.listItemWithAction.action.base}>{action}</div>
-      </SectionListItem>
-    )
-  }
+export const SectionListItemWithAction: React.FC<
+  SectionListItemWithActionProps
+> = ({ children, action, className }) => {
+  const { section } = useTheme()
+  return (
+    <SectionListItem
+      className={classNames(section.listItemWithAction.base, className)}
+    >
+      {children}
+      <div className={section.listItemWithAction.action.base}>{action}</div>
+    </SectionListItem>
+  )
+}
