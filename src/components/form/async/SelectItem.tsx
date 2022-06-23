@@ -121,7 +121,7 @@ export function SelectItem<ItemType, Error>({
             className={classNames(customCssInputCss, 'flex flex-row text-left')}
           >
             <span className="flex-1">{placeholder}</span>
-            <IconKeyboardArrowDown className="w-6 h-6" />
+            <IconKeyboardArrowDown className="h-6 w-6" />
           </button>
         ) : (
           <div
@@ -154,7 +154,7 @@ export function SelectItem<ItemType, Error>({
               className="pl-2"
             >
               <IconClose
-                className="w-6 h-6"
+                className="h-6 w-6"
                 title={internationalization.translate('shared.select.clear')}
               />
             </button>

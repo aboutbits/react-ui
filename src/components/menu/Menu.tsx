@@ -43,7 +43,7 @@ const Menu: React.FC<MenuProps> = ({
               <IconArrowDropUp
                 className={classNames(
                   menu.menuButton.icon.base,
-                  !isExpanded && 'transform rotate-180'
+                  !isExpanded && 'rotate-180 transform'
                 )}
               />
             </span>

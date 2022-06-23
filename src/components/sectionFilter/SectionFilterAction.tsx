@@ -18,7 +18,7 @@ function SectionFilterAction({
   const { section } = useTheme()
 
   return (
-    <div className="flex relative items-center">
+    <div className="relative flex items-center">
       <SectionAction
         Icon={Icon || IconFilterList}
         label={label || internationalization.translate('shared.filter.label')}
