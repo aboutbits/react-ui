@@ -5,16 +5,14 @@
     "node": true,
     "browser": true,
     "es6": true,
-    "commonjs": true,
-    "jest/globals": true
+    "commonjs": true
   },
   "plugins": [
     "@typescript-eslint",
     "import",
     "react",
     "react-hooks",
-    "prettier",
-    "jest"
+    "prettier"
   ],
   "extends": [
     "plugin:react/recommended",
@@ -22,7 +20,8 @@
     "plugin:import/recommended",
     "plugin:import/typescript",
     "plugin:prettier/recommended",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
+    "plugin:jest/recommended"
   ],
   "overrides": [
     {
