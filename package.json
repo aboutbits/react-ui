@@ -26,6 +26,7 @@
     "lint:fix": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx --fix .",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --passWithNoTests --watch",
+    "typecheck": "tsc --project tsconfig.build.json --noEmit",
     "build-storybook": "build-storybook",
     "prepare": "npm run build",
     "prepublishOnly": "npm run test && npm run lint",

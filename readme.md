@@ -77,6 +77,12 @@ npm run lint
 npm run lint:fix
 ```
 
+For type checking, execute the following command:
+
+```bash
+npm run typecheck
+```
+
 For running the tests, execute the following command:
 
 ```bash
