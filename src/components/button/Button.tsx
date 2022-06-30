@@ -100,6 +100,15 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     const LinkComponent = useLinkComponent()
     const { button } = useTheme()
 
+    const disabled = props.disabled
+
+    if (disabled) {
+      props.disabled = false
+      props.role = 'link'
+      props['aria-disabled'] = true
+      props.href = undefined
+    }
+
     return (
       <LinkComponent
         {...props}
@@ -109,7 +118,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
           button.buttonLink.base,
           button.button.base,
           button.button.variantTone[variant].base,
-          !props.disabled
+          !disabled
             /* eslint-disable */
             ? // @ts-ignore
               button.button.variantTone[variant][tone]
