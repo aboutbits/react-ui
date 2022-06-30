@@ -93,6 +93,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       className = '',
       children,
       internal = true,
+      disabled = false,
       ...props
     },
     ref
@@ -100,18 +101,18 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     const LinkComponent = useLinkComponent()
     const { button } = useTheme()
 
-    const disabled = props.disabled
-
-    if (disabled) {
-      props.disabled = false
-      props.role = 'link'
-      props['aria-disabled'] = true
-      props.href = undefined
-    }
+    const disabledProps = disabled
+      ? {
+          href: undefined,
+          role: 'link',
+          'aria-disabled': true,
+        }
+      : null
 
     return (
       <LinkComponent
         {...props}
+        {...disabledProps}
         internal={internal}
         ref={ref}
         className={classNames(
