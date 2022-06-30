@@ -9,6 +9,11 @@ import {
 
 export type LinkComponentProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   /**
+   * Define the href for the Link.
+   **/
+  href: string
+
+  /**
    * Defines whether it is an internal link or an external link.
    * For example NextJS/Link is an internal link and a classic HTML anchor tag is an external link.
    **/

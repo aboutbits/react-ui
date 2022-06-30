@@ -90,10 +90,11 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       variant = Variant.solid,
       size = Size.md,
       tone = Tone.primary,
+      href,
       className = '',
-      children,
       internal = true,
       disabled = false,
+      children,
       ...props
     },
     ref
@@ -101,33 +102,41 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     const LinkComponent = useLinkComponent()
     const { button } = useTheme()
 
-    const disabledProps = disabled
-      ? {
-          href: undefined,
-          role: 'link',
-          'aria-disabled': true,
-        }
-      : null
+    const linkClassNames = classNames(
+      button.buttonLink.base,
+      button.button.base,
+      button.button.variantTone[variant].base,
+      !disabled
+        /* eslint-disable */
+        ? // @ts-ignore
+          button.button.variantTone[variant][tone]
+        : button.button.variantTone[variant].disabled,
+        /* eslint-enable */
+      button.button.size[size],
+      className
+    )
+
+    if (disabled) {
+      return (
+        <a
+          {...props}
+          ref={ref}
+          className={linkClassNames}
+          role="link"
+          aria-disabled={true}
+        >
+          {children}
+        </a>
+      )
+    }
 
     return (
       <LinkComponent
         {...props}
-        {...disabledProps}
         internal={internal}
         ref={ref}
-        className={classNames(
-          button.buttonLink.base,
-          button.button.base,
-          button.button.variantTone[variant].base,
-          !disabled
-            /* eslint-disable */
-            ? // @ts-ignore
-              button.button.variantTone[variant][tone]
-            : button.button.variantTone[variant].disabled,
-            /* eslint-enable */
-          button.button.size[size],
-          className
-        )}
+        href={href}
+        className={linkClassNames}
       >
         {children}
       </LinkComponent>
