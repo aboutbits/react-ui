@@ -1,32 +1,55 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
-import { Formik, Field } from 'formik'
+import { Formik } from 'formik'
 
 import { FormikAutoSubmit } from './FormikAutoSubmit'
+import { Input } from './Input'
 import { Form } from './Form'
 
-<Meta title="Components/Form/FormikAutoSubmit" component={FormikAutoSubmit} />
+<Meta
+  title="Components/Form/FormikAutoSubmit"
+  component={FormikAutoSubmit}
+  decorators={[
+    (Story) => {
+      return (
+        <Formik
+          initialValues={{ email: '' }}
+          onSubmit={(values) => action('onSubmit')(values)}
+        >
+          <Form>
+            <div>
+              Invisible <i>FormikAutoSubmit</i> component is included here.
+              <br />
+              Check the actions panel and enter something in the input field to
+              see the automatically submitted form values.
+            </div>
+            <Story />
+            <Input name="email" type="email" label="E-Mail" />
+          </Form>
+        </Formik>
+      )
+    },
+  ]}
+/>
 
 # FormikAutoSubmit
 
-This component can be added to a form to automatically save on form changes.
+This component can be added to a Formik form to automatically submit on form changes.
 It requires to be inside a Formik context.
 
+export const Template = ({ ...args }) => <FormikAutoSubmit {...args} />
+
 <Canvas>
-  <Story name="Default">
-    <Formik
-      initialValues={{
-        email: '',
-      }}
-      onSubmit={(values, formikHelpers) => {
-        action('submit')(values)
-        formikHelpers.setSubmitting(false)
-      }}
-    >
-      <Form>
-        <Field name="email" type="email" />
-        <FormikAutoSubmit />
-      </Form>
-    </Formik>
+  <Story
+    name="Default"
+    args={{
+      interval: undefined,
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

@@ -3,7 +3,7 @@ import { Field, Form, Formik } from 'formik'
 import userEvent from '@testing-library/user-event'
 import * as Yup from 'yup'
 import { act } from 'react-dom/test-utils'
-import { AutoSubmit } from '../AutoSubmit'
+import { FormikAutoSubmit } from '../FormikAutoSubmit'
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -32,7 +32,7 @@ const MyForm = ({
       validationSchema={validationSchema}
     >
       <Form>
-        <AutoSubmit interval={autoSubmitInterval} />
+        <FormikAutoSubmit interval={autoSubmitInterval} />
         <label htmlFor="name">First Name</label>
         <Field id="name" name="name" />
       </Form>
@@ -40,7 +40,7 @@ const MyForm = ({
   )
 }
 
-describe('AutoSubmit', () => {
+describe('FormikAutoSubmit', () => {
   test('should not submit form on mount', async () => {
     const handleSubmit = jest.fn()
     render(<MyForm onSubmit={handleSubmit} />)
