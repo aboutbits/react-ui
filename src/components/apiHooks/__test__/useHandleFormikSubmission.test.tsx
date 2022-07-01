@@ -26,10 +26,21 @@ describe('useHandleFormikSubmission', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const onSuccess = () => {}
 
+  const axiosError = {
+    isAxiosError: true,
+    response: { data: { message: 'Server Error' } },
+  }
+
   const onDeleteWithErrorResponse = () =>
+    new Promise((resolve, reject) => setTimeout(() => reject(axiosError), 100))
+
+  const onDeleteWithUnexpectedError = () =>
     new Promise((resolve, reject) =>
       setTimeout(
-        () => reject({ response: { data: { message: 'Server Error' } } }),
+        () =>
+          reject({
+            message: 'The request did not reach the server',
+          }),
         100
       )
     )
@@ -39,7 +50,7 @@ describe('useHandleFormikSubmission', () => {
 
   test('should return initial state on first render', () => {
     const { result } = renderHook(() =>
-      useHandleFormikSubmission(onMutate, onSuccess)
+      useHandleFormikSubmission(onMutate, { onSuccess })
     )
 
     expect(result.current.apiErrorMessage).toBe(null)
@@ -50,7 +61,7 @@ describe('useHandleFormikSubmission', () => {
     const { current, mockedFormikHelpers } = setupFormikHelpers()
 
     const { result } = renderHook(() =>
-      useHandleFormikSubmission(onMutate, onSuccess)
+      useHandleFormikSubmission(onMutate, { onSuccess })
     )
 
     act(() => {
@@ -66,7 +77,7 @@ describe('useHandleFormikSubmission', () => {
     const onSuccess = jest.fn(() => {})
     const { mockedFormikHelpers } = setupFormikHelpers()
     const { result } = renderHook(() =>
-      useHandleFormikSubmission(onMutate, onSuccess)
+      useHandleFormikSubmission(onMutate, { onSuccess })
     )
 
     await act(() => result.current.onSubmit({}, mockedFormikHelpers))
@@ -77,7 +88,7 @@ describe('useHandleFormikSubmission', () => {
   test('should set apiErrorMessage on error', async () => {
     const { mockedFormikHelpers } = setupFormikHelpers()
     const { result } = renderHook(() =>
-      useHandleFormikSubmission(onDeleteWithErrorResponse, onSuccess)
+      useHandleFormikSubmission(onDeleteWithErrorResponse, { onSuccess })
     )
 
     await act(() => result.current.onSubmit({}, mockedFormikHelpers))
@@ -85,10 +96,24 @@ describe('useHandleFormikSubmission', () => {
     expect(result.current.apiErrorMessage).toBe('Server Error')
   })
 
+  test('should call onError on error', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const onError = jest.fn(() => {})
+    const { mockedFormikHelpers } = setupFormikHelpers()
+    const { result } = renderHook(() =>
+      useHandleFormikSubmission(onDeleteWithErrorResponse, { onError })
+    )
+    const values = {}
+
+    await act(() => result.current.onSubmit(values, mockedFormikHelpers))
+    expect(onError).toHaveBeenCalledWith(axiosError, values)
+    expect(onError).toHaveBeenCalledTimes(1)
+  })
+
   test('should reset apiErrorMessage before calling onDelete', async () => {
     const { current, mockedFormikHelpers } = setupFormikHelpers()
     const { result } = renderHook(() =>
-      useHandleFormikSubmission(onDeleteWithErrorResponse, onSuccess)
+      useHandleFormikSubmission(onDeleteWithErrorResponse, { onSuccess })
     )
 
     await act(() => result.current.onSubmit({}, mockedFormikHelpers))
@@ -106,7 +131,8 @@ describe('useHandleFormikSubmission', () => {
   test('should set apiErrorMessage to fallbackErrorId on error without response', async () => {
     const { mockedFormikHelpers } = setupFormikHelpers()
     const { result } = renderHook(() =>
-      useHandleFormikSubmission(onDeleteWithoutErrorResponse, onSuccess, {
+      useHandleFormikSubmission(onDeleteWithoutErrorResponse, {
+        onSuccess,
         apiFallbackErrorMessageId: 'error.server.failed',
       })
     )
@@ -119,7 +145,18 @@ describe('useHandleFormikSubmission', () => {
   test('should set default error message on error without response', async () => {
     const { mockedFormikHelpers } = setupFormikHelpers()
     const { result } = renderHook(() =>
-      useHandleFormikSubmission(onDeleteWithoutErrorResponse, onSuccess)
+      useHandleFormikSubmission(onDeleteWithoutErrorResponse, { onSuccess })
+    )
+
+    await act(() => result.current.onSubmit({}, mockedFormikHelpers))
+
+    expect(result.current.apiErrorMessage).toBe('shared.error.api')
+  })
+
+  test("should set default error message if it's not an axios error", async () => {
+    const { mockedFormikHelpers } = setupFormikHelpers()
+    const { result } = renderHook(() =>
+      useHandleFormikSubmission(onDeleteWithUnexpectedError, { onSuccess })
     )
 
     await act(() => result.current.onSubmit({}, mockedFormikHelpers))
