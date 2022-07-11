@@ -20,11 +20,12 @@ npm i axios formik
 
 ### Parameter
 
-| parameter                           | type                      | description                                                                                                       |
-| ----------------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| submitAction                        | `() => Promise<Response>` | The function that makes the actual request against the backend.                                                   |
-| onSuccess                           | `() => void`              | Callback function after successful request.                                                                       |
-| options?.apiFallbackErrorMessageId? | `string`                  | Allows you to pass an optional string that gets injected into the translation function of the framework provider. |
+| parameter                           | type                                                                  | description                                                                                                       |
+| ----------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| submitAction                        | `() => Promise<Response>`                                             | The function that makes the actual request against the backend.                                                   |
+| options?.onSuccess?                 | `(response: Response, values: FormValues) => void`                    | Callback function after successful request.                                                                       |
+| options?.onError?                   | `(error: AxiosError<ErrorBody> \| Error, values: FormValues) => void` | Callback function after occurrence of an error.                                                                   |
+| options?.apiFallbackErrorMessageId? | `string`                                                              | Allows you to pass an optional string that gets injected into the translation function of the framework provider. |
 
 ### Return value
 
@@ -45,15 +46,23 @@ const updateUser = Axios.put<void, AxiosResponse<void>>(
   'http://localhost:8080/users/1'
 )
 
-const onSuccess = () => {
-  console.log('Success')
+const onSuccess = (response, values) => {
+  console.log('Success', response, values)
+}
+
+const onError = (error, values) => {
+  if (Axios.isAxiosError(error) && error.response) {
+    console.log(error.response.data.message)
+  } else {
+    console.log('Got no response from server')
+  }
 }
 
 function UpdateUserForm(): ReactElement {
-  const { apiErrorMessage, onSubmit } = useHandleFormikSubmission(
-    updateUser,
-    onSuccess
-  )
+  const { apiErrorMessage, onSubmit } = useHandleFormikSubmission(updateUser, {
+    onSuccess,
+    onError,
+  })
 
   return (
     <Formik onSubmit={onSubmit}>
@@ -81,13 +90,15 @@ const onSuccess = () => {
   console.log('Success')
 }
 
-const { apiErrorMessage, onSubmit } = useHandleFormikSubmission(
-  updateUser,
+const onError = () => {
+  console.log('Error')
+}
+
+const { apiErrorMessage, onSubmit } = useHandleFormikSubmission(updateUser, {
   onSuccess,
-  {
-    apiFallbackErrorMessageId: 'error.server.failed',
-  }
-)
+  onError,
+  apiFallbackErrorMessageId: 'error.server.failed',
+})
 ```
 
 ### Validation errors per field
