@@ -18,7 +18,7 @@ export type LinkComponentProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
    * For example NextJS/Link is an internal link and a classic HTML anchor tag is an external link.
    **/
   internal?: boolean
-}
+} & Record<string, unknown>
 
 export const makeLinkComponent = (
   render: ForwardRefRenderFunction<HTMLAnchorElement, LinkComponentProps>
