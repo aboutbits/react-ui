@@ -5,7 +5,10 @@ import { Tone } from '../types'
 import { ButtonProps } from './Button'
 import { Size, Variant } from './types'
 
-export type ButtonLinkProps = Pick<ButtonProps, 'variant' | 'size' | 'tone'> &
+export type ButtonLinkProps = Pick<
+  ButtonProps,
+  'variant' | 'size' | 'tone' | 'iconStart' | 'iconEnd'
+> &
   LinkComponentProps & {
     disabled?: boolean
   }
@@ -16,6 +19,8 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       variant = Variant.solid,
       size = Size.md,
       tone = Tone.primary,
+      iconStart: IconStart,
+      iconEnd: IconEnd,
       href,
       className = '',
       internal = true,
@@ -65,7 +70,25 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         href={href}
         className={linkClassNames}
       >
+        {IconStart && (
+          <IconStart
+            className={classNames(
+              button.button.icon.base,
+              button.button.icon.size[size],
+              button.button.icon.iconStart.size[size]
+            )}
+          />
+        )}
         {children}
+        {IconEnd && (
+          <IconEnd
+            className={classNames(
+              button.button.icon.base,
+              button.button.icon.size[size],
+              button.button.icon.iconEnd.size[size]
+            )}
+          />
+        )}
       </LinkComponent>
     )
   }

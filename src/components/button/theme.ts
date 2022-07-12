@@ -1,6 +1,6 @@
 export default {
   button: {
-    base: 'font-medium rounded-lg outline-1 outline-offset-2 focus:outline',
+    base: 'inline-flex items-center justify-center font-medium rounded-lg outline-1 outline-offset-2 focus:outline',
     variantSize: {
       base: {
         sm: 'px-4 py-1.5 text-sm leading-5',
@@ -11,6 +11,28 @@ export default {
         sm: 'px-4-1px py-1.5-1px border',
         md: 'px-6-1px py-2.5-1px border',
         lg: 'px-8-1px py-4-1px border',
+      },
+    },
+    icon: {
+      base: 'fill-current',
+      size: {
+        sm: 'w-4 h-4',
+        md: 'w-4 h-4',
+        lg: 'w-7 h-7',
+      },
+      iconStart: {
+        size: {
+          sm: '-ml-1 mr-1',
+          md: '-ml-2 mr-2',
+          lg: '-ml-3 mr-3',
+        },
+      },
+      iconEnd: {
+        size: {
+          sm: 'ml-1 -mr-1',
+          md: 'ml-2 -mr-2',
+          lg: 'ml-3 -mr-3',
+        },
       },
     },
   },
@@ -42,19 +64,6 @@ export default {
   },
   buttonIconLink: {
     base: 'inline-block',
-  },
-  withIcon: {
-    iconContainer: {
-      base: 'flex justify-center items-center',
-    },
-    icon: {
-      base: 'fill-current',
-      size: {
-        sm: 'mr-2 w-4 h-4',
-        md: 'mr-3 w-6 h-6',
-        lg: 'mr-3 w-6 h-6',
-      },
-    },
   },
   variantTone: {
     solid: {
