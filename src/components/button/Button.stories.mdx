@@ -1,7 +1,7 @@
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { actions } from '@storybook/addon-actions'
+import { action } from '@storybook/addon-actions'
 import { Tone } from '../types'
 import { Size, Variant } from './types'
 import { Button } from './Button'
@@ -11,13 +11,48 @@ import { Button } from './Button'
 # Button
 
 export const Template = ({ children, ...args }) => (
-  <Button {...args} onClick={actions('clicked')}>
+  <Button {...args} onClick={action('clicked')}>
     {children}
   </Button>
 )
 
 <Canvas>
-  <Story name="Default" args={{ children: 'Default Button' }}>
+  <Story
+    name="Default"
+    args={{
+      children: 'Default Button',
+      disabled: false,
+      variant: Variant.solid,
+      size: Size.md,
+      tone: Tone.primary,
+      iconStart: 'None',
+      iconEnd: 'None',
+    }}
+    argTypes={{
+      variant: {
+        options: Object.values(Variant),
+        control: { type: 'radio' },
+      },
+      size: {
+        options: Object.values(Size),
+        control: { type: 'radio' },
+      },
+      tone: {
+        options: Object.values(Tone),
+        control: { type: 'select' },
+      },
+      iconStart: {
+        options: ['None', 'Add', 'Info'],
+        mapping: { None: undefined, Add: IconAdd, Info: IconInfo },
+        control: { type: 'select' },
+      },
+      iconEnd: {
+        options: ['None', 'Add', 'Info'],
+        mapping: { None: undefined, Add: IconAdd, Info: IconInfo },
+        control: { type: 'select' },
+      },
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -157,6 +192,20 @@ module.exports = {
 <Canvas>
   <Story name="CustomPurple">
     <Button tone="purple">Purple Button</Button>
+  </Story>
+</Canvas>
+
+## With icon
+
+<Canvas>
+  <Story name="WithIconStart">
+    <Button iconStart={IconAdd}>Add item</Button>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="WithIconEnd">
+    <Button iconEnd={IconAdd}>Add item</Button>
   </Story>
 </Canvas>
 
