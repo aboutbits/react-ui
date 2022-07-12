@@ -49,28 +49,8 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       className
     )
 
-    if (disabled) {
-      return (
-        <a
-          {...props}
-          ref={ref}
-          className={linkClassNames}
-          role="link"
-          aria-disabled={true}
-        >
-          {children}
-        </a>
-      )
-    }
-
-    return (
-      <LinkComponent
-        {...props}
-        internal={internal}
-        ref={ref}
-        href={href}
-        className={linkClassNames}
-      >
+    const content = (
+      <>
         {IconStart && (
           <IconStart
             className={classNames(
@@ -90,6 +70,32 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             )}
           />
         )}
+      </>
+    )
+
+    if (disabled) {
+      return (
+        <a
+          {...props}
+          ref={ref}
+          className={linkClassNames}
+          role="link"
+          aria-disabled={true}
+        >
+          {content}
+        </a>
+      )
+    }
+
+    return (
+      <LinkComponent
+        {...props}
+        internal={internal}
+        ref={ref}
+        href={href}
+        className={linkClassNames}
+      >
+        {content}
       </LinkComponent>
     )
   }
