@@ -3,7 +3,8 @@ import IconError from '@aboutbits/react-material-icons/dist/IconError'
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
 import { action } from '@storybook/addon-actions'
-import { Size, Tone, Variant } from './Button'
+import { Tone } from '../types'
+import { Size, Variant } from './types'
 import { ButtonWithIcon } from './ButtonWithIcon'
 
 <Meta title="Components/Button/ButtonWithIcon" component={ButtonWithIcon} />
@@ -75,17 +76,13 @@ React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButto
       Error Button
     </ButtonWithIcon>
   </Story>
-  <Story name="Secondary Ghost">
-    <ButtonWithIcon
-      Icon={IconAdd}
-      tone={Tone.secondary}
-      variant={Variant.ghost}
-    >
+  <Story name="Neutral Ghost">
+    <ButtonWithIcon Icon={IconAdd} tone={Tone.neutral} variant={Variant.ghost}>
       Add Button
     </ButtonWithIcon>
   </Story>
   <Story name="Custom Tone">
-    <ButtonWithIcon Icon={IconCheck} tone="green">
+    <ButtonWithIcon Icon={IconCheck} tone="success">
       Success Button
     </ButtonWithIcon>
   </Story>

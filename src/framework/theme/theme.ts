@@ -14,26 +14,6 @@ import navigation from '../../components/navigation/theme'
 import pagination from '../../components/pagination/theme'
 import section from '../../components/section/theme'
 
-type RecursivePartial<T> = {
-  [P in keyof T]?: RecursivePartial<T[P]>
-}
-export type OverrideTheme = RecursivePartial<Theme> & {
-  button?: {
-    button?: {
-      variantTone?: {
-        solid?: Partial<typeof defaultTheme.button.button.variantTone.solid> &
-          Record<string, string>
-        ghost?: Partial<typeof defaultTheme.button.button.variantTone.ghost> &
-          Record<string, string>
-        transparent?: Partial<
-          typeof defaultTheme.button.button.variantTone.transparent
-        > &
-          Record<string, string>
-      }
-    }
-  }
-}
-
 export const defaultTheme = {
   action,
   alert,
@@ -49,3 +29,12 @@ export const defaultTheme = {
   navigation,
   pagination,
 }
+
+export const customTheme = JSON.parse(JSON.stringify(defaultTheme))
+
+customTheme.button.variantTone.solid.purple =
+  'bg-purple-500 hover:bg-purple-600 text-white outline-purple-500'
+customTheme.button.variantTone.ghost.purple =
+  'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500'
+customTheme.button.variantTone.transparent.purple =
+  'hover:bg-purple-50 text-purple-500 focus:outline-purple-500'

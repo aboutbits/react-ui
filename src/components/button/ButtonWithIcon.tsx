@@ -2,7 +2,8 @@ import React, { ComponentType } from 'react'
 import classNames from 'classnames'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { useTheme } from '../../framework'
-import { Button, ButtonProps, Size } from './Button'
+import { Button, ButtonProps } from './Button'
+import { Size } from './types'
 
 type ButtonWithIconProps = ButtonProps & {
   /**

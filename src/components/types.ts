@@ -10,6 +10,15 @@ export enum Mode {
   dark = 'dark',
 }
 
+export enum Tone {
+  primary = 'primary',
+  neutral = 'neutral',
+  warning = 'warning',
+  critical = 'critical',
+  success = 'success',
+  informative = 'informative',
+}
+
 export type ModeProps = {
   mode?: Mode
 }

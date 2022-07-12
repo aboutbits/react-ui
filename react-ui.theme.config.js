@@ -5,11 +5,11 @@ const customTheme = plugin(function ({ addComponents, theme }) {
   const formTheme = {
     '.abui-form-message-positive': {
       borderWidth: '1px',
-      borderColor: theme('colors.positive.DEFAULT'),
-      backgroundColor: theme('colors.positive.100'),
+      borderColor: theme('colors.success.500'),
+      backgroundColor: theme('colors.success.100'),
     },
     '.abui-form-message-icon-container-positive': {
-      backgroundColor: theme('colors.positive.DEFAULT'),
+      backgroundColor: theme('colors.success.500'),
     },
     '.abui-form-message-icon-positive': {
       color: theme('colors.white'),

@@ -2,7 +2,7 @@ import React from 'react'
 import {IntlProvider, useIntl} from 'react-intl';
 import '../styles/index.css'
 import enMessages from '../src/translations/shared.en.json'
-import { ReactUIProvider, defaultTheme } from "../src";
+import { ReactUIProvider, customTheme } from "../src";
 import { makeLinkComponent } from '../framework'
 
 export const parameters = {
@@ -35,7 +35,7 @@ export const decorators = [
       translate: (key, values) => intl.formatMessage({id: key}, values)
     }
     return (
-      <ReactUIProvider theme={defaultTheme} internationalization={internationalization} linkComponent={LinkComponent}>
+      <ReactUIProvider theme={customTheme} internationalization={internationalization} linkComponent={LinkComponent}>
         <Story />
       </ReactUIProvider>
     )

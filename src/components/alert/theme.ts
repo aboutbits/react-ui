@@ -2,7 +2,7 @@ export default {
   container: {
     base: 'p-3',
     tone: {
-      positive: 'border border-positive-500 bg-positive-100',
+      positive: 'border border-success-500 bg-success-100',
       critical: 'border border-critical-500 bg-critical-100',
     },
   },
@@ -12,7 +12,7 @@ export default {
   iconContainer: {
     base: 'flex flex-shrink-0 justify-center items-center w-6 h-6 rounded-full',
     tone: {
-      positive: 'bg-positive-500',
+      positive: 'bg-success-500',
       critical: 'bg-critical-500',
     },
   },

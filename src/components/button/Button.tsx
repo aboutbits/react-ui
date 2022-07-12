@@ -1,23 +1,8 @@
 import classNames from 'classnames'
 import React from 'react'
-import { useLinkComponent, LinkComponentProps, useTheme } from '../../framework'
-
-export enum Variant {
-  solid = 'solid',
-  ghost = 'ghost',
-  transparent = 'transparent',
-}
-
-export enum Size {
-  md = 'md',
-  sm = 'sm',
-}
-
-export enum Tone {
-  primary = 'primary',
-  critical = 'critical',
-  secondary = 'secondary',
-}
+import { useTheme } from '../../framework'
+import { Tone } from '../types'
+import { Size, Variant } from './types'
 
 export type ButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -55,15 +40,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={classNames(
+          /* eslint-disable @typescript-eslint/ban-ts-comment */
           button.button.base,
-          button.button.variantTone[variant].base,
           !props.disabled
-            /* eslint-disable */
             ? // @ts-ignore
-              button.button.variantTone[variant][tone]
-            : button.button.variantTone[variant].disabled,
-            /* eslint-enable */
-          button.button.size[size],
+              button.variantTone[variant][tone]
+            : button.variantTone[variant].disabled,
+          button.button.variantSize.base[size],
+          // @ts-ignore
+          button.button.variantSize[variant]?.[size],
+          /* eslint-enable */
           className
         )}
         ref={ref}
@@ -79,72 +65,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 // This improves readability in dev tools
 Button.displayName = 'Button'
 
-type ButtonLinkProps = Pick<ButtonProps, 'variant' | 'size' | 'tone'> &
-  LinkComponentProps & {
-    disabled?: boolean
-  }
-
-const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
-  (
-    {
-      variant = Variant.solid,
-      size = Size.md,
-      tone = Tone.primary,
-      href,
-      className = '',
-      internal = true,
-      disabled = false,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const LinkComponent = useLinkComponent()
-    const { button } = useTheme()
-
-    const linkClassNames = classNames(
-      button.buttonLink.base,
-      button.button.base,
-      button.button.variantTone[variant].base,
-      !disabled
-        /* eslint-disable */
-        ? // @ts-ignore
-          button.button.variantTone[variant][tone]
-        : button.button.variantTone[variant].disabled,
-        /* eslint-enable */
-      button.button.size[size],
-      className
-    )
-
-    if (disabled) {
-      return (
-        <a
-          {...props}
-          ref={ref}
-          className={linkClassNames}
-          role="link"
-          aria-disabled={true}
-        >
-          {children}
-        </a>
-      )
-    }
-
-    return (
-      <LinkComponent
-        {...props}
-        internal={internal}
-        ref={ref}
-        href={href}
-        className={linkClassNames}
-      >
-        {children}
-      </LinkComponent>
-    )
-  }
-)
-
-// This improves readability in dev tools
-ButtonLink.displayName = 'ButtonLink'
-
-export { Button, ButtonLink }
+export { Button }
