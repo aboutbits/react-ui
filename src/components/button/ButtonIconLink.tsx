@@ -1,48 +1,31 @@
 import classNames from 'classnames'
-import React, { ComponentType } from 'react'
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
+import React from 'react'
 import { LinkComponentProps, useLinkComponent, useTheme } from '../../framework'
 import { Tone } from '../types'
-import { Size, Variant } from './types'
+import {
+  ButtonIconCommonProps,
+  ButtonStyleProps,
+  LinkCommonProps,
+  Size,
+  Variant,
+} from './types'
 
-export type ButtonIconLinkProps = {
-  /**
-   * Defines the icon of the button.
-   **/
-  icon: ComponentType<IconProps>
-  /**
-   * Define the accessibility label for the icon.
-   **/
-  label: string
-  /**
-   * Defines the variant of the button.
-   **/
-  variant?: Variant
-  /**
-   * Defines the size of the button.
-   **/
-  size?: Size
-  /**
-   * Defines the tone of the button. Basically the color, so be sure to have the colors defined in Tailwind.
-   **/
-  tone?: Tone | string
-  /**
-   * Disables the link
-   */
-  disabled?: boolean
-} & LinkComponentProps
+export type ButtonIconLinkProps = LinkComponentProps &
+  ButtonStyleProps &
+  ButtonIconCommonProps &
+  LinkCommonProps
 
 const ButtonIconLink = React.forwardRef<HTMLAnchorElement, ButtonIconLinkProps>(
   (
     {
       href,
+      variant = Variant.solid,
+      size = Size.md,
+      tone = Tone.primary,
       icon: Icon,
       internal = true,
       disabled = false,
       label,
-      variant = Variant.solid,
-      size = Size.md,
-      tone = Tone.primary,
       className,
       ...props
     },

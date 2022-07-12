@@ -2,29 +2,31 @@ import classNames from 'classnames'
 import React from 'react'
 import { useLinkComponent, LinkComponentProps, useTheme } from '../../framework'
 import { Tone } from '../types'
-import { ButtonProps } from './Button'
-import { Size, Variant } from './types'
+import {
+  ButtonCommonProps,
+  ButtonStyleProps,
+  LinkCommonProps,
+  Size,
+  Variant,
+} from './types'
 
-export type ButtonLinkProps = Pick<
-  ButtonProps,
-  'variant' | 'size' | 'tone' | 'iconStart' | 'iconEnd'
-> &
-  LinkComponentProps & {
-    disabled?: boolean
-  }
+export type ButtonLinkProps = LinkComponentProps &
+  ButtonStyleProps &
+  ButtonCommonProps &
+  LinkCommonProps
 
 const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   (
     {
+      href,
       variant = Variant.solid,
       size = Size.md,
       tone = Tone.primary,
       iconStart: IconStart,
       iconEnd: IconEnd,
-      href,
-      className = '',
       internal = true,
       disabled = false,
+      className,
       children,
       ...props
     },

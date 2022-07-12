@@ -1,46 +1,25 @@
-import React, { ComponentType } from 'react'
+import React from 'react'
 import classNames from 'classnames'
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { useTheme } from '../../framework'
 import { Tone } from '../types'
-import { Size, Variant } from './types'
+import { ButtonIconCommonProps, ButtonStyleProps, Size, Variant } from './types'
 
 export type ButtonIconProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
-> & {
-  /**
-   * Defines the icon of the button.
-   **/
-  icon: ComponentType<IconProps>
-  /**
-   * Sets a label for [aria-label](https://www.w3schools.com/accessibility/accessibility_labels.php).
-   **/
-  label?: string
-  /**
-   * Defines the variant of the button.
-   **/
-  variant?: Variant
-  /**
-   * Defines the size of the button.
-   **/
-  size?: Size
-  /**
-   * Defines the tone of the button. Basically the color, so be sure to have the colors defined in Tailwind.
-   * You need at least: DEFAULT, 700
-   **/
-  tone?: Tone | string
-}
+> &
+  ButtonStyleProps &
+  ButtonIconCommonProps
 
 const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
   (
     {
-      icon: Icon,
-      label,
-      className,
       variant = Variant.solid,
       size = Size.md,
       tone = Tone.primary,
+      icon: Icon,
+      label,
+      className,
       ...props
     },
     ref

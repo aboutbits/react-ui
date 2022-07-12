@@ -1,35 +1,15 @@
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import classNames from 'classnames'
-import React, { ComponentType } from 'react'
+import React from 'react'
 import { useTheme } from '../../framework'
 import { Tone } from '../types'
-import { Size, Variant } from './types'
+import { ButtonCommonProps, ButtonStyleProps, Size, Variant } from './types'
 
 export type ButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
-> & {
-  /**
-   * Defines the variant of the button.
-   **/
-  variant?: Variant
-  /**
-   * Defines the size of the button.
-   **/
-  size?: Size
-  /**
-   * Defines the tone of the button. Basically the color, so be sure to have the colors defined in Tailwind.
-   **/
-  tone?: Tone | string
-  /**
-   * Defines the icon at the start of the button.
-   **/
-  iconStart?: ComponentType<IconProps>
-  /**
-   * Defines the icon at the end of the button.
-   **/
-  iconEnd?: ComponentType<IconProps>
-}
+> &
+  ButtonStyleProps &
+  ButtonCommonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -37,11 +17,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant = Variant.solid,
       size = Size.md,
       tone = Tone.primary,
-      type = 'button',
-      className = '',
-      children,
       iconStart: IconStart,
       iconEnd: IconEnd,
+      type = 'button',
+      className,
+      children,
       ...props
     },
     ref
