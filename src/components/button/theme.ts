@@ -36,11 +36,8 @@ export default {
       },
     },
   },
-  buttonLink: {
-    base: 'inline-block text-center',
-  },
   buttonIcon: {
-    base: 'rounded-full outline-1 outline-offset-2 focus:outline',
+    base: 'inline-block rounded-full outline-1 outline-offset-2 focus:outline',
     icon: {
       base: 'fill-current',
       size: {
@@ -61,9 +58,6 @@ export default {
         lg: 'p-3-1px border',
       },
     },
-  },
-  buttonIconLink: {
-    base: 'inline-block',
   },
   variantTone: {
     solid: {

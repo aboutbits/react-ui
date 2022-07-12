@@ -35,7 +35,6 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 
     const linkClassNames = classNames(
       /* eslint-disable @typescript-eslint/ban-ts-comment */
-      button.buttonLink.base,
       button.button.base,
       !disabled
         ? // @ts-ignore

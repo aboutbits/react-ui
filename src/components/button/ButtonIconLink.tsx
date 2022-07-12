@@ -54,7 +54,6 @@ const ButtonIconLink = React.forwardRef<HTMLAnchorElement, ButtonIconLinkProps>(
     const linkClassNames = classNames(
       /* eslint-disable @typescript-eslint/ban-ts-comment */
       button.buttonIcon.base,
-      button.buttonIconLink.base,
       !disabled
         ? // @ts-ignore
           button.variantTone[variant][tone]
