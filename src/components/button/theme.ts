@@ -17,6 +17,32 @@ export default {
   buttonLink: {
     base: 'inline-block text-center',
   },
+  buttonIcon: {
+    base: 'rounded-full outline-1 outline-offset-2 focus:outline',
+    icon: {
+      base: 'fill-current',
+      size: {
+        sm: 'w-5 h-5',
+        md: 'w-6 h-6',
+        lg: 'w-9 h-9',
+      },
+    },
+    variantSize: {
+      base: {
+        sm: 'p-1.5',
+        md: 'p-2',
+        lg: 'p-3',
+      },
+      ghost: {
+        sm: 'p-1.5-1px border',
+        md: 'p-2-1px border',
+        lg: 'p-3-1px border',
+      },
+    },
+  },
+  buttonIconLink: {
+    base: 'inline-block',
+  },
   withIcon: {
     iconContainer: {
       base: 'flex justify-center items-center',
