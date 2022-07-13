@@ -6,51 +6,53 @@ export default {
     base: 'col-span-2',
   },
   input: {
-    base: 'block w-full border p-3 focus:ring-0 appearance-none outline-none rounded-md',
+    base: 'block w-full p-2.5-1px bg-transparent border leading-5 appearance-none outline-none focus:ring-0 focus:outline focus:outline-1 focus:-outline-offset-2 rounded-lg',
     light: {
       normal:
-        'border-gray-700 focus:border-primary-400 bg-transparent text-black placeholder-gray-700',
+        'border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800 text-neutral-800 placeholder:text-neutral-500',
       error:
-        'border-critical-500 focus:border-critical-500 bg-transparent text-black placeholder-gray-700',
-      disabled: 'border-gray-700 text-gray-700 bg-gray-100',
+        'border-critical-500 focus:border-critical-500 focus:outline-critical-500 text-neutral-800 placeholder:text-neutral-500',
+      disabled:
+        'border-neutral-400 text-neutral-400 placeholder:text-neutral-400',
     },
     dark: {
       normal:
-        'border-white focus:border-primary-400 bg-transparent text-white placeholder-white',
+        'border-neutral-200 focus:border-white focus:outline-white text-white placeholder:text-neutral-500',
       error:
-        'border-critical-500 focus:border-critical-500 bg-transparent text-white placeholder-white',
-      disabled: 'border-gray-700 text-gray-700 bg-gray-100',
+        'border-critical-300 focus:border-critical-300 focus:outline-critical-300 text-white placeholder:text-neutral-500',
+      disabled:
+        'border-neutral-400 text-neutral-400 placeholder:text-neutral-400',
     },
   },
   inputLabel: {
-    base: 'block pb-1 font-bold text-xs',
+    base: 'block pb-1 ml-1 text-xs font-medium',
     light: {
-      normal: 'text-black',
+      normal: 'text-neutral-800',
       error: 'text-critical-500',
-      disabled: 'text-gray-700',
+      disabled: 'text-neutral-400',
     },
     dark: {
       normal: 'text-white',
-      error: 'text-critical-500',
-      disabled: 'text-gray-700',
+      error: 'text-critical-300',
+      disabled: 'text-neutral-400',
     },
   },
   inputError: {
-    base: 'mt-1 block text-xs',
+    base: 'mt-1 ml-1 block text-xs font-medium',
     light: {
       normal: 'text-critical-500',
     },
     dark: {
-      normal: 'text-critical-500',
+      normal: 'text-critical-300',
     },
   },
   option: {
     base: 'bg-transparent',
     light: {
-      normal: 'text-black',
+      normal: 'text-neutral-800',
     },
     dark: {
-      normal: 'text-black',
+      normal: 'text-neutral-800',
     },
   },
 }
