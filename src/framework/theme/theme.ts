@@ -29,12 +29,3 @@ export const defaultTheme = {
   navigation,
   pagination,
 }
-
-export const customTheme = JSON.parse(JSON.stringify(defaultTheme))
-
-customTheme.button.variantTone.solid.purple =
-  'bg-purple-500 hover:bg-purple-600 text-white outline-purple-500'
-customTheme.button.variantTone.ghost.purple =
-  'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500'
-customTheme.button.variantTone.transparent.purple =
-  'hover:bg-purple-50 text-purple-500 focus:outline-purple-500'
