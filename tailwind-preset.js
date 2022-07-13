@@ -93,6 +93,9 @@ module.exports = {
         '6-1px': 'calc(1.5rem - 1px)',
         '8-1px': 'calc(2rem - 1px)',
       },
+      outlineOffset: {
+        '-2': '-2px',
+      },
     },
   },
 }
