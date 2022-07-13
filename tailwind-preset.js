@@ -81,7 +81,6 @@ module.exports = {
         800: '#1e40af',
         900: '#1e3a8a',
       },
-      purple: colors.purple,
       gray: colors.gray,
     },
     extend: {
