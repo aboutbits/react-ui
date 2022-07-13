@@ -3,59 +3,30 @@ import { ComponentType } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
 import classNames from 'classnames'
-import { ClassNameProps } from '../types'
+import { ClassNameProps, Tone } from '../types'
 import { useTheme } from '../../framework'
-
-export enum Tone {
-  critical = 'critical',
-  positive = 'positive',
-}
 
 export type Props = ClassNameProps & {
   tone: Tone
 }
 
-const Icon: Record<Tone, ComponentType<IconProps>> = {
+const Icon: { [key in Tone]?: ComponentType<IconProps> } = {
   [Tone.critical]: IconWarning,
-  [Tone.positive]: IconCheck,
+  [Tone.success]: IconCheck,
 }
 
 export const AlertIcon: React.FC<Props> = ({ className, tone }) => {
   const { alert } = useTheme()
 
-  const MessageIcon = Icon[tone]
+  const MessageIcon = Icon[tone] as ComponentType<IconProps>
 
-  return (
-    <div
-      className={classNames(
-        alert.iconContainer.base,
-        alert.iconContainer.tone[tone],
-        className
-      )}
-    >
-      <MessageIcon
-        className={classNames(alert.icon.base, alert.icon.tone[tone])}
-      />
-    </div>
-  )
+  return <MessageIcon className={classNames(alert.icon.base, className)} />
 }
 
-export const AlertMessage: React.FC<Props> = ({
-  className,
-  tone,
-  children,
-}) => {
+export const AlertMessage: React.FC<Props> = ({ className, children }) => {
   const { alert } = useTheme()
   return (
-    <div
-      className={classNames(
-        alert.message.tone[tone],
-        alert.message.base,
-        className
-      )}
-    >
-      {children}
-    </div>
+    <div className={classNames(alert.message.base, className)}>{children}</div>
   )
 }
 
