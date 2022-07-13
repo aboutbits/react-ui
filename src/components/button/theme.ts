@@ -81,13 +81,13 @@ export default {
       neutral:
         'hover:bg-neutral-100 focus:bg-neutral-100 border-neutral-700 focus:border-transparent text-neutral-700 outline-neutral-700',
       critical:
-        'hover:bg-critical-50 focus:bg-critical-50 border-critical-500 focus:border-transparent text-critical-500 outline-primary-500',
+        'hover:bg-critical-50 focus:bg-critical-50 border-critical-500 focus:border-transparent text-critical-500 outline-critical-500',
       warning:
-        'hover:bg-warning-50 focus:bg-warning-50 border-warning-500 focus:border-transparent text-warning-500 outline-primary-500',
+        'hover:bg-warning-50 focus:bg-warning-50 border-warning-500 focus:border-transparent text-warning-500 outline-warning-500',
       success:
-        'hover:bg-success-50 focus:bg-success-50 border-success-500 focus:border-transparent text-success-500 outline-primary-500',
+        'hover:bg-success-50 focus:bg-success-50 border-success-500 focus:border-transparent text-success-500 outline-success-500',
       informative:
-        'hover:bg-informative-50 focus:bg-informative-50 border-informative-500 focus:border-transparent text-informative-500 outline-primary-500',
+        'hover:bg-informative-50 focus:bg-informative-50 border-informative-500 focus:border-transparent text-informative-500 outline-informative-500',
       disabled: 'border-neutral-200 text-neutral-400',
     },
     transparent: {
