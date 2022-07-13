@@ -1,9 +1,10 @@
 import { Dialog } from '@reach/dialog'
 import classNames from 'classnames'
 import { ReactNode } from 'react'
-import { Button, Size, Tone, Variant } from '../../button'
+import { Button } from '../../button'
 import { useTheme } from '../../../framework'
-import { ClassNameProps } from '../../types'
+import { ClassNameProps, Tone } from '../../types'
+import { Size, Variant } from '../../button/types'
 
 export enum ConfirmationDialogVariant {
   confirm = 'confirm',
@@ -96,7 +97,7 @@ const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
         {dismissButtonText && (
           <Button
             variant={Variant.ghost}
-            tone={Tone.secondary}
+            tone={Tone.neutral}
             size={Size.sm}
             disabled={disableDismiss}
             onClick={onDismiss}

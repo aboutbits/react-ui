@@ -1,5 +1,9 @@
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { ButtonLink } from './Button'
+import { Tone } from '../types'
+import { Size, Variant } from './types'
+import { ButtonLink } from './ButtonLink'
 
 <Meta title="Components/Button/ButtonLink" component={ButtonLink} />
 
@@ -16,10 +20,39 @@ export const Template = ({ children, ...args }) => (
   <Story
     name="Default"
     args={{
-      children: 'Default ButtonLink',
+      children: 'Default Button',
       href: '#ButtonLink',
-      internal: true,
       disabled: false,
+      internal: true,
+      variant: Variant.solid,
+      size: Size.md,
+      tone: Tone.primary,
+      iconStart: 'None',
+      iconEnd: 'None',
+    }}
+    argTypes={{
+      variant: {
+        options: Object.values(Variant),
+        control: { type: 'radio' },
+      },
+      size: {
+        options: Object.values(Size),
+        control: { type: 'radio' },
+      },
+      tone: {
+        options: Object.values(Tone),
+        control: { type: 'select' },
+      },
+      iconStart: {
+        options: ['None', 'Add', 'Info'],
+        mapping: { None: undefined, Add: IconAdd, Info: IconInfo },
+        control: { type: 'select' },
+      },
+      iconEnd: {
+        options: ['None', 'Add', 'Info'],
+        mapping: { None: undefined, Add: IconAdd, Info: IconInfo },
+        control: { type: 'select' },
+      },
     }}
   >
     {Template.bind({})}
@@ -38,9 +71,7 @@ AnchorHTMLAttributes<HTMLAnchorElement>
 
 ### Theme
 
-- `button.buttonLink.base`: Define the centering of the text within the button.
-
-The remaining themes are the same as for the [Button](/docs/components-button-button--default-story#theme).
+All themes are the same as for the [Button](/docs/components-button-button--default-story#theme).
 
 ## Examples
 

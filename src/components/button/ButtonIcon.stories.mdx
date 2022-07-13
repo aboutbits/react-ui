@@ -1,0 +1,161 @@
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { Tone } from '../types'
+import { Size, Variant } from './types'
+import { ButtonIcon } from './ButtonIcon'
+
+<Meta title="Components/Button/ButtonIcon" component={ButtonIcon} />
+
+# ButtonIcon
+
+export const Template = ({ ...args }) => (
+  <ButtonIcon {...args} onClick={action('clicked')} />
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      disabled: false,
+      variant: Variant.solid,
+      size: Size.md,
+      tone: Tone.primary,
+      icon: 'Add',
+    }}
+    argTypes={{
+      variant: {
+        options: Object.values(Variant),
+        control: { type: 'radio' },
+      },
+      size: {
+        options: Object.values(Size),
+        control: { type: 'radio' },
+      },
+      tone: {
+        options: Object.values(Tone),
+        control: { type: 'select' },
+      },
+      icon: {
+        options: ['Add', 'Info'],
+        mapping: { Add: IconAdd, Info: IconInfo },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+All the other externally defined props are
+
+```
+React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+```
+
+### Theme
+
+- `button.buttonIcon.base`
+- `button.buttonIcon.icon.base`: Define the base styles for the icon.
+- `button.buttonIcon.icon.size.sm`: Define the size of the small size icon.
+- `button.buttonIcon.icon.size.md`: Define the size of the small medium icon.
+- `button.buttonIcon.icon.size.lg`: Define the size of the small large icon.
+- `button.buttonIcon.variantSize.base.sm`: Define the base styles for the small size size button.
+- `button.buttonIcon.variantSize.base.md`: Define the base styles for the medium size size button.
+- `button.buttonIcon.variantSize.base.lg`: Define the base styles for the large size size button.
+
+Additionally, all the `button.variantTone` themes are used. See [Button](/docs/components-button-button--default-story#theme).
+
+## Variants
+
+The `Variant` determine if there is a background fill and a border. The `transparent` variant, while being transparent, still keep the same size as the other variants.
+
+<Canvas>
+  <Story name="VariantSolid">
+    <ButtonIcon icon={IconAdd} variant={Variant.solid} />
+  </Story>
+  <Story name="VariantGhost">
+    <ButtonIcon icon={IconAdd} variant={Variant.ghost} />
+  </Story>
+  <Story name="VariantTransparent">
+    <ButtonIcon icon={IconAdd} variant={Variant.transparent} />
+  </Story>
+</Canvas>
+
+## Size
+
+The size determine the padding between the button text and its border.
+
+<Canvas>
+  <Story name="SizeSm">
+    <ButtonIcon icon={IconAdd} size={Size.sm} />
+  </Story>
+  <Story name="SizeMd">
+    <ButtonIcon icon={IconAdd} size={Size.md} />
+  </Story>
+  <Story name="SizeLg">
+    <ButtonIcon icon={IconAdd} size={Size.lg} />
+  </Story>
+</Canvas>
+
+## Tone
+
+The tone of the button determine it's background color. Given the prop, the component will look at the Tailwind config to determine its color.
+
+For additional information about Tailwind config, please refer to the [Tailwind documentation on colors](https://tailwindcss.com/docs/customizing-colors).
+
+<Canvas>
+  <Story name="Primary">
+    <ButtonIcon icon={IconAdd} tone={Tone.primary} />
+  </Story>
+  <Story name="Neutral">
+    <ButtonIcon icon={IconAdd} tone={Tone.neutral} />
+  </Story>
+  <Story name="Warning">
+    <ButtonIcon icon={IconAdd} tone={Tone.warning} />
+  </Story>
+  <Story name="Critical">
+    <ButtonIcon icon={IconAdd} tone={Tone.critical} />
+  </Story>
+  <Story name="Success">
+    <ButtonIcon icon={IconAdd} tone={Tone.success} />
+  </Story>
+  <Story name="Informative">
+    <ButtonIcon icon={IconAdd} tone={Tone.informative} />
+  </Story>
+</Canvas>
+
+## Tone Custom
+
+If the provided colors are not satisfying the needs of a project, it is possible to add your own colors. In the following example, it is moderated what needs to be added to the `reactui.config.js`. See [ReactUI Integrations](https://github.com/aboutbits/react-ui-integrations) for more information.
+
+```js
+module.exports = {
+  button: {
+    variantTone: {
+      solid: {
+        purple:
+          'bg-purple-500 hover:bg-purple-600 text-white outline-purple-500',
+      },
+      ghost: {
+        purple:
+          'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500',
+      },
+      transparent: {
+        purple: 'hover:bg-purple-50 text-purple-500 focus:outline-purple-500',
+      },
+    },
+  },
+}
+```
+
+<Canvas>
+  <Story name="CustomPurple">
+    <ButtonIcon icon={IconAdd} tone="purple" />
+  </Story>
+</Canvas>

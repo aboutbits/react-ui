@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import { actions } from '@storybook/addon-actions'
+import { ButtonIconLink } from './ButtonIconLink'
+
+<Meta title="Components/Button/ButtonIconLink" component={ButtonIconLink} />
+
+# ButtonIconLink
+
+export const Template = ({ ...args }) => (
+  <ButtonIconLink {...args} onClick={actions('clicked')} />
+)
+
+<Canvas>
+  <Story name="Default" args={{ href: '#', icon: IconAdd, disabled: false }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+All themes are the same as for the [ButtonIcon](/docs/components-button-buttonicon--default-story#theme).
+
+## Variants
+
+The variants are the same as for the [ButtonIcon](/docs/components-button-buttonicon--default-story#theme).
+
+## Size
+
+The size is the same as for the [ButtonIcon](/docs/components-button-buttonicon--default-story#theme).
+
+## Tone
+
+The tone is the same as for the [ButtonIcon](/docs/components-button-buttonicon--default-story#theme).

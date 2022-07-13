@@ -1,19 +1,58 @@
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { actions } from '@storybook/addon-actions'
-import { Button, Size, Tone, Variant } from './Button'
+import { action } from '@storybook/addon-actions'
+import { Tone } from '../types'
+import { Size, Variant } from './types'
+import { Button } from './Button'
 
 <Meta title="Components/Button/Button" component={Button} />
 
 # Button
 
 export const Template = ({ children, ...args }) => (
-  <Button {...args} onClick={actions('clicked')}>
+  <Button {...args} onClick={action('clicked')}>
     {children}
   </Button>
 )
 
 <Canvas>
-  <Story name="Default" args={{ children: 'Default Button' }}>
+  <Story
+    name="Default"
+    args={{
+      children: 'Default Button',
+      disabled: false,
+      variant: Variant.solid,
+      size: Size.md,
+      tone: Tone.primary,
+      iconStart: 'None',
+      iconEnd: 'None',
+    }}
+    argTypes={{
+      variant: {
+        options: Object.values(Variant),
+        control: { type: 'radio' },
+      },
+      size: {
+        options: Object.values(Size),
+        control: { type: 'radio' },
+      },
+      tone: {
+        options: Object.values(Tone),
+        control: { type: 'select' },
+      },
+      iconStart: {
+        options: ['None', 'Add', 'Info'],
+        mapping: { None: undefined, Add: IconAdd, Info: IconInfo },
+        control: { type: 'select' },
+      },
+      iconEnd: {
+        options: ['None', 'Add', 'Info'],
+        mapping: { None: undefined, Add: IconAdd, Info: IconInfo },
+        control: { type: 'select' },
+      },
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -31,23 +70,41 @@ React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButto
 ### Theme
 
 - `button.button.base`
-- `button.button.size.sm`: Define the size of the small size button.
-- `button.button.size.md`: Define the size of the medium size button.
-- `button.button.variantTone.solid.base`
-- `button.button.variantTone.solid.primary`: Define the color and interactions for the button with the variant solid and tone primary.
-- `button.button.variantTone.solid.critical`: Define the color and interactions for the button with the variant solid and tone critical.
-- `button.button.variantTone.solid.secondary`: Define the color and interactions for the button with the variant solid and tone secondary.
-- `button.button.variantTone.solid.disabled`: Define the status disabled for the button with the variant solid.
-- `button.button.variantTone.ghost.base`
-- `button.button.variantTone.ghost.primary`: Define the color and interactions for the button with the variant ghost and tone primary.
-- `button.button.variantTone.ghost.critical`: Define the color and interactions for the button with the variant ghost and tone critical.
-- `button.button.variantTone.ghost.secondary`: Define the color and interactions for the button with the variant ghost and tone secondary.
-- `button.button.variantTone.ghost.disabled`: Define the status disabled for the button with the variant ghost.
-- `button.button.variantTone.transparent.base`
-- `button.button.variantTone.transparent.primary`: Define the color and interactions for the button with the variant transparent and tone primary.
-- `button.button.variantTone.transparent.critical`: Define the color and interactions for the button with the variant transparent and tone critical.
-- `button.button.variantTone.transparent.secondary`: Define the color and interactions for the button with the variant transparent and tone secondary.
-- `button.button.variantTone.transparent.disabled`: Define the status disabled for the button with the variant transparent.
+- `button.button.variantSize.base.sm`: Define the base styles for the small size size button.
+- `button.button.variantSize.base.md`: Define the base styles for the medium size size button.
+- `button.button.variantSize.base.lg`: Define the base styles for the large size size button.
+- `button.button.variantSize.base`: Define the size of the small size button.
+- `button.button.icon.base`: Define the base styles for the icon.
+- `button.button.icon.size.sm`: Define the size of the small size icon.
+- `button.button.icon.size.md`: Define the size of the small medium icon.
+- `button.button.icon.size.lg`: Define the size of the small large icon.
+- `button.button.icon.iconStart.size.sm`: Define the size of the small size start icon.
+- `button.button.icon.iconStart.size.md`: Define the size of the medium size start icon.
+- `button.button.icon.iconStart.size.lg`: Define the size of the large size start icon.
+- `button.button.icon.iconEnd.size.sm`: Define the size of the small size end icon.
+- `button.button.icon.iconEnd.size.md`: Define the size of the medium size end icon.
+- `button.button.icon.iconEnd.size.lg`: Define the size of the large size end icon.
+- `button.variantTone.solid.primary`: Define the color and interactions for the button with the variant solid and tone primary.
+- `button.variantTone.solid.neutral`: Define the color and interactions for the button with the variant solid and tone neutral.
+- `button.variantTone.solid.warning`: Define the color and interactions for the button with the variant solid and tone warning.
+- `button.variantTone.solid.critical`: Define the color and interactions for the button with the variant solid and tone critical.
+- `button.variantTone.solid.success`: Define the color and interactions for the button with the variant solid and tone success.
+- `button.variantTone.solid.informative`: Define the color and interactions for the button with the variant solid and tone informative.
+- `button.variantTone.solid.disabled`: Define the status disabled for the button with the variant solid.
+- `button.variantTone.ghost.primary`: Define the color and interactions for the button with the variant ghost and tone primary.
+- `button.variantTone.ghost.neutral`: Define the color and interactions for the button with the variant ghost and tone neutral.
+- `button.variantTone.ghost.warning`: Define the color and interactions for the button with the variant ghost and tone warning.
+- `button.variantTone.ghost.critical`: Define the color and interactions for the button with the variant ghost and tone critical.
+- `button.variantTone.ghost.success`: Define the color and interactions for the button with the variant ghost and tone success.
+- `button.variantTone.ghost.informative`: Define the color and interactions for the button with the variant ghost and tone informative.
+- `button.variantTone.ghost.disabled`: Define the status disabled for the button with the variant ghost.
+- `button.variantTone.transparent.primary`: Define the color and interactions for the button with the variant transparent and tone primary.
+- `button.variantTone.transparent.neutral`: Define the color and interactions for the button with the variant transparent and tone neutral.
+- `button.variantTone.transparent.warning`: Define the color and interactions for the button with the variant transparent and tone warning.
+- `button.variantTone.transparent.critical`: Define the color and interactions for the button with the variant transparent and tone critical.
+- `button.variantTone.transparent.success`: Define the color and interactions for the button with the variant transparent and tone success.
+- `button.variantTone.transparent.informative`: Define the color and interactions for the button with the variant transparent and tone informative.
+- `button.variantTone.transparent.disabled`: Define the status disabled for the button with the variant transparent.
 
 ## Variants
 
@@ -70,17 +127,20 @@ The `Variant` determine if there is a background fill and a border. The `transpa
 The size determine the padding between the button text and its border.
 
 <Canvas>
+  <Story name="SizeSm">
+    <Button size={Size.sm}>Small Button</Button>
+  </Story>
   <Story name="SizeMd">
     <Button size={Size.md}>Medium Button</Button>
   </Story>
-  <Story name="SizeSm">
-    <Button size={Size.sm}>Small Button</Button>
+  <Story name="SizeLg">
+    <Button size={Size.lg}>Large Button</Button>
   </Story>
 </Canvas>
 
 ## Tone
 
-The tone of the button determine it's background color. Given the prop, the component will look at the Tailwind config to determine its color. Given a color name, for example `green`, the component will use the `DEFAULT` variant, that is `green`, for its normale state, and the `700` variant, that is `green-700` for its focus, hover and active states.
+The tone of the button determine it's background color. Given the prop, the component will look at the Tailwind config to determine its color.
 
 For additional information about Tailwind config, please refer to the [Tailwind documentation on colors](https://tailwindcss.com/docs/customizing-colors).
 
@@ -88,41 +148,64 @@ For additional information about Tailwind config, please refer to the [Tailwind 
   <Story name="Primary">
     <Button tone={Tone.primary}>Primary Button</Button>
   </Story>
-  <Story name="Secondary">
-    <Button tone={Tone.secondary}>Secondary Button</Button>
+  <Story name="Neutral">
+    <Button tone={Tone.neutral}>Neutral Button</Button>
+  </Story>
+  <Story name="Warning">
+    <Button tone={Tone.warning}>Warning Button</Button>
   </Story>
   <Story name="Critical">
     <Button tone={Tone.critical}>Critical Button</Button>
+  </Story>
+  <Story name="Success">
+    <Button tone={Tone.success}>Success Button</Button>
+  </Story>
+  <Story name="Informative">
+    <Button tone={Tone.informative}>Informative Button</Button>
   </Story>
 </Canvas>
 
 ## Tone Custom
 
-If the provided colors are not satisfying the needs of a project, it is possible to add your own colors. In the following example, it is moderated what needs to be passed to the function makeTheme.
+If the provided colors are not satisfying the needs of a project, it is possible to add your own colors. In the following example, it is moderated what needs to be added to the `reactui.config.js`. See [ReactUI Integrations](https://github.com/aboutbits/react-ui-integrations) for more information.
 
-```
-const themeOverwrite = {
+```js
+module.exports = {
   button: {
-    button: {
-      variantTone: {
-        solid: {
-          green: "border-transparent bg-green-500 hover:bg-green-700 focus:bg-green-700 text-white font-bold",
-        },
-        ghost: {
-          green: "border-green-500 hover:border-green-700 text-primary-500 hover:text-green-700",
-        },
-        transparent: {
-          green: "text-green-500 hover:text-green-700",
-        },
-      }
-    }
-  }
+    variantTone: {
+      solid: {
+        purple:
+          'bg-purple-500 hover:bg-purple-600 text-white outline-purple-500',
+      },
+      ghost: {
+        purple:
+          'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500',
+      },
+      transparent: {
+        purple: 'hover:bg-purple-50 text-purple-500 focus:outline-purple-500',
+      },
+    },
+  },
 }
 ```
 
 <Canvas>
-  <Story name="CustomGreen">
-    <Button tone="green">Green Button</Button>
+  <Story name="CustomPurple">
+    <Button tone="purple">Purple Button</Button>
+  </Story>
+</Canvas>
+
+## With icon
+
+<Canvas>
+  <Story name="WithIconStart">
+    <Button iconStart={IconAdd}>Add item</Button>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="WithIconEnd">
+    <Button iconEnd={IconAdd}>Add item</Button>
   </Story>
 </Canvas>
 
@@ -130,6 +213,6 @@ const themeOverwrite = {
 
 <Canvas>
   <Story name="Full width">
-    <Button className={'w-full'}>Full width</Button>
+    <Button className="w-full">Full width</Button>
   </Story>
 </Canvas>

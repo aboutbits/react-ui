@@ -1,2 +1,4 @@
 export * from './Button'
-export * from './ButtonWithIcon'
+export * from './ButtonLink'
+export * from './ButtonIcon'
+export * from './ButtonIconLink'
