@@ -11,6 +11,7 @@ module.exports = {
       current: 'currentColor',
       primary: {
         50: '#eff2fd',
+        '50t': 'rgba(76, 110, 232, 0.1)',
         100: '#dde3fb',
         200: '#b8c6f6',
         300: '#94a9f1',
@@ -23,6 +24,7 @@ module.exports = {
       },
       neutral: {
         50: '#fafafa',
+        '50t': 'rgba(115, 115, 115, 0.1)',
         100: '#f5f5f5',
         200: '#e5e5e5',
         300: '#d4d4d4',
@@ -35,6 +37,7 @@ module.exports = {
       },
       warning: {
         50: '#fefce8',
+        '50t': 'rgba(234, 179, 8, 0.1)',
         100: '#fef9c3',
         200: '#fef08a',
         300: '#fde047',
@@ -47,6 +50,7 @@ module.exports = {
       },
       critical: {
         50: '#fef2f2',
+        '50t': 'rgba(239, 68, 68, 0.1)',
         100: '#fee2e2',
         200: '#fecaca',
         300: '#fca5a5',
@@ -59,6 +63,7 @@ module.exports = {
       },
       success: {
         50: '#f0fdf4',
+        '50t': 'rgba(34, 197, 94, 0.1)',
         100: '#dcfce7',
         200: '#bbf7d0',
         300: '#86efac',
@@ -71,6 +76,7 @@ module.exports = {
       },
       informative: {
         50: '#eff6ff',
+        '50t': 'rgba(59, 130, 246, 0.1)',
         100: '#dbeafe',
         200: '#bfdbfe',
         300: '#93c5fd',
