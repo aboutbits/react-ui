@@ -70,39 +70,39 @@ export default {
       warning:
         'bg-warning-500 hover:bg-warning-600 text-white outline-warning-500',
       success:
-        'bg-success-500 hover:bg-success-600 text-white outline-success-500',
+        'bg-success-600 hover:bg-success-700 text-white outline-success-600',
       informative:
         'bg-informative-500 hover:bg-informative-600 text-white outline-informative-500',
       disabled: 'bg-neutral-200 text-neutral-400',
     },
     ghost: {
       primary:
-        'hover:bg-primary-50 focus:bg-primary-50 border-primary-500 focus:border-transparent text-primary-500 outline-primary-500',
+        'hover:bg-primary-500/10 focus:bg-primary-500/10 border-primary-500 focus:border-transparent text-primary-500 outline-primary-500',
       neutral:
-        'hover:bg-neutral-100 focus:bg-neutral-100 border-neutral-700 focus:border-transparent text-neutral-700 outline-neutral-700',
+        'hover:bg-neutral-500/10 focus:bg-neutral-500/10 border-neutral-700 focus:border-transparent text-neutral-700 outline-neutral-700',
       critical:
-        'hover:bg-critical-50 focus:bg-critical-50 border-critical-500 focus:border-transparent text-critical-500 outline-critical-500',
+        'hover:bg-critical-500/10 focus:bg-critical-500/10 border-critical-500 focus:border-transparent text-critical-500 outline-critical-500',
       warning:
-        'hover:bg-warning-50 focus:bg-warning-50 border-warning-500 focus:border-transparent text-warning-500 outline-warning-500',
+        'hover:bg-warning-500/10 focus:bg-warning-500/10 border-warning-600 focus:border-transparent text-warning-600 outline-warning-600',
       success:
-        'hover:bg-success-50 focus:bg-success-50 border-success-500 focus:border-transparent text-success-500 outline-success-500',
+        'hover:bg-success-500/10 focus:bg-success-500/10 border-success-600 focus:border-transparent text-success-600 outline-success-600',
       informative:
-        'hover:bg-informative-50 focus:bg-informative-50 border-informative-500 focus:border-transparent text-informative-500 outline-informative-500',
+        'hover:bg-informative-500/10 focus:bg-informative-500/10 border-informative-500 focus:border-transparent text-informative-500 outline-informative-500',
       disabled: 'border-neutral-200 text-neutral-400',
     },
     transparent: {
       primary:
-        'hover:bg-primary-50t text-primary-500 focus:outline-primary-500',
+        'hover:bg-primary-500/10 text-primary-500 focus:outline-primary-500',
       neutral:
-        'hover:bg-neutral-50t text-neutral-700 focus:outline-neutral-700',
+        'hover:bg-neutral-500/10 text-neutral-700 focus:outline-neutral-700',
       critical:
-        'hover:bg-critical-50t text-critical-500 focus:outline-critical-500',
+        'hover:bg-critical-500/10 text-critical-500 focus:outline-critical-500',
       warning:
-        'hover:bg-warning-50t text-warning-500 focus:outline-warning-500',
+        'hover:bg-warning-500/10 text-warning-600 focus:outline-warning-600',
       success:
-        'hover:bg-success-50t text-success-500 focus:outline-success-500',
+        'hover:bg-success-500/10 text-success-600 focus:outline-success-600',
       informative:
-        'hover:bg-informative-50t text-informative-500 focus:outline-informative-500',
+        'hover:bg-informative-500/10 text-informative-500 focus:outline-informative-500',
       disabled: 'text-neutral-400',
     },
   },
