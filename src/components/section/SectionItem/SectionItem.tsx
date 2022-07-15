@@ -40,7 +40,12 @@ export const SectionListItemButton = React.forwardRef<
 >(({ children, onClick, className, ...props }, ref) => {
   const { section } = useTheme()
   return (
-    <button onClick={onClick} className="block w-full" ref={ref} {...props}>
+    <button
+      onClick={onClick}
+      className={section.listItemButton.button}
+      ref={ref}
+      {...props}
+    >
       <SectionListItem
         className={classNames(section.listItemButton.base, className)}
       >

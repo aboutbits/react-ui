@@ -1,44 +1,21 @@
-import React, { ComponentType, ReactElement } from 'react'
 import classNames from 'classnames'
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
+import { ReactElement } from 'react'
 import { useTheme } from '../../../framework'
-import { ClassNameProps } from '../../types'
+import { ButtonIcon, ButtonIconProps, Size, Variant } from '../../button'
+import { Tone } from '../../types'
 
-export type SectionActionProps = ClassNameProps & {
-  /**
-   * Defines icon of the action.
-   **/
-  Icon: ComponentType<IconProps>
-  /**
-   * Defines label of the action.
-   **/
-  label: string
-  /**
-   * On click handler for the button.
-   */
-  onClick: () => void
-  /**
-   * Defines if the action is disabled.
-   **/
-  disabled?: boolean | undefined
-}
+export type SectionActionProps = Omit<ButtonIconProps, 'ref'>
 
-export function SectionAction({
-  Icon,
-  label,
-  onClick,
-  disabled,
-  className,
-}: SectionActionProps): ReactElement {
+export function SectionAction(props: SectionActionProps): ReactElement {
   const { section } = useTheme()
 
   return (
-    <button
-      className={classNames(section.action.base, className)}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      <Icon title={label} className={section.action.icon} />
-    </button>
+    <ButtonIcon
+      size={Size.sm}
+      variant={Variant.transparent}
+      tone={Tone.neutral}
+      className={classNames(section.action.base)}
+      {...props}
+    />
   )
 }

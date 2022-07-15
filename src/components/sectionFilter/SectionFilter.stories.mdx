@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { action } from '@storybook/addon-actions'
 import {
   Section,
+  SectionContent,
   SectionContentList,
   SectionHeader,
   SectionListItemButton,
@@ -61,59 +62,61 @@ export const Template = () => {
           isFiltering={filter.department !== '' || filter.role !== ''}
         />
       </SectionHeader>
-      {filterShow && (
-        <SectionFilter
-          initialValues={filter}
-          onFilter={(values) => {
-            setFilter(values)
-          }}
-          dialogProps={{
-            confirmationButtonContent: 'Apply filter',
-            onDismiss: () => setFilterShow(false),
-          }}
-        >
-          <Select id="role" autoCapitalize="none" name="role" label="Role">
-            <option className="bg-gray-600" value="">
-              All
-            </option>
-            <option className="bg-gray-600" value="ADMIN">
-              Admin
-            </option>
-            <option className="bg-gray-600" value="USER">
-              User
-            </option>
-          </Select>
-          <Select
-            id="department"
-            autoCapitalize="none"
-            name="department"
-            label="Department"
+      <SectionContent>
+        {filterShow && (
+          <SectionFilter
+            initialValues={filter}
+            onFilter={(values) => {
+              setFilter(values)
+            }}
+            dialogProps={{
+              confirmationButtonContent: 'Apply filter',
+              onDismiss: () => setFilterShow(false),
+            }}
           >
-            <option className="bg-gray-600" value="">
-              All
-            </option>
-            <option className="bg-gray-600" value="HR">
-              Human Resources
-            </option>
-            <option className="bg-gray-600" value="IT">
-              Engineering
-            </option>
-            <option className="bg-gray-600" value="SALES">
-              Sales
-            </option>
-          </Select>
-        </SectionFilter>
-      )}
-      <SectionContentList>
-        {content.map((item) => (
-          <SectionListItemButton
-            key={item.name}
-            onClick={() => action('clicked')}
-          >
-            {`${item.name} (${item.role} - ${item.department})`}
-          </SectionListItemButton>
-        ))}
-      </SectionContentList>
+            <Select id="role" autoCapitalize="none" name="role" label="Role">
+              <option className="bg-gray-600" value="">
+                All
+              </option>
+              <option className="bg-gray-600" value="ADMIN">
+                Admin
+              </option>
+              <option className="bg-gray-600" value="USER">
+                User
+              </option>
+            </Select>
+            <Select
+              id="department"
+              autoCapitalize="none"
+              name="department"
+              label="Department"
+            >
+              <option className="bg-gray-600" value="">
+                All
+              </option>
+              <option className="bg-gray-600" value="HR">
+                Human Resources
+              </option>
+              <option className="bg-gray-600" value="IT">
+                Engineering
+              </option>
+              <option className="bg-gray-600" value="SALES">
+                Sales
+              </option>
+            </Select>
+          </SectionFilter>
+        )}
+        <SectionContentList>
+          {content.map((item) => (
+            <SectionListItemButton
+              key={item.name}
+              onClick={() => action('clicked')}
+            >
+              {`${item.name} (${item.role} - ${item.department})`}
+            </SectionListItemButton>
+          ))}
+        </SectionContentList>
+      </SectionContent>
     </>
   )
 }

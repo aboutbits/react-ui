@@ -4,7 +4,7 @@ export default {
   },
   prevNext: {
     icon: {
-      base: 'inline-block w-6 h-6 fill-current',
+      base: 'inline-block w-5 h-5 fill-current',
     },
     text: {
       base: 'hidden lg:block',

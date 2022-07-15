@@ -4,14 +4,14 @@ import { SectionAction, SectionActionProps } from '../section'
 import { useInternationalization, useTheme } from '../../framework'
 
 type Props = Pick<SectionActionProps, 'onClick'> &
-  Partial<Pick<SectionActionProps, 'label' | 'Icon'>> & {
+  Partial<Pick<SectionActionProps, 'label' | 'icon'>> & {
     isFiltering: boolean
   }
 
 function SectionFilterAction({
   onClick,
   label,
-  Icon,
+  icon: Icon,
   isFiltering,
 }: Props): ReactElement {
   const internationalization = useInternationalization()
@@ -20,7 +20,7 @@ function SectionFilterAction({
   return (
     <div className="relative flex items-center">
       <SectionAction
-        Icon={Icon || IconFilterList}
+        icon={Icon || IconFilterList}
         label={label || internationalization.translate('shared.filter.label')}
         onClick={onClick}
       />

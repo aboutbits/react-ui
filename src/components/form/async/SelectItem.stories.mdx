@@ -3,7 +3,6 @@ import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { IndexType } from '@aboutbits/pagination'
-import { SectionContent } from '../../section'
 import { Form } from '../Form'
 import { SelectItem } from './SelectItem'
 import {
@@ -28,9 +27,7 @@ import {
           onSubmit={(values) => action('onSubmit')(values)}
         >
           <Form>
-            <SectionContent>
-              <Story />
-            </SectionContent>
+            <Story />
           </Form>
         </Formik>
       )

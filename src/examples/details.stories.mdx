@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl'
 import { ContentArea } from '../components/content/ContentArea/ContentArea'
 import {
   Section,
+  SectionContent,
   SectionContentTwoColumn,
   SectionDescriptionItem,
   SectionHeader,
@@ -23,23 +24,25 @@ export const Template = ({ title }) => {
         <SectionHeader>
           <SectionTitle>{title}</SectionTitle>
         </SectionHeader>
-        <SectionContentTwoColumn>
-          <SectionDescriptionItem
-            content="John Doe"
-            title={intl.formatMessage({ id: 'shared.field.name' })}
-          />
-          <SectionDescriptionItem
-            content="info@aboutbits.it"
-            title={intl.formatMessage({ id: 'shared.field.email' })}
-          />
-          <SectionDescriptionItem content="admin" title="Role" />
-          <SectionDescriptionItem content="English" title="Language" />
-          <SectionDescriptionItem
-            className="xl:col-span-2"
-            content="John is a software engineer from Bolzano, Italy."
-            title="Bio"
-          />
-        </SectionContentTwoColumn>
+        <SectionContent>
+          <SectionContentTwoColumn>
+            <SectionDescriptionItem
+              content="John Doe"
+              title={intl.formatMessage({ id: 'shared.field.name' })}
+            />
+            <SectionDescriptionItem
+              content="info@aboutbits.it"
+              title={intl.formatMessage({ id: 'shared.field.email' })}
+            />
+            <SectionDescriptionItem content="admin" title="Role" />
+            <SectionDescriptionItem content="English" title="Language" />
+            <SectionDescriptionItem
+              className="xl:col-span-2"
+              content="John is a software engineer from Bolzano, Italy."
+              title="Bio"
+            />
+          </SectionContentTwoColumn>
+        </SectionContent>
       </Section>
     </ContentArea>
   )

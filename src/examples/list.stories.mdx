@@ -1,8 +1,13 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { useState } from 'react'
+import { Actions } from '../components/action'
+import { Button, Variant } from '../components/button'
 import {
   Section,
+  SectionTitle,
+  SectionContent,
+  SectionContentTitle,
   SectionContentList,
   SectionContentListEmpty,
   SectionHeader,
@@ -10,7 +15,7 @@ import {
   SectionListItemButton,
   SectionFooter,
 } from '../components/section'
-import { PaginationInMemory } from '../components/pagination'
+import { SectionFooterWithPaginationInMemory } from '../components/pagination'
 import { SectionFilter, SectionFilterAction } from '../components/sectionFilter'
 import { Select } from '../components/form'
 
@@ -57,76 +62,76 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
           isFiltering={filter.department !== '' || filter.role !== ''}
         />
       </SectionHeader>
-      {filterShow && (
-        <SectionFilter
-          initialValues={filter}
-          onFilter={setFilter}
-          dialogProps={{
-            onDismiss: () => setFilterShow(false),
-            confirmationButtonContent: 'Apply filter',
-          }}
-        >
-          <Select id="role" autoCapitalize="none" name="role" label="Role">
-            <option className="bg-gray-600" value="">
-              All
-            </option>
-            <option className="bg-gray-600" value="ADMIN">
-              Admin
-            </option>
-            <option className="bg-gray-600" value="USER">
-              User
-            </option>
-          </Select>
-          <Select
-            id="department"
-            autoCapitalize="none"
-            name="department"
-            label="Department"
+      <SectionContent>
+        {filterShow && (
+          <SectionFilter
+            initialValues={filter}
+            onFilter={setFilter}
+            dialogProps={{
+              onDismiss: () => setFilterShow(false),
+              confirmationButtonContent: 'Apply filter',
+            }}
           >
-            <option className="bg-gray-600" value="">
-              All
-            </option>
-            <option className="bg-gray-600" value="HR">
-              Human Resources
-            </option>
-            <option className="bg-gray-600" value="IT">
-              Engineering
-            </option>
-            <option className="bg-gray-600" value="SALES">
-              Sales
-            </option>
-          </Select>
-        </SectionFilter>
-      )}
-      <SectionContentList>
-        {content.length > 0 &&
-          content
-            .slice(
-              (page - 1) * numberOfItemsPerPage,
-              (page - 1) * numberOfItemsPerPage + numberOfItemsPerPage
-            )
-            .map((item) => (
-              <SectionListItemButton
-                key={item.name}
-                onClick={() => action('clicked')}
-              >
-                {`${item.name} (${item.role} - ${item.department})`}
-              </SectionListItemButton>
-            ))}
-        {content.length === 0 && (
-          <SectionContentListEmpty>
-            No users found in database.
-          </SectionContentListEmpty>
+            <Select id="role" autoCapitalize="none" name="role" label="Role">
+              <option className="bg-gray-600" value="">
+                All
+              </option>
+              <option className="bg-gray-600" value="ADMIN">
+                Admin
+              </option>
+              <option className="bg-gray-600" value="USER">
+                User
+              </option>
+            </Select>
+            <Select
+              id="department"
+              autoCapitalize="none"
+              name="department"
+              label="Department"
+            >
+              <option className="bg-gray-600" value="">
+                All
+              </option>
+              <option className="bg-gray-600" value="HR">
+                Human Resources
+              </option>
+              <option className="bg-gray-600" value="IT">
+                Engineering
+              </option>
+              <option className="bg-gray-600" value="SALES">
+                Sales
+              </option>
+            </Select>
+          </SectionFilter>
         )}
-      </SectionContentList>
-      <SectionFooter>
-        <PaginationInMemory
+        <SectionContentList>
+          {content.length > 0 &&
+            content
+              .slice(
+                (page - 1) * numberOfItemsPerPage,
+                (page - 1) * numberOfItemsPerPage + numberOfItemsPerPage
+              )
+              .map((item) => (
+                <SectionListItemButton
+                  key={item.name}
+                  onClick={() => action('clicked')}
+                >
+                  {`${item.name} (${item.role} - ${item.department})`}
+                </SectionListItemButton>
+              ))}
+          {content.length === 0 && (
+            <SectionContentListEmpty>
+              No users found in database.
+            </SectionContentListEmpty>
+          )}
+        </SectionContentList>
+        <SectionFooterWithPaginationInMemory
           page={page}
           size={numberOfItemsPerPage}
           total={content.length}
           onChangePage={setPage}
         />
-      </SectionFooter>
+      </SectionContent>
     </Section>
   )
 }
@@ -146,3 +151,56 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
 ### Props
 
 <ArgsTable story="Default" />
+
+# List with content title
+
+export const TemplateWithContentTitle = () => {
+  const content = Array.from(Array(3).keys()).map((item, index) => ({
+    name: `User ${item + 1}`,
+    role: index % 8 === 0 ? 'ADMIN' : 'USER',
+    department: index % 3 === 0 ? 'HR' : 'SALES',
+  }))
+  const list = (
+    <SectionContentList>
+      {content.length > 0 &&
+        content.map((item) => (
+          <SectionListItemButton
+            key={item.name}
+            onClick={() => action('clicked')}
+          >
+            {`${item.name} (${item.role} - ${item.department})`}
+          </SectionListItemButton>
+        ))}
+    </SectionContentList>
+  )
+  return (
+    <Section>
+      <SectionHeader>
+        <SectionTitle>List of users</SectionTitle>
+      </SectionHeader>
+      <SectionContent>
+        {list}
+        <SectionContentTitle>Section Content Title</SectionContentTitle>
+        {list}
+        <SectionFooter>
+          <Actions>
+            <Button variant={Variant.ghost}>Cancel</Button>
+            <Button>Submit</Button>
+          </Actions>
+        </SectionFooter>
+      </SectionContent>
+    </Section>
+  )
+}
+
+<Canvas>
+  <Story
+    name="ContentTitle"
+    args={{
+      numberOfTotalItems: 1000,
+      numberOfItemsPerPage: 5,
+    }}
+  >
+    {TemplateWithContentTitle.bind({})}
+  </Story>
+</Canvas>

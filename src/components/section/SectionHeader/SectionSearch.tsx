@@ -49,7 +49,7 @@ export function SectionSearch({
           className={section.search.input.base}
         />
         <SectionAction
-          Icon={IconClose}
+          icon={IconClose}
           label={internationalization.translate('shared.search.close')}
           onClick={stopSearch}
         />
@@ -60,7 +60,7 @@ export function SectionSearch({
       <>
         <SectionTitle>{title}</SectionTitle>
         <SectionAction
-          Icon={IconSearch}
+          icon={IconSearch}
           label={internationalization.translate('shared.search.open')}
           onClick={startSearch}
         />
