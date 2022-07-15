@@ -1,80 +1,44 @@
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
-import { ComponentType } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
-import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
 import classNames from 'classnames'
-import { ClassNameProps } from '../types'
+import { ComponentType, ReactElement, ReactNode } from 'react'
 import { useTheme } from '../../framework'
+import { ClassNameProps, Tone } from '../types'
+import { AlertActionsPosition, AlertProps } from './types'
 
-export enum Tone {
-  critical = 'critical',
-  positive = 'positive',
+export function Alert({
+  className,
+  icon,
+  title,
+  actions,
+  tone,
+  actionsPosition = AlertActionsPosition.responsive,
+  children,
+}: AlertProps): ReactElement {
+  return (
+    <AlertContainer tone={tone} className={className}>
+      <AlertIcon icon={icon} />
+      <AlertContent actionsPosition={actionsPosition}>
+        <AlertTexts>
+          <AlertTitle>{title}</AlertTitle>
+          <AlertMessage>{children}</AlertMessage>
+        </AlertTexts>
+        <AlertActions>{actions}</AlertActions>
+      </AlertContent>
+    </AlertContainer>
+  )
 }
 
-export type Props = ClassNameProps & {
+export function AlertContainer({
+  className,
+  tone,
+  children,
+}: {
   tone: Tone
-}
-
-const Icon: Record<Tone, ComponentType<IconProps>> = {
-  [Tone.critical]: IconWarning,
-  [Tone.positive]: IconCheck,
-}
-
-export const AlertIcon: React.FC<Props> = ({ className, tone }) => {
+  className?: string
+  children?: ReactNode
+}): ReactElement {
   const { alert } = useTheme()
 
-  const MessageIcon = Icon[tone]
-
-  return (
-    <div
-      className={classNames(
-        alert.iconContainer.base,
-        alert.iconContainer.tone[tone],
-        className
-      )}
-    >
-      <MessageIcon
-        className={classNames(alert.icon.base, alert.icon.tone[tone])}
-      />
-    </div>
-  )
-}
-
-export const AlertMessage: React.FC<Props> = ({
-  className,
-  tone,
-  children,
-}) => {
-  const { alert } = useTheme()
-  return (
-    <div
-      className={classNames(
-        alert.message.tone[tone],
-        alert.message.base,
-        className
-      )}
-    >
-      {children}
-    </div>
-  )
-}
-
-export const AlertContent: React.FC<ClassNameProps> = ({
-  children,
-  className,
-}) => {
-  const { alert } = useTheme()
-  return (
-    <div className={classNames(alert.content.base, className)}>{children}</div>
-  )
-}
-
-export const AlertContainer: React.FC<Props> = ({
-  className,
-  tone,
-  children,
-}) => {
-  const { alert } = useTheme()
   return (
     <div
       className={classNames(
@@ -88,17 +52,107 @@ export const AlertContainer: React.FC<Props> = ({
   )
 }
 
-export const Alert: React.FC<Props> = ({ className, tone, children }) => {
-  if (!children) {
+export function AlertIcon({
+  className,
+  icon: Icon,
+}: {
+  icon?: ComponentType<IconProps>
+} & ClassNameProps): ReactElement | null {
+  const { alert } = useTheme()
+
+  if (Icon === undefined || Icon === null) {
+    return null
+  }
+
+  return <Icon className={classNames(alert.icon.base, className)} />
+}
+
+export function AlertContent({
+  className,
+  actionsPosition = AlertActionsPosition.responsive,
+  children,
+}: {
+  className?: string
+  actionsPosition?: AlertActionsPosition
+  children?: ReactNode
+}): ReactElement {
+  const { alert } = useTheme()
+
+  return (
+    <div
+      className={classNames(
+        alert.content.base,
+        alert.content.actionsPosition[actionsPosition],
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
+}
+
+export function AlertTexts({
+  className,
+  children,
+}: {
+  className?: string
+  children?: ReactNode
+}): ReactElement {
+  const { alert } = useTheme()
+
+  return (
+    <div className={classNames(alert.texts.base, className)}>{children}</div>
+  )
+}
+
+export function AlertTitle({
+  className,
+  children,
+}: {
+  className?: string
+  children?: ReactNode
+}): ReactElement | null {
+  const { alert } = useTheme()
+
+  if (children === undefined || children === null || children === false) {
     return null
   }
 
   return (
-    <AlertContainer tone={tone} className={className}>
-      <AlertContent>
-        <AlertIcon tone={tone} />
-        <AlertMessage tone={tone}>{children}</AlertMessage>
-      </AlertContent>
-    </AlertContainer>
+    <div className={classNames(alert.title.base, className)}>{children}</div>
+  )
+}
+
+export function AlertMessage({
+  className,
+  children,
+}: {
+  children?: ReactNode
+} & ClassNameProps): ReactElement | null {
+  const { alert } = useTheme()
+
+  if (children === undefined || children === null || children === false) {
+    return null
+  }
+
+  return (
+    <div className={classNames(alert.message.base, className)}>{children}</div>
+  )
+}
+
+export function AlertActions({
+  className,
+  children,
+}: {
+  children?: ReactNode
+} & ClassNameProps): ReactElement | null {
+  const { alert } = useTheme()
+
+  if (children === undefined || children === null || children === false) {
+    return null
+  }
+
+  return (
+    <div className={classNames(alert.actions.base, className)}>{children}</div>
   )
 }

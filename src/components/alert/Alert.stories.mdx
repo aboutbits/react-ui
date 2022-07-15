@@ -1,21 +1,84 @@
+import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
+import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { Alert, Tone } from './Alert'
+import { Tone } from '../types'
+import { Variant, Size } from '../button/types'
+import { Button } from '../button'
+import { Alert } from './Alert'
+import { AlertActionsPosition } from './types'
+import {
+  AlertSuccess,
+  AlertWarning,
+  AlertCritical,
+  AlertInformative,
+} from './ConvenientAlerts'
 
 <Meta title="Components/Alert/Alert" component={Alert} />
 
 # Alert
 
 This alert component can be used to highlight a message to the user.
-It supports different types of tones.
+It supports different types of tones. It is possible to specify an icon, a title, actions and the position of the actions.
+
+The library also provides convenient alert components with predefined tone and icon.
 
 export const Template = ({ children, ...args }) => (
   <Alert {...args}>{children}</Alert>
 )
 
+export const DissmissCriticalButton = (
+  <Button variant={Variant.transparent} size={Size.sm} tone={Tone.critical}>
+    Dismiss
+  </Button>
+)
+
+export const YesNoCriticalButtons = (
+  <>
+    <Button variant={Variant.transparent} size={Size.sm} tone={Tone.critical}>
+      Yes
+    </Button>
+    <Button variant={Variant.transparent} size={Size.sm} tone={Tone.critical}>
+      No
+    </Button>
+  </>
+)
+
 <Canvas>
   <Story
     name="Default"
-    args={{ children: 'Critical Message.', tone: Tone.critical }}
+    args={{
+      children:
+        'This alert component can be used to highlight a message to the user.',
+      tone: Tone.critical,
+      icon: 'Warning',
+    }}
+    argTypes={{
+      title: { control: 'text' },
+      tone: {
+        options: Object.values(Tone),
+        control: { type: 'select' },
+      },
+      icon: {
+        options: ['None', 'Warning', 'Check', 'Info'],
+        mapping: {
+          None: undefined,
+          Warning: IconWarning,
+          Check: IconCheck,
+          Info: IconInfo,
+        },
+        control: { type: 'select' },
+      },
+      actions: {
+        options: ['None', 'DismissCritical', 'YesNoCritical'],
+        mapping: {
+          None: undefined,
+          DismissCritical: DissmissCriticalButton,
+          YesNoCritical: YesNoCriticalButtons,
+        },
+        control: { type: 'select' },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>
@@ -29,20 +92,121 @@ export const Template = ({ children, ...args }) => (
 
 - `alert.container.base`: Defines base styles of container
 - `alert.container.tone[$tone]`: Defines custom styles per tone of the container
-- `alert.content.base`: Defines base styles of content
-- `alert.iconContainer.base`: Defines base styles of icon container
-- `alert.iconContainer.tone[$tone]`: Defines custom styles per tone of the icon container
 - `alert.icon.base`: Defines base styles of icon
-- `alert.icon.tone[$tone]`: Defines custom styles per tone of the icon
+- `alert.content.base`: Defines base styles of the content (title, message, actions)
+- `alert.content.actionsPositions.responsive`: Defines styles of the actions when they should be responsive
+- `alert.content.actionsPositions.fixedRight`: Defines styles of the actions when they should be fixed to the right
+- `alert.content.actionsPositions.fixedBottom`: Defines styles of the actions when they should be fixed to the bottom
+- `alert.texts.base`: Defines base styles of the texts (title, message)
+- `alert.title.base`: Defines base styles of the title
+- `alert.message.base`: Defines base styles of the message
+- `alert.actions.base`: Defines base styles of the actions
 
 ## Tone
 
 <Canvas>
-  <Story name="Critical">
-    <Alert tone={Tone.critical}>Critical Message</Alert>
+  <Story name="Primary">
+    <Alert tone={Tone.primary}>Primary message</Alert>
   </Story>
-  <Story name="Positive">
-    <Alert tone={Tone.positive}>Positive Message</Alert>
+  <Story name="Neutral">
+    <Alert tone={Tone.neutral}>Neutral message</Alert>
+  </Story>
+  <Story name="Warning">
+    <Alert tone={Tone.warning}>Warning message</Alert>
+  </Story>
+  <Story name="Critical">
+    <Alert tone={Tone.critical}>Critical message</Alert>
+  </Story>
+  <Story name="Success">
+    <Alert tone={Tone.success}>Success message</Alert>
+  </Story>
+  <Story name="Informative">
+    <Alert tone={Tone.informative}>Informative message</Alert>
+  </Story>
+</Canvas>
+
+### Icon
+
+<Canvas>
+  <Story name="Icon">
+    <Alert icon={IconCheck} tone={Tone.success}>
+      Success Message
+    </Alert>
+  </Story>
+</Canvas>
+
+### Title
+
+<Canvas>
+  <Story name="Title">
+    <Alert icon={IconCheck} tone={Tone.success} title="Success">
+      Congratulations, this is a success message!
+    </Alert>
+  </Story>
+</Canvas>
+
+## Actions
+
+<Canvas>
+  <Story name="ActionsResponsive">
+    <Alert
+      icon={IconCheck}
+      tone={Tone.success}
+      actions={
+        <Button
+          tone={Tone.success}
+          variant={Variant.transparent}
+          size={Size.sm}
+        >
+          Dismiss
+        </Button>
+      }
+      actionsPosition={AlertActionsPosition.responsive}
+    >
+      Success message with <b>responsive</b> actions
+    </Alert>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="ActionsFixedRight">
+    <Alert
+      icon={IconCheck}
+      tone={Tone.success}
+      actions={
+        <Button
+          tone={Tone.success}
+          variant={Variant.transparent}
+          size={Size.sm}
+        >
+          Dismiss
+        </Button>
+      }
+      actionsPosition={AlertActionsPosition.fixedRight}
+    >
+      Success message with actions <b>fixed to the right</b>
+    </Alert>
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="ActionsFixedBottom">
+    <Alert
+      icon={IconCheck}
+      tone={Tone.success}
+      actions={
+        <Button
+          tone={Tone.success}
+          variant={Variant.transparent}
+          size={Size.sm}
+        >
+          Dismiss
+        </Button>
+      }
+      actionsPosition={AlertActionsPosition.fixedBottom}
+    >
+      Success message with actions <b>fixed to the bottom</b>
+    </Alert>
   </Story>
 </Canvas>
 
@@ -50,10 +214,27 @@ export const Template = ({ children, ...args }) => (
 
 <Canvas>
   <Story name="Very Long Message">
-    <Alert tone={Tone.critical}>
+    <Alert icon={IconWarning} tone={Tone.critical}>
       Duis mauris ligula, aliquam id maximus at, aliquam ut dui. Morbi ac neque
       mattis libero cursus lobortis quis ac urna. Nullam vel augue vitae lacus
       fermentum ullamcorper eu eget sapien.
     </Alert>
+  </Story>
+</Canvas>
+
+## Convenient alert components
+
+<Canvas>
+  <Story name="AlertSuccess">
+    <AlertSuccess>Success message</AlertSuccess>
+  </Story>
+  <Story name="AlertWarning">
+    <AlertWarning>Warning message</AlertWarning>
+  </Story>
+  <Story name="AlertCritical">
+    <AlertCritical>Critical message</AlertCritical>
+  </Story>
+  <Story name="AlertInformative">
+    <AlertInformative>Informative message</AlertInformative>
   </Story>
 </Canvas>
