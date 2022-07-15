@@ -91,15 +91,18 @@ export default {
       disabled: 'border-neutral-200 text-neutral-400',
     },
     transparent: {
-      primary: 'hover:bg-primary-50 text-primary-500 focus:outline-primary-500',
+      primary:
+        'hover:bg-primary-50t text-primary-500 focus:outline-primary-500',
       neutral:
-        'hover:bg-neutral-100 text-neutral-700 focus:outline-neutral-700',
+        'hover:bg-neutral-50t text-neutral-700 focus:outline-neutral-700',
       critical:
-        'hover:bg-critical-50 text-critical-500 focus:outline-critical-500',
-      warning: 'hover:bg-warning-50 text-warning-500 focus:outline-warning-500',
-      success: 'hover:bg-success-50 text-success-500 focus:outline-success-500',
+        'hover:bg-critical-50t text-critical-500 focus:outline-critical-500',
+      warning:
+        'hover:bg-warning-50t text-warning-500 focus:outline-warning-500',
+      success:
+        'hover:bg-success-50t text-success-500 focus:outline-success-500',
       informative:
-        'hover:bg-informative-50 text-informative-500 focus:outline-informative-500',
+        'hover:bg-informative-50t text-informative-500 focus:outline-informative-500',
       disabled: 'text-neutral-400',
     },
   },

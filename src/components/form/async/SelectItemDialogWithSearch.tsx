@@ -7,7 +7,8 @@ import {
   SectionContentListEmpty,
   SectionListItemButton,
 } from '../../section'
-import { Alert, Tone } from '../../alert'
+import { Tone } from '../../types'
+import { Alert } from '../../alert'
 import { useInternationalization } from '../../../framework'
 import {
   PaginationInMemoryProps,
