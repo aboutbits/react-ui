@@ -60,7 +60,7 @@ export default {
       disabled: 'text-neutral-400',
     },
     container: {
-      base: 'absolute top-0 bottom-0 flex items-center ',
+      base: 'absolute top-0 bottom-0 flex items-center pointer-events-none',
       start: 'left-0 pl-3.5',
       end: 'right-0 pr-3.5',
     },
