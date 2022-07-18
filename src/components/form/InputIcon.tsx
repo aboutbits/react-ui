@@ -28,16 +28,16 @@ export function InputIcon({
   return (
     <div
       className={classNames(
-        form.input.icon.container.base,
-        form.input.icon.container[position]
+        form.inputIcon.container.base,
+        form.inputIcon.container[position]
       )}
     >
       <Icon
         className={classNames(
-          form.input.icon.base,
+          form.inputIcon.base,
           disabled
-            ? form.input.icon[mode].disabled
-            : form.input.icon[mode].normal,
+            ? form.inputIcon[mode].disabled
+            : form.inputIcon[mode].normal,
           className
         )}
       />

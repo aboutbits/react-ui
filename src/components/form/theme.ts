@@ -24,22 +24,6 @@ export default {
       disabled:
         'border-neutral-400 text-neutral-400 placeholder:text-neutral-400',
     },
-    icon: {
-      base: 'w-5 h-5 fill-current',
-      light: {
-        normal: 'text-neutral-800',
-        disabled: 'text-neutral-400',
-      },
-      dark: {
-        normal: 'text-white',
-        disabled: 'text-neutral-400',
-      },
-      container: {
-        base: 'absolute top-0 bottom-0 flex items-center ',
-        start: 'left-0 pl-3',
-        end: 'right-0 pr-3',
-      },
-    },
     withIconStart: 'pl-12',
     withIconEnd: 'pr-12',
   },
@@ -63,6 +47,22 @@ export default {
     },
     dark: {
       normal: 'text-critical-300',
+    },
+  },
+  inputIcon: {
+    base: 'w-5 h-5 fill-current',
+    light: {
+      normal: 'text-neutral-800',
+      disabled: 'text-neutral-400',
+    },
+    dark: {
+      normal: 'text-white',
+      disabled: 'text-neutral-400',
+    },
+    container: {
+      base: 'absolute top-0 bottom-0 flex items-center ',
+      start: 'left-0 pl-3',
+      end: 'right-0 pr-3',
     },
   },
   option: {
