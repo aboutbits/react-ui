@@ -1,3 +1,5 @@
+import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
@@ -45,6 +47,34 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
       type: 'text',
       mode: Mode.light,
       disabled: false,
+      iconStart: 'None',
+      iconEnd: 'None',
+    }}
+    argTypes={{
+      mode: {
+        options: [Mode.light, Mode.dark],
+        control: {
+          type: 'radio',
+        },
+      },
+      iconStart: {
+        options: ['None', 'Search', 'Badge'],
+        mapping: {
+          None: undefined,
+          Search: IconSearch,
+          Badge: IconBadge,
+        },
+        control: { type: 'select' },
+      },
+      iconEnd: {
+        options: ['None', 'Search', 'Badge'],
+        mapping: {
+          None: undefined,
+          Search: IconSearch,
+          Badge: IconBadge,
+        },
+        control: { type: 'select' },
+      },
     }}
   >
     {Template.bind({})}
@@ -66,6 +96,16 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
 - `form.inputLabel.error`: Defines the error styles of the input label.
 - `form.inputLabel.disabled`: Defines the disabled styles of the input.
 - `form.inputError.base`: Defines the style of the error message.
+- `form.icon.base`: Defines the style of the icon.
+- `form.icon.light.normal`: Defines the normal style of the icon in light mode.
+- `form.icon.light.disabled`: Defines the disabled style of the icon in light mode.
+- `form.icon.dark.normal`: Defines the normal style of the icon in dark mode.
+- `form.icon.dark.disabled`: Defines the disabled style of the icon in dark mode.
+- `form.icon.container.base`: Defines the base style of the icon container.
+- `form.icon.container.start`: Defines the style of the iconStart container.
+- `form.icon.container.end`: Defines the style of the iconEnd container.
+- `form.input.withIconStart`: Defines the style of the input with iconStart.
+- `form.input.withIconEnd`: Defines the style of the input with iconEnd.
 
 ## States
 
@@ -97,6 +137,21 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
       label: 'Name (Disabled)',
       value: '',
       disabled: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Icon
+
+<Canvas>
+  <Story
+    name="Icon"
+    args={{
+      label: 'Search',
+      iconStart: IconSearch,
+      placeholder: 'Search',
     }}
   >
     {Template.bind({})}
