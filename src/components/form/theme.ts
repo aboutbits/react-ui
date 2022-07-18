@@ -24,8 +24,8 @@ export default {
       disabled:
         'border-neutral-400 text-neutral-400 placeholder:text-neutral-400',
     },
-    withIconStart: 'pl-12',
-    withIconEnd: 'pr-12',
+    withIconStart: 'pl-11',
+    withIconEnd: 'pr-11',
   },
   inputLabel: {
     base: 'block pb-1 ml-1 text-xs font-medium',
@@ -61,8 +61,8 @@ export default {
     },
     container: {
       base: 'absolute top-0 bottom-0 flex items-center ',
-      start: 'left-0 pl-3',
-      end: 'right-0 pr-3',
+      start: 'left-0 pl-3.5',
+      end: 'right-0 pr-3.5',
     },
   },
   option: {
