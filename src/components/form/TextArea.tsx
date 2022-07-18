@@ -4,16 +4,26 @@ import { Mode, ModeProps } from '../types'
 import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
 import { useCustomInputCss } from './useCustomInputCss'
+import { Variant, VariantProps } from './types'
 
 type Props = React.DetailedHTMLProps<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>,
   HTMLTextAreaElement
 > &
-  ModeProps & { id: string; label?: string; name: string }
+  ModeProps &
+  VariantProps & { id: string; label?: string; name: string }
 
 export const TextArea = forwardRef<HTMLTextAreaElement, Props>(
-  ({ label, mode = Mode.light, className, ...props }, ref) => {
-    const customCss = useCustomInputCss(props.name, props.disabled, mode)
+  (
+    { label, mode = Mode.light, variant = Variant.ghost, className, ...props },
+    ref
+  ) => {
+    const customCss = useCustomInputCss(
+      props.name,
+      props.disabled,
+      mode,
+      variant
+    )
     const [field] = useField(props.name)
 
     return (

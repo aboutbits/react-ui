@@ -7,13 +7,15 @@ import { Mode, ModeProps } from '../types'
 import { InputError } from './InputError'
 import { IconPosition, InputIcon } from './InputIcon'
 import { InputLabel } from './InputLabel'
+import { Variant, VariantProps } from './types'
 import { useCustomInputCss } from './useCustomInputCss'
 
 type Props = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > &
-  ModeProps & {
+  ModeProps &
+  VariantProps & {
     id: string
     label?: string
     name: string
@@ -23,10 +25,23 @@ type Props = React.DetailedHTMLProps<
 
 export const Input = forwardRef<HTMLInputElement, Props>(
   (
-    { label, mode = Mode.light, className, iconStart, iconEnd, ...props },
+    {
+      label,
+      mode = Mode.light,
+      variant = Variant.ghost,
+      className,
+      iconStart,
+      iconEnd,
+      ...props
+    },
     ref
   ) => {
-    const customCss = useCustomInputCss(props.name, props.disabled, mode)
+    const customCss = useCustomInputCss(
+      props.name,
+      props.disabled,
+      mode,
+      variant
+    )
     const { form } = useTheme()
     const [field] = useField(props.name)
 
