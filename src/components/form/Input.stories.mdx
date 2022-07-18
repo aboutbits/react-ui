@@ -1,3 +1,5 @@
+import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { Formik } from 'formik'
@@ -45,6 +47,34 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
       type: 'text',
       mode: Mode.light,
       disabled: false,
+      iconStart: 'None',
+      iconEnd: 'None',
+    }}
+    argTypes={{
+      mode: {
+        options: [Mode.light, Mode.dark],
+        control: {
+          type: 'radio',
+        },
+      },
+      iconStart: {
+        options: ['None', 'Search', 'Badge'],
+        mapping: {
+          None: undefined,
+          Search: IconSearch,
+          Badge: IconBadge,
+        },
+        control: { type: 'select' },
+      },
+      iconEnd: {
+        options: ['None', 'Search', 'Badge'],
+        mapping: {
+          None: undefined,
+          Search: IconSearch,
+          Badge: IconBadge,
+        },
+        control: { type: 'select' },
+      },
     }}
   >
     {Template.bind({})}
@@ -58,14 +88,27 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
 ### Theme
 
 - `form.input.base`: Defines base styles of the input, that will be applied in any state.
-- `form.input.normal`: Defines the normal styles of the input, they will be replaced in error or disabled states
-- `form.input.error`: Defines the error styles of the input.
-- `form.input.disabled`: Defines the disabled styles of the input.
+- `form.input.light.normal`: Defines the normal styles of the input in light mode, they will be replaced in error or disabled states
+- `form.input.light.error`: Defines the error styles of the input in light mode.
+- `form.input.light.disabled`: Defines the disabled styles of the input in light mode.
+- `form.input.dark.normal`: Defines the normal styles of the input in dark mode, they will be replaced in error or disabled states
+- `form.input.dark.error`: Defines the error styles of the input in dark mode.
+- `form.input.dark.disabled`: Defines the disabled styles of the input in dark mode.
+- `form.input.withIconStart`: Defines the style of the input with iconStart.
+- `form.input.withIconEnd`: Defines the style of the input with iconEnd.
 - `form.inputLabel.base`: Defines base styles of the input label, that will be applied in any state.
 - `form.inputLabel.normal`: Defines the normal styles of the input label, they will be replaced in error or disabled states
 - `form.inputLabel.error`: Defines the error styles of the input label.
 - `form.inputLabel.disabled`: Defines the disabled styles of the input.
 - `form.inputError.base`: Defines the style of the error message.
+- `form.inputIcon.base`: Defines the style of the icon.
+- `form.inputIcon.light.normal`: Defines the normal style of the icon in light mode.
+- `form.inputIcon.light.disabled`: Defines the disabled style of the icon in light mode.
+- `form.inputIcon.dark.normal`: Defines the normal style of the icon in dark mode.
+- `form.inputIcon.dark.disabled`: Defines the disabled style of the icon in dark mode.
+- `form.inputIcon.container.base`: Defines the base style of the icon container.
+- `form.inputIcon.container.start`: Defines the style of the iconStart container.
+- `form.inputIcon.container.end`: Defines the style of the iconEnd container.
 
 ## States
 
@@ -97,6 +140,21 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
       label: 'Name (Disabled)',
       value: '',
       disabled: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Icon
+
+<Canvas>
+  <Story
+    name="Icon"
+    args={{
+      label: 'Search',
+      iconStart: IconSearch,
+      placeholder: 'Search',
     }}
   >
     {Template.bind({})}
