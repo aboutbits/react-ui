@@ -7,6 +7,7 @@ import * as Yup from 'yup'
 import { Mode } from '../types'
 import { Input } from './Input'
 import { Form } from './Form'
+import { Variant } from './types'
 
 <Meta
   title="Components/Form/Input"
@@ -46,13 +47,20 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
       placeholder: 'Your Name',
       type: 'text',
       mode: Mode.light,
+      variant: Variant.ghost,
       disabled: false,
       iconStart: 'None',
       iconEnd: 'None',
     }}
     argTypes={{
       mode: {
-        options: [Mode.light, Mode.dark],
+        options: Object.values(Mode),
+        control: {
+          type: 'radio',
+        },
+      },
+      variant: {
+        options: Object.values(Variant),
         control: {
           type: 'radio',
         },
@@ -88,12 +96,12 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
 ### Theme
 
 - `form.input.base`: Defines base styles of the input, that will be applied in any state.
-- `form.input.light.normal`: Defines the normal styles of the input in light mode, they will be replaced in error or disabled states
-- `form.input.light.error`: Defines the error styles of the input in light mode.
-- `form.input.light.disabled`: Defines the disabled styles of the input in light mode.
-- `form.input.dark.normal`: Defines the normal styles of the input in dark mode, they will be replaced in error or disabled states
-- `form.input.dark.error`: Defines the error styles of the input in dark mode.
-- `form.input.dark.disabled`: Defines the disabled styles of the input in dark mode.
+- `form.input.modeVariant.light[$variant].normal`: Defines the normal styles of the input in light mode, they will be replaced in error or disabled states
+- `form.input.modeVariant.light[$variant].error`: Defines the error styles of the input in light mode.
+- `form.input.modeVariant.light[$variant].disabled`: Defines the disabled styles of the input in light mode.
+- `form.input.modeVariant.dark[$variant].normal`: Defines the normal styles of the input in dark mode, they will be replaced in error or disabled states
+- `form.input.modeVariant.dark[$variant].error`: Defines the error styles of the input in dark mode.
+- `form.input.modeVariant.dark[$variant].disabled`: Defines the disabled styles of the input in dark mode.
 - `form.input.withIconStart`: Defines the style of the input with iconStart.
 - `form.input.withIconEnd`: Defines the style of the input with iconEnd.
 - `form.inputLabel.base`: Defines base styles of the input label, that will be applied in any state.
@@ -109,6 +117,40 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
 - `form.inputIcon.container.base`: Defines the base style of the icon container.
 - `form.inputIcon.container.start`: Defines the style of the iconStart container.
 - `form.inputIcon.container.end`: Defines the style of the iconEnd container.
+
+## Variants
+
+The `Variant` defines the background and the border.
+
+<Canvas>
+  <Story
+    name="VariantGhost"
+    args={{
+      label: 'Ghost input',
+      variant: Variant.ghost,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="VariantSoft"
+    args={{
+      label: 'Soft input',
+      variant: Variant.soft,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="VariantTransparent"
+    args={{
+      label: 'Transparent input',
+      variant: Variant.transparent,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
 
 ## States
 

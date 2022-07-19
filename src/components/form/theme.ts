@@ -8,21 +8,61 @@ export default {
   input: {
     base: 'block w-full p-2.5-1px bg-transparent border leading-5 appearance-none outline-none focus:ring-0 focus:outline focus:outline-1 focus:-outline-offset-2 rounded-lg',
     field: 'relative',
-    light: {
-      normal:
-        'border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800 text-neutral-800 placeholder:text-neutral-500',
-      error:
-        'border-critical-500 focus:border-critical-500 focus:outline-critical-500 text-neutral-800 placeholder:text-neutral-500',
-      disabled:
-        'border-neutral-400 text-neutral-400 placeholder:text-neutral-400',
-    },
-    dark: {
-      normal:
-        'border-neutral-200 focus:border-white focus:outline-white text-white placeholder:text-neutral-500',
-      error:
-        'border-critical-300 focus:border-critical-300 focus:outline-critical-300 text-white placeholder:text-neutral-500',
-      disabled:
-        'border-neutral-400 text-neutral-400 placeholder:text-neutral-400',
+    modeVariant: {
+      light: {
+        base: {
+          normal: 'text-neutral-800 placeholder:text-neutral-500',
+          error: 'text-neutral-800 placeholder:text-neutral-500',
+          disabled: 'text-neutral-400 placeholder:text-neutral-400',
+        },
+        ghost: {
+          normal:
+            'border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
+          error:
+            'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+          disabled: 'border-neutral-400',
+        },
+        soft: {
+          normal:
+            'bg-neutral-100 border-neutral-100 focus:border-neutral-800 focus:outline-neutral-800',
+          error:
+            'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+          disabled: '',
+        },
+        transparent: {
+          normal:
+            'border-transparent focus:border-neutral-800 focus:outline-neutral-800',
+          error:
+            'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+          disabled: '',
+        },
+      },
+      dark: {
+        base: {
+          normal: 'text-white placeholder:text-neutral-500',
+          error: 'text-white placeholder:text-neutral-500',
+          disabled: 'text-neutral-400 placeholder:text-neutral-400',
+        },
+        ghost: {
+          normal: 'border-neutral-200 focus:border-white focus:outline-white ',
+          error:
+            'border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
+          disabled: 'border-neutral-400 ',
+        },
+        soft: {
+          normal:
+            'bg-neutral-800 border-neutral-800 focus:border-white focus:outline-white',
+          error:
+            'border-critical-300 focus:border-critical-300 focus:outline-critical-300',
+          disabled: '',
+        },
+        transparent: {
+          normal: 'border-transparent focus:border-white focus:outline-white',
+          error:
+            'border-critical-300 focus:border-critical-300 focus:outline-critical-300',
+          disabled: '',
+        },
+      },
     },
     withIconStart: 'pl-11',
     withIconEnd: 'pr-11',

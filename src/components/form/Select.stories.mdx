@@ -6,6 +6,7 @@ import { Mode } from '../types'
 import { Select } from './Select'
 import { Option } from './Option'
 import { Form } from './Form'
+import { Variant } from './types'
 
 <Meta
   title="Components/Form/Select"
@@ -29,6 +30,24 @@ import { Form } from './Form'
       )
     },
   ]}
+  args={{
+    mode: Mode.light,
+    variant: Variant.ghost,
+  }}
+  argTypes={{
+    mode: {
+      options: Object.values(Mode),
+      control: {
+        type: 'radio',
+      },
+    },
+    variant: {
+      options: Object.values(Variant),
+      control: {
+        type: 'radio',
+      },
+    },
+  }}
 />
 
 # Select
