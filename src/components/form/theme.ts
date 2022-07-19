@@ -31,7 +31,7 @@ export default {
         },
         transparent: {
           normal:
-            'border-transparent focus:border-neutral-800 focus:outline-neutral-800',
+            'border-transparent focus:border-neutral-800 focus:outline-neutral-800 hover:bg-neutral-100 hover:border-neutral-100',
           error:
             'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
           disabled: '',
@@ -104,6 +104,9 @@ export default {
       start: 'left-0 pl-3.5',
       end: 'right-0 pr-3.5',
     },
+  },
+  select: {
+    base: 'pr-9 text-ellipsis overflow-hidden',
   },
   option: {
     base: 'bg-transparent',

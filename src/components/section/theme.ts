@@ -52,23 +52,29 @@ export default {
     base: 'justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   header: {
-    base: 'py-4 flex justify-between items-center space-x-2',
+    base: 'py-2 flex justify-between items-center gap-x-6 gap-y-1 flex-wrap lg:flex-nowrap',
   },
   title: {
-    base: 'flex-1 text-base text-neutral-800',
+    base: 'py-2 flex-1 text-base text-neutral-800',
   },
   search: {
     input: {
       base: 'flex-1 text-base border-none outline-none p-0 bg-transparent placeholder:text-neutral-400 text-black',
     },
   },
+  actions: {
+    base: 'flex items-center gap-x-2.5 gap-y-1',
+  },
   action: {
-    base: '-my-1',
+    base: '',
   },
   footer: {
     base: 'px-6 py-4 bg-neutral-100 last:rounded-b-lg text-xs',
   },
   filter: {
+    form: {
+      base: 'flex flex-col lg:flex-row gap-x-6 gap-y-1 order-last lg:order-none w-full lg:w-auto',
+    },
     trigger: {
       base: 'absolute -right-2 p-1 bg-primary-500 rounded-full',
     },

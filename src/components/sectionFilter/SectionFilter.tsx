@@ -1,10 +1,11 @@
 import classNames from 'classnames'
-import { Form, Formik, useFormikContext } from 'formik'
-import { ReactElement, ReactNode, useEffect, useRef } from 'react'
+import { Form, Formik } from 'formik'
+import { ReactElement, ReactNode } from 'react'
 import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 import { SubmitButton } from '../button/SubmitButton'
+import { FormikAutoSubmit } from '../form'
 import { FilterDialog, FilterDialogProps } from './FilterDialog'
 
 type Props<T> = ClassNameProps & {
@@ -37,22 +38,6 @@ type Props<T> = ClassNameProps & {
      */
     confirmationButtonContent?: ReactNode
   }
-}
-
-function SubmitOnChange(): null {
-  const formik = useFormikContext()
-  const initialRender = useRef<boolean>(true)
-
-  useEffect(() => {
-    if (initialRender.current) {
-      initialRender.current = false
-    } else if (formik.isValid) {
-      formik.submitForm()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formik.isValid, formik.values])
-
-  return null
 }
 
 export function SectionFilter<T>({
@@ -94,10 +79,20 @@ export function SectionFilter<T>({
 
   return (
     <Formik<T> initialValues={initialValues} onSubmit={onFilter}>
-      <Form className={classNames(section.filter.container.base, className)}>
-        <SubmitOnChange />
+      <SectionFilterForm>
+        <FormikAutoSubmit />
         {children}
-      </Form>
+      </SectionFilterForm>
     </Formik>
   )
+}
+
+export function SectionFilterForm({
+  children,
+}: {
+  children: ReactNode
+}): ReactElement {
+  const { section } = useTheme()
+
+  return <form className={section.filter.form.base}>{children}</form>
 }

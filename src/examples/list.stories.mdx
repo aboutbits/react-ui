@@ -1,23 +1,26 @@
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import IconSettings from '@aboutbits/react-material-icons/dist/IconSettings'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { useState } from 'react'
 import { Actions } from '../components/action'
-import { Button, Variant } from '../components/button'
+import { Button, Variant as ButtonVariant } from '../components/button'
 import {
   Section,
+  SectionActions,
+  SectionAction,
   SectionTitle,
   SectionContent,
   SectionContentTitle,
   SectionContentList,
   SectionContentListEmpty,
   SectionHeader,
-  SectionSearch,
   SectionListItemButton,
   SectionFooter,
 } from '../components/section'
+import { SectionFilter } from '../components/sectionFilter'
 import { SectionFooterWithPaginationInMemory } from '../components/pagination'
-import { SectionFilter, SectionFilterAction } from '../components/sectionFilter'
-import { Select } from '../components/form'
+import { Select, Input, Variant as InputVariant } from '../components/form'
 
 <Meta title="Examples/List" />
 
@@ -31,79 +34,69 @@ Setting `numberOfTotalItems` to 0 will reveal the placeholder for the empty list
 
 export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
   const [page, setPage] = useState(1)
-  const [search, setSearch] = useState('')
-  const [filter, setFilter] = useState({ role: '', department: '' })
-  const [filterShow, setFilterShow] = useState(false)
+  const [filter, setFilter] = useState({ role: '', department: '', search: '' })
   const content = Array.from(Array(numberOfTotalItems).keys())
     .map((item, index) => ({
       name: `User ${item + 1}`,
       role: index % 8 === 0 ? 'ADMIN' : 'USER',
       department: index % 3 === 0 ? 'HR' : 'SALES',
     }))
-    .filter((item) => {
-      return (
-        item.name.includes(search) &&
+    .filter(
+      (item) =>
+        item.name.includes(filter.search) &&
         (filter.role === '' || item.role === filter.role) &&
         (filter.department === '' || item.department === filter.department)
-      )
-    })
+    )
   return (
     <Section>
       <SectionHeader>
-        <SectionSearch
-          title="List of users"
-          search={search}
-          actions={{ search: setSearch, clear: () => setSearch('') }}
-        />
-        <SectionFilterAction
-          onClick={() => {
-            setFilterShow(!filterShow)
-          }}
-          isFiltering={filter.department !== '' || filter.role !== ''}
-        />
+        <SectionTitle>List of users</SectionTitle>
+        <SectionFilter
+          initialValues={filter}
+          onFilter={(values) => setFilter(values)}
+        >
+          <Select id="role" name="role" variant={InputVariant.transparent}>
+            <option className="bg-gray-600" value="">
+              All roles
+            </option>
+            <option className="bg-gray-600" value="ADMIN">
+              Admin
+            </option>
+            <option className="bg-gray-600" value="USER">
+              User
+            </option>
+          </Select>
+          <Select
+            id="department"
+            name="department"
+            variant={InputVariant.transparent}
+          >
+            <option className="bg-gray-600" value="">
+              All departments
+            </option>
+            <option className="bg-gray-600" value="HR">
+              Human Resources
+            </option>
+            <option className="bg-gray-600" value="IT">
+              Engineering
+            </option>
+            <option className="bg-gray-600" value="SALES">
+              Sales
+            </option>
+          </Select>
+          <Input
+            name="search"
+            placeholder="Search"
+            variant={InputVariant.soft}
+            iconStart={IconSearch}
+          />
+        </SectionFilter>
+        <SectionActions>
+          <SectionAction label="Settings" icon={IconSettings} />
+          <SectionAction label="Settings" icon={IconSettings} />
+        </SectionActions>
       </SectionHeader>
       <SectionContent>
-        {filterShow && (
-          <SectionFilter
-            initialValues={filter}
-            onFilter={setFilter}
-            dialogProps={{
-              onDismiss: () => setFilterShow(false),
-              confirmationButtonContent: 'Apply filter',
-            }}
-          >
-            <Select id="role" autoCapitalize="none" name="role" label="Role">
-              <option className="bg-gray-600" value="">
-                All
-              </option>
-              <option className="bg-gray-600" value="ADMIN">
-                Admin
-              </option>
-              <option className="bg-gray-600" value="USER">
-                User
-              </option>
-            </Select>
-            <Select
-              id="department"
-              autoCapitalize="none"
-              name="department"
-              label="Department"
-            >
-              <option className="bg-gray-600" value="">
-                All
-              </option>
-              <option className="bg-gray-600" value="HR">
-                Human Resources
-              </option>
-              <option className="bg-gray-600" value="IT">
-                Engineering
-              </option>
-              <option className="bg-gray-600" value="SALES">
-                Sales
-              </option>
-            </Select>
-          </SectionFilter>
-        )}
         <SectionContentList>
           {content.length > 0 &&
             content
@@ -184,7 +177,7 @@ export const TemplateWithContentTitle = () => {
         {list}
         <SectionFooter>
           <Actions>
-            <Button variant={Variant.ghost}>Cancel</Button>
+            <Button variant={ButtonVariant.ghost}>Cancel</Button>
             <Button>Submit</Button>
           </Actions>
         </SectionFooter>
