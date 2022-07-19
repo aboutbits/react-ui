@@ -4,21 +4,38 @@ import React, { forwardRef } from 'react'
 import { Mode, ModeProps } from '../types'
 import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
+import { Variant, VariantProps } from './types'
 import { useCustomInputCss } from './useCustomInputCss'
 
 type SelectProps = React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement
 > &
-  ModeProps & {
+  ModeProps &
+  VariantProps & {
     id: string
     label?: string
     name: string
   }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  ({ label, mode = Mode.light, children, className, ...props }, ref) => {
-    const customCss = useCustomInputCss(props.name, props.disabled, mode)
+  (
+    {
+      label,
+      mode = Mode.light,
+      variant = Variant.ghost,
+      children,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    const customCss = useCustomInputCss(
+      props.name,
+      props.disabled,
+      mode,
+      variant
+    )
     const [field] = useField(props.name)
 
     return (
