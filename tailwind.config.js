@@ -8,6 +8,7 @@ module.exports = {
     './src/**/*.jsx',
     './src/**/*.ts',
     './src/**/*.tsx',
+    './src/**/*.mdx',
     './.storybook/preview.js',
   ],
   theme: {
