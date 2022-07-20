@@ -79,7 +79,7 @@ export default {
       base: 'flex flex-wrap lg:flex-nowrap gap-x-1 lg:gap-x-6 gap-y-1 order-last lg:order-none w-full lg:w-auto',
     },
     trigger: {
-      base: 'absolute -right-2 p-1 bg-primary-500 rounded-full',
+      base: 'absolute left-0 p-1 bg-primary-500 rounded-full',
     },
     dialog: {
       base: 'px-4 lg:px-5 py-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 bg-white border-b border-neutral-500',
