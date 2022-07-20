@@ -2,14 +2,17 @@ export default {
   section: {
     base: '',
   },
-  content: {
+  container: {
     base: 'bg-white border border-neutral-400 rounded-lg overflow-hidden',
+  },
+  content: {
+    base: 'flex flex-col gap-y-6 px-6 pt-6 pb-9',
   },
   contentTitle: {
     base: 'bg-neutral-100 px-6 py-1 border-b border-t border-neutral-200 text-sm text-neutral-600',
   },
   contentList: {
-    base: '',
+    base: 'space-y-px bg-neutral-200',
   },
   contentListEmpty: {
     base: 'justify-center py-4',
@@ -30,7 +33,7 @@ export default {
     base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-6 pt-6 pb-9',
   },
   listItem: {
-    base: 'flex items-center min-h-[3.5rem] bg-white text-black',
+    base: 'flex items-center min-h-[3.5rem] bg-white px-6',
   },
   listItemWithAction: {
     base: 'justify-between space-x-4',
@@ -77,9 +80,6 @@ export default {
     },
     trigger: {
       base: 'absolute -right-2 p-1 bg-primary-500 rounded-full',
-    },
-    container: {
-      base: 'px-4 lg:px-5 py-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5 bg-neutral-100 first:rounded-t-lg',
     },
     dialog: {
       base: 'px-4 lg:px-5 py-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 bg-white border-b border-neutral-500',

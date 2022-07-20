@@ -15,7 +15,7 @@ import {
   SectionFooterWithPaginationInMemory,
 } from '../../pagination'
 import { LoadingListItem } from '../../loading'
-import { DialogSectionContent } from '../../dialog'
+import { DialogSectionContainer } from '../../dialog'
 
 export type SearchQueryParameters = {
   search?: string
@@ -91,7 +91,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
       onDismiss={onDismiss}
       dialogLabel={dialogLabel}
     >
-      <DialogSectionContent>
+      <DialogSectionContainer>
         <AsyncView
           data={data}
           error={error}
@@ -136,7 +136,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
             </SectionContentListEmpty>
           )}
         />
-      </DialogSectionContent>
+      </DialogSectionContainer>
     </SelectDialog>
   )
 }

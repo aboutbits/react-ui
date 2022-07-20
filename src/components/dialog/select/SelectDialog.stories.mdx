@@ -4,7 +4,7 @@ import { Button } from '../../button/Button'
 import { Tone } from '../../types'
 import { NavigationProvider } from '../../navigation/NavigationContext'
 import { SectionContentList, SectionListItem } from '../../section'
-import { DialogSectionContent } from '../DialogSectionContent'
+import { DialogSectionContainer } from '../DialogSectionContainer'
 import { SelectDialog } from './SelectDialog'
 
 <Meta title="Components/Dialog/SelectDialog" component={SelectDialog} />
@@ -39,7 +39,7 @@ export const Template = ({
           onDismiss={() => setToggle(!toggle)}
           dialogLabel={dialogLabel}
         >
-          <DialogSectionContent>
+          <DialogSectionContainer>
             <SectionContentList>
               {userList
                 .filter((user) =>
@@ -49,7 +49,7 @@ export const Template = ({
                   <SectionListItem key={index}>{user}</SectionListItem>
                 ))}
             </SectionContentList>
-          </DialogSectionContent>
+          </DialogSectionContainer>
         </SelectDialog>
       ) : (
         <Button tone={buttonTone} onClick={() => setToggle(!toggle)}>

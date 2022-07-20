@@ -7,13 +7,13 @@ type Props = {
   children?: ReactElement
 } & ClassNameProps
 
-export function DialogSectionContent({
+export function DialogSectionContainer({
   className,
   children,
 }: Props): ReactElement {
   const { dialog } = useTheme()
   return (
-    <div className={classNames(dialog.sectionContent.base, className)}>
+    <div className={classNames(dialog.sectionContainer.base, className)}>
       {children}
     </div>
   )

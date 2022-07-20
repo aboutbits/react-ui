@@ -15,7 +15,7 @@ export default {
   header: {
     base: 'p-0 lg:p-4 bg-gray-300 border-b border-gray-600',
   },
-  sectionContent: {
+  sectionContainer: {
     base: 'bg-white rounded-lg rounded-t-none',
   },
 }

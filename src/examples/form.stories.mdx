@@ -7,7 +7,7 @@ import { ContentArea } from '../components/content'
 import { Form, Input, Select, TextArea } from '../components/form'
 import {
   Section,
-  SectionContent,
+  SectionContainer,
   SectionContentTwoColumn,
   SectionHeader,
   SectionTitle,
@@ -64,7 +64,7 @@ export const Template = ({ title }) => {
             <SectionHeader>
               <SectionTitle>{title}</SectionTitle>
             </SectionHeader>
-            <SectionContent>
+            <SectionContainer>
               <SectionContentTwoColumn>
                 <Input
                   id="name"
@@ -128,7 +128,7 @@ export const Template = ({ title }) => {
                   <SubmitButton>Save</SubmitButton>
                 </Actions>
               </SectionFooter>
-            </SectionContent>
+            </SectionContainer>
           </Section>
         </Form>
       </Formik>

@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl'
 import { ContentArea } from '../components/content/ContentArea/ContentArea'
 import {
   Section,
+  SectionContainer,
   SectionContent,
   SectionContentTwoColumn,
   SectionDescriptionItem,
@@ -24,7 +25,47 @@ export const Template = ({ title }) => {
         <SectionHeader>
           <SectionTitle>{title}</SectionTitle>
         </SectionHeader>
-        <SectionContent>
+        <SectionContainer>
+          <SectionContent>
+            <SectionDescriptionItem
+              content="John Doe"
+              title={intl.formatMessage({ id: 'shared.field.name' })}
+            />
+            <SectionDescriptionItem
+              content="info@aboutbits.it"
+              title={intl.formatMessage({ id: 'shared.field.email' })}
+            />
+            <SectionDescriptionItem content="admin" title="Role" />
+            <SectionDescriptionItem content="English" title="Language" />
+            <SectionDescriptionItem
+              className="xl:col-span-2"
+              content="John is a software engineer from Bolzano, Italy."
+              title="Bio"
+            />
+          </SectionContent>
+        </SectionContainer>
+      </Section>
+    </ContentArea>
+  )
+}
+
+<Canvas>
+  <Story name="Default" args={{ title: 'Detailed user view' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Details with two columns layout (on xl screens)
+
+export const TwoColumnTemplate = ({ title }) => {
+  const intl = useIntl()
+  return (
+    <ContentArea>
+      <Section>
+        <SectionHeader>
+          <SectionTitle>{title}</SectionTitle>
+        </SectionHeader>
+        <SectionContainer>
           <SectionContentTwoColumn>
             <SectionDescriptionItem
               content="John Doe"
@@ -42,14 +83,14 @@ export const Template = ({ title }) => {
               title="Bio"
             />
           </SectionContentTwoColumn>
-        </SectionContent>
+        </SectionContainer>
       </Section>
     </ContentArea>
   )
 }
 
 <Canvas>
-  <Story name="Default" args={{ title: 'Detailed user view' }}>
-    {Template.bind({})}
+  <Story name="TwoColumn" args={{ title: 'Detailed user view' }}>
+    {TwoColumnTemplate.bind({})}
   </Story>
 </Canvas>

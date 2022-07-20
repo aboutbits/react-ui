@@ -9,7 +9,7 @@ import {
   SectionActions,
   SectionAction,
   SectionTitle,
-  SectionContent,
+  SectionContainer,
   SectionContentTitle,
   SectionContentList,
   SectionContentListEmpty,
@@ -91,7 +91,7 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
           <SectionAction label="Settings" icon={IconSettings} />
         </SectionActions>
       </SectionHeader>
-      <SectionContent>
+      <SectionContainer>
         <SectionContentList>
           {content.length > 0 &&
             content
@@ -119,7 +119,7 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
           total={content.length}
           onChangePage={setPage}
         />
-      </SectionContent>
+      </SectionContainer>
     </Section>
   )
 }
@@ -166,7 +166,7 @@ export const TemplateWithContentTitle = () => {
       <SectionHeader>
         <SectionTitle>List of users</SectionTitle>
       </SectionHeader>
-      <SectionContent>
+      <SectionContainer>
         {list}
         <SectionContentTitle>Section Content Title</SectionContentTitle>
         {list}
@@ -178,7 +178,7 @@ export const TemplateWithContentTitle = () => {
             </Button>
           </Actions>
         </SectionFooter>
-      </SectionContent>
+      </SectionContainer>
     </Section>
   )
 }
@@ -208,7 +208,7 @@ export const TemplateSimpleList = () => {
       <SectionHeader>
         <SectionTitle>List of users</SectionTitle>
       </SectionHeader>
-      <SectionContent>
+      <SectionContainer>
         <SectionContentList>
           {content.length > 0 &&
             content.map((item) => (
@@ -225,7 +225,7 @@ export const TemplateSimpleList = () => {
             </SectionContentListEmpty>
           )}
         </SectionContentList>
-      </SectionContent>
+      </SectionContainer>
     </Section>
   )
 }

@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode } from 'react'
 import {
   Section,
-  SectionContent,
+  SectionContainer,
   SectionContentTwoColumn,
   SectionHeader,
   SectionTitle,
@@ -29,7 +29,7 @@ export function LoadingDetails({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContent>
+      <SectionContainer>
         <SectionContentTwoColumn>
           {Array(numberOfItems)
             .fill(null)
@@ -37,7 +37,7 @@ export function LoadingDetails({
               <LoadingDescriptionItem key={index} />
             ))}
         </SectionContentTwoColumn>
-      </SectionContent>
+      </SectionContainer>
     </Section>
   )
 }
