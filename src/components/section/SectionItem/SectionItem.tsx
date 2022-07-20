@@ -69,7 +69,12 @@ export const SectionListItemLink = React.forwardRef<
   const LinkComponent = useLinkComponent()
   const { section } = useTheme()
   return (
-    <LinkComponent className="block" internal={internal} ref={ref} {...props}>
+    <LinkComponent
+      className={section.listItemLink.link}
+      internal={internal}
+      ref={ref}
+      {...props}
+    >
       <SectionListItem
         className={classNames(section.listItemLink.base, className)}
       >
