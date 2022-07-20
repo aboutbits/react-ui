@@ -1,15 +1,15 @@
 export default {
   section: {
-    base: 'lg:shadow-md lg:rounded-md bg-white',
+    base: '',
   },
   content: {
-    base: 'bg-white border border-neutral-400 rounded-lg',
+    base: 'bg-white border border-neutral-400 rounded-lg overflow-hidden',
   },
   contentTitle: {
-    base: 'bg-neutral-100 px-6 py-3 text-sm',
+    base: 'bg-neutral-100 px-6 py-1 border-b border-t border-neutral-200 text-sm text-neutral-600',
   },
   contentList: {
-    base: 'space-y-px px-6 py-3',
+    base: '',
   },
   contentListEmpty: {
     base: 'justify-center py-4',
@@ -39,14 +39,14 @@ export default {
     },
   },
   descriptionItem: {
-    base: 'flex flex-col text-neutral-800 border-b border-neutral-400',
+    base: 'flex flex-col text-neutral-800 border-b border-neutral-200',
   },
   descriptionItemTitle: {
     base: 'text-xs',
   },
   listItemButton: {
-    button: 'block w-full border-b border-neutral-400 last:border-0',
-    base: 'justify-between space-x-4 hover:bg-neutral-100',
+    button: 'block w-full border-b border-neutral-200 last:border-0',
+    base: 'px-6 justify-between space-x-4 hover:bg-neutral-100',
   },
   listItemLink: {
     base: 'justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
@@ -59,7 +59,7 @@ export default {
   },
   search: {
     input: {
-      base: 'flex-1 text-base border-none outline-none p-0 bg-transparent placeholder:text-neutral-400 text-black',
+      base: 'w-full lg:w-auto',
     },
   },
   actions: {
@@ -69,11 +69,11 @@ export default {
     base: '',
   },
   footer: {
-    base: 'px-6 py-4 bg-neutral-100 last:rounded-b-lg text-xs',
+    base: 'px-6 py-4 bg-neutral-100 border-t border-neutral-200 text-xs',
   },
   filter: {
     form: {
-      base: 'flex flex-col lg:flex-row gap-x-6 gap-y-1 order-last lg:order-none w-full lg:w-auto',
+      base: 'flex flex-wrap lg:flex-nowrap gap-x-1 lg:gap-x-6 gap-y-1 order-last lg:order-none w-full lg:w-auto',
     },
     trigger: {
       base: 'absolute -right-2 p-1 bg-primary-500 rounded-full',

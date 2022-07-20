@@ -1,4 +1,3 @@
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import IconSettings from '@aboutbits/react-material-icons/dist/IconSettings'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
@@ -15,12 +14,13 @@ import {
   SectionContentList,
   SectionContentListEmpty,
   SectionHeader,
+  SectionSearch,
   SectionListItemButton,
   SectionFooter,
 } from '../components/section'
 import { SectionFilter } from '../components/sectionFilter'
 import { SectionFooterWithPaginationInMemory } from '../components/pagination'
-import { Select, Input, Variant as InputVariant } from '../components/form'
+import { Select, Variant as InputVariant } from '../components/form'
 
 <Meta title="Examples/List" />
 
@@ -84,12 +84,7 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
               Sales
             </option>
           </Select>
-          <Input
-            name="search"
-            placeholder="Search"
-            variant={InputVariant.soft}
-            iconStart={IconSearch}
-          />
+          <SectionSearch />
         </SectionFilter>
         <SectionActions>
           <SectionAction label="Settings" icon={IconSettings} />
@@ -177,8 +172,10 @@ export const TemplateWithContentTitle = () => {
         {list}
         <SectionFooter>
           <Actions>
-            <Button variant={ButtonVariant.ghost}>Cancel</Button>
             <Button>Submit</Button>
+            <Button variant={ButtonVariant.ghost} className="lg:order-first">
+              Cancel
+            </Button>
           </Actions>
         </SectionFooter>
       </SectionContent>
@@ -196,4 +193,43 @@ export const TemplateWithContentTitle = () => {
   >
     {TemplateWithContentTitle.bind({})}
   </Story>
+</Canvas>
+
+# Simple List
+
+export const TemplateSimpleList = () => {
+  const content = Array.from(Array(5).keys()).map((item, index) => ({
+    name: `User ${item + 1}`,
+    role: index % 8 === 0 ? 'ADMIN' : 'USER',
+    department: index % 3 === 0 ? 'HR' : 'SALES',
+  }))
+  return (
+    <Section>
+      <SectionHeader>
+        <SectionTitle>List of users</SectionTitle>
+      </SectionHeader>
+      <SectionContent>
+        <SectionContentList>
+          {content.length > 0 &&
+            content.map((item) => (
+              <SectionListItemButton
+                key={item.name}
+                onClick={() => action('clicked')}
+              >
+                {`${item.name} (${item.role} - ${item.department})`}
+              </SectionListItemButton>
+            ))}
+          {content.length === 0 && (
+            <SectionContentListEmpty>
+              No users found in database.
+            </SectionContentListEmpty>
+          )}
+        </SectionContentList>
+      </SectionContent>
+    </Section>
+  )
+}
+
+<Canvas>
+  <Story name="SimpleList">{TemplateSimpleList.bind({})}</Story>
 </Canvas>
