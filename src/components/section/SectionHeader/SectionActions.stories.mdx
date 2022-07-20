@@ -1,16 +1,18 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconFilterList from '@aboutbits/react-material-icons/dist/IconFilterList'
 import { action } from '@storybook/addon-actions'
-import { SectionAction } from './SectionAction'
+import { SectionActions, SectionAction } from './SectionAction'
 
 <Meta title="Components/Section/SectionAction" component={SectionAction} />
 
-# SectionAction
+# SectionActions
 
-This component defines an action that can be placed inside a `SectionHeader`.
+To create a section with actions, use the `SectionActions` component within `SectionHeader`, and add `SectionAction`s.
 
 export const Template = ({ ...args }) => (
-  <SectionAction {...args} onClick={action('clicked')} />
+  <SectionActions>
+    <SectionAction {...args} onClick={action('clicked')} />
+  </SectionActions>
 )
 
 <Canvas>
@@ -28,4 +30,5 @@ export const Template = ({ ...args }) => (
 
 ### Theme
 
+- `section.actions.base`: Define the styles for the section actions container.
 - `section.action.base`: Define the styles for the section action.

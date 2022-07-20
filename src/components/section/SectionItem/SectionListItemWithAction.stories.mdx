@@ -1,8 +1,12 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
 import IconCopyAll from '@aboutbits/react-material-icons/dist/IconCopyAll'
-import { SectionContentList } from '../Section/SectionContentList'
-import { SectionListItemWithAction } from './SectionItem'
+import {
+  Section,
+  SectionContainer,
+  SectionContentList,
+  SectionListItemWithAction,
+} from '../'
 
 <Meta
   title="Components/Section/SectionListItemWithAction"
@@ -59,22 +63,32 @@ export const Template = ({ children, action }) => (
 
 <Canvas>
   <Story name="Usage within Section">
-    <SectionContentList>
-      <SectionListItemWithAction
-        action={<IconEdit width={20} height={20} className="fill-current" />}
-      >
-        Jane Doe
-      </SectionListItemWithAction>
-      <SectionListItemWithAction
-        action={<IconEdit width={20} height={20} className="fill-current" />}
-      >
-        John Doe
-      </SectionListItemWithAction>
-      <SectionListItemWithAction
-        action={<IconEdit width={20} height={20} className="fill-current" />}
-      >
-        Mary Doe
-      </SectionListItemWithAction>
-    </SectionContentList>
+    <Section>
+      <SectionContainer>
+        <SectionContentList>
+          <SectionListItemWithAction
+            action={
+              <IconEdit width={20} height={20} className="fill-current" />
+            }
+          >
+            Jane Doe
+          </SectionListItemWithAction>
+          <SectionListItemWithAction
+            action={
+              <IconEdit width={20} height={20} className="fill-current" />
+            }
+          >
+            John Doe
+          </SectionListItemWithAction>
+          <SectionListItemWithAction
+            action={
+              <IconEdit width={20} height={20} className="fill-current" />
+            }
+          >
+            Mary Doe
+          </SectionListItemWithAction>
+        </SectionContentList>
+      </SectionContainer>
+    </Section>
   </Story>
 </Canvas>

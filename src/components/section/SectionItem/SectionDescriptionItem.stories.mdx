@@ -1,6 +1,10 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { SectionContent } from '../Section/SectionContent'
-import { SectionDescriptionItem } from './SectionDescriptionItem'
+import {
+  Section,
+  SectionContainer,
+  SectionContent,
+  SectionDescriptionItem,
+} from '../'
 
 <Meta
   title="Components/Section/SectionDescriptionItem"
@@ -53,8 +57,12 @@ export const Template = ({ title, content, hideIfEmpty }) => (
 
 <Canvas>
   <Story name="Usage within Section">
-    <SectionContent>
-      <SectionDescriptionItem content="Name" title="John Doe" />
-    </SectionContent>
+    <Section>
+      <SectionContainer>
+        <SectionContent>
+          <SectionDescriptionItem content="Name" title="John Doe" />
+        </SectionContent>
+      </SectionContainer>
+    </Section>
   </Story>
 </Canvas>

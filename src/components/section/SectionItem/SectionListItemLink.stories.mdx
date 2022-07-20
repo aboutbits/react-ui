@@ -1,5 +1,10 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { SectionListItemLink } from './SectionItem'
+import {
+  Section,
+  SectionContainer,
+  SectionContentList,
+  SectionListItemLink,
+} from '../'
 
 <Meta
   title="Components/Section/SectionListItemLink"
@@ -28,3 +33,19 @@ export const Template = ({ children, ...args }) => {
 
 - `section.listItemLink.base`: Define the base style of the component.
 - `section.listItemLink.action`: Define the base style of the action.
+
+## Example: Usage within Section
+
+<Canvas>
+  <Story name="Usage within Section">
+    <Section>
+      <SectionContainer>
+        <SectionContentList>
+          <SectionListItemLink href="#1">Link 1</SectionListItemLink>
+          <SectionListItemLink href="#2">Link 2</SectionListItemLink>
+          <SectionListItemLink href="#3">Link 3</SectionListItemLink>
+        </SectionContentList>
+      </SectionContainer>
+    </Section>
+  </Story>
+</Canvas>
