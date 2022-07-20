@@ -5,10 +5,11 @@ import { useInternationalization, useTheme } from '../../framework'
 
 type Props = Pick<SectionActionProps, 'onClick'> &
   Partial<Pick<SectionActionProps, 'label' | 'icon'>> & {
-    isFiltering: boolean
+    isFiltering?: boolean
+    asDialogMediaQuery?: string
   }
 
-function SectionFilterAction({
+export function SectionFilterDialogAction({
   onClick,
   label,
   icon: Icon,
@@ -28,5 +29,3 @@ function SectionFilterAction({
     </div>
   )
 }
-
-export { SectionFilterAction }

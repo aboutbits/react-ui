@@ -1,7 +1,6 @@
 import classNames from 'classnames'
 import { Form, Formik } from 'formik'
 import { ReactElement, ReactNode } from 'react'
-import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 import { SubmitButton } from '../button/SubmitButton'
@@ -21,10 +20,9 @@ type Props<T> = ClassNameProps & {
    */
   onFilter: (values: T) => void
   /**
-   * Visualize the filter options in a dialog, if it matches the provided media query.
-   * e.g. '(max-width: 768px)'
+   * Visualize the filter options in a dialog.
    */
-  asDialogMediaQuery?: string
+  asDialog?: boolean
   /**
    * Input fields of your filter.
    */
@@ -38,22 +36,30 @@ type Props<T> = ClassNameProps & {
      */
     confirmationButtonContent?: ReactNode
   }
+  /**
+   * Shows or hides the dialog.
+   */
+  dialogShow?: boolean
 }
 
 export function SectionFilter<T>({
   className,
   initialValues,
   onFilter,
-  asDialogMediaQuery = '(max-width: 768px)',
+  asDialog = false,
   dialogProps,
+  dialogShow = false,
   children,
-}: Props<T>): ReactElement {
+}: Props<T>): ReactElement | null {
   const { section } = useTheme()
-  const showFilterDialog = useMatchMediaQuery(asDialogMediaQuery)
 
-  if (showFilterDialog && dialogProps) {
+  if (asDialog && dialogProps) {
     const { confirmationButtonContent, onDismiss, ...filterDialogProps } =
       dialogProps
+
+    if (!dialogShow) {
+      return null
+    }
 
     return (
       <FilterDialog onDismiss={onDismiss} {...filterDialogProps}>

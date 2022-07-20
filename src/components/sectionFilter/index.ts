@@ -1,2 +1,2 @@
-export * from './SectionFilterAction'
+export * from './SectionFilterDialogAction'
 export * from './SectionFilter'
