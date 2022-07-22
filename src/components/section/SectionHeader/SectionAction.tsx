@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { ReactElement, ReactNode } from 'react'
 import { useTheme } from '../../../framework'
 import { ButtonIcon, ButtonIconProps, Variant } from '../../button'
-import { Tone } from '../../types'
+import { Tone, ClassNameProps } from '../../types'
 
 export type SectionActionProps = Omit<ButtonIconProps, 'ref'>
 
@@ -21,10 +21,15 @@ export function SectionAction(props: SectionActionProps): ReactElement {
 
 export function SectionActions({
   children,
+  className,
 }: {
   children: ReactNode
-}): ReactElement {
+} & ClassNameProps): ReactElement {
   const { section } = useTheme()
 
-  return <div className={section.actions.base}>{children}</div>
+  return (
+    <div className={classNames(section.actions.base, className)}>
+      {children}
+    </div>
+  )
 }
