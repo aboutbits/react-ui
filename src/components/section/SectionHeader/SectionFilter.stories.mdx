@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
 import { action } from '@storybook/addon-actions'
+import { Variant, Select } from '../../form'
 import {
   Section,
   SectionContainer,
@@ -9,9 +10,8 @@ import {
   SectionHeader,
   SectionListItemButton,
   SectionTitle,
-} from '../section'
-import { Variant, Select } from '../form'
-import { SectionFilter } from './SectionFilter'
+  SectionFilter,
+} from '../'
 
 <Meta
   title="Components/Section/SectionFilter"
@@ -28,13 +28,6 @@ import { SectionFilter } from './SectionFilter'
 # SectionFilter
 
 You can use the SectionFilter component to create a filter on a specific Section.
-It supports two modes out off the box. The dialog mode shows the filter in a dialog, which is very convenient on mobile devices, whereas the default mode shows the filter in the section header.
-
-This component is based on two libraries that you need to install in your project as well:
-
-```
-npm i @reach/dialog @aboutbits/react-toolbox
-```
 
 export const Template = () => {
   const [filter, setFilter] = useState({ role: '', department: '' })

@@ -1,9 +1,9 @@
 import classNames from 'classnames'
 import { Form, Formik, FormikProps } from 'formik'
 import { ReactElement, ReactNode } from 'react'
-import { useTheme } from '../../framework'
-import { ClassNameProps } from '../types'
-import { FormikAutoSubmit } from '../form'
+import { useTheme } from '../../../framework'
+import { ClassNameProps } from '../../types'
+import { FormikAutoSubmit } from '../../form'
 
 type Props<T> = ClassNameProps &
   FormikProps<T> & {
