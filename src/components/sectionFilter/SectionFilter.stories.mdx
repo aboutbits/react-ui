@@ -1,4 +1,3 @@
-import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
 import { action } from '@storybook/addon-actions'
@@ -8,13 +7,11 @@ import {
   SectionContentList,
   SectionContentListEmpty,
   SectionHeader,
-  SectionActions,
   SectionListItemButton,
   SectionTitle,
 } from '../section'
 import { Variant, Select } from '../form'
 import { SectionFilter } from './SectionFilter'
-import { SectionFilterDialogAction } from './SectionFilterDialogAction'
 
 <Meta
   title="Components/Section/SectionFilter"
@@ -41,8 +38,6 @@ npm i @reach/dialog @aboutbits/react-toolbox
 
 export const Template = () => {
   const [filter, setFilter] = useState({ role: '', department: '' })
-  const [filterDialogShow, setFilterDialogShow] = useState(false)
-  const showFilterAsDialog = useMatchMediaQuery('(max-width: 1024px)')
   const content = Array.from(Array(10).keys())
     .map((item, index) => ({
       name: `User ${item + 1}`,
@@ -63,12 +58,6 @@ export const Template = () => {
           initialValues={filter}
           onFilter={(values) => {
             setFilter(values)
-          }}
-          asDialog={showFilterAsDialog}
-          dialogShow={filterDialogShow}
-          dialogProps={{
-            confirmationButtonContent: 'Apply filter',
-            onDismiss: () => setFilterDialogShow(false),
           }}
         >
           <Select id="role" name="role" variant={Variant.transparent}>
@@ -101,22 +90,11 @@ export const Template = () => {
             </option>
           </Select>
         </SectionFilter>
-        {showFilterAsDialog && (
-          <SectionActions>
-            <SectionFilterDialogAction
-              onClick={() => setFilterDialogShow(true)}
-              isFiltering={filter.department !== '' || filter.role !== ''}
-            />
-          </SectionActions>
-        )}
       </SectionHeader>
       <SectionContainer>
         <SectionContentList>
           {content.map((item) => (
-            <SectionListItemButton
-              key={item.name}
-              onClick={() => action('clicked')}
-            >
+            <SectionListItemButton key={item.name} onClick={action('clicked')}>
               {`${item.name} (${item.role} - ${item.department})`}
             </SectionListItemButton>
           ))}
@@ -141,88 +119,4 @@ export const Template = () => {
 
 ### Theme
 
-- `section.filter.trigger.base`: styles of the indicator of applied filters
 - `section.filter.form.base`: styles for the form container
-- `section.filter.dialog.base`: styles for the dialog form container
-
-# Without dialog
-
-export const TemplateWithoutDialog = () => {
-  const [filter, setFilter] = useState({ role: '', department: '' })
-  const content = Array.from(Array(10).keys())
-    .map((item, index) => ({
-      name: `User ${item + 1}`,
-      role: index % 8 === 0 ? 'ADMIN' : 'USER',
-      department: index % 3 === 0 ? 'HR' : 'SALES',
-    }))
-    .filter((item) => {
-      return (
-        (filter.role === '' || item.role === filter.role) &&
-        (filter.department === '' || item.department === filter.department)
-      )
-    })
-  return (
-    <Section>
-      <SectionHeader>
-        <SectionTitle>Users</SectionTitle>
-        <SectionFilter
-          initialValues={filter}
-          onFilter={(values) => {
-            setFilter(values)
-          }}
-        >
-          <Select id="role" name="role" variant={Variant.transparent}>
-            <option className="bg-gray-600" value="">
-              All roles
-            </option>
-            <option className="bg-gray-600" value="ADMIN">
-              Admin
-            </option>
-            <option className="bg-gray-600" value="USER">
-              User
-            </option>
-          </Select>
-          <Select
-            id="department"
-            name="department"
-            variant={Variant.transparent}
-          >
-            <option className="bg-gray-600" value="">
-              All departments
-            </option>
-            <option className="bg-gray-600" value="HR">
-              Human Resources
-            </option>
-            <option className="bg-gray-600" value="IT">
-              Engineering
-            </option>
-            <option className="bg-gray-600" value="SALES">
-              Sales
-            </option>
-          </Select>
-        </SectionFilter>
-      </SectionHeader>
-      <SectionContainer>
-        <SectionContentList>
-          {content.map((item) => (
-            <SectionListItemButton
-              key={item.name}
-              onClick={() => action('clicked')}
-            >
-              {`${item.name} (${item.role} - ${item.department})`}
-            </SectionListItemButton>
-          ))}
-          {content.length === 0 && (
-            <SectionContentListEmpty>
-              No users found in database.
-            </SectionContentListEmpty>
-          )}
-        </SectionContentList>
-      </SectionContainer>
-    </Section>
-  )
-}
-
-<Canvas>
-  <Story name="WithoutDialog">{TemplateWithoutDialog.bind({})}</Story>
-</Canvas>
