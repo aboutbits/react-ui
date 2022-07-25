@@ -79,11 +79,6 @@ export default {
       md: 'gap-x-6',
     },
   },
-  search: {
-    input: {
-      base: '',
-    },
-  },
   actions: {
     base: 'flex items-center gap-x-2.5 gap-y-1',
   },
