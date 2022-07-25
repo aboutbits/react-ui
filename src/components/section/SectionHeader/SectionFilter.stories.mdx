@@ -8,6 +8,8 @@ import {
   SectionContentList,
   SectionContentListEmpty,
   SectionHeader,
+  SectionHeaderRow,
+  SectionHeaderGroup,
   SectionListItemButton,
   SectionTitle,
   SectionFilter,
@@ -46,43 +48,47 @@ export const Template = () => {
   return (
     <Section>
       <SectionHeader>
-        <SectionTitle>Users</SectionTitle>
-        <SectionFilter
-          initialValues={filter}
-          onFilter={(values) => {
-            setFilter(values)
-          }}
-        >
-          <Select id="role" name="role" variant={Variant.transparent}>
-            <option className="bg-gray-600" value="">
-              All roles
-            </option>
-            <option className="bg-gray-600" value="ADMIN">
-              Admin
-            </option>
-            <option className="bg-gray-600" value="USER">
-              User
-            </option>
-          </Select>
-          <Select
-            id="department"
-            name="department"
-            variant={Variant.transparent}
+        <SectionHeaderRow>
+          <SectionTitle>Users</SectionTitle>
+          <SectionFilter
+            initialValues={filter}
+            onFilter={(values) => {
+              setFilter(values)
+            }}
           >
-            <option className="bg-gray-600" value="">
-              All departments
-            </option>
-            <option className="bg-gray-600" value="HR">
-              Human Resources
-            </option>
-            <option className="bg-gray-600" value="IT">
-              Engineering
-            </option>
-            <option className="bg-gray-600" value="SALES">
-              Sales
-            </option>
-          </Select>
-        </SectionFilter>
+            <SectionHeaderGroup>
+              <Select id="role" name="role" variant={Variant.transparent}>
+                <option className="bg-gray-600" value="">
+                  All roles
+                </option>
+                <option className="bg-gray-600" value="ADMIN">
+                  Admin
+                </option>
+                <option className="bg-gray-600" value="USER">
+                  User
+                </option>
+              </Select>
+              <Select
+                id="department"
+                name="department"
+                variant={Variant.transparent}
+              >
+                <option className="bg-gray-600" value="">
+                  All departments
+                </option>
+                <option className="bg-gray-600" value="HR">
+                  Human Resources
+                </option>
+                <option className="bg-gray-600" value="IT">
+                  Engineering
+                </option>
+                <option className="bg-gray-600" value="SALES">
+                  Sales
+                </option>
+              </Select>
+            </SectionHeaderGroup>
+          </SectionFilter>
+        </SectionHeaderRow>
       </SectionHeader>
       <SectionContainer>
         <SectionContentList>
@@ -109,7 +115,3 @@ export const Template = () => {
 ### Props
 
 <ArgsTable story="Default" />
-
-### Theme
-
-- `section.filter.form.base`: styles for the form container

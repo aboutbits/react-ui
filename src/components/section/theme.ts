@@ -82,9 +82,4 @@ export default {
   footer: {
     base: 'px-6 py-4 bg-neutral-100 border-t border-neutral-200 text-xs',
   },
-  filter: {
-    form: {
-      base: 'gap-x-1 lg:gap-x-6 gap-y-3',
-    },
-  },
 }

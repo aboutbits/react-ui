@@ -1,7 +1,5 @@
-import classNames from 'classnames'
 import { Form, Formik, FormikProps } from 'formik'
 import { ReactElement, ReactNode } from 'react'
-import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 import { FormikAutoSubmit } from '../../form'
 
@@ -32,11 +30,9 @@ export function SectionFilter<T>({
   children,
   ...props
 }: Props<T>): ReactElement | null {
-  const { section } = useTheme()
-
   return (
     <Formik<T> initialValues={initialValues} onSubmit={onFilter} {...props}>
-      <Form className={classNames(section.filter.form.base, className)}>
+      <Form className={className}>
         {autoSubmit && <FormikAutoSubmit />}
         {children}
       </Form>
