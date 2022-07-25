@@ -79,12 +79,6 @@ export default {
       md: 'gap-x-6',
     },
   },
-  actions: {
-    base: 'flex items-center gap-x-2.5 gap-y-1',
-  },
-  action: {
-    base: '',
-  },
   footer: {
     base: 'px-6 py-4 bg-neutral-100 border-t border-neutral-200 text-xs',
   },
