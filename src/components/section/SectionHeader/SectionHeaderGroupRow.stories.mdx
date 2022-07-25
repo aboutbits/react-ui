@@ -1,0 +1,53 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SectionHeaderRow, SectionHeaderRowLayout } from './SectionHeaderRow'
+
+<Meta
+  title="Components/Section/SectionHeaderRow"
+  component={SectionHeaderRow}
+/>
+
+# SectionHeaderRow
+
+This component is a container for elements inside a SectionHeader.
+It manages the layout of the elements inside it. Choose between full, spaceBetween, start, center or end. It defaults to spaceBetween.
+Full should only be used for a single element inside the container.
+
+export const Template = ({ children, ...args }) => (
+  <SectionHeaderRow {...args}>{children}</SectionHeaderRow>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      layout: SectionHeaderRowLayout.spaceBetween,
+      children: (
+        <>
+          <div>Element1</div>
+          <div>Element2</div>
+        </>
+      ),
+    }}
+    argTypes={{
+      layout: {
+        options: Object.values(SectionHeaderRowLayout),
+        control: { type: 'radio' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `section.headerRow.base`: Define the base styles for the row.
+- `section.headerRow.layout.full`: Define the styles when the elemnts should be full width.
+- `section.headerRow.layout.spaceBetween`: Define the styles the elements should have a space between.
+- `section.headerRow.layout.start`: Define the styles when the elements should be aligned to the start.
+- `section.headerRow.layout.center`: Define the styles when the elements should be aligned to the center.
+- `section.headerRow.layout.end`: Define the styles when the elements should be aligned to the end.

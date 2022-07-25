@@ -14,7 +14,6 @@ import {
 import { DialogHeader } from '../components/dialog'
 import {
   Section,
-  SectionActions,
   SectionAction,
   SectionTitle,
   SectionContainer,
@@ -22,6 +21,9 @@ import {
   SectionContentList,
   SectionContentListEmpty,
   SectionHeader,
+  SectionHeaderRow,
+  SectionHeaderRowLayout,
+  SectionHeaderGroup,
   SectionFilter,
   SectionSearch,
   SectionListItemButton,
@@ -40,7 +42,10 @@ Changing the properties `numberOfTotalItems` and `numberOfItemsPerPage` will cha
 
 Setting `numberOfTotalItems` to 0 will reveal the placeholder for the empty list.
 
-export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
+export const TemplateDefault = ({
+  numberOfTotalItems,
+  numberOfItemsPerPage,
+}) => {
   const [page, setPage] = useState(1)
   const [filter, setFilter] = useState({ role: '', department: '', search: '' })
   const content = Array.from(Array(numberOfTotalItems).keys())
@@ -58,47 +63,52 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
   return (
     <Section>
       <SectionHeader>
-        <SectionTitle>List of users</SectionTitle>
+        <SectionHeaderRow>
+          <SectionTitle>List of users</SectionTitle>
+          <SectionHeaderGroup>
+            <SectionAction label="Settings" icon={IconSettings} />
+            <SectionAction label="Settings" icon={IconSettings} />
+          </SectionHeaderGroup>
+        </SectionHeaderRow>
         <SectionFilter
           initialValues={filter}
           onFilter={(values) => setFilter(values)}
-          className="flex flex-wrap lg:flex-nowrap order-last lg:order-none w-full lg:w-auto"
         >
-          <Select id="role" name="role" variant={InputVariant.transparent}>
-            <option className="bg-gray-600" value="">
-              All roles
-            </option>
-            <option className="bg-gray-600" value="ADMIN">
-              Admin
-            </option>
-            <option className="bg-gray-600" value="USER">
-              User
-            </option>
-          </Select>
-          <Select
-            id="department"
-            name="department"
-            variant={InputVariant.transparent}
-          >
-            <option className="bg-gray-600" value="">
-              All departments
-            </option>
-            <option className="bg-gray-600" value="HR">
-              Human Resources
-            </option>
-            <option className="bg-gray-600" value="IT">
-              Engineering
-            </option>
-            <option className="bg-gray-600" value="SALES">
-              Sales
-            </option>
-          </Select>
-          <SectionSearch className="w-full lg:w-auto" />
+          <SectionHeaderRow layout={SectionHeaderRowLayout.full}>
+            <SectionHeaderGroup>
+              <Select id="role" name="role" variant={InputVariant.transparent}>
+                <option className="bg-gray-600" value="">
+                  All roles
+                </option>
+                <option className="bg-gray-600" value="ADMIN">
+                  Admin
+                </option>
+                <option className="bg-gray-600" value="USER">
+                  User
+                </option>
+              </Select>
+              <Select
+                id="department"
+                name="department"
+                variant={InputVariant.transparent}
+              >
+                <option className="bg-gray-600" value="">
+                  All departments
+                </option>
+                <option className="bg-gray-600" value="HR">
+                  Human Resources
+                </option>
+                <option className="bg-gray-600" value="IT">
+                  Engineering
+                </option>
+                <option className="bg-gray-600" value="SALES">
+                  Sales
+                </option>
+              </Select>
+              <SectionSearch className="grow" />
+            </SectionHeaderGroup>
+          </SectionHeaderRow>
         </SectionFilter>
-        <SectionActions>
-          <SectionAction label="Settings" icon={IconSettings} />
-          <SectionAction label="Settings" icon={IconSettings} />
-        </SectionActions>
       </SectionHeader>
       <SectionContainer>
         <SectionContentList>
@@ -141,7 +151,7 @@ export const Template = ({ numberOfTotalItems, numberOfItemsPerPage }) => {
       numberOfItemsPerPage: 5,
     }}
   >
-    {Template.bind({})}
+    {TemplateDefault.bind({})}
   </Story>
 </Canvas>
 
@@ -332,32 +342,36 @@ export const TemplateListWithFilterDialog = ({
       )}
       <Section>
         <SectionHeader>
-          <SectionTitle>List of users</SectionTitle>
-          {isDialogEnabled ? (
-            <SectionActions>
-              <div className="relative flex items-center">
-                <SectionAction
-                  icon={IconFilterList}
-                  label="Filter"
-                  onClick={() => setDialogShow(true)}
-                />
-                {filter.department !== '' ||
-                  filter.role !== '' ||
-                  (filter.search !== '' && (
-                    <div className="absolute left-0 p-1 bg-primary-500 rounded-full" />
-                  ))}
-              </div>
-            </SectionActions>
-          ) : (
-            <SectionFilter
-              initialValues={filter}
-              enableReinitialize
-              onFilter={(values) => setFilter(values)}
-              className="flex"
-            >
-              <Filters />
-            </SectionFilter>
-          )}
+          <SectionHeaderRow>
+            <SectionTitle>List of users</SectionTitle>
+            {isDialogEnabled ? (
+              <SectionHeaderGroup>
+                <div className="relative flex items-center">
+                  <SectionAction
+                    icon={IconFilterList}
+                    label="Filter"
+                    onClick={() => setDialogShow(true)}
+                  />
+                  {filter.department !== '' ||
+                    filter.role !== '' ||
+                    (filter.search !== '' && (
+                      <div className="absolute left-0 p-1 bg-primary-500 rounded-full" />
+                    ))}
+                </div>
+              </SectionHeaderGroup>
+            ) : (
+              <SectionFilter
+                initialValues={filter}
+                enableReinitialize
+                onFilter={(values) => setFilter(values)}
+                className="flex"
+              >
+                <SectionHeaderGroup>
+                  <Filters />
+                </SectionHeaderGroup>
+              </SectionFilter>
+            )}
+          </SectionHeaderRow>
         </SectionHeader>
         <SectionContainer>
           <SectionContentList>

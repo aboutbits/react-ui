@@ -57,10 +57,27 @@ export default {
     base: 'justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   header: {
-    base: 'py-2 flex justify-between items-center gap-x-6 gap-y-1 flex-wrap lg:flex-nowrap',
+    base: 'py-2 flex flex-col gap-y-2',
   },
   title: {
     base: 'py-2 flex-1 text-base text-neutral-800',
+  },
+  headerRow: {
+    base: '',
+    layout: {
+      full: '',
+      spaceBetween: 'flex justify-between gap-x-2.5',
+      start: 'flex justify-start gap-x-2.5',
+      center: 'flex justify-center gap-x-2.5',
+      end: 'flex justify-end gap-x-2.5',
+    },
+  },
+  headerGroup: {
+    base: 'flex',
+    spacing: {
+      sm: 'gap-x-2.5',
+      md: 'gap-x-6',
+    },
   },
   search: {
     input: {
