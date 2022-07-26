@@ -57,13 +57,14 @@ export default {
     base: 'justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   header: {
-    base: 'py-2 flex flex-col',
+    base: 'py-2 flex flex-col gap-y-2',
+    increasedBottomSpacing: 'mb-2',
   },
   title: {
     base: 'py-2 flex-1 text-base text-neutral-800',
   },
   headerRow: {
-    base: 'pb-2',
+    base: '',
     layout: {
       full: '',
       spaceBetween: 'flex justify-between gap-x-2.5',

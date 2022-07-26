@@ -8,6 +8,8 @@ import { SectionTitle } from './SectionTitle'
 
 This component defines the header container of a section.
 
+If your header contains several `SectionHeaderRow`s with a search field in the last row, you might consider to set the `increasedBottomSpacing` prop for improved spacing between header and content.
+
 export const Template = ({ children, ...args }) => (
   <SectionHeader {...args}>{children}</SectionHeader>
 )
@@ -15,7 +17,10 @@ export const Template = ({ children, ...args }) => (
 <Canvas>
   <Story
     name="Default"
-    args={{ children: <SectionTitle>Profile information</SectionTitle> }}
+    args={{
+      increasedBottomSpacing: false,
+      children: <SectionTitle>Profile information</SectionTitle>,
+    }}
   >
     {Template.bind({})}
   </Story>
@@ -28,3 +33,4 @@ export const Template = ({ children, ...args }) => (
 ### Theme
 
 - `section.header.base`: Define the styles for the section heading.
+- `section.header.increasedBottomSpacing`: Define the styles for the section heading with increased bottom spacing.
