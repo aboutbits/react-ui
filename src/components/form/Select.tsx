@@ -52,7 +52,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           {...field}
           {...props}
           ref={ref}
-          className={classNames(form.select.base, customCss.inputCss)}
+          className={classNames(
+            form.select.base,
+            form.select.variant[variant],
+            customCss.inputCss
+          )}
         >
           {children}
         </select>

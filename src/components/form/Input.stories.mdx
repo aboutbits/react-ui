@@ -96,18 +96,9 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
 ### Theme
 
 - `form.input.base`: Defines base styles of the input, that will be applied in any state.
-- `form.input.modeVariant.light[$variant].normal`: Defines the normal styles of the input in light mode, they will be replaced in error or disabled states
-- `form.input.modeVariant.light[$variant].error`: Defines the error styles of the input in light mode.
-- `form.input.modeVariant.light[$variant].disabled`: Defines the disabled styles of the input in light mode.
-- `form.input.modeVariant.dark[$variant].normal`: Defines the normal styles of the input in dark mode, they will be replaced in error or disabled states
-- `form.input.modeVariant.dark[$variant].error`: Defines the error styles of the input in dark mode.
-- `form.input.modeVariant.dark[$variant].disabled`: Defines the disabled styles of the input in dark mode.
 - `form.input.withIconStart`: Defines the style of the input with iconStart.
 - `form.input.withIconEnd`: Defines the style of the input with iconEnd.
 - `form.inputLabel.base`: Defines base styles of the input label, that will be applied in any state.
-- `form.inputLabel.normal`: Defines the normal styles of the input label, they will be replaced in error or disabled states
-- `form.inputLabel.error`: Defines the error styles of the input label.
-- `form.inputLabel.disabled`: Defines the disabled styles of the input.
 - `form.inputError.base`: Defines the style of the error message.
 - `form.inputIcon.base`: Defines the style of the icon.
 - `form.inputIcon.light.normal`: Defines the normal style of the icon in light mode.
@@ -117,6 +108,17 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
 - `form.inputIcon.container.base`: Defines the base style of the icon container.
 - `form.inputIcon.container.start`: Defines the style of the iconStart container.
 - `form.inputIcon.container.end`: Defines the style of the iconEnd container.
+
+In addition, `form.input`, `form.inputLabel` and `form.inputError` can be configured with the following settings for the given variant:
+
+- `form[$component].modeVariant.light[$variant].base`: Defines the base styles of the input in light mode
+- `form[$component].modeVariant.light[$variant].normal`: Defines the normal styles of the input in light mode, they will be replaced in error or disabled states
+- `form[$component].modeVariant.light[$variant].error`: Defines the error styles of the input in light mode.
+- `form[$component].modeVariant.light[$variant].disabled`: Defines the disabled styles of the input in light mode.
+- `form[$component].modeVariant.dark[$variant].base`: Defines the base styles of the input in dark mode
+- `form[$component].modeVariant.dark[$variant].normal`: Defines the normal styles of the input in dark mode, they will be replaced in error or disabled states
+- `form[$component].modeVariant.dark[$variant].error`: Defines the error styles of the input in dark mode.
+- `form[$component].modeVariant.dark[$variant].disabled`: Defines the disabled styles of the input in dark mode.
 
 ## Variants
 

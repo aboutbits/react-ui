@@ -1,42 +1,83 @@
-import { useField } from 'formik'
+import classNames from 'classnames'
+import { FieldMetaProps, useField } from 'formik'
 import { useTheme } from '../../framework'
 import { Mode } from '../types'
 import { Variant } from './types'
 
-const useCustomInputCss = (
+type ThemeInputStates = {
+  base?: string
+  normal?: string
+  error?: string
+  disabled?: string
+}
+
+type ThemeVariant = Partial<Record<Variant, ThemeInputStates>> & {
+  base: ThemeInputStates
+}
+
+type ThemeInputObject = {
+  base: string
+  modeVariant: Record<Mode, ThemeVariant>
+}
+
+export const useCustomInputCss = (
   fieldName: string,
   fieldDisabled = false,
   fieldMode = Mode.light,
-  variant = Variant.ghost
+  fieldVariant = Variant.ghost
 ): { inputCss: string; labelCss: string; errorCss: string } => {
   const [, meta] = useField({ name: fieldName })
   const {
     form: { input, inputLabel, inputError },
   } = useTheme()
 
-  const inputModeCss = input.modeVariant[fieldMode]
-
-  let customInputCss =
-    inputModeCss.base.normal + ' ' + inputModeCss[variant].normal
-  let customLabelCss = inputLabel[fieldMode].normal
-  const customErrorCss = inputError[fieldMode].normal
-
-  if (meta.touched && meta.error) {
-    customInputCss = inputModeCss.base.error + ' ' + inputModeCss[variant].error
-    customLabelCss = inputLabel[fieldMode].error
-  }
-
-  if (fieldDisabled) {
-    customInputCss =
-      inputModeCss.base.disabled + ' ' + inputModeCss[variant].disabled
-    customLabelCss = inputLabel[fieldMode].disabled
-  }
-
   return {
-    inputCss: input.base + ' ' + customInputCss,
-    labelCss: inputLabel.base + ' ' + customLabelCss,
-    errorCss: inputError.base + ' ' + customErrorCss,
+    inputCss: getCssFor(input, meta, fieldDisabled, fieldMode, fieldVariant),
+    labelCss: getCssFor(
+      inputLabel,
+      meta,
+      fieldDisabled,
+      fieldMode,
+      fieldVariant
+    ),
+    errorCss: getCssFor(
+      inputError,
+      meta,
+      fieldDisabled,
+      fieldMode,
+      fieldVariant
+    ),
   }
 }
 
-export { useCustomInputCss }
+function getCssFor(
+  theme: ThemeInputObject,
+  formikMeta: FieldMetaProps<unknown>,
+  fieldDisabled = false,
+  fieldMode = Mode.light,
+  fieldVariant = Variant.ghost
+) {
+  const modeCss = theme.modeVariant[fieldMode]
+  let modeStateCss = classNames(
+    modeCss.base.normal,
+    modeCss[fieldVariant]?.normal
+  )
+
+  if (formikMeta.touched && formikMeta.error) {
+    modeStateCss = classNames(modeCss.base.error, modeCss[fieldVariant]?.error)
+  }
+
+  if (fieldDisabled) {
+    modeStateCss = classNames(
+      modeCss.base.disabled,
+      modeCss[fieldVariant]?.disabled
+    )
+  }
+
+  return classNames(
+    theme.base,
+    modeCss.base.base,
+    modeCss[fieldVariant]?.base,
+    modeStateCss
+  )
+}
