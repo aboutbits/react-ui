@@ -63,7 +63,7 @@ export const TemplateDefault = ({
     )
   return (
     <Section>
-      <SectionHeader increasedBottomSpacing>
+      <SectionHeader className="mb-2">
         <SectionHeaderRow>
           <SectionTitle>List of users</SectionTitle>
           <SectionAction label="Add" icon={IconAdd} />
@@ -179,7 +179,7 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
         initialValues={filter}
         onFilter={(values) => setFilter(values)}
       >
-        <SectionHeader increasedBottomSpacing>
+        <SectionHeader className="mb-2 md:mb-0">
           <SectionHeaderRow>
             <SectionTitle>List of users</SectionTitle>
             <SectionHeaderGroup>
