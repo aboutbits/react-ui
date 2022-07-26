@@ -162,6 +162,73 @@ export const TemplateDefault = ({
 
 <ArgsTable story="Default" />
 
+# List with search
+
+export const TemplateSearch = ({ numberOfTotalItems }) => {
+  const [filter, setFilter] = useState({ search: '' })
+  const content = Array.from(Array(numberOfTotalItems).keys())
+    .map((item, index) => ({
+      name: `User ${item + 1}`,
+      role: index % 8 === 0 ? 'ADMIN' : 'USER',
+      department: index % 3 === 0 ? 'HR' : 'SALES',
+    }))
+    .filter((item) => item.name.includes(filter.search))
+  return (
+    <Section>
+      <SectionFilter
+        initialValues={filter}
+        onFilter={(values) => setFilter(values)}
+      >
+        <SectionHeader increasedBottomSpacing>
+          <SectionHeaderRow>
+            <SectionTitle>List of users</SectionTitle>
+            <SectionHeaderGroup>
+              <SectionSearch className="hidden md:block" />
+              <SectionAction label="Add" icon={IconAdd} />
+            </SectionHeaderGroup>
+          </SectionHeaderRow>
+          <SectionHeaderRow
+            layout={SectionHeaderRowLayout.full}
+            className="block md:hidden"
+          >
+            <SectionSearch />
+          </SectionHeaderRow>
+        </SectionHeader>
+      </SectionFilter>
+      <SectionContainer>
+        <SectionContentList>
+          {content.length > 0 &&
+            content.map((item) => (
+              <SectionListItemButton
+                key={item.name}
+                onClick={() => action('clicked')}
+              >
+                {`${item.name} (${item.role} - ${item.department})`}
+              </SectionListItemButton>
+            ))}
+          {content.length === 0 && (
+            <SectionContentListEmpty>
+              No users found in database.
+            </SectionContentListEmpty>
+          )}
+        </SectionContentList>
+      </SectionContainer>
+    </Section>
+  )
+}
+
+<Canvas>
+  <Story
+    name="Search"
+    args={{
+      numberOfTotalItems: 1000,
+      numberOfItemsPerPage: 5,
+    }}
+  >
+    {TemplateSearch.bind({})}
+  </Story>
+</Canvas>
+
 # List with content title
 
 export const TemplateWithContentTitle = () => {
