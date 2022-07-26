@@ -73,7 +73,7 @@ export default {
     },
   },
   headerGroup: {
-    base: 'flex',
+    base: 'flex items-center gap-y-2',
     spacing: {
       sm: 'gap-x-2.5',
       md: 'gap-x-6',

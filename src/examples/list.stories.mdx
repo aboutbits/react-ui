@@ -1,4 +1,4 @@
-import IconSettings from '@aboutbits/react-material-icons/dist/IconSettings'
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconFilterList from '@aboutbits/react-material-icons/dist/IconFilterList'
 import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { Dialog } from '@reach/dialog'
@@ -24,6 +24,7 @@ import {
   SectionHeaderRow,
   SectionHeaderRowLayout,
   SectionHeaderGroup,
+  SectionHeaderGroupSpacing,
   SectionFilter,
   SectionSearch,
   SectionListItemButton,
@@ -65,47 +66,49 @@ export const TemplateDefault = ({
       <SectionHeader>
         <SectionHeaderRow>
           <SectionTitle>List of users</SectionTitle>
-          <SectionHeaderGroup>
-            <SectionAction label="Settings" icon={IconSettings} />
-            <SectionAction label="Settings" icon={IconSettings} />
-          </SectionHeaderGroup>
+          <SectionAction label="Add" icon={IconAdd} />
         </SectionHeaderRow>
         <SectionFilter
           initialValues={filter}
           onFilter={(values) => setFilter(values)}
         >
           <SectionHeaderRow layout={SectionHeaderRowLayout.full}>
-            <SectionHeaderGroup>
-              <Select id="role" name="role" variant={InputVariant.transparent}>
-                <option className="bg-gray-600" value="">
-                  All roles
-                </option>
-                <option className="bg-gray-600" value="ADMIN">
-                  Admin
-                </option>
-                <option className="bg-gray-600" value="USER">
-                  User
-                </option>
-              </Select>
-              <Select
-                id="department"
-                name="department"
-                variant={InputVariant.transparent}
-              >
-                <option className="bg-gray-600" value="">
-                  All departments
-                </option>
-                <option className="bg-gray-600" value="HR">
-                  Human Resources
-                </option>
-                <option className="bg-gray-600" value="IT">
-                  Engineering
-                </option>
-                <option className="bg-gray-600" value="SALES">
-                  Sales
-                </option>
-              </Select>
-              <SectionSearch className="grow" />
+            <SectionHeaderGroup
+              spacing={SectionHeaderGroupSpacing.md}
+              className="flex-wrap gap-y-2"
+            >
+              <SectionSearch className="w-full md:w-auto grow" />
+              <SectionHeaderGroup className="flex-wrap md:flex-nowrap w-full md:w-auto">
+                <Select id="role" name="role" variant={InputVariant.underline}>
+                  <option className="bg-gray-600" value="">
+                    All roles
+                  </option>
+                  <option className="bg-gray-600" value="ADMIN">
+                    Admin
+                  </option>
+                  <option className="bg-gray-600" value="USER">
+                    User
+                  </option>
+                </Select>
+                <Select
+                  id="department"
+                  name="department"
+                  variant={InputVariant.underline}
+                >
+                  <option className="bg-gray-600" value="">
+                    All departments
+                  </option>
+                  <option className="bg-gray-600" value="HR">
+                    Human Resources
+                  </option>
+                  <option className="bg-gray-600" value="IT">
+                    Engineering
+                  </option>
+                  <option className="bg-gray-600" value="SALES">
+                    Sales
+                  </option>
+                </Select>
+              </SectionHeaderGroup>
             </SectionHeaderGroup>
           </SectionHeaderRow>
         </SectionFilter>
@@ -284,7 +287,7 @@ export const TemplateListWithFilterDialog = ({
     )
   const Filters = () => (
     <>
-      <Select id="role" name="role" variant={InputVariant.transparent}>
+      <Select id="role" name="role" variant={InputVariant.underline}>
         <option className="bg-gray-600" value="">
           All roles
         </option>
@@ -298,7 +301,7 @@ export const TemplateListWithFilterDialog = ({
       <Select
         id="department"
         name="department"
-        variant={InputVariant.transparent}
+        variant={InputVariant.underline}
       >
         <option className="bg-gray-600" value="">
           All departments
