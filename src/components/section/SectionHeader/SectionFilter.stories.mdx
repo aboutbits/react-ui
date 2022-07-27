@@ -31,6 +31,8 @@ import {
 
 You can use the SectionFilter component to create a filter on a specific Section.
 
+Find more samples in the [List examples](/docs/examples-list--default-story).
+
 export const Template = () => {
   const [filter, setFilter] = useState({ role: '', department: '' })
   const content = Array.from(Array(10).keys())
@@ -58,7 +60,7 @@ export const Template = () => {
             className="flex"
           >
             <SectionHeaderGroup>
-              <Select id="role" name="role" variant={Variant.underline}>
+              <Select id="role" name="role" variant={Variant.transparent}>
                 <option className="bg-gray-600" value="">
                   All roles
                 </option>
@@ -72,7 +74,7 @@ export const Template = () => {
               <Select
                 id="department"
                 name="department"
-                variant={Variant.underline}
+                variant={Variant.transparent}
               >
                 <option className="bg-gray-600" value="">
                   All departments
