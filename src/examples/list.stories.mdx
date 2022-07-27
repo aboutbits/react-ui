@@ -35,15 +35,67 @@ import { Select, Variant as InputVariant } from '../components/form'
 
 <Meta title="Examples/List" />
 
-# List
-
-The following example shows how multiple section components and the in memory pagination are used to create an overview list.
-
-Changing the properties `numberOfTotalItems` and `numberOfItemsPerPage` will change the number of pages and/or the number the of items per page.
+# Simple List
 
 Setting `numberOfTotalItems` to 0 will reveal the placeholder for the empty list.
 
-export const TemplateDefault = ({
+export const TemplateDefault = ({ numberOfTotalItems }) => {
+  const content = Array.from(Array(numberOfTotalItems).keys()).map(
+    (item, index) => ({
+      name: `User ${item + 1}`,
+      role: index % 8 === 0 ? 'ADMIN' : 'USER',
+      department: index % 3 === 0 ? 'HR' : 'SALES',
+    })
+  )
+  return (
+    <Section>
+      <SectionHeader>
+        <SectionTitle>List of users</SectionTitle>
+      </SectionHeader>
+      <SectionContainer>
+        <SectionContentList>
+          {content.length > 0 &&
+            content.map((item) => (
+              <SectionListItemButton
+                key={item.name}
+                onClick={() => action('clicked')}
+              >
+                {`${item.name} (${item.role} - ${item.department})`}
+              </SectionListItemButton>
+            ))}
+          {content.length === 0 && (
+            <SectionContentListEmpty>
+              No users found in database.
+            </SectionContentListEmpty>
+          )}
+        </SectionContentList>
+      </SectionContainer>
+    </Section>
+  )
+}
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      numberOfTotalItems: 5,
+    }}
+  >
+    {TemplateDefault.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+# List with pagination, search and filter
+
+The following example shows how multiple section components and the in memory pagination are used to create an overview list with filters.
+
+Changing the properties `numberOfTotalItems` and `numberOfItemsPerPage` will change the number of pages and/or the number the of items per page.
+
+export const TemplateComplexList = ({
   numberOfTotalItems,
   numberOfItemsPerPage,
 }) => {
@@ -154,19 +206,19 @@ export const TemplateDefault = ({
 
 <Canvas>
   <Story
-    name="Default"
+    name="Complex list"
     args={{
       numberOfTotalItems: 1000,
       numberOfItemsPerPage: 5,
     }}
   >
-    {TemplateDefault.bind({})}
+    {TemplateComplexList.bind({})}
   </Story>
 </Canvas>
 
 ### Props
 
-<ArgsTable story="Default" />
+<ArgsTable story="Complex list" />
 
 # List with search
 
@@ -188,10 +240,7 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
         <SectionHeader className="mb-2 md:mb-0">
           <SectionHeaderRow>
             <SectionTitle>List of users</SectionTitle>
-            <SectionHeaderGroup>
-              <SectionSearch className="hidden md:block" />
-              <SectionAction label="Add" icon={IconAdd} />
-            </SectionHeaderGroup>
+            <SectionSearch className="hidden md:block" />
           </SectionHeaderRow>
           <SectionHeaderRow
             layout={SectionHeaderRowLayout.full}
@@ -225,7 +274,7 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
 
 <Canvas>
   <Story
-    name="Search"
+    name="List with search"
     args={{
       numberOfTotalItems: 10,
     }}
@@ -279,7 +328,7 @@ export const TemplateWithContentTitle = () => {
 
 <Canvas>
   <Story
-    name="ContentTitle"
+    name="List with content title"
     args={{
       numberOfTotalItems: 1000,
       numberOfItemsPerPage: 5,
@@ -287,45 +336,6 @@ export const TemplateWithContentTitle = () => {
   >
     {TemplateWithContentTitle.bind({})}
   </Story>
-</Canvas>
-
-# Simple List
-
-export const TemplateSimpleList = () => {
-  const content = Array.from(Array(5).keys()).map((item, index) => ({
-    name: `User ${item + 1}`,
-    role: index % 8 === 0 ? 'ADMIN' : 'USER',
-    department: index % 3 === 0 ? 'HR' : 'SALES',
-  }))
-  return (
-    <Section>
-      <SectionHeader>
-        <SectionTitle>List of users</SectionTitle>
-      </SectionHeader>
-      <SectionContainer>
-        <SectionContentList>
-          {content.length > 0 &&
-            content.map((item) => (
-              <SectionListItemButton
-                key={item.name}
-                onClick={() => action('clicked')}
-              >
-                {`${item.name} (${item.role} - ${item.department})`}
-              </SectionListItemButton>
-            ))}
-          {content.length === 0 && (
-            <SectionContentListEmpty>
-              No users found in database.
-            </SectionContentListEmpty>
-          )}
-        </SectionContentList>
-      </SectionContainer>
-    </Section>
-  )
-}
-
-<Canvas>
-  <Story name="SimpleList">{TemplateSimpleList.bind({})}</Story>
 </Canvas>
 
 # List with filter dialog
@@ -486,7 +496,7 @@ export const TemplateListWithFilterDialog = ({
 
 <Canvas>
   <Story
-    name="ListWithFilterDialog"
+    name="List with filter dialog"
     args={{
       numberOfTotalItems: 1000,
       numberOfItemsPerPage: 5,
@@ -495,3 +505,7 @@ export const TemplateListWithFilterDialog = ({
     {TemplateListWithFilterDialog.bind({})}
   </Story>
 </Canvas>
+
+### Props
+
+<ArgsTable story="List with filter dialog" />
