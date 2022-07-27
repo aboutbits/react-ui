@@ -33,7 +33,6 @@ import { Variant } from './types'
   args={{
     mode: Mode.light,
     variant: Variant.ghost,
-    disabled: false,
   }}
   argTypes={{
     mode: {
@@ -85,11 +84,3 @@ export const Template = ({ ...args }) => (
 
 The Select component shares the styles with the Input component.
 For customization of the styles please checkout the [theme section](/docs/components-form-input--default-story#theme) of the Input component.
-
-In addition, there are the following theme settings:
-
-- `form.select.base`: Defines base styles of the select.
-- `form.select.variant.ghost`: Defines styles of the select with variant ghost.
-- `form.select.variant.soft`: Defines styles of the select with variant soft.
-- `form.select.variant.transparent`: Defines styles of the select with variant transparent.
-- `form.select.variant.underline`: Defines styles of the select with variant underline.
