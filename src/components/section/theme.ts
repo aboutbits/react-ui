@@ -57,7 +57,15 @@ export default {
     base: 'justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   header: {
-    base: 'py-2 flex flex-col gap-y-2',
+    base: 'pt-2 flex flex-col gap-y-2',
+    defaultBottomSpace: 'pb-2',
+    increasedBottomSpace: {
+      enabled: 'pb-4',
+      sm: 'pb-4 sm:pb-2',
+      md: 'pb-4 md:pb-2',
+      lg: 'pb-4 lg:pb-2',
+      xl: 'pb-4 xl:pb-2',
+    },
   },
   title: {
     base: 'py-2 flex-1 text-base text-neutral-800',

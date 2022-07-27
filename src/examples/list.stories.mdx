@@ -144,7 +144,7 @@ export const TemplateComplexList = ({
   )
   return (
     <Section>
-      <SectionHeader className="mb-2">
+      <SectionHeader increasedBottomSpace>
         <SectionHeaderRow>
           <SectionTitle>List of users</SectionTitle>
           <SectionAction label="Add" icon={IconAdd} />
@@ -237,7 +237,7 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
         initialValues={filter}
         onFilter={(values) => setFilter(values)}
       >
-        <SectionHeader className="mb-2 md:mb-0">
+        <SectionHeader increasedBottomSpace="md">
           <SectionHeaderRow>
             <SectionTitle>List of users</SectionTitle>
             <SectionSearch className="hidden md:block" />
