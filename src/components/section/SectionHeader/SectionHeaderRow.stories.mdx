@@ -8,9 +8,8 @@ import { SectionHeaderRow, SectionHeaderRowLayout } from './SectionHeaderRow'
 
 # SectionHeaderRow
 
-This component is a container for elements inside a SectionHeader.
-It manages the layout of the elements inside it. Choose between full, spaceBetween, start, center or end. It defaults to spaceBetween.
-Full should only be used for a single element inside the container.
+This component is a container for elements inside a `SectionHeader`.
+It manages the layout of the elements inside it. Choose between `stretch`, `spaceBetween`, `start`, `center` or `end`. It defaults to `spaceBetween`. `stretch` should only be used for a single element inside the container.
 
 export const Template = ({ children, ...args }) => (
   <SectionHeaderRow {...args}>{children}</SectionHeaderRow>
@@ -46,7 +45,7 @@ export const Template = ({ children, ...args }) => (
 ### Theme
 
 - `section.headerRow.base`: Define the base styles for the row.
-- `section.headerRow.layout.full`: Define the styles when the elemnts should be full width.
+- `section.headerRow.layout.stretch`: Define the styles when the elemnts should be stretched.
 - `section.headerRow.layout.spaceBetween`: Define the styles the elements should have a space between.
 - `section.headerRow.layout.start`: Define the styles when the elements should be aligned to the start.
 - `section.headerRow.layout.center`: Define the styles when the elements should be aligned to the center.

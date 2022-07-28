@@ -153,7 +153,7 @@ export const TemplateComplexList = ({
           initialValues={filter}
           onFilter={(values) => setFilter(values)}
         >
-          <SectionHeaderRow layout={SectionHeaderRowLayout.full}>
+          <SectionHeaderRow layout={SectionHeaderRowLayout.stretch}>
             <SectionHeaderGroup
               spacing={SectionHeaderGroupSpacing.md}
               className="flex-col md:flex-row gap-y-2"
@@ -243,7 +243,7 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
             <SectionSearch className="hidden md:block" />
           </SectionHeaderRow>
           <SectionHeaderRow
-            layout={SectionHeaderRowLayout.full}
+            layout={SectionHeaderRowLayout.stretch}
             className="block md:hidden"
           >
             <SectionSearch />

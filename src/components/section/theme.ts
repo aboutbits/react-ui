@@ -73,7 +73,7 @@ export default {
   headerRow: {
     base: '',
     layout: {
-      full: '',
+      stretch: '',
       spaceBetween: 'flex justify-between gap-x-2.5',
       start: 'flex justify-start gap-x-2.5',
       center: 'flex justify-center gap-x-2.5',

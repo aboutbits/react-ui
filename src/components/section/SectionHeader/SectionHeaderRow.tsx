@@ -4,7 +4,7 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 export enum SectionHeaderRowLayout {
-  full = 'full',
+  stretch = 'stretch',
   spaceBetween = 'spaceBetween',
   start = 'start',
   center = 'center',
