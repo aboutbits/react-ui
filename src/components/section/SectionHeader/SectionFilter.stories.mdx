@@ -15,25 +15,16 @@ import {
   SectionFilter,
 } from '../'
 
-<Meta
-  title="Components/Section/SectionFilter"
-  component={SectionFilter}
-  decorators={[
-    (Story) => (
-      <Section>
-        <Story />
-      </Section>
-    ),
-  ]}
-/>
+<Meta title="Components/Section/SectionFilter" component={SectionFilter} />
 
 # SectionFilter
 
-You can use the SectionFilter component to create a filter on a specific Section.
+You can use the `SectionFilter` to create a filter on a specific section.
+This component is a form wrapper that submits automatically by default. You can disable auto-submit by passing `false` to the `autoSubmit` prop.
 
 Find more samples in the [List examples](/docs/examples-list--default-story).
 
-export const Template = () => {
+export const Template = ({ ...args }) => {
   const [filter, setFilter] = useState({ role: '', department: '' })
   const content = Array.from(Array(10).keys())
     .map((item, index) => ({
@@ -53,11 +44,10 @@ export const Template = () => {
         <SectionHeaderRow>
           <SectionTitle>Users</SectionTitle>
           <SectionFilter
-            initialValues={filter}
-            onFilter={(values) => {
-              setFilter(values)
-            }}
             className="flex"
+            {...args}
+            initialValues={filter}
+            onFilter={(values) => setFilter(values)}
           >
             <SectionHeaderGroup>
               <Select id="role" name="role" variant={Variant.transparent}>
@@ -112,7 +102,18 @@ export const Template = () => {
 }
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{
+      autoSubmit: undefined,
+    }}
+    argTypes={{
+      onFilter: { control: false },
+      children: { control: false },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props
