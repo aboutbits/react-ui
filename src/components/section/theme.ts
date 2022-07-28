@@ -8,9 +8,6 @@ export default {
   content: {
     base: 'flex flex-col gap-y-6 px-6 pt-6 pb-9',
   },
-  contentTitle: {
-    base: 'bg-neutral-100 px-6 py-1 border-b border-t border-neutral-200 text-sm text-neutral-600',
-  },
   contentList: {
     base: 'space-y-px bg-neutral-200',
   },
@@ -55,6 +52,9 @@ export default {
   listItemLink: {
     link: 'block focus:outline-neutral-800',
     base: 'justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
+  },
+  subsectionTitle: {
+    base: 'bg-neutral-100 px-6 py-1 border-b border-t border-neutral-200 text-sm text-neutral-600',
   },
   header: {
     base: 'pt-2 flex flex-col gap-y-2',

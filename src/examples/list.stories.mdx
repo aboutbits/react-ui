@@ -17,7 +17,7 @@ import {
   SectionAction,
   SectionTitle,
   SectionContainer,
-  SectionContentTitle,
+  SubsectionTitle,
   SectionContentList,
   SectionContentListEmpty,
   SectionHeader,
@@ -283,25 +283,27 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
   </Story>
 </Canvas>
 
-# List with content title
+# List with subsection title
 
-export const TemplateWithContentTitle = () => {
-  const content = Array.from(Array(3).keys()).map((item, index) => ({
+export const TemplateWithSubtitle = () => {
+  const content = Array.from(Array(5).keys()).map((item, index) => ({
     name: `User ${item + 1}`,
-    role: index % 8 === 0 ? 'ADMIN' : 'USER',
-    department: index % 3 === 0 ? 'HR' : 'SALES',
+    role: index % 3 === 0 ? 'ADMIN' : 'USER',
+    department: index % 2 === 0 ? 'HR' : 'SALES',
   }))
-  const list = (
+  const UserList = ({ role }) => (
     <SectionContentList>
       {content.length > 0 &&
-        content.map((item) => (
-          <SectionListItemButton
-            key={item.name}
-            onClick={() => action('clicked')}
-          >
-            {`${item.name} (${item.role} - ${item.department})`}
-          </SectionListItemButton>
-        ))}
+        content
+          .filter((item) => item.role === role)
+          .map((item) => (
+            <SectionListItemButton
+              key={item.name}
+              onClick={() => action('clicked')}
+            >
+              {`${item.name} (${item.role} - ${item.department})`}
+            </SectionListItemButton>
+          ))}
     </SectionContentList>
   )
   return (
@@ -310,9 +312,10 @@ export const TemplateWithContentTitle = () => {
         <SectionTitle>List of users</SectionTitle>
       </SectionHeader>
       <SectionContainer>
-        {list}
-        <SectionContentTitle>Section Content Title</SectionContentTitle>
-        {list}
+        <SubsectionTitle>Users</SubsectionTitle>
+        <UserList role="USER" />
+        <SubsectionTitle>Admins</SubsectionTitle>
+        <UserList role="ADMIN" />
         <SectionFooter>
           <Actions>
             <Button>Submit</Button>
@@ -328,13 +331,13 @@ export const TemplateWithContentTitle = () => {
 
 <Canvas>
   <Story
-    name="List with content title"
+    name="List with subsection title"
     args={{
       numberOfTotalItems: 1000,
       numberOfItemsPerPage: 5,
     }}
   >
-    {TemplateWithContentTitle.bind({})}
+    {TemplateWithSubtitle.bind({})}
   </Story>
 </Canvas>
 

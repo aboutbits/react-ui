@@ -1,0 +1,26 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SubsectionTitle } from './SubsectionTitle'
+
+<Meta title="Components/Section/SubsectionTitle" component={SubsectionTitle} />
+
+# SubsectionTitle
+
+This component is an HTML `h3` tag and defines the style of a subsection title to be used inside the `SectionContent`.
+
+export const Template = ({ children, ...args }) => (
+  <SubsectionTitle {...args}>{children}</SubsectionTitle>
+)
+
+<Canvas>
+  <Story name="Default" args={{ children: 'Profile information' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `section.subsectionTitle.base`: Define the styles for the subsection title.

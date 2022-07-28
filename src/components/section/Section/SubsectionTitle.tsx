@@ -5,12 +5,12 @@ import { ClassNameProps } from '../../types'
 
 type Props = { children?: ReactNode } & ClassNameProps
 
-export function SectionContentTitle({ children, className }: Props) {
+export function SubsectionTitle({ children, className }: Props) {
   const { section } = useTheme()
 
   return (
-    <div className={classNames(section.contentTitle.base, className)}>
+    <h3 className={classNames(section.subsectionTitle.base, className)}>
       {children}
-    </div>
+    </h3>
   )
 }
