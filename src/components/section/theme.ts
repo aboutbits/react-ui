@@ -57,14 +57,14 @@ export default {
     base: 'bg-neutral-100 px-6 py-1 border-b border-t border-neutral-200 text-sm text-neutral-600',
   },
   header: {
-    base: 'pt-2 flex flex-col gap-y-2',
-    defaultBottomSpace: 'pb-2',
-    increasedBottomSpace: {
-      enabled: 'pb-4',
-      sm: 'pb-4 sm:pb-2',
-      md: 'pb-4 md:pb-2',
-      lg: 'pb-4 lg:pb-2',
-      xl: 'pb-4 xl:pb-2',
+    base: 'py-2 flex flex-col gap-y-2',
+  },
+  headerSpacer: {
+    size: {
+      sm: '',
+      md: 'h-2',
+      lg: 'h-4',
+      xl: 'h-6',
     },
   },
   title: {

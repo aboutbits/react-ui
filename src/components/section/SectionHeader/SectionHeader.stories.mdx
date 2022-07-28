@@ -8,10 +8,6 @@ import { SectionTitle } from './SectionTitle'
 
 This component defines the header container of a section.
 
-If you want to increase the bottom space (because of multi-row header with search or filters), you can use the `increasedBottomSpace` option.
-It can be enabled (`true`) or you can set a breakpoint (e.g. `'sm'`, `'md'`, ...). It's also possible to extend the available options in the theme configuration.
-Check the [List examples](/docs/examples-list--default-story) to see how to use it.
-
 export const Template = ({ children, ...args }) => (
   <SectionHeader {...args}>{children}</SectionHeader>
 )
@@ -21,21 +17,6 @@ export const Template = ({ children, ...args }) => (
     name="Default"
     args={{
       children: <SectionTitle>Profile information</SectionTitle>,
-      increasedBottomSpace: 'disabled',
-    }}
-    argTypes={{
-      increasedBottomSpace: {
-        options: ['disabled', 'enabled', 'sm', 'md', 'lg', 'xl'],
-        mapping: {
-          disabled: false,
-          enabled: true,
-          sm: 'sm',
-          md: 'md',
-          lg: 'lg',
-          xl: 'xl',
-        },
-        control: { type: 'select' },
-      },
     }}
   >
     {Template.bind({})}
@@ -49,9 +30,3 @@ export const Template = ({ children, ...args }) => (
 ### Theme
 
 - `section.header.base`: Define the base styles for the section heading.
-- `section.header.defaultBottomSpace`: Define the styles for the default bottom spacing. It's replaced with the increased bottom space, if the option is enabled.
-- `section.header.increasedBottomSpace.enabled`: Define the styles for the always-enabled increased bottom space
-- `section.header.increasedBottomSpace.sm`: Define the styles for increased bottom space until the sm breaking point.
-- `section.header.increasedBottomSpace.md`: Define the styles for increased bottom space until the md breaking point.
-- `section.header.increasedBottomSpace.lg`: Define the styles for increased bottom space until the lg breaking point.
-- `section.header.increasedBottomSpace.xl`: Define the styles for increased bottom space until the xl breaking point.
