@@ -1,20 +1,10 @@
-import React, { forwardRef } from 'react'
-import { ClassNameProps, Mode, ModeProps } from '../types'
+import { forwardRef } from 'react'
+import { Mode } from '../types'
 import { useInternationalization } from '../../framework'
-import { Select } from './Select'
+import { Select, SelectProps } from './Select'
 import { Option } from './Option'
 
-type SelectMonthProps = React.DetailedHTMLProps<
-  React.SelectHTMLAttributes<HTMLSelectElement>,
-  HTMLSelectElement
-> &
-  ClassNameProps &
-  ModeProps & {
-    id: string
-    name: string
-    label?: string
-    className?: string
-  }
+type SelectMonthProps = SelectProps
 
 export enum Month {
   JANUARY = 'JANUARY',
