@@ -8,13 +8,13 @@ import { useState } from 'react'
 import { Actions } from '../components/action'
 import {
   Button,
+  ButtonIcon,
   Variant as ButtonVariant,
   SubmitButton,
 } from '../components/button'
 import { DialogHeader } from '../components/dialog'
 import {
   Section,
-  SectionAction,
   SectionTitle,
   SectionContainer,
   SubsectionTitle,
@@ -33,6 +33,7 @@ import {
 } from '../components/section'
 import { SectionFooterWithPaginationInMemory } from '../components/pagination'
 import { Select, Variant as InputVariant } from '../components/form'
+import { Tone } from '../components/types'
 
 <Meta title="Examples/List" />
 
@@ -148,7 +149,12 @@ export const TemplateComplexList = ({
       <SectionHeader>
         <SectionHeaderRow>
           <SectionTitle>List of users</SectionTitle>
-          <SectionAction label="Add" icon={IconAdd} />
+          <ButtonIcon
+            label="Add"
+            icon={IconAdd}
+            variant={ButtonVariant.transparent}
+            tone={Tone.neutral}
+          />
         </SectionHeaderRow>
         <SectionFilter
           initialValues={filter}
@@ -440,10 +446,12 @@ export const TemplateListWithFilterDialog = ({
             {isDialogEnabled ? (
               <SectionHeaderGroup>
                 <div className="relative flex items-center">
-                  <SectionAction
+                  <ButtonIcon
                     icon={IconFilterList}
                     label="Filter"
                     onClick={() => setDialogShow(true)}
+                    variant={ButtonVariant.transparent}
+                    tone={Tone.neutral}
                   />
                   {filter.department !== '' ||
                     filter.role !== '' ||
