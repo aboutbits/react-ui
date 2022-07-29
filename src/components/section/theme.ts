@@ -54,7 +54,7 @@ export default {
     base: 'justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   subsectionTitle: {
-    base: 'bg-neutral-100 px-6 py-1 border-b border-t first:border-none border-neutral-200 text-sm text-neutral-600',
+    base: 'bg-neutral-100 px-6 py-1 border-b border-t first:border-t-none border-neutral-200 text-sm text-neutral-600',
   },
   header: {
     base: 'py-2 flex flex-col gap-y-2',
