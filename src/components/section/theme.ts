@@ -9,7 +9,7 @@ export default {
     base: 'flex flex-col gap-y-6 px-6 pt-6 pb-9',
   },
   contentList: {
-    base: 'space-y-px bg-neutral-200',
+    base: '',
   },
   contentListEmpty: {
     base: 'justify-center py-4',
