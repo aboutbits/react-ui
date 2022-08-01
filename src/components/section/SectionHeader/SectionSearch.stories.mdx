@@ -1,31 +1,25 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { useState } from 'react'
-import { SectionSearch } from './SectionSearch'
+import { action } from '@storybook/addon-actions'
+import { Section, SectionHeader, SectionFilter, SectionSearch } from '../'
 
 <Meta title="Components/Section/SectionSearch" component={SectionSearch} />
 
 # SectionSearch
 
-This component defines the entire search part that can be placed inside the `SectionHeader`. It wraps a `SectionTitle`
-and a `SectionAction` for not searching and an input with another `SectionAction` for searching.
+This component is used to add a standardized search input to the `SectionFilter` inside of a `SectionHeader`.
 
-export const Template = ({ ...args }) => {
-  const [search, setSearch] = useState('')
-  return (
-    <div className="flex items-center">
-      <SectionSearch
-        {...args}
-        search={search}
-        actions={{ search: setSearch, clear: () => setSearch('') }}
-      />
-    </div>
-  )
-}
+export const Template = ({ ...args }) => (
+  <Section>
+    <SectionHeader>
+      <SectionFilter initialValues={{ search: '' }} onSubmit={action('filter')}>
+        <SectionSearch {...args} />
+      </SectionFilter>
+    </SectionHeader>
+  </Section>
+)
 
 <Canvas>
-  <Story name="Default" args={{ title: 'List of users' }}>
-    {Template.bind({})}
-  </Story>
+  <Story name="Default">{Template.bind({})}</Story>
 </Canvas>
 
 ### Props

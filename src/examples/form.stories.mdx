@@ -7,9 +7,11 @@ import { ContentArea } from '../components/content'
 import { Form, Input, Select, TextArea } from '../components/form'
 import {
   Section,
+  SectionContainer,
   SectionContentTwoColumn,
   SectionHeader,
   SectionTitle,
+  SectionFooter,
 } from '../components/section'
 import { Actions } from '../components/action'
 import { SubmitButton } from '../components/button/SubmitButton'
@@ -62,63 +64,72 @@ export const Template = ({ title }) => {
             <SectionHeader>
               <SectionTitle>{title}</SectionTitle>
             </SectionHeader>
-            <SectionContentTwoColumn>
-              <Input
-                id="name"
-                type="text"
-                autoCapitalize="none"
-                name="name"
-                placeholder={intl.formatMessage({
-                  id: 'shared.field.name',
-                })}
-                label={intl.formatMessage({ id: 'shared.field.name' })}
-              />
-              <Input
-                id="email"
-                type="email"
-                autoCapitalize="none"
-                name="email"
-                placeholder={intl.formatMessage({
-                  id: 'shared.field.email',
-                })}
-                label={intl.formatMessage({ id: 'shared.field.email' })}
-              />
-              <Select
-                id="language"
-                autoCapitalize="none"
-                name="language"
-                label={intl.formatMessage({ id: 'shared.field.language' })}
-              >
-                {i18n.supportedLanguages.map((supportedLanguage, index) => (
-                  <option
-                    className="bg-gray-600"
-                    key={index}
-                    value={supportedLanguage}
-                  >
-                    {locales[supportedLanguage]}
+            <SectionContainer>
+              <SectionContentTwoColumn>
+                <Input
+                  id="name"
+                  type="text"
+                  autoCapitalize="none"
+                  name="name"
+                  placeholder={intl.formatMessage({
+                    id: 'shared.field.name',
+                  })}
+                  label={intl.formatMessage({ id: 'shared.field.name' })}
+                />
+                <Input
+                  id="email"
+                  type="email"
+                  autoCapitalize="none"
+                  name="email"
+                  placeholder={intl.formatMessage({
+                    id: 'shared.field.email',
+                  })}
+                  label={intl.formatMessage({ id: 'shared.field.email' })}
+                />
+                <Select
+                  id="language"
+                  autoCapitalize="none"
+                  name="language"
+                  label={intl.formatMessage({ id: 'shared.field.language' })}
+                >
+                  {i18n.supportedLanguages.map((supportedLanguage, index) => (
+                    <option
+                      className="bg-gray-600"
+                      key={index}
+                      value={supportedLanguage}
+                    >
+                      {locales[supportedLanguage]}
+                    </option>
+                  ))}
+                </Select>
+                <Select
+                  id="role"
+                  autoCapitalize="none"
+                  name="role"
+                  label="Role"
+                >
+                  <option className="bg-gray-600" value="ADMIN">
+                    Admin
                   </option>
-                ))}
-              </Select>
-              <Select id="role" autoCapitalize="none" name="role" label="Role">
-                <option className="bg-gray-600" value="ADMIN">
-                  Admin
-                </option>
-                <option className="bg-gray-600" value="USER">
-                  User
-                </option>
-              </Select>
-              <TextArea
-                id="bio"
-                rows="3"
-                className="xl:col-span-2"
-                name="bio"
-                label="Bio"
-              />
-            </SectionContentTwoColumn>
+                  <option className="bg-gray-600" value="USER">
+                    User
+                  </option>
+                </Select>
+                <TextArea
+                  id="bio"
+                  rows="3"
+                  className="xl:col-span-2"
+                  name="bio"
+                  label="Bio"
+                />
+              </SectionContentTwoColumn>
+              <SectionFooter>
+                <Actions>
+                  <SubmitButton>Save</SubmitButton>
+                </Actions>
+              </SectionFooter>
+            </SectionContainer>
           </Section>
-          <Actions>
-            <SubmitButton>Save</SubmitButton>
-          </Actions>
         </Form>
       </Formik>
     </ContentArea>

@@ -1,12 +1,15 @@
 export default {
   section: {
-    base: 'lg:shadow-md lg:rounded-md overflow-hidden bg-white',
+    base: '',
+  },
+  container: {
+    base: 'bg-white border border-neutral-400 rounded-lg overflow-hidden',
   },
   content: {
-    base: 'pt-5 pb-10 px-4 lg:px-5 bg-white',
+    base: 'flex flex-col gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
   },
   contentList: {
-    base: 'space-y-px bg-gray-500',
+    base: '',
   },
   contentListEmpty: {
     base: 'justify-center py-4',
@@ -24,10 +27,10 @@ export default {
     },
   },
   contentTwoColumn: {
-    base: 'grid xl:grid-cols-2 xl:gap-x-5 gap-y-5',
+    base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
   },
   listItem: {
-    base: 'flex items-center min-h-[3.5rem] px-4 lg:px-5 bg-white text-black',
+    base: 'flex items-center min-h-[3.5rem] bg-white px-4 md:px-6',
   },
   listItemWithAction: {
     base: 'justify-between space-x-4',
@@ -36,44 +39,55 @@ export default {
     },
   },
   descriptionItem: {
-    base: 'flex flex-col pb-2 space-y-1 text-black border-b border-gray-500',
+    base: 'flex flex-col text-neutral-800 border-b border-neutral-200',
   },
   descriptionItemTitle: {
-    base: 'text-sm',
+    base: 'text-xs',
   },
   listItemButton: {
-    base: 'justify-between space-x-4 hover:bg-primary-50',
+    button:
+      'block w-full border-b border-neutral-200 last:border-0 focus:outline-neutral-800',
+    base: 'px-4 md:px-6 justify-between space-x-4 hover:bg-neutral-100',
   },
   listItemLink: {
-    base: 'justify-between space-x-4 hover:bg-primary-50 active:bg-primary-50',
+    link: 'block focus:outline-neutral-800',
+    base: 'justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
+  },
+  subsectionTitle: {
+    base: 'bg-neutral-100 px-4 md:px-6 py-1 border-b border-t first:border-t-none border-neutral-200 text-sm text-neutral-600',
   },
   header: {
-    base: 'px-4 lg:px-5 py-5 flex justify-between items-center space-x-2 bg-gray-300 border-b border-gray-500',
+    base: 'py-2 flex flex-col gap-y-2',
+  },
+  headerSpacer: {
+    size: {
+      sm: '',
+      md: 'h-2',
+      lg: 'h-4',
+      xl: 'h-6',
+    },
   },
   title: {
-    base: 'py-0.5 flex-1 text-sm font-bold uppercase text-black',
+    base: 'py-2 flex-1 text-base text-neutral-800',
   },
-  search: {
-    input: {
-      base: 'flex-1 text-base border-none outline-none p-0 bg-transparent placeholder-gray-600 text-black',
+  headerRow: {
+    base: '',
+    layout: {
+      stretch: '',
+      spaceBetween: 'flex justify-between gap-x-2.5',
+      start: 'flex justify-start gap-x-2.5',
+      center: 'flex justify-center gap-x-2.5',
+      end: 'flex justify-end gap-x-2.5',
     },
   },
-  action: {
-    base: 'fill-current text-black hover:bg-gray-500 focus:bg-gray-500 rounded-full hover:ring focus:ring ring-gray-500 disabled:text-gray-400',
-    icon: 'h-6',
+  headerGroup: {
+    base: 'flex items-center gap-y-2',
+    spacing: {
+      sm: 'gap-x-2.5',
+      md: 'gap-x-6',
+    },
   },
   footer: {
-    base: 'lg:p-4 py-4 px-3 bg-gray-300 border-t border-gray-500',
-  },
-  filter: {
-    trigger: {
-      base: 'absolute -right-2 p-1 bg-primary-500 rounded-full',
-    },
-    container: {
-      base: 'px-4 lg:px-5 py-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5 bg-gray-300 border-b border-gray-500',
-    },
-    dialog: {
-      base: 'px-4 lg:px-5 py-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 bg-white border-b border-gray-500',
-    },
+    base: 'px-4 md:px-6 py-4 bg-neutral-100 border-t border-neutral-200 text-xs',
   },
 }

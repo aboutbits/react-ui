@@ -10,20 +10,29 @@ import { InputLabel } from './InputLabel'
 import { Variant, VariantProps } from './types'
 import { useCustomInputCss } from './useCustomInputCss'
 
-type Props = React.DetailedHTMLProps<
+type InputPropsBase = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > &
   ModeProps &
   VariantProps & {
-    id: string
-    label?: string
     name: string
     iconStart?: ComponentType<IconProps>
     iconEnd?: ComponentType<IconProps>
   }
 
-export const Input = forwardRef<HTMLInputElement, Props>(
+type InputPropsWithoutLabel = InputPropsBase & {
+  label?: never
+}
+
+type InputPropsWithLabel = InputPropsBase & {
+  id: string
+  label: string
+}
+
+export type InputProps = InputPropsWithoutLabel | InputPropsWithLabel
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       label,
@@ -47,11 +56,13 @@ export const Input = forwardRef<HTMLInputElement, Props>(
 
     return (
       <div className={className}>
-        <InputLabel
-          inputId={props.id}
-          label={label}
-          className={customCss.labelCss}
-        />
+        {label && props.id && (
+          <InputLabel
+            inputId={props.id}
+            label={label}
+            className={customCss.labelCss}
+          />
+        )}
         <div className={form.input.field}>
           {iconStart && (
             <InputIcon

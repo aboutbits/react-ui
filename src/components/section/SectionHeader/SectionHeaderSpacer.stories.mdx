@@ -1,0 +1,47 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import {
+  SectionHeaderSpacer,
+  SectionHeaderSpacerSize,
+} from './SectionHeaderSpacer'
+
+<Meta
+  title="Components/Section/SectionHeaderSpacer"
+  component={SectionHeaderSpacer}
+/>
+
+# SectionHeaderSpacer
+
+This component is used to add a defined space to the bottom of `SectionHeader`. It has to be inserted as the very last element in the `SectionHeader`.
+
+It is best used when you have a multi-row header with search or filters.
+Check the [List examples](/docs/examples-list--default-story) to see how to use it.
+
+export const Template = ({ ...args }) => <SectionHeaderSpacer {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      size: undefined,
+    }}
+    argTypes={{
+      size: {
+        options: Object.values(SectionHeaderSpacerSize),
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `section.headerSpacer.size.sm`: Define the styles for the section header spacer with a small space.
+- `section.headerSpacer.size.md`: Define the styles for the section header spacer with a medium space.
+- `section.headerSpacer.size.lg`: Define the styles for the section header spacer with a large space.
+- `section.headerSpacer.size.xl`: Define the styles for the section header spacer with a extra large space.

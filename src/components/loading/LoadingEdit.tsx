@@ -1,6 +1,7 @@
 import React, { ReactElement, ReactNode } from 'react'
 import {
   Section,
+  SectionContainer,
   SectionContentTwoColumn,
   SectionHeader,
   SectionTitle,
@@ -28,13 +29,15 @@ export function LoadingEdit({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContentTwoColumn>
-        {Array(numberOfItems)
-          .fill(null)
-          .map((_, index) => (
-            <LoadingInput key={index} />
-          ))}
-      </SectionContentTwoColumn>
+      <SectionContainer>
+        <SectionContentTwoColumn>
+          {Array(numberOfItems)
+            .fill(null)
+            .map((_, index) => (
+              <LoadingInput key={index} />
+            ))}
+        </SectionContentTwoColumn>
+      </SectionContainer>
     </Section>
   )
 }

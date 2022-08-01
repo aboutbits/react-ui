@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import {
+  SectionHeaderGroup,
+  SectionHeaderGroupSpacing,
+} from './SectionHeaderGroup'
+
+<Meta
+  title="Components/Section/SectionHeaderGroup"
+  component={SectionHeaderGroup}
+/>
+
+# SectionHeaderGroup
+
+This component is a container for elements inside a SectionHeader or SectionHeaderRow and manages the spacings between the elements.
+
+export const Template = ({ children, ...args }) => (
+  <SectionHeaderGroup {...args}>{children}</SectionHeaderGroup>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      spacing: SectionHeaderGroupSpacing.sm,
+      children: (
+        <>
+          <div>Element1</div>
+          <div>Element2</div>
+        </>
+      ),
+    }}
+    argTypes={{
+      spacing: {
+        options: Object.values(SectionHeaderGroupSpacing),
+        control: { type: 'radio' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `section.headerGroup.base`: Define the base styles for the header group.
+- `section.headerGroup.spacing.sm`: Define the styles for small spacing.
+- `section.headerGroup.spacing.md`: Define the styles for medium spacing.

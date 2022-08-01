@@ -1,16 +1,10 @@
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { Mode, ModeProps } from '../types'
-import { Select } from './Select'
+import { Select, SelectProps } from './Select'
 import { Option } from './Option'
 
-type Props = React.DetailedHTMLProps<
-  React.SelectHTMLAttributes<HTMLSelectElement>,
-  HTMLSelectElement
-> &
+type Props = SelectProps &
   ModeProps & {
-    id: string
-    label?: string
-    name: string
     from: number
     to: number
   }

@@ -15,7 +15,9 @@ export const Template = ({ children, ...args }) => (
 <Canvas>
   <Story
     name="Default"
-    args={{ children: <SectionTitle>Profile information</SectionTitle> }}
+    args={{
+      children: <SectionTitle>Profile information</SectionTitle>,
+    }}
   >
     {Template.bind({})}
   </Story>
@@ -27,4 +29,4 @@ export const Template = ({ children, ...args }) => (
 
 ### Theme
 
-- `section.header.base`: Define the styles for the section heading.
+- `section.header.base`: Define the base styles for the section heading.

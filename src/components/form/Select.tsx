@@ -1,22 +1,33 @@
+import classNames from 'classnames'
 import { useField } from 'formik'
 
 import React, { forwardRef } from 'react'
+import { useTheme } from '../../framework'
 import { Mode, ModeProps } from '../types'
 import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
 import { Variant, VariantProps } from './types'
 import { useCustomInputCss } from './useCustomInputCss'
 
-type SelectProps = React.DetailedHTMLProps<
+type SelectPropsBase = React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement
 > &
   ModeProps &
   VariantProps & {
-    id: string
-    label?: string
     name: string
   }
+
+type SelectPropsWithoutLabel = SelectPropsBase & {
+  label?: never
+}
+
+type SelectPropsWithLabel = SelectPropsBase & {
+  id: string
+  label: string
+}
+
+export type SelectProps = SelectPropsWithoutLabel | SelectPropsWithLabel
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
@@ -37,15 +48,23 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       variant
     )
     const [field] = useField(props.name)
+    const { form } = useTheme()
 
     return (
       <div className={className}>
-        <InputLabel
-          inputId={props.id}
-          label={label}
-          className={customCss.labelCss}
-        />
-        <select {...field} {...props} ref={ref} className={customCss.inputCss}>
+        {label && props.id && (
+          <InputLabel
+            inputId={props.id}
+            label={label}
+            className={customCss.labelCss}
+          />
+        )}
+        <select
+          {...field}
+          {...props}
+          ref={ref}
+          className={classNames(form.select.base, customCss.inputCss)}
+        >
           {children}
         </select>
         <InputError name={props.name} className={customCss.errorCss} />

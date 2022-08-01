@@ -1,0 +1,125 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { useState } from 'react'
+import { action } from '@storybook/addon-actions'
+import { Variant, Select } from '../../form'
+import {
+  Section,
+  SectionContainer,
+  SectionContentList,
+  SectionContentListEmpty,
+  SectionHeader,
+  SectionHeaderRow,
+  SectionHeaderGroup,
+  SectionListItemButton,
+  SectionTitle,
+  SectionFilter,
+} from '../'
+
+<Meta title="Components/Section/SectionFilter" component={SectionFilter} />
+
+# SectionFilter
+
+You can use the `SectionFilter` to create a filter on a specific section.
+This component is a form wrapper that submits automatically by default. You can disable auto-submit by passing `false` to the `autoSubmit` prop.
+
+Find more samples in the [List examples](/docs/examples-list--default-story).
+
+export const Template = ({ ...args }) => {
+  const [filter, setFilter] = useState(args.initialValues)
+  const content = Array.from(Array(10).keys())
+    .map((item, index) => ({
+      name: `User ${item + 1}`,
+      role: index % 8 === 0 ? 'ADMIN' : 'USER',
+      department: index % 3 === 0 ? 'HR' : 'SALES',
+    }))
+    .filter((item) => {
+      return (
+        (filter.role === '' || item.role === filter.role) &&
+        (filter.department === '' || item.department === filter.department)
+      )
+    })
+  return (
+    <Section>
+      <SectionHeader>
+        <SectionHeaderRow>
+          <SectionTitle>Users</SectionTitle>
+          <SectionFilter
+            className="flex"
+            {...args}
+            initialValues={filter}
+            onSubmit={(values) => setFilter(values)}
+          >
+            <SectionHeaderGroup>
+              <Select id="role" name="role" variant={Variant.transparent}>
+                <option className="bg-gray-600" value="">
+                  All roles
+                </option>
+                <option className="bg-gray-600" value="ADMIN">
+                  Admin
+                </option>
+                <option className="bg-gray-600" value="USER">
+                  User
+                </option>
+              </Select>
+              <Select
+                id="department"
+                name="department"
+                variant={Variant.transparent}
+              >
+                <option className="bg-gray-600" value="">
+                  All departments
+                </option>
+                <option className="bg-gray-600" value="HR">
+                  Human Resources
+                </option>
+                <option className="bg-gray-600" value="IT">
+                  Engineering
+                </option>
+                <option className="bg-gray-600" value="SALES">
+                  Sales
+                </option>
+              </Select>
+            </SectionHeaderGroup>
+          </SectionFilter>
+        </SectionHeaderRow>
+      </SectionHeader>
+      <SectionContainer>
+        <SectionContentList>
+          {content.map((item) => (
+            <SectionListItemButton key={item.name} onClick={action('clicked')}>
+              {`${item.name} (${item.role} - ${item.department})`}
+            </SectionListItemButton>
+          ))}
+          {content.length === 0 && (
+            <SectionContentListEmpty>
+              No users found in database.
+            </SectionContentListEmpty>
+          )}
+        </SectionContentList>
+      </SectionContainer>
+    </Section>
+  )
+}
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      autoSubmit: undefined,
+      initialValues: {
+        role: '',
+        department: '',
+      },
+    }}
+    argTypes={{
+      onSubmit: { control: false },
+      children: { control: false },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

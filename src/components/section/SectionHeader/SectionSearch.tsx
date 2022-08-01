@@ -1,70 +1,31 @@
-import { ReactElement, useEffect, useRef, useState } from 'react'
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
-import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import { UseSearchQuery } from '../../types'
-import { useInternationalization, useTheme } from '../../../framework'
-import { SectionAction } from './SectionAction'
-import { SectionTitle } from './SectionTitle'
+import { ReactElement } from 'react'
+import { useInternationalization } from '../../../framework'
+import { Input, InputProps, Variant } from '../../form'
 
-type SectionSearchProps = {
-  title: string
-} & UseSearchQuery
+// Utility function to exclude props from a union type
+type ExcludeProp<Type, Fields> = {
+  [Property in keyof Type as Exclude<Property, Fields>]: Type[Property]
+}
+
+// Exclude ref to avoid TypeScript error. Should be fixed in the future.
+// Make name optional to use 'search' as default
+export type SectionSearchProps = ExcludeProp<InputProps, 'ref' | 'name'> &
+  Partial<Pick<InputProps, 'name'>>
 
 export function SectionSearch({
-  title,
-  search,
-  actions,
+  name = 'search',
+  ...props
 }: SectionSearchProps): ReactElement {
   const internationalization = useInternationalization()
-  const { section } = useTheme()
-  const [searchShow, setSearchShow] = useState<boolean>(search !== '')
-  const searchInput = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    if (searchInput.current !== null) {
-      searchInput.current.focus()
-    }
-  }, [searchShow])
-
-  const startSearch = (): void => {
-    setSearchShow(true)
-  }
-  const stopSearch = (): void => {
-    setSearchShow(false)
-    actions.clear()
-  }
-
-  if (searchShow) {
-    return (
-      <>
-        <input
-          ref={searchInput}
-          value={search}
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
-            actions.search(ev.target.value)
-          }
-          placeholder={internationalization.translate(
-            'shared.search.placeholder'
-          )}
-          className={section.search.input.base}
-        />
-        <SectionAction
-          Icon={IconClose}
-          label={internationalization.translate('shared.search.close')}
-          onClick={stopSearch}
-        />
-      </>
-    )
-  } else {
-    return (
-      <>
-        <SectionTitle>{title}</SectionTitle>
-        <SectionAction
-          Icon={IconSearch}
-          label={internationalization.translate('shared.search.open')}
-          onClick={startSearch}
-        />
-      </>
-    )
-  }
+  return (
+    <Input
+      name={name}
+      placeholder={internationalization.translate('shared.search.placeholder')}
+      variant={Variant.soft}
+      iconStart={IconSearch}
+      {...props}
+    />
+  )
 }

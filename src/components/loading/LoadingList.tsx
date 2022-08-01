@@ -2,6 +2,7 @@ import { ReactElement, ReactNode } from 'react'
 import {
   Section,
   SectionHeader,
+  SectionContainer,
   SectionContentList,
   SectionTitle,
 } from '../section'
@@ -28,13 +29,15 @@ export function LoadingList({
         <SectionTitle>{sectionHeader}</SectionTitle>
       </SectionHeader>
 
-      <SectionContentList>
-        {Array(numberOfItems)
-          .fill(null)
-          .map((_, index) => (
-            <LoadingListItem key={index} />
-          ))}
-      </SectionContentList>
+      <SectionContainer>
+        <SectionContentList>
+          {Array(numberOfItems)
+            .fill(null)
+            .map((_, index) => (
+              <LoadingListItem key={index} />
+            ))}
+        </SectionContentList>
+      </SectionContainer>
     </Section>
   )
 }
