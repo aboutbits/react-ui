@@ -11,7 +11,7 @@ This component is used to add a standardized search input to the `SectionFilter`
 export const Template = ({ ...args }) => (
   <Section>
     <SectionHeader>
-      <SectionFilter initialValues={{ search: '' }} onFilter={action('filter')}>
+      <SectionFilter initialValues={{ search: '' }} onSubmit={action('filter')}>
         <SectionSearch {...args} />
       </SectionFilter>
     </SectionHeader>

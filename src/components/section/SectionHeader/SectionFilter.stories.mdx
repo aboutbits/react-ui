@@ -19,13 +19,13 @@ import {
 
 # SectionFilter
 
-You can use the `SectionFilter` to create a filter on a specific section.
+You can use the `SectionFilter` to create a filter on a specific section.<<<<|||||||||<<<≤≤≤≤≤≤
 This component is a form wrapper that submits automatically by default. You can disable auto-submit by passing `false` to the `autoSubmit` prop.
 
 Find more samples in the [List examples](/docs/examples-list--default-story).
 
 export const Template = ({ ...args }) => {
-  const [filter, setFilter] = useState({ role: '', department: '' })
+  const [filter, setFilter] = useState(args.initialValues)
   const content = Array.from(Array(10).keys())
     .map((item, index) => ({
       name: `User ${item + 1}`,
@@ -47,7 +47,7 @@ export const Template = ({ ...args }) => {
             className="flex"
             {...args}
             initialValues={filter}
-            onFilter={(values) => setFilter(values)}
+            onSubmit={(values) => setFilter(values)}
           >
             <SectionHeaderGroup>
               <Select id="role" name="role" variant={Variant.transparent}>
@@ -106,9 +106,13 @@ export const Template = ({ ...args }) => {
     name="Default"
     args={{
       autoSubmit: undefined,
+      initialValues: {
+        role: '',
+        department: '',
+      },
     }}
     argTypes={{
-      onFilter: { control: false },
+      onSubmit: { control: false },
       children: { control: false },
     }}
   >

@@ -1,37 +1,24 @@
-import { Form, Formik, FormikProps } from 'formik'
-import { ReactElement, ReactNode } from 'react'
+import { Form, Formik, FormikConfig } from 'formik'
+import { ReactElement } from 'react'
 import { ClassNameProps } from '../../types'
 import { FormikAutoSubmit } from '../../form'
 
 type Props<T> = ClassNameProps &
-  FormikProps<T> & {
-    /**
-     * Callback when filters are applied.
-     * Popup mode: Only called on confirmation button press.
-     * Collapsible mode: Called on every change of an input value.
-     * @param values T
-     */
-    onFilter: (values: T) => void
+  FormikConfig<T> & {
     /**
      * If the form should submit automatically on change. Defaults to true.
      */
     autoSubmit?: boolean
-    /**
-     * Input fields of your filter.
-     */
-    children: ReactNode
   }
 
 export function SectionFilter<T>({
   className,
-  initialValues,
   autoSubmit = true,
-  onFilter,
   children,
   ...props
 }: Props<T>): ReactElement | null {
   return (
-    <Formik<T> initialValues={initialValues} onSubmit={onFilter} {...props}>
+    <Formik<T> {...props}>
       <Form className={className}>
         {autoSubmit && <FormikAutoSubmit />}
         {children}
