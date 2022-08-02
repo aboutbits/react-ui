@@ -50,7 +50,7 @@ export default {
     base: 'px-4 md:px-6 justify-between space-x-4 hover:bg-neutral-100',
   },
   listItemLink: {
-    link: 'block focus:outline-neutral-800',
+    link: 'block border-b border-neutral-200 last:border-0 focus:outline-neutral-800',
     base: 'justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   subsectionTitle: {
