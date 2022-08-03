@@ -12,24 +12,28 @@ export default {
       twoColumnGrid: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6',
     },
     title: 'text-2xl',
+    message: {
+      container: {
+        base: 'flex justify-center items-center',
+      },
+    },
+    error: {
+      container: {
+        base: 'flex justify-center items-center',
+      },
+      icon: {
+        base: 'fill-current text-white',
+      },
+      iconContainer: {
+        base: 'p-1.5 mr-2 rounded-full bg-critical-500',
+      },
+      children: {
+        base: 'text-critical-500',
+      },
+    },
   },
   contentList: {
     base: '',
-  },
-  contentListEmpty: {
-    base: 'justify-center py-4',
-  },
-  contentListError: {
-    base: 'justify-center py-4',
-    icon: {
-      base: 'fill-current text-white',
-    },
-    iconContainer: {
-      base: 'p-1.5 mr-2 rounded-full bg-critical-500',
-    },
-    children: {
-      base: 'text-critical-500',
-    },
   },
   contentTwoColumn: {
     base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',

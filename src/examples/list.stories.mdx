@@ -19,7 +19,6 @@ import {
   SectionContainer,
   SubsectionTitle,
   SectionContentList,
-  SectionContentListEmpty,
   SectionHeader,
   SectionHeaderSpacer,
   SectionHeaderRow,
@@ -34,6 +33,7 @@ import {
 import { SectionFooterWithPaginationInMemory } from '../components/pagination'
 import { Select, Variant as InputVariant } from '../components/form'
 import { Tone } from '../components/types'
+import { SectionContentMessage } from '../components/section/Section/SectionContentMessage'
 
 <Meta title="Examples/List" />
 
@@ -56,7 +56,11 @@ export const TemplateDefault = ({ numberOfTotalItems }) => {
       </SectionHeader>
       <SectionContainer>
         <SectionContentList>
-          {content.length > 0 &&
+          {content.length === 0 ? (
+            <SectionContentMessage>
+              No users found in database.
+            </SectionContentMessage>
+          ) : (
             content.map((item) => (
               <SectionListItemButton
                 key={item.name}
@@ -64,11 +68,7 @@ export const TemplateDefault = ({ numberOfTotalItems }) => {
               >
                 {`${item.name} (${item.role} - ${item.department})`}
               </SectionListItemButton>
-            ))}
-          {content.length === 0 && (
-            <SectionContentListEmpty>
-              No users found in database.
-            </SectionContentListEmpty>
+            ))
           )}
         </SectionContentList>
       </SectionContainer>
@@ -181,7 +181,11 @@ export const TemplateComplexList = ({
       </SectionHeader>
       <SectionContainer>
         <SectionContentList>
-          {content.length > 0 &&
+          {content.length === 0 ? (
+            <SectionContentMessage>
+              No users found in database.
+            </SectionContentMessage>
+          ) : (
             content
               .slice(
                 (page - 1) * numberOfItemsPerPage,
@@ -194,11 +198,7 @@ export const TemplateComplexList = ({
                 >
                   {`${item.name} (${item.role} - ${item.department})`}
                 </SectionListItemButton>
-              ))}
-          {content.length === 0 && (
-            <SectionContentListEmpty>
-              No users found in database.
-            </SectionContentListEmpty>
+              ))
           )}
         </SectionContentList>
         <SectionFooterWithPaginationInMemory
@@ -261,7 +261,11 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
       </SectionFilter>
       <SectionContainer>
         <SectionContentList>
-          {content.length > 0 &&
+          {content.length === 0 ? (
+            <SectionContentMessage>
+              No users found in database.
+            </SectionContentMessage>
+          ) : (
             content.map((item) => (
               <SectionListItemButton
                 key={item.name}
@@ -269,11 +273,7 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
               >
                 {`${item.name} (${item.role} - ${item.department})`}
               </SectionListItemButton>
-            ))}
-          {content.length === 0 && (
-            <SectionContentListEmpty>
-              No users found in database.
-            </SectionContentListEmpty>
+            ))
           )}
         </SectionContentList>
       </SectionContainer>
@@ -352,7 +352,7 @@ export const TemplateWithSubtitle = () => {
 
 # List with filter dialog
 
-This exmpale uses a dialog for the filter on smaller screen sizes, whereas the larger layout shows the filter in the section header.
+This example uses a dialog for the filter on smaller screen sizes, whereas the larger layout shows the filter in the section header.
 This example is based on two libraries that you need to install in your project as well:
 
 ```
@@ -476,7 +476,11 @@ export const TemplateListWithFilterDialog = ({
         </SectionHeader>
         <SectionContainer>
           <SectionContentList>
-            {content.length > 0 &&
+            {content.length === 0 ? (
+              <SectionContentMessage>
+                No users found in database.
+              </SectionContentMessage>
+            ) : (
               content
                 .slice(
                   (page - 1) * numberOfItemsPerPage,
@@ -489,11 +493,7 @@ export const TemplateListWithFilterDialog = ({
                   >
                     {`${item.name} (${item.role} - ${item.department})`}
                   </SectionListItemButton>
-                ))}
-            {content.length === 0 && (
-              <SectionContentListEmpty>
-                No users found in database.
-              </SectionContentListEmpty>
+                ))
             )}
           </SectionContentList>
           <SectionFooterWithPaginationInMemory
