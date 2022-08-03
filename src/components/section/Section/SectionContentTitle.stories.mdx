@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SectionContentTitle } from './SectionContentTitle'
+
+<Meta
+  title="Components/Section/SectionContentTitle"
+  component={SectionContentTitle}
+/>
+
+# SectionContentTitle
+
+This component can be used inside a [SectionContent](/docs/components-section-sectioncontent--default-story) if you need a large title.
+
+export const Template = ({ children, ...args }) => (
+  <SectionContentTitle {...args}>{children}</SectionContentTitle>
+)
+
+<Canvas>
+  <Story name="Default" args={{ children: 'Archive User' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `section.content.title`: Define the styles for the section content title.

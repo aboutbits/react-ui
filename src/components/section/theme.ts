@@ -11,6 +11,7 @@ export default {
       oneColumnGrid: 'grid xl:gap-x-11 gap-y-6',
       twoColumnGrid: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6',
     },
+    title: 'text-2xl',
   },
   contentList: {
     base: '',
