@@ -6,7 +6,7 @@ export default {
     base: 'bg-white border border-neutral-400 rounded-lg overflow-hidden',
   },
   content: {
-    base: 'flex flex-col gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
+    base: 'px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
   },
   contentList: {
     base: '',
