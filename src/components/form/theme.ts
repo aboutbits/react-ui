@@ -3,7 +3,7 @@ export default {
     base: 'space-y-8 lg:space-y-10',
   },
   formError: {
-    base: 'col-span-2',
+    base: 'xl:col-span-full',
   },
   input: {
     base: 'block w-full p-2.5-1px bg-transparent border leading-5 appearance-none outline-none focus:ring-0 focus:outline focus:outline-1 focus:-outline-offset-2 rounded-lg',
