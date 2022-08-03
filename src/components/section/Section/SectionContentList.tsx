@@ -5,13 +5,13 @@ import { SectionListItem } from '../SectionItem/SectionItem'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-type Props = ClassNameProps
+export type SectionContentListProps = ClassNameProps
 
 type SectionListEmptyProps = ClassNameProps
 
 type SectionListErrorProps = ClassNameProps
 
-export const SectionContentList: React.FC<Props> = ({
+export const SectionContentList: React.FC<SectionContentListProps> = ({
   children,
   className,
 }) => {
