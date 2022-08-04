@@ -14,15 +14,19 @@ The component is used during the fetch process as a placeholder.
 It will display the specified number of [LoadingDescriptionItems](/docs/components-loading-loadingdescriptionitem--default-story) wrapped in a [SectionContent](/docs/components-section-sectioncontent--default-story).
 
 export const Template = ({ ...args }) => (
-  <SectionContentLoadingDetails
-    {...args}
-    numberOfItems={4}
-    layout={Layout.twoColumn}
-  />
+  <SectionContentLoadingDetails {...args} />
 )
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{
+      numberOfItems: 4,
+      layout: Layout.twoColumnGrid,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props

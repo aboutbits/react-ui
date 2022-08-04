@@ -13,17 +13,17 @@ export const SectionContentError: React.FC<Props> = ({
   const { section } = useTheme()
   return (
     <SectionContent
-      className={classNames(section.content.error.container.base, className)}
+      className={classNames(section.contentError.container.base, className)}
       {...props}
     >
-      <div className={section.content.error.iconContainer.base}>
+      <div className={section.contentError.iconContainer.base}>
         <IconWarning
           height={22}
           width={22}
-          className={section.content.error.icon.base}
+          className={section.contentError.icon.base}
         />
       </div>
-      <span className={section.content.error.children.base}>{children}</span>
+      <span className={section.contentError.children.base}>{children}</span>
     </SectionContent>
   )
 }

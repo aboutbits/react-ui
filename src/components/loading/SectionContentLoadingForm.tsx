@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { SectionContent, SectionContentProps } from '../section'
 import { LoadingInput } from '.'
 
-export type LoadingEditProps = {
+export type SectionContentLoadingFormProps = {
   /**
    * Defines the number of items in the section.
    **/
@@ -12,7 +12,7 @@ export type LoadingEditProps = {
 export function SectionContentLoadingForm({
   numberOfItems,
   ...props
-}: LoadingEditProps): ReactElement {
+}: SectionContentLoadingFormProps): ReactElement {
   return (
     <SectionContent {...props}>
       {Array(numberOfItems)

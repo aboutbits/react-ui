@@ -12,12 +12,17 @@ import { SectionContentListLoading } from './SectionContentListLoading'
 This component can be used as placeholders for lists during the fetch process.
 Internally it leverages on the component [LoadingListItem](/docs/components-loading-loadinglistitem--default-story) and is wrapped by a [SectionContentList](/docs/components-section-sectioncontentlist--default-story).
 
-export const Template = ({ ...args }) => (
-  <SectionContentListLoading {...args} numberOfItems={2} />
-)
+export const Template = ({ ...args }) => <SectionContentListLoading {...args} />
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{
+      numberOfItems: 3,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props

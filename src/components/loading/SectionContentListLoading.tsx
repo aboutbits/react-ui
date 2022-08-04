@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 import { SectionContentList, SectionContentListProps } from '../section'
 import { LoadingListItem } from './LoadingListItem'
 
-export type LoadingListProps = {
+export type SectionContentListLoadingProps = {
   /**
    * Defines the number of items in the section.
    **/
@@ -12,7 +12,7 @@ export type LoadingListProps = {
 export function SectionContentListLoading({
   numberOfItems,
   ...props
-}: LoadingListProps): ReactElement {
+}: SectionContentListLoadingProps): ReactElement {
   return (
     <SectionContentList {...props}>
       {Array(numberOfItems)

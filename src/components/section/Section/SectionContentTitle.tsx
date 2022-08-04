@@ -9,7 +9,7 @@ export const SectionContentTitle: React.FC<ClassNameProps> = ({
   const { section } = useTheme()
 
   return (
-    <span className={classNames(section.content.title, className)}>
+    <span className={classNames(section.contentTitle.base, className)}>
       {children}
     </span>
   )

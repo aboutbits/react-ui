@@ -12,7 +12,7 @@ export const SectionContentMessage: React.FC<Props> = ({
   const { section } = useTheme()
   return (
     <SectionContent
-      className={classNames(section.content.message.container.base, className)}
+      className={classNames(section.contentMessage.container.base, className)}
       {...props}
     >
       {children}

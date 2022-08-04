@@ -11,25 +11,25 @@ export default {
       oneColumnGrid: 'grid xl:gap-x-11 gap-y-6',
       twoColumnGrid: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6',
     },
-    title: 'text-2xl',
-    message: {
-      container: {
-        base: 'flex justify-center items-center',
-      },
+  },
+  contentTitle: { base: 'text-2xl' },
+  contentMessage: {
+    container: {
+      base: 'flex justify-center items-center',
     },
-    error: {
-      container: {
-        base: 'flex justify-center items-center',
-      },
-      icon: {
-        base: 'fill-current text-white',
-      },
-      iconContainer: {
-        base: 'p-1.5 mr-2 rounded-full bg-critical-500',
-      },
-      children: {
-        base: 'text-critical-500',
-      },
+  },
+  contentError: {
+    container: {
+      base: 'flex justify-center items-center',
+    },
+    icon: {
+      base: 'fill-current text-white',
+    },
+    iconContainer: {
+      base: 'p-1.5 mr-2 rounded-full bg-critical-500',
+    },
+    children: {
+      base: 'text-critical-500',
     },
   },
   contentList: {

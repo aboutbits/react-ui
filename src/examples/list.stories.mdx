@@ -55,22 +55,22 @@ export const TemplateDefault = ({ numberOfTotalItems }) => {
         <SectionTitle>List of users</SectionTitle>
       </SectionHeader>
       <SectionContainer>
-        <SectionContentList>
-          {content.length === 0 ? (
-            <SectionContentMessage>
-              No users found in database.
-            </SectionContentMessage>
-          ) : (
-            content.map((item) => (
+        {content.length === 0 ? (
+          <SectionContentMessage>
+            No users found in database.
+          </SectionContentMessage>
+        ) : (
+          <SectionContentList>
+            {content.map((item) => (
               <SectionListItemButton
                 key={item.name}
                 onClick={() => action('clicked')}
               >
                 {`${item.name} (${item.role} - ${item.department})`}
               </SectionListItemButton>
-            ))
-          )}
-        </SectionContentList>
+            ))}
+          </SectionContentList>
+        )}
       </SectionContainer>
     </Section>
   )
@@ -180,13 +180,13 @@ export const TemplateComplexList = ({
         <SectionHeaderSpacer />
       </SectionHeader>
       <SectionContainer>
-        <SectionContentList>
-          {content.length === 0 ? (
-            <SectionContentMessage>
-              No users found in database.
-            </SectionContentMessage>
-          ) : (
-            content
+        {content.length === 0 ? (
+          <SectionContentMessage>
+            No users found in database.
+          </SectionContentMessage>
+        ) : (
+          <SectionContentList>
+            {content
               .slice(
                 (page - 1) * numberOfItemsPerPage,
                 (page - 1) * numberOfItemsPerPage + numberOfItemsPerPage
@@ -198,9 +198,9 @@ export const TemplateComplexList = ({
                 >
                   {`${item.name} (${item.role} - ${item.department})`}
                 </SectionListItemButton>
-              ))
-          )}
-        </SectionContentList>
+              ))}
+          </SectionContentList>
+        )}
         <SectionFooterWithPaginationInMemory
           page={page}
           size={numberOfItemsPerPage}
@@ -260,22 +260,22 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
         </SectionHeader>
       </SectionFilter>
       <SectionContainer>
-        <SectionContentList>
-          {content.length === 0 ? (
-            <SectionContentMessage>
-              No users found in database.
-            </SectionContentMessage>
-          ) : (
-            content.map((item) => (
+        {content.length === 0 ? (
+          <SectionContentMessage>
+            No users found in database.
+          </SectionContentMessage>
+        ) : (
+          <SectionContentList>
+            {content.map((item) => (
               <SectionListItemButton
                 key={item.name}
                 onClick={() => action('clicked')}
               >
                 {`${item.name} (${item.role} - ${item.department})`}
               </SectionListItemButton>
-            ))
-          )}
-        </SectionContentList>
+            ))}
+          </SectionContentList>
+        )}
       </SectionContainer>
     </Section>
   )
@@ -475,13 +475,13 @@ export const TemplateListWithFilterDialog = ({
           </SectionHeaderRow>
         </SectionHeader>
         <SectionContainer>
-          <SectionContentList>
-            {content.length === 0 ? (
-              <SectionContentMessage>
-                No users found in database.
-              </SectionContentMessage>
-            ) : (
-              content
+          {content.length === 0 ? (
+            <SectionContentMessage>
+              No users found in database.
+            </SectionContentMessage>
+          ) : (
+            <SectionContentList>
+              {content
                 .slice(
                   (page - 1) * numberOfItemsPerPage,
                   (page - 1) * numberOfItemsPerPage + numberOfItemsPerPage
@@ -493,9 +493,9 @@ export const TemplateListWithFilterDialog = ({
                   >
                     {`${item.name} (${item.role} - ${item.department})`}
                   </SectionListItemButton>
-                ))
-            )}
-          </SectionContentList>
+                ))}
+            </SectionContentList>
+          )}
           <SectionFooterWithPaginationInMemory
             page={page}
             size={numberOfItemsPerPage}

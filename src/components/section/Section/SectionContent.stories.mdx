@@ -26,7 +26,8 @@ export const Template = ({ children, ...args }) => (
 ### Theme
 
 - `section.content.base`: Define the styles of the section content.
-- `section.content.layout.twoColumn`: The default theme applies a grid styling to it. On screen sizes below `xl` it will have one column and on larger screens two.
+- `section.content.layout.oneColumnGrid`: The default theme applies a vertical gap between the items in this SectionContent.
+- `section.content.layout.twoColumnGrid`: The default theme applies a grid styling to it. On screen sizes below `xl` it will have one column and on larger screens two.
 
 ## Examples
 
@@ -34,7 +35,7 @@ export const Template = ({ children, ...args }) => (
 
 <Canvas>
   <Story name="SectionContent with two columns">
-    <SectionContent layout={Layout.twoColumn}>
+    <SectionContent layout={Layout.twoColumnGrid}>
       <SectionDescriptionItem title="E-mail" content="admin@aboutbits.it" />
       <SectionDescriptionItem title="Name" content="John Doe" />
       <SectionDescriptionItem

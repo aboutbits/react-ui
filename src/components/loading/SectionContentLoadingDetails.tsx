@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 import { SectionContent, SectionContentProps } from '../section'
 import { LoadingDescriptionItem } from '.'
 
-export type LoadingDetailsProps = {
+export type SectionContentLoadingDetailsProps = {
   /**
    * Defines the number of items in the section.
    **/
@@ -12,7 +12,7 @@ export type LoadingDetailsProps = {
 export function SectionContentLoadingDetails({
   numberOfItems,
   ...props
-}: LoadingDetailsProps): ReactElement {
+}: SectionContentLoadingDetailsProps): ReactElement {
   return (
     <SectionContent {...props}>
       {Array(numberOfItems)
