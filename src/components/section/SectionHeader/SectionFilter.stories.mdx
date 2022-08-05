@@ -6,7 +6,6 @@ import {
   Section,
   SectionContainer,
   SectionContentList,
-  SectionContentListEmpty,
   SectionHeader,
   SectionHeaderRow,
   SectionHeaderGroup,
@@ -14,6 +13,7 @@ import {
   SectionTitle,
   SectionFilter,
 } from '../'
+import { SectionContentMessage } from '../Section/SectionContentMessage'
 
 <Meta title="Components/Section/SectionFilter" component={SectionFilter} />
 
@@ -84,18 +84,22 @@ export const Template = ({ ...args }) => {
         </SectionHeaderRow>
       </SectionHeader>
       <SectionContainer>
-        <SectionContentList>
-          {content.map((item) => (
-            <SectionListItemButton key={item.name} onClick={action('clicked')}>
-              {`${item.name} (${item.role} - ${item.department})`}
-            </SectionListItemButton>
-          ))}
-          {content.length === 0 && (
-            <SectionContentListEmpty>
-              No users found in database.
-            </SectionContentListEmpty>
-          )}
-        </SectionContentList>
+        {content.length === 0 ? (
+          <SectionContentMessage>
+            No users found in database.
+          </SectionContentMessage>
+        ) : (
+          <SectionContentList>
+            {content.map((item) => (
+              <SectionListItemButton
+                key={item.name}
+                onClick={action('clicked')}
+              >
+                {`${item.name} (${item.role} - ${item.department})`}
+              </SectionListItemButton>
+            ))}
+          </SectionContentList>
+        )}
       </SectionContainer>
     </Section>
   )

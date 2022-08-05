@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { SectionContent } from './SectionContent'
+import { SectionDescriptionItem } from '../SectionItem/SectionDescriptionItem'
+import { Layout, SectionContent } from './SectionContent'
 
 <Meta title="Components/Section/SectionContent" component={SectionContent} />
 
@@ -25,3 +26,23 @@ export const Template = ({ children, ...args }) => (
 ### Theme
 
 - `section.content.base`: Define the styles of the section content.
+- `section.content.layout.oneColumnGrid`: The default theme applies a vertical gap between the items in this SectionContent.
+- `section.content.layout.twoColumnGrid`: The default theme applies a grid styling to it. On screen sizes below `xl` it will have one column and on larger screens two.
+
+## Examples
+
+### SectionContent with two columns
+
+<Canvas>
+  <Story name="SectionContent with two columns">
+    <SectionContent layout={Layout.twoColumnGrid}>
+      <SectionDescriptionItem title="E-mail" content="admin@aboutbits.it" />
+      <SectionDescriptionItem title="Name" content="John Doe" />
+      <SectionDescriptionItem
+        title="Bio"
+        content="John Doe is the main antagonist of the 1995 dark psychological mystery-thriller film Se7en. He is a serial killer bent on savagely punishing those who have committed the seven deadly sins and bring attention to evil in a world that he claims is apathetic."
+        className="xl:col-span-2"
+      />
+    </SectionContent>
+  </Story>
+</Canvas>

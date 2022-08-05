@@ -6,16 +6,22 @@ export default {
     base: 'bg-white border border-neutral-400 rounded-lg overflow-hidden',
   },
   content: {
-    base: 'flex flex-col gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
+    base: 'px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
+    layout: {
+      oneColumnGrid: 'grid xl:gap-x-11 gap-y-6',
+      twoColumnGrid: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6',
+    },
   },
-  contentList: {
-    base: '',
+  contentTitle: { base: 'text-2xl' },
+  contentMessage: {
+    container: {
+      base: 'flex justify-center items-center',
+    },
   },
-  contentListEmpty: {
-    base: 'justify-center py-4',
-  },
-  contentListError: {
-    base: 'justify-center py-4',
+  contentError: {
+    container: {
+      base: 'flex justify-center items-center',
+    },
     icon: {
       base: 'fill-current text-white',
     },
@@ -25,6 +31,9 @@ export default {
     children: {
       base: 'text-critical-500',
     },
+  },
+  contentList: {
+    base: '',
   },
   contentTwoColumn: {
     base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',

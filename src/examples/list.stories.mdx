@@ -19,7 +19,6 @@ import {
   SectionContainer,
   SubsectionTitle,
   SectionContentList,
-  SectionContentListEmpty,
   SectionHeader,
   SectionHeaderSpacer,
   SectionHeaderRow,
@@ -34,6 +33,7 @@ import {
 import { SectionFooterWithPaginationInMemory } from '../components/pagination'
 import { Select, Variant as InputVariant } from '../components/form'
 import { Tone } from '../components/types'
+import { SectionContentMessage } from '../components/section/Section/SectionContentMessage'
 
 <Meta title="Examples/List" />
 
@@ -55,9 +55,13 @@ export const TemplateDefault = ({ numberOfTotalItems }) => {
         <SectionTitle>List of users</SectionTitle>
       </SectionHeader>
       <SectionContainer>
-        <SectionContentList>
-          {content.length > 0 &&
-            content.map((item) => (
+        {content.length === 0 ? (
+          <SectionContentMessage>
+            No users found in database.
+          </SectionContentMessage>
+        ) : (
+          <SectionContentList>
+            {content.map((item) => (
               <SectionListItemButton
                 key={item.name}
                 onClick={() => action('clicked')}
@@ -65,12 +69,8 @@ export const TemplateDefault = ({ numberOfTotalItems }) => {
                 {`${item.name} (${item.role} - ${item.department})`}
               </SectionListItemButton>
             ))}
-          {content.length === 0 && (
-            <SectionContentListEmpty>
-              No users found in database.
-            </SectionContentListEmpty>
-          )}
-        </SectionContentList>
+          </SectionContentList>
+        )}
       </SectionContainer>
     </Section>
   )
@@ -180,9 +180,13 @@ export const TemplateComplexList = ({
         <SectionHeaderSpacer />
       </SectionHeader>
       <SectionContainer>
-        <SectionContentList>
-          {content.length > 0 &&
-            content
+        {content.length === 0 ? (
+          <SectionContentMessage>
+            No users found in database.
+          </SectionContentMessage>
+        ) : (
+          <SectionContentList>
+            {content
               .slice(
                 (page - 1) * numberOfItemsPerPage,
                 (page - 1) * numberOfItemsPerPage + numberOfItemsPerPage
@@ -195,12 +199,8 @@ export const TemplateComplexList = ({
                   {`${item.name} (${item.role} - ${item.department})`}
                 </SectionListItemButton>
               ))}
-          {content.length === 0 && (
-            <SectionContentListEmpty>
-              No users found in database.
-            </SectionContentListEmpty>
-          )}
-        </SectionContentList>
+          </SectionContentList>
+        )}
         <SectionFooterWithPaginationInMemory
           page={page}
           size={numberOfItemsPerPage}
@@ -260,9 +260,13 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
         </SectionHeader>
       </SectionFilter>
       <SectionContainer>
-        <SectionContentList>
-          {content.length > 0 &&
-            content.map((item) => (
+        {content.length === 0 ? (
+          <SectionContentMessage>
+            No users found in database.
+          </SectionContentMessage>
+        ) : (
+          <SectionContentList>
+            {content.map((item) => (
               <SectionListItemButton
                 key={item.name}
                 onClick={() => action('clicked')}
@@ -270,12 +274,8 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
                 {`${item.name} (${item.role} - ${item.department})`}
               </SectionListItemButton>
             ))}
-          {content.length === 0 && (
-            <SectionContentListEmpty>
-              No users found in database.
-            </SectionContentListEmpty>
-          )}
-        </SectionContentList>
+          </SectionContentList>
+        )}
       </SectionContainer>
     </Section>
   )
@@ -352,7 +352,7 @@ export const TemplateWithSubtitle = () => {
 
 # List with filter dialog
 
-This exmpale uses a dialog for the filter on smaller screen sizes, whereas the larger layout shows the filter in the section header.
+This example uses a dialog for the filter on smaller screen sizes, whereas the larger layout shows the filter in the section header.
 This example is based on two libraries that you need to install in your project as well:
 
 ```
@@ -475,9 +475,13 @@ export const TemplateListWithFilterDialog = ({
           </SectionHeaderRow>
         </SectionHeader>
         <SectionContainer>
-          <SectionContentList>
-            {content.length > 0 &&
-              content
+          {content.length === 0 ? (
+            <SectionContentMessage>
+              No users found in database.
+            </SectionContentMessage>
+          ) : (
+            <SectionContentList>
+              {content
                 .slice(
                   (page - 1) * numberOfItemsPerPage,
                   (page - 1) * numberOfItemsPerPage + numberOfItemsPerPage
@@ -490,12 +494,8 @@ export const TemplateListWithFilterDialog = ({
                     {`${item.name} (${item.role} - ${item.department})`}
                   </SectionListItemButton>
                 ))}
-            {content.length === 0 && (
-              <SectionContentListEmpty>
-                No users found in database.
-              </SectionContentListEmpty>
-            )}
-          </SectionContentList>
+            </SectionContentList>
+          )}
           <SectionFooterWithPaginationInMemory
             page={page}
             size={numberOfItemsPerPage}

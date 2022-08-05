@@ -1,11 +1,11 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs'
 import { useIntl } from 'react-intl'
-import { ContentArea } from '../components/content/ContentArea/ContentArea'
+import { ContentArea } from '../components/content'
 import {
+  Layout,
   Section,
   SectionContainer,
   SectionContent,
-  SectionContentTwoColumn,
   SectionDescriptionItem,
   SectionHeader,
   SectionTitle,
@@ -26,7 +26,7 @@ export const Template = ({ title }) => {
           <SectionTitle>{title}</SectionTitle>
         </SectionHeader>
         <SectionContainer>
-          <SectionContent>
+          <SectionContent layout={Layout.oneColumnGrid}>
             <SectionDescriptionItem
               content="John Doe"
               title={intl.formatMessage({ id: 'shared.field.name' })}
@@ -38,7 +38,6 @@ export const Template = ({ title }) => {
             <SectionDescriptionItem content="admin" title="Role" />
             <SectionDescriptionItem content="English" title="Language" />
             <SectionDescriptionItem
-              className="xl:col-span-2"
               content="John is a software engineer from Bolzano, Italy."
               title="Bio"
             />
@@ -66,7 +65,7 @@ export const TwoColumnTemplate = ({ title }) => {
           <SectionTitle>{title}</SectionTitle>
         </SectionHeader>
         <SectionContainer>
-          <SectionContentTwoColumn>
+          <SectionContent layout={Layout.twoColumnGrid}>
             <SectionDescriptionItem
               content="John Doe"
               title={intl.formatMessage({ id: 'shared.field.name' })}
@@ -82,7 +81,7 @@ export const TwoColumnTemplate = ({ title }) => {
               content="John is a software engineer from Bolzano, Italy."
               title="Bio"
             />
-          </SectionContentTwoColumn>
+          </SectionContent>
         </SectionContainer>
       </Section>
     </ContentArea>

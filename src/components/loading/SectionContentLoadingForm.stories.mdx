@@ -1,0 +1,32 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+
+import { Layout } from '../section'
+import { SectionContentLoadingForm } from './SectionContentLoadingForm'
+
+<Meta
+  title="Components/Loading/SectionContentLoadingForm"
+  component={SectionContentLoadingForm}
+/>
+
+# SectionContentLoadingForm
+
+The component is used during the fetch process as a placeholder.
+It will display the specified number of [LoadingInputs](/docs/components-loading-loadinginput--default-story) wrapped in a [SectionContent](/docs/components-section-sectioncontent--default-story).
+
+export const Template = ({ ...args }) => <SectionContentLoadingForm {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      numberOfItems: 4,
+      layout: Layout.twoColumnGrid,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

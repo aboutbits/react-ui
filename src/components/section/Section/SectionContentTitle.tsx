@@ -2,14 +2,15 @@ import classNames from 'classnames'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-export const SectionContentTwoColumn: React.FC<ClassNameProps> = ({
+export const SectionContentTitle: React.FC<ClassNameProps> = ({
   children,
   className,
 }) => {
   const { section } = useTheme()
+
   return (
-    <div className={classNames(section.contentTwoColumn.base, className)}>
+    <span className={classNames(section.contentTitle.base, className)}>
       {children}
-    </div>
+    </span>
   )
 }
