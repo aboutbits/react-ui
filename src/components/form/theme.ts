@@ -6,7 +6,7 @@ export default {
     base: 'xl:col-span-full',
   },
   input: {
-    base: 'block w-full p-2.5-1px bg-transparent border leading-5 appearance-none outline-none focus:ring-0 focus:outline focus:outline-1 focus:-outline-offset-2 rounded-lg',
+    base: 'block w-full p-2.5-1px border leading-5 appearance-none outline-none focus:ring-0 focus:outline focus:outline-1 focus:-outline-offset-2 rounded-lg',
     field: 'relative',
     modeVariant: {
       light: {
@@ -17,7 +17,7 @@ export default {
         },
         ghost: {
           normal:
-            'border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
+            'bg-transparent border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
           error:
             'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
           disabled: 'border-neutral-400',
@@ -29,9 +29,16 @@ export default {
             'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
           disabled: '',
         },
+        solid: {
+          normal:
+            'bg-white border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
+          error:
+            'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+          disabled: 'bg-white border-neutral-400',
+        },
         transparent: {
           normal:
-            'border-transparent focus:border-neutral-800 focus:outline-neutral-800 hover:bg-neutral-100 hover:border-neutral-100',
+            'bg-transparent border-transparent focus:border-neutral-800 focus:outline-neutral-800 hover:bg-neutral-100 hover:border-neutral-100',
           error:
             'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
           disabled: '',
@@ -44,7 +51,8 @@ export default {
           disabled: 'text-neutral-400 placeholder:text-neutral-400',
         },
         ghost: {
-          normal: 'border-neutral-200 focus:border-white focus:outline-white ',
+          normal:
+            'bg-transparent border-neutral-200 focus:border-white focus:outline-white ',
           error:
             'border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
           disabled: 'border-neutral-400 ',
@@ -56,8 +64,16 @@ export default {
             'border-critical-300 focus:border-critical-300 focus:outline-critical-300',
           disabled: '',
         },
+        solid: {
+          normal:
+            'bg-black border-black focus:border-white focus:outline-white ',
+          error:
+            'border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
+          disabled: 'border-neutral-400 ',
+        },
         transparent: {
-          normal: 'border-transparent focus:border-white focus:outline-white',
+          normal:
+            'bg-transparent border-transparent focus:border-white focus:outline-white',
           error:
             'border-critical-300 focus:border-critical-300 focus:outline-critical-300',
           disabled: '',
