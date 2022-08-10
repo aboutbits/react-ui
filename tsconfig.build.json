@@ -18,7 +18,5 @@
     "src/examples/*",
     "src/svg/*"
   ],
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
