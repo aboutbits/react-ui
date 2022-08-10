@@ -22,8 +22,8 @@
   "scripts": {
     "dev": "start-storybook -p 4000",
     "build": "tsc --project tsconfig.build.json",
-    "lint": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx .",
-    "lint:fix": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx --fix .",
+    "lint": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx,.json .",
+    "lint:fix": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx,.json --fix .",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --passWithNoTests --watch",
     "typecheck": "tsc --project tsconfig.build.json --noEmit",
