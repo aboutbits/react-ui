@@ -62,7 +62,7 @@ export default {
             'bg-neutral-800 border-neutral-800 focus:border-white focus:outline-white',
           error:
             'bg-neutral-800 border-critical-300 focus:border-critical-300 focus:outline-critical-300',
-          disabled: 'bg-neutral-800',
+          disabled: 'bg-neutral-800 border-neutral-800',
         },
         solid: {
           normal:
