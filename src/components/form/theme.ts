@@ -31,10 +31,10 @@ export default {
         },
         solid: {
           normal:
-            'bg-white border-white focus:border-neutral-800 focus:outline-neutral-800',
+            'bg-white border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
           error:
             'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
-          disabled: 'bg-white border-neutral-400',
+          disabled: 'border-neutral-400',
         },
         transparent: {
           normal:
@@ -66,7 +66,7 @@ export default {
         },
         solid: {
           normal:
-            'bg-black border-black focus:border-white focus:outline-white ',
+            'bg-black border-neutral-200 focus:border-white focus:outline-white ',
           error:
             'border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
           disabled: 'border-neutral-400 ',
