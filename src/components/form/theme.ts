@@ -19,29 +19,29 @@ export default {
           normal:
             'bg-transparent border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
           error:
-            'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
-          disabled: 'border-neutral-400',
+            'bg-transparent border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+          disabled: 'bg-transparent border-neutral-400',
         },
         soft: {
           normal:
             'bg-neutral-100 border-neutral-100 focus:border-neutral-800 focus:outline-neutral-800',
           error:
-            'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
-          disabled: '',
+            'bg-neutral-100 border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+          disabled: 'bg-neutral-100 border-neutral-100',
         },
         solid: {
           normal:
-            'bg-white border-white focus:border-neutral-800 focus:outline-neutral-800',
+            'bg-white border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
           error:
-            'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+            'bg-white border-critical-500 focus:border-critical-500 focus:outline-critical-500',
           disabled: 'bg-white border-neutral-400',
         },
         transparent: {
           normal:
             'bg-transparent border-transparent focus:border-neutral-800 focus:outline-neutral-800 hover:bg-neutral-100 hover:border-neutral-100',
           error:
-            'border-critical-500 focus:border-critical-500 focus:outline-critical-500',
-          disabled: '',
+            'bg-transparent border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+          disabled: 'bg-transparent border-transparent',
         },
       },
       dark: {
@@ -54,29 +54,29 @@ export default {
           normal:
             'bg-transparent border-neutral-200 focus:border-white focus:outline-white ',
           error:
-            'border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
-          disabled: 'border-neutral-400',
+            'bg-transparent border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
+          disabled: 'bg-transparent border-neutral-400',
         },
         soft: {
           normal:
             'bg-neutral-800 border-neutral-800 focus:border-white focus:outline-white',
           error:
-            'border-critical-300 focus:border-critical-300 focus:outline-critical-300',
-          disabled: '',
+            'bg-neutral-800 border-critical-300 focus:border-critical-300 focus:outline-critical-300',
+          disabled: 'bg-neutral-800 border-neutral-800',
         },
         solid: {
           normal:
-            'bg-black border-black focus:border-white focus:outline-white ',
+            'bg-black border-neutral-200 focus:border-white focus:outline-white ',
           error:
-            'border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
-          disabled: 'border-neutral-400 ',
+            'bg-black border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
+          disabled: 'bg-black border-neutral-400',
         },
         transparent: {
           normal:
             'bg-transparent border-transparent focus:border-white focus:outline-white',
           error:
-            'border-critical-300 focus:border-critical-300 focus:outline-critical-300',
-          disabled: '',
+            'bg-transparent border-critical-300 focus:border-critical-300 focus:outline-critical-300',
+          disabled: 'bg-transparent border-transparent',
         },
       },
     },

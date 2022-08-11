@@ -37,7 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     {
       label,
       mode = Mode.light,
-      variant = Variant.ghost,
+      variant = Variant.solid,
       className,
       iconStart,
       iconEnd,
