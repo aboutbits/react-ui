@@ -10,7 +10,7 @@ import { InputLabel } from './InputLabel'
 import { Variant, VariantProps } from './types'
 import { useCustomInputCss } from './useCustomInputCss'
 
-type InputPropsBase = React.DetailedHTMLProps<
+export type InputBaseProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 > &
@@ -21,16 +21,16 @@ type InputPropsBase = React.DetailedHTMLProps<
     iconEnd?: ComponentType<IconProps>
   }
 
-type InputPropsWithoutLabel = InputPropsBase & {
+export type InputWithoutLabelProps = InputBaseProps & {
   label?: never
 }
 
-type InputPropsWithLabel = InputPropsBase & {
+export type InputWithLabelProps = InputBaseProps & {
   id: string
   label: string
 }
 
-export type InputProps = InputPropsWithoutLabel | InputPropsWithLabel
+export type InputProps = InputWithoutLabelProps | InputWithLabelProps
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
