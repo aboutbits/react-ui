@@ -6,23 +6,23 @@ import { InputLabel } from './InputLabel'
 import { useCustomInputCss } from './useCustomInputCss'
 import { Variant, VariantProps } from './types'
 
-type TextAreaPropsBase = React.DetailedHTMLProps<
+export type TextAreaBaseProps = React.DetailedHTMLProps<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>,
   HTMLTextAreaElement
 > &
   ModeProps &
   VariantProps & { name: string }
 
-type TextAreaPropsWithoutLabel = TextAreaPropsBase & {
+export type TextAreaWithoutLabelProps = TextAreaBaseProps & {
   label?: never
 }
 
-type TextAreaPropsWithLabel = TextAreaPropsBase & {
+export type TextAreaWithLabelProps = TextAreaBaseProps & {
   id: string
   label: string
 }
 
-export type TextAreaProps = TextAreaPropsWithoutLabel | TextAreaPropsWithLabel
+export type TextAreaProps = TextAreaWithoutLabelProps | TextAreaWithLabelProps
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (

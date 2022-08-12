@@ -9,7 +9,7 @@ import { InputLabel } from './InputLabel'
 import { Variant, VariantProps } from './types'
 import { useCustomInputCss } from './useCustomInputCss'
 
-type SelectPropsBase = React.DetailedHTMLProps<
+export type SelectBaseProps = React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement
 > &
@@ -18,16 +18,16 @@ type SelectPropsBase = React.DetailedHTMLProps<
     name: string
   }
 
-type SelectPropsWithoutLabel = SelectPropsBase & {
+export type SelectWithoutLabelProps = SelectBaseProps & {
   label?: never
 }
 
-type SelectPropsWithLabel = SelectPropsBase & {
+export type SelectWithLabelProps = SelectBaseProps & {
   id: string
   label: string
 }
 
-export type SelectProps = SelectPropsWithoutLabel | SelectPropsWithLabel
+export type SelectProps = SelectWithoutLabelProps | SelectWithLabelProps
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
