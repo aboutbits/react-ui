@@ -133,4 +133,101 @@ export default {
       normal: 'text-neutral-800',
     },
   },
+  toggleSwitch: {
+    base: 'relative inline-flex items-center gap-x-2',
+    normal: 'cursor-pointer',
+    disabled: '',
+    input: {
+      base: 'peer absolute h-0 w-0 opacity-0',
+    },
+    label: {
+      base: '',
+    },
+    switch: {
+      base: 'block shrink-0 rounded-full border-2 p-0.5 outline-1 outline-offset-2 peer-focus:outline',
+      normal: 'transition-colors duration-200 ease-in-out',
+      disabled: '',
+      modeState: {
+        light: {
+          normal: {
+            base: 'outline-neutral-800',
+            checked: 'border-primary-500 bg-primary-500',
+            unchecked: 'border-neutral-600',
+          },
+          disabled: {
+            base: '',
+            checked: 'border-neutral-200 bg-neutral-200',
+            unchecked: 'border-neutral-400',
+          },
+        },
+        dark: {
+          normal: {
+            base: 'outline-white',
+            checked: 'border-primary-300 bg-primary-300',
+            unchecked: 'border-white',
+          },
+          disabled: {
+            base: '',
+            checked: 'border-neutral-600 bg-neutral-600',
+            unchecked: 'border-neutral-400',
+          },
+        },
+      },
+      size: {
+        sm: {
+          base: 'w-10',
+        },
+        md: {
+          base: 'w-12',
+        },
+        lg: {
+          base: 'w-16',
+        },
+      },
+    },
+    handle: {
+      base: 'block h-5 w-5 rounded-full',
+      normal: 'transition duration-200 ease-in-out',
+      disabled: '',
+      modeState: {
+        light: {
+          normal: {
+            checked: 'bg-white',
+            unchecked: 'bg-neutral-600',
+          },
+          disabled: {
+            checked: 'bg-white',
+            unchecked: 'bg-neutral-400',
+          },
+        },
+        dark: {
+          normal: {
+            checked: 'bg-neutral-800',
+            unchecked: 'bg-white',
+          },
+          disabled: {
+            checked: 'bg-neutral-400',
+            unchecked: 'bg-neutral-400',
+          },
+        },
+      },
+      size: {
+        sm: {
+          base: 'h-4 w-4',
+          checked: 'translate-x-4',
+          unchecked: 'translate-x-0',
+        },
+        md: {
+          base: 'h-5 w-5',
+          checked: 'translate-x-5',
+          unchecked: 'translate-x-0',
+        },
+        lg: {
+          base: 'h-7 w-7',
+          checked: 'translate-x-7',
+          unchecked: 'translate-x-0',
+        },
+      },
+    },
+  },
 }
