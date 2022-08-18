@@ -1,12 +1,10 @@
-import { useEffect, useRef } from 'react'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import { useTheme, useInternationalization } from '../../framework'
+import { useEffect, useRef } from 'react'
+import { useInternationalization, useTheme } from '../../framework'
+import { HeaderLeftActionIcon } from './actions/HeaderLeftActionIcon'
+import { HeaderRightActionIcon } from './actions/HeaderRightActionIcon'
 import { HeaderArea } from './areas/HeaderArea'
-import { HeaderLeftArea } from './areas/HeaderLeftArea'
-import { HeaderLargeAction } from './actions/HeaderLargeAction'
-import { HeaderRightArea } from './areas/HeaderRightArea'
-import { HeaderSmallAction } from './actions/HeaderSmallAction'
 
 type Props = {
   /**
@@ -27,6 +25,9 @@ type Props = {
   clearSearch: () => void
 }
 
+/**
+ * @deprecated Will be removed with an updated version of the dialog component.
+ */
 const HeaderSearch: React.FC<Props> = ({
   text,
   setText,
@@ -44,17 +45,13 @@ const HeaderSearch: React.FC<Props> = ({
   }, [])
 
   return (
-    <HeaderArea
-      navigation={
-        <HeaderLeftArea className="lg:hidden">
-          <HeaderLargeAction
-            icon={IconArrowBack}
-            label={internationalization.translate('shared.search.back')}
-            onClick={stopSearch}
-          />
-        </HeaderLeftArea>
-      }
-    >
+    <HeaderArea>
+      <HeaderLeftActionIcon
+        icon={IconArrowBack}
+        label={internationalization.translate('shared.search.back')}
+        onClick={stopSearch}
+        className="lg:hidden"
+      />
       <div className={header.search.base}>
         <input
           ref={searchInput}
@@ -75,13 +72,12 @@ const HeaderSearch: React.FC<Props> = ({
           <IconClose className={header.search.icon.base} />
         </button>
       </div>
-      <HeaderRightArea className="hidden lg:block">
-        <HeaderSmallAction
-          icon={IconClose}
-          label={internationalization.translate('shared.search.back')}
-          onClick={stopSearch}
-        />
-      </HeaderRightArea>
+      <HeaderRightActionIcon
+        icon={IconClose}
+        label={internationalization.translate('shared.search.back')}
+        onClick={stopSearch}
+        className="hidden lg:block"
+      />
     </HeaderArea>
   )
 }

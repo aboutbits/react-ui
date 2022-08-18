@@ -1,4 +1,4 @@
-import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { ComponentType, ReactElement } from 'react'
 import { useInternationalization } from '../../../framework'
@@ -7,24 +7,24 @@ import {
   HeaderLeftActionIconProps,
 } from './HeaderLeftActionIcon'
 
-export type HeaderBackActionProps = Omit<HeaderLeftActionIconProps, 'icon'> & {
+export type HeaderCloseActionProps = Omit<HeaderLeftActionIconProps, 'icon'> & {
   /**
    * Defines the icon of the button.
    **/
   icon?: ComponentType<IconProps>
 }
 
-export function HeaderBackAction({
-  icon = IconArrowBack,
+export function HeaderCloseAction({
+  icon = IconClose,
   label,
   ...props
-}: HeaderBackActionProps): ReactElement {
+}: HeaderCloseActionProps): ReactElement {
   const internationalization = useInternationalization()
 
   return (
     <HeaderLeftActionIcon
       icon={icon}
-      label={label || internationalization.translate('shared.button.goBack')}
+      label={label || internationalization.translate('shared.button.close')}
       {...props}
     />
   )

@@ -19,9 +19,8 @@ const HeaderBackWithoutAction: React.FC<Props> = ({ title, onBack }) => {
   const router = useRouter()
 
   return (
-    <HeaderArea
-      navigation={<HeaderBackAction onClick={onBack || router.back} />}
-    >
+    <HeaderArea>
+      <HeaderBackAction onClick={onBack || router.back} />
       <HeaderTitle>{title}</HeaderTitle>
     </HeaderArea>
   )

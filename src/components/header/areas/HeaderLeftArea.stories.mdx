@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import { action } from '@storybook/addon-actions'
-import { HeaderSmallAction } from '../actions/HeaderSmallAction'
+import { HeaderButtonIcon } from '../actions/HeaderButtonIcon'
 import { HeaderLeftArea } from './HeaderLeftArea'
 
 <Meta title="Components/Header/HeaderLeftArea" component={HeaderLeftArea} />
@@ -13,7 +13,7 @@ It applies a margin to the right and displays the children in a row.
 
 export const Template = ({ ...args }) => (
   <HeaderLeftArea {...args}>
-    <HeaderSmallAction
+    <HeaderButtonIcon
       icon={IconArrowBack}
       label="Back"
       onClick={action('onClick')}

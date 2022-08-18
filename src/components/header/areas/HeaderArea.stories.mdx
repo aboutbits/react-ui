@@ -1,8 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
-import { action, actions } from '@storybook/addon-actions'
-import { HeaderBackAction } from '../actions/HeaderBackAction'
-import { NavigationProvider } from '../../navigation/NavigationContext'
+import { actions } from '@storybook/addon-actions'
 import { HeaderArea } from './HeaderArea'
 import { HeaderTitle } from './HeaderTitle'
 
@@ -10,18 +7,10 @@ import { HeaderTitle } from './HeaderTitle'
 
 # HeaderArea
 
-This component defines the main logic of a page header. It adjusts its styling for mobile, such that a burger menu will appear.
-
-If the `navigation` prop has a `ReactNode` assigned, it will always be displayed on the left of the title on the mobile view, on desktop it is hidden. By default the "burger" menu icon will be shown.
-
-In any case, this component needs be wrapped in a `MenuProvider`.
-
-- [MenuProvider](/docs/components-header-menucontext--default-story) is a self-written component
+This component defines the container of a page header.
 
 export const Template = ({ ...args }) => (
-  <NavigationProvider>
-    <HeaderArea {...args} onClick={actions('clicked')} />
-  </NavigationProvider>
+  <HeaderArea {...args} onClick={actions('clicked')} />
 )
 
 <Canvas>
@@ -40,27 +29,3 @@ export const Template = ({ ...args }) => (
 ### Theme
 
 - `header.area.base`: Define the styles of the header area.
-
-### Internationalization
-
-- `app.nav.menu`: Accessibility label for burger menu
-
-## HeaderArea with custom navigation
-
-<Canvas>
-  <Story name="HeaderArea with custom navigation">
-    <NavigationProvider>
-      <HeaderArea
-        navigation={
-          <HeaderBackAction
-            icon={IconArrowBack}
-            label="Go to previous page"
-            onClick={action('onClick')}
-          />
-        }
-      >
-        <HeaderTitle>Header Title</HeaderTitle>
-      </HeaderArea>
-    </NavigationProvider>
-  </Story>
-</Canvas>
