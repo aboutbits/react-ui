@@ -163,7 +163,7 @@ export default {
         dark: {
           normal: {
             base: 'outline-white',
-            checked: 'border-primary-500 bg-primary-500',
+            checked: 'border-primary-300 bg-primary-300',
             unchecked: 'border-white',
           },
           disabled: {
@@ -202,7 +202,7 @@ export default {
         },
         dark: {
           normal: {
-            checked: 'bg-white',
+            checked: 'bg-neutral-800',
             unchecked: 'bg-white',
           },
           disabled: {
