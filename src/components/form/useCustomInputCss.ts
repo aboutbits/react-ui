@@ -9,7 +9,7 @@ const useCustomInputCss = (
   mode = Mode.light,
   variant = Variant.ghost
 ): { inputCss: string; labelCss: string; errorCss: string } => {
-  const [, meta] = useField({ name: name })
+  const [, meta] = useField({ name })
   const {
     form: { input, inputLabel, inputError },
   } = useTheme()
