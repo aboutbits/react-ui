@@ -1,15 +1,15 @@
+import { ReactElement, ReactNode } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-type Props = ClassNameProps
+type Props = ClassNameProps & { children?: ReactNode }
 
-const HeaderLeftArea: React.FC<Props> = ({ className, children }) => {
+export function HeaderLeftArea({ className, children }: Props): ReactElement {
   const { header } = useTheme()
+
   return (
     <div className={className}>
       <div className={header.leftArea.base}>{children}</div>
     </div>
   )
 }
-
-export { HeaderLeftArea }
