@@ -1,3 +1,4 @@
+import { ReactElement, ReactNode } from 'react'
 import { useRouter } from '../../framework'
 import { HeaderArea } from './areas/HeaderArea'
 import { HeaderBackAction } from './actions/HeaderBackAction'
@@ -7,7 +8,7 @@ type Props = {
   /**
    * Define a header title.
    **/
-  title: string
+  title: ReactNode
 
   /**
    * Override default onBack action.
@@ -15,7 +16,10 @@ type Props = {
   onBack?: () => void
 }
 
-const HeaderBackWithoutAction: React.FC<Props> = ({ title, onBack }) => {
+export function HeaderBackWithoutAction({
+  title,
+  onBack,
+}: Props): ReactElement {
   const router = useRouter()
 
   return (
@@ -25,5 +29,3 @@ const HeaderBackWithoutAction: React.FC<Props> = ({ title, onBack }) => {
     </HeaderArea>
   )
 }
-
-export { HeaderBackWithoutAction }
