@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { useRouter } from '../../framework'
 import { HeaderArea } from './areas/HeaderArea'
 import { HeaderBackAction } from './actions/HeaderBackAction'
@@ -7,7 +8,7 @@ type Props = {
   /**
    * Define a header title.
    **/
-  title: string
+  title: ReactNode
 
   /**
    * Override default onBack action.
