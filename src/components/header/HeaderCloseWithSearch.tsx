@@ -1,18 +1,11 @@
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import React, { ReactNode, useState } from 'react'
-import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import {
-  HeaderArea,
-  HeaderRightArea,
-  HeaderSmallAction,
-  HeaderTitle,
-  HeaderLeftArea,
-} from '../header'
+import { HeaderArea, HeaderTitle } from '../header'
 import { UseSearchQuery } from '../types'
-import { useInternationalization } from '../../framework'
-import { HeaderLargeAction } from './actions/HeaderLargeAction'
+import { HeaderCloseAction } from './actions/HeaderCloseAction'
+import { HeaderRightActionIcon } from './actions/HeaderRightActionIcon'
+import { HeaderMainProps } from './HeaderMain'
 import { HeaderSearch } from './HeaderSearch'
-import { HeaderMainProps as HeaderMainProps } from './HeaderMain'
 
 type HeaderCloseWithSearchProps = UseSearchQuery &
   HeaderMainProps & {
@@ -26,6 +19,9 @@ type HeaderCloseWithSearchProps = UseSearchQuery &
     onClose: () => void
   }
 
+/**
+ * @deprecated Will be removed with an updated version of the dialog component.
+ */
 const HeaderCloseWithSearch: React.FC<HeaderCloseWithSearchProps> = ({
   title,
   labelIcon,
@@ -68,28 +64,15 @@ const HeaderNotSearching: React.FC<{
   startSearch: () => void
   onClose: () => void
 }> = ({ title, labelIcon, startSearch, onClose }) => {
-  const internationalization = useInternationalization()
-
   return (
-    <HeaderArea
-      navigation={
-        <HeaderLeftArea>
-          <HeaderLargeAction
-            icon={IconClose}
-            label={internationalization.translate('shared.search.close')}
-            onClick={onClose}
-          />
-        </HeaderLeftArea>
-      }
-    >
+    <HeaderArea>
+      <HeaderCloseAction onClick={onClose} />
       <HeaderTitle>{title}</HeaderTitle>
-      <HeaderRightArea>
-        <HeaderSmallAction
-          icon={IconSearch}
-          label={labelIcon}
-          onClick={startSearch}
-        />
-      </HeaderRightArea>
+      <HeaderRightActionIcon
+        icon={IconSearch}
+        label={labelIcon}
+        onClick={startSearch}
+      />
     </HeaderArea>
   )
 }

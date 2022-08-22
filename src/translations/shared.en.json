@@ -1,5 +1,4 @@
 {
-  "app.nav.menu": "Menu",
   "shared.field.email": "Email",
   "shared.field.password": "Password",
   "shared.field.newPassword": "New Password",
@@ -13,6 +12,7 @@
   "shared.button.delete": "Delete",
   "shared.button.reload": "Reload",
   "shared.button.goBack": "Go Back",
+  "shared.button.close": "Close",
   "shared.validation.required": "Required",
   "shared.validation.passwordMatch": "Password doesn't match",
   "shared.pagination.prev": "Prev",
@@ -22,7 +22,6 @@
   "shared.error.tryAgain": "Try again",
   "shared.error.api": "The backend failed to handle the request.",
   "shared.search.placeholder": "Search",
-  "shared.search.close": "Close search",
   "shared.search.back": "Close search",
   "shared.search.clear": "Clear search",
   "shared.select.clear": "Clear selection",

@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import Icon from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import { actions } from '@storybook/addon-actions'
+import { HeaderRightActionIcon } from './HeaderRightActionIcon'
+
+<Meta
+  title="Components/Header/HeaderRightActionIcon"
+  component={HeaderRightActionIcon}
+/>
+
+# HeaderRightActionIcon
+
+This component is used to add a `ButtonIcon` to the right side of the header, e.g. to add a edit or search button.
+
+It leverages on the work of [HeaderButtonIcon](/docs/components-header-headerbuttonicon--default-story), which adds a responsive `ButtonIcon`, and [HeaderRightArea](/docs/components-header-headerrightarea--default-story), which is in charge of the positioning.
+
+export const Template = ({ ...args }) => (
+  <HeaderRightActionIcon
+    {...args}
+    icon={Icon}
+    onClick={actions('clicked')}
+    label="Return to previous page"
+  />
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={HeaderRightActionIcon} />
+
+### Theme
+
+- `header.rightActionIcon.base`: Define the styles of the component.

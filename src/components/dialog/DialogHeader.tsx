@@ -1,13 +1,9 @@
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import React, { ReactElement } from 'react'
 import classNames from 'classnames'
-import {
-  HeaderAreaContainer,
-  HeaderRightArea,
-  HeaderSmallAction,
-  HeaderTitle,
-} from '../header'
+import React, { ReactElement } from 'react'
 import { useInternationalization, useTheme } from '../../framework'
+import { HeaderArea, HeaderTitle } from '../header'
+import { HeaderRightActionIcon } from '../header/actions/HeaderRightActionIcon'
 import { ClassNameProps } from '../types'
 
 export type DialogHeaderProps = {
@@ -31,16 +27,14 @@ function DialogHeader({
 
   return (
     <div className={classNames(dialog.header.base, className)}>
-      <HeaderAreaContainer>
+      <HeaderArea>
         <HeaderTitle>{title}</HeaderTitle>
-        <HeaderRightArea>
-          <HeaderSmallAction
-            icon={IconClose}
-            label={internationalization.translate('shared.search.close')}
-            onClick={onDismiss}
-          />
-        </HeaderRightArea>
-      </HeaderAreaContainer>
+        <HeaderRightActionIcon
+          icon={IconClose}
+          label={internationalization.translate('shared.button.close')}
+          onClick={onDismiss}
+        />
+      </HeaderArea>
     </div>
   )
 }

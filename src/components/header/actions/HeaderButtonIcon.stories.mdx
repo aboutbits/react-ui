@@ -1,0 +1,32 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import Icon from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import { actions } from '@storybook/addon-actions'
+import { HeaderButtonIcon } from './HeaderButtonIcon'
+
+<Meta title="Components/Header/HeaderButtonIcon" component={HeaderButtonIcon} />
+
+# HeaderButtonIcon
+
+This component is used to add a [ButtonIcon](/docs/components-button-buttonicon--default-story) to the header, which changes the size based on a breakpoint.
+
+export const Template = ({ ...args }) => (
+  <HeaderButtonIcon
+    {...args}
+    icon={Icon}
+    onClick={actions('clicked')}
+    label="Return to previous page"
+  />
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={HeaderButtonIcon} />
+
+### Theme
+
+- `header.buttonIcon.mobile`: Define the styles of the mobile component.
+- `header.buttonIcon.desktop`: Define the styles of the desktop component.

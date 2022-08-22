@@ -2,7 +2,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
 import { action } from '@storybook/addon-actions'
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
-import { HeaderSmallAction } from '../actions/HeaderSmallAction'
+import { HeaderButtonIcon } from '../actions/HeaderButtonIcon'
 import { HeaderRightArea } from './HeaderRightArea'
 
 <Meta title="Components/Header/HeaderRightArea" component={HeaderRightArea} />
@@ -14,7 +14,7 @@ It applies a margin to the left and displays the children in a row.
 
 export const Template = ({ ...args }) => (
   <HeaderRightArea {...args}>
-    <HeaderSmallAction
+    <HeaderButtonIcon
       icon={IconEdit}
       label="Edit"
       onClick={action('onClick')}
@@ -39,12 +39,12 @@ export const Template = ({ ...args }) => (
 <Canvas>
   <Story name="Multiple children">
     <HeaderRightArea>
-      <HeaderSmallAction
+      <HeaderButtonIcon
         icon={IconEdit}
         label="Edit"
         onClick={action('onClick')}
       />
-      <HeaderSmallAction
+      <HeaderButtonIcon
         icon={IconAdd}
         label="Add"
         onClick={action('onClick')}

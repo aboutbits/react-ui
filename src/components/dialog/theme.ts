@@ -10,12 +10,12 @@ export default {
     },
   },
   select: {
-    base: 'md:my-20 mx-auto md:w-full md:max-w-3xl bg-white md:bg-transparent md:rounded-md overflow-hidden',
+    base: 'md:my-20 mx-auto md:w-full md:max-w-3xl bg-white md:rounded-md overflow-hidden',
   },
   header: {
-    base: 'p-0 lg:p-4 bg-gray-300 border-b border-gray-600',
+    base: 'px-4 pt-2',
   },
   sectionContainer: {
-    base: 'bg-white rounded-lg rounded-t-none',
+    base: 'rounded-lg rounded-t-none',
   },
 }
