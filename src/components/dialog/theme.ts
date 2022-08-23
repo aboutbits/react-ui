@@ -18,4 +18,47 @@ export default {
   sectionContainer: {
     base: 'rounded-lg rounded-t-none',
   },
+
+  // ---------------------------------------
+  overlay:
+    'fixed top-0 left-0 flex justify-center items-center bg-black/[0.36] p-4 min-h-0 h-screen w-screen',
+  dialog: {
+    base: 'flex flex-col min-h-0 min-w-[17.5rem] outline-none bg-white rounded-[1.125rem] shadow-dialog max-h-full',
+    size: {
+      sm: 'max-w-[19.5rem]',
+      md: 'max-w-[35rem]',
+      lg: 'max-w-[48rem]',
+    },
+  },
+  headerArea: {
+    base: 'mb-4 px-6 mt-6 flex items-center min-h-[2.5rem]',
+  },
+  headerLeftArea: {
+    base: 'flex items-center mr-2 lg:mr-3 space-x-3 lg:space-x-4',
+  },
+  headerRightArea: {
+    base: 'flex items-center ml-2 lg:mr-3 space-x-3 lg:space-x-4',
+  },
+  headerTitle: {
+    base: 'flex-1 text-2xl text-neutral-800 truncate',
+  },
+  contentArea: {
+    base: 'pb-4 px-6 overflow-auto min-h-0 flex-1 min-h-0',
+  },
+  footerArea: {
+    base: 'px-6 pt-4 pb-6 border-t border-neutral-200 ',
+  },
+  footerActions: {
+    base: 'flex flex-col gap-2',
+    variant: {
+      start: 'justify-start',
+      center: 'justify-center',
+      end: 'justify-end',
+    },
+    size: {
+      sm: '',
+      md: 'md:flex-row',
+      lg: 'lg:flex-row',
+    },
+  },
 }
