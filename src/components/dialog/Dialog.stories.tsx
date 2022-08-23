@@ -9,7 +9,7 @@ import { Dialog, DialogPosition, DialogProps, DialogSize } from './Dialog'
 import { DialogHeaderClose } from './DialogHeaderClose'
 
 export default {
-  title: 'Components/Dialog/New',
+  title: 'Components/Dialog/Dialog',
   component: Dialog,
   decorators: [
     (Story, context) => {
