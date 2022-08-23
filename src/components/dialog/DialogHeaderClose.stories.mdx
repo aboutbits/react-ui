@@ -1,0 +1,30 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { DialogHeaderClose } from './DialogHeaderClose'
+
+<Meta
+  title="Components/Dialog/DialogHeaderClose"
+  component={DialogHeaderClose}
+/>
+
+# DialogHeaderClose
+
+This component is used in the [Dialog](/docs/components-dialog-dialog--default-story) to provide a header with close button.
+
+export const Template = (args) => (
+  <DialogHeaderClose {...args} onDismiss={() => void 0} />
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      title: 'Dialog Title',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
