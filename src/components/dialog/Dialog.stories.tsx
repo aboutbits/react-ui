@@ -6,7 +6,7 @@ import { DialogFooterActions } from './areas/DialogFooterActions'
 import { DialogFooterArea } from './areas/DialogFooterArea'
 import { DialogHeaderMain } from './areas/DialogHeaderMain'
 import { Dialog, DialogPosition, DialogProps, DialogSize } from './Dialog'
-import { DialogHeaderClose } from './DialogHeaderCose'
+import { DialogHeaderClose } from './DialogHeaderClose'
 
 export default {
   title: 'Components/Dialog/New',

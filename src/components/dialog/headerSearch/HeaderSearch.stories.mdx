@@ -1,15 +1,16 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
-import { NavigationProvider } from '../navigation/NavigationContext'
+import { NavigationProvider } from '../../navigation/NavigationContext'
 import { HeaderSearch } from './HeaderSearch'
 
-<Meta title="Components/Header/HeaderSearch" component={HeaderSearch} />
+<Meta
+  title="Components/Dialog/HeaderSearch/HeaderSearch"
+  component={HeaderSearch}
+/>
 
 # HeaderSearch
 
-This component contains the logic for a search functionality. It is used e.g., in the component [HeaderMainWithSearch](http://localhost:4000/?path=/docs/components-header-headermainwithsearch--default-story).
-
-Furthermore, an adjusted interface for the mobile view is provided.
+This component contains the logic for the search functionality of the dialog header.
 
 export const Template = ({ ...args }) => {
   const [text, setText] = useState('')
@@ -37,10 +38,10 @@ export const Template = ({ ...args }) => {
 
 ### Theme
 
-- `header.search.base`: Define the styles of the component.
-- `header.search.input.base`: Define the styles of the input.
-- `header.search.clearButton.base`: Define the styles for the button.
-- `header.search.icon.base`: Define the styles of the icon.
+- `dialog.headerSearch.base`: Define the styles of the component.
+- `dialog.headerSearch.input.base`: Define the styles of the input.
+- `dialog.headerSearch.clearButton.base`: Define the styles for the button.
+- `dialog.headerSearch.clearButton.icon`: Define the styles of the icon.
 
 ### Internationalization
 

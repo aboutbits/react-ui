@@ -1,10 +1,11 @@
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import { useEffect, useRef } from 'react'
-import { useInternationalization, useTheme } from '../../framework'
-import { HeaderLeftActionIcon } from './actions/HeaderLeftActionIcon'
-import { HeaderRightActionIcon } from './actions/HeaderRightActionIcon'
-import { HeaderArea } from './areas/HeaderArea'
+import { ReactElement, useEffect, useRef } from 'react'
+import { useInternationalization, useTheme } from '../../../framework'
+import { ButtonIcon, Variant } from '../../button'
+import { Tone } from '../../types'
+import { DialogHeaderArea } from '../areas/DialogHeaderArea'
+import { DialogHeaderLeftArea } from '../areas/DialogHeaderLeftArea'
 
 type Props = {
   /**
@@ -25,17 +26,14 @@ type Props = {
   clearSearch: () => void
 }
 
-/**
- * @deprecated Will be removed with an updated version of the dialog component.
- */
-const HeaderSearch: React.FC<Props> = ({
+export function HeaderSearch({
   text,
   setText,
   stopSearch,
   clearSearch,
-}) => {
+}: Props): ReactElement {
   const internationalization = useInternationalization()
-  const { header } = useTheme()
+  const { dialog } = useTheme()
   const searchInput = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -45,14 +43,17 @@ const HeaderSearch: React.FC<Props> = ({
   }, [])
 
   return (
-    <HeaderArea>
-      <HeaderLeftActionIcon
-        icon={IconArrowBack}
-        label={internationalization.translate('shared.search.back')}
-        onClick={stopSearch}
-        className="lg:hidden"
-      />
-      <div className={header.search.base}>
+    <DialogHeaderArea>
+      <DialogHeaderLeftArea>
+        <ButtonIcon
+          icon={IconArrowBack}
+          label={internationalization.translate('shared.search.back')}
+          onClick={stopSearch}
+          variant={Variant.transparent}
+          tone={Tone.neutral}
+        />
+      </DialogHeaderLeftArea>
+      <div className={dialog.headerSearch.base}>
         <input
           ref={searchInput}
           value={text}
@@ -62,24 +63,16 @@ const HeaderSearch: React.FC<Props> = ({
           placeholder={internationalization.translate(
             'shared.search.placeholder'
           )}
-          className={header.search.input.base}
+          className={dialog.headerSearch.input.base}
         />
         <button
-          className={header.search.clearButton.base}
+          className={dialog.headerSearch.clearButton.base}
           aria-label={internationalization.translate('shared.search.clear')}
           onClick={clearSearch}
         >
-          <IconClose className={header.search.icon.base} />
+          <IconClose className={dialog.headerSearch.clearButton.icon} />
         </button>
       </div>
-      <HeaderRightActionIcon
-        icon={IconClose}
-        label={internationalization.translate('shared.search.back')}
-        onClick={stopSearch}
-        className="hidden lg:block"
-      />
-    </HeaderArea>
+    </DialogHeaderArea>
   )
 }
-
-export { HeaderSearch }

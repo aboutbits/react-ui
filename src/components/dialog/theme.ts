@@ -1,25 +1,4 @@
 export default {
-  confirmation: {
-    base: 'absolute top-1/2 left-1/2 p-5 min-w-[17.5rem] max-w-min space-y-4 transform -translate-x-1/2 -translate-y-1/2 outline-none bg-white rounded',
-    title: {
-      base: 'text-xl',
-      variant: {
-        confirm: 'text-black',
-        critical: 'text-critical-500',
-      },
-    },
-  },
-  select: {
-    base: 'md:my-20 mx-auto md:w-full md:max-w-3xl bg-white md:rounded-md overflow-hidden',
-  },
-  header: {
-    base: 'px-4 pt-2',
-  },
-  sectionContainer: {
-    base: 'rounded-lg rounded-t-none',
-  },
-
-  // ---------------------------------------
   overlay: {
     base: 'fixed inset-0 flex justify-center items-center bg-black/[0.36]',
     mobilePosition: {
@@ -66,10 +45,10 @@ export default {
     base: 'mb-4 px-6 mt-6 flex items-center min-h-[2.5rem]',
   },
   headerLeftArea: {
-    base: 'flex items-center mr-2 lg:mr-3 space-x-3 lg:space-x-4',
+    base: 'flex items-center mr-2 space-x-3 lg:space-x-4',
   },
   headerRightArea: {
-    base: 'flex items-center ml-2 lg:mr-3 space-x-3 lg:space-x-4',
+    base: 'flex items-center ml-2 space-x-3 lg:space-x-4',
   },
   headerTitle: {
     base: 'flex-1 text-2xl text-neutral-800 truncate',
@@ -91,6 +70,16 @@ export default {
       sm: '',
       md: 'sm:flex-row',
       lg: 'sm:flex-row',
+    },
+  },
+  headerSearch: {
+    base: 'flex flex-1 py-1 px-3 bg-neutral-200 rounded-full',
+    input: {
+      base: 'flex-1 w-full outline-none bg-transparent border-none placeholder-neutral-500 text-neutral-800',
+    },
+    clearButton: {
+      base: 'hover:text-gray-700 focus:text-gray-700',
+      icon: 'w-4 h-4 fill-current',
     },
   },
 }

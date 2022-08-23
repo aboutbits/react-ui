@@ -1,62 +1,43 @@
-import classNames from 'classnames'
-import { Dialog } from '@reach/dialog'
-import { useTheme } from '../../../framework'
-import { ClassNameProps, UseSearchQuery } from '../../types'
-import { SelectDialogHeader } from './SelectDialogHeader'
+import { ReactElement } from 'react'
+import { UseSearchQuery } from '../../types'
+import { DialogContentArea } from '../areas/DialogContentArea'
+import { Dialog, DialogProps } from '../Dialog'
+import { DialogHeaderSearch } from '../DialogHeaderSearch'
 
-type Props = {
-  /**
-   * Defines which action should be executed on dismissing.
-   **/
-  onDismiss: (event?: React.SyntheticEvent<Element, Event> | undefined) => void
-  /**
-   * Defines the title of the header.
-   **/
-  title: string
-  /**
-   * Define the accessibility label for the search icon.
-   **/
-  iconLabel: string
-  /**
-   * Defines if the dialog is open.
-   **/
-  isOpen: boolean
-  /**
-   * Accessibility label for the dialog.
-   **/
-  dialogLabel: string
-} & UseSearchQuery &
-  ClassNameProps
+type Props = DialogProps &
+  Required<Pick<DialogProps, 'onDismiss'>> &
+  UseSearchQuery & {
+    /**
+     * Define the accessibility label for the search icon.
+     **/
+    iconLabel: string
+    /**
+     * Accessibility label for the dialog.
+     **/
+    dialogLabel: string
+  }
 
-const SelectDialog: React.FC<Props> = ({
+export function SelectDialog({
   title,
+  dialogLabel,
   iconLabel,
   search,
-  onDismiss,
   actions,
-  isOpen,
   children,
-  dialogLabel,
-  className,
-}) => {
-  const { dialog } = useTheme()
+  ...props
+}: Props): ReactElement {
   return (
-    <Dialog
-      isOpen={isOpen}
-      onDismiss={onDismiss}
-      aria-label={dialogLabel}
-      className={classNames(dialog.select.base, className)}
-    >
-      <SelectDialogHeader
-        onDismiss={onDismiss}
-        title={title}
-        iconLabel={iconLabel}
-        search={search}
-        actions={actions}
-      />
-      {children}
+    <Dialog {...props} title={dialogLabel}>
+      <>
+        <DialogHeaderSearch
+          onDismiss={props.onDismiss}
+          title={title}
+          iconLabel={iconLabel}
+          search={search}
+          actions={actions}
+        />
+        <DialogContentArea>{children}</DialogContentArea>
+      </>
     </Dialog>
   )
 }
-
-export { SelectDialog }

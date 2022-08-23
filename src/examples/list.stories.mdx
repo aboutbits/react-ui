@@ -12,7 +12,7 @@ import {
   Variant as ButtonVariant,
   SubmitButton,
 } from '../components/button'
-import { DialogHeader } from '../components/dialog'
+import { DialogHeaderClose } from '../components/dialog/DialogHeaderClose'
 import {
   Section,
   SectionTitle,
@@ -421,7 +421,10 @@ export const TemplateListWithFilterDialog = ({
           aria-label="Filter"
           className="mx-auto bg-white overflow-hidden"
         >
-          <DialogHeader onDismiss={() => setDialogShow(false)} title="Filter" />
+          <DialogHeaderClose
+            onDismiss={() => setDialogShow(false)}
+            title="Filter"
+          />
           <SectionFilter
             initialValues={filter}
             enableReinitialize

@@ -3,8 +3,6 @@ import { useState } from 'react'
 import { Button } from '../../button/Button'
 import { Tone } from '../../types'
 import { NavigationProvider } from '../../navigation/NavigationContext'
-import { SectionContentList, SectionListItem } from '../../section'
-import { DialogSectionContainer } from '../DialogSectionContainer'
 import { SelectDialog } from './SelectDialog'
 
 <Meta title="Components/Dialog/SelectDialog" component={SelectDialog} />
@@ -13,7 +11,7 @@ import { SelectDialog } from './SelectDialog'
 
 This component is used to have a dynamic search and select within a dialog window.
 
-It leverages on the component [SelectDialogHeader](/docs/components-dialog-selectdialogheader--default-story) which provides the search logic.
+It leverages on the component [DialogHeaderSearch](/docs/components-dialog-dialogheadersearch--default-story) which provides the search logic.
 
 export const Template = ({
   buttonText,
@@ -39,17 +37,15 @@ export const Template = ({
           onDismiss={() => setToggle(!toggle)}
           dialogLabel={dialogLabel}
         >
-          <DialogSectionContainer>
-            <SectionContentList>
-              {userList
-                .filter((user) =>
-                  user.toLowerCase().includes(text.toLowerCase())
-                )
-                .map((user, index) => (
-                  <SectionListItem key={index}>{user}</SectionListItem>
-                ))}
-            </SectionContentList>
-          </DialogSectionContainer>
+          <ul>
+            {userList
+              .filter((user) => user.toLowerCase().includes(text.toLowerCase()))
+              .map((user, index) => (
+                <li className="py-4" key={index}>
+                  {user}
+                </li>
+              ))}
+          </ul>
         </SelectDialog>
       ) : (
         <Button tone={buttonTone} onClick={() => setToggle(!toggle)}>
@@ -78,7 +74,3 @@ export const Template = ({
 ### Props:
 
 <ArgsTable story="Default" />
-
-### Theme:
-
-- `dialog.select.base`: Define the styles of the select dialog window.

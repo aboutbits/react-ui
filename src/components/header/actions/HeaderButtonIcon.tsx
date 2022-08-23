@@ -1,4 +1,4 @@
-import { ComponentType, ReactElement } from 'react'
+import React, { ComponentType, ReactElement } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { ClassNameProps, Tone } from '../../types'
 import { ButtonIcon, Size, Variant } from '../../button'
@@ -16,7 +16,7 @@ export type HeaderButtonIconProps = ClassNameProps & {
   /**
    * Defines which action should be executed on clicking.
    **/
-  onClick: () => void
+  onClick: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export function HeaderButtonIcon({
