@@ -5,7 +5,7 @@ import { DialogContentArea } from './areas/DialogContentArea'
 import { DialogFooterActions } from './areas/DialogFooterActions'
 import { DialogFooterArea } from './areas/DialogFooterArea'
 import { DialogHeaderMain } from './areas/DialogHeaderMain'
-import { Dialog, DialogSize } from './Dialog'
+import { Dialog, DialogPosition, DialogSize } from './Dialog'
 import { DialogHeaderClose } from './DialogHeaderCose'
 
 export default {
@@ -120,6 +120,61 @@ export const SizeLg: ComponentStory<typeof Dialog> = ({
   )
 }
 SizeLg.storyName = 'Size Lg'
+
+export const MobileFullscreen: ComponentStory<typeof Dialog> = ({
+  isOpen,
+  onDismiss,
+}) => {
+  return (
+    <Dialog
+      title="Mobile fullscreen"
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      mobilePosition={DialogPosition.fullscreen}
+    >
+      <>
+        <DialogHeaderMain title="Mobile fullscreen" />
+        <DialogContentArea>
+          This is dialog will be fullscreen on mobile.
+        </DialogContentArea>
+        <DialogFooterArea>
+          <DialogFooterActions size={DialogSize.lg}>
+            <Button onClick={onDismiss}>OK</Button>
+          </DialogFooterActions>
+        </DialogFooterArea>
+      </>
+    </Dialog>
+  )
+}
+MobileFullscreen.storyName = 'Mobile fullscreen'
+
+export const CompleteFullscreen: ComponentStory<typeof Dialog> = ({
+  isOpen,
+  onDismiss,
+}) => {
+  return (
+    <Dialog
+      title="Complete fullscreen"
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      mobilePosition={DialogPosition.fullscreen}
+      desktopPosition={DialogPosition.fullscreen}
+    >
+      <>
+        <DialogHeaderMain title="Complete fullscreen" />
+        <DialogContentArea>
+          This dialog will be fullscreen on mobile and desktop.
+        </DialogContentArea>
+        <DialogFooterArea>
+          <DialogFooterActions size={DialogSize.lg}>
+            <Button onClick={onDismiss}>OK</Button>
+          </DialogFooterActions>
+        </DialogFooterArea>
+      </>
+    </Dialog>
+  )
+}
+CompleteFullscreen.storyName = 'Complete fullscreen'
 
 export const WithCloseButton: ComponentStory<typeof Dialog> = ({
   isOpen,

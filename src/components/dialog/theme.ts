@@ -20,14 +20,46 @@ export default {
   },
 
   // ---------------------------------------
-  overlay:
-    'fixed top-0 left-0 flex justify-center items-center bg-black/[0.36] p-4 min-h-0 h-screen w-screen',
+  overlay: {
+    base: 'fixed inset-0 flex justify-center items-center bg-black/[0.36]',
+    mobilePosition: {
+      center: 'p-6',
+      fullscreen: 'p-0',
+    },
+    desktopPosition: {
+      center: 'lg:p-8',
+      fullscreen: 'lg:p-0',
+    },
+  },
   dialog: {
-    base: 'flex flex-col min-h-0 outline-none bg-white rounded-[1.125rem] shadow-dialog max-h-full',
-    size: {
-      sm: 'w-full max-w-[19.5rem]',
-      md: 'w-full max-w-[35rem]',
-      lg: 'w-full max-w-[48rem]',
+    base: 'flex flex-col min-h-0 outline-none bg-white shadow-dialog max-h-full',
+    mobilePositionSize: {
+      center: {
+        base: 'rounded-[1.125rem]',
+        sm: 'w-full max-w-[19.5rem]',
+        md: 'w-full max-w-[35rem]',
+        lg: 'w-full max-w-[48rem]',
+      },
+      fullscreen: {
+        base: 'w-full h-full',
+        sm: '',
+        md: '',
+        lg: '',
+      },
+    },
+    desktopPositionSize: {
+      center: {
+        base: 'lg:rounded-[1.125rem]',
+        sm: 'lg:w-full lg:max-w-[19.5rem]',
+        md: 'lg:w-full lg:max-w-[35rem]',
+        lg: 'lg:w-full lg:max-w-[48rem]',
+      },
+      fullscreen: {
+        base: 'lg:w-full lg:h-full',
+        sm: '',
+        md: '',
+        lg: '',
+      },
     },
   },
   headerArea: {
