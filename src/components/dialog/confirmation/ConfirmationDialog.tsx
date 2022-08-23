@@ -1,10 +1,12 @@
-import { Dialog } from '@reach/dialog'
-import classNames from 'classnames'
-import { ReactNode } from 'react'
+import { ReactElement, ReactNode } from 'react'
 import { Button } from '../../button'
-import { useTheme } from '../../../framework'
-import { ClassNameProps, Tone } from '../../types'
-import { Size, Variant } from '../../button/types'
+import { Variant } from '../../button/types'
+import { Tone } from '../../types'
+import { DialogContentArea } from '../areas/DialogContentArea'
+import { DialogFooterActions } from '../areas/DialogFooterActions'
+import { DialogFooterArea } from '../areas/DialogFooterArea'
+import { DialogHeaderMain } from '../areas/DialogHeaderMain'
+import { Dialog, DialogProps } from '../Dialog'
 
 export enum ConfirmationDialogVariant {
   confirm = 'confirm',
@@ -16,11 +18,7 @@ const variantConfirmationButtonTone: Record<ConfirmationDialogVariant, Tone> = {
   [ConfirmationDialogVariant.critical]: Tone.critical,
 }
 
-type ConfirmDialogProps = ClassNameProps & {
-  /**
-   * Defines if the dialog is open.
-   **/
-  isOpen: boolean
+type ConfirmDialogProps = Omit<DialogProps, 'children'> & {
   /**
    * Defines if the entire dialog is dismissible. This includes escaping, clicking the button, and clicking outside of the dialog.
    **/
@@ -42,10 +40,6 @@ type ConfirmDialogProps = ClassNameProps & {
    **/
   variant?: ConfirmationDialogVariant
   /**
-   * Defines the title of the dialog.
-   **/
-  title: string
-  /**
    * Further information can be placed in the dialog.
    **/
   body: ReactNode
@@ -59,64 +53,45 @@ type ConfirmDialogProps = ClassNameProps & {
   dismissButtonText?: ReactNode
 }
 
-const ConfirmationDialog: React.FC<ConfirmDialogProps> = ({
-  isOpen,
+export function ConfirmationDialog({
   disableDismiss,
   disableConfirm,
   onDismiss,
   onConfirm,
   variant = ConfirmationDialogVariant.confirm,
-  title,
-  body,
   confirmButtonText,
   dismissButtonText,
-  className,
-}) => {
-  const { dialog } = useTheme()
+  body,
+  ...props
+}: ConfirmDialogProps): ReactElement {
   return (
-    <Dialog
-      isOpen={isOpen}
-      onDismiss={() => {
-        if (!disableDismiss) {
-          onDismiss()
-        }
-      }}
-      aria-label={title}
-      className={classNames(dialog.confirmation.base, className)}
-    >
-      <h2
-        className={classNames(
-          dialog.confirmation.title.variant[variant],
-          dialog.confirmation.title.base
-        )}
-      >
-        {title}
-      </h2>
-      <div>{body}</div>
-      <div className="space-x-4 text-right">
-        {dismissButtonText && (
-          <Button
-            variant={Variant.ghost}
-            tone={Tone.neutral}
-            size={Size.sm}
-            disabled={disableDismiss}
-            onClick={onDismiss}
-          >
-            {dismissButtonText}
-          </Button>
-        )}
-        <Button
-          variant={Variant.solid}
-          size={Size.sm}
-          tone={variantConfirmationButtonTone[variant]}
-          disabled={disableConfirm}
-          onClick={onConfirm}
-        >
-          {confirmButtonText}
-        </Button>
-      </div>
+    <Dialog {...props}>
+      <>
+        <DialogHeaderMain title={props.title} />
+        <DialogContentArea>{body}</DialogContentArea>
+        <DialogFooterArea>
+          <DialogFooterActions>
+            {dismissButtonText && (
+              <Button
+                variant={Variant.ghost}
+                tone={Tone.neutral}
+                disabled={disableDismiss}
+                onClick={onDismiss}
+              >
+                {dismissButtonText}
+              </Button>
+            )}
+            <Button
+              variant={Variant.solid}
+              tone={variantConfirmationButtonTone[variant]}
+              disabled={disableConfirm}
+              onClick={onConfirm}
+            >
+              {confirmButtonText}
+            </Button>
+          </DialogFooterActions>
+        </DialogFooterArea>
+      </>
     </Dialog>
   )
 }
-
-export { ConfirmationDialog }
