@@ -5,7 +5,7 @@ import { DialogContentArea } from './areas/DialogContentArea'
 import { DialogFooterActions } from './areas/DialogFooterActions'
 import { DialogFooterArea } from './areas/DialogFooterArea'
 import { DialogHeaderMain } from './areas/DialogHeaderMain'
-import { Dialog } from './Dialog'
+import { Dialog, DialogSize } from './Dialog'
 import { DialogHeaderClose } from './DialogHeaderCose'
 
 export default {
@@ -33,18 +33,93 @@ export const Default: ComponentStory<typeof Dialog> = ({
     <Dialog title="Hello" isOpen={isOpen} onDismiss={onDismiss}>
       <>
         <DialogHeaderMain title="Hello" />
-        <DialogContentArea>This is a basic dialog.</DialogContentArea>
+        <DialogContentArea>
+          This is a default dialog with header and action.
+        </DialogContentArea>
         <DialogFooterArea>
           <DialogFooterActions>
-            <Button className="flex-1" onClick={onDismiss}>
-              OK
-            </Button>
+            <Button onClick={onDismiss}>OK</Button>
           </DialogFooterActions>
         </DialogFooterArea>
       </>
     </Dialog>
   )
 }
+
+export const SizeSm: ComponentStory<typeof Dialog> = ({
+  isOpen,
+  onDismiss,
+}) => {
+  return (
+    <Dialog
+      title="Hello"
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      size={DialogSize.sm}
+    >
+      <>
+        <DialogHeaderMain title="Small dialog" />
+        <DialogContentArea>This is a small size dialog.</DialogContentArea>
+        <DialogFooterArea>
+          <DialogFooterActions size={DialogSize.sm}>
+            <Button onClick={onDismiss}>OK</Button>
+          </DialogFooterActions>
+        </DialogFooterArea>
+      </>
+    </Dialog>
+  )
+}
+SizeSm.storyName = 'Size Sm'
+
+export const SizeMd: ComponentStory<typeof Dialog> = ({
+  isOpen,
+  onDismiss,
+}) => {
+  return (
+    <Dialog
+      title="Hello"
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      size={DialogSize.md}
+    >
+      <>
+        <DialogHeaderMain title="Medium dialog" />
+        <DialogContentArea>This is a medium size dialog.</DialogContentArea>
+        <DialogFooterArea>
+          <DialogFooterActions size={DialogSize.md}>
+            <Button onClick={onDismiss}>OK</Button>
+          </DialogFooterActions>
+        </DialogFooterArea>
+      </>
+    </Dialog>
+  )
+}
+SizeMd.storyName = 'Size Md'
+
+export const SizeLg: ComponentStory<typeof Dialog> = ({
+  isOpen,
+  onDismiss,
+}) => {
+  return (
+    <Dialog
+      title="Hello"
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      size={DialogSize.lg}
+    >
+      <>
+        <DialogHeaderMain title="Large dialog" />
+        <DialogContentArea>This is a large size dialog.</DialogContentArea>
+        <DialogFooterArea>
+          <DialogFooterActions size={DialogSize.lg}>
+            <Button onClick={onDismiss}>xxx</Button>
+          </DialogFooterActions>
+        </DialogFooterArea>
+      </>
+    </Dialog>
+  )
+}
+SizeLg.storyName = 'Size Lg'
 
 export const WithCloseButton: ComponentStory<typeof Dialog> = ({
   isOpen,
@@ -59,9 +134,7 @@ export const WithCloseButton: ComponentStory<typeof Dialog> = ({
         </DialogContentArea>
         <DialogFooterArea>
           <DialogFooterActions>
-            <Button className="flex-1" onClick={onDismiss}>
-              OK
-            </Button>
+            <Button onClick={onDismiss}>OK</Button>
           </DialogFooterActions>
         </DialogFooterArea>
       </>
@@ -113,9 +186,7 @@ export const WithLongContent: ComponentStory<typeof Dialog> = ({
         </DialogContentArea>
         <DialogFooterArea>
           <DialogFooterActions>
-            <Button className="flex-1" onClick={onDismiss}>
-              OK
-            </Button>
+            <Button onClick={onDismiss}>OK</Button>
           </DialogFooterActions>
         </DialogFooterArea>
       </>

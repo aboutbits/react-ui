@@ -23,11 +23,11 @@ export default {
   overlay:
     'fixed top-0 left-0 flex justify-center items-center bg-black/[0.36] p-4 min-h-0 h-screen w-screen',
   dialog: {
-    base: 'flex flex-col min-h-0 min-w-[17.5rem] outline-none bg-white rounded-[1.125rem] shadow-dialog max-h-full',
+    base: 'flex flex-col min-h-0 outline-none bg-white rounded-[1.125rem] shadow-dialog max-h-full',
     size: {
-      sm: 'max-w-[19.5rem]',
-      md: 'max-w-[35rem]',
-      lg: 'max-w-[48rem]',
+      sm: 'w-full max-w-[19.5rem]',
+      md: 'w-full max-w-[35rem]',
+      lg: 'w-full max-w-[48rem]',
     },
   },
   headerArea: {
@@ -57,8 +57,8 @@ export default {
     },
     size: {
       sm: '',
-      md: 'md:flex-row',
-      lg: 'lg:flex-row',
+      md: 'sm:flex-row',
+      lg: 'sm:flex-row',
     },
   },
 }
