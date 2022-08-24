@@ -1,6 +1,6 @@
 import { DialogContent, DialogOverlay, DialogOverlayProps } from '@reach/dialog'
 import classNames from 'classnames'
-import { ReactElement } from 'react'
+import { ReactElement, useRef } from 'react'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 
@@ -34,6 +34,7 @@ export function Dialog({
   ...props
 }: DialogProps): ReactElement {
   const { dialog } = useTheme()
+  const initialFocusRef = useRef<HTMLDivElement>(null)
 
   return (
     <DialogOverlay
@@ -42,9 +43,11 @@ export function Dialog({
         dialog.overlay.mobilePosition[mobilePosition],
         dialog.overlay.desktopPosition[desktopPosition]
       )}
+      initialFocusRef={initialFocusRef}
       {...props}
     >
       <DialogContent
+        ref={initialFocusRef}
         aria-label={title}
         className={classNames(
           dialog.dialog.base,
