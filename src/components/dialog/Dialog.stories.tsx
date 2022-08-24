@@ -150,3 +150,11 @@ WithLongContent.args = {
     )
   }),
 }
+WithLongContent.parameters = {
+  docs: {
+    description: {
+      story:
+        'With the default theme, the `ContentArea` shows a top border when scrolled.',
+    },
+  },
+}

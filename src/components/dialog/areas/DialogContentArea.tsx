@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { ReactElement, ReactNode } from 'react'
+import { ReactElement, ReactNode, UIEventHandler, useState } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
@@ -12,9 +12,21 @@ export function DialogContentArea({
   className,
 }: DialogContentAreaProps): ReactElement {
   const { dialog } = useTheme()
+  const [isOverflow, setIsOverflow] = useState<boolean>(false)
+
+  const onScroll: UIEventHandler<HTMLDivElement> = (event) => {
+    setIsOverflow(event.currentTarget.scrollTop > 0)
+  }
 
   return (
-    <div className={classNames(dialog.contentArea.base, className)}>
+    <div
+      onScroll={onScroll}
+      className={classNames(
+        dialog.contentArea.base,
+        dialog.contentArea.heightOverflow[isOverflow ? 'on' : 'off'],
+        className
+      )}
+    >
       {children}
     </div>
   )

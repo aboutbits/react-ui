@@ -54,10 +54,14 @@ export default {
     base: 'flex-1 text-2xl text-neutral-800 truncate',
   },
   contentArea: {
-    base: 'pb-4 px-6 overflow-auto min-h-0 flex-1 min-h-0',
+    base: 'pb-4 px-6 overflow-auto min-h-0 flex-1 min-h-0 border-t',
+    heightOverflow: {
+      off: 'border-transparent',
+      on: 'border-neutral-200',
+    },
   },
   footerArea: {
-    base: 'px-6 pt-4 pb-6 border-t border-neutral-200 ',
+    base: 'px-6 pt-4 pb-6 border-t border-neutral-200',
   },
   footerActions: {
     base: 'flex flex-col gap-2',
