@@ -28,7 +28,7 @@ export default {
     },
     desktopPositionSize: {
       center: {
-        base: 'lg:rounded-[1.125rem]',
+        base: 'lg:h-auto lg:rounded-[1.125rem]',
         sm: 'lg:w-full lg:max-w-[19.5rem]',
         md: 'lg:w-full lg:max-w-[35rem]',
         lg: 'lg:w-full lg:max-w-[48rem]',
