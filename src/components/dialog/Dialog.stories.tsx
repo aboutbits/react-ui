@@ -1,58 +1,47 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
-import React, { ReactNode, useState } from 'react'
+import { ComponentMeta, ComponentStory, DecoratorFn } from '@storybook/react'
+import React, { ReactElement, ReactNode, useState } from 'react'
 import { Button } from '../button'
-import { DialogContentArea } from './areas/DialogContentArea'
-import { DialogFooterActions } from './areas/DialogFooterActions'
-import { DialogFooterArea } from './areas/DialogFooterArea'
-import { DialogHeaderMain } from './areas/DialogHeaderMain'
-import { Dialog, DialogPosition, DialogProps, DialogSize } from './Dialog'
+import DialogDocs from './Dialog.docs.mdx'
 import { DialogHeaderClose } from './DialogHeaderClose'
+import {
+  Dialog,
+  DialogContentArea,
+  DialogFooterActions,
+  DialogFooterArea,
+  DialogHeaderArea,
+  DialogHeaderLeftArea,
+  DialogHeaderMain,
+  DialogHeaderRightArea,
+  DialogHeaderTitle,
+  DialogPosition,
+  DialogProps,
+  DialogSize,
+} from './'
 
-export default {
-  title: 'Components/Dialog/Dialog',
-  component: Dialog,
-  decorators: [
-    (Story, context) => {
-      const [isOpen, setIsOpen] = useState(false)
+type TemplateArgs = DialogProps & { content: ReactNode }
+type StoryType = ComponentStory<(args: TemplateArgs) => ReactElement>
 
-      return (
-        <>
-          <Button onClick={() => setIsOpen(true)}>Open Dialog</Button>
-          <Story
-            args={{
-              ...context.args,
-              isOpen,
-              onDismiss: () => setIsOpen(false),
-            }}
-          />
-        </>
-      )
-    },
-  ],
-  args: {
-    title: 'Dialog description',
-  },
-  argTypes: {
-    content: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'This component is used to show an overlay dialog on the page. It supports different sizes and position behaviours on mobile and desktop.',
-      },
-    },
-  },
-} as ComponentMeta<typeof Dialog>
+const DialogDecorator: DecoratorFn = (Story, context) => {
+  const [isOpen, setIsOpen] = useState(false)
 
-const DialogTemplate = ({
-  content,
-  ...args
-}: DialogProps & { content: ReactNode }) => {
+  return (
+    <div>
+      <Button onClick={() => setIsOpen(true)}>
+        {context.parameters.buttonText || 'Open Dialog'}
+      </Button>
+      <Story
+        args={{
+          ...context.args,
+          isOpen,
+          onDismiss: () => setIsOpen(false),
+          content: context.parameters.content,
+        }}
+      />
+    </div>
+  )
+}
+
+const DialogTemplate = ({ content, ...args }: TemplateArgs) => {
   return (
     <Dialog {...args}>
       <>
@@ -68,58 +57,112 @@ const DialogTemplate = ({
   )
 }
 
-export const Default: ComponentStory<typeof DialogTemplate> =
-  DialogTemplate.bind({})
-Default.args = {
-  content: 'This is a default dialog',
-}
+export default {
+  title: 'Components/Dialog/Dialog',
+  component: Dialog,
+  subcomponents: {
+    DialogHeaderArea,
+    DialogHeaderLeftArea,
+    DialogHeaderRightArea,
+    DialogHeaderTitle,
+    DialogHeaderMain,
+    DialogHeaderClose,
+    DialogContentArea,
+    DialogFooterArea,
+    DialogFooterActions,
+  },
+  decorators: [DialogDecorator],
+  args: {
+    title: 'Dialog description',
+  },
+  parameters: {
+    docs: {
+      page: DialogDocs,
+    },
+  },
+} as ComponentMeta<typeof Dialog>
 
-export const SizeSm: ComponentStory<typeof DialogTemplate> =
-  DialogTemplate.bind({})
-SizeSm.storyName = 'Size Sm'
-SizeSm.args = {
-  size: DialogSize.sm,
-  content: 'This is a small size dialog',
-}
+export const Default: StoryType = DialogTemplate.bind({})
+Object.assign(Default, {
+  parameters: {
+    content: 'This is a default dialog',
+  },
+})
 
-export const SizeMd: ComponentStory<typeof DialogTemplate> =
-  DialogTemplate.bind({})
-SizeMd.storyName = 'Size Md'
-SizeMd.args = {
-  size: DialogSize.md,
-  content: 'This is a medium size dialog',
-}
+export const SizeSm: StoryType = DialogTemplate.bind({})
+Object.assign(SizeSm, {
+  storyName: 'Size Sm',
+  args: {
+    size: DialogSize.sm,
+  },
+  parameters: {
+    buttonText: 'Small dialog',
+    content: 'This is a small size dialog',
+  },
+})
 
-export const SizeLg: ComponentStory<typeof DialogTemplate> =
-  DialogTemplate.bind({})
-SizeLg.storyName = 'Size Lg'
-SizeLg.args = {
-  size: DialogSize.lg,
-  content: 'This is a large size dialog',
-}
+export const SizeMd: StoryType = DialogTemplate.bind({})
+Object.assign(SizeMd, {
+  storyName: 'Size Md',
+  args: {
+    size: DialogSize.md,
+  },
+  parameters: {
+    buttonText: 'Medium dialog',
+    content: 'This is a medium size dialog',
+  },
+})
 
-export const MobileFullscreen: ComponentStory<typeof DialogTemplate> =
-  DialogTemplate.bind({})
-MobileFullscreen.storyName = 'Mobile fullscreen'
-MobileFullscreen.args = {
-  size: DialogSize.lg,
-  content: 'This is dialog will be fullscreen on mobile.',
-  mobilePosition: DialogPosition.fullscreen,
-}
+export const SizeLg: StoryType = DialogTemplate.bind({})
+Object.assign(SizeLg, {
+  storyName: 'Size Lg',
+  args: {
+    size: DialogSize.lg,
+  },
+  parameters: {
+    buttonText: 'Large dialog',
+    content: 'This is a large size dialog',
+  },
+})
 
-export const CompleteFullscreen: ComponentStory<typeof DialogTemplate> =
-  DialogTemplate.bind({})
-CompleteFullscreen.storyName = 'Complete fullscreen'
-CompleteFullscreen.args = {
-  size: DialogSize.lg,
-  content: 'This dialog will be fullscreen on mobile and desktop.',
-  mobilePosition: DialogPosition.fullscreen,
-  desktopPosition: DialogPosition.fullscreen,
-}
+export const MobileFullscreen: StoryType = DialogTemplate.bind({})
+Object.assign(MobileFullscreen, {
+  storyName: 'Mobile fullscreen',
+  args: {
+    mobilePosition: DialogPosition.fullscreen,
+  },
+  parameters: {
+    buttonText: 'Mobile fullscreen',
+    content: 'This is dialog will be fullscreen on mobile.',
+  },
+})
 
-export const WithCloseButton: ComponentStory<typeof Dialog> = (
-  args: DialogProps
-) => {
+export const DesktopFullscreen: StoryType = DialogTemplate.bind({})
+Object.assign(DesktopFullscreen, {
+  storyName: 'Desktop fullscreen',
+  args: {
+    desktopPosition: DialogPosition.fullscreen,
+  },
+  parameters: {
+    buttonText: 'Desktop fullscreen',
+    content: 'This is dialog will be fullscreen on desktop.',
+  },
+})
+
+export const CompleteFullscreen: StoryType = DialogTemplate.bind({})
+Object.assign(CompleteFullscreen, {
+  storyName: 'Complete fullscreen',
+  args: {
+    mobilePosition: DialogPosition.fullscreen,
+    desktopPosition: DialogPosition.fullscreen,
+  },
+  parameters: {
+    buttonText: 'Complete fullscreen',
+    content: 'This dialog will be fullscreen on mobile and desktop.',
+  },
+})
+
+export const WithCloseButton: StoryType = (args: DialogProps) => {
   return (
     <Dialog {...args}>
       <>
@@ -136,25 +179,20 @@ export const WithCloseButton: ComponentStory<typeof Dialog> = (
     </Dialog>
   )
 }
-WithCloseButton.storyName = 'With close button'
+Object.assign(WithCloseButton, {
+  storyName: 'With close button',
+})
 
-export const WithLongContent: ComponentStory<typeof DialogTemplate> =
-  DialogTemplate.bind({})
-WithLongContent.storyName = 'With long content'
-WithLongContent.args = {
-  content: new Array(20).fill(null).map((_, i) => {
-    return (
-      <div key={i} className="mb-10">
-        This is a dialog with long content.
-      </div>
-    )
-  }),
-}
-WithLongContent.parameters = {
-  docs: {
-    description: {
-      story:
-        'With the default theme, the `ContentArea` shows a top border when scrolled.',
-    },
+export const WithLongContent: StoryType = DialogTemplate.bind({})
+Object.assign(WithLongContent, {
+  storyName: 'With long content',
+  parameters: {
+    content: new Array(20).fill(null).map((_, i) => {
+      return (
+        <div key={i} className="mb-10">
+          This is a dialog with long content.
+        </div>
+      )
+    }),
   },
-}
+})
