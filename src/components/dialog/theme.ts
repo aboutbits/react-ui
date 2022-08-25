@@ -34,7 +34,7 @@ export default {
         lg: 'lg:w-full lg:max-w-[48rem]',
       },
       fullscreen: {
-        base: 'lg:w-full lg:h-full',
+        base: 'lg:w-full lg:h-full lg:max-w-none lg:rounded-none',
         sm: '',
         md: '',
         lg: '',
