@@ -1,6 +1,6 @@
 export default {
   area: {
-    base: 'space-y-6 lg:space-y-9',
+    base: 'space-y-9',
   },
   error: {
     base: 'flex flex-col items-center justify-center overflow-hidden mx-auto my-16 lg:mt-20',
