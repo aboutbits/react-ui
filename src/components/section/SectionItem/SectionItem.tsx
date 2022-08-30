@@ -50,14 +50,8 @@ export const SectionListItemButton = React.forwardRef<
       ref={ref}
       {...props}
     >
-      <>
-        {children}
-        <IconKeyboardArrowRight
-          width="24"
-          height="24"
-          className="fill-current"
-        />
-      </>
+      {children}
+      <IconKeyboardArrowRight width="24" height="24" className="fill-current" />
     </button>
   )
 })
@@ -81,14 +75,8 @@ export const SectionListItemLink = React.forwardRef<
       ref={ref}
       {...props}
     >
-      <>
-        {children}
-        <IconKeyboardArrowRight
-          width="24"
-          height="24"
-          className="fill-current"
-        />
-      </>
+      {children}
+      <IconKeyboardArrowRight width="24" height="24" className="fill-current" />
     </LinkComponent>
   )
 })
