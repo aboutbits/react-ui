@@ -42,20 +42,22 @@ export const SectionListItemButton = React.forwardRef<
   return (
     <button
       onClick={onClick}
-      className={section.listItemButton.button}
+      className={classNames(
+        section.listItemButton.base,
+        section.listItem.base,
+        className
+      )}
       ref={ref}
       {...props}
     >
-      <SectionListItem
-        className={classNames(section.listItemButton.base, className)}
-      >
+      <>
         {children}
         <IconKeyboardArrowRight
           width="24"
           height="24"
           className="fill-current"
         />
-      </SectionListItem>
+      </>
     </button>
   )
 })
