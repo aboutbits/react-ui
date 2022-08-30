@@ -104,3 +104,5 @@ export const SectionListItemWithAction: React.FC<
     </SectionListItem>
   )
 }
+
+SectionListItemWithAction.displayName = 'SectionListItemWithAction'
