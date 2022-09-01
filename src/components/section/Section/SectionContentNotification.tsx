@@ -2,10 +2,10 @@ import classNames from 'classnames'
 import React, { ComponentType, ReactElement } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { useTheme } from '../../../framework'
-import { Tone } from '../../types'
-import { SectionContent, SectionContentProps } from './SectionContent'
+import { ClassNameProps, Tone } from '../../types'
+import { SectionContent } from './SectionContent'
 
-export type SectionContentNotificationProps = SectionContentProps & {
+export type SectionContentNotificationProps = ClassNameProps & {
   icon?: ComponentType<IconProps>
   tone: Tone
   title?: ReactElement
@@ -17,23 +17,45 @@ export const SectionContentNotification: React.FC<
 > = ({ className, icon: Icon, title, text, tone, ...props }) => {
   const { section } = useTheme()
 
-  console.log(tone)
-
   return (
     <SectionContent
       className={classNames(section.contentError.container.base, className)}
       {...props}
     >
-      <div className="flex max-w-[360px] flex-col items-center justify-center pt-3">
+      <div className={section.contentNotification.base}>
         {Icon && (
-          <div className="rounded-full bg-neutral-100 p-4 outline-1 outline-offset-2">
-            <Icon className="h-6 w-6 fill-current text-neutral-500" />
+          <div
+            className={classNames(
+              section.contentNotification.iconContainer.base,
+              section.contentNotification.iconContainer.tone[tone]
+            )}
+          >
+            <Icon
+              className={classNames(
+                section.contentNotification.icon.base,
+                section.contentNotification.icon.tone[tone]
+              )}
+            />
           </div>
         )}
         {title && (
-          <div className="pt-4 text-xl font-bold text-neutral-500">{title}</div>
+          <div
+            className={classNames(
+              section.contentNotification.title.base,
+              section.contentNotification.title.tone[tone]
+            )}
+          >
+            {title}
+          </div>
         )}
-        <div className="text-center text-neutral-500">{text}</div>
+        <div
+          className={classNames(
+            section.contentNotification.text.base,
+            section.contentNotification.text.tone[tone]
+          )}
+        >
+          {text}
+        </div>
       </div>
     </SectionContent>
   )
