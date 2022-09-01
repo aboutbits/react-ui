@@ -8,7 +8,7 @@ export default {
   content: {
     base: 'px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
     layout: {
-      oneColumnGrid: 'grid gap-y-6',
+      oneColumnGrid: 'grid xl:gap-x-11 gap-y-6',
       twoColumnGrid: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6',
     },
   },
