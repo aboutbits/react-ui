@@ -2,11 +2,7 @@ import { AsyncView } from '@aboutbits/react-toolbox'
 import React, { ReactElement, ReactNode } from 'react'
 import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
 import { SelectDialog } from '../../dialog/select/SelectDialog'
-import {
-  SectionContentError,
-  SectionContentList,
-  SectionListItemButton,
-} from '../../section'
+import { SectionContentList, SectionListItemButton } from '../../section'
 import { useInternationalization } from '../../../framework'
 import {
   PaginationInMemoryProps,
@@ -16,6 +12,7 @@ import { LoadingListItem } from '../../loading'
 import { DialogSectionContainer } from '../../dialog'
 import { Tone } from '../../types'
 import { SectionContentNotification } from '../../section/Section/SectionContentNotification'
+import { SectionContentError } from '../../section/Section/ConvenientSectionContentNotification'
 
 export type SearchQueryParameters = {
   search?: string
@@ -135,9 +132,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
             )
           }}
           renderError={(error) => (
-            <SectionContentError>
-              {renderErrorMessage(error)}
-            </SectionContentError>
+            <SectionContentError text={renderErrorMessage(error)} />
           )}
         />
       </DialogSectionContainer>

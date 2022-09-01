@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { ComponentType } from 'react'
+import React, { ComponentType, ReactNode } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { useTheme } from '../../../framework'
 import { ClassNameProps, Tone } from '../../types'
@@ -8,8 +8,8 @@ import { SectionContent } from './SectionContent'
 export type SectionContentNotificationProps = ClassNameProps & {
   icon?: ComponentType<IconProps>
   tone: Tone
-  title?: string
-  text?: string
+  title?: ReactNode | string
+  text?: ReactNode | string
 }
 
 export const SectionContentNotification: React.FC<
