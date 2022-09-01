@@ -39,7 +39,7 @@ export default {
     base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
   },
   listItem: {
-    base: 'flex items-center min-h-[3.5rem] bg-white px-4 md:px-6',
+    base: 'flex border-b border-neutral-200 last:border-0 items-center min-h-[3.5rem] bg-white px-4 md:px-6',
   },
   listItemWithAction: {
     base: 'justify-between space-x-4',
@@ -54,13 +54,10 @@ export default {
     base: 'text-xs',
   },
   listItemButton: {
-    button:
-      'block w-full border-b border-neutral-200 last:border-0 focus:outline-neutral-800',
-    base: 'px-4 md:px-6 justify-between space-x-4 hover:bg-neutral-100',
+    base: 'block w-full focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   listItemLink: {
-    link: 'block border-b border-neutral-200 last:border-0 focus:outline-neutral-800',
-    base: 'justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
+    base: 'block focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   subsectionTitle: {
     base: 'bg-neutral-100 px-4 md:px-6 py-1 border-b border-t first:border-t-none border-neutral-200 text-sm text-neutral-600',
