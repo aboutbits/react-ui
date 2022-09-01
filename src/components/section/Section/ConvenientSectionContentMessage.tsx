@@ -4,12 +4,12 @@ import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import { Tone } from '../../types'
 import {
   SectionContentMessage,
-  SectionContentNotificationProps,
+  SectionContentMessageProps,
 } from './SectionContentMessage'
 
 export function SectionContentError({
   ...props
-}: Omit<SectionContentNotificationProps, 'tone' | 'icon'>): ReactElement {
+}: Omit<SectionContentMessageProps, 'tone' | 'icon'>): ReactElement {
   return (
     <SectionContentMessage tone={Tone.critical} icon={IconWarning} {...props} />
   )
@@ -17,7 +17,7 @@ export function SectionContentError({
 
 export function SectionContentEmpty({
   ...props
-}: Omit<SectionContentNotificationProps, 'tone' | 'icon'>): ReactElement {
+}: Omit<SectionContentMessageProps, 'tone' | 'icon'>): ReactElement {
   return (
     <SectionContentMessage tone={Tone.neutral} icon={IconList} {...props} />
   )

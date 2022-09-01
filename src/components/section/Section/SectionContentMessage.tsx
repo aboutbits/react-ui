@@ -5,16 +5,21 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps, Tone } from '../../types'
 import { SectionContent } from './SectionContent'
 
-export type SectionContentNotificationProps = ClassNameProps & {
+export type SectionContentMessageProps = ClassNameProps & {
   icon?: ComponentType<IconProps>
   tone: Tone
   title?: ReactNode | string
   text?: ReactNode | string
 }
 
-export const SectionContentMessage: React.FC<
-  SectionContentNotificationProps
-> = ({ className, icon: Icon, title, text, tone, ...props }) => {
+export const SectionContentMessage: React.FC<SectionContentMessageProps> = ({
+  className,
+  icon: Icon,
+  title,
+  text,
+  tone,
+  ...props
+}) => {
   const { section } = useTheme()
 
   return (
