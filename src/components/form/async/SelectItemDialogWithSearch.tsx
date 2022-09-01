@@ -14,7 +14,8 @@ import {
 } from '../../pagination'
 import { LoadingListItem } from '../../loading'
 import { DialogSectionContainer } from '../../dialog'
-import { SectionContentMessage } from '../../section/Section/SectionContentMessage'
+import { Tone } from '../../types'
+import { SectionContentNotification } from '../../section/Section/SectionContentNotification'
 
 export type SearchQueryParameters = {
   search?: string
@@ -103,7 +104,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
           }
           renderSuccess={(data) => {
             return data.items.length === 0 ? (
-              <SectionContentMessage>{empty}</SectionContentMessage>
+              <SectionContentNotification tone={Tone.neutral} text={empty} />
             ) : (
               <>
                 <SectionContentList>

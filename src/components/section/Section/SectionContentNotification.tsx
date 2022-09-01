@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { ComponentType, ReactElement } from 'react'
+import React, { ComponentType } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { useTheme } from '../../../framework'
 import { ClassNameProps, Tone } from '../../types'
@@ -7,9 +7,9 @@ import { SectionContent } from './SectionContent'
 
 export type SectionContentNotificationProps = ClassNameProps & {
   icon?: ComponentType<IconProps>
-  tone: Tone
-  title?: ReactElement
-  text: ReactElement
+  tone: Extract<Tone, Tone.neutral | Tone.critical>
+  title?: string
+  text?: string
 }
 
 export const SectionContentNotification: React.FC<
@@ -48,14 +48,16 @@ export const SectionContentNotification: React.FC<
             {title}
           </div>
         )}
-        <div
-          className={classNames(
-            section.contentNotification.text.base,
-            section.contentNotification.text.tone[tone]
-          )}
-        >
-          {text}
-        </div>
+        {text && (
+          <div
+            className={classNames(
+              section.contentNotification.text.base,
+              section.contentNotification.text.tone[tone]
+            )}
+          >
+            {text}
+          </div>
+        )}
       </div>
     </SectionContent>
   )
