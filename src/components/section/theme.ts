@@ -13,8 +13,11 @@ export default {
     },
   },
   contentTitle: { base: 'text-2xl' },
-  contentNotification: {
-    base: 'flex max-w-sm flex-col items-center justify-center',
+  contentMessage: {
+    container: {
+      base: 'flex max-w-sm flex-col items-center justify-center',
+      wrapper: 'flex justify-center items-center',
+    },
     icon: {
       base: 'h-6 w-6 fill-current',
       tone: {
@@ -58,20 +61,6 @@ export default {
         success: '',
         informative: '',
       },
-    },
-  },
-  contentError: {
-    container: {
-      base: 'flex justify-center items-center',
-    },
-    icon: {
-      base: 'fill-current text-white',
-    },
-    iconContainer: {
-      base: 'p-1.5 mr-2 rounded-full bg-critical-500',
-    },
-    children: {
-      base: 'text-critical-500',
     },
   },
   contentList: {

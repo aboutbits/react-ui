@@ -12,28 +12,31 @@ export type SectionContentNotificationProps = ClassNameProps & {
   text?: ReactNode | string
 }
 
-export const SectionContentNotification: React.FC<
+export const SectionContentMessage: React.FC<
   SectionContentNotificationProps
 > = ({ className, icon: Icon, title, text, tone, ...props }) => {
   const { section } = useTheme()
 
   return (
     <SectionContent
-      className={classNames(section.contentError.container.base, className)}
+      className={classNames(
+        section.contentMessage.container.wrapper,
+        className
+      )}
       {...props}
     >
-      <div className={section.contentNotification.base}>
+      <div className={section.contentMessage.container.base}>
         {Icon && (
           <div
             className={classNames(
-              section.contentNotification.iconContainer.base,
-              section.contentNotification.iconContainer.tone[tone]
+              section.contentMessage.iconContainer.base,
+              section.contentMessage.iconContainer.tone[tone]
             )}
           >
             <Icon
               className={classNames(
-                section.contentNotification.icon.base,
-                section.contentNotification.icon.tone[tone]
+                section.contentMessage.icon.base,
+                section.contentMessage.icon.tone[tone]
               )}
             />
           </div>
@@ -41,8 +44,8 @@ export const SectionContentNotification: React.FC<
         {title && (
           <div
             className={classNames(
-              section.contentNotification.title.base,
-              section.contentNotification.title.tone[tone]
+              section.contentMessage.title.base,
+              section.contentMessage.title.tone[tone]
             )}
           >
             {title}
@@ -51,8 +54,8 @@ export const SectionContentNotification: React.FC<
         {text && (
           <div
             className={classNames(
-              section.contentNotification.text.base,
-              section.contentNotification.text.tone[tone]
+              section.contentMessage.text.base,
+              section.contentMessage.text.tone[tone]
             )}
           >
             {text}

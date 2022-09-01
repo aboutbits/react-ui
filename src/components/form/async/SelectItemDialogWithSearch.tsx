@@ -11,8 +11,8 @@ import {
 import { LoadingListItem } from '../../loading'
 import { DialogSectionContainer } from '../../dialog'
 import { Tone } from '../../types'
-import { SectionContentNotification } from '../../section/Section/SectionContentNotification'
-import { SectionContentError } from '../../section/Section/ConvenientSectionContentNotification'
+import { SectionContentMessage } from '../../section/Section/SectionContentMessage'
+import { SectionContentError } from '../../section/Section/ConvenientSectionContentMessage'
 
 export type SearchQueryParameters = {
   search?: string
@@ -101,10 +101,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
           }
           renderSuccess={(data) => {
             return data.items.length === 0 ? (
-              <SectionContentNotification
-                tone={Tone.informative}
-                text={empty}
-              />
+              <SectionContentMessage tone={Tone.informative} text={empty} />
             ) : (
               <>
                 <SectionContentList>
