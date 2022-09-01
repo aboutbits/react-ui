@@ -50,11 +50,9 @@ export const Template = ({ ...args }) => <SectionContentMessage {...args} />
 
 ## Title
 
-{' '}
-
 <Canvas>
   <Story
-    name="Default"
+    name="Title"
     args={{
       title: 'Server Error',
       tone: Tone.critical,
@@ -68,7 +66,7 @@ export const Template = ({ ...args }) => <SectionContentMessage {...args} />
 
 <Canvas>
   <Story
-    name="Default"
+    name="Text"
     args={{
       text: 'The server could not handle the request! Try again',
       tone: Tone.critical,
@@ -82,7 +80,7 @@ export const Template = ({ ...args }) => <SectionContentMessage {...args} />
 
 <Canvas>
   <Story
-    name="Default"
+    name="Icon"
     args={{
       icon: IconWarning,
       tone: Tone.critical,
