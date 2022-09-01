@@ -7,7 +7,7 @@ import { SectionContent } from './SectionContent'
 
 export type SectionContentMessageProps = ClassNameProps & {
   icon?: ComponentType<IconProps>
-  tone: Tone
+  tone?: Tone
   title?: ReactNode | string
   text?: ReactNode | string
 }
@@ -17,7 +17,7 @@ export const SectionContentMessage: React.FC<SectionContentMessageProps> = ({
   icon: Icon,
   title,
   text,
-  tone,
+  tone = Tone.primary,
   ...props
 }) => {
   const { section } = useTheme()

@@ -10,7 +10,6 @@ import {
 } from '../../pagination'
 import { LoadingListItem } from '../../loading'
 import { DialogSectionContainer } from '../../dialog'
-import { Tone } from '../../types'
 import { SectionContentMessage } from '../../section/Section/SectionContentMessage'
 import { SectionContentError } from '../../section/Section/ConvenientSectionContentMessage'
 
@@ -101,7 +100,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
           }
           renderSuccess={(data) => {
             return data.items.length === 0 ? (
-              <SectionContentMessage tone={Tone.informative} text={empty} />
+              <SectionContentMessage text={empty} />
             ) : (
               <>
                 <SectionContentList>

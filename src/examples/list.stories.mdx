@@ -56,10 +56,7 @@ export const TemplateDefault = ({ numberOfTotalItems }) => {
       </SectionHeader>
       <SectionContainer>
         {content.length === 0 ? (
-          <SectionContentMessage
-            tone={Tone.informative}
-            text="No users found in database."
-          />
+          <SectionContentMessage text="No users found in database." />
         ) : (
           <SectionContentList>
             {content.map((item) => (
@@ -182,10 +179,7 @@ export const TemplateComplexList = ({
       </SectionHeader>
       <SectionContainer>
         {content.length === 0 ? (
-          <SectionContentMessage
-            tone={Tone.informative}
-            text="No users found in database."
-          />
+          <SectionContentMessage text="No users found in database." />
         ) : (
           <SectionContentList>
             {content
@@ -263,10 +257,7 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
       </SectionFilter>
       <SectionContainer>
         {content.length === 0 ? (
-          <SectionContentMessage
-            tone={Tone.informative}
-            text="No users found in database."
-          />
+          <SectionContentMessage text="No users found in database." />
         ) : (
           <SectionContentList>
             {content.map((item) => (
@@ -479,10 +470,7 @@ export const TemplateListWithFilterDialog = ({
         </SectionHeader>
         <SectionContainer>
           {content.length === 0 ? (
-            <SectionContentMessage
-              tone={Tone.informative}
-              text="No users found in database."
-            />
+            <SectionContentMessage text="No users found in database." />
           ) : (
             <SectionContentList>
               {content
