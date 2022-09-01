@@ -13,11 +13,6 @@ export default {
     },
   },
   contentTitle: { base: 'text-2xl' },
-  contentMessage: {
-    container: {
-      base: 'flex justify-center items-center',
-    },
-  },
   contentNotification: {
     base: 'flex max-w-sm flex-col items-center justify-center',
     icon: {
@@ -56,12 +51,12 @@ export default {
     text: {
       base: 'text-center',
       tone: {
-        primary: 'text-primary-500',
+        primary: '',
         neutral: 'text-neutral-500',
-        warning: 'text-black',
+        warning: '',
         critical: 'text-critical-500',
         success: '',
-        informative: 'text-informative-500',
+        informative: '',
       },
     },
   },

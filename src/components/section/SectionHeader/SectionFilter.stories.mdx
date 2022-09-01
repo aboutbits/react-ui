@@ -13,7 +13,7 @@ import {
   SectionTitle,
   SectionFilter,
 } from '../'
-import { SectionContentMessage } from '../Section/SectionContentMessage'
+import { SectionContentNotification } from '../Section/SectionContentNotification'
 
 <Meta title="Components/Section/SectionFilter" component={SectionFilter} />
 
@@ -85,9 +85,10 @@ export const Template = ({ ...args }) => {
       </SectionHeader>
       <SectionContainer>
         {content.length === 0 ? (
-          <SectionContentMessage>
-            No users found in database.
-          </SectionContentMessage>
+          <SectionContentNotification
+            tone={Tone.informative}
+            text="No users found in database."
+          />
         ) : (
           <SectionContentList>
             {content.map((item) => (

@@ -104,7 +104,10 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
           }
           renderSuccess={(data) => {
             return data.items.length === 0 ? (
-              <SectionContentNotification tone={Tone.neutral} text={empty} />
+              <SectionContentNotification
+                tone={Tone.informative}
+                text={empty}
+              />
             ) : (
               <>
                 <SectionContentList>

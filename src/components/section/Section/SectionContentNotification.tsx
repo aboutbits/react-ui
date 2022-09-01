@@ -7,7 +7,7 @@ import { SectionContent } from './SectionContent'
 
 export type SectionContentNotificationProps = ClassNameProps & {
   icon?: ComponentType<IconProps>
-  tone: Extract<Tone, Tone.neutral | Tone.critical>
+  tone: Tone
   title?: string
   text?: string
 }

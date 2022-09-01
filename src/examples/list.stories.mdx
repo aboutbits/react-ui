@@ -33,7 +33,7 @@ import {
 import { SectionFooterWithPaginationInMemory } from '../components/pagination'
 import { Select, Variant as InputVariant } from '../components/form'
 import { Tone } from '../components/types'
-import { SectionContentMessage } from '../components/section/Section/SectionContentMessage'
+import { SectionContentNotification } from '../components/section/Section/SectionContentNotification'
 
 <Meta title="Examples/List" />
 
@@ -56,9 +56,10 @@ export const TemplateDefault = ({ numberOfTotalItems }) => {
       </SectionHeader>
       <SectionContainer>
         {content.length === 0 ? (
-          <SectionContentMessage>
-            No users found in database.
-          </SectionContentMessage>
+          <SectionContentNotification
+            tone={Tone.informative}
+            text="No users found in database."
+          />
         ) : (
           <SectionContentList>
             {content.map((item) => (
@@ -181,9 +182,10 @@ export const TemplateComplexList = ({
       </SectionHeader>
       <SectionContainer>
         {content.length === 0 ? (
-          <SectionContentMessage>
-            No users found in database.
-          </SectionContentMessage>
+          <SectionContentNotification
+            tone={Tone.informative}
+            text="No users found in database."
+          />
         ) : (
           <SectionContentList>
             {content
@@ -261,9 +263,10 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
       </SectionFilter>
       <SectionContainer>
         {content.length === 0 ? (
-          <SectionContentMessage>
-            No users found in database.
-          </SectionContentMessage>
+          <SectionContentNotification
+            tone={Tone.informative}
+            text="No users found in database."
+          />
         ) : (
           <SectionContentList>
             {content.map((item) => (
@@ -476,9 +479,10 @@ export const TemplateListWithFilterDialog = ({
         </SectionHeader>
         <SectionContainer>
           {content.length === 0 ? (
-            <SectionContentMessage>
-              No users found in database.
-            </SectionContentMessage>
+            <SectionContentNotification
+              tone={Tone.informative}
+              text="No users found in database."
+            />
           ) : (
             <SectionContentList>
               {content
