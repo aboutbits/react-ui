@@ -19,7 +19,7 @@ export default {
     },
   },
   contentNotification: {
-    base: 'flex max-w-[360px] flex-col items-center justify-center',
+    base: 'flex max-w-sm flex-col items-center justify-center',
     icon: {
       base: 'h-6 w-6 fill-current',
       tone: {
@@ -58,9 +58,9 @@ export default {
       tone: {
         primary: 'text-primary-500',
         neutral: 'text-neutral-500',
-        warning: 'text-warning-500',
+        warning: 'text-black',
         critical: 'text-critical-500',
-        success: 'text-success-500',
+        success: '',
         informative: 'text-informative-500',
       },
     },
