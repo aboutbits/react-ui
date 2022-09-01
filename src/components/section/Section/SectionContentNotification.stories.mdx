@@ -1,0 +1,30 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { SectionContentError } from './ConvenientSectionContentNotification'
+
+<Meta
+  title="Components/Section/SectionContentNotification"
+  component={SectionContentError}
+/>
+
+# SectionContentMessage
+
+This component can be used to show a message to a user in a [SectionContent](/docs/components-section-sectioncontent--default-story).
+The message will be centered in the default theme.
+
+export const Template = ({ children }) => (
+  <SectionContentError>{children}</SectionContentError>
+)
+
+<Canvas>
+  <Story name="Default" args={{ children: 'No users found in database.' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+- `section.contentMessage.container.base`: Define the styles of the section content container.
