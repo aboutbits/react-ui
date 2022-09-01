@@ -14,10 +14,8 @@ export default {
   },
   contentTitle: { base: 'text-2xl' },
   contentMessage: {
-    container: {
-      base: 'flex max-w-sm flex-col items-center justify-center',
-      wrapper: 'flex justify-center items-center',
-    },
+    base: 'flex max-w-sm flex-col items-center justify-center',
+    contentContainer: 'flex justify-center items-center',
     icon: {
       base: 'h-6 w-6 fill-current',
       tone: {

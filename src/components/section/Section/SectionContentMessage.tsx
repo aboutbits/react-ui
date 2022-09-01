@@ -24,13 +24,10 @@ export const SectionContentMessage: React.FC<SectionContentMessageProps> = ({
 
   return (
     <SectionContent
-      className={classNames(
-        section.contentMessage.container.wrapper,
-        className
-      )}
+      className={classNames(section.contentMessage.contentContainer, className)}
       {...props}
     >
-      <div className={section.contentMessage.container.base}>
+      <div className={section.contentMessage.base}>
         {Icon && (
           <div
             className={classNames(

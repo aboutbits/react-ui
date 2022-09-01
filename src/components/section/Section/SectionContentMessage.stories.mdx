@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
+import IconList from '@aboutbits/react-material-icons/dist/IconList'
 import { Tone } from '../../types'
 import { SectionContentMessage } from './SectionContentMessage'
 import {
@@ -15,7 +15,8 @@ import {
 # SectionContentMessage
 
 This component can be used to show a message to a user in a [SectionContent](/docs/components-section-sectioncontent--default-story).
-The message will be centered in the default theme, it is conducted of a title, text, and icon all of which are optional to be combined flexibly. Furthermore, it is possible to set a tone for all the different type of messages (success, critical, etc.)
+The message has an icon on top, a title and a text. Each of these properties is optional.
+Furthermore, it is possible to set a tone for all the different type of messages (success, critical, etc.)
 
 export const Template = ({ ...args }) => <SectionContentMessage {...args} />
 
@@ -23,8 +24,10 @@ export const Template = ({ ...args }) => <SectionContentMessage {...args} />
   <Story
     name="Default"
     args={{
-      text: 'No users found in database',
-      tone: Tone.primary,
+      icon: IconList,
+      title: 'No users found',
+      text: 'There are no items in this list at the moment.',
+      tone: Tone.neutral,
     }}
   >
     {Template.bind({})}
@@ -37,8 +40,8 @@ export const Template = ({ ...args }) => <SectionContentMessage {...args} />
 
 ### Theme
 
-- `section.contentMessage.container.base`: Defines base styles of the container
-- `section.contentMessage.container.wrapper`: Defines base styles of the wrapper of the container
+- `section.contentMessage.base`: Defines base styles of the container
+- `section.contentMessage.contentContainer`: Defines base styles of the wrapper of the container
 - `section.contentMessage.icon.base`: Defines base styles of the icon
 - `section.contentMessage.icon.tone[$tone]`: Defines custom styles per tone of the icon
 - `section.contentMessage.iconContainer.base`: Defines base styles of the icon background
@@ -47,48 +50,6 @@ export const Template = ({ ...args }) => <SectionContentMessage {...args} />
 - `section.contentMessage.title.tone[$tone]`: Defines custom styles per tone of the title
 - `section.contentMessage.text.base`: Defines base styles of the test
 - `section.contentMessage.text.tone[$tone]`: Defines custom styles per tone of the text
-
-## Title
-
-<Canvas>
-  <Story
-    name="Title"
-    args={{
-      title: 'Server Error',
-      tone: Tone.critical,
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-## Text
-
-<Canvas>
-  <Story
-    name="Text"
-    args={{
-      text: 'The server could not handle the request! Try again',
-      tone: Tone.critical,
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-## Icon
-
-<Canvas>
-  <Story
-    name="Icon"
-    args={{
-      icon: IconWarning,
-      tone: Tone.critical,
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
 
 ## Convenient alert components
 
@@ -101,7 +62,7 @@ export const Template = ({ ...args }) => <SectionContentMessage {...args} />
   </Story>
   <Story name="SectionContentEmpty">
     <SectionContentEmpty
-      title="No user found"
+      title="No users found"
       text="There are no items in this list at the moment."
     />
   </Story>

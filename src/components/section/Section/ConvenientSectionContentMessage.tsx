@@ -8,17 +8,15 @@ import {
 } from './SectionContentMessage'
 
 export function SectionContentError({
+  icon: Icon = IconWarning,
   ...props
-}: Omit<SectionContentMessageProps, 'tone' | 'icon'>): ReactElement {
-  return (
-    <SectionContentMessage tone={Tone.critical} icon={IconWarning} {...props} />
-  )
+}: Omit<SectionContentMessageProps, 'tone'>): ReactElement {
+  return <SectionContentMessage tone={Tone.critical} icon={Icon} {...props} />
 }
 
 export function SectionContentEmpty({
+  icon: Icon = IconList,
   ...props
-}: Omit<SectionContentMessageProps, 'tone' | 'icon'>): ReactElement {
-  return (
-    <SectionContentMessage tone={Tone.neutral} icon={IconList} {...props} />
-  )
+}: Omit<SectionContentMessageProps, 'tone'>): ReactElement {
+  return <SectionContentMessage tone={Tone.neutral} icon={Icon} {...props} />
 }
