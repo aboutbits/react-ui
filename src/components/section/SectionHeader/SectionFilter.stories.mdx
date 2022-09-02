@@ -13,7 +13,7 @@ import {
   SectionTitle,
   SectionFilter,
 } from '../'
-import { SectionContentMessage } from '../Section/SectionContentMessage'
+import { SectionContentEmpty } from '../Section/ConvenientSectionContentMessage'
 
 <Meta title="Components/Section/SectionFilter" component={SectionFilter} />
 
@@ -85,9 +85,10 @@ export const Template = ({ ...args }) => {
       </SectionHeader>
       <SectionContainer>
         {content.length === 0 ? (
-          <SectionContentMessage>
-            No users found in database.
-          </SectionContentMessage>
+          <SectionContentEmpty
+            title="No users found"
+            text="There are no items in this list at the moment."
+          />
         ) : (
           <SectionContentList>
             {content.map((item) => (

@@ -14,22 +14,51 @@ export default {
   },
   contentTitle: { base: 'text-2xl' },
   contentMessage: {
-    container: {
-      base: 'flex justify-center items-center',
-    },
-  },
-  contentError: {
-    container: {
-      base: 'flex justify-center items-center',
-    },
+    base: 'flex max-w-sm flex-col items-center justify-center',
+    contentContainer: 'flex justify-center items-center',
     icon: {
-      base: 'fill-current text-white',
+      base: 'h-6 w-6 fill-current',
+      tone: {
+        primary: 'text-primary-500',
+        neutral: 'text-neutral-500',
+        warning: 'text-warning-500',
+        critical: 'text-critical-500',
+        success: 'text-success-500',
+        informative: 'text-informative-500',
+      },
     },
     iconContainer: {
-      base: 'p-1.5 mr-2 rounded-full bg-critical-500',
+      base: 'rounded-full bg-neutral-100 p-4 outline-1 outline-offset-2  mt-3 mb-4',
+      tone: {
+        primary: 'bg-primary-100',
+        neutral: 'bg-neutral-100',
+        warning: 'bg-warning-100',
+        critical: 'bg-critical-100',
+        success: 'bg-success-100',
+        informative: 'bg-informative-100',
+      },
     },
-    children: {
-      base: 'text-critical-500',
+    title: {
+      base: 'text-xl font-bold',
+      tone: {
+        primary: 'text-primary-500',
+        neutral: 'text-neutral-500',
+        warning: 'text-warning-500',
+        critical: 'text-critical-500',
+        success: 'text-success-500',
+        informative: 'text-informative-500',
+      },
+    },
+    text: {
+      base: 'text-center',
+      tone: {
+        primary: '',
+        neutral: 'text-neutral-500',
+        warning: '',
+        critical: 'text-critical-500',
+        success: '',
+        informative: '',
+      },
     },
   },
   contentList: {
