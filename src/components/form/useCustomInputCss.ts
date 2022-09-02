@@ -16,7 +16,7 @@ const useCustomInputCss = (
 
   const customInputCss = getCustomInputCss(input, meta, disabled, mode, variant)
   const customLabelCss = getCustomLabelCss(inputLabel, meta, disabled, mode)
-  const customErrorCss = getCustomErrorCss(inputLabel, mode)
+  const customErrorCss = getCustomErrorCss(inputError, mode)
 
   return {
     inputCss: input.base + ' ' + customInputCss,
