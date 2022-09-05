@@ -82,7 +82,7 @@ export function HeaderSearch({
   clearSearch: () => void
 }): ReactElement {
   const internationalization = useInternationalization()
-  const { dialog } = useTheme()
+  const { form } = useTheme()
   const searchInput = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -102,7 +102,7 @@ export function HeaderSearch({
           tone={Tone.neutral}
         />
       </DialogHeaderLeftArea>
-      <div className={dialog.headerSearch.base}>
+      <div className={form.selectItem.headerSearch.base}>
         <input
           ref={searchInput}
           value={text}
@@ -112,14 +112,16 @@ export function HeaderSearch({
           placeholder={internationalization.translate(
             'shared.search.placeholder'
           )}
-          className={dialog.headerSearch.input.base}
+          className={form.selectItem.headerSearch.input.base}
         />
         <button
-          className={dialog.headerSearch.clearButton.base}
+          className={form.selectItem.headerSearch.clearButton.base}
           aria-label={internationalization.translate('shared.search.clear')}
           onClick={clearSearch}
         >
-          <IconClose className={dialog.headerSearch.clearButton.icon} />
+          <IconClose
+            className={form.selectItem.headerSearch.clearButton.icon}
+          />
         </button>
       </div>
     </DialogHeaderArea>
