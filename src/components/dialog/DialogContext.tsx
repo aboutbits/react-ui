@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { DialogSize } from './Dialog'
+import { DialogSize } from './types'
 
 type DialogContextType = {
   size: DialogSize

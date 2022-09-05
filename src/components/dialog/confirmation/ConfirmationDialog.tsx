@@ -1,12 +1,15 @@
 import { ReactElement, ReactNode } from 'react'
+import {
+  Dialog,
+  DialogContent,
+  DialogFooterActions,
+  DialogFooterArea,
+  DialogHeader,
+  DialogProps,
+} from '../'
 import { Button } from '../../button'
 import { Variant } from '../../button/types'
 import { Tone } from '../../types'
-import { DialogFooterActions } from '../areas/DialogFooterActions'
-import { DialogFooterArea } from '../areas/DialogFooterArea'
-import { DialogHeader } from '../DialogHeader'
-import { Dialog, DialogProps } from '../Dialog'
-import { DialogContent } from '../DialogContent'
 
 export enum ConfirmationDialogVariant {
   confirm = 'confirm',

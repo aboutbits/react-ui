@@ -4,17 +4,7 @@ import { ReactElement, useRef } from 'react'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 import { DialogContext } from './DialogContext'
-
-export enum DialogSize {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-}
-
-export enum DialogPosition {
-  center = 'center',
-  fullscreen = 'fullscreen',
-}
+import { DialogPosition, DialogSize } from './types'
 
 export type DialogProps = ClassNameProps &
   DialogOverlayProps & {

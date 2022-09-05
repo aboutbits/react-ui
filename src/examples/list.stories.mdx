@@ -9,8 +9,7 @@ import {
   Dialog,
   DialogHeaderWithClose,
   DialogContent,
-  DialogFooterArea,
-  DialogFooterActions,
+  DialogFooterWithActions,
 } from '../components/dialog'
 import {
   Button,
@@ -442,13 +441,11 @@ export const TemplateListWithFilterDialog = ({
             <DialogContent className="flex flex-col gap-y-2">
               <Filters />
             </DialogContent>
-            <DialogFooterArea>
-              <DialogFooterActions>
-                <SubmitButton className="col-span-full mt-2">
-                  Apply filter
-                </SubmitButton>
-              </DialogFooterActions>
-            </DialogFooterArea>
+            <DialogFooterWithActions>
+              <SubmitButton className="col-span-full mt-2">
+                Apply filter
+              </SubmitButton>
+            </DialogFooterWithActions>
           </SectionFilter>
         </Dialog>
       )}
