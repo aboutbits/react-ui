@@ -1,8 +1,8 @@
 import classNames from 'classnames'
-import { ReactElement, ReactNode } from 'react'
+import { ReactElement, ReactNode, useContext } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
-import { DialogSize } from '../Dialog'
+import { DialogContext } from '../DialogContext'
 
 export enum DialogFooterActionsVariant {
   start = 'start',
@@ -13,22 +13,21 @@ export enum DialogFooterActionsVariant {
 export type DialogFooterActionsProps = ClassNameProps & {
   children?: ReactNode
   variant?: DialogFooterActionsVariant
-  size?: DialogSize
 }
 
 export function DialogFooterActions({
   children,
   variant = DialogFooterActionsVariant.end,
-  size = DialogSize.md,
   className,
 }: DialogFooterActionsProps): ReactElement {
   const { dialog } = useTheme()
+  const { size } = useContext(DialogContext)
 
   return (
     <div
       className={classNames(
         dialog.footerActions.base,
-        dialog.footerActions.size[size],
+        dialog.footerActions.dialogSize[size],
         dialog.footerActions.variant[variant],
         className
       )}

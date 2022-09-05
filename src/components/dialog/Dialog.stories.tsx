@@ -48,7 +48,7 @@ const DialogTemplate = ({ content, ...args }: TemplateArgs) => {
         <DialogHeaderMain title="Hello" />
         <DialogContentArea>{content}</DialogContentArea>
         <DialogFooterArea>
-          <DialogFooterActions size={args.size}>
+          <DialogFooterActions>
             <Button onClick={args.onDismiss}>OK</Button>
           </DialogFooterActions>
         </DialogFooterArea>

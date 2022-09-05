@@ -70,7 +70,7 @@ export default {
       center: 'justify-center',
       end: 'justify-end',
     },
-    size: {
+    dialogSize: {
       sm: '',
       md: 'sm:flex-row',
       lg: 'sm:flex-row',
