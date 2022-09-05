@@ -8,9 +8,9 @@ import {
   DialogContentArea,
   DialogFooterActions,
   DialogFooterArea,
+  DialogHeader,
   DialogHeaderArea,
   DialogHeaderLeftArea,
-  DialogHeaderMain,
   DialogHeaderRightArea,
   DialogHeaderTitle,
   DialogPosition,
@@ -45,7 +45,7 @@ const DialogTemplate = ({ content, ...args }: TemplateArgs) => {
   return (
     <Dialog {...args}>
       <>
-        <DialogHeaderMain title="Hello" />
+        <DialogHeader title="Hello" />
         <DialogContentArea>{content}</DialogContentArea>
         <DialogFooterArea>
           <DialogFooterActions>
@@ -65,7 +65,7 @@ export default {
     DialogHeaderLeftArea,
     DialogHeaderRightArea,
     DialogHeaderTitle,
-    DialogHeaderMain,
+    DialogHeader,
     DialogHeaderClose,
     DialogContentArea,
     DialogFooterArea,

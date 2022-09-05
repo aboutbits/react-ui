@@ -5,7 +5,7 @@ import { Tone } from '../../types'
 import { DialogContentArea } from '../areas/DialogContentArea'
 import { DialogFooterActions } from '../areas/DialogFooterActions'
 import { DialogFooterArea } from '../areas/DialogFooterArea'
-import { DialogHeaderMain } from '../areas/DialogHeaderMain'
+import { DialogHeader } from '../DialogHeader'
 import { Dialog, DialogProps } from '../Dialog'
 
 export enum ConfirmationDialogVariant {
@@ -67,7 +67,7 @@ export function ConfirmationDialog({
   return (
     <Dialog {...props}>
       <>
-        <DialogHeaderMain title={props.title} />
+        <DialogHeader title={props.title} />
         <DialogContentArea>{body}</DialogContentArea>
         <DialogFooterArea>
           <DialogFooterActions>
