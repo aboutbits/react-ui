@@ -1,5 +1,5 @@
 export default {
-  action: {
+  actions: {
     base: 'flex flex-col lg:flex-row gap-4',
     position: {
       start: 'lg:justify-start',
