@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { Actions } from '../components/action'
 import {
   Dialog,
+  DialogHeaderWithClose,
   DialogContentArea,
   DialogFooterArea,
   DialogFooterActions,
@@ -17,7 +18,6 @@ import {
   Variant as ButtonVariant,
   SubmitButton,
 } from '../components/button'
-import { DialogHeaderClose } from '../components/dialog/DialogHeaderClose'
 import {
   Section,
   SectionTitle,
@@ -426,7 +426,7 @@ export const TemplateListWithFilterDialog = ({
           title="Filter"
           className="mx-auto bg-white overflow-hidden"
         >
-          <DialogHeaderClose
+          <DialogHeaderWithClose
             onDismiss={() => setDialogShow(false)}
             title="Filter"
           />

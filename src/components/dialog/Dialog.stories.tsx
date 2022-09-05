@@ -2,13 +2,13 @@ import { ComponentMeta, ComponentStory, DecoratorFn } from '@storybook/react'
 import React, { ReactElement, ReactNode, useState } from 'react'
 import { Button } from '../button'
 import DialogDocs from './Dialog.docs.mdx'
-import { DialogHeaderClose } from './DialogHeaderClose'
 import {
   Dialog,
   DialogContentArea,
   DialogFooterActions,
   DialogFooterArea,
   DialogHeader,
+  DialogHeaderWithClose,
   DialogHeaderArea,
   DialogHeaderLeftArea,
   DialogHeaderRightArea,
@@ -66,7 +66,7 @@ export default {
     DialogHeaderRightArea,
     DialogHeaderTitle,
     DialogHeader,
-    DialogHeaderClose,
+    DialogHeaderWithClose,
     DialogContentArea,
     DialogFooterArea,
     DialogFooterActions,
@@ -162,11 +162,11 @@ Object.assign(CompleteFullscreen, {
   },
 })
 
-export const WithCloseButton: StoryType = (args: DialogProps) => {
+export const WithClose: StoryType = (args: DialogProps) => {
   return (
     <Dialog {...args}>
       <>
-        <DialogHeaderClose title="Hello" onDismiss={args.onDismiss} />
+        <DialogHeaderWithClose title="Hello" onDismiss={args.onDismiss} />
         <DialogContentArea>
           This is a dialog with close button.
         </DialogContentArea>
@@ -179,8 +179,8 @@ export const WithCloseButton: StoryType = (args: DialogProps) => {
     </Dialog>
   )
 }
-Object.assign(WithCloseButton, {
-  storyName: 'With close button',
+Object.assign(WithClose, {
+  storyName: 'With close',
 })
 
 export const WithLongContent: StoryType = DialogTemplate.bind({})

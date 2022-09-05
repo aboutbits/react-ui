@@ -6,15 +6,15 @@ import { DialogHeaderArea } from './areas/DialogHeaderArea'
 import { DialogHeaderLeftArea } from './areas/DialogHeaderLeftArea'
 import { DialogHeaderTitle } from './areas/DialogHeaderTitle'
 
-export type DialogHeaderCloseProps = {
+export type DialogHeaderWithCloseProps = {
   title?: ReactNode
   onDismiss?: MouseEventHandler<HTMLButtonElement>
 }
 
-export function DialogHeaderClose({
+export function DialogHeaderWithClose({
   title,
   onDismiss,
-}: DialogHeaderCloseProps): ReactElement {
+}: DialogHeaderWithCloseProps): ReactElement {
   return (
     <DialogHeaderArea>
       <DialogHeaderLeftArea>
