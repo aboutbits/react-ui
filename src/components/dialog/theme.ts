@@ -14,10 +14,10 @@ export default {
     base: 'flex flex-col min-h-0 outline-none bg-white shadow-dialog max-h-full',
     mobilePositionSize: {
       center: {
-        base: 'rounded-[1.125rem]',
-        sm: 'w-full max-w-[19.5rem]',
-        md: 'w-full max-w-[35rem]',
-        lg: 'w-full max-w-[48rem]',
+        base: 'rounded-lg',
+        sm: 'w-full max-w-xs',
+        md: 'w-full max-w-xl',
+        lg: 'w-full max-w-3xl',
       },
       fullscreen: {
         base: 'w-full h-full',
@@ -28,10 +28,10 @@ export default {
     },
     desktopPositionSize: {
       center: {
-        base: 'lg:h-auto lg:rounded-[1.125rem]',
-        sm: 'lg:w-full lg:max-w-[19.5rem]',
-        md: 'lg:w-full lg:max-w-[35rem]',
-        lg: 'lg:w-full lg:max-w-[48rem]',
+        base: 'lg:h-auto lg:rounded-lg',
+        sm: 'lg:w-full lg:max-w-xs',
+        md: 'lg:w-full lg:max-w-xl',
+        lg: 'lg:w-full lg:max-w-3xl',
       },
       fullscreen: {
         base: 'lg:w-full lg:h-full lg:max-w-none lg:rounded-none',
