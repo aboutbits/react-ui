@@ -47,6 +47,9 @@ export default {
   headerLeftArea: {
     base: 'flex items-center mr-2 space-x-3 lg:space-x-4',
   },
+  headerLeftActionIcon: {
+    base: '-ml-2',
+  },
   headerRightArea: {
     base: 'flex items-center ml-2 space-x-3 lg:space-x-4',
   },

@@ -1,9 +1,6 @@
-import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import { MouseEventHandler, ReactElement, ReactNode } from 'react'
-import { ButtonIcon, Variant } from '../button'
-import { Tone } from '../types'
+import { DialogHeaderCloseAction } from './actions/DialogHeaderCloseAction'
 import { DialogHeaderArea } from './areas/DialogHeaderArea'
-import { DialogHeaderLeftArea } from './areas/DialogHeaderLeftArea'
 import { DialogHeaderTitle } from './areas/DialogHeaderTitle'
 
 export type DialogHeaderWithCloseProps = {
@@ -17,14 +14,7 @@ export function DialogHeaderWithClose({
 }: DialogHeaderWithCloseProps): ReactElement {
   return (
     <DialogHeaderArea>
-      <DialogHeaderLeftArea>
-        <ButtonIcon
-          icon={IconClose}
-          variant={Variant.transparent}
-          tone={Tone.neutral}
-          onClick={onDismiss}
-        />
-      </DialogHeaderLeftArea>
+      <DialogHeaderCloseAction onClick={onDismiss} />
       <DialogHeaderTitle>{title}</DialogHeaderTitle>
     </DialogHeaderArea>
   )
