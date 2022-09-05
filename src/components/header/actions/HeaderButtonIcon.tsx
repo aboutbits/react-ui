@@ -1,10 +1,9 @@
 import React, { ComponentType, ReactElement } from 'react'
 import { IconProps } from '@aboutbits/react-material-icons/dist/types'
-import { ClassNameProps, Tone } from '../../types'
-import { ButtonIcon, Size, Variant } from '../../button'
+import { ButtonIcon, ButtonIconProps, Size } from '../../button'
 import { useTheme } from '../../../framework'
 
-export type HeaderButtonIconProps = ClassNameProps & {
+export type HeaderButtonIconProps = Omit<ButtonIconProps, 'ref'> & {
   /**
    * Defines the icon of the button.
    **/
@@ -24,6 +23,7 @@ export function HeaderButtonIcon({
   onClick,
   icon,
   className,
+  ...props
 }: HeaderButtonIconProps): ReactElement {
   const { header } = useTheme()
 
@@ -33,19 +33,17 @@ export function HeaderButtonIcon({
         onClick={onClick}
         icon={icon}
         label={label}
-        variant={Variant.transparent}
-        tone={Tone.neutral}
         size={Size.md}
         className={header.buttonIcon.mobile}
+        {...props}
       />
       <ButtonIcon
         onClick={onClick}
         icon={icon}
         label={label}
-        variant={Variant.transparent}
-        tone={Tone.neutral}
         size={Size.lg}
         className={header.buttonIcon.desktop}
+        {...props}
       />
     </span>
   )
