@@ -7,12 +7,13 @@ import {
   DialogContentArea,
   DialogFooterActions,
   DialogFooterArea,
+  DialogFooterWithActions,
   DialogHeader,
-  DialogHeaderWithClose,
   DialogHeaderArea,
   DialogHeaderLeftArea,
   DialogHeaderRightArea,
   DialogHeaderTitle,
+  DialogHeaderWithClose,
   DialogPosition,
   DialogProps,
   DialogSize,
@@ -47,11 +48,9 @@ const DialogTemplate = ({ content, ...args }: TemplateArgs) => {
       <>
         <DialogHeader title="Hello" />
         <DialogContentArea>{content}</DialogContentArea>
-        <DialogFooterArea>
-          <DialogFooterActions>
-            <Button onClick={args.onDismiss}>OK</Button>
-          </DialogFooterActions>
-        </DialogFooterArea>
+        <DialogFooterWithActions>
+          <Button onClick={args.onDismiss}>OK</Button>
+        </DialogFooterWithActions>
       </>
     </Dialog>
   )
@@ -70,6 +69,7 @@ export default {
     DialogContentArea,
     DialogFooterArea,
     DialogFooterActions,
+    DialogFooterWithActions,
   },
   decorators: [DialogDecorator],
   args: {
@@ -170,11 +170,9 @@ export const WithClose: StoryType = (args: DialogProps) => {
         <DialogContentArea>
           This is a dialog with close button.
         </DialogContentArea>
-        <DialogFooterArea>
-          <DialogFooterActions>
-            <Button onClick={args.onDismiss}>OK</Button>
-          </DialogFooterActions>
-        </DialogFooterArea>
+        <DialogFooterWithActions>
+          <Button onClick={args.onDismiss}>OK</Button>
+        </DialogFooterWithActions>
       </>
     </Dialog>
   )
