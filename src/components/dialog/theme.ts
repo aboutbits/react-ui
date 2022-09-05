@@ -58,7 +58,7 @@ export default {
   },
   contentArea: {
     base: 'pb-4 px-6 overflow-auto min-h-0 flex-1 min-h-0 border-t',
-    heightOverflow: {
+    scrolled: {
       off: 'border-transparent',
       on: 'border-neutral-200',
     },

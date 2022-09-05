@@ -12,10 +12,10 @@ export function DialogContentArea({
   className,
 }: DialogContentAreaProps): ReactElement {
   const { dialog } = useTheme()
-  const [isOverflow, setIsOverflow] = useState<boolean>(false)
+  const [isScrolled, setIsScrolled] = useState<boolean>(false)
 
   const onScroll: UIEventHandler<HTMLDivElement> = (event) => {
-    setIsOverflow(event.currentTarget.scrollTop > 0)
+    setIsScrolled(event.currentTarget.scrollTop > 0)
   }
 
   return (
@@ -23,7 +23,7 @@ export function DialogContentArea({
       onScroll={onScroll}
       className={classNames(
         dialog.contentArea.base,
-        dialog.contentArea.heightOverflow[isOverflow ? 'on' : 'off'],
+        dialog.contentArea.scrolled[isScrolled ? 'on' : 'off'],
         className
       )}
     >
