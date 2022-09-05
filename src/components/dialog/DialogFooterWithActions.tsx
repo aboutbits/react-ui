@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 import {
   DialogFooterActions,
   DialogFooterActionsProps,
-} from './areas/DialogFooterActions'
+} from './DialogFooterActions'
 import { DialogFooterArea } from './areas/DialogFooterArea'
 
 export type DialogFooterWithActionsProps = DialogFooterActionsProps
