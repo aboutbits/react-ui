@@ -1,19 +1,20 @@
+import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
 import { AsyncView } from '@aboutbits/react-toolbox'
 import React, { ReactElement, ReactNode } from 'react'
-import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
-import { SelectDialog } from '../../dialog/select/SelectDialog'
+import { useInternationalization } from '../../../framework'
+import { Dialog, DialogContentArea } from '../../dialog'
+import { LoadingListItem } from '../../loading'
+import {
+  PaginationInMemoryProps,
+  SectionFooterWithPaginationInMemory,
+} from '../../pagination'
 import {
   SectionContentError,
   SectionContentList,
   SectionListItemButton,
 } from '../../section'
-import { useInternationalization } from '../../../framework'
-import {
-  PaginationInMemoryProps,
-  SectionFooterWithPaginationInMemory,
-} from '../../pagination'
-import { LoadingListItem } from '../../loading'
 import { SectionContentMessage } from '../../section/Section/SectionContentMessage'
+import { DialogHeaderWithSearch } from './DialogHeaderWithSearch'
 
 export type SearchQueryParameters = {
   search?: string
@@ -77,61 +78,66 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
     : noSearchResults
 
   return (
-    <SelectDialog
-      isOpen={isOpen}
-      title={dialogTitle}
-      iconLabel={internationalization.translate('shared.search.label')}
-      search={queryParameters.search}
-      actions={{
-        search: (value) => actions.updateQuery({ search: value }),
-        clear: actions.clear,
-      }}
-      onDismiss={onDismiss}
-      dialogLabel={dialogLabel}
-    >
-      <AsyncView
-        data={data}
-        error={error}
-        renderLoading={
-          <SectionContentList>
-            <LoadingListItem />
-            <LoadingListItem />
-            <LoadingListItem />
-          </SectionContentList>
-        }
-        renderSuccess={(data) => {
-          return data.items.length === 0 ? (
-            <SectionContentMessage>{empty}</SectionContentMessage>
-          ) : (
-            <>
+    <Dialog isOpen={isOpen} title={dialogLabel} onDismiss={onDismiss}>
+      <>
+        <DialogHeaderWithSearch
+          onDismiss={onDismiss}
+          title={dialogTitle}
+          iconLabel={internationalization.translate('shared.search.label')}
+          search={queryParameters.search}
+          actions={{
+            search: (value) => actions.updateQuery({ search: value }),
+            clear: actions.clear,
+          }}
+        />
+        <DialogContentArea>
+          <AsyncView
+            data={data}
+            error={error}
+            renderLoading={
               <SectionContentList>
-                {data.items.map((item, index) => (
-                  <SectionListItemButton
-                    key={index}
-                    onClick={() => {
-                      onConfirm(item)
-                    }}
-                  >
-                    <div className="flex flex-1 justify-between">
-                      {renderListItem(item)}
-                    </div>
-                  </SectionListItemButton>
-                ))}
+                <LoadingListItem />
+                <LoadingListItem />
+                <LoadingListItem />
               </SectionContentList>
-              <SectionFooterWithPaginationInMemory
-                page={data.currentPage}
-                size={data.perPage}
-                total={data.total}
-                onChangePage={actions.setPage}
-                config={paginationConfig}
-              />
-            </>
-          )
-        }}
-        renderError={(error) => (
-          <SectionContentError>{renderErrorMessage(error)}</SectionContentError>
-        )}
-      />
-    </SelectDialog>
+            }
+            renderSuccess={(data) => {
+              return data.items.length === 0 ? (
+                <SectionContentMessage>{empty}</SectionContentMessage>
+              ) : (
+                <>
+                  <SectionContentList>
+                    {data.items.map((item, index) => (
+                      <SectionListItemButton
+                        key={index}
+                        onClick={() => {
+                          onConfirm(item)
+                        }}
+                      >
+                        <div className="flex flex-1 justify-between">
+                          {renderListItem(item)}
+                        </div>
+                      </SectionListItemButton>
+                    ))}
+                  </SectionContentList>
+                  <SectionFooterWithPaginationInMemory
+                    page={data.currentPage}
+                    size={data.perPage}
+                    total={data.total}
+                    onChangePage={actions.setPage}
+                    config={paginationConfig}
+                  />
+                </>
+              )
+            }}
+            renderError={(error) => (
+              <SectionContentError>
+                {renderErrorMessage(error)}
+              </SectionContentError>
+            )}
+          />
+        </DialogContentArea>
+      </>
+    </Dialog>
   )
 }
