@@ -4,6 +4,7 @@ import { Button } from '../button'
 import DialogDocs from './Dialog.docs.mdx'
 import {
   Dialog,
+  DialogContent,
   DialogContentArea,
   DialogFooterActions,
   DialogFooterArea,
@@ -47,7 +48,7 @@ const DialogTemplate = ({ content, ...args }: TemplateArgs) => {
     <Dialog {...args}>
       <>
         <DialogHeader title="Hello" />
-        <DialogContentArea>{content}</DialogContentArea>
+        <DialogContent>{content}</DialogContent>
         <DialogFooterWithActions>
           <Button onClick={args.onDismiss}>OK</Button>
         </DialogFooterWithActions>
@@ -66,6 +67,7 @@ export default {
     DialogHeaderTitle,
     DialogHeader,
     DialogHeaderWithClose,
+    DialogContent,
     DialogContentArea,
     DialogFooterArea,
     DialogFooterActions,
@@ -167,9 +169,7 @@ export const WithClose: StoryType = (args: DialogProps) => {
     <Dialog {...args}>
       <>
         <DialogHeaderWithClose title="Hello" onDismiss={args.onDismiss} />
-        <DialogContentArea>
-          This is a dialog with close button.
-        </DialogContentArea>
+        <DialogContent>This is a dialog with close button.</DialogContent>
         <DialogFooterWithActions>
           <Button onClick={args.onDismiss}>OK</Button>
         </DialogFooterWithActions>

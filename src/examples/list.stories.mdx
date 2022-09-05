@@ -8,7 +8,7 @@ import { Actions } from '../components/action'
 import {
   Dialog,
   DialogHeaderWithClose,
-  DialogContentArea,
+  DialogContent,
   DialogFooterArea,
   DialogFooterActions,
 } from '../components/dialog'
@@ -439,9 +439,9 @@ export const TemplateListWithFilterDialog = ({
               setDialogShow(false)
             }}
           >
-            <DialogContentArea className="flex flex-col gap-y-2">
+            <DialogContent className="flex flex-col gap-y-2">
               <Filters />
-            </DialogContentArea>
+            </DialogContent>
             <DialogFooterArea>
               <DialogFooterActions>
                 <SubmitButton className="col-span-full mt-2">

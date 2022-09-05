@@ -2,11 +2,11 @@ import { ReactElement, ReactNode } from 'react'
 import { Button } from '../../button'
 import { Variant } from '../../button/types'
 import { Tone } from '../../types'
-import { DialogContentArea } from '../areas/DialogContentArea'
 import { DialogFooterActions } from '../areas/DialogFooterActions'
 import { DialogFooterArea } from '../areas/DialogFooterArea'
 import { DialogHeader } from '../DialogHeader'
 import { Dialog, DialogProps } from '../Dialog'
+import { DialogContent } from '../DialogContent'
 
 export enum ConfirmationDialogVariant {
   confirm = 'confirm',
@@ -68,7 +68,7 @@ export function ConfirmationDialog({
     <Dialog {...props}>
       <>
         <DialogHeader title={props.title} />
-        <DialogContentArea>{body}</DialogContentArea>
+        <DialogContent>{body}</DialogContent>
         <DialogFooterArea>
           <DialogFooterActions>
             {dismissButtonText && (

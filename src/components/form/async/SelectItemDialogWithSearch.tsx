@@ -2,7 +2,7 @@ import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/inMemory
 import { AsyncView } from '@aboutbits/react-toolbox'
 import React, { ReactElement, ReactNode } from 'react'
 import { useInternationalization } from '../../../framework'
-import { Dialog, DialogContentArea } from '../../dialog'
+import { Dialog, DialogContent } from '../../dialog'
 import { LoadingListItem } from '../../loading'
 import {
   PaginationInMemoryProps,
@@ -90,7 +90,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
             clear: actions.clear,
           }}
         />
-        <DialogContentArea>
+        <DialogContent>
           <AsyncView
             data={data}
             error={error}
@@ -136,7 +136,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
               </SectionContentError>
             )}
           />
-        </DialogContentArea>
+        </DialogContent>
       </>
     </Dialog>
   )
