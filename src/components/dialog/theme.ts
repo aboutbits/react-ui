@@ -64,7 +64,7 @@ export default {
     },
   },
   footerArea: {
-    base: 'px-6 pt-4 pb-6 border-t border-neutral-200',
+    base: 'px-6 py-4 border-t border-neutral-200 bg-neutral-100 text-xs',
   },
   footerActions: {
     base: 'flex flex-col gap-2',

@@ -4,7 +4,7 @@ export default {
   },
   prevNext: {
     icon: {
-      base: 'inline-block w-5 h-5 fill-current',
+      base: 'inline-block w-5 h-5 fill-current my-0.5',
     },
     text: {
       base: 'hidden lg:block',
@@ -12,7 +12,7 @@ export default {
   },
   pagesList: { base: 'flex items-center' },
   page: {
-    base: 'flex items-center',
+    base: 'flex items-center leading-6',
     number: 'px-2',
     enabled: 'hover:underline',
     disabled: 'text-gray-500 cursor-not-allowed pointer-events-none',
