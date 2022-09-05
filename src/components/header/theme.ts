@@ -10,7 +10,7 @@ export default {
     base: 'flex items-center mr-2 lg:mr-3 space-x-3 lg:space-x-4',
   },
   rightArea: {
-    base: 'flex items-center ml-2 lg:mr-3 space-x-3 lg:space-x-4',
+    base: 'flex items-center ml-2 lg:ml-3 space-x-3 lg:space-x-4',
   },
   title: {
     base: 'flex-1 text-3xl font-medium lg:text-4xl truncate',

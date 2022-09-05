@@ -103,7 +103,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
             }
             renderSuccess={(data) => {
               return data.items.length === 0 ? (
-                <SectionContentMessage>{empty}</SectionContentMessage>
+                <SectionContentMessage text={empty} />
               ) : (
                 <>
                   <SectionContentList>
@@ -131,9 +131,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
               )
             }}
             renderError={(error) => (
-              <SectionContentError>
-                {renderErrorMessage(error)}
-              </SectionContentError>
+              <SectionContentError text={renderErrorMessage(error)} />
             )}
           />
         </DialogContent>

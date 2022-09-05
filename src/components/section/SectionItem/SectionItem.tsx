@@ -42,20 +42,16 @@ export const SectionListItemButton = React.forwardRef<
   return (
     <button
       onClick={onClick}
-      className={section.listItemButton.button}
+      className={classNames(
+        section.listItemButton.base,
+        section.listItem.base,
+        className
+      )}
       ref={ref}
       {...props}
     >
-      <SectionListItem
-        className={classNames(section.listItemButton.base, className)}
-      >
-        {children}
-        <IconKeyboardArrowRight
-          width="24"
-          height="24"
-          className="fill-current"
-        />
-      </SectionListItem>
+      {children}
+      <IconKeyboardArrowRight width="24" height="24" className="fill-current" />
     </button>
   )
 })
@@ -70,21 +66,17 @@ export const SectionListItemLink = React.forwardRef<
   const { section } = useTheme()
   return (
     <LinkComponent
-      className={section.listItemLink.link}
+      className={classNames(
+        section.listItemLink.base,
+        section.listItem.base,
+        className
+      )}
       internal={internal}
       ref={ref}
       {...props}
     >
-      <SectionListItem
-        className={classNames(section.listItemLink.base, className)}
-      >
-        {children}
-        <IconKeyboardArrowRight
-          width="24"
-          height="24"
-          className="fill-current"
-        />
-      </SectionListItem>
+      {children}
+      <IconKeyboardArrowRight width="24" height="24" className="fill-current" />
     </LinkComponent>
   )
 })
@@ -104,3 +96,5 @@ export const SectionListItemWithAction: React.FC<
     </SectionListItem>
   )
 }
+
+SectionListItemWithAction.displayName = 'SectionListItemWithAction'
