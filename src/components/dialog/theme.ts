@@ -57,7 +57,7 @@ export default {
     base: 'flex-1 text-2xl text-neutral-800 truncate',
   },
   contentArea: {
-    base: 'pb-4 px-6 overflow-auto min-h-0 flex-1 min-h-0 border-t',
+    base: 'pb-6 px-6 overflow-auto min-h-0 flex-1 min-h-0 border-t',
     scrolled: {
       off: 'border-transparent',
       on: 'border-neutral-200',
