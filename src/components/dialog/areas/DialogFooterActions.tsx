@@ -4,7 +4,7 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 import { DialogContext } from '../DialogContext'
 
-export enum DialogFooterActionsVariant {
+export enum DialogFooterActionsPosition {
   start = 'start',
   center = 'center',
   end = 'end',
@@ -12,12 +12,12 @@ export enum DialogFooterActionsVariant {
 
 export type DialogFooterActionsProps = ClassNameProps & {
   children?: ReactNode
-  variant?: DialogFooterActionsVariant
+  position?: DialogFooterActionsPosition
 }
 
 export function DialogFooterActions({
   children,
-  variant = DialogFooterActionsVariant.end,
+  position = DialogFooterActionsPosition.end,
   className,
 }: DialogFooterActionsProps): ReactElement {
   const { dialog } = useTheme()
@@ -28,7 +28,7 @@ export function DialogFooterActions({
       className={classNames(
         dialog.footerActions.base,
         dialog.footerActions.dialogSize[size],
-        dialog.footerActions.variant[variant],
+        dialog.footerActions.position[position],
         className
       )}
     >

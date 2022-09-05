@@ -65,7 +65,7 @@ export default {
   },
   footerActions: {
     base: 'flex flex-col gap-2',
-    variant: {
+    position: {
       start: 'justify-start',
       center: 'justify-center',
       end: 'justify-end',

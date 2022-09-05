@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 
-export enum ActionSectionVariant {
+export enum ActionSectionPosition {
   start = 'start',
   center = 'center',
   end = 'end',
@@ -10,13 +10,13 @@ export enum ActionSectionVariant {
 
 type ActionProps = ClassNameProps & {
   /**
-   * Defines the variant of the action.
+   * Defines the position of the action.
    **/
-  variant?: ActionSectionVariant
+  position?: ActionSectionPosition
 }
 
 export const Actions: React.FC<ActionProps> = ({
-  variant = ActionSectionVariant.end,
+  position = ActionSectionPosition.end,
   children,
   className,
 }) => {
@@ -25,7 +25,7 @@ export const Actions: React.FC<ActionProps> = ({
     <div
       className={classNames(
         action.action.base,
-        action.action.variant[variant],
+        action.action.position[position],
         className
       )}
     >
