@@ -2,9 +2,17 @@ import { ReactElement, ReactNode } from 'react'
 import { DialogHeaderArea } from './areas/DialogHeaderArea'
 import { DialogHeaderTitle } from './areas/DialogHeaderTitle'
 
-export function DialogHeader({ title }: { title?: ReactNode }): ReactElement {
+export type DialogHeaderProps = {
+  title?: ReactNode
+  className?: string
+}
+
+export function DialogHeader({
+  title,
+  className,
+}: DialogHeaderProps): ReactElement {
   return (
-    <DialogHeaderArea>
+    <DialogHeaderArea className={className}>
       <DialogHeaderTitle>{title}</DialogHeaderTitle>
     </DialogHeaderArea>
   )
