@@ -7,14 +7,3 @@
   --reach-dialog: 1;
   --reach-menu-button: 1;
 }
-
-[data-reach-dialog-overlay] {
-  background: rgba(0, 0, 0, 0.36);
-  @apply fixed;
-  @apply inset-0;
-  @apply overflow-auto;
-}
-
-[data-reach-dialog-content] {
-  outline: none;
-}

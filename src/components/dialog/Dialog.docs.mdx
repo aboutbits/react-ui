@@ -1,0 +1,98 @@
+import { Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+
+# Dialog
+
+This component is used to show an overlay dialog on the page. It supports different sizes and position behaviours on mobile and desktop.
+
+This component uses the `Dialog` component from ReachUI. To install:
+
+```
+npm i @reach/dialog
+```
+
+The following CSS snippet needs to be added to the root css file of the project:
+
+```css
+:root {
+  --reach-dialog: 1;
+}
+```
+
+### Subcomponents
+
+You can use the following components for the different areas of the dialog (see examples below):
+
+- Base components
+  - `DialogHeaderArea`
+  - `DialogHeaderLeftArea`
+  - `DialogHeaderRightArea`
+  - `DialogHeaderTitle`
+  - `DialogContentArea`
+  - `DialogFooterArea`
+  - `DialogFooterActions`
+- Convenience components
+  - `DialogHeader`
+  - `DialogHeaderLeftActionIcon`
+  - `DialogHeaderCloseAction`
+  - `DialogHeaderWithClose`
+  - `DialogContent`
+  - `DialogFooterWithActions`
+
+**Note:** The component does not include the button. The button is just used to activate the dialog changing the value of the prop `isOpen`.
+
+<Canvas>
+  <Story id="components-dialog-dialog--default" />
+</Canvas>
+
+### Props
+
+<ArgsTable />
+
+All the other externally defined props are `DialogOverlayProps` from `@reach/dialog`
+
+### Theme
+
+- `dialog.overlay.base`: Define the base styles of the overlay
+- `dialog.overlay.mobilePosition[$position]`: Define the styles of the dialog for the given mobile position.
+- `dialog.overlay.desktopPosition[$position]`: Define the styles of the dialog for the given desktop position.
+- `dialog.dialog.base`: Define the base styles of the dialog window.
+- `dialog.dialog.mobilePositionSize[$position].base`: Define the base styles of the dialog for the given mobile position.
+- `dialog.dialog.mobilePositionSize[$position][$size]`: Define the styles of the dialog for the given mobile position and size.
+- `dialog.dialog.desktopPositionSize[$position].base`: Define the base styles of the dialog for the given desktop position.
+- `dialog.dialog.desktopPositionSize[$position][$size]`: Define the styles of the dialog for the given desktop position and size.
+
+## Size
+
+The dialog supports different sizes.
+
+<Canvas>
+  <Story id="components-dialog-dialog--size-sm" />
+  <Story id="components-dialog-dialog--size-md" />
+  <Story id="components-dialog-dialog--size-lg" />
+</Canvas>
+
+## Position
+
+It's possbile to set the position behaviour to `center` or `fullscreen` for mobile or desktop devices.
+
+<Canvas>
+  <Story id="components-dialog-dialog--mobile-fullscreen" />
+  <Story id="components-dialog-dialog--desktop-fullscreen" />
+  <Story id="components-dialog-dialog--complete-fullscreen" />
+</Canvas>
+
+## With close
+
+To add the default close button, use the `DialogHeaderWithClose` component.
+
+<Canvas>
+  <Story id="components-dialog-dialog--with-close" />
+</Canvas>
+
+## Long content
+
+With the default theme, the `ContentArea` shows a top border when scrolled.
+
+<Canvas>
+  <Story id="components-dialog-dialog--with-long-content" />
+</Canvas>

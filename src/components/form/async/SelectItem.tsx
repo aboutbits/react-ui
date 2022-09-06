@@ -1,21 +1,15 @@
-import React, {
-  ReactElement,
-  ReactNode,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
-import { useField } from 'formik'
-import classNames from 'classnames'
-import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyboardArrowDown'
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import { useCustomInputCss } from '../useCustomInputCss'
+import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyboardArrowDown'
+import classNames from 'classnames'
+import { useField } from 'formik'
+import { ReactElement, ReactNode, useMemo, useRef, useState } from 'react'
 import { useInternationalization } from '../../../framework'
-import { InputLabel } from '../InputLabel'
 import { InputError } from '../InputError'
+import { InputLabel } from '../InputLabel'
+import { useCustomInputCss } from '../useCustomInputCss'
 import {
-  SelectItemDialogWithSearch,
   Props as DialogProps,
+  SelectItemDialogWithSearch,
 } from './SelectItemDialogWithSearch'
 
 export type SelectItemProps<ItemType, Error> = {
