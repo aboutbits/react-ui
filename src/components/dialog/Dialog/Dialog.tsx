@@ -1,10 +1,10 @@
 import { DialogContent, DialogOverlay, DialogOverlayProps } from '@reach/dialog'
 import classNames from 'classnames'
 import { ReactElement, useRef } from 'react'
-import { useTheme } from '../../framework'
-import { ClassNameProps } from '../types'
-import { DialogContext } from './DialogContext'
-import { DialogPosition, DialogSize } from './types'
+import { useTheme } from '../../../framework'
+import { ClassNameProps } from '../../types'
+import { DialogContext } from '../DialogContext'
+import { DialogPosition, DialogSize } from '../types'
 
 export type DialogProps = ClassNameProps &
   DialogOverlayProps & {

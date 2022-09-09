@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode } from 'react'
-import { DialogHeaderArea } from './areas/DialogHeaderArea'
-import { DialogHeaderTitle } from './areas/DialogHeaderTitle'
+import { DialogHeaderArea } from './DialogHeaderArea'
+import { DialogHeaderTitle } from './DialogHeaderTitle'
 
 export type DialogHeaderProps = {
   title?: ReactNode

@@ -43,6 +43,10 @@ type ConfirmDialogProps = Omit<DialogProps, 'children'> & {
    **/
   variant?: ConfirmationDialogVariant
   /**
+   * The title of the dialog.
+   **/
+  title?: ReactNode
+  /**
    * Further information can be placed in the dialog.
    **/
   body: ReactNode
@@ -64,13 +68,14 @@ export function ConfirmationDialog({
   variant = ConfirmationDialogVariant.confirm,
   confirmButtonText,
   dismissButtonText,
+  title,
   body,
   ...props
 }: ConfirmDialogProps): ReactElement {
   return (
     <Dialog {...props}>
       <>
-        <DialogHeader title={props.title} />
+        <DialogHeader title={title} />
         <DialogContent>{body}</DialogContent>
         <DialogFooterArea>
           <DialogFooterActions>

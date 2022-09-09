@@ -42,7 +42,24 @@ export default {
     },
   },
   headerArea: {
-    base: 'mb-4 px-6 mt-6 flex items-center min-h-[2.5rem]',
+    base: 'mb-4 px-6 mt-6 flex flex-col gap-y-2 shrink-0',
+  },
+  headerRow: {
+    base: 'items-center',
+    layout: {
+      stretch: '',
+      spaceBetween: 'flex justify-between gap-x-2.5',
+      start: 'flex justify-start gap-x-2.5',
+      center: 'flex justify-center gap-x-2.5',
+      end: 'flex justify-end gap-x-2.5',
+    },
+  },
+  headerGroup: {
+    base: 'flex items-center gap-y-2',
+    spacing: {
+      sm: 'gap-x-2.5',
+      md: 'gap-x-6',
+    },
   },
   headerLeftArea: {
     base: 'flex items-center mr-2 space-x-3 lg:space-x-4',
@@ -57,11 +74,23 @@ export default {
     base: 'flex-1 text-2xl text-neutral-800 truncate',
   },
   contentArea: {
-    base: 'pb-6 px-6 overflow-auto min-h-0 flex-1 min-h-0 border-t',
+    base: 'overflow-auto min-h-0 flex-1 min-h-0 border-t',
     scrolled: {
       off: 'border-transparent',
       on: 'border-neutral-200',
     },
+  },
+  content: {
+    base: 'px-6 pb-6',
+  },
+  contentMessage: {
+    contentContainer: 'flex justify-center items-center',
+  },
+  listItem: {
+    base: 'px-6 flex border-b border-neutral-200 last:border-0 items-center min-h-[3.5rem] bg-white',
+  },
+  listItemButton: {
+    base: 'block w-full focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   footerArea: {
     base: 'px-6 py-4 border-t border-neutral-200 bg-neutral-100 text-xs',
