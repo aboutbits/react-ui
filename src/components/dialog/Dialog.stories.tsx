@@ -79,7 +79,7 @@ export default {
   },
   decorators: [DialogDecorator],
   args: {
-    title: 'Dialog description',
+    'aria-label': 'Dialog description',
   },
   parameters: {
     docs: {
