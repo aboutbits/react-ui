@@ -231,6 +231,9 @@ export default {
     },
   },
   selectItem: {
+    dialogContentArea: {
+      base: 'border-t border-neutral-200',
+    },
     headerSearch: {
       base: 'flex flex-1 py-1 px-3 bg-neutral-200 rounded-full',
       input: {

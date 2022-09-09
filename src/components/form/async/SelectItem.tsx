@@ -8,7 +8,7 @@ import { InputError } from '../InputError'
 import { InputLabel } from '../InputLabel'
 import { useCustomInputCss } from '../useCustomInputCss'
 import {
-  Props as DialogProps,
+  SelectItemDialogWithSearchProps,
   SelectItemDialogWithSearch,
 } from './SelectItemDialogWithSearch'
 
@@ -27,6 +27,8 @@ export type SelectItemProps<ItemType, Error> = {
    * If no lookup value is available, it will render the id.
    */
   renderInputValue?: (item: ItemType) => ReactNode
+  dialogTitle: ReactNode
+  dialogLabel: string
   label: string
   placeholder: string
   disabled?: boolean
@@ -36,10 +38,8 @@ export type SelectItemProps<ItemType, Error> = {
    */
   extractIdFromItem: (item: ItemType) => string
 } & Pick<
-  DialogProps<ItemType, Error>,
+  SelectItemDialogWithSearchProps<ItemType, Error>,
   | 'useGetData'
-  | 'dialogTitle'
-  | 'dialogLabel'
   | 'noSearchResults'
   | 'renderListItem'
   | 'renderErrorMessage'
@@ -172,8 +172,8 @@ export function SelectItem<ItemType, Error>({
           useGetData={useGetData}
           renderListItem={renderListItem}
           renderErrorMessage={renderErrorMessage}
-          dialogTitle={dialogTitle}
-          dialogLabel={dialogLabel}
+          title={dialogTitle}
+          aria-label={dialogLabel}
           noSearchResults={noSearchResults}
           paginationConfig={paginationConfig}
         />
