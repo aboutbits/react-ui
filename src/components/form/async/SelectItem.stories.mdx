@@ -21,7 +21,7 @@ import {
       })
       return (
         <Formik
-          initialValues={{ userId: '3' }}
+          initialValues={{ userId: '' }}
           validateOnChange={true}
           validationSchema={validationSchema}
           onSubmit={(values) => action('onSubmit')(values)}

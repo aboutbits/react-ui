@@ -3,7 +3,7 @@ import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyb
 import classNames from 'classnames'
 import { useField } from 'formik'
 import { ReactElement, ReactNode, useMemo, useRef, useState } from 'react'
-import { useInternationalization } from '../../../framework'
+import { useInternationalization, useTheme } from '../../../framework'
 import { InputError } from '../InputError'
 import { InputLabel } from '../InputLabel'
 import { useCustomInputCss } from '../useCustomInputCss'
@@ -61,13 +61,15 @@ export const replacePlaceholderColorWithTextColor = (css: string): string => {
       //removes tailwindcss text-<color>
       .filter((item) =>
         item.includes('text')
-          ? !!item.match(/(text-(left|center|right|justify)|text-opacity-.*)/g)
+          ? !!item.match(
+              /:|(text-(left|center|right|justify)|text-opacity-.*)/g
+            )
           : true
       )
-      //transforms tailwindcss placeholder to text
+      //transforms tailwindcss placeholder:text-* to text-*
       .map((item) =>
-        item.includes('placeholder')
-          ? item.replace('placeholder', 'text')
+        item.includes('placeholder:text-')
+          ? item.replace('placeholder:text-', 'text-')
           : item
       )
       .join(' ')
@@ -91,15 +93,17 @@ export function SelectItem<ItemType, Error>({
   paginationConfig,
   extractIdFromItem,
 }: SelectItemProps<ItemType, Error>): ReactElement {
-  const [field, , helpers] = useField<string>(name)
+  const [field, meta, helpers] = useField<string>(name)
   const [showDialog, setShowDialog] = useState<boolean>(false)
   const selectedItem = useRef<ItemType | undefined>(initialItem)
   const customCss = useCustomInputCss(name, disabled)
-  const internationalization = useInternationalization()
-  const customCssInputCss = useMemo(
+  const customCssEmptyInput = useMemo(
     () => replacePlaceholderColorWithTextColor(customCss.inputCss),
     [customCss.inputCss]
   )
+  const internationalization = useInternationalization()
+  const { form } = useTheme()
+  const fieldHasError = meta.touched && meta.error
 
   return (
     <>
@@ -112,23 +116,38 @@ export function SelectItem<ItemType, Error>({
             onClick={() => {
               setShowDialog(true)
             }}
-            className={classNames(customCssInputCss, 'flex flex-row text-left')}
+            className={classNames(
+              customCssEmptyInput,
+              form.selectItem.input.container.base,
+              fieldHasError
+                ? form.selectItem.input.container.error
+                : form.selectItem.input.container.normal
+            )}
           >
-            <span className="flex-1">{placeholder}</span>
-            <IconKeyboardArrowDown className="h-6 w-6" />
+            <span className={form.selectItem.input.placeholder.base}>
+              {placeholder}
+            </span>
+            <span className={form.selectItem.input.iconContainer.base}>
+              <IconKeyboardArrowDown
+                className={form.selectItem.input.icon.base}
+              />
+            </span>
           </button>
         ) : (
           <div
             className={classNames(
               customCss.inputCss,
-              'flex flex-row text-left'
+              form.selectItem.input.container.base,
+              fieldHasError
+                ? form.selectItem.input.container.error
+                : form.selectItem.input.container.normal
             )}
           >
             <button
               type="button"
               id={id}
               onClick={() => setShowDialog(true)}
-              className="flex-1 text-left"
+              className={form.selectItem.input.selectButton.base}
             >
               <span>
                 {renderInputValue && selectedItem.current
@@ -145,10 +164,15 @@ export function SelectItem<ItemType, Error>({
                 helpers.setValue('')
                 selectedItem.current = undefined
               }}
-              className="pl-2"
+              className={classNames(
+                form.selectItem.input.iconContainer.base,
+                fieldHasError
+                  ? form.selectItem.input.iconContainer.error
+                  : form.selectItem.input.iconContainer.normal
+              )}
             >
               <IconClose
-                className="h-6 w-6"
+                className={form.selectItem.input.icon.base}
                 title={internationalization.translate('shared.select.clear')}
               />
             </button>
