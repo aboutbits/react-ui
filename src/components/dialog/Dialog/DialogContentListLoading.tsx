@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import { LoadingListItem } from '../../loading'
+import { DialogLoadingListItem } from '../DialogItem/DialogLoadingListItem'
 import { DialogContentList, DialogContentListProps } from './DialogContentList'
 
 export type DialogContentListLoadingProps = {
@@ -18,7 +18,7 @@ export function DialogContentListLoading({
       {Array(numberOfItems)
         .fill(null)
         .map((_, index) => (
-          <LoadingListItem key={index} />
+          <DialogLoadingListItem key={index} />
         ))}
     </DialogContentList>
   )
