@@ -116,7 +116,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
           renderLoading={
             <DialogContentListLoading
               numberOfItems={numberOfLoadingItems}
-              useScrollLayout={false}
+              enableScrollLayout={false}
             />
           }
           renderError={(error) => (
@@ -180,7 +180,7 @@ export function SelectItemDialogSuccess<ItemType, Error>({
   ) : (
     <>
       <DialogContentArea
-        useScrollLayout={false}
+        enableScrollLayout={false}
         className={form.selectItem.dialogContentArea.base}
       >
         <DialogContentList>

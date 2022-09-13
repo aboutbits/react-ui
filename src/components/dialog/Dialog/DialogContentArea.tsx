@@ -5,29 +5,30 @@ import { ClassNameProps } from '../../types'
 
 export type DialogContentAreaProps = ClassNameProps & {
   children?: ReactNode
-  useScrollLayout?: boolean
+  enableScrollLayout?: boolean
 }
 
 export function DialogContentArea({
   children,
   className,
-  useScrollLayout = true,
+  enableScrollLayout = true,
 }: DialogContentAreaProps): ReactElement {
   const { dialog } = useTheme()
   const [isScrolled, setIsScrolled] = useState<boolean>(false)
 
-  const onScroll: UIEventHandler<HTMLDivElement> | undefined = useScrollLayout
-    ? (event) => {
-        setIsScrolled(event.currentTarget.scrollTop > 0)
-      }
-    : undefined
+  const onScroll: UIEventHandler<HTMLDivElement> | undefined =
+    enableScrollLayout
+      ? (event) => {
+          setIsScrolled(event.currentTarget.scrollTop > 0)
+        }
+      : undefined
 
   return (
     <div
       onScroll={onScroll}
       className={classNames(
         dialog.contentArea.base,
-        useScrollLayout
+        enableScrollLayout
           ? dialog.contentArea.scrolled[isScrolled ? 'on' : 'off']
           : null,
         className
