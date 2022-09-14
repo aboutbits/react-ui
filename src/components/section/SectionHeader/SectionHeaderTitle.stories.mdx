@@ -1,14 +1,17 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { SectionTitle } from './SectionTitle'
+import { SectionHeaderTitle } from './SectionHeaderTitle'
 
-<Meta title="Components/Section/SectionTitle" component={SectionTitle} />
+<Meta
+  title="Components/Section/SectionHeaderTitle"
+  component={SectionHeaderTitle}
+/>
 
-# SectionTitle
+# SectionHeaderTitle
 
 This component is an HTML `h2` tag and defines the style of the section title.
 
 export const Template = ({ children, ...args }) => (
-  <SectionTitle {...args}>{children}</SectionTitle>
+  <SectionHeaderTitle {...args}>{children}</SectionHeaderTitle>
 )
 
 <Canvas>
@@ -23,4 +26,4 @@ export const Template = ({ children, ...args }) => (
 
 ### Theme
 
-- `section.title.base`: Define the styles for the section title.
+- `section.headerTitle.base`: Define the styles for the section title.

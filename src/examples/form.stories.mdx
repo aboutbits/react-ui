@@ -9,12 +9,10 @@ import {
   Section,
   SectionContainer,
   SectionHeader,
-  SectionTitle,
-  SectionFooter,
+  SectionFooterWithActions,
   SectionContent,
   Layout,
 } from '../components/section'
-import { Actions } from '../components/action'
 import { SubmitButton } from '../components/button'
 import { i18n, locales } from './i18n'
 
@@ -62,9 +60,7 @@ export const Template = ({ title }) => {
       >
         <Form>
           <Section>
-            <SectionHeader>
-              <SectionTitle>{title}</SectionTitle>
-            </SectionHeader>
+            <SectionHeader title={title} />
             <SectionContainer>
               <SectionContent layout={Layout.twoColumnGrid}>
                 <Input
@@ -124,11 +120,9 @@ export const Template = ({ title }) => {
                   label="Bio"
                 />
               </SectionContent>
-              <SectionFooter>
-                <Actions>
-                  <SubmitButton>Save</SubmitButton>
-                </Actions>
-              </SectionFooter>
+              <SectionFooterWithActions>
+                <SubmitButton>Save</SubmitButton>
+              </SectionFooterWithActions>
             </SectionContainer>
           </Section>
         </Form>

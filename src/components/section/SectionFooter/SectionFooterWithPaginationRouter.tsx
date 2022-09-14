@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
-import { SectionFooter } from '../'
 import { PaginationRouter, PaginationRouterProps } from '../../pagination'
+import { SectionFooterArea } from './SectionFooterArea'
 
 export function SectionFooterWithPaginationRouter({
   page,
@@ -15,7 +15,7 @@ export function SectionFooterWithPaginationRouter({
   }
 
   return (
-    <SectionFooter>
+    <SectionFooterArea>
       <PaginationRouter
         page={page}
         size={size}
@@ -24,6 +24,6 @@ export function SectionFooterWithPaginationRouter({
         className={className}
         linkProps={linkProps}
       />
-    </SectionFooter>
+    </SectionFooterArea>
   )
 }

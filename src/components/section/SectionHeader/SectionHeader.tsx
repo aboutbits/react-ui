@@ -1,17 +1,16 @@
-import classNames from 'classnames'
-import React from 'react'
-import { useTheme } from '../../../framework'
-import { ClassNameProps } from '../../types'
+import { ReactNode } from 'react'
+import { SectionHeaderArea } from './SectionHeaderArea'
+import { SectionHeaderTitle } from './SectionHeaderTitle'
 
-export type SectionHeaderProps = ClassNameProps
+export type SectionHeaderProps = {
+  title: ReactNode
+  className?: string
+}
 
-export const SectionHeader: React.FC<SectionHeaderProps> = ({
-  className,
-  children,
-}) => {
-  const { section } = useTheme()
-
+export function SectionHeader({ className, title }: SectionHeaderProps) {
   return (
-    <div className={classNames(section.header.base, className)}>{children}</div>
+    <SectionHeaderArea className={className}>
+      <SectionHeaderTitle>{title}</SectionHeaderTitle>
+    </SectionHeaderArea>
   )
 }

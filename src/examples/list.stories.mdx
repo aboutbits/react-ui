@@ -4,7 +4,6 @@ import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { useState } from 'react'
-import { Actions } from '../components/action'
 import {
   Dialog,
   DialogHeaderWithClose,
@@ -19,8 +18,9 @@ import {
 } from '../components/button'
 import {
   Section,
-  SectionTitle,
   SectionContainer,
+  SectionHeaderArea,
+  SectionHeaderTitle,
   SubsectionTitle,
   SectionContentList,
   SectionHeader,
@@ -32,7 +32,7 @@ import {
   SectionFilter,
   SectionSearch,
   SectionListItemButton,
-  SectionFooter,
+  SectionFooterWithActions,
 } from '../components/section'
 import { SectionFooterWithPaginationInMemory } from '../components/pagination'
 import { Select, Variant as InputVariant } from '../components/form'
@@ -55,9 +55,7 @@ export const TemplateDefault = ({ numberOfTotalItems }) => {
   )
   return (
     <Section>
-      <SectionHeader>
-        <SectionTitle>List of users</SectionTitle>
-      </SectionHeader>
+      <SectionHeader title="List of users" />
       <SectionContainer>
         {content.length === 0 ? (
           <SectionContentEmpty
@@ -151,9 +149,9 @@ export const TemplateComplexList = ({
   )
   return (
     <Section>
-      <SectionHeader>
+      <SectionHeaderArea>
         <SectionHeaderRow>
-          <SectionTitle>List of users</SectionTitle>
+          <SectionHeaderTitle>List of users</SectionHeaderTitle>
           <ButtonIcon
             label="Add"
             icon={IconAdd}
@@ -183,7 +181,7 @@ export const TemplateComplexList = ({
           </SectionHeaderRow>
         </SectionFilter>
         <SectionHeaderSpacer />
-      </SectionHeader>
+      </SectionHeaderArea>
       <SectionContainer>
         {content.length === 0 ? (
           <SectionContentEmpty
@@ -251,9 +249,9 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
         initialValues={filter}
         onSubmit={(values) => setFilter(values)}
       >
-        <SectionHeader>
+        <SectionHeaderArea>
           <SectionHeaderRow>
-            <SectionTitle>List of users</SectionTitle>
+            <SectionHeaderTitle>List of users</SectionHeaderTitle>
             <SectionSearch className="hidden md:block" />
           </SectionHeaderRow>
           <SectionHeaderRow
@@ -263,7 +261,7 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
             <SectionSearch />
           </SectionHeaderRow>
           <SectionHeaderSpacer className="md:hidden" />
-        </SectionHeader>
+        </SectionHeaderArea>
       </SectionFilter>
       <SectionContainer>
         {content.length === 0 ? (
@@ -324,22 +322,18 @@ export const TemplateWithSubtitle = () => {
   )
   return (
     <Section>
-      <SectionHeader>
-        <SectionTitle>List of users</SectionTitle>
-      </SectionHeader>
+      <SectionHeader title="List of users" />
       <SectionContainer>
         <SubsectionTitle>Users</SubsectionTitle>
         <UserList role="USER" />
         <SubsectionTitle>Admins</SubsectionTitle>
         <UserList role="ADMIN" />
-        <SectionFooter>
-          <Actions>
-            <Button>Submit</Button>
-            <Button variant={ButtonVariant.ghost} className="lg:order-first">
-              Cancel
-            </Button>
-          </Actions>
-        </SectionFooter>
+        <SectionFooterWithActions>
+          <Button>Submit</Button>
+          <Button variant={ButtonVariant.ghost} className="lg:order-first">
+            Cancel
+          </Button>
+        </SectionFooterWithActions>
       </SectionContainer>
     </Section>
   )
@@ -453,9 +447,9 @@ export const TemplateListWithFilterDialog = ({
         </Dialog>
       )}
       <Section>
-        <SectionHeader>
+        <SectionHeaderArea>
           <SectionHeaderRow>
-            <SectionTitle>List of users</SectionTitle>
+            <SectionHeaderTitle>List of users</SectionHeaderTitle>
             {isDialogEnabled ? (
               <SectionHeaderGroup>
                 <div className="relative flex items-center">
@@ -486,7 +480,7 @@ export const TemplateListWithFilterDialog = ({
               </SectionFilter>
             )}
           </SectionHeaderRow>
-        </SectionHeader>
+        </SectionHeaderArea>
         <SectionContainer>
           {content.length === 0 ? (
             <SectionContentEmpty

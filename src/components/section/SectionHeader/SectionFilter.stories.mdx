@@ -6,11 +6,11 @@ import {
   Section,
   SectionContainer,
   SectionContentList,
-  SectionHeader,
+  SectionHeaderArea,
   SectionHeaderRow,
   SectionHeaderGroup,
   SectionListItemButton,
-  SectionTitle,
+  SectionHeaderTitle,
   SectionFilter,
 } from '../'
 import { SectionContentEmpty } from '../Section/ConvenientSectionContentMessage'
@@ -40,9 +40,9 @@ export const Template = ({ ...args }) => {
     })
   return (
     <Section>
-      <SectionHeader>
+      <SectionHeaderArea>
         <SectionHeaderRow>
-          <SectionTitle>Users</SectionTitle>
+          <SectionHeaderTitle>Users</SectionHeaderTitle>
           <SectionFilter
             className="flex"
             {...args}
@@ -82,7 +82,7 @@ export const Template = ({ ...args }) => {
             </SectionHeaderGroup>
           </SectionFilter>
         </SectionHeaderRow>
-      </SectionHeader>
+      </SectionHeaderArea>
       <SectionContainer>
         {content.length === 0 ? (
           <SectionContentEmpty
