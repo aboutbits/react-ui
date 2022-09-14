@@ -100,6 +100,9 @@ module.exports = {
         dialog:
           '0px 4px 3px rgba(0, 0, 0, 0.07), 0px 2px 2px rgba(0, 0, 0, 0.06)',
       },
+      lineHeight: {
+        12: '3rem',
+      },
     },
   },
 }
