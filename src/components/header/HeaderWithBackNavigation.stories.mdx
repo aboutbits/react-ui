@@ -1,22 +1,22 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { NavigationProvider } from '../navigation/NavigationContext'
-import { HeaderBackWithoutAction } from './HeaderBackWithoutAction'
+import { HeaderWithBackNavigation } from './HeaderWithBackNavigation'
 
 <Meta
-  title="Components/Header/HeaderBackWithoutAction"
-  component={HeaderBackWithoutAction}
+  title="Components/Header/HeaderWithBackNavigation"
+  component={HeaderWithBackNavigation}
 />
 
-# HeaderBackWithoutAction
+# HeaderWithBackNavigation
 
-This component is similar to [HeaderMain](/docs/components-header-headermain--default-story), but with the difference that on the left an arrow back can be found instead of a menu.
+This component is similar to [Header](/docs/components-header-header--default-story), but with the difference that on the left an arrow back can be found.
 
 It leverages on the component [HeaderBackAction](/docs/components-header-headerbackaction--default-story) and [HeaderArea](/docs/components-header-headerarea--default-story).
 
 export const Template = ({ ...args }) => {
   return (
     <NavigationProvider>
-      <HeaderBackWithoutAction {...args} title="Header Title" />
+      <HeaderWithBackNavigation {...args} title="Header Title" />
     </NavigationProvider>
   )
 }

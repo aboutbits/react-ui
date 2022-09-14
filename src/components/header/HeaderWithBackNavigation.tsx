@@ -4,7 +4,7 @@ import { HeaderArea } from './areas/HeaderArea'
 import { HeaderBackAction } from './actions/HeaderBackAction'
 import { HeaderTitle } from './areas/HeaderTitle'
 
-type Props = {
+export type HeaderWithBackNavigationProps = {
   /**
    * Define a header title.
    **/
@@ -16,10 +16,10 @@ type Props = {
   onBack?: () => void
 }
 
-export function HeaderBackWithoutAction({
+export function HeaderWithBackNavigation({
   title,
   onBack,
-}: Props): ReactElement {
+}: HeaderWithBackNavigationProps): ReactElement {
   const router = useRouter()
 
   return (

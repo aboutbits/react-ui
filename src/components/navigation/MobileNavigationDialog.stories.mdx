@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconInbox from '@aboutbits/react-material-icons/dist/IconInbox'
 import IconContacts from '@aboutbits/react-material-icons/dist/IconContacts'
-import { HeaderMain } from '../header'
+import { Header } from '../header'
 import { NavigationProvider } from './NavigationContext'
 import { MobileNavigationDialog } from './MobileNavigationDialog'
 import { NavigationItemLink } from './NavigationItemLink'
@@ -23,7 +23,7 @@ export const Template = ({ ...args }) => {
   return (
     <NavigationProvider>
       <div>
-        <HeaderMain title="Home" />
+        <Header title="Home" />
         <MobileNavigationDialog {...args} dialogLabel="Mobile Menu">
           <Navigation navLabel={'Main Navigation'} className={'mt-14'}>
             <NavigationItemLink content={'Inbox'} icon={IconInbox} href={'/'} />
