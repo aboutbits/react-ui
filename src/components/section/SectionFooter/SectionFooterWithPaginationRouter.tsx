@@ -1,28 +1,28 @@
 import { ReactElement } from 'react'
-import { PaginationInMemory, PaginationInMemoryProps } from '../index'
-import { SectionFooter } from '../../section'
+import { SectionFooter } from '../'
+import { PaginationRouter, PaginationRouterProps } from '../../pagination'
 
-export function SectionFooterWithPaginationInMemory({
+export function SectionFooterWithPaginationRouter({
   page,
   size,
   total,
-  onChangePage,
   config,
   className,
-}: PaginationInMemoryProps): ReactElement | null {
+  linkProps,
+}: PaginationRouterProps): ReactElement | null {
   if (total <= size) {
     return null
   }
 
   return (
     <SectionFooter>
-      <PaginationInMemory
+      <PaginationRouter
         page={page}
         size={size}
         total={total}
-        onChangePage={onChangePage}
         config={config}
         className={className}
+        linkProps={linkProps}
       />
     </SectionFooter>
   )
