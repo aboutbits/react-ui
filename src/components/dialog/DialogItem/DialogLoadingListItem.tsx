@@ -4,12 +4,12 @@ import { LoadingBar } from '../../loading'
 import { DialogListItem } from './DialogListItem'
 
 export function DialogLoadingListItem(): ReactElement {
-  const { loading } = useTheme()
+  const { dialog } = useTheme()
 
   return (
     <DialogListItem>
-      <LoadingBar className={loading.listItem.start.base} />
-      <LoadingBar className={loading.listItem.end.base} />
+      <LoadingBar className={dialog.loading.listItem.start.base} />
+      <LoadingBar className={dialog.loading.listItem.end.base} />
     </DialogListItem>
   )
 }
