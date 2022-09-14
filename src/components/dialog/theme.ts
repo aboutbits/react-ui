@@ -108,4 +108,14 @@ export default {
       lg: 'sm:flex-row',
     },
   },
+  loading: {
+    listItem: {
+      start: {
+        base: 'p-4 mr-4 w-full',
+      },
+      end: {
+        base: 'p-4 w-12',
+      },
+    },
+  },
 }

@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+
+import { SectionLoadingListItem } from './SectionLoadingListItem'
+
+<Meta
+  title="Components/Section/SectionLoadingListItem"
+  component={SectionLoadingListItem}
+/>
+
+# SectionLoadingListItem
+
+This component can be used as placeholders for items during the fetch process. It is mainly used together with [SectionContenListLoading](/docs/components-section-sectioncontentlistloading--default-story) to generate a placeholder for lists during the fetch process.
+
+export const Template = ({ ...args }) => <SectionLoadingListItem {...args} />
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Theme
+
+- `section.loading.listItem.start.base`: Define the padding, and the width for the start (left) loading bar
+- `section.loading.listItem.end.base`: Define the padding, and the width for the end (right) loading bar.
