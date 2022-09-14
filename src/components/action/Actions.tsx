@@ -9,7 +9,7 @@ export enum ActionsPosition {
   end = 'end',
 }
 
-type ActionsProps = ClassNameProps & {
+export type ActionsProps = ClassNameProps & {
   /**
    * Defines the position of the actions.
    **/

@@ -4,7 +4,6 @@ import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { useState } from 'react'
-import { Actions } from '../components/action'
 import {
   Dialog,
   DialogHeaderWithClose,
@@ -33,7 +32,7 @@ import {
   SectionFilter,
   SectionSearch,
   SectionListItemButton,
-  SectionFooter,
+  SectionFooterWithActions,
 } from '../components/section'
 import { SectionFooterWithPaginationInMemory } from '../components/pagination'
 import { Select, Variant as InputVariant } from '../components/form'
@@ -329,14 +328,12 @@ export const TemplateWithSubtitle = () => {
         <UserList role="USER" />
         <SubsectionTitle>Admins</SubsectionTitle>
         <UserList role="ADMIN" />
-        <SectionFooter>
-          <Actions>
-            <Button>Submit</Button>
-            <Button variant={ButtonVariant.ghost} className="lg:order-first">
-              Cancel
-            </Button>
-          </Actions>
-        </SectionFooter>
+        <SectionFooterWithActions>
+          <Button>Submit</Button>
+          <Button variant={ButtonVariant.ghost} className="lg:order-first">
+            Cancel
+          </Button>
+        </SectionFooterWithActions>
       </SectionContainer>
     </Section>
   )

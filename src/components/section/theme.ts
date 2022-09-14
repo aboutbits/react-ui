@@ -77,7 +77,7 @@ export default {
       md: 'gap-x-6',
     },
   },
-  footer: {
+  footerArea: {
     base: 'px-4 md:px-6 py-4 bg-neutral-100 border-t border-neutral-200 text-xs',
   },
 }

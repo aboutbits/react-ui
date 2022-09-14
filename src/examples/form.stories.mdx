@@ -9,11 +9,10 @@ import {
   Section,
   SectionContainer,
   SectionHeader,
-  SectionFooter,
+  SectionFooterWithActions,
   SectionContent,
   Layout,
 } from '../components/section'
-import { Actions } from '../components/action'
 import { SubmitButton } from '../components/button'
 import { i18n, locales } from './i18n'
 
@@ -121,11 +120,9 @@ export const Template = ({ title }) => {
                   label="Bio"
                 />
               </SectionContent>
-              <SectionFooter>
-                <Actions>
-                  <SubmitButton>Save</SubmitButton>
-                </Actions>
-              </SectionFooter>
+              <SectionFooterWithActions>
+                <SubmitButton>Save</SubmitButton>
+              </SectionFooterWithActions>
             </SectionContainer>
           </Section>
         </Form>
