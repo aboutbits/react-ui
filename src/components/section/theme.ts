@@ -58,7 +58,7 @@ export default {
     },
   },
   headerTitle: {
-    base: 'pb-2 flex-1 text-base text-neutral-800',
+    base: 'py-2 flex-1 text-base text-neutral-800',
   },
   headerRow: {
     base: '',
