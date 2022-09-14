@@ -13,7 +13,7 @@ export default {
     base: 'flex items-center ml-2 lg:ml-3 space-x-3 lg:space-x-4',
   },
   title: {
-    base: 'flex-1 text-3xl font-medium lg:text-4xl truncate',
+    base: 'flex-1 text-3xl leading-10 font-medium lg:text-4xl lg:leading-12 truncate',
   },
   leftActionIcon: {
     base: '-ml-2 lg:-ml-4',
