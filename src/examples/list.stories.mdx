@@ -19,8 +19,9 @@ import {
 } from '../components/button'
 import {
   Section,
-  SectionTitle,
   SectionContainer,
+  SectionHeaderArea,
+  SectionHeaderTitle,
   SubsectionTitle,
   SectionContentList,
   SectionHeader,
@@ -55,9 +56,7 @@ export const TemplateDefault = ({ numberOfTotalItems }) => {
   )
   return (
     <Section>
-      <SectionHeader>
-        <SectionTitle>List of users</SectionTitle>
-      </SectionHeader>
+      <SectionHeader title="List of users" />
       <SectionContainer>
         {content.length === 0 ? (
           <SectionContentEmpty
@@ -151,9 +150,9 @@ export const TemplateComplexList = ({
   )
   return (
     <Section>
-      <SectionHeader>
+      <SectionHeaderArea>
         <SectionHeaderRow>
-          <SectionTitle>List of users</SectionTitle>
+          <SectionHeaderTitle>List of users</SectionHeaderTitle>
           <ButtonIcon
             label="Add"
             icon={IconAdd}
@@ -183,7 +182,7 @@ export const TemplateComplexList = ({
           </SectionHeaderRow>
         </SectionFilter>
         <SectionHeaderSpacer />
-      </SectionHeader>
+      </SectionHeaderArea>
       <SectionContainer>
         {content.length === 0 ? (
           <SectionContentEmpty
@@ -251,9 +250,9 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
         initialValues={filter}
         onSubmit={(values) => setFilter(values)}
       >
-        <SectionHeader>
+        <SectionHeaderArea>
           <SectionHeaderRow>
-            <SectionTitle>List of users</SectionTitle>
+            <SectionHeaderTitle>List of users</SectionHeaderTitle>
             <SectionSearch className="hidden md:block" />
           </SectionHeaderRow>
           <SectionHeaderRow
@@ -263,7 +262,7 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
             <SectionSearch />
           </SectionHeaderRow>
           <SectionHeaderSpacer className="md:hidden" />
-        </SectionHeader>
+        </SectionHeaderArea>
       </SectionFilter>
       <SectionContainer>
         {content.length === 0 ? (
@@ -324,9 +323,7 @@ export const TemplateWithSubtitle = () => {
   )
   return (
     <Section>
-      <SectionHeader>
-        <SectionTitle>List of users</SectionTitle>
-      </SectionHeader>
+      <SectionHeader title="List of users" />
       <SectionContainer>
         <SubsectionTitle>Users</SubsectionTitle>
         <UserList role="USER" />
@@ -453,9 +450,9 @@ export const TemplateListWithFilterDialog = ({
         </Dialog>
       )}
       <Section>
-        <SectionHeader>
+        <SectionHeaderArea>
           <SectionHeaderRow>
-            <SectionTitle>List of users</SectionTitle>
+            <SectionHeaderTitle>List of users</SectionHeaderTitle>
             {isDialogEnabled ? (
               <SectionHeaderGroup>
                 <div className="relative flex items-center">
@@ -486,7 +483,7 @@ export const TemplateListWithFilterDialog = ({
               </SectionFilter>
             )}
           </SectionHeaderRow>
-        </SectionHeader>
+        </SectionHeaderArea>
         <SectionContainer>
           {content.length === 0 ? (
             <SectionContentEmpty

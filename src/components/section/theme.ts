@@ -46,7 +46,7 @@ export default {
   subsectionTitle: {
     base: 'bg-neutral-100 px-4 md:px-6 py-1 border-b border-t first:border-t-none border-neutral-200 text-sm text-neutral-600',
   },
-  header: {
+  headerArea: {
     base: 'pb-2 flex flex-col gap-y-2',
   },
   headerSpacer: {
@@ -57,7 +57,7 @@ export default {
       xl: 'h-6',
     },
   },
-  title: {
+  headerTitle: {
     base: 'pb-2 flex-1 text-base text-neutral-800',
   },
   headerRow: {

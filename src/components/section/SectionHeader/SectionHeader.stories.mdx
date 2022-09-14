@@ -1,24 +1,18 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { SectionHeader } from './SectionHeader'
-import { SectionTitle } from './SectionTitle'
 
 <Meta title="Components/Section/SectionHeader" component={SectionHeader} />
 
 # SectionHeader
 
-This component defines the header container of a section.
+This component can be used to create a section header swiftly.
 
-export const Template = ({ children, ...args }) => (
-  <SectionHeader {...args}>{children}</SectionHeader>
-)
+It leverages the components [SectionHeaderArea](/docs/components-section-sectionheaderara--default-story) and [SectionHeaderTitle](/docs/components-section-sectionheadertitle--default-story).
+
+export const Template = ({ ...args }) => <SectionHeader {...args} />
 
 <Canvas>
-  <Story
-    name="Default"
-    args={{
-      children: <SectionTitle>Profile information</SectionTitle>,
-    }}
-  >
+  <Story name="Default" args={{ title: 'Header Title' }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -26,7 +20,3 @@ export const Template = ({ children, ...args }) => (
 ### Props
 
 <ArgsTable story="Default" />
-
-### Theme
-
-- `section.header.base`: Define the base styles for the section heading.

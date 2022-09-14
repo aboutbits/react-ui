@@ -9,7 +9,6 @@ import {
   Section,
   SectionContainer,
   SectionHeader,
-  SectionTitle,
   SectionFooter,
   SectionContent,
   Layout,
@@ -62,9 +61,7 @@ export const Template = ({ title }) => {
       >
         <Form>
           <Section>
-            <SectionHeader>
-              <SectionTitle>{title}</SectionTitle>
-            </SectionHeader>
+            <SectionHeader title={title} />
             <SectionContainer>
               <SectionContent layout={Layout.twoColumnGrid}>
                 <Input

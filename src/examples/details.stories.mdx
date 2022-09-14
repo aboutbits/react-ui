@@ -8,7 +8,6 @@ import {
   SectionContent,
   SectionDescriptionItem,
   SectionHeader,
-  SectionTitle,
 } from '../components/section'
 
 <Meta title="Examples/Details" />
@@ -22,9 +21,7 @@ export const Template = ({ title }) => {
   return (
     <ContentArea>
       <Section>
-        <SectionHeader>
-          <SectionTitle>{title}</SectionTitle>
-        </SectionHeader>
+        <SectionHeader title={title} />
         <SectionContainer>
           <SectionContent layout={Layout.oneColumnGrid}>
             <SectionDescriptionItem
@@ -61,9 +58,7 @@ export const TwoColumnTemplate = ({ title }) => {
   return (
     <ContentArea>
       <Section>
-        <SectionHeader>
-          <SectionTitle>{title}</SectionTitle>
-        </SectionHeader>
+        <SectionHeader title={title} />
         <SectionContainer>
           <SectionContent layout={Layout.twoColumnGrid}>
             <SectionDescriptionItem

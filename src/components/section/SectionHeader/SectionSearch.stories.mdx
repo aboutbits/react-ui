@@ -1,20 +1,20 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
-import { Section, SectionHeader, SectionFilter, SectionSearch } from '../'
+import { Section, SectionHeaderArea, SectionFilter, SectionSearch } from '../'
 
 <Meta title="Components/Section/SectionSearch" component={SectionSearch} />
 
 # SectionSearch
 
-This component is used to add a standardized search input to the `SectionFilter` inside of a `SectionHeader`.
+This component is used to add a standardized search input to the `SectionFilter` inside of a `SectionHeaderArea`.
 
 export const Template = ({ ...args }) => (
   <Section>
-    <SectionHeader>
+    <SectionHeaderArea>
       <SectionFilter initialValues={{ search: '' }} onSubmit={action('filter')}>
         <SectionSearch {...args} />
       </SectionFilter>
-    </SectionHeader>
+    </SectionHeaderArea>
   </Section>
 )
 
