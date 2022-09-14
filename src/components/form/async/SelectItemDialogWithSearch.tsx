@@ -1,24 +1,37 @@
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
+import { Actions } from '@aboutbits/react-pagination/dist/types'
 import { AsyncView } from '@aboutbits/react-toolbox'
-import React, { ReactElement, ReactNode } from 'react'
-import { useInternationalization } from '../../../framework'
-import { Dialog, DialogContent } from '../../dialog'
-import { LoadingListItem } from '../../loading'
+import { Form, Formik } from 'formik'
+import { ReactElement, ReactNode } from 'react'
+import { useInternationalization, useTheme } from '../../../framework'
 import {
-  PaginationInMemoryProps,
-  SectionFooterWithPaginationInMemory,
-} from '../../pagination'
-import {
-  SectionContentError,
-  SectionContentList,
-  SectionListItemButton,
-} from '../../section'
-import { SectionContentMessage } from '../../section/Section/SectionContentMessage'
-import { DialogHeaderWithSearch } from './DialogHeaderWithSearch'
+  Dialog,
+  DialogContentArea,
+  DialogContentEmpty,
+  DialogContentError,
+  DialogHeaderArea,
+  DialogHeaderCloseAction,
+  DialogHeaderTitle,
+  DialogPosition,
+  DialogProps,
+} from '../../dialog'
+import { DialogFooterWithPaginationInMemory } from '../../dialog/DialogFooter/DialogFooterWithPaginationInMemory'
+import { DialogContentList } from '../../dialog/Dialog/DialogContentList'
+import { DialogListItemButton } from '../../dialog/DialogItem/DialogListItemButton'
+import { PaginationInMemoryProps } from '../../pagination'
+import { FormikAutoSubmit } from '../FormikAutoSubmit'
+import { Input } from '../Input'
+import { Variant } from '../types'
+import { DialogContentListLoading } from '../../dialog/Dialog/DialogContentListLoading'
+import { DialogHeaderRow } from '../../dialog/DialogHeader/DialogHeaderRow'
 
-export type SearchQueryParameters = {
-  search?: string
-} & PaginationQueryParameters
+type FilterParameters = {
+  search: string
+}
+
+export type SearchQueryParameters = Partial<FilterParameters> &
+  PaginationQueryParameters
 
 export type PaginationQueryParameters = Pick<
   PaginationInMemoryProps,
@@ -32,9 +45,7 @@ export type PaginatedResponse<T> = {
   perPage: number
 }
 
-export type Props<ItemType, Error> = {
-  onDismiss: (event?: React.SyntheticEvent<Element, Event> | undefined) => void
-  isOpen: boolean
+export type SelectItemDialogWithSearchProps<ItemType, Error> = DialogProps & {
   onConfirm: (item: ItemType) => void
   useGetData: (params: SearchQueryParameters & PaginationQueryParameters) => {
     data?: PaginatedResponse<ItemType>
@@ -42,28 +53,30 @@ export type Props<ItemType, Error> = {
   }
   renderListItem: (item: ItemType) => ReactNode
   renderErrorMessage: (error: Error) => ReactNode
-  dialogTitle: string
-  dialogLabel: string
   noSearchResults: string
   paginationConfig: { indexType: number }
+  numberOfLoadingItems?: number
+  title: ReactNode
+}
+
+const initialValues: FilterParameters = {
+  search: '',
 }
 
 export function SelectItemDialogWithSearch<ItemType, Error>({
-  onDismiss,
   onConfirm,
-  isOpen,
   useGetData,
   renderListItem,
   renderErrorMessage,
-  dialogTitle,
-  dialogLabel,
   noSearchResults,
   paginationConfig,
-}: Props<ItemType, Error>): ReactElement {
-  const internationalization = useInternationalization()
+  numberOfLoadingItems = 5,
+  title,
+  ...props
+}: SelectItemDialogWithSearchProps<ItemType, Error>): ReactElement {
   const { queryParameters, page, size, actions } = useQueryAndPagination({
     ...paginationConfig,
-    defaultQueryParameters: { search: '' },
+    defaultQueryParameters: initialValues,
   })
 
   const { data, error } = useGetData({
@@ -73,69 +86,123 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
   })
 
   const searching = queryParameters.search !== ''
+
+  return (
+    <Dialog mobilePosition={DialogPosition.fullscreen} {...props}>
+      <>
+        <DialogHeaderArea>
+          <DialogHeaderRow>
+            <DialogHeaderCloseAction onClick={props.onDismiss} />
+            <DialogHeaderTitle>{title}</DialogHeaderTitle>
+          </DialogHeaderRow>
+          <DialogHeaderRow className="my-2">
+            <SelectItemDialogSearch actions={actions} />
+          </DialogHeaderRow>
+        </DialogHeaderArea>
+        <AsyncView
+          data={data}
+          error={error}
+          renderSuccess={(data) => (
+            <SelectItemDialogSuccess
+              data={data}
+              searching={searching}
+              actions={actions}
+              onConfirm={onConfirm}
+              renderListItem={renderListItem}
+              paginationConfig={paginationConfig}
+              noSearchResults={noSearchResults}
+            />
+          )}
+          renderLoading={
+            <DialogContentListLoading
+              numberOfItems={numberOfLoadingItems}
+              enableScrollLayout={false}
+            />
+          }
+          renderError={(error) => (
+            <DialogContentError text={renderErrorMessage(error)} />
+          )}
+        />
+      </>
+    </Dialog>
+  )
+}
+
+export function SelectItemDialogSearch({
+  actions,
+}: {
+  actions: Actions
+}): ReactElement {
+  const internationalization = useInternationalization()
+
+  return (
+    <Formik initialValues={initialValues} onSubmit={actions.updateQuery}>
+      <Form className="flex-1">
+        <FormikAutoSubmit />
+        <Input
+          name="search"
+          variant={Variant.soft}
+          iconStart={IconSearch}
+          placeholder={internationalization.translate(
+            'shared.search.placeholder'
+          )}
+        />
+      </Form>
+    </Formik>
+  )
+}
+
+export function SelectItemDialogSuccess<ItemType, Error>({
+  data,
+  actions,
+  searching,
+  onConfirm,
+  renderListItem,
+  paginationConfig,
+  noSearchResults,
+}: {
+  data: PaginatedResponse<ItemType>
+  actions: Actions
+  searching: boolean
+} & Pick<
+  SelectItemDialogWithSearchProps<ItemType, Error>,
+  'onConfirm' | 'renderListItem' | 'paginationConfig' | 'noSearchResults'
+>): ReactElement {
+  const internationalization = useInternationalization()
+  const { form } = useTheme()
+
   const empty = searching
     ? internationalization.translate('shared.select.search.empty')
     : noSearchResults
 
-  return (
-    <Dialog isOpen={isOpen} title={dialogLabel} onDismiss={onDismiss}>
-      <>
-        <DialogHeaderWithSearch
-          onDismiss={onDismiss}
-          title={dialogTitle}
-          iconLabel={internationalization.translate('shared.search.label')}
-          search={queryParameters.search}
-          actions={{
-            search: (value) => actions.updateQuery({ search: value }),
-            clear: actions.clear,
-          }}
-        />
-        <DialogContent>
-          <AsyncView
-            data={data}
-            error={error}
-            renderLoading={
-              <SectionContentList>
-                <LoadingListItem />
-                <LoadingListItem />
-                <LoadingListItem />
-              </SectionContentList>
-            }
-            renderSuccess={(data) => {
-              return data.items.length === 0 ? (
-                <SectionContentMessage text={empty} />
-              ) : (
-                <>
-                  <SectionContentList>
-                    {data.items.map((item, index) => (
-                      <SectionListItemButton
-                        key={index}
-                        onClick={() => {
-                          onConfirm(item)
-                        }}
-                      >
-                        <div className="flex flex-1 justify-between">
-                          {renderListItem(item)}
-                        </div>
-                      </SectionListItemButton>
-                    ))}
-                  </SectionContentList>
-                  <SectionFooterWithPaginationInMemory
-                    page={data.currentPage}
-                    size={data.perPage}
-                    total={data.total}
-                    onChangePage={actions.setPage}
-                    config={paginationConfig}
-                  />
-                </>
-              )
-            }}
-            renderError={(error) => (
-              <SectionContentError text={renderErrorMessage(error)} />
-            )}
-          />
-        </DialogContent>
-      </>
-    </Dialog>
+  return data.items.length === 0 ? (
+    <DialogContentEmpty text={empty} />
+  ) : (
+    <>
+      <DialogContentArea
+        enableScrollLayout={false}
+        className={form.selectItem.dialogContentArea.base}
+      >
+        <DialogContentList>
+          {data.items.map((item, index) => (
+            <DialogListItemButton
+              key={index}
+              onClick={() => {
+                onConfirm(item)
+              }}
+            >
+              {renderListItem(item)}
+            </DialogListItemButton>
+          ))}
+        </DialogContentList>
+      </DialogContentArea>
+      <DialogFooterWithPaginationInMemory
+        page={data.currentPage}
+        size={data.perPage}
+        total={data.total}
+        onChangePage={actions.setPage}
+        config={paginationConfig}
+      />
+    </>
   )
 }

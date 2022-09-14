@@ -15,13 +15,13 @@ import {
   title="Components/Form/SelectItem"
   component={SelectItem}
   decorators={[
-    (Story) => {
+    (Story, context) => {
       const validationSchema = Yup.object().shape({
         userId: Yup.string().required('Required'),
       })
       return (
         <Formik
-          initialValues={{ userId: '3' }}
+          initialValues={{ userId: context.parameters?.initialUserId || '' }}
           validateOnChange={true}
           validationSchema={validationSchema}
           onSubmit={(values) => action('onSubmit')(values)}
@@ -91,6 +91,9 @@ For customization of the styles please checkout the [theme section](/docs/compon
       renderListItem: (item) => item.name,
       renderErrorMessage: (error) => error.message,
       paginationConfig: { indexType: IndexType.ZERO_BASED },
+    }}
+    parameters={{
+      initialUserId: 3,
     }}
   >
     {TemplateNormal.bind({})}

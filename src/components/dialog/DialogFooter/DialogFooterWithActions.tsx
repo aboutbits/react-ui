@@ -3,7 +3,7 @@ import {
   DialogFooterActions,
   DialogFooterActionsProps,
 } from './DialogFooterActions'
-import { DialogFooterArea } from './areas/DialogFooterArea'
+import { DialogFooterArea } from './DialogFooterArea'
 
 export type DialogFooterWithActionsProps = DialogFooterActionsProps
 

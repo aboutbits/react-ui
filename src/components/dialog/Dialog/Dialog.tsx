@@ -1,25 +1,25 @@
 import { DialogContent, DialogOverlay, DialogOverlayProps } from '@reach/dialog'
 import classNames from 'classnames'
 import { ReactElement, useRef } from 'react'
-import { useTheme } from '../../framework'
-import { ClassNameProps } from '../types'
-import { DialogContext } from './DialogContext'
-import { DialogPosition, DialogSize } from './types'
+import { useTheme } from '../../../framework'
+import { ClassNameProps } from '../../types'
+import { DialogContext } from '../DialogContext'
+import { DialogPosition, DialogSize } from '../types'
 
 export type DialogProps = ClassNameProps &
   DialogOverlayProps & {
-    title: string
     size?: DialogSize
     children?: ReactElement
     mobilePosition?: DialogPosition
     desktopPosition?: DialogPosition
+    'aria-label'?: string
   }
 
 export function Dialog({
-  title,
   size = DialogSize.md,
   mobilePosition = DialogPosition.center,
   desktopPosition = DialogPosition.center,
+  'aria-label': ariaLabel,
   className,
   children,
   ...props
@@ -40,7 +40,7 @@ export function Dialog({
       >
         <DialogContent
           ref={initialFocusRef}
-          aria-label={title}
+          aria-label={ariaLabel}
           className={classNames(
             dialog.dialog.base,
             dialog.dialog.mobilePositionSize[mobilePosition].base,

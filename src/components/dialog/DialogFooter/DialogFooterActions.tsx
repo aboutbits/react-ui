@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import { ReactElement, ReactNode, useContext } from 'react'
-import { useTheme } from '../../framework'
-import { ClassNameProps } from '../types'
-import { DialogContext } from './DialogContext'
+import { useTheme } from '../../../framework'
+import { ClassNameProps } from '../../types'
+import { DialogContext } from '../DialogContext'
 
 export enum DialogFooterActionsPosition {
   start = 'start',
