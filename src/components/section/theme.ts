@@ -80,4 +80,22 @@ export default {
   footerArea: {
     base: 'px-4 md:px-6 py-4 bg-neutral-100 border-t border-neutral-200 text-xs',
   },
+  loading: {
+    listItem: {
+      start: {
+        base: 'p-4 mr-4 w-full',
+      },
+      end: {
+        base: 'p-4 w-12',
+      },
+    },
+    descriptionItem: {
+      upper: {
+        base: 'p-1.5 w-40',
+      },
+      lower: {
+        base: 'p-2.5 pb-2.5-1px w-full mt-1 mb-1',
+      },
+    },
+  },
 }

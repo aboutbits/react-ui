@@ -1,17 +1,17 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 
-import { Layout } from '../section'
+import { Layout } from '../'
 import { SectionContentLoadingDetails } from './SectionContentLoadingDetails'
 
 <Meta
-  title="Components/Loading/SectionContentLoadingDetails"
+  title="Components/Section/SectionContentLoadingDetails"
   component={SectionContentLoadingDetails}
 />
 
 # SectionContentLoadingDetails
 
 The component is used during the fetch process as a placeholder.
-It will display the specified number of [LoadingDescriptionItems](/docs/components-loading-loadingdescriptionitem--default-story) wrapped in a [SectionContent](/docs/components-section-sectioncontent--default-story).
+It will display the specified number of [SectionLoadingDescriptionItems](/docs/components-section-sectionloadingdescriptionitem--default-story) wrapped in a [SectionContent](/docs/components-section-sectioncontent--default-story).
 
 export const Template = ({ ...args }) => (
   <SectionContentLoadingDetails {...args} />

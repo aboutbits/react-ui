@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react'
-import { SectionContent, SectionContentProps } from '../section'
-import { LoadingInput } from '.'
+import { ReactElement } from 'react'
+import { LoadingInput } from '../../loading'
+import { SectionContent, SectionContentProps } from './SectionContent'
 
 export type SectionContentLoadingFormProps = {
   /**
