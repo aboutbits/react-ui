@@ -1,6 +1,9 @@
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { actions } from '@storybook/addon-actions'
+import { Tone } from '../types'
+import { Size, Variant } from './types'
 import { ButtonIconLink } from './ButtonIconLink'
 
 <Meta title="Components/Button/ButtonIconLink" component={ButtonIconLink} />
@@ -12,7 +15,36 @@ export const Template = ({ ...args }) => (
 )
 
 <Canvas>
-  <Story name="Default" args={{ href: '#', icon: IconAdd, disabled: false }}>
+  <Story
+    name="Default"
+    args={{
+      href: '#',
+      disabled: false,
+      variant: Variant.solid,
+      size: Size.md,
+      tone: Tone.primary,
+      icon: 'Add',
+    }}
+    argTypes={{
+      variant: {
+        options: Object.values(Variant),
+        control: { type: 'radio' },
+      },
+      size: {
+        options: Object.values(Size),
+        control: { type: 'radio' },
+      },
+      tone: {
+        options: Object.values(Tone),
+        control: { type: 'select' },
+      },
+      icon: {
+        options: ['Add', 'Info'],
+        mapping: { Add: IconAdd, Info: IconInfo },
+        control: { type: 'select' },
+      },
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
