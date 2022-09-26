@@ -1,27 +1,28 @@
-import { ReactNode } from 'react'
+import { ComponentType, ReactNode } from 'react'
 
 import classNames from 'classnames'
 import { Button } from '../../button'
 import { useTheme, useInternationalization } from '../../../framework'
 import { ClassNameProps } from '../../types'
+import { Warning } from '../../../svg/Warning'
+import { IconProps } from '../../../svg/types'
 
-type Props = {
-  /**
-   * Warning icon
-   **/
-  icon: ReactNode
+export type ContentErrorProps = {
+  icon?: ComponentType<IconProps>
+  children?: ReactNode
 } & ClassNameProps
 
-export const ContentError: React.FC<Props> = ({
-  icon,
+export function ContentError({
+  icon: Icon = Warning,
   className,
   children,
-}) => {
+}: ContentErrorProps) {
   const { content } = useTheme()
   const internationalization = useInternationalization()
+
   return (
     <div className={classNames(content.error.base, className)}>
-      <div className={content.error.icon.base}>{icon}</div>
+      <Icon className={content.error.icon.base} />
       <div className={content.error.title.base}>
         {internationalization.translate('shared.error.title')}
       </div>
