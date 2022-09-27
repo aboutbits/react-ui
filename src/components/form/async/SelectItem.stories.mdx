@@ -60,6 +60,7 @@ npm install @aboutbits/react-toolbox @aboutbits/react-pagination
       renderListItem: (item) => item.name,
       renderErrorMessage: (error) => error.message,
       paginationConfig: { indexType: IndexType.ZERO_BASED },
+      dialogProps: { overlayClassName: 'z-10' },
     }}
   >
     {TemplateNormal.bind({})}
