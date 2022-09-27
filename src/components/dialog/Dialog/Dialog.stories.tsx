@@ -39,6 +39,7 @@ const DialogDecorator: DecoratorFn = (Story, context) => {
           isOpen,
           onDismiss: () => setIsOpen(false),
           content: context.parameters.content,
+          overlayClassName: 'z-10',
         }}
       />
     </div>
