@@ -20,6 +20,9 @@ export const Template = ({ children, ...args }) => (
     args={{
       children: <SectionContent>Default Section Container</SectionContent>,
     }}
+    argTypes={{
+      children: { control: false },
+    }}
   >
     {Template.bind({})}
   </Story>

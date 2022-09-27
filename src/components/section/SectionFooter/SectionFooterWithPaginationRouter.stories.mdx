@@ -10,7 +10,7 @@ import { SectionFooterWithPaginationRouter } from './SectionFooterWithPagination
 
 This component can conveniently be used to add a pagination with a section footer. This component leverages on [SectionFooter](/docs/components-section-sectionfooter--section-footer) and [PaginationRouter](/docs/components-pagination-paginationrouter--default-story).
 
-export const Template = () => {
+export const Template = (args) => {
   const currentParams = new URLSearchParams(window.parent.location.search)
   const currentPage = parseInt(currentParams.get('page'), 10) || 1
   return (
@@ -18,17 +18,18 @@ export const Template = () => {
       size={10}
       page={currentPage}
       total={60}
+      {...args}
     />
   )
 }
 
 <Canvas>
-  <Story name="Section Footer with Pagination">{Template.bind({})}</Story>
+  <Story name="Default">{Template.bind({})}</Story>
 </Canvas>
 
 ### Props
 
-<ArgsTable story="Section Footer with Pagination" />
+<ArgsTable story="Default" />
 
 ### Theme
 

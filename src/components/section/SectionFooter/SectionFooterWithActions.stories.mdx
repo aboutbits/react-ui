@@ -21,6 +21,9 @@ export const Template = ({ children, ...args }) => (
   <Story
     name="Default"
     args={{ children: <SubmitButton>Submit</SubmitButton> }}
+    argTypes={{
+      children: { control: false },
+    }}
   >
     {Template.bind({})}
   </Story>

@@ -24,10 +24,20 @@ export const Template = ({ ...args }) => <SectionContentMessage {...args} />
   <Story
     name="Default"
     args={{
-      icon: IconList,
+      icon: 'List',
       title: 'No users found',
       text: 'There are no items in this list at the moment.',
       tone: Tone.neutral,
+    }}
+    argTypes={{
+      icon: {
+        options: ['None', 'List'],
+        mapping: {
+          None: undefined,
+          List: IconList,
+        },
+        control: { type: 'select' },
+      },
     }}
   >
     {Template.bind({})}

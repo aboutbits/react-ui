@@ -1,5 +1,4 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs'
-
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { SectionLoadingListItem } from './SectionLoadingListItem'
 
 <Meta
@@ -17,7 +16,12 @@ export const Template = ({ ...args }) => <SectionLoadingListItem {...args} />
   <Story name="Default">{Template.bind({})}</Story>
 </Canvas>
 
+### Props
+
+<ArgsTable story="Default" />
+
 ### Theme
 
+- `section.loading.listItem.base`: Define the style for the section list item
 - `section.loading.listItem.start.base`: Define the padding, and the width for the start (left) loading bar
 - `section.loading.listItem.end.base`: Define the padding, and the width for the end (right) loading bar.

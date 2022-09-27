@@ -8,7 +8,7 @@ import { Section, SectionHeaderArea, SectionFilter, SectionSearch } from '../'
 
 This component is used to add a standardized search input to the `SectionFilter` inside of a `SectionHeaderArea`.
 
-export const Template = ({ ...args }) => (
+export const Template = (args) => (
   <Section>
     <SectionHeaderArea>
       <SectionFilter initialValues={{ search: '' }} onSubmit={action('filter')}>

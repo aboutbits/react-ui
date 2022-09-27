@@ -14,7 +14,20 @@ export const Template = ({ children, ...args }) => (
 )
 
 <Canvas>
-  <Story name="Default" args={{ children: <p>Default Section Content</p> }}>
+  <Story
+    name="Default"
+    args={{
+      children: (
+        <>
+          <p>Section Content 1</p>
+          <p>Section Content 2</p>
+        </>
+      ),
+    }}
+    argTypes={{
+      children: { control: false },
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
