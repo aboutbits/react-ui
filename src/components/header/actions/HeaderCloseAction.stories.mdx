@@ -6,7 +6,6 @@ import { HeaderCloseAction } from './HeaderCloseAction'
 <Meta
   title="Components/Header/HeaderCloseAction"
   component={HeaderCloseAction}
-  argTypes={{ onClick: { action: 'onClick' } }}
 />
 
 # HeaderCloseAction
@@ -31,6 +30,7 @@ export const Template = (args) => <HeaderCloseAction {...args} />
         },
         control: { type: 'select' },
       },
+      onClick: { control: false },
     }}
   >
     {Template.bind({})}

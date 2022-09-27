@@ -5,7 +5,6 @@ import { HeaderWithBackNavigation } from './HeaderWithBackNavigation'
 <Meta
   title="Components/Header/HeaderWithBackNavigation"
   component={HeaderWithBackNavigation}
-  argTypes={{ onBack: { action: 'onBack' } }}
 />
 
 # HeaderWithBackNavigation
@@ -23,7 +22,11 @@ export const Template = (args) => {
 }
 
 <Canvas>
-  <Story name="Default" args={{ title: 'Header Title' }}>
+  <Story
+    name="Default"
+    args={{ title: 'Header Title' }}
+    argTypes={{ onBack: { control: false } }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

@@ -6,7 +6,6 @@ import { HeaderRightActionIcon } from './HeaderRightActionIcon'
 <Meta
   title="Components/Header/HeaderRightActionIcon"
   component={HeaderRightActionIcon}
-  argTypes={{ onClick: { action: 'onClick' } }}
 />
 
 # HeaderRightActionIcon
@@ -30,6 +29,7 @@ export const Template = (args) => <HeaderRightActionIcon {...args} />
         },
         control: { type: 'select' },
       },
+      onClick: { control: false },
     }}
   >
     {Template.bind({})}

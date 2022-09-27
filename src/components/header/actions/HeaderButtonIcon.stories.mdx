@@ -3,11 +3,7 @@ import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { HeaderButtonIcon } from './HeaderButtonIcon'
 
-<Meta
-  title="Components/Header/HeaderButtonIcon"
-  component={HeaderButtonIcon}
-  argTypes={{ onClick: { action: 'onClick' } }}
-/>
+<Meta title="Components/Header/HeaderButtonIcon" component={HeaderButtonIcon} />
 
 # HeaderButtonIcon
 
@@ -28,6 +24,7 @@ export const Template = (args) => <HeaderButtonIcon {...args} />
         },
         control: { type: 'select' },
       },
+      onClick: { control: false },
     }}
   >
     {Template.bind({})}

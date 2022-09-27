@@ -8,7 +8,6 @@ import {
 
 <Meta
   title="Components/Section/SectionListItemButton"
-  argTypes={{ onClick: { action: 'onClick' } }}
   component={SectionListItemButton}
 />
 
@@ -21,7 +20,10 @@ export const Template = ({ children, ...args }) => {
 }
 
 <Canvas>
-  <Story name="Default" args={{ children: 'List item button' }}>
+  <Story
+    name="Default"
+    args={{ children: 'List item button', onClick: { control: false } }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
