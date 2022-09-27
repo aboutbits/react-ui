@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { useState } from 'react'
+import { useReducer } from 'react'
 import { Button } from '../../button/Button'
 import { Tone } from '../../types'
 import {
@@ -13,25 +13,34 @@ import {
   argTypes={{
     onConfirm: { action: 'confirmed' },
     onDismiss: { action: 'dismissed' },
+    buttonText: {
+      table: {
+        disable: true,
+      },
+    },
+    buttonTone: {
+      table: {
+        disable: true,
+      },
+    },
   }}
 />
 
 export const Template = ({ buttonText, buttonTone, ...args }) => {
-  const [toggle, setToggle] = useState(false)
+  const [isOpen, toggleIsOpen] = useReducer((state) => !state, false)
   return (
-    <div>
-      {toggle ? (
+    <>
+      <Button tone={buttonTone} onClick={toggleIsOpen}>
+        {buttonText}
+      </Button>
+      {isOpen && (
         <ConfirmationDialog
           {...args}
-          onDismiss={() => setToggle(!toggle)}
-          onConfirm={() => setToggle(!toggle)}
+          onDismiss={toggleIsOpen}
+          onConfirm={toggleIsOpen}
         />
-      ) : (
-        <Button tone={buttonTone} onClick={() => setToggle(!toggle)}>
-          {buttonText}
-        </Button>
       )}
-    </div>
+    </>
   )
 }
 
@@ -53,6 +62,8 @@ It leverages the [Dialog](/docs/components-dialog-dialog--default) component.
       title: 'Confirm reset notification settings',
       buttonText: 'Reset Notification',
       buttonTone: Tone.primary,
+      'aria-label': 'Confirm reset notification settings',
+      overlayClassName: 'z-10',
     }}
   >
     {Template.bind({})}
@@ -62,25 +73,20 @@ It leverages the [Dialog](/docs/components-dialog-dialog--default) component.
 ## Usage
 
 ```jsx
-const [toggle, setToggle] = useState(false)
+const [isOpen, toggleIsOpen] = useReducer((state) => !state, false)
 
 return (
-  <div>
-    {toggle ? (
+  <>
+    <Button onClick={toggleIsOpen}>Reset Notification</Button>
+
+    {isOpen && (
       <ConfirmationDialog
-        dismissButtonText="Cancel"
-        confirmButtonText="Confirm"
-        body="Are you sure you want to send the document?"
-        title="Confirm Save"
-        onDismiss={() => setToggle(!toggle)}
-        onConfirm={() => setToggle(!toggle)}
+        {...args}
+        onDismiss={toggleIsOpen}
+        onConfirm={toggleIsOpen}
       />
-    ) : (
-      <Button tone={buttonTone} onClick={() => setToggle(!toggle)}>
-        {buttonText}
-      </Button>
     )}
-  </div>
+  </>
 )
 ```
 
@@ -109,6 +115,8 @@ The variant is used to change the color used as accent in the component. A use c
       title: 'Confirm Save',
       buttonText: 'Non Critical Variant',
       buttonTone: Tone.primary,
+      'aria-label': 'Confirm Save',
+      overlayClassName: 'z-10',
     }}
   >
     {Template.bind({})}
@@ -123,6 +131,8 @@ The variant is used to change the color used as accent in the component. A use c
       variant: ConfirmationDialogVariant.critical,
       buttonText: 'Critical Variant',
       buttonTone: Tone.critical,
+      'aria-label': 'Delete User',
+      overlayClassName: 'z-10',
     }}
   >
     {Template.bind({})}
