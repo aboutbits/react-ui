@@ -12,7 +12,7 @@ export const Template = (args) => (
   <Section>
     <SectionHeaderArea>
       <SectionFilter initialValues={{ search: '' }} onSubmit={action('filter')}>
-        <SectionSearch {...args} />
+        <SectionSearch {...args} id="search" />
       </SectionFilter>
     </SectionHeaderArea>
   </Section>
