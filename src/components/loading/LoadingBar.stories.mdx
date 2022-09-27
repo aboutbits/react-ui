@@ -8,12 +8,12 @@ import { LoadingBar } from './LoadingBar'
 
 Basic loading component, which is used in all other components to animate the loading process.
 
-export const Template = ({ ...args }) => (
-  <LoadingBar {...args} className="p-4" />
-)
+export const Template = (args) => <LoadingBar {...args} />
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story name="Default" args={{ className: 'p-4' }}>
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props
