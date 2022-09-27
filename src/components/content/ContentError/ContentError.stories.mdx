@@ -1,5 +1,6 @@
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+
+import { Warning } from '../../../svg/Warning'
 import { ContentError } from './ContentError'
 
 <Meta title="Components/Content/ContentError" component={ContentError} />
@@ -9,8 +10,8 @@ import { ContentError } from './ContentError'
 This component renders an error with a reload page button.
 This is very useful if your page has only one section.
 
-export const Template = ({ children, ...args }) => (
-  <ContentError {...args}>{children}</ContentError>
+export const Template = ({ children }) => (
+  <ContentError icon={<Warning />}>{children}</ContentError>
 )
 
 <Canvas>
@@ -18,17 +19,6 @@ export const Template = ({ children, ...args }) => (
     name="Default"
     args={{
       children: 'Failed to connect with server.',
-      icon: 'Default',
-    }}
-    argTypes={{
-      icon: {
-        options: ['Default', 'Custom icon'],
-        mapping: {
-          Default: undefined,
-          'Custom icon': IconInfo,
-        },
-        control: { type: 'select' },
-      },
     }}
   >
     {Template.bind({})}
