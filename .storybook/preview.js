@@ -14,7 +14,6 @@ customTheme.button.variantTone.transparent.purple =
   'hover:bg-purple-50 text-purple-500 focus:outline-purple-500'
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
       color: /(background|color)$/i,
