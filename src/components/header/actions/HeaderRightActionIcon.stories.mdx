@@ -1,11 +1,12 @@
+import IconSave from '@aboutbits/react-material-icons/dist/IconSave'
+import IconForward from '@aboutbits/react-material-icons/dist/IconForward'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import Icon from '@aboutbits/react-material-icons/dist/IconArrowBack'
-import { actions } from '@storybook/addon-actions'
 import { HeaderRightActionIcon } from './HeaderRightActionIcon'
 
 <Meta
   title="Components/Header/HeaderRightActionIcon"
   component={HeaderRightActionIcon}
+  argTypes={{ onClick: { action: 'onClick' } }}
 />
 
 # HeaderRightActionIcon
@@ -14,22 +15,30 @@ This component is used to add a `ButtonIcon` to the right side of the header, e.
 
 It leverages on the work of [HeaderButtonIcon](/docs/components-header-headerbuttonicon--default-story), which adds a responsive `ButtonIcon`, and [HeaderRightArea](/docs/components-header-headerrightarea--default-story), which is in charge of the positioning.
 
-export const Template = ({ ...args }) => (
-  <HeaderRightActionIcon
-    {...args}
-    icon={Icon}
-    onClick={actions('clicked')}
-    label="Return to previous page"
-  />
-)
+export const Template = (args) => <HeaderRightActionIcon {...args} />
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{ icon: 'Save' }}
+    argTypes={{
+      icon: {
+        options: ['Save', 'Forward'],
+        mapping: {
+          Save: IconSave,
+          Forward: IconForward,
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props
 
-<ArgsTable of={HeaderRightActionIcon} />
+<ArgsTable story="Default" />
 
 ### Theme
 

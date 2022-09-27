@@ -5,6 +5,7 @@ import { HeaderWithBackNavigation } from './HeaderWithBackNavigation'
 <Meta
   title="Components/Header/HeaderWithBackNavigation"
   component={HeaderWithBackNavigation}
+  argTypes={{ onBack: { action: 'onBack' } }}
 />
 
 # HeaderWithBackNavigation
@@ -13,16 +14,18 @@ This component is similar to [Header](/docs/components-header-header--default-st
 
 It leverages on the component [HeaderBackAction](/docs/components-header-headerbackaction--default-story) and [HeaderArea](/docs/components-header-headerarea--default-story).
 
-export const Template = ({ ...args }) => {
+export const Template = (args) => {
   return (
     <NavigationProvider>
-      <HeaderWithBackNavigation {...args} title="Header Title" />
+      <HeaderWithBackNavigation {...args} />
     </NavigationProvider>
   )
 }
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story name="Default" args={{ title: 'Header Title' }}>
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props

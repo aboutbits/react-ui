@@ -1,11 +1,12 @@
+import IconArrowBackIos from '@aboutbits/react-material-icons/dist/IconArrowBackIos'
+import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import Icon from '@aboutbits/react-material-icons/dist/IconArrowBack'
-import { actions } from '@storybook/addon-actions'
 import { HeaderCloseAction } from './HeaderCloseAction'
 
 <Meta
   title="Components/Header/HeaderCloseAction"
   component={HeaderCloseAction}
+  argTypes={{ onClick: { action: 'onClick' } }}
 />
 
 # HeaderCloseAction
@@ -14,22 +15,31 @@ This component is used to add a `close action' on the left side of a header.
 
 It leverages on the work of [ButtonIcon](/docs/components-button-buttonicon--default-story), which adds the icon, and [HeaderLeftArea](/docs/components-header-headerleftarea--default-story), which is in charge of the positioning.
 
-export const Template = ({ ...args }) => (
-  <HeaderCloseAction
-    {...args}
-    icon={Icon}
-    onClick={actions('clicked')}
-    label="Return to previous page"
-  />
-)
+export const Template = (args) => <HeaderCloseAction {...args} />
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{ icon: 'Default' }}
+    argTypes={{
+      icon: {
+        options: ['Default', 'ArrowBack', 'ArrowBackIos'],
+        mapping: {
+          Default: undefined,
+          ArrowBack: IconArrowBack,
+          ArrowBackIos: IconArrowBackIos,
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props
 
-<ArgsTable of={HeaderCloseAction} />
+<ArgsTable story="Default" />
 
 ### Internationalization
 

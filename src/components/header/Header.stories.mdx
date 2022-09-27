@@ -8,14 +8,14 @@ import { Header } from './Header'
 
 This component can be used to create swiftly a header. The Header should be used for pages that are on the root of a navigation stack.
 
-export const Template = ({ ...args }) => (
+export const Template = (args) => (
   <NavigationProvider>
-    <Header {...args} title="Header Title" />
+    <Header {...args} />
   </NavigationProvider>
 )
 
 <Canvas>
-  <Story name="Default" args={{ children: 'Header Title' }}>
+  <Story name="Default" args={{ title: 'Header Title' }}>
     {Template.bind({})}
   </Story>
 </Canvas>

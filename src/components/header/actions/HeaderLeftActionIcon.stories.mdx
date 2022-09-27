@@ -1,11 +1,12 @@
+import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import Icon from '@aboutbits/react-material-icons/dist/IconArrowBack'
-import { actions } from '@storybook/addon-actions'
 import { HeaderLeftActionIcon } from './HeaderLeftActionIcon'
 
 <Meta
   title="Components/Header/HeaderLeftActionIcon"
   component={HeaderLeftActionIcon}
+  argTypes={{ onClick: { action: 'onClick' } }}
 />
 
 # HeaderLeftActionIcon
@@ -14,22 +15,30 @@ This component is used to add a `ButtonIcon` to the left side of the header, e.g
 
 It leverages on the work of [HeaderButtonIcon](/docs/components-header-headerbuttonicon--default-story), which adds a responsive `ButtonIcon`, and [HeaderLeftArea](/docs/components-header-headerleftarea--default-story), which is in charge of the positioning.
 
-export const Template = ({ ...args }) => (
-  <HeaderLeftActionIcon
-    {...args}
-    icon={Icon}
-    onClick={actions('clicked')}
-    label="Return to previous page"
-  />
-)
+export const Template = (args) => <HeaderLeftActionIcon {...args} />
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{ icon: 'ArrowBack' }}
+    argTypes={{
+      icon: {
+        options: ['ArrowBack', 'Close'],
+        mapping: {
+          ArrowBack: IconArrowBack,
+          Close: IconClose,
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props
 
-<ArgsTable of={HeaderLeftActionIcon} />
+<ArgsTable story="Default" />
 
 ### Theme
 
