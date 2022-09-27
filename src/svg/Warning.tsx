@@ -1,4 +1,4 @@
-import { IconProps } from './types'
+import { IconProps } from '../components/types'
 
 const Warning: React.FC<IconProps> = (props) => {
   return (
