@@ -10,7 +10,6 @@ import header from '../../components/header/theme'
 import link from '../../components/link/theme'
 import loading from '../../components/loading/theme'
 import menu from '../../components/menu/theme'
-import navigation from '../../components/navigation/theme'
 import pagination from '../../components/pagination/theme'
 import section from '../../components/section/theme'
 
@@ -26,6 +25,5 @@ export const defaultTheme = {
   loading,
   section,
   menu,
-  navigation,
   pagination,
 }

@@ -1,7 +1,7 @@
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { ComponentType, ReactElement } from 'react'
 import { useInternationalization } from '../../../framework'
+import { IconProps } from '../../types'
 import {
   DialogHeaderLeftActionIcon,
   DialogHeaderLeftActionIconProps,
