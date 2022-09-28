@@ -11,8 +11,8 @@ export default {
     modeVariant: {
       light: {
         base: {
-          normal: 'text-neutral-800 placeholder:text-neutral-500',
-          error: 'text-neutral-800 placeholder:text-neutral-500',
+          normal: 'placeholder:text-neutral-500',
+          error: 'placeholder:text-neutral-500',
           disabled: 'text-neutral-400 placeholder:text-neutral-400',
         },
         ghost: {
@@ -86,7 +86,7 @@ export default {
   inputLabel: {
     base: 'block pb-1 ml-1 text-xs font-medium',
     light: {
-      normal: 'text-neutral-800',
+      normal: '',
       error: 'text-critical-500',
       disabled: 'text-neutral-400',
     },
@@ -108,7 +108,7 @@ export default {
   inputIcon: {
     base: 'w-5 h-5 fill-current',
     light: {
-      normal: 'text-neutral-800',
+      normal: '',
       disabled: 'text-neutral-400',
     },
     dark: {
@@ -127,10 +127,10 @@ export default {
   option: {
     base: 'bg-transparent',
     light: {
-      normal: 'text-neutral-800',
+      normal: '',
     },
     dark: {
-      normal: 'text-neutral-800',
+      normal: '',
     },
   },
   toggleSwitch: {

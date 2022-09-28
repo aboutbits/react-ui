@@ -32,7 +32,7 @@ export default {
     },
   },
   descriptionItem: {
-    base: 'flex flex-col text-neutral-800 border-b border-neutral-200',
+    base: 'flex flex-col border-b border-neutral-200',
   },
   descriptionItemTitle: {
     base: 'text-xs',
@@ -58,7 +58,7 @@ export default {
     },
   },
   headerTitle: {
-    base: 'py-2 flex-1 text-base text-neutral-800',
+    base: 'py-2 flex-1 text-base',
   },
   headerRow: {
     base: '',

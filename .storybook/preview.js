@@ -1,9 +1,9 @@
 import React from 'react'
-import {IntlProvider, useIntl} from 'react-intl';
-import '../styles/index.css'
-import enMessages from '../src/translations/shared.en.json'
-import { ReactUIProvider, defaultTheme as customTheme } from "../src";
+import { IntlProvider, useIntl } from 'react-intl'
 import { makeLinkComponent } from '../framework'
+import { defaultTheme as customTheme, ReactUIProvider } from '../src'
+import enMessages from '../src/translations/shared.en.json'
+import '../styles/index.css'
 
 // Add custom button tone for demo purpose
 customTheme.button.variantTone.solid.purple =
@@ -14,7 +14,7 @@ customTheme.button.variantTone.transparent.purple =
   'hover:bg-purple-50 text-purple-500 focus:outline-purple-500'
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -25,14 +25,14 @@ export const parameters = {
     source: {
       excludeDecorators: true,
     },
-  }
+  },
 }
 
 const LinkComponent = makeLinkComponent(
   ({ children, internal, href, ...props }, ref) => (
-      <a ref={ref} href={href} {...props}>
-        {children}
-      </a>
+    <a ref={ref} href={href} {...props}>
+      {children}
+    </a>
   )
 )
 
@@ -40,20 +40,26 @@ export const decorators = [
   (Story) => {
     const intl = useIntl()
     const internationalization = {
-      translate: (key, values) => intl.formatMessage({id: key}, values)
+      translate: (key, values) => intl.formatMessage({ id: key }, values),
     }
     return (
-      <ReactUIProvider theme={customTheme} internationalization={internationalization} linkComponent={LinkComponent}>
+      <ReactUIProvider
+        theme={customTheme}
+        internationalization={internationalization}
+        linkComponent={LinkComponent}
+      >
         <Story />
       </ReactUIProvider>
     )
   },
   (Story) => (
-    <IntlProvider
-      locale="en"
-      messages={enMessages}
-    >
+    <IntlProvider locale="en" messages={enMessages}>
       <Story />
     </IntlProvider>
-  )
-];
+  ),
+  (Story) => (
+    <div className="text-neutral-800">
+      <Story />
+    </div>
+  ),
+]
