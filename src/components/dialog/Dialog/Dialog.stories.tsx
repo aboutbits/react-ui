@@ -156,15 +156,15 @@ Object.assign(DesktopFullscreen, {
   },
 })
 
-export const CompleteFullscreen: StoryType = DialogTemplate.bind({})
-Object.assign(CompleteFullscreen, {
-  storyName: 'Complete fullscreen',
+export const MobileAndDesktopFullscreen: StoryType = DialogTemplate.bind({})
+Object.assign(MobileAndDesktopFullscreen, {
+  storyName: 'Mobile and desktop fullscreen',
   args: {
     mobilePosition: DialogPosition.fullscreen,
     desktopPosition: DialogPosition.fullscreen,
   },
   parameters: {
-    buttonText: 'Complete fullscreen',
+    buttonText: 'Mobile and desktop fullscreen',
     content: 'This dialog will be fullscreen on mobile and desktop.',
   },
 })
