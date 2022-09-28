@@ -1,6 +1,6 @@
 export default {
   bar: {
-    base: 'rounded animate-pulse bg-neutral-200',
+    base: 'rounded animate-pulse bg-neutral-800/[0.16]',
   },
   input: {
     base: '',

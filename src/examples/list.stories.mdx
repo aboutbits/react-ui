@@ -33,9 +33,9 @@ import {
   SectionSearch,
   SectionListItemButton,
   SectionFooterWithActions,
+  SectionFooterWithPaginationInMemory,
 } from '../components/section'
-import { SectionFooterWithPaginationInMemory } from '../components/pagination'
-import { Select, Variant as InputVariant } from '../components/form'
+import { Select, Variant as InputVariant, Option } from '../components/form'
 import { Tone } from '../components/types'
 import { SectionContentEmpty } from '../components/section/Section/ConvenientSectionContentMessage'
 
@@ -121,29 +121,15 @@ export const TemplateComplexList = ({
   const Filter = ({ variant, className }) => (
     <SectionHeaderGroup className={className}>
       <Select id="role" name="role" variant={variant}>
-        <option className="bg-gray-600" value="">
-          All roles
-        </option>
-        <option className="bg-gray-600" value="ADMIN">
-          Admin
-        </option>
-        <option className="bg-gray-600" value="USER">
-          User
-        </option>
+        <Option value="">All roles</Option>
+        <Option value="ADMIN">Admin</Option>
+        <Option value="USER">User</Option>
       </Select>
       <Select id="department" name="department" variant={variant}>
-        <option className="bg-gray-600" value="">
-          All departments
-        </option>
-        <option className="bg-gray-600" value="HR">
-          Human Resources
-        </option>
-        <option className="bg-gray-600" value="IT">
-          Engineering
-        </option>
-        <option className="bg-gray-600" value="SALES">
-          Sales
-        </option>
+        <Option value="">All departments</Option>
+        <Option value="HR">Human Resources</Option>
+        <Option value="IT">Engineering</Option>
+        <Option value="SALES">Sales</Option>
       </Select>
     </SectionHeaderGroup>
   )
@@ -383,33 +369,19 @@ export const TemplateListWithFilterDialog = ({
   const Filters = () => (
     <>
       <Select id="role" name="role" variant={InputVariant.transparent}>
-        <option className="bg-gray-600" value="">
-          All roles
-        </option>
-        <option className="bg-gray-600" value="ADMIN">
-          Admin
-        </option>
-        <option className="bg-gray-600" value="USER">
-          User
-        </option>
+        <Option value="">All roles</Option>
+        <Option value="ADMIN">Admin</Option>
+        <Option value="USER">User</Option>
       </Select>
       <Select
         id="department"
         name="department"
         variant={InputVariant.transparent}
       >
-        <option className="bg-gray-600" value="">
-          All departments
-        </option>
-        <option className="bg-gray-600" value="HR">
-          Human Resources
-        </option>
-        <option className="bg-gray-600" value="IT">
-          Engineering
-        </option>
-        <option className="bg-gray-600" value="SALES">
-          Sales
-        </option>
+        <Option value="">All departments</Option>
+        <Option value="HR">Human Resources</Option>
+        <Option value="IT">Engineering</Option>
+        <Option value="SALES">Sales</Option>
       </Select>
       <SectionSearch className="col-span-full" />
     </>
