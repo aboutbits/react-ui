@@ -14,9 +14,9 @@ import {
 
 # SectionContentMessage
 
-This component can be used to show a message to a user in a [SectionContent](/docs/components-section-sectioncontent--default-story).
-The message has an icon on top, a title and a text. Each of these properties are optional.
-Furthermore, it is possible to set a tone for all the different type of messages (success, critical, etc.)
+This component is used to show a message in a [SectionContent](/docs/components-section-sectioncontent--default-story).
+
+It uses the [ContentMessage](/docs/components-content-contentmessage--default-story) for the message.
 
 export const Template = ({ ...args }) => <SectionContentMessage {...args} />
 
@@ -50,18 +50,11 @@ export const Template = ({ ...args }) => <SectionContentMessage {...args} />
 
 ### Theme
 
-- `section.contentMessage.base`: Defines base styles of the container
-- `section.contentMessage.contentContainer`: Defines base styles of the wrapper of the container
-- `section.contentMessage.icon.base`: Defines base styles of the icon
-- `section.contentMessage.icon.tone[$tone]`: Defines custom styles per tone of the icon
-- `section.contentMessage.iconContainer.base`: Defines base styles of the icon background
-- `section.contentMessage.iconContainer.tone[$tone]`: Defines custom styles per tone of the icon background
-- `section.contentMessage.title.base`: Defines base styles of the title
-- `section.contentMessage.title.tone[$tone]`: Defines custom styles per tone of the title
-- `section.contentMessage.text.base`: Defines base styles of the test
-- `section.contentMessage.text.tone[$tone]`: Defines custom styles per tone of the text
+- `section.contentMessage.contentContainer`: Defines styles of the container (`SectionContent`)
 
 ## Convenient alert components
+
+### `SectionContentError`
 
 <Canvas>
   <Story name="SectionContentError">
@@ -70,6 +63,11 @@ export const Template = ({ ...args }) => <SectionContentMessage {...args} />
       text="The server could not handle the request! Try again"
     />
   </Story>
+</Canvas>
+
+### `SectionContentEmpty`
+
+<Canvas>
   <Story name="SectionContentEmpty">
     <SectionContentEmpty
       title="No users found"
