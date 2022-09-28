@@ -1,5 +1,4 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { NavigationProvider } from '../navigation/NavigationContext'
 import { HeaderWithBackNavigation } from './HeaderWithBackNavigation'
 
 <Meta
@@ -14,11 +13,7 @@ This component is similar to [Header](/docs/components-header-header--default-st
 It leverages on the component [HeaderBackAction](/docs/components-header-headerbackaction--default-story) and [HeaderArea](/docs/components-header-headerarea--default-story).
 
 export const Template = ({ ...args }) => {
-  return (
-    <NavigationProvider>
-      <HeaderWithBackNavigation {...args} title="Header Title" />
-    </NavigationProvider>
-  )
+  return <HeaderWithBackNavigation {...args} title="Header Title" />
 }
 
 <Canvas>
