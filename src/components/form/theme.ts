@@ -255,15 +255,5 @@ export default {
     dialogContentArea: {
       base: 'border-t border-neutral-200',
     },
-    headerSearch: {
-      base: 'flex flex-1 py-1 px-3 bg-neutral-200 rounded-full',
-      input: {
-        base: 'flex-1 w-full outline-none bg-transparent border-none placeholder-neutral-500 text-neutral-800',
-      },
-      clearButton: {
-        base: 'hover:text-gray-700 focus:text-gray-700',
-        icon: 'w-4 h-4 fill-current',
-      },
-    },
   },
 }
