@@ -80,7 +80,7 @@ export const TemplateWithLinks = (args) => {
 export const TemplateWithButtons = (args) => {
   const [activeTab, setActiveTab] = useState('1')
   return (
-    <Tabs activeName={activeTab} onChange={setActiveTab} {...args}>
+    <Tabs activeName={activeTab} {...args} onChange={setActiveTab}>
       <TabButton name="1">Tab 1</TabButton>
       <TabButton name="2">Tab 2</TabButton>
       <TabButton name="3">Tab 3</TabButton>
