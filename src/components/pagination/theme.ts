@@ -15,7 +15,7 @@ export default {
     base: 'flex items-center leading-6',
     number: 'px-2',
     enabled: 'hover:underline',
-    disabled: 'text-gray-500 cursor-not-allowed pointer-events-none',
+    disabled: 'text-neutral-500 cursor-not-allowed pointer-events-none',
     current: 'font-bold',
   },
 }

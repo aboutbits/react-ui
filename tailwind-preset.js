@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const colors = require('tailwindcss/colors')
-
 /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 module.exports = {
   theme: {
@@ -81,7 +78,6 @@ module.exports = {
         800: '#1e40af',
         900: '#1e3a8a',
       },
-      gray: colors.gray,
     },
     extend: {
       spacing: {
