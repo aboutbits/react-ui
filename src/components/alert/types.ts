@@ -1,6 +1,5 @@
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { ComponentType, ReactNode } from 'react'
-import { ClassNameProps, Tone } from '../types'
+import { ClassNameProps, IconProps, Tone } from '../types'
 
 export enum AlertActionsPosition {
   responsive = 'responsive',

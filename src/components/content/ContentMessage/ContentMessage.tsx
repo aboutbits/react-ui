@@ -1,8 +1,7 @@
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import classNames from 'classnames'
 import { ComponentType, ReactElement, ReactNode } from 'react'
 import { useTheme } from '../../../framework'
-import { ClassNameProps, Tone } from '../../types'
+import { ClassNameProps, IconProps, Tone } from '../../types'
 
 export type ContentMessageProps = ClassNameProps & {
   icon?: ComponentType<IconProps>

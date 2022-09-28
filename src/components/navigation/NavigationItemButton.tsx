@@ -1,8 +1,7 @@
-import React, { ComponentType, ReactNode } from 'react'
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import classNames from 'classnames'
+import React, { ComponentType, ReactNode } from 'react'
 import { useTheme } from '../../framework'
-import { ClassNameProps } from '../types'
+import { ClassNameProps, IconProps } from '../types'
 
 export type MenuLinkButtonProps = {
   /**

@@ -1,8 +1,7 @@
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import classNames from 'classnames'
 import { ComponentType, ReactElement } from 'react'
 import { useTheme } from '../../framework'
-import { Mode, ModeProps } from '../types'
+import { IconProps, Mode, ModeProps } from '../types'
 
 export type InputIconProps = {
   icon: ComponentType<IconProps>

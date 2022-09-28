@@ -1,8 +1,7 @@
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
-import React, { ComponentType, ReactElement, ReactNode } from 'react'
 import classNames from 'classnames'
+import { ComponentType, ReactElement, ReactNode } from 'react'
 import { LinkComponentProps, useLinkComponent, useTheme } from '../../framework'
-import { ClassNameProps } from '../types'
+import { ClassNameProps, IconProps } from '../types'
 
 export type Props = {
   /**

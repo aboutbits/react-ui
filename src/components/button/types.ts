@@ -1,6 +1,5 @@
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
 import { ComponentType } from 'react'
-import { Tone } from '../types'
+import { IconProps, Tone } from '../types'
 
 export enum Variant {
   solid = 'solid',

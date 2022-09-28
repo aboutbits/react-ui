@@ -1,7 +1,7 @@
 import React, { ComponentType, ReactElement } from 'react'
-import { IconProps } from '@aboutbits/react-material-icons/dist/types'
-import { ButtonIcon, ButtonIconProps, Size } from '../../button'
 import { useTheme } from '../../../framework'
+import { ButtonIcon, ButtonIconProps, Size } from '../../button'
+import { IconProps } from '../../types'
 
 export type HeaderButtonIconProps = Omit<ButtonIconProps, 'ref'> & {
   /**
