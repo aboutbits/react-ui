@@ -34,20 +34,21 @@ import { Form } from './Form'
 
 This component can be used to create textarea fields. This input already has a label and handles error messages in `formik` Forms.
 
-export const Template = ({ ...args }) => (
-  <TextArea {...args} name="description" />
-)
+export const Template = ({ ...args }) => <TextArea {...args} />
 
 <Canvas>
   <Story
     name="Default"
     args={{
+      id: 'description',
+      name: 'description',
       label: 'Description',
       rows: 4,
       cols: 5,
       maxLength: 240,
       spellCheck: true,
       mode: Mode.light,
+      disabled: false,
     }}
   >
     {Template.bind({})}
