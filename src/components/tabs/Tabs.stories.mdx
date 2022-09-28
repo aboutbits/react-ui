@@ -1,0 +1,104 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { useState } from 'react'
+import { Tabs, TabLink, TabButton } from './'
+
+<Meta title="Components/Tabs/Tabs" component={Tabs} />
+
+# Tabs
+
+This component renders tabs, which can be used to render content depending on the active tab.
+It can be used with links to create a navigation tab bar, or with buttons to switch content inside the document.
+
+export const Template = (args) => {
+  const searchParams = new URLSearchParams(window.parent.location.search)
+  const getUrl = (tab) => {
+    searchParams.set('tab', tab)
+    return `${window.parent.location.origin}?${searchParams.toString()}`
+  }
+  const currentTab = searchParams.get('tab') || '1'
+  const [activeButton, setActiveButton] = useState(undefined)
+  return (
+    <Tabs
+      activeName={activeButton || currentTab}
+      {...args}
+      onChange={setActiveButton}
+    >
+      <TabLink name="1" href={getUrl('1')}>
+        1 Link
+      </TabLink>
+      <TabLink name="2" href={getUrl('2')}>
+        2 Link
+      </TabLink>
+      <TabButton name="3">3 Button</TabButton>
+      <TabButton name="4">4 Button</TabButton>
+    </Tabs>
+  )
+}
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props of `Tabs`
+
+<ArgsTable story="Default" />
+
+## With links
+
+export const TemplateWithLinks = (args) => {
+  const searchParams = new URLSearchParams(window.parent.location.search)
+  const getUrl = (tab) => {
+    searchParams.set('linkTab', tab)
+    return `${window.parent.location.origin}?${searchParams.toString()}`
+  }
+  const currentTab = searchParams.get('linkTab') || '1'
+  return (
+    <Tabs activeName={currentTab} {...args}>
+      <TabLink name="1" href={getUrl('1')}>
+        Tab 1
+      </TabLink>
+      <TabLink name="2" href={getUrl('2')}>
+        Tab 2
+      </TabLink>
+      <TabLink name="3" href={getUrl('3')}>
+        Tab 3
+      </TabLink>
+    </Tabs>
+  )
+}
+
+<Canvas>
+  <Story name="With links">{TemplateWithLinks.bind({})}</Story>
+</Canvas>
+
+### Props of `TabLink`
+
+<ArgsTable of={TabLink} />
+
+## With buttons
+
+export const TemplateWithButtons = (args) => {
+  const [activeTab, setActiveTab] = useState('1')
+  return (
+    <Tabs activeName={activeTab} onChange={setActiveTab} {...args}>
+      <TabButton name="1">Tab 1</TabButton>
+      <TabButton name="2">Tab 2</TabButton>
+      <TabButton name="3">Tab 3</TabButton>
+    </Tabs>
+  )
+}
+
+<Canvas>
+  <Story name="With buttons">{TemplateWithButtons.bind({})}</Story>
+</Canvas>
+
+### Props of `TabButton`
+
+<ArgsTable of={TabButton} />
+
+### Theme
+
+- `tabs.tabs.base`: Define the base style of the tabs container.
+- `tabs.tab.base`: Define the base style of a tab.
+- `tabs.tab.normal`: Define the normal style of a tab.
+- `tabs.tab.selected`: Define the selected style of a tab.

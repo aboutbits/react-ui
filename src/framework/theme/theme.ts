@@ -13,6 +13,7 @@ import menu from '../../components/menu/theme'
 import navigation from '../../components/navigation/theme'
 import pagination from '../../components/pagination/theme'
 import section from '../../components/section/theme'
+import tabs from '../../components/tabs/theme'
 
 export const defaultTheme = {
   action,
@@ -28,4 +29,5 @@ export const defaultTheme = {
   menu,
   navigation,
   pagination,
+  tabs,
 }

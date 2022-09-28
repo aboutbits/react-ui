@@ -39,3 +39,5 @@ selectDialog.js
 selectDialog.d.ts
 submitButton.js
 submitButton.d.ts
+tabs.js
+tabs.d.ts
