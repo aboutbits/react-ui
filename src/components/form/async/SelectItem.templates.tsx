@@ -1,5 +1,4 @@
 import { ReactElement, useEffect, useState } from 'react'
-import { NavigationProvider } from '../../navigation'
 import { SelectItem, SelectItemProps } from './SelectItem'
 import {
   PaginatedResponse,
@@ -60,11 +59,7 @@ const useGetData = ({
 export const TemplateNormal = ({
   ...args
 }: SelectItemProps<User, Error>): ReactElement => {
-  return (
-    <NavigationProvider>
-      <SelectItem {...args} useGetData={useGetData} />
-    </NavigationProvider>
-  )
+  return <SelectItem {...args} useGetData={useGetData} />
 }
 
 export const TemplateError = ({
@@ -78,11 +73,7 @@ export const TemplateError = ({
       error: new Error('Something went wrong'),
     }
   }
-  return (
-    <NavigationProvider>
-      <SelectItem {...args} useGetData={useGetData} />
-    </NavigationProvider>
-  )
+  return <SelectItem {...args} useGetData={useGetData} />
 }
 
 export const TemplateEmpty = ({
@@ -103,9 +94,5 @@ export const TemplateEmpty = ({
       },
     }
   }
-  return (
-    <NavigationProvider>
-      <SelectItem {...args} useGetData={useGetData} />
-    </NavigationProvider>
-  )
+  return <SelectItem {...args} useGetData={useGetData} />
 }

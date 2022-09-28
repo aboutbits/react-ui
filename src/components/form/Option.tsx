@@ -1,20 +1,23 @@
-import React from 'react'
 import classNames from 'classnames'
+import React from 'react'
 import { useTheme } from '../../framework'
 import { Mode, ModeProps } from '../types'
 
-type OptionProps = React.DetailedHTMLProps<
-  React.OptionHTMLAttributes<HTMLOptionElement>,
-  HTMLOptionElement
+type OptionProps = Omit<
+  React.DetailedHTMLProps<
+    React.OptionHTMLAttributes<HTMLOptionElement>,
+    HTMLOptionElement
+  >,
+  'children'
 > &
-  ModeProps
+  ModeProps & { children?: string | number | undefined | null }
 
-export const Option: React.FC<OptionProps> = ({
+export function Option({
   mode = Mode.light,
   className,
   children,
   ...props
-}) => {
+}: OptionProps) {
   const { form } = useTheme()
 
   return (
