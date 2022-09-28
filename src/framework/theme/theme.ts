@@ -12,6 +12,7 @@ import loading from '../../components/loading/theme'
 import menu from '../../components/menu/theme'
 import pagination from '../../components/pagination/theme'
 import section from '../../components/section/theme'
+import tabs from '../../components/tabs/theme'
 
 export const defaultTheme = {
   action,
@@ -26,4 +27,5 @@ export const defaultTheme = {
   section,
   menu,
   pagination,
+  tabs,
 }
