@@ -8,25 +8,13 @@ import {
 } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-type SectionListItemWithActionProps = ClassNameProps & {
-  /**
-   * The react node will be pushed to the right side of the section list item.
-   */
-  action: ReactNode
+export type SectionListItemProps = ClassNameProps & {
+  children?: ReactNode
 }
 
-type SectionListItemButtonProps = ClassNameProps & {
-  /**
-   * On click handler for the button.
-   */
-  onClick: () => void
-}
-
-export const SectionListItem: React.FC<ClassNameProps> = ({
-  className,
-  children,
-}) => {
+export function SectionListItem({ className, children }: SectionListItemProps) {
   const { section } = useTheme()
+
   return (
     <div className={classNames(className, section.listItem.base)}>
       {children}
@@ -34,11 +22,20 @@ export const SectionListItem: React.FC<ClassNameProps> = ({
   )
 }
 
+export type SectionListItemButtonProps = ClassNameProps & {
+  /**
+   * On click handler for the button.
+   */
+  onClick: () => void
+  children?: ReactNode
+}
+
 export const SectionListItemButton = React.forwardRef<
   HTMLButtonElement,
-  React.PropsWithChildren<SectionListItemButtonProps>
+  SectionListItemButtonProps
 >(({ children, onClick, className, ...props }, ref) => {
   const { section } = useTheme()
+
   return (
     <button
       onClick={onClick}
@@ -58,12 +55,15 @@ export const SectionListItemButton = React.forwardRef<
 
 SectionListItemButton.displayName = 'SectionListItemButton'
 
+export type SectionListItemLinkProps = LinkComponentProps
+
 export const SectionListItemLink = React.forwardRef<
   HTMLAnchorElement,
-  LinkComponentProps
+  SectionListItemLinkProps
 >(({ children, className, internal = true, ...props }, ref) => {
   const LinkComponent = useLinkComponent()
   const { section } = useTheme()
+
   return (
     <LinkComponent
       className={classNames(
@@ -83,10 +83,21 @@ export const SectionListItemLink = React.forwardRef<
 
 SectionListItemLink.displayName = 'SectionListItemLink'
 
-export const SectionListItemWithAction: React.FC<
-  SectionListItemWithActionProps
-> = ({ children, action, className }) => {
+type SectionListItemWithActionProps = ClassNameProps & {
+  /**
+   * The react node will be pushed to the right side of the section list item.
+   */
+  action: ReactNode
+  children?: ReactNode
+}
+
+export function SectionListItemWithAction({
+  children,
+  action,
+  className,
+}: SectionListItemWithActionProps) {
   const { section } = useTheme()
+
   return (
     <SectionListItem
       className={classNames(section.listItemWithAction.base, className)}
@@ -96,5 +107,3 @@ export const SectionListItemWithAction: React.FC<
     </SectionListItem>
   )
 }
-
-SectionListItemWithAction.displayName = 'SectionListItemWithAction'

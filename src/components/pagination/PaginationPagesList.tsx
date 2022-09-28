@@ -1,11 +1,16 @@
 import classNames from 'classnames'
-import { ClassNameProps } from '../types'
+import { ReactNode } from 'react'
 import { useTheme } from '../../framework'
+import { ClassNameProps } from '../types'
 
-export const PaginationPagesList: React.FC<ClassNameProps> = ({
+export type PaginationPagesListProps = ClassNameProps & {
+  children?: ReactNode
+}
+
+export function PaginationPagesList({
   className,
   children,
-}) => {
+}: PaginationPagesListProps) {
   const { pagination } = useTheme()
 
   return (
@@ -15,6 +20,13 @@ export const PaginationPagesList: React.FC<ClassNameProps> = ({
   )
 }
 
-export const PaginationPagesListItem: React.FC = ({ children }) => (
-  <li>{children}</li>
-)
+export type PaginationPagesListItemProps = ClassNameProps & {
+  children?: ReactNode
+}
+
+export function PaginationPagesListItem({
+  className,
+  children,
+}: PaginationPagesListItemProps) {
+  return <li className={className}>{children}</li>
+}

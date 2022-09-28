@@ -1,16 +1,17 @@
-import classNames from 'classnames'
 import { calculatePagination, IndexType } from '@aboutbits/pagination'
-import { useTheme, useInternationalization } from '../../framework'
+import classNames from 'classnames'
+import { ReactNode } from 'react'
+import { useInternationalization, useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 import { PaginationContainer } from './PaginationContainer'
-import {
-  PaginationNextContent,
-  PaginationPreviousContent,
-} from './PaginationPreviousNextContent'
 import {
   PaginationPagesList,
   PaginationPagesListItem,
 } from './PaginationPagesList'
+import {
+  PaginationNextContent,
+  PaginationPreviousContent,
+} from './PaginationPreviousNextContent'
 
 export type PaginationInMemoryProps = ClassNameProps & {
   /**
@@ -39,17 +40,23 @@ export type PaginationInMemoryProps = ClassNameProps & {
   }
 }
 
-type SectionPaginationInMemoryButtonProps = {
+export type SectionPaginationInMemoryButtonProps = {
   'aria-label': string
   'aria-current'?: boolean | 'page'
   disabled: boolean
   pageIndex: number
+  children?: ReactNode
 } & Pick<PaginationInMemoryProps, 'onChangePage'> &
   ClassNameProps
 
-const SectionPaginationInMemoryButton: React.FC<
-  SectionPaginationInMemoryButtonProps
-> = ({ disabled, onChangePage, pageIndex, className, children, ...props }) => {
+export function SectionPaginationInMemoryButton({
+  disabled,
+  onChangePage,
+  pageIndex,
+  className,
+  children,
+  ...props
+}: SectionPaginationInMemoryButtonProps) {
   const { pagination: paginationTheme } = useTheme()
   return (
     <button
@@ -70,14 +77,14 @@ const SectionPaginationInMemoryButton: React.FC<
   )
 }
 
-const PaginationInMemory: React.FC<PaginationInMemoryProps> = ({
+export function PaginationInMemory({
   page,
   size,
   total,
   onChangePage,
   config,
   className,
-}) => {
+}: PaginationInMemoryProps) {
   const internationalization = useInternationalization()
   const { pagination: paginationTheme } = useTheme()
   const pagination = calculatePagination(page, size, total, config)
@@ -131,5 +138,3 @@ const PaginationInMemory: React.FC<PaginationInMemoryProps> = ({
     </PaginationContainer>
   )
 }
-
-export { PaginationInMemory }

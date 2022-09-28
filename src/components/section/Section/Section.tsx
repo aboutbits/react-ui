@@ -1,10 +1,13 @@
 import classNames from 'classnames'
+import { ReactNode } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-export type Props = ClassNameProps
+export type SectionProps = ClassNameProps & {
+  children?: ReactNode
+}
 
-export const Section: React.FC<Props> = ({ className, children }) => {
+export function Section({ className, children }: SectionProps) {
   const { section } = useTheme()
   return (
     <section className={classNames(className, section.section.base)}>

@@ -1,11 +1,16 @@
 import classNames from 'classnames'
-import { ClassNameProps } from '../types'
+import { ReactNode } from 'react'
 import { useTheme } from '../../framework'
+import { ClassNameProps } from '../types'
 
-export const PaginationContainer: React.FC<ClassNameProps> = ({
+export type PaginationContainerProps = ClassNameProps & {
+  children?: ReactNode
+}
+
+export function PaginationContainer({
   className,
   children,
-}) => {
+}: PaginationContainerProps) {
   const { pagination } = useTheme()
 
   return (

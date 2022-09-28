@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 
-type MenuProps = ClassNameProps & {
+export type MenuProps = ClassNameProps & {
   /**
    * Defines the accessibility label for the menu.
    **/
@@ -18,15 +18,16 @@ type MenuProps = ClassNameProps & {
    * Defines the id attribute for the menu button.
    **/
   menuButtonId?: string
+  children?: ReactNode
 }
 
-const Menu: React.FC<MenuProps> = ({
+export function Menu({
   menuLabel,
   className,
   menuButtonContent,
   children,
   menuButtonId,
-}) => {
+}: MenuProps) {
   const { menu } = useTheme()
 
   return (
@@ -54,5 +55,3 @@ const Menu: React.FC<MenuProps> = ({
     </MenuReach>
   )
 }
-
-export { Menu }

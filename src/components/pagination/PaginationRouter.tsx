@@ -49,7 +49,7 @@ export type PaginationRouterProps = ClassNameProps & {
   }
 }
 
-const PaginationRouter: React.FC<PaginationRouterProps> = ({
+export function PaginationRouter({
   page,
   size,
   total,
@@ -63,7 +63,7 @@ const PaginationRouter: React.FC<PaginationRouterProps> = ({
       href: window.parent.location.pathname + '?' + params.toString(),
     }
   },
-}) => {
+}: PaginationRouterProps) {
   const internationalization = useInternationalization()
 
   const LinkComponent = useLinkComponent()
@@ -141,5 +141,3 @@ const PaginationRouter: React.FC<PaginationRouterProps> = ({
     </PaginationContainer>
   )
 }
-
-export { PaginationRouter }

@@ -3,7 +3,23 @@ import { ReactNode } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-type SectionDescriptionItemProps = ClassNameProps & {
+export type SectionDescriptionItemTitleProps = ClassNameProps & {
+  children?: ReactNode
+}
+
+export function SectionDescriptionItemTitle({
+  children,
+  className,
+}: SectionDescriptionItemTitleProps) {
+  const { section } = useTheme()
+  return (
+    <dt className={classNames(section.descriptionItemTitle.base, className)}>
+      {children}
+    </dt>
+  )
+}
+
+export type SectionDescriptionItemProps = ClassNameProps & {
   /**
    * Defines the content of the section description item.
    * Will be placed inside <dl>.
@@ -20,24 +36,12 @@ type SectionDescriptionItemProps = ClassNameProps & {
   hideIfEmpty?: boolean
 }
 
-export const SectionDescriptionItemTitle: React.FC<ClassNameProps> = ({
-  children,
-  className,
-}) => {
-  const { section } = useTheme()
-  return (
-    <dt className={classNames(section.descriptionItemTitle.base, className)}>
-      {children}
-    </dt>
-  )
-}
-
-export const SectionDescriptionItem: React.FC<SectionDescriptionItemProps> = ({
+export function SectionDescriptionItem({
   title,
   content,
   className,
   hideIfEmpty = false,
-}) => {
+}: SectionDescriptionItemProps) {
   const { section } = useTheme()
 
   return (

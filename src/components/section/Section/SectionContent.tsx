@@ -1,19 +1,23 @@
 import classNames from 'classnames'
+import { ReactNode } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-export type SectionContentProps = ClassNameProps & { layout?: Layout }
+export type SectionContentProps = ClassNameProps & {
+  layout?: Layout
+  children?: ReactNode
+}
 
 export enum Layout {
   oneColumnGrid = 'oneColumnGrid',
   twoColumnGrid = 'twoColumnGrid',
 }
 
-export const SectionContent: React.FC<SectionContentProps> = ({
+export function SectionContent({
   layout,
   children,
   className,
-}) => {
+}: SectionContentProps) {
   const { section } = useTheme()
   const layoutStyle =
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
