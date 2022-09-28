@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { useReducer } from 'react'
+import { useState } from 'react'
 import { Button } from '../../button/Button'
 import { Tone } from '../../types'
 import {
@@ -27,17 +27,17 @@ import {
 />
 
 export const Template = ({ buttonText, buttonTone, ...args }) => {
-  const [isOpen, toggleIsOpen] = useReducer((state) => !state, false)
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <Button tone={buttonTone} onClick={toggleIsOpen}>
+      <Button tone={buttonTone} onClick={() => setIsOpen(true)}>
         {buttonText}
       </Button>
       {isOpen && (
         <ConfirmationDialog
           {...args}
-          onDismiss={toggleIsOpen}
-          onConfirm={toggleIsOpen}
+          onDismiss={() => setIsOpen(false)}
+          onConfirm={() => setIsOpen(false)}
         />
       )}
     </>
@@ -73,17 +73,17 @@ It leverages the [Dialog](/docs/components-dialog-dialog--default) component.
 ## Usage
 
 ```jsx
-const [isOpen, toggleIsOpen] = useReducer((state) => !state, false)
+const [isOpen, setIsOpen] = useState(false)
 
 return (
   <>
-    <Button onClick={toggleIsOpen}>Reset Notification</Button>
+    <Button onClick={() => setIsOpen(true)}>Reset Notification</Button>
 
     {isOpen && (
       <ConfirmationDialog
         {...args}
-        onDismiss={toggleIsOpen}
-        onConfirm={toggleIsOpen}
+        onDismiss={() => setIsOpen(false)}
+        onConfirm={() => setIsOpen(false)}
       />
     )}
   </>
@@ -93,13 +93,6 @@ return (
 ### Props:
 
 <ArgsTable story="Default" />
-
-### Theme:
-
-- `dialog.confirmation.base`: Define the styles of the dialog window.
-- `dialog.confirmation.title.base`: Define the text size of the title for the dialog window.
-- `dialog.confirmation.title.variant.confirm`: Define the title color for the variant confirm.
-- `dialog.confirmation.title.variant.critical`: Define the title color for the variant critical.
 
 ## Variant
 
