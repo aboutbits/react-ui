@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { ReactElement } from 'react'
+import { forwardRef } from 'react'
 import { useTheme } from '../../../framework'
 import { ButtonIcon, ButtonIconProps, Variant } from '../../button'
 import { Tone } from '../../types'
@@ -9,18 +9,21 @@ export type DialogHeaderLeftActionIconProps = Omit<
   'variant' | 'ref'
 >
 
-export function DialogHeaderLeftActionIcon({
-  className,
-  ...props
-}: DialogHeaderLeftActionIconProps): ReactElement {
+export const DialogHeaderLeftActionIcon = forwardRef<
+  HTMLButtonElement,
+  DialogHeaderLeftActionIconProps
+>(({ className, ...props }, ref) => {
   const { dialog } = useTheme()
 
   return (
     <ButtonIcon
+      ref={ref}
       variant={Variant.transparent}
       tone={Tone.neutral}
       className={classNames(dialog.headerLeftActionIcon.base, className)}
       {...props}
     />
   )
-}
+})
+
+DialogHeaderLeftActionIcon.displayName = 'DialogHeaderLeftActionIcon'
