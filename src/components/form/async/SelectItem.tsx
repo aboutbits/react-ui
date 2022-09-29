@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { useField } from 'formik'
 import { ReactElement, ReactNode, useMemo, useRef, useState } from 'react'
 import { useInternationalization, useTheme } from '../../../framework'
+import { DialogProps } from '../../dialog'
 import { InputError } from '../InputError'
 import { InputLabel } from '../InputLabel'
 import { useCustomInputCss } from '../useCustomInputCss'
@@ -29,6 +30,10 @@ export type SelectItemProps<ItemType, Error> = {
   renderInputValue?: (item: ItemType) => ReactNode
   dialogTitle: ReactNode
   dialogLabel: string
+  /**
+   * To configure the dialog in more detail you can pass dialog props.
+   */
+  dialogProps?: DialogProps
   label: string
   placeholder: string
   disabled?: boolean
@@ -87,6 +92,7 @@ export function SelectItem<ItemType, Error>({
   useGetData,
   dialogTitle,
   dialogLabel,
+  dialogProps,
   noSearchResults,
   renderListItem,
   renderErrorMessage,
@@ -200,6 +206,7 @@ export function SelectItem<ItemType, Error>({
           aria-label={dialogLabel}
           noSearchResults={noSearchResults}
           paginationConfig={paginationConfig}
+          {...dialogProps}
         />
       )}
     </>

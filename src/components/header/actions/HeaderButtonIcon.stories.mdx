@@ -1,6 +1,6 @@
+import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import Icon from '@aboutbits/react-material-icons/dist/IconArrowBack'
-import { actions } from '@storybook/addon-actions'
 import { HeaderButtonIcon } from './HeaderButtonIcon'
 
 <Meta title="Components/Header/HeaderButtonIcon" component={HeaderButtonIcon} />
@@ -9,22 +9,31 @@ import { HeaderButtonIcon } from './HeaderButtonIcon'
 
 This component is used to add a [ButtonIcon](/docs/components-button-buttonicon--default-story) to the header, which changes the size based on a breakpoint.
 
-export const Template = ({ ...args }) => (
-  <HeaderButtonIcon
-    {...args}
-    icon={Icon}
-    onClick={actions('clicked')}
-    label="Return to previous page"
-  />
-)
+export const Template = (args) => <HeaderButtonIcon {...args} />
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{ icon: 'ArrowBack' }}
+    argTypes={{
+      icon: {
+        options: ['ArrowBack', 'Close'],
+        mapping: {
+          ArrowBack: IconArrowBack,
+          Close: IconClose,
+        },
+        control: { type: 'select' },
+      },
+      onClick: { control: false },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props
 
-<ArgsTable of={HeaderButtonIcon} />
+<ArgsTable story="Default" />
 
 ### Theme
 

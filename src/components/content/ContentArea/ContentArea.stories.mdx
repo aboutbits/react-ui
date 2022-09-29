@@ -14,13 +14,23 @@ export const Template = ({ children }) => <ContentArea>{children}</ContentArea>
   <Story
     name="Default"
     args={{
-      children: (
-        <>
-          <div className="bg-neutral-200">Block A</div>
-          <div className="bg-neutral-100">Block B</div>
-          <div className="bg-neutral-200">Block C</div>
-        </>
-      ),
+      children: 'Multiple blocks',
+    }}
+    argTypes={{
+      children: {
+        options: ['Multiple blocks', 'One block'],
+        mapping: {
+          'Multiple blocks': (
+            <>
+              <div className="bg-neutral-200">Block A</div>
+              <div className="bg-neutral-100">Block B</div>
+              <div className="bg-neutral-200">Block C</div>
+            </>
+          ),
+          'One block': <div className="bg-neutral-200">Block A</div>,
+        },
+        control: { type: 'select' },
+      },
     }}
   >
     {Template.bind({})}

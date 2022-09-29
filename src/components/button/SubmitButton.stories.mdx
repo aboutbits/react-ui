@@ -1,13 +1,10 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
-import { actions } from '@storybook/addon-actions'
 import { SubmitButton } from './SubmitButton'
 
 <Meta title="Components/Button/SubmitButton" component={SubmitButton} />
 
 export const Template = ({ children, ...args }) => (
-  <SubmitButton {...args} onClick={actions('clicked')}>
-    {children}
-  </SubmitButton>
+  <SubmitButton {...args}>{children}</SubmitButton>
 )
 
 # SubmitButton
@@ -34,7 +31,11 @@ The submit button uses `formik` to automatically disable during submitting.
 ```
 
 <Canvas>
-  <Story name="Default" args={{ children: 'Submit' }}>
+  <Story
+    name="Default"
+    args={{ children: 'Submit' }}
+    argTypes={{ onClick: { control: false } }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

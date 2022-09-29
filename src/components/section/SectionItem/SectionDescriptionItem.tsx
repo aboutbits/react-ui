@@ -6,12 +6,12 @@ import { ClassNameProps } from '../../types'
 type SectionDescriptionItemProps = ClassNameProps & {
   /**
    * Defines the content of the section description item.
-   * Will be placed inside <dl>.
+   * Will be placed inside dl.
    **/
   content: ReactNode
   /**
    * Defines the title of section description item.
-   * Will be placed inside <dt>.
+   * Will be placed inside dt.
    **/
   title: ReactNode
   /**

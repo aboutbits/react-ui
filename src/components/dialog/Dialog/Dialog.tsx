@@ -13,6 +13,7 @@ export type DialogProps = ClassNameProps &
     mobilePosition?: DialogPosition
     desktopPosition?: DialogPosition
     'aria-label'?: string
+    overlayClassName?: string
   }
 
 export function Dialog({
@@ -21,6 +22,7 @@ export function Dialog({
   desktopPosition = DialogPosition.center,
   'aria-label': ariaLabel,
   className,
+  overlayClassName,
   children,
   ...props
 }: DialogProps): ReactElement {
@@ -33,7 +35,8 @@ export function Dialog({
         className={classNames(
           dialog.overlay.base,
           dialog.overlay.mobilePosition[mobilePosition],
-          dialog.overlay.desktopPosition[desktopPosition]
+          dialog.overlay.desktopPosition[desktopPosition],
+          overlayClassName
         )}
         initialFocusRef={initialFocusRef}
         {...props}

@@ -82,6 +82,7 @@ export default {
   },
   loading: {
     listItem: {
+      base: '',
       start: {
         base: 'p-4 mr-4 w-full',
       },
@@ -90,6 +91,7 @@ export default {
       },
     },
     descriptionItem: {
+      base: '',
       upper: {
         base: 'p-1.5 w-40',
       },

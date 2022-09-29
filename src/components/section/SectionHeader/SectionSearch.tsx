@@ -1,16 +1,20 @@
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { ReactElement } from 'react'
 import { useInternationalization } from '../../../framework'
-import { Input, InputProps, Variant } from '../../form'
-
-// Utility function to exclude props from a union type
-type ExcludeProp<Type, Fields> = {
-  [Property in keyof Type as Exclude<Property, Fields>]: Type[Property]
-}
+import {
+  Input,
+  InputProps,
+  InputWithLabelProps,
+  InputWithoutLabelProps,
+  Variant,
+} from '../../form'
 
 // Exclude ref to avoid TypeScript error. Should be fixed in the future.
 // Make name optional to use 'search' as default
-export type SectionSearchProps = ExcludeProp<InputProps, 'ref' | 'name'> &
+export type SectionSearchProps = (
+  | Omit<InputWithoutLabelProps, 'ref' | 'name'>
+  | Omit<InputWithLabelProps, 'ref' | 'name'>
+) &
   Partial<Pick<InputProps, 'name'>>
 
 export function SectionSearch({

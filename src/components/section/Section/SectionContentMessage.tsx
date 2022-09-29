@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import React from 'react'
 import { useTheme } from '../../../framework'
 import { ContentMessage, ContentMessageProps } from '../../content'
 import { ClassNameProps } from '../../types'

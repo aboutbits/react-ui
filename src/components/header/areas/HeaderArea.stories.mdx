@@ -1,5 +1,4 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { actions } from '@storybook/addon-actions'
 import { HeaderArea } from './HeaderArea'
 import { HeaderTitle } from './HeaderTitle'
 
@@ -9,14 +8,21 @@ import { HeaderTitle } from './HeaderTitle'
 
 This component defines the container of a page header.
 
-export const Template = ({ ...args }) => (
-  <HeaderArea {...args} onClick={actions('clicked')} />
-)
+export const Template = (args) => <HeaderArea {...args} />
 
 <Canvas>
   <Story
     name="Default"
-    args={{ children: <HeaderTitle>Header Title</HeaderTitle> }}
+    args={{ children: 'HeaderTitle' }}
+    argTypes={{
+      children: {
+        options: ['HeaderTitle'],
+        mapping: {
+          'Header Title': <HeaderTitle>Header Title</HeaderTitle>,
+        },
+        control: { type: 'select' },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>

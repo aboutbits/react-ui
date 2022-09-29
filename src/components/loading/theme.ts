@@ -3,6 +3,7 @@ export default {
     base: 'rounded animate-pulse bg-neutral-800/[0.16]',
   },
   input: {
+    base: '',
     upper: {
       base: 'p-2 w-40',
     },
