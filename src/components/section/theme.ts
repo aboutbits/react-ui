@@ -32,7 +32,7 @@ export default {
     },
   },
   descriptionItem: {
-    base: 'flex flex-col text-neutral-800 border-b border-neutral-200',
+    base: 'flex flex-col border-b border-neutral-200',
   },
   descriptionItemTitle: {
     base: 'text-xs',
@@ -58,7 +58,7 @@ export default {
     },
   },
   headerTitle: {
-    base: 'py-2 flex-1 text-base text-neutral-800',
+    base: 'py-2 flex-1 text-base',
   },
   headerRow: {
     base: '',
@@ -82,6 +82,7 @@ export default {
   },
   loading: {
     listItem: {
+      base: '',
       start: {
         base: 'p-4 mr-4 w-full',
       },
@@ -90,6 +91,7 @@ export default {
       },
     },
     descriptionItem: {
+      base: '',
       upper: {
         base: 'p-1.5 w-40',
       },

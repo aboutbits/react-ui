@@ -30,6 +30,9 @@ export const Template = ({ children, action }) => (
       children: 'Jane Doe',
       action: <IconEdit width={20} height={20} className="fill-current" />,
     }}
+    argTypes={{
+      action: { control: false },
+    }}
   >
     {Template.bind({})}
   </Story>

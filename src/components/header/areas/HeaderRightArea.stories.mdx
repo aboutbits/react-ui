@@ -9,21 +9,35 @@ import { HeaderRightArea } from './HeaderRightArea'
 
 # HeaderRightArea
 
-This component is mostly used in the header and represents the children on the right side of the header. For example it is used to show the search button.
+This component is used in the header and represents the children on the right side of the header. For example it is used to show the search button.
 It applies a margin to the left and displays the children in a row.
 
-export const Template = ({ ...args }) => (
-  <HeaderRightArea {...args}>
-    <HeaderButtonIcon
-      icon={IconEdit}
-      label="Edit"
-      onClick={action('onClick')}
-    />
-  </HeaderRightArea>
+export const Template = ({ children, ...args }) => (
+  <HeaderRightArea {...args}>{children}</HeaderRightArea>
 )
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{ children: 'HeaderButtonIcon' }}
+    argTypes={{
+      children: {
+        options: ['HeaderButtonIcon'],
+        mapping: {
+          HeaderButtonIcon: (
+            <HeaderButtonIcon
+              icon={IconEdit}
+              label="Edit"
+              onClick={action('onClick')}
+            />
+          ),
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props

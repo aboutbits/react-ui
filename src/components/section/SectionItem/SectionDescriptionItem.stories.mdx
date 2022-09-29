@@ -16,13 +16,11 @@ import {
 The SectionDescriptionItem displays read only information with HTML description list element (`dl`) tag.
 
 export const Template = ({ title, content, hideIfEmpty }) => (
-  <div className="bg-gray-700">
-    <SectionDescriptionItem
-      title={title}
-      content={content}
-      hideIfEmpty={hideIfEmpty}
-    />
-  </div>
+  <SectionDescriptionItem
+    title={title}
+    content={content}
+    hideIfEmpty={hideIfEmpty}
+  />
 )
 
 <Canvas>

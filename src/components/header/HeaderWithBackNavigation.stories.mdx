@@ -1,5 +1,4 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { NavigationProvider } from '../navigation/NavigationContext'
 import { HeaderWithBackNavigation } from './HeaderWithBackNavigation'
 
 <Meta
@@ -9,20 +8,20 @@ import { HeaderWithBackNavigation } from './HeaderWithBackNavigation'
 
 # HeaderWithBackNavigation
 
-This component is similar to [Header](/docs/components-header-header--default-story), but with the difference that on the left an arrow back can be found.
+This component is a convenience component that provides a header with a back button on the left. By default the back button will call the router's back method.
 
-It leverages on the component [HeaderBackAction](/docs/components-header-headerbackaction--default-story) and [HeaderArea](/docs/components-header-headerarea--default-story).
-
-export const Template = ({ ...args }) => {
-  return (
-    <NavigationProvider>
-      <HeaderWithBackNavigation {...args} title="Header Title" />
-    </NavigationProvider>
-  )
+export const Template = (args) => {
+  return <HeaderWithBackNavigation {...args} />
 }
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{ title: 'Header Title' }}
+    argTypes={{ onBack: { control: false } }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props

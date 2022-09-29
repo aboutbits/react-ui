@@ -8,7 +8,7 @@ import { LoadingInput } from './LoadingInput'
 
 This component is a loading skeleton of an Input element.
 
-export const Template = ({ ...args }) => <LoadingInput {...args} />
+export const Template = (args) => <LoadingInput {...args} />
 
 <Canvas>
   <Story name="Default">{Template.bind({})}</Story>
@@ -20,5 +20,6 @@ export const Template = ({ ...args }) => <LoadingInput {...args} />
 
 ### Theme
 
+- `loading.input.base`: Define the style for the component container.
 - `loading.input.upper.base`: Define the padding, and the width for the upper loading bar.
 - `loading.input.lower.base`: Define the padding, and the width for the lower loading bar.

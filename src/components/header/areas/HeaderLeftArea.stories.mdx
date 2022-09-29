@@ -8,21 +8,35 @@ import { HeaderLeftArea } from './HeaderLeftArea'
 
 # HeaderLeftArea
 
-This component is mostly used in the header and represents the children on the left side of the header. For example it is used to show the back button to navigate to the previous screen.
+This component is used in the header and represents the children on the left side of the header. For example it is used to show the back button to navigate to the previous screen.
 It applies a margin to the right and displays the children in a row.
 
-export const Template = ({ ...args }) => (
-  <HeaderLeftArea {...args}>
-    <HeaderButtonIcon
-      icon={IconArrowBack}
-      label="Back"
-      onClick={action('onClick')}
-    />
-  </HeaderLeftArea>
+export const Template = ({ children, ...args }) => (
+  <HeaderLeftArea {...args}>{children}</HeaderLeftArea>
 )
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{ children: 'HeaderButtonIcon' }}
+    argTypes={{
+      children: {
+        options: ['HeaderButtonIcon'],
+        mapping: {
+          HeaderButtonIcon: (
+            <HeaderButtonIcon
+              icon={IconArrowBack}
+              label="Back"
+              onClick={action('onClick')}
+            />
+          ),
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ### Props

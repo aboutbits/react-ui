@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
 import { action } from '@storybook/addon-actions'
-import { Variant, Select } from '../../form'
+import { Variant, Select, Option } from '../../form'
 import {
   Section,
   SectionContainer,
@@ -51,33 +51,19 @@ export const Template = ({ ...args }) => {
           >
             <SectionHeaderGroup>
               <Select id="role" name="role" variant={Variant.transparent}>
-                <option className="bg-gray-600" value="">
-                  All roles
-                </option>
-                <option className="bg-gray-600" value="ADMIN">
-                  Admin
-                </option>
-                <option className="bg-gray-600" value="USER">
-                  User
-                </option>
+                <Option value="">All roles</Option>
+                <Option value="ADMIN">Admin</Option>
+                <Option value="USER">User</Option>
               </Select>
               <Select
                 id="department"
                 name="department"
                 variant={Variant.transparent}
               >
-                <option className="bg-gray-600" value="">
-                  All departments
-                </option>
-                <option className="bg-gray-600" value="HR">
-                  Human Resources
-                </option>
-                <option className="bg-gray-600" value="IT">
-                  Engineering
-                </option>
-                <option className="bg-gray-600" value="SALES">
-                  Sales
-                </option>
+                <Option value="">All departments</Option>
+                <Option value="HR">Human Resources</Option>
+                <Option value="IT">Engineering</Option>
+                <Option value="SALES">Sales</Option>
               </Select>
             </SectionHeaderGroup>
           </SectionFilter>

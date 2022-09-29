@@ -30,24 +30,6 @@ import { Variant } from './types'
       )
     },
   ]}
-  args={{
-    mode: Mode.light,
-    variant: Variant.ghost,
-  }}
-  argTypes={{
-    mode: {
-      options: Object.values(Mode),
-      control: {
-        type: 'radio',
-      },
-    },
-    variant: {
-      options: Object.values(Variant),
-      control: {
-        type: 'radio',
-      },
-    },
-  }}
 />
 
 # Select
@@ -55,7 +37,7 @@ import { Variant } from './types'
 This component can be used to create select fields. This input already has a label and handles error messages in `formik` Forms.
 
 export const Template = ({ ...args }) => (
-  <Select {...args} name="right">
+  <Select {...args} name="right" id="right">
     <Option value="" hidden>
       Select user right
     </Option>
@@ -70,6 +52,21 @@ export const Template = ({ ...args }) => (
     args={{
       label: 'User rights',
       mode: Mode.light,
+      variant: Variant.ghost,
+    }}
+    argTypes={{
+      mode: {
+        options: Object.values(Mode),
+        control: {
+          type: 'radio',
+        },
+      },
+      variant: {
+        options: Object.values(Variant),
+        control: {
+          type: 'radio',
+        },
+      },
     }}
   >
     {Template.bind({})}

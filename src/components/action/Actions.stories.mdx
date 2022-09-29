@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { Button } from '../button'
+import { Button, Variant } from '../button'
+import { Tone } from '../types'
 import { Actions } from './Actions'
 
 <Meta title="Components/Action/Actions" component={Actions} />
@@ -15,7 +16,27 @@ export const Template = ({ children, ...args }) => (
 )
 
 <Canvas>
-  <Story name="Default" args={{ children: <Button>Button 1</Button> }}>
+  <Story
+    name="Default"
+    args={{ children: 'One button' }}
+    argTypes={{
+      children: {
+        options: ['One button', 'Two buttons'],
+        mapping: {
+          'One button': <Button>Save</Button>,
+          'Two buttons': (
+            <>
+              <Button tone={Tone.success}>Save</Button>
+              <Button variant={Variant.ghost} tone={Tone.neutral}>
+                Cancel
+              </Button>
+            </>
+          ),
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -27,17 +48,19 @@ export const Template = ({ children, ...args }) => (
 ### Theme
 
 - `action.action.base`: Define the styles of the action.
-- `action.action.variant.start`: Define left position of children of the action.
-- `action.action.variant.center`: Define center position of children of the action.
-- `action.action.variant.end`: Define right position of children of the action.
+- `action.action.position.start`: Define left position of children of the action.
+- `action.action.position.center`: Define center position of children of the action.
+- `action.action.position.end`: Define right position of children of the action.
 
 ## Multiple children
 
 <Canvas>
   <Story name="Multiple children">
     <Actions>
-      <Button>Button 1</Button>
-      <Button>Button 2</Button>
+      <Button tone={Tone.success}>Save</Button>
+      <Button variant={Variant.ghost} tone={Tone.neutral}>
+        Cancel
+      </Button>
     </Actions>
   </Story>
 </Canvas>

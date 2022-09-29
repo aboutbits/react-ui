@@ -4,7 +4,7 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { actions } from '@storybook/addon-actions'
 import { ContentArea } from '../components/content'
-import { Form, Input, Select, TextArea } from '../components/form'
+import { Form, Input, Select, TextArea, Option } from '../components/form'
 import {
   Section,
   SectionContainer,
@@ -90,13 +90,9 @@ export const Template = ({ title }) => {
                   label={intl.formatMessage({ id: 'shared.field.language' })}
                 >
                   {i18n.supportedLanguages.map((supportedLanguage, index) => (
-                    <option
-                      className="bg-gray-600"
-                      key={index}
-                      value={supportedLanguage}
-                    >
+                    <Option key={index} value={supportedLanguage}>
                       {locales[supportedLanguage]}
-                    </option>
+                    </Option>
                   ))}
                 </Select>
                 <Select
@@ -105,12 +101,8 @@ export const Template = ({ title }) => {
                   name="role"
                   label="Role"
                 >
-                  <option className="bg-gray-600" value="ADMIN">
-                    Admin
-                  </option>
-                  <option className="bg-gray-600" value="USER">
-                    User
-                  </option>
+                  <Option value="ADMIN">Admin</Option>
+                  <Option value="USER">User</Option>
                 </Select>
                 <TextArea
                   id="bio"

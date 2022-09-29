@@ -1,21 +1,18 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { NavigationProvider } from '../navigation/NavigationContext'
 import { Header } from './Header'
 
 <Meta title="Components/Header/Header" component={Header} />
 
 # Header
 
-This component can be used to create swiftly a header. The Header should be used for pages that are on the root of a navigation stack.
+This component is a convenience component that provides a header with a title.
 
-export const Template = ({ ...args }) => (
-  <NavigationProvider>
-    <Header {...args} title="Header Title" />
-  </NavigationProvider>
-)
+export const Template = (args) => {
+  return <Header {...args} />
+}
 
 <Canvas>
-  <Story name="Default" args={{ children: 'Header Title' }}>
+  <Story name="Default" args={{ title: 'Header Title' }}>
     {Template.bind({})}
   </Story>
 </Canvas>
