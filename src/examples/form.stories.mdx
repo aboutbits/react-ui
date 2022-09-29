@@ -2,7 +2,7 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs'
 import { useIntl } from 'react-intl'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { actions } from '@storybook/addon-actions'
+import { action } from '@storybook/addon-actions'
 import { ContentArea } from '../components/content'
 import { Input, Select, TextArea, Option } from '../components/form'
 import {
@@ -55,7 +55,7 @@ export const Template = ({ title }) => {
         validateOnChange={true}
         onSubmit={async (values) => {
           await new Promise((resolve) => setTimeout(resolve, 500))
-          actions(JSON.stringify(values))
+          action('onSubmit')(values)
         }}
       >
         <Form>
