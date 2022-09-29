@@ -1,5 +1,5 @@
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
-import { ReactElement } from 'react'
+import { forwardRef } from 'react'
 import { useInternationalization } from '../../../framework'
 import {
   Input,
@@ -9,7 +9,6 @@ import {
   Variant,
 } from '../../form'
 
-// Exclude ref to avoid TypeScript error. Should be fixed in the future.
 // Make name optional to use 'search' as default
 export type SectionSearchProps = (
   | Omit<InputWithoutLabelProps, 'ref' | 'name'>
@@ -17,19 +16,23 @@ export type SectionSearchProps = (
 ) &
   Partial<Pick<InputProps, 'name'>>
 
-export function SectionSearch({
-  name = 'search',
-  ...props
-}: SectionSearchProps): ReactElement {
-  const internationalization = useInternationalization()
+export const SectionSearch = forwardRef<HTMLInputElement, SectionSearchProps>(
+  ({ name = 'search', ...props }, ref) => {
+    const internationalization = useInternationalization()
 
-  return (
-    <Input
-      name={name}
-      placeholder={internationalization.translate('shared.search.placeholder')}
-      variant={Variant.soft}
-      iconStart={IconSearch}
-      {...props}
-    />
-  )
-}
+    return (
+      <Input
+        name={name}
+        ref={ref}
+        placeholder={internationalization.translate(
+          'shared.search.placeholder'
+        )}
+        variant={Variant.soft}
+        iconStart={IconSearch}
+        {...props}
+      />
+    )
+  }
+)
+
+SectionSearch.displayName = 'SectionSearch'
