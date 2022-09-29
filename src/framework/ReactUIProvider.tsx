@@ -1,30 +1,31 @@
-import { useContext } from 'react'
-import { ThemeContext } from './theme/ThemeContext'
-import { Theme } from './theme/theme'
-import {
-  LinkComponent,
-  LinkComponentContext,
-} from './router/LinkComponentContext'
-import { RouterContext, Router } from './router/RouterContext'
+import { ReactNode, useContext } from 'react'
 import {
   Internationalization,
   InternationalizationContext,
 } from './internationalization/InternationalizationContext'
+import {
+  LinkComponent,
+  LinkComponentContext,
+} from './router/LinkComponentContext'
+import { Router, RouterContext } from './router/RouterContext'
+import { Theme } from './theme/theme'
+import { ThemeContext } from './theme/ThemeContext'
 
-type Props = {
+export type ReactUIProviderProps = {
   theme?: Theme
   linkComponent?: LinkComponent
   router?: Router
   internationalization?: Internationalization
+  children?: ReactNode
 }
 
-export const ReactUIProvider: React.FC<Props> = ({
+export function ReactUIProvider({
   theme,
   linkComponent,
   router,
   internationalization,
   children,
-}) => {
+}: ReactUIProviderProps) {
   const linkComponentFromContext = useContext(LinkComponentContext)
   const routerComponentFromContext = useContext(RouterContext)
   const internationalizationFromContext = useContext(

@@ -1,20 +1,18 @@
 import { MenuItem as ReachMenuItem } from '@reach/menu-button'
 import classNames from 'classnames'
+import { ReactNode } from 'react'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 
-type MenuItemProps = ClassNameProps & {
+export type MenuItemProps = ClassNameProps & {
   /**
    * Defines which action should be executed on clicking.
    **/
   onClick: () => void
+  children?: ReactNode
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({
-  children,
-  className,
-  onClick,
-}) => {
+export function MenuItem({ children, className, onClick }: MenuItemProps) {
   const { menu } = useTheme()
 
   return (
@@ -26,5 +24,3 @@ const MenuItem: React.FC<MenuItemProps> = ({
     </ReachMenuItem>
   )
 }
-
-export { MenuItem }

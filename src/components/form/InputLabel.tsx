@@ -1,6 +1,6 @@
 import { ClassNameProps } from '../types'
 
-export type Props = ClassNameProps & {
+export type InputLabelProps = ClassNameProps & {
   /**
    * Defines the htmlFor of the label.
    **/
@@ -11,12 +11,10 @@ export type Props = ClassNameProps & {
   label?: string
 }
 
-const InputLabel: React.FC<Props> = ({ label, inputId, className }) => {
+export function InputLabel({ label, inputId, className }: InputLabelProps) {
   return label ? (
     <label htmlFor={inputId} className={className}>
       {label}
     </label>
   ) : null
 }
-
-export { InputLabel }

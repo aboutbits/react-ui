@@ -3,7 +3,7 @@ import React from 'react'
 import { useTheme } from '../../framework'
 import { Mode, ModeProps } from '../types'
 
-type OptionProps = Omit<
+export type OptionProps = Omit<
   React.DetailedHTMLProps<
     React.OptionHTMLAttributes<HTMLOptionElement>,
     HTMLOptionElement

@@ -1,11 +1,16 @@
 import classNames from 'classnames'
+import { ReactNode } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-export const SectionContentTitle: React.FC<ClassNameProps> = ({
+export type SectionContentTitleProps = ClassNameProps & {
+  children?: ReactNode
+}
+
+export function SectionContentTitle({
   children,
   className,
-}) => {
+}: SectionContentTitleProps) {
   const { section } = useTheme()
 
   return (
