@@ -1,7 +1,4 @@
 export default {
-  form: {
-    base: 'space-y-8 lg:space-y-10',
-  },
   formError: {
     base: 'xl:col-span-full',
   },

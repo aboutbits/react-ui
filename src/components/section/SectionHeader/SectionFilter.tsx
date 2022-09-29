@@ -1,9 +1,9 @@
-import { Form, Formik, FormikConfig } from 'formik'
+import { Form, Formik, FormikConfig, FormikValues } from 'formik'
 import { ReactElement } from 'react'
 import { ClassNameProps } from '../../types'
 import { FormikAutoSubmit } from '../../form'
 
-type Props<T> = ClassNameProps &
+type Props<T extends FormikValues> = ClassNameProps &
   FormikConfig<T> & {
     /**
      * If the form should submit automatically on change. Defaults to true.
@@ -11,7 +11,7 @@ type Props<T> = ClassNameProps &
     autoSubmit?: boolean
   }
 
-export function SectionFilter<T>({
+export function SectionFilter<T extends FormikValues>({
   className,
   autoSubmit = true,
   children,
