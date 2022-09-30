@@ -1,7 +1,7 @@
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { Tone } from '../types'
+import { Tone, Mode } from '../types'
 import { Size, Variant } from './types'
 import { ButtonIconLink } from './ButtonIconLink'
 
@@ -17,12 +17,17 @@ export const Template = ({ ...args }) => <ButtonIconLink {...args} />
     args={{
       href: '#',
       disabled: false,
+      mode: Mode.light,
       variant: Variant.solid,
       size: Size.md,
       tone: Tone.primary,
       icon: 'Add',
     }}
     argTypes={{
+      mode: {
+        options: Object.values(Mode),
+        control: { type: 'radio' },
+      },
       variant: {
         options: Object.values(Variant),
         control: { type: 'radio' },
@@ -53,6 +58,10 @@ export const Template = ({ ...args }) => <ButtonIconLink {...args} />
 ### Theme
 
 All themes are the same as for the [ButtonIcon](/docs/components-button-buttonicon--default-story#theme).
+
+## Mode
+
+The mode is the same as for the [ButtonIcon](/docs/components-button-buttonicon--default-story#theme).
 
 ## Variants
 

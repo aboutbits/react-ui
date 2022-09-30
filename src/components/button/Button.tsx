@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
 import { useTheme } from '../../framework'
-import { Tone } from '../types'
+import { Mode, Tone } from '../types'
 import { ButtonCommonProps, ButtonStyleProps, Size, Variant } from './types'
 
 export type ButtonProps = React.DetailedHTMLProps<
@@ -14,6 +14,7 @@ export type ButtonProps = React.DetailedHTMLProps<
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
+      mode = Mode.light,
       variant = Variant.solid,
       size = Size.md,
       tone = Tone.primary,
@@ -34,8 +35,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           button.button.base,
           !props.disabled
             ? // @ts-ignore
-              button.variantTone[variant][tone]
-            : button.variantTone[variant].disabled,
+              button.modeVariantTone[mode][variant][tone]
+            : button.modeVariantTone[mode][variant].disabled,
           button.button.variantSize.base[size],
           // @ts-ignore
           button.button.variantSize[variant]?.[size],

@@ -20,6 +20,9 @@ export enum Tone {
 }
 
 export type ModeProps = {
+  /**
+   * Defines the mode, either light or dark
+   */
   mode?: Mode
 }
 

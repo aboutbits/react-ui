@@ -6,11 +6,11 @@ import enMessages from '../src/translations/shared.en.json'
 import '../styles/index.css'
 
 // Add custom button tone for demo purpose
-customTheme.button.variantTone.solid.purple =
+customTheme.button.modeVariantTone.light.solid.purple =
   'bg-purple-500 hover:bg-purple-600 text-white outline-purple-500'
-customTheme.button.variantTone.ghost.purple =
+customTheme.button.modeVariantTone.light.ghost.purple =
   'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500'
-customTheme.button.variantTone.transparent.purple =
+customTheme.button.modeVariantTone.light.transparent.purple =
   'hover:bg-purple-50 text-purple-500 focus:outline-purple-500'
 
 export const parameters = {
