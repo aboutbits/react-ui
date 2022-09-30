@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
 import { useLinkComponent, LinkComponentProps, useTheme } from '../../framework'
-import { Tone } from '../types'
+import { Mode, Tone } from '../types'
 import {
   ButtonCommonProps,
   ButtonStyleProps,
@@ -19,6 +19,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   (
     {
       href,
+      mode = Mode.light,
       variant = Variant.solid,
       size = Size.md,
       tone = Tone.primary,
@@ -40,8 +41,8 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       button.button.base,
       !disabled
         ? // @ts-ignore
-          button.variantTone[variant][tone]
-        : button.variantTone[variant].disabled,
+          button.modeVariantTone[mode][variant][tone]
+        : button.modeVariantTone[mode][variant].disabled,
       button.button.variantSize.base[size],
       // @ts-ignore
       button.button.variantSize[variant]?.[size],
