@@ -28,7 +28,7 @@ export default {
       },
     },
     title: {
-      base: 'text-xl font-bold',
+      base: 'text-center text-xl font-bold',
       tone: {
         primary: 'text-primary-500',
         neutral: 'text-neutral-500',
