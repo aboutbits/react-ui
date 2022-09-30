@@ -41,12 +41,12 @@ export default {
     text: {
       base: 'text-center',
       tone: {
-        primary: '',
+        primary: 'text-neutral-500',
         neutral: 'text-neutral-500',
-        warning: '',
-        critical: 'text-critical-500',
-        success: '',
-        informative: '',
+        warning: 'text-neutral-500',
+        critical: 'text-neutral-500',
+        success: 'text-neutral-500',
+        informative: 'text-neutral-500',
       },
     },
   },
