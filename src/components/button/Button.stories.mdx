@@ -1,9 +1,10 @@
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
-import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs'
 import { Tone } from '../types'
 import { Size, Variant } from './types'
 import { Button } from './Button'
+import theme from './theme'
 
 <Meta title="Components/Button/Button" component={Button} />
 
@@ -69,42 +70,7 @@ React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButto
 
 ### Theme
 
-- `button.button.base`
-- `button.button.variantSize.base.sm`: Define the base styles for the small size size button.
-- `button.button.variantSize.base.md`: Define the base styles for the medium size size button.
-- `button.button.variantSize.base.lg`: Define the base styles for the large size size button.
-- `button.button.variantSize.base`: Define the size of the small size button.
-- `button.button.icon.base`: Define the base styles for the icon.
-- `button.button.icon.size.sm`: Define the size of the small size icon.
-- `button.button.icon.size.md`: Define the size of the small medium icon.
-- `button.button.icon.size.lg`: Define the size of the small large icon.
-- `button.button.icon.iconStart.size.sm`: Define the size of the small size start icon.
-- `button.button.icon.iconStart.size.md`: Define the size of the medium size start icon.
-- `button.button.icon.iconStart.size.lg`: Define the size of the large size start icon.
-- `button.button.icon.iconEnd.size.sm`: Define the size of the small size end icon.
-- `button.button.icon.iconEnd.size.md`: Define the size of the medium size end icon.
-- `button.button.icon.iconEnd.size.lg`: Define the size of the large size end icon.
-- `button.variantTone.solid.primary`: Define the color and interactions for the button with the variant solid and tone primary.
-- `button.variantTone.solid.neutral`: Define the color and interactions for the button with the variant solid and tone neutral.
-- `button.variantTone.solid.warning`: Define the color and interactions for the button with the variant solid and tone warning.
-- `button.variantTone.solid.critical`: Define the color and interactions for the button with the variant solid and tone critical.
-- `button.variantTone.solid.success`: Define the color and interactions for the button with the variant solid and tone success.
-- `button.variantTone.solid.informative`: Define the color and interactions for the button with the variant solid and tone informative.
-- `button.variantTone.solid.disabled`: Define the status disabled for the button with the variant solid.
-- `button.variantTone.ghost.primary`: Define the color and interactions for the button with the variant ghost and tone primary.
-- `button.variantTone.ghost.neutral`: Define the color and interactions for the button with the variant ghost and tone neutral.
-- `button.variantTone.ghost.warning`: Define the color and interactions for the button with the variant ghost and tone warning.
-- `button.variantTone.ghost.critical`: Define the color and interactions for the button with the variant ghost and tone critical.
-- `button.variantTone.ghost.success`: Define the color and interactions for the button with the variant ghost and tone success.
-- `button.variantTone.ghost.informative`: Define the color and interactions for the button with the variant ghost and tone informative.
-- `button.variantTone.ghost.disabled`: Define the status disabled for the button with the variant ghost.
-- `button.variantTone.transparent.primary`: Define the color and interactions for the button with the variant transparent and tone primary.
-- `button.variantTone.transparent.neutral`: Define the color and interactions for the button with the variant transparent and tone neutral.
-- `button.variantTone.transparent.warning`: Define the color and interactions for the button with the variant transparent and tone warning.
-- `button.variantTone.transparent.critical`: Define the color and interactions for the button with the variant transparent and tone critical.
-- `button.variantTone.transparent.success`: Define the color and interactions for the button with the variant transparent and tone success.
-- `button.variantTone.transparent.informative`: Define the color and interactions for the button with the variant transparent and tone informative.
-- `button.variantTone.transparent.disabled`: Define the status disabled for the button with the variant transparent.
+<Source code={JSON.stringify(theme, null, 2)} language="json" />
 
 ## Variants
 
