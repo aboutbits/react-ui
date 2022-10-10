@@ -1,28 +1,39 @@
-import { Form, Formik, FormikConfig, FormikValues } from 'formik'
-import { ReactElement } from 'react'
+import { ReactElement, ReactNode } from 'react'
+import {
+  FieldValues,
+  SubmitHandler,
+  useForm,
+  UseFormProps,
+} from 'react-hook-form'
 import { ClassNameProps } from '../../types'
-import { FormikAutoSubmit } from '../../form'
+import { AutoSubmit, Form } from '../../form'
 
-type Props<T extends FormikValues> = ClassNameProps &
-  FormikConfig<T> & {
+export type SectionFilterProps<F extends FieldValues> = ClassNameProps &
+  UseFormProps<F> & {
+    /**
+     * The function executed on submit
+     */
+    onSubmit: SubmitHandler<F>
     /**
      * If the form should submit automatically on change. Defaults to true.
      */
     autoSubmit?: boolean
+    children?: ReactNode
   }
 
-export function SectionFilter<T extends FormikValues>({
+export function SectionFilter<F extends FieldValues>({
   className,
+  onSubmit,
   autoSubmit = true,
   children,
   ...props
-}: Props<T>): ReactElement | null {
+}: SectionFilterProps<F>): ReactElement | null {
+  const form = useForm(props)
+
   return (
-    <Formik<T> {...props}>
-      <Form className={className}>
-        {autoSubmit && <FormikAutoSubmit />}
-        {children}
-      </Form>
-    </Formik>
+    <Form form={form} onSubmit={onSubmit} className={className}>
+      {autoSubmit && <AutoSubmit />}
+      {children}
+    </Form>
   )
 }
