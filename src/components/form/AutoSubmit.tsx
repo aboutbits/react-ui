@@ -23,7 +23,6 @@ export function AutoSubmit({
       formInput.current?.form?.requestSubmit()
       dataChanged.current = false
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValueToSave])
 
   // Make sure that the form gets submitted on unmount.
@@ -44,7 +43,6 @@ export function AutoSubmit({
       }
     }
     // We want to run this function only once, when the component unmounts.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return <input type="hidden" ref={formInput} />
