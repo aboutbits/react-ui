@@ -1,49 +1,51 @@
-import { useEffect, useRef } from 'react'
-import { useFormikContext } from 'formik'
+import { ReactElement, useEffect, useRef } from 'react'
+import { useWatch } from 'react-hook-form'
 import { useDebounce } from '../utils/useDebounce'
 
-export function FormikAutoSubmit({
+export function AutoSubmit({
   interval = 200,
 }: {
   interval?: number
-}): null {
-  const formik = useFormikContext()
+}): ReactElement {
+  const values = useWatch()
+
+  const formInput = useRef<HTMLInputElement | null>(null)
 
   const initialRender = useRef<boolean>(true)
   const dataChanged = useRef<boolean>(false)
-  const debouncedValueToSave = useDebounce(formik.values, interval)
+  const debouncedValueToSave = useDebounce(values, interval)
 
   // Save whenever debounced values resolve.
   useEffect(() => {
     if (initialRender.current) {
       initialRender.current = false
     } else if (debouncedValueToSave) {
-      formik.submitForm()
+      formInput.current?.form?.requestSubmit()
       dataChanged.current = false
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedValueToSave, formik.submitForm])
+  }, [debouncedValueToSave])
 
   // Make sure that the form gets submitted on unmount.
   // Here we set the variable dataChanged to true, which will be checked by the last effect on unmount.
   useEffect(() => {
-    if (!isEqual(debouncedValueToSave, formik.values)) {
+    if (!isEqual(debouncedValueToSave, values)) {
       dataChanged.current = true
     }
-  }, [debouncedValueToSave, formik.values])
+  }, [debouncedValueToSave, values])
 
   // This effect returns only a cleanup function that will make sure that last changes are sent on unmount.
   useEffect(() => {
+    const formInputCurrent = formInput.current
+
     return () => {
       if (dataChanged.current) {
-        formik.submitForm()
+        formInputCurrent?.form?.requestSubmit()
       }
     }
     // We want to run this function only once, when the component unmounts.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formik.submitForm])
+  }, [])
 
-  return null
+  return <input type="hidden" ref={formInput} />
 }
 
 const isEqual = (a: unknown, b: unknown) => {

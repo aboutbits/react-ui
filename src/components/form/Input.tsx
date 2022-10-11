@@ -1,8 +1,9 @@
 import classNames from 'classnames'
-import { useField } from 'formik'
-import { ComponentType, forwardRef } from 'react'
+import { ComponentType, ForwardedRef, forwardRef } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { useTheme } from '../../framework'
 import { IconProps, Mode, ModeProps } from '../types'
+import { useForwardedRef } from '../utils/useForwardedRef'
 import { InputError } from './InputError'
 import { IconPosition, InputIcon } from './InputIcon'
 import { InputLabel } from './InputLabel'
@@ -31,69 +32,76 @@ export type InputWithLabelProps = InputBaseProps & {
 
 export type InputProps = InputWithoutLabelProps | InputWithLabelProps
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      label,
-      mode = Mode.light,
-      variant = Variant.solid,
-      className,
-      iconStart,
-      iconEnd,
-      ...props
-    },
-    ref
-  ) => {
-    const customCss = useCustomInputCss(
-      props.name,
-      props.disabled,
-      mode,
-      variant
-    )
-    const { form } = useTheme()
-    const [field] = useField(props.name)
+function InputComponent(
+  {
+    name,
+    label,
+    mode = Mode.light,
+    variant = Variant.solid,
+    disabled,
+    className,
+    iconStart,
+    iconEnd,
+    ...props
+  }: InputProps,
+  ref: ForwardedRef<HTMLInputElement>
+) {
+  const { register } = useFormContext()
+  const { ref: fieldRef, ...field } = register(name)
 
-    return (
-      <div className={className}>
-        {label && props.id && (
-          <InputLabel
-            inputId={props.id}
-            label={label}
-            className={customCss.labelCss}
+  const forwardedRef = useForwardedRef(ref)
+
+  const { form } = useTheme()
+  const customCss = useCustomInputCss(name, {
+    mode,
+    variant,
+    disabled,
+  })
+
+  return (
+    <div className={className}>
+      {label && props.id && (
+        <InputLabel
+          inputId={props.id}
+          label={label}
+          className={customCss.labelCss}
+        />
+      )}
+      <div className={form.input.field}>
+        {iconStart && (
+          <InputIcon
+            icon={iconStart}
+            position={IconPosition.start}
+            mode={mode}
+            disabled={disabled}
           />
         )}
-        <div className={form.input.field}>
-          {iconStart && (
-            <InputIcon
-              icon={iconStart}
-              position={IconPosition.start}
-              mode={mode}
-              disabled={props.disabled}
-            />
+        <input
+          ref={(ref) => {
+            forwardedRef.current = ref
+            fieldRef(ref)
+          }}
+          {...props}
+          {...field}
+          disabled={disabled}
+          className={classNames(
+            customCss.inputCss,
+            iconStart ? form.input.withIconStart : null,
+            iconEnd ? form.input.withIconEnd : null
           )}
-          <input
-            {...field}
-            {...props}
-            ref={ref}
-            className={classNames(
-              customCss.inputCss,
-              iconStart ? form.input.withIconStart : null,
-              iconEnd ? form.input.withIconEnd : null
-            )}
+        />
+        {iconEnd && (
+          <InputIcon
+            icon={iconEnd}
+            position={IconPosition.end}
+            mode={mode}
+            disabled={disabled}
           />
-          {iconEnd && (
-            <InputIcon
-              icon={iconEnd}
-              position={IconPosition.end}
-              mode={mode}
-              disabled={props.disabled}
-            />
-          )}
-        </div>
-        <InputError name={props.name} className={customCss.errorCss} />
+        )}
       </div>
-    )
-  }
-)
+      <InputError name={name} className={customCss.errorCss} />
+    </div>
+  )
+}
 
-Input.displayName = 'Input'
+export const Input = forwardRef(InputComponent)

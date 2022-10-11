@@ -1,4 +1,5 @@
-export * from './FormikAutoSubmit'
+export * from './Form'
+export * from './AutoSubmit'
 export * from './Input'
 export * from './InputError'
 export * from './InputLabel'

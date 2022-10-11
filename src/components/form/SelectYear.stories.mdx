@@ -1,8 +1,10 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
-import { Formik, Form } from 'formik'
+import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { Mode } from '../types'
+import { Form } from './Form'
 import { SelectYear } from './SelectYear'
 
 <Meta
@@ -10,20 +12,20 @@ import { SelectYear } from './SelectYear'
   component={SelectYear}
   decorators={[
     (Story) => {
-      const validationSchema = Yup.object().shape({
-        yearOfBirth: Yup.number().required(),
+      const resolver = yupResolver(
+        Yup.object().shape({
+          yearOfBirth: Yup.number().required(),
+        })
+      )
+      const form = useForm({
+        resolver,
+        defaultValues: { yearOfBirth: '' },
+        mode: 'onTouched',
       })
       return (
-        <Formik
-          initialValues={{ yearOfBirth: '' }}
-          validateOnChange={true}
-          validationSchema={validationSchema}
-          onSubmit={(values) => action('onSubmit')(values)}
-        >
-          <Form>
-            <Story />
-          </Form>
-        </Formik>
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
       )
     },
   ]}
@@ -39,7 +41,7 @@ If `from` equal to `to` only that year is displayed.
 However, if `from` is greater than `to` the component will report `null`.
 
 export const Template = ({ ...args }) => (
-  <SelectYear {...args} name="yearOfBirth" />
+  <SelectYear {...args} id="yearOfBirth" name="yearOfBirth" />
 )
 
 <Canvas>

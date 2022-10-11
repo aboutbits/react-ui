@@ -1,7 +1,8 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
-import { Formik, Form } from 'formik'
+import { useForm } from 'react-hook-form'
 import { Mode } from '../types'
+import { Form } from './Form'
 import { ToggleSwitch, ToggleSwitchSize } from './ToggleSwitch'
 
 <Meta
@@ -9,12 +10,14 @@ import { ToggleSwitch, ToggleSwitchSize } from './ToggleSwitch'
   component={ToggleSwitch}
   decorators={[
     (Story) => {
+      const form = useForm({
+        defaultValues: { active: false },
+        mode: 'onTouched',
+      })
       return (
-        <Formik initialValues={{ active: false }} onSubmit={action('onSubmit')}>
-          <Form>
-            <Story />
-          </Form>
-        </Formik>
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
       )
     },
   ]}
@@ -22,7 +25,7 @@ import { ToggleSwitch, ToggleSwitchSize } from './ToggleSwitch'
 
 # ToggleSwitch
 
-This component can be used to create toggle switches. This input already has a label and handles error messages in `formik` Forms.
+This component can be used to create toggle switches. This input already has a label and handles error messages in `React Hook Form` Forms.
 
 export const Template = ({ ...args }) => (
   <ToggleSwitch {...args} name="airplane-mode" />

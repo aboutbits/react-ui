@@ -1,7 +1,23 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { useForm } from 'react-hook-form'
+import { Form } from '../form/Form'
 import { SubmitButton } from './SubmitButton'
 
-<Meta title="Components/Button/SubmitButton" component={SubmitButton} />
+<Meta
+  title="Components/Button/SubmitButton"
+  component={SubmitButton}
+  decorators={[
+    (Story) => {
+      const form = useForm()
+      return (
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
+      )
+    },
+  ]}
+/>
 
 export const Template = ({ children, ...args }) => (
   <SubmitButton {...args}>{children}</SubmitButton>
@@ -11,23 +27,22 @@ export const Template = ({ children, ...args }) => (
 
 The **_default values_** for variant, size, and tone can be found in the [Button Section](/docs/components-button-button--default-story).
 
-The submit button uses `formik` to automatically disable during submitting.
+The submit button uses `React Hook Form` to automatically disable during submitting.
 
 ## Usage
 
 ```jsx
-<Formik
-  initialValues={{ name: '', email: '' }}
+const form = useForm({ defaultValues: { name: '', email: '' }})
+<Form
+  form={form}
   onSubmit={async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 1000))
     alert(JSON.stringify(values, null, 2))
   }}
 >
-  <Form>
-    <Field name="email" type="email" />
-    <SubmitButton>Submit</SubmitButton>
-  </Form>
-</Formik>
+  <Input name="email" type="email" />
+  <SubmitButton>Submit</SubmitButton>
+</Form>
 ```
 
 <Canvas>
