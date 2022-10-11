@@ -1,7 +1,7 @@
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs'
-import { Tone } from '../types'
+import { Tone, Mode } from '../types'
 import { Size, Variant } from './types'
 import { Button } from './Button'
 import theme from './theme'
@@ -20,6 +20,7 @@ export const Template = ({ children, ...args }) => (
     args={{
       children: 'Default Button',
       disabled: false,
+      mode: Mode.light,
       variant: Variant.solid,
       size: Size.md,
       tone: Tone.primary,
@@ -27,6 +28,10 @@ export const Template = ({ children, ...args }) => (
       iconEnd: 'None',
     }}
     argTypes={{
+      mode: {
+        options: Object.values(Mode),
+        control: { type: 'radio' },
+      },
       variant: {
         options: Object.values(Variant),
         control: { type: 'radio' },
@@ -71,6 +76,21 @@ React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButto
 ### Theme
 
 <Source code={JSON.stringify(theme, null, 2)} language="json" />
+
+## Mode
+
+The `Mode` determines if the component is placed on light or dark background.
+
+<Canvas>
+  <Story name="ModeLight">
+    <Button mode={Mode.light}>Button Light</Button>
+  </Story>
+  <Story name="ModeDark">
+    <div className="p-5 bg-neutral-700">
+      <Button mode={Mode.dark}>Button Dark</Button>
+    </div>
+  </Story>
+</Canvas>
 
 ## Variants
 
@@ -138,17 +158,19 @@ If the provided colors are not satisfying the needs of a project, it is possible
 ```js
 module.exports = {
   button: {
-    variantTone: {
-      solid: {
-        purple:
-          'bg-purple-500 hover:bg-purple-600 text-white outline-purple-500',
-      },
-      ghost: {
-        purple:
-          'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500',
-      },
-      transparent: {
-        purple: 'hover:bg-purple-50 text-purple-500 focus:outline-purple-500',
+    modeVariantTone: {
+      light: {
+        solid: {
+          purple:
+            'bg-purple-500 hover:bg-purple-600 text-white outline-purple-500',
+        },
+        ghost: {
+          purple:
+            'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500',
+        },
+        transparent: {
+          purple: 'hover:bg-purple-50 text-purple-500 focus:outline-purple-500',
+        },
       },
     },
   },

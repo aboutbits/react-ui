@@ -1,7 +1,7 @@
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { Tone } from '../types'
+import { Tone, Mode } from '../types'
 import { Size, Variant } from './types'
 import { ButtonIcon } from './ButtonIcon'
 
@@ -16,12 +16,17 @@ export const Template = ({ ...args }) => <ButtonIcon {...args} />
     name="Default"
     args={{
       disabled: false,
+      mode: Mode.light,
       variant: Variant.solid,
       size: Size.md,
       tone: Tone.primary,
       icon: 'Add',
     }}
     argTypes={{
+      mode: {
+        options: Object.values(Mode),
+        control: { type: 'radio' },
+      },
       variant: {
         options: Object.values(Variant),
         control: { type: 'radio' },
@@ -69,7 +74,22 @@ React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButto
 - `button.buttonIcon.variantSize.base.md`: Define the base styles for the medium size size button.
 - `button.buttonIcon.variantSize.base.lg`: Define the base styles for the large size size button.
 
-Additionally, all the `button.variantTone` themes are used. See [Button](/docs/components-button-button--default-story#theme).
+Additionally, all the `button.modeVariantTone` themes are used. See [Button](/docs/components-button-button--default-story#theme).
+
+## Mode
+
+The `Mode` determines if the component is placed on light or dark background.
+
+<Canvas>
+  <Story name="ModeLight">
+    <ButtonIcon icon={IconAdd} mode={Mode.light} />
+  </Story>
+  <Story name="ModeDark">
+    <div className="p-5 bg-neutral-700">
+      <ButtonIcon icon={IconAdd} mode={Mode.dark} />
+    </div>
+  </Story>
+</Canvas>
 
 ## Variants
 
