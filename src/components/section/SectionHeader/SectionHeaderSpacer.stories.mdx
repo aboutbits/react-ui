@@ -1,4 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { Theme } from '../../../../.storybook/components'
 import {
   SectionHeaderSpacer,
   SectionHeaderSpacerSize,
@@ -41,7 +42,4 @@ export const Template = ({ ...args }) => <SectionHeaderSpacer {...args} />
 
 ### Theme
 
-- `section.headerSpacer.size.sm`: Define the styles for the section header spacer with a small space.
-- `section.headerSpacer.size.md`: Define the styles for the section header spacer with a medium space.
-- `section.headerSpacer.size.lg`: Define the styles for the section header spacer with a large space.
-- `section.headerSpacer.size.xl`: Define the styles for the section header spacer with a extra large space.
+<Theme component="section" items={['headerSpacer']} />

@@ -1,4 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { Theme } from '../../../../.storybook/components'
 import {
   Section,
   SectionContainer,
@@ -38,7 +39,7 @@ export const Template = ({ title, content, hideIfEmpty }) => (
 
 ### Theme
 
-- `section.descriptionItem.base`: Define the styles of the component, e.g., text color or background color.
+<Theme component="section" items={['descriptionItem']} />
 
 ## Example: Usage of `hideIfEmpty`
 

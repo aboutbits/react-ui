@@ -1,6 +1,7 @@
 import IconSave from '@aboutbits/react-material-icons/dist/IconSave'
 import IconForward from '@aboutbits/react-material-icons/dist/IconForward'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { Theme } from '../../../../.storybook/components'
 import { HeaderRightActionIcon } from './HeaderRightActionIcon'
 
 <Meta
@@ -42,4 +43,4 @@ export const Template = (args) => <HeaderRightActionIcon {...args} />
 
 ### Theme
 
-- `header.rightActionIcon.base`: Define the styles of the component.
+<Theme component="header" items={['rightActionIcon']} />

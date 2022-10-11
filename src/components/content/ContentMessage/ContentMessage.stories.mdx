@@ -2,6 +2,7 @@ import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import IconError from '@aboutbits/react-material-icons/dist/IconError'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { Theme } from '../../../../.storybook/components'
 import { Tone } from '../../types'
 import { ContentMessage } from './ContentMessage'
 
@@ -49,16 +50,7 @@ export const Template = (args) => <ContentMessage {...args} />
 
 ### Theme
 
-- `content.message.base`: Define the basic style of the component.
-- `content.message.contentContainer`: Define the style of the content container.
-- `content.message.icon.base`: Define the style of the icon.
-- `content.message.icon.tone[$tone]`: Define the style of the icon in the given tone.
-- `content.message.iconContainer.base`: Define the style of the icon container.
-- `content.message.iconContainer.tone[$tone]`: Define the style of the icon container in the given tone.
-- `content.message.title.base`: Define the style of the title.
-- `content.message.title.tone[$tone]`: Define the style of the title in the given tone.
-- `content.message.text.base`: Define the style of the text.
-- `content.message.text.tone[$tone]`: Define the style of the text in the given tone.
+<Theme component="content" items={['message']} />
 
 ## Tone
 

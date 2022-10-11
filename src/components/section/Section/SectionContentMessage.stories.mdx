@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconList from '@aboutbits/react-material-icons/dist/IconList'
+import { Theme } from '../../../../.storybook/components'
 import { Tone } from '../../types'
 import { SectionContentMessage } from './SectionContentMessage'
 import {
@@ -50,7 +51,7 @@ export const Template = (args) => <SectionContentMessage {...args} />
 
 ### Theme
 
-- `section.contentMessage.contentContainer`: Defines styles of the container (`SectionContent`)
+<Theme component="section" items={['contentMessage']} />
 
 ## Convenient alert components
 

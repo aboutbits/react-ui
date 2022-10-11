@@ -1,4 +1,5 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { Theme } from '../../../.storybook/components'
 import { PaginationPreviousContent } from './PaginationPreviousNextContent'
 
 <Meta
@@ -18,7 +19,7 @@ export const Template = ({ ...args }) => <PaginationPreviousContent {...args} />
 
 ### Theme
 
-- `pagination.previousContent.base`: Define the inline-block, width and height of the component.
+<Theme component="pagination" items={['prevNext']} />
 
 ### Internationalization
 

@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-
+import { Theme } from '../../../.storybook/components'
 import { LoadingInput } from './LoadingInput'
 
 <Meta title="Components/Loading/LoadingInput" component={LoadingInput} />
@@ -20,6 +20,4 @@ export const Template = (args) => <LoadingInput {...args} />
 
 ### Theme
 
-- `loading.input.base`: Define the style for the component container.
-- `loading.input.upper.base`: Define the padding, and the width for the upper loading bar.
-- `loading.input.lower.base`: Define the padding, and the width for the lower loading bar.
+<Theme component="loading" items={['input']} />

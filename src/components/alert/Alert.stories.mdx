@@ -2,6 +2,7 @@ import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { Theme } from '../../../.storybook/components'
 import { Tone } from '../types'
 import { Variant, Size } from '../button/types'
 import { Button } from '../button'
@@ -90,17 +91,7 @@ export const YesNoCriticalButtons = (
 
 ### Theme
 
-- `alert.container.base`: Defines base styles of container
-- `alert.container.tone[$tone]`: Defines custom styles per tone of the container
-- `alert.icon.base`: Defines base styles of icon
-- `alert.content.base`: Defines base styles of the content (title, message, actions)
-- `alert.content.actionsPositions.responsive`: Defines styles of the actions when they should be responsive
-- `alert.content.actionsPositions.fixedRight`: Defines styles of the actions when they should be fixed to the right
-- `alert.content.actionsPositions.fixedBottom`: Defines styles of the actions when they should be fixed to the bottom
-- `alert.texts.base`: Defines base styles of the texts (title, message)
-- `alert.title.base`: Defines base styles of the title
-- `alert.message.base`: Defines base styles of the message
-- `alert.actions.base`: Defines base styles of the actions
+<Theme component="alert" />
 
 ## Tone
 
