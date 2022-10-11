@@ -1,0 +1,57 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { useCallback } from 'react'
+import { useForm } from 'react-hook-form'
+import { AutoSubmit } from './AutoSubmit'
+import { Form } from './Form'
+import { Input } from './Input'
+
+<Meta
+  title="Components/Form/AutoSubmit"
+  component={AutoSubmit}
+  decorators={[
+    (Story) => {
+      const form = useForm({
+        defaultValues: { text: '' },
+      })
+      const onSubmit = useCallback((props) => {
+        action('onSubmit')(props)
+      }, [])
+      return (
+        <Form form={form} onSubmit={onSubmit}>
+          <div className="mb-3">
+            Invisible <i>AutoSubmit</i> component is included here.
+            <br />
+            Check the actions panel and enter something in the input field to
+            see the automatically submitted form values.
+          </div>
+          <Story />
+          <Input name="text" />
+        </Form>
+      )
+    },
+  ]}
+/>
+
+# AutoSubmit
+
+This component can be added to a `React Hook Form` form to automatically submit on form changes.
+
+It requires to be inside a `React Hook Form` context, i.e [Form](/docs/components-form-form--default-story) component.
+
+export const Template = ({ ...args }) => <AutoSubmit {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      interval: undefined,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

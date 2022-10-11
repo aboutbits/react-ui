@@ -2,8 +2,8 @@ import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
 import { Actions } from '@aboutbits/react-pagination/dist/types'
 import { AsyncView } from '@aboutbits/react-toolbox'
-import { Form, Formik } from 'formik'
 import { ReactElement, ReactNode } from 'react'
+import { useForm } from 'react-hook-form'
 import { useInternationalization, useTheme } from '../../../framework'
 import {
   Dialog,
@@ -20,11 +20,12 @@ import { DialogFooterWithPaginationInMemory } from '../../dialog/DialogFooter/Di
 import { DialogContentList } from '../../dialog/Dialog/DialogContentList'
 import { DialogListItemButton } from '../../dialog/DialogItem/DialogListItemButton'
 import { PaginationInMemoryProps } from '../../pagination'
-import { FormikAutoSubmit } from '../FormikAutoSubmit'
+import { AutoSubmit } from '../AutoSubmit'
 import { Input } from '../Input'
 import { Variant } from '../types'
 import { DialogContentListLoading } from '../../dialog/Dialog/DialogContentListLoading'
 import { DialogHeaderRow } from '../../dialog/DialogHeader/DialogHeaderRow'
+import { Form } from '../Form'
 
 type FilterParameters = {
   search: string
@@ -134,21 +135,22 @@ export function SelectItemDialogSearch({
   actions: Actions
 }): ReactElement {
   const internationalization = useInternationalization()
+  const form = useForm({
+    defaultValues: initialValues,
+  })
 
   return (
-    <Formik initialValues={initialValues} onSubmit={actions.updateQuery}>
-      <Form className="flex-1">
-        <FormikAutoSubmit />
-        <Input
-          name="search"
-          variant={Variant.soft}
-          iconStart={IconSearch}
-          placeholder={internationalization.translate(
-            'shared.search.placeholder'
-          )}
-        />
-      </Form>
-    </Formik>
+    <Form form={form} onSubmit={actions.updateQuery} className="flex-1">
+      <AutoSubmit />
+      <Input
+        name="search"
+        variant={Variant.soft}
+        iconStart={IconSearch}
+        placeholder={internationalization.translate(
+          'shared.search.placeholder'
+        )}
+      />
+    </Form>
   )
 }
 

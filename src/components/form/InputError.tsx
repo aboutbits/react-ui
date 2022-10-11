@@ -1,30 +1,16 @@
-import { ErrorMessage } from 'formik'
-import { ReactElement } from 'react'
+import { FieldError, get, useFormState } from 'react-hook-form'
 import { ClassNameProps } from '../types'
 
 export type InputErrorProps = ClassNameProps & {
   /**
-   * Define the error message.
-   **/
+   * Define the RHF field error
+   */
   name: string
 }
 
 export function InputError({ name, className }: InputErrorProps) {
-  return (
-    <ErrorMessage
-      name={name}
-      render={(message) => (
-        <FieldErrorMessage message={message} className={className} />
-      )}
-    />
-  )
-}
+  const { errors } = useFormState({ name })
+  const error = get(errors, name) as FieldError | undefined
 
-type FieldErrorMessageProps = ClassNameProps & { message?: string }
-
-function FieldErrorMessage({
-  message,
-  className,
-}: FieldErrorMessageProps): ReactElement {
-  return <span className={className}>{message}</span>
+  return error ? <span className={className}>{error.message}</span> : null
 }

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import { Field, useField } from 'formik'
 import { ReactElement } from 'react'
+import { useFormContext, useWatch } from 'react-hook-form'
 import { useTheme } from '../../framework'
 import { Mode, ModeProps } from '../types'
 import { InputError } from './InputError'
@@ -37,12 +37,17 @@ export function ToggleSwitch({
   const {
     form: { toggleSwitch, inputLabel, inputError },
   } = useTheme()
-  const [field, meta] = useField(name)
+  const { register } = useFormContext()
+  const field = register(name)
+  const checked = useWatch({ name })
 
-  const customLabelCss = getCustomLabelCss(inputLabel, meta, disabled, mode)
-  const customErrorCss = getCustomErrorCss(inputError, mode)
+  const customLabelCss = getCustomLabelCss(inputLabel, {
+    mode,
+    disabled,
+  })
+  const customErrorCss = getCustomErrorCss(inputError, { mode })
 
-  const checkedState = field.value ? 'checked' : 'unchecked'
+  const checkedState = checked ? 'checked' : 'unchecked'
   const disabledState = disabled ? 'disabled' : 'normal'
 
   return (
@@ -55,12 +60,12 @@ export function ToggleSwitch({
             {label}
           </span>
         )}
-        <Field
+        <input
           type="checkbox"
-          name={name}
-          className={toggleSwitch.input.base}
-          disabled={disabled}
           {...props}
+          {...field}
+          disabled={disabled}
+          className={toggleSwitch.input.base}
         />
         <span
           className={classNames(

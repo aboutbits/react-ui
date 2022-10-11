@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from '@testing-library/react'
-import { Field, Form, Formik } from 'formik'
 import userEvent from '@testing-library/user-event'
-import * as Yup from 'yup'
+import React, { useCallback } from 'react'
 import { act } from 'react-dom/test-utils'
-import { FormikAutoSubmit } from '../FormikAutoSubmit'
+import { useForm } from 'react-hook-form'
+import { AutoSubmit, Form } from '../'
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -14,33 +14,36 @@ const MyForm = ({
   autoSubmitInterval?: number
   onSubmit
 }) => {
-  const handleSubmit = async (values) => {
-    await sleep(100)
-    onSubmit(values)
-  }
-
-  const validationSchema = Yup.object().shape({
-    name: Yup.string().required().min(2),
+  const form = useForm({
+    defaultValues: {
+      name: '',
+    },
   })
 
+  // The requestSubmit has to be mocked, since it is not implement in jsdom
+  const formRef = useCallback(
+    (formElement: HTMLFormElement | null) => {
+      if (formElement) {
+        formElement.requestSubmit = async () => {
+          const values = form.getValues()
+          await sleep(100)
+          onSubmit(values)
+        }
+      }
+    },
+    [form, onSubmit]
+  )
+
   return (
-    <Formik
-      initialValues={{
-        name: '',
-      }}
-      onSubmit={handleSubmit}
-      validationSchema={validationSchema}
-    >
-      <Form>
-        <FormikAutoSubmit interval={autoSubmitInterval} />
-        <label htmlFor="name">First Name</label>
-        <Field id="name" name="name" />
-      </Form>
-    </Formik>
+    <Form form={form} ref={formRef}>
+      <AutoSubmit interval={autoSubmitInterval} />
+      <label htmlFor="name">First Name</label>
+      <input id="name" {...form.register('name')} />
+    </Form>
   )
 }
 
-describe('FormikAutoSubmit', () => {
+describe('ReactHookFormAutoSubmit', () => {
   test('should not submit form on mount', async () => {
     const handleSubmit = jest.fn()
     render(<MyForm onSubmit={handleSubmit} />)

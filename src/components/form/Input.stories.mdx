@@ -1,10 +1,12 @@
 import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
-import { Formik, Form } from 'formik'
+import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { Mode } from '../types'
+import { Form } from './Form'
 import { Input } from './Input'
 import { Variant } from './types'
 
@@ -13,20 +15,20 @@ import { Variant } from './types'
   component={Input}
   decorators={[
     (Story) => {
-      const validationSchema = Yup.object().shape({
-        name: Yup.string().required('Required'),
+      const resolver = yupResolver(
+        Yup.object().shape({
+          name: Yup.string().required('Required'),
+        })
+      )
+      const form = useForm({
+        resolver,
+        defaultValues: { name: '' },
+        mode: 'onTouched',
       })
       return (
-        <Formik
-          initialValues={{ name: '' }}
-          validateOnChange={true}
-          validationSchema={validationSchema}
-          onSubmit={(values) => action('onSubmit')(values)}
-        >
-          <Form>
-            <Story />
-          </Form>
-        </Formik>
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
       )
     },
   ]}
@@ -34,7 +36,7 @@ import { Variant } from './types'
 
 # Input
 
-This component can be used to create inputs. This input already has a label and handles error messages in `formik` Forms.
+This component can be used to create inputs. This input already has a label and handles error messages in `React Hook Form` Forms.
 
 export const Template = ({ ...args }) => <Input {...args} name="name" />
 

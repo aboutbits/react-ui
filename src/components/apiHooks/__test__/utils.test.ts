@@ -22,23 +22,19 @@ describe('joinFieldErrorMessages', () => {
         email: ['Min length 3', 'Not an email'],
       }
 
-      const result = joinFieldErrorMessages<{ email: string }>(errors)
+      const result = joinFieldErrorMessages(errors)
 
       expect(result.email).toEqual('Min length 3, Not an email')
     }),
-    it('should create a nested structure', () => {
+    it('should work with multiple errors and nested field structure', () => {
       const errors = {
         'address.longitude': ['Wrong longitude'],
         'address.latitude': ['Wrong latitude'],
       }
 
-      const result = joinFieldErrorMessages<{
-        address: {
-          longitude: string
-          latitude: string
-        }
-      }>(errors)
+      const result = joinFieldErrorMessages(errors)
 
-      expect(result.address?.longitude).toEqual('Wrong longitude')
+      expect(result['address.longitude']).toEqual('Wrong longitude')
+      expect(result['address.latitude']).toEqual('Wrong latitude')
     })
 })

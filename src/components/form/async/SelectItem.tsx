@@ -1,16 +1,18 @@
 import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
 import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyboardArrowDown'
 import classNames from 'classnames'
-import { useField } from 'formik'
 import { ReactElement, ReactNode, useMemo, useRef, useState } from 'react'
+import { useController } from 'react-hook-form'
 import { useInternationalization, useTheme } from '../../../framework'
 import { DialogProps } from '../../dialog'
+import { Mode } from '../../types'
 import { InputError } from '../InputError'
 import { InputLabel } from '../InputLabel'
+import { Variant } from '../types'
 import { useCustomInputCss } from '../useCustomInputCss'
 import {
-  SelectItemDialogWithSearchProps,
   SelectItemDialogWithSearch,
+  SelectItemDialogWithSearchProps,
 } from './SelectItemDialogWithSearch'
 
 export type SelectItemProps<ItemType, Error> = {
@@ -99,21 +101,28 @@ export function SelectItem<ItemType, Error>({
   paginationConfig,
   extractIdFromItem,
 }: SelectItemProps<ItemType, Error>): ReactElement {
-  const [field, meta, helpers] = useField<string>(name)
+  const { field, fieldState } = useController({ name })
+
+  const componentRef = useRef<HTMLDivElement | null>(null)
   const [showDialog, setShowDialog] = useState<boolean>(false)
   const selectedItem = useRef<ItemType | undefined>(initialItem)
-  const customCss = useCustomInputCss(name, disabled)
+  const customCss = useCustomInputCss(name, {
+    disabled,
+    mode: Mode.light,
+    variant: Variant.ghost,
+  })
   const customCssEmptyInput = useMemo(
     () => replacePlaceholderColorWithTextColor(customCss.inputCss),
     [customCss.inputCss]
   )
   const internationalization = useInternationalization()
   const { form } = useTheme()
-  const fieldHasError = meta.touched && meta.error
+
+  const fieldHasError = !!fieldState.error
 
   return (
     <>
-      <div>
+      <div ref={componentRef}>
         <InputLabel inputId={id} label={label} className={customCss.labelCss} />
         {field.value === '' ? (
           <button
@@ -166,8 +175,7 @@ export function SelectItem<ItemType, Error>({
             <button
               type="button"
               onClick={() => {
-                helpers.setTouched(true)
-                helpers.setValue('')
+                field.onChange('')
                 selectedItem.current = undefined
               }}
               className={classNames(
@@ -189,13 +197,12 @@ export function SelectItem<ItemType, Error>({
       {showDialog && (
         <SelectItemDialogWithSearch
           onDismiss={() => {
-            helpers.setTouched(true)
+            field.onChange(field.value)
             setShowDialog(false)
           }}
           isOpen={showDialog}
           onConfirm={(item: ItemType) => {
-            helpers.setTouched(true)
-            helpers.setValue(extractIdFromItem(item))
+            field.onChange(extractIdFromItem(item))
             selectedItem.current = item
             setShowDialog(false)
           }}

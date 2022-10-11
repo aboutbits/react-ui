@@ -1,8 +1,10 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
-import { Formik, Form } from 'formik'
+import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { Mode } from '../types'
+import { Form } from './Form'
 import { Month, MonthNames, SelectMonth } from './SelectMonth'
 
 <Meta
@@ -10,22 +12,20 @@ import { Month, MonthNames, SelectMonth } from './SelectMonth'
   component={SelectMonth}
   decorators={[
     (Story) => {
-      const validationSchema = Yup.object().shape({
-        birthMonth: Yup.string().required('Required'),
+      const resolver = yupResolver(
+        Yup.object().shape({
+          birthMonth: Yup.string().required('Required'),
+        })
+      )
+      const form = useForm({
+        resolver,
+        defaultValues: { birthMonth: Month[MonthNames[new Date().getMonth()]] },
+        mode: 'onTouched',
       })
       return (
-        <Formik
-          initialValues={{
-            birthMonth: Month[MonthNames[new Date().getMonth()]],
-          }}
-          validateOnChange={true}
-          validationSchema={validationSchema}
-          onSubmit={(values) => action('onSubmit')(values)}
-        >
-          <Form>
-            <Story />
-          </Form>
-        </Formik>
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
       )
     },
   ]}
@@ -57,14 +57,16 @@ enum Month {
 Setting the current month as default value can be done with the following code snipped:
 
 ```
-<Formik
-  initialValues={{ birthMonth: Month[MonthNames[new Date().getMonth()]] }}
-  ...
->
+const form = useForm({
+  defaultValues: {
+    birthMonth: Month[MonthNames[new Date().getMonth()]]
+  }
+})
+<Form form={form} ...>
 ```
 
 export const Template = ({ ...args }) => (
-  <SelectMonth {...args} name="birthMonth" />
+  <SelectMonth {...args} id="birthMonth" name="birthMonth" />
 )
 
 <Canvas>

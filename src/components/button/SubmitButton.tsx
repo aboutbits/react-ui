@@ -1,26 +1,25 @@
-import { useFormikContext } from 'formik'
-
-import React from 'react'
+import { ForwardedRef, forwardRef } from 'react'
+import { useFormState } from 'react-hook-form'
 import { Button, ButtonProps } from './Button'
 
-const SubmitButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, disabled = false, ...props }, ref) => {
-    const formik = useFormikContext()
+export type SubmitButtonProps = ButtonProps
 
-    return (
-      <Button
-        type="submit"
-        disabled={formik?.isSubmitting || disabled}
-        {...props}
-        ref={ref}
-      >
-        {children}
-      </Button>
-    )
-  }
-)
+function SubmitButtonComponent(
+  { children, disabled = false, ...props }: SubmitButtonProps,
+  ref: ForwardedRef<HTMLButtonElement>
+) {
+  const { isSubmitting } = useFormState()
 
-// This improves readability in dev tools
-SubmitButton.displayName = 'SubmitButton'
+  return (
+    <Button
+      type="submit"
+      disabled={isSubmitting || disabled}
+      {...props}
+      ref={ref}
+    >
+      {children}
+    </Button>
+  )
+}
 
-export { SubmitButton }
+export const SubmitButton = forwardRef(SubmitButtonComponent)
