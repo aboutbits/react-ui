@@ -2,6 +2,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
 import { action } from '@storybook/addon-actions'
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import { Theme } from '../../../../.storybook/components'
 import { HeaderButtonIcon } from '../actions/HeaderButtonIcon'
 import { HeaderRightArea } from './HeaderRightArea'
 
@@ -46,7 +47,7 @@ export const Template = ({ children, ...args }) => (
 
 ### Theme
 
-- `header.rightArea.base`
+<Theme component="header" items={['rightArea']} />
 
 ## Multiple children
 

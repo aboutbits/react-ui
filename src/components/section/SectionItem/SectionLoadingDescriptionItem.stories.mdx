@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-
+import { Theme } from '../../../../.storybook/components'
 import { SectionLoadingDescriptionItem } from './SectionLoadingDescriptionItem'
 
 <Meta
@@ -25,6 +25,4 @@ export const Template = ({ ...args }) => (
 
 ### Theme
 
-- `section.loading.descriptionItem.base`: Define the style of the section description item
-- `section.loading.descriptionItem.upper.base`: Define the padding, and the width for the upper loading bar.
-- `section.loading.descriptionItem.lower.base`: Define the padding, and the width for the lower loading bar.
+<Theme component="section" items={['loading']} />

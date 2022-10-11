@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { useForm } from 'react-hook-form'
+import { Theme } from '../../../.storybook/components'
 import { Mode } from '../types'
 import { Form } from './Form'
 import { ToggleSwitch, ToggleSwitchSize } from './ToggleSwitch'
@@ -65,23 +66,4 @@ export const Template = ({ ...args }) => (
 
 ### Theme
 
-- `form.toggleSwitch.base`: Defines base styles of the toggle switch, that will be applied in any state.
-- `form.toggleSwitch.normal`: Defines normal styles of the toggle switch, that will be replaced by the disabled styles.
-- `form.toggleSwitch.disabled`: Defines disabled styles of the toggle switch, that will replace the normal styles.
-- `form.toggleSwitch.input.base`: Defines styles of the input element.
-- `form.toggleSwitch.label.base`: Defines base styles of the label. The colors are taken from the input label styles.
-- `form.toggleSwitch.switch.base`: Defines base styles of the switch element.
-- `form.toggleSwitch.switch.normal`: Defines normal styles of the switch element, that will be replaced by the disabled styles.
-- `form.toggleSwitch.switch.disabled`: Defines disabled styles of the switch element, that will replace the normal styles.
-- `form.toggleSwitch.switch.modeState[$mode][$state].base`: Defines the base styles of the switch element in the given mode and state.
-- `form.toggleSwitch.switch.modeState[$mode][$state].checked`: Defines the checked styles of the switch element in the given mode and state.
-- `form.toggleSwitch.switch.modeState[$mode][$state].unchecked`: Defines the unchecked styles of the switch element in the given mode and state.
-- `form.toggleSwitch.switch.size[$size].base`: Defines the styles of the switch in the given size.
-- `form.toggleSwitch.handle.base`: Defines base styles of the handle element.
-- `form.toggleSwitch.handle.normal`: Defines normal styles of the handle element, that will be replaced by the disabled styles.
-- `form.toggleSwitch.handle.disabled`: Defines disabled styles of the handle element, that will replace the normal styles.
-- `form.toggleSwitch.handle.modeState[$mode][$state].checked`: Defines the checked styles of the handle element in the given mode and state.
-- `form.toggleSwitch.handle.modeState[$mode][$state].unchecked`: Defines the unchecked styles of the handle element in the given mode and state.
-- `form.toggleSwitch.handle.size[$size].base`: Defines the styles of the handle in the given size.
-- `form.toggleSwitch.handle.size[$size].checked`: Defines the checked styles of the handle in the given size.
-- `form.toggleSwitch.handle.size[$size].unchecked`: Defines the unchecked styles of the handle in the given size.
+<Theme component="form" items={['toggleSwitch']} />

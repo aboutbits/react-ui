@@ -1,6 +1,7 @@
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { Theme } from '../../../.storybook/components'
 import { Tone, Mode } from '../types'
 import { Size, Variant } from './types'
 import { Button } from './Button'
@@ -74,22 +75,7 @@ React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButto
 
 ### Theme
 
-- `button.button.base`
-- `button.button.variantSize.base.sm`: Define the base styles for the small size size button.
-- `button.button.variantSize.base.md`: Define the base styles for the medium size size button.
-- `button.button.variantSize.base.lg`: Define the base styles for the large size size button.
-- `button.button.variantSize.base`: Define the size of the small size button.
-- `button.button.icon.base`: Define the base styles for the icon.
-- `button.button.icon.size.sm`: Define the size of the small size icon.
-- `button.button.icon.size.md`: Define the size of the small medium icon.
-- `button.button.icon.size.lg`: Define the size of the small large icon.
-- `button.button.icon.iconStart.size.sm`: Define the size of the small size start icon.
-- `button.button.icon.iconStart.size.md`: Define the size of the medium size start icon.
-- `button.button.icon.iconStart.size.lg`: Define the size of the large size start icon.
-- `button.button.icon.iconEnd.size.sm`: Define the size of the small size end icon.
-- `button.button.icon.iconEnd.size.md`: Define the size of the medium size end icon.
-- `button.button.icon.iconEnd.size.lg`: Define the size of the large size end icon.
-- `button.modeVariantTone[$mode][$variant][$tone]`: Define the color and interactions for the button with the given mode, variant and tone.
+<Theme component="button" items={['button', 'modeVariantTone']} />
 
 ## Mode
 

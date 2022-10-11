@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
+import { Theme } from '../../../.storybook/components'
 import { Tabs, TabLink, TabButton } from './'
 
 <Meta title="Components/Tabs/Tabs" component={Tabs} />
@@ -98,7 +99,4 @@ export const TemplateWithButtons = (args) => {
 
 ### Theme
 
-- `tabs.tabs.base`: Define the base style of the tabs container.
-- `tabs.tab.base`: Define the base style of a tab.
-- `tabs.tab.normal`: Define the normal style of a tab.
-- `tabs.tab.selected`: Define the selected style of a tab.
+<Theme component="tabs" />
