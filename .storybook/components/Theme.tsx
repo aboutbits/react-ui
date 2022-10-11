@@ -8,13 +8,15 @@ export function Theme({
   items,
 }: {
   component: string
-  items: string[]
+  items?: string[]
 }): ReactElement {
-  const theme = Object.fromEntries(
-    // eslint-disable-next-line
-    // @ts-ignore
-    items.map((item) => [item, defaultTheme?.[component]?.[item]])
-  )
+  const theme = items
+    ? Object.fromEntries(
+        // eslint-disable-next-line
+        // @ts-ignore
+        items.map((item) => [item, defaultTheme?.[component]?.[item]])
+      )
+    : defaultTheme?.[component]
 
   return (
     <>
