@@ -16,8 +16,15 @@ export type ToggleSwitchProps = Omit<
   ModeProps & {
     name: string
     label?: string
+    layout?: ToggleSwitchLayout
     size?: ToggleSwitchSize
   }
+
+export enum ToggleSwitchLayout {
+  start = 'start',
+  end = 'end',
+  spaceBetween = 'spaceBetween',
+}
 
 export enum ToggleSwitchSize {
   sm = 'sm',
@@ -28,6 +35,7 @@ export enum ToggleSwitchSize {
 export function ToggleSwitch({
   name,
   label,
+  layout = ToggleSwitchLayout.start,
   size = ToggleSwitchSize.md,
   disabled = false,
   mode = Mode.light,
@@ -53,7 +61,11 @@ export function ToggleSwitch({
   return (
     <div className={className}>
       <label
-        className={classNames(toggleSwitch.base, toggleSwitch[disabledState])}
+        className={classNames(
+          toggleSwitch.base,
+          toggleSwitch.layout[layout],
+          toggleSwitch[disabledState]
+        )}
       >
         {label && (
           <span className={classNames(toggleSwitch.label.base, customLabelCss)}>
