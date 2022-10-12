@@ -258,4 +258,16 @@ export default {
       base: 'border-t border-neutral-200',
     },
   },
+  fieldSet: {
+    container: {
+      indent: {
+        all: 'ml-1',
+      },
+    },
+    label: {
+      indent: {
+        label: 'ml-1',
+      },
+    },
+  },
 }

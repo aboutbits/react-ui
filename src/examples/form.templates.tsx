@@ -16,6 +16,8 @@ import {
   SectionHeader,
 } from '../components/section'
 import {
+  FieldSet,
+  FieldSetIndent,
   Form,
   FormError,
   Input,
@@ -23,6 +25,7 @@ import {
   Select,
   TextArea,
   ToggleSwitch,
+  ToggleSwitchLayout,
 } from '../form'
 import {
   PaginatedResponse,
@@ -123,26 +126,29 @@ export function FormExampleTemplate({
           <SectionHeader title="User edit" />
           <SectionContainer>
             <SectionContent layout={Layout.twoColumnGrid}>
-              <Input
-                id="name.first"
-                type="text"
-                autoCapitalize="none"
-                name="name.first"
-                placeholder="First name"
-                label="First name"
-              />
-              <Input
-                id="name.last"
-                type="text"
-                autoCapitalize="none"
-                name="name.last"
-                placeholder="Last name"
-                label="Last name"
-              />
+              <FieldSet
+                label="Name"
+                fields={['name.first', 'name.last']}
+                indent={FieldSetIndent.label}
+              >
+                <div className="flex md:flex-row flex-col justify-between gap-3 [&>*]:flex-1">
+                  <Input
+                    id="name.first"
+                    type="text"
+                    name="name.first"
+                    placeholder="First name"
+                  />
+                  <Input
+                    id="name.last"
+                    type="text"
+                    name="name.last"
+                    placeholder="Last name"
+                  />
+                </div>
+              </FieldSet>
               <Input
                 id="email"
                 type="email"
-                autoCapitalize="none"
                 name="email"
                 placeholder={intl.formatMessage({
                   id: 'shared.field.email',
@@ -151,7 +157,6 @@ export function FormExampleTemplate({
               />
               <Select
                 id="language"
-                autoCapitalize="none"
                 name="language"
                 label={intl.formatMessage({ id: 'shared.field.language' })}
               >
@@ -161,7 +166,7 @@ export function FormExampleTemplate({
                   </Option>
                 ))}
               </Select>
-              <Select id="role" autoCapitalize="none" name="role" label="Role">
+              <Select id="role" name="role" label="Role">
                 <Option value="ADMIN">Admin</Option>
                 <Option value="USER">User</Option>
               </Select>
@@ -187,11 +192,17 @@ export function FormExampleTemplate({
                 useGetData={useGetData}
                 paginationConfig={{ indexType: IndexType.ZERO_BASED }}
               />
-              <ToggleSwitch
-                name="serverValidationErrors"
-                label="Enable server validation errors"
-                className="xl:col-span-full"
-              />
+              <FieldSet
+                label="Server validation"
+                fields={['serverValidationErrors']}
+                indent={FieldSetIndent.all}
+              >
+                <ToggleSwitch
+                  name="serverValidationErrors"
+                  label="Enable server validation errors"
+                  layout={ToggleSwitchLayout.spaceBetween}
+                />
+              </FieldSet>
               <FormError>{apiErrorMessage}</FormError>
             </SectionContent>
             <SectionFooterWithActions>
