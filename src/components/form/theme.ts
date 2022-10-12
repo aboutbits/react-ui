@@ -134,6 +134,11 @@ export default {
     base: 'relative inline-flex items-center gap-x-2',
     normal: 'cursor-pointer',
     disabled: '',
+    layout: {
+      start: 'flex-row-reverse',
+      end: '',
+      spaceBetween: 'w-full justify-between',
+    },
     input: {
       base: 'peer absolute h-0 w-0 opacity-0',
     },
