@@ -39,7 +39,7 @@ export default {
   buttonIcon: {
     base: 'inline-block rounded-full outline-1 outline-offset-2 focus:outline',
     icon: {
-      base: 'fill-current',
+      base: 'fill-current inline-block align-top',
       size: {
         sm: 'w-5 h-5',
         md: 'w-6 h-6',
