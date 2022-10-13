@@ -261,7 +261,7 @@ export default {
   fieldSet: {
     container: {
       indent: {
-        all: 'ml-1',
+        labelAndChildren: 'ml-1',
       },
     },
     label: {

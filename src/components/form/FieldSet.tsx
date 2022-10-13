@@ -7,7 +7,7 @@ import { getCustomLabelCss } from './useCustomInputCss'
 
 export enum FieldSetIndent {
   none = 'none',
-  all = 'all',
+  labelAndChildren = 'labelAndChildren',
   label = 'label',
 }
 
