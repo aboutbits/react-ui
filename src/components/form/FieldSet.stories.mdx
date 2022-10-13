@@ -4,7 +4,11 @@ import { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import { FieldSet } from './FieldSet'
 import { Form } from './Form'
-import { ToggleSwitch, ToggleSwitchLayout } from './ToggleSwitch'
+import {
+  ToggleSwitch,
+  ToggleSwitchLayout,
+  ToggleSwitchHeight,
+} from './ToggleSwitch'
 
 <Meta
   title="Components/Form/FieldSet"
@@ -34,6 +38,8 @@ It requires to be inside a `React Hook Form` context, i.e [Form](/docs/component
 
 The `indent` property can be used to control the indentation of the component (which may depend on its position and the components it contains).
 
+The `height` property can be used to adjust the component to the default input height to better integrate with a form that has input fields.
+
 If field names are specified in the `fields` prop, the `FieldSet` label will display an error state depending on those form fields.
 
 export const Template = ({ ...args }) => <FieldSet {...args} />
@@ -49,11 +55,13 @@ export const Template = ({ ...args }) => <FieldSet {...args} />
             name="privacy"
             label="Accept Privacy"
             layout={ToggleSwitchLayout.spaceBetween}
+            height={ToggleSwitchHeight.inputHeight}
           />
           <ToggleSwitch
             name="termsOfUse"
             label="Accept terms of use"
             layout={ToggleSwitchLayout.spaceBetween}
+            height={ToggleSwitchHeight.inputHeight}
           />
         </>
       ),

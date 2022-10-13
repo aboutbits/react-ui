@@ -139,6 +139,10 @@ export default {
       end: '',
       spaceBetween: 'w-full justify-between',
     },
+    height: {
+      compact: '',
+      inputHeight: 'py-2',
+    },
     input: {
       base: 'peer absolute h-0 w-0 opacity-0',
     },
@@ -175,15 +179,18 @@ export default {
           },
         },
       },
-      size: {
+      sizeHeight: {
         sm: {
-          base: 'w-10',
+          compact: 'w-10',
+          inputHeight: 'w-10',
         },
         md: {
-          base: 'w-12',
+          compact: 'w-12',
+          inputHeight: 'w-12 -my-1',
         },
         lg: {
-          base: 'w-16',
+          compact: 'w-16',
+          inputHeight: 'w-16 -my-2',
         },
       },
     },

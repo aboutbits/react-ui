@@ -26,6 +26,7 @@ import {
   TextArea,
   ToggleSwitch,
   ToggleSwitchLayout,
+  ToggleSwitchHeight,
 } from '../form'
 import {
   PaginatedResponse,
@@ -195,12 +196,13 @@ export function FormExampleTemplate({
               <FieldSet
                 label="Server validation"
                 fields={['serverValidationErrors']}
-                indent={FieldSetIndent.all}
+                indent={FieldSetIndent.labelAndChildren}
               >
                 <ToggleSwitch
                   name="serverValidationErrors"
                   label="Enable server validation errors"
                   layout={ToggleSwitchLayout.spaceBetween}
+                  height={ToggleSwitchHeight.inputHeight}
                 />
               </FieldSet>
               <FormError>{apiErrorMessage}</FormError>

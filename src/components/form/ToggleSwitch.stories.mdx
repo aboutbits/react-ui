@@ -7,6 +7,7 @@ import { Form } from './Form'
 import {
   ToggleSwitch,
   ToggleSwitchSize,
+  ToggleSwitchHeight,
   ToggleSwitchLayout,
 } from './ToggleSwitch'
 
@@ -43,6 +44,7 @@ export const Template = ({ ...args }) => (
       label: 'Airplane mode',
       layout: ToggleSwitchLayout.start,
       size: ToggleSwitchSize.md,
+      height: ToggleSwitchHeight.compact,
       mode: Mode.light,
       disabled: false,
     }}
@@ -55,6 +57,12 @@ export const Template = ({ ...args }) => (
       },
       size: {
         options: Object.values(ToggleSwitchSize),
+        control: {
+          type: 'radio',
+        },
+      },
+      height: {
+        options: Object.values(ToggleSwitchHeight),
         control: {
           type: 'radio',
         },
