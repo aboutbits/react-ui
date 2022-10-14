@@ -5,7 +5,7 @@ import { ReactElement, ReactNode, useMemo, useRef, useState } from 'react'
 import { useController } from 'react-hook-form'
 import { useInternationalization, useTheme } from '../../../framework'
 import { DialogProps } from '../../dialog'
-import { Mode } from '../../types'
+import { ClassNameProps, Mode } from '../../types'
 import { InputError } from '../InputError'
 import { InputLabel } from '../InputLabel'
 import { Variant } from '../types'
@@ -44,14 +44,15 @@ export type SelectItemProps<ItemType, Error> = {
    * @param item
    */
   extractIdFromItem: (item: ItemType) => string
-} & Pick<
-  SelectItemDialogWithSearchProps<ItemType, Error>,
-  | 'useGetData'
-  | 'noSearchResults'
-  | 'renderListItem'
-  | 'renderErrorMessage'
-  | 'paginationConfig'
->
+} & ClassNameProps &
+  Pick<
+    SelectItemDialogWithSearchProps<ItemType, Error>,
+    | 'useGetData'
+    | 'noSearchResults'
+    | 'renderListItem'
+    | 'renderErrorMessage'
+    | 'paginationConfig'
+  >
 
 /**
  * Converts tailwindcss classes from placeholder to text.
@@ -87,6 +88,7 @@ export function SelectItem<ItemType, Error>({
   disabled = false,
   id,
   name,
+  className,
   initialItem,
   renderInputValue,
   label,
@@ -122,7 +124,7 @@ export function SelectItem<ItemType, Error>({
 
   return (
     <>
-      <div ref={componentRef}>
+      <div ref={componentRef} className={className}>
         <InputLabel inputId={id} label={label} className={customCss.labelCss} />
         {field.value === '' ? (
           <button
