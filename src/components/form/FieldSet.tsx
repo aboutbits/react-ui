@@ -3,6 +3,7 @@ import { ReactElement, ReactNode } from 'react'
 import { get, useFormState } from 'react-hook-form'
 import { useTheme } from '../../framework'
 import { ClassNameProps, Mode, ModeProps } from '../types'
+import { getClassNameWithoutMarginLeft } from '../utils/getClassNameWithoutMarginLeft'
 import { getCustomLabelCss } from './useCustomInputCss'
 
 export enum FieldSetIndent {
@@ -40,9 +41,8 @@ export function FieldSet({
     hasError,
   })
 
-  const labelCssWithoutMarginLeft = form.inputLabel.base.replace(
-    /(^|\s)ml-\w+(?=\s|$)/,
-    ''
+  const labelCssWithoutMarginLeft = getClassNameWithoutMarginLeft(
+    form.inputLabel.base.replace(/(^|\s)ml-\w+(?=\s|$)/, '')
   )
 
   return (

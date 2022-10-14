@@ -3,6 +3,7 @@ import { ReactElement } from 'react'
 import { useFormContext, useWatch } from 'react-hook-form'
 import { useTheme } from '../../framework'
 import { Mode, ModeProps } from '../types'
+import { getClassNameWithoutMarginLeft } from '../utils/getClassNameWithoutMarginLeft'
 import { InputError } from './InputError'
 import { getCustomErrorCss, getCustomLabelCss } from './useCustomInputCss'
 
@@ -76,11 +77,18 @@ export function ToggleSwitch({
           toggleSwitch.base,
           toggleSwitch.layout[layout],
           toggleSwitch.height[height],
+          toggleSwitch.sizeHeight[size][height],
           toggleSwitch[disabledState]
         )}
       >
         {label && (
-          <span className={classNames(toggleSwitch.label.base, customLabelCss)}>
+          <span
+            className={classNames(
+              toggleSwitch.label.base,
+              toggleSwitch.label.size[size],
+              customLabelCss
+            )}
+          >
             {label}
           </span>
         )}
@@ -94,7 +102,7 @@ export function ToggleSwitch({
         <span
           className={classNames(
             toggleSwitch.switch.base,
-            toggleSwitch.switch.sizeHeight[size][height],
+            toggleSwitch.switch.size[size].base,
             toggleSwitch.switch[disabledState],
             toggleSwitch.switch.modeState[mode][disabledState].base,
             toggleSwitch.switch.modeState[mode][disabledState][checkedState]

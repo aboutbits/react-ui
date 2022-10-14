@@ -131,7 +131,7 @@ export default {
     },
   },
   toggleSwitch: {
-    base: 'relative inline-flex items-center gap-x-2',
+    base: 'relative inline-flex items-start gap-x-2',
     normal: 'cursor-pointer',
     disabled: '',
     layout: {
@@ -141,13 +141,32 @@ export default {
     },
     height: {
       compact: '',
-      inputHeight: 'py-2',
+      inputHeight: 'min-h-[2.5rem]',
+    },
+    sizeHeight: {
+      sm: {
+        compact: '',
+        inputHeight: 'pt-2',
+      },
+      md: {
+        compact: '',
+        inputHeight: 'pt-1.5',
+      },
+      lg: {
+        compact: '',
+        inputHeight: 'pt-0.5',
+      },
     },
     input: {
       base: 'peer absolute h-0 w-0 opacity-0',
     },
     label: {
       base: '',
+      size: {
+        sm: '',
+        md: 'pt-0.5',
+        lg: 'pt-1.5',
+      },
     },
     switch: {
       base: 'block shrink-0 rounded-full border-2 p-0.5 outline-1 outline-offset-2 peer-focus:outline',
@@ -179,18 +198,15 @@ export default {
           },
         },
       },
-      sizeHeight: {
+      size: {
         sm: {
-          compact: 'w-10',
-          inputHeight: 'w-10',
+          base: 'w-10',
         },
         md: {
-          compact: 'w-12',
-          inputHeight: 'w-12 -my-1',
+          base: 'w-12',
         },
         lg: {
-          compact: 'w-16',
-          inputHeight: 'w-16 -my-2',
+          base: 'w-16',
         },
       },
     },
