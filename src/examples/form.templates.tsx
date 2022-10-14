@@ -26,7 +26,6 @@ import {
   TextArea,
   ToggleSwitch,
   ToggleSwitchLayout,
-  ToggleSwitchHeight,
 } from '../form'
 import {
   PaginatedResponse,
@@ -203,7 +202,7 @@ export function FormExampleTemplate({
                   name="privacy"
                   label="Accept the privacy policy"
                   layout={ToggleSwitchLayout.spaceBetween}
-                  height={ToggleSwitchHeight.inputHeight}
+                  applyInputHeight
                 />
               </FieldSet>
               <FieldSet
@@ -215,7 +214,7 @@ export function FormExampleTemplate({
                   name="serverValidationErrors"
                   label="Enable server validation errors"
                   layout={ToggleSwitchLayout.spaceBetween}
-                  height={ToggleSwitchHeight.inputHeight}
+                  applyInputHeight
                 />
               </FieldSet>
               <FormError>{apiErrorMessage}</FormError>

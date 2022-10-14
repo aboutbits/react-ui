@@ -8,7 +8,6 @@ import { FieldSet } from './FieldSet'
 import {
   ToggleSwitch,
   ToggleSwitchSize,
-  ToggleSwitchHeight,
   ToggleSwitchLayout,
 } from './ToggleSwitch'
 
@@ -45,7 +44,7 @@ export const Template = (args) => (
       label: 'Airplane mode',
       layout: ToggleSwitchLayout.start,
       size: ToggleSwitchSize.md,
-      height: ToggleSwitchHeight.compact,
+      applyInputHeight: false,
       mode: Mode.light,
       disabled: false,
     }}
@@ -58,12 +57,6 @@ export const Template = (args) => (
       },
       size: {
         options: Object.values(ToggleSwitchSize),
-        control: {
-          type: 'radio',
-        },
-      },
-      height: {
-        options: Object.values(ToggleSwitchHeight),
         control: {
           type: 'radio',
         },
@@ -103,15 +96,15 @@ export const TemplateWithLongText = () => (
 
 ### Inside form
 
-You can use the [FieldSet](/docs/components-form-fieldset--default-story) and the `height={ToggleSwitchHeight.inputHeight}` prop to arrange the `ToggleSwitch` properly inside a form layout.
+You can use the [FieldSet](/docs/components-form-fieldset--default-story) and the `applyInputHeight` prop to arrange the `ToggleSwitch` properly inside a form layout.
 
 export const TemplateInsideForm = () => (
   <FieldSet label="Privacy">
     <ToggleSwitch
       name="toggle-inside-form"
       label="Accept the privacy policy"
-      height={ToggleSwitchHeight.inputHeight}
       layout={ToggleSwitchLayout.spaceBetween}
+      applyInputHeight
     />
   </FieldSet>
 )

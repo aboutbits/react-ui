@@ -139,22 +139,12 @@ export default {
       end: '',
       spaceBetween: 'w-full justify-between',
     },
-    height: {
-      compact: '',
-      inputHeight: 'min-h-[2.5rem]',
-    },
-    sizeHeight: {
-      sm: {
-        compact: '',
-        inputHeight: 'pt-2',
-      },
-      md: {
-        compact: '',
-        inputHeight: 'pt-1.5',
-      },
-      lg: {
-        compact: '',
-        inputHeight: 'pt-0.5',
+    inputHeight: {
+      base: 'min-h-[2.5rem]',
+      size: {
+        sm: 'pt-2',
+        md: 'pt-1.5',
+        lg: 'pt-0.5',
       },
     },
     input: {

@@ -19,18 +19,13 @@ export type ToggleSwitchProps = Omit<
     label?: string
     layout?: ToggleSwitchLayout
     size?: ToggleSwitchSize
-    height?: ToggleSwitchHeight
+    applyInputHeight?: boolean
   }
 
 export enum ToggleSwitchLayout {
   start = 'start',
   end = 'end',
   spaceBetween = 'spaceBetween',
-}
-
-export enum ToggleSwitchHeight {
-  compact = 'compact',
-  inputHeight = 'inputHeight',
 }
 
 export enum ToggleSwitchSize {
@@ -44,7 +39,7 @@ export function ToggleSwitch({
   label,
   layout = ToggleSwitchLayout.start,
   size = ToggleSwitchSize.md,
-  height = ToggleSwitchHeight.compact,
+  applyInputHeight = false,
   disabled = false,
   mode = Mode.light,
   className,
@@ -76,8 +71,10 @@ export function ToggleSwitch({
         className={classNames(
           toggleSwitch.base,
           toggleSwitch.layout[layout],
-          toggleSwitch.height[height],
-          toggleSwitch.sizeHeight[size][height],
+          applyInputHeight && [
+            toggleSwitch.inputHeight.base,
+            toggleSwitch.inputHeight.size[size],
+          ],
           toggleSwitch[disabledState]
         )}
       >
