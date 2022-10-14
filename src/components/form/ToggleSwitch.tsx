@@ -60,7 +60,11 @@ export function ToggleSwitch({
     mode,
     disabled,
   })
+
   const customErrorCss = getCustomErrorCss(inputError, { mode })
+  const errorCssWithoutMarginLeft = getClassNameWithoutMarginLeft(
+    inputError.base
+  )
 
   const checkedState = checked ? 'checked' : 'unchecked'
   const disabledState = disabled ? 'disabled' : 'normal'
@@ -107,7 +111,10 @@ export function ToggleSwitch({
           ></span>
         </span>
       </label>
-      <InputError name={name} className={customErrorCss} />
+      <InputError
+        name={name}
+        className={classNames(errorCssWithoutMarginLeft, customErrorCss)}
+      />
     </div>
   )
 }
