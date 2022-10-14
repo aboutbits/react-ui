@@ -3,6 +3,7 @@ import { ReactElement } from 'react'
 import { useFormContext, useWatch } from 'react-hook-form'
 import { useTheme } from '../../framework'
 import { Mode, ModeProps } from '../types'
+import { getClassNameWithoutMarginLeft } from '../utils/getClassNameWithoutMarginLeft'
 import { InputError } from './InputError'
 import { getCustomErrorCss, getCustomLabelCss } from './useCustomInputCss'
 
@@ -18,6 +19,7 @@ export type ToggleSwitchProps = Omit<
     label?: string
     layout?: ToggleSwitchLayout
     size?: ToggleSwitchSize
+    applyInputHeight?: boolean
   }
 
 export enum ToggleSwitchLayout {
@@ -37,6 +39,7 @@ export function ToggleSwitch({
   label,
   layout = ToggleSwitchLayout.start,
   size = ToggleSwitchSize.md,
+  applyInputHeight = false,
   disabled = false,
   mode = Mode.light,
   className,
@@ -53,7 +56,11 @@ export function ToggleSwitch({
     mode,
     disabled,
   })
+
   const customErrorCss = getCustomErrorCss(inputError, { mode })
+  const errorCssWithoutMarginLeft = getClassNameWithoutMarginLeft(
+    inputError.base
+  )
 
   const checkedState = checked ? 'checked' : 'unchecked'
   const disabledState = disabled ? 'disabled' : 'normal'
@@ -64,11 +71,21 @@ export function ToggleSwitch({
         className={classNames(
           toggleSwitch.base,
           toggleSwitch.layout[layout],
+          applyInputHeight && [
+            toggleSwitch.inputHeight.base,
+            toggleSwitch.inputHeight.size[size],
+          ],
           toggleSwitch[disabledState]
         )}
       >
         {label && (
-          <span className={classNames(toggleSwitch.label.base, customLabelCss)}>
+          <span
+            className={classNames(
+              toggleSwitch.label.base,
+              toggleSwitch.label.size[size],
+              customLabelCss
+            )}
+          >
             {label}
           </span>
         )}
@@ -99,7 +116,10 @@ export function ToggleSwitch({
           ></span>
         </span>
       </label>
-      <InputError name={name} className={customErrorCss} />
+      <InputError
+        name={name}
+        className={classNames(errorCssWithoutMarginLeft, customErrorCss)}
+      />
     </div>
   )
 }

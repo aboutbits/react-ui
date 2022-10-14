@@ -131,7 +131,7 @@ export default {
     },
   },
   toggleSwitch: {
-    base: 'relative inline-flex items-center gap-x-2',
+    base: 'relative inline-flex items-start gap-x-2',
     normal: 'cursor-pointer',
     disabled: '',
     layout: {
@@ -139,11 +139,24 @@ export default {
       end: '',
       spaceBetween: 'w-full justify-between',
     },
+    inputHeight: {
+      base: 'min-h-[2.5rem]',
+      size: {
+        sm: 'pt-2',
+        md: 'pt-1.5',
+        lg: 'pt-0.5',
+      },
+    },
     input: {
       base: 'peer absolute h-0 w-0 opacity-0',
     },
     label: {
       base: '',
+      size: {
+        sm: '',
+        md: 'pt-0.5',
+        lg: 'pt-1.5',
+      },
     },
     switch: {
       base: 'block shrink-0 rounded-full border-2 p-0.5 outline-1 outline-offset-2 peer-focus:outline',

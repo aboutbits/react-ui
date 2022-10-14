@@ -102,6 +102,7 @@ export function FormExampleTemplate({
                       'Please choose another name',
                     ],
                     bio: ['Please provide a better bio'],
+                    privacy: ['You must accept the privacy policy'],
                   },
                 },
               },
@@ -193,14 +194,27 @@ export function FormExampleTemplate({
                 paginationConfig={{ indexType: IndexType.ZERO_BASED }}
               />
               <FieldSet
+                label="Privacy"
+                fields={['privacy']}
+                indent={FieldSetIndent.labelAndChildren}
+              >
+                <ToggleSwitch
+                  name="privacy"
+                  label="Accept the privacy policy"
+                  layout={ToggleSwitchLayout.spaceBetween}
+                  applyInputHeight
+                />
+              </FieldSet>
+              <FieldSet
                 label="Server validation"
                 fields={['serverValidationErrors']}
-                indent={FieldSetIndent.all}
+                indent={FieldSetIndent.labelAndChildren}
               >
                 <ToggleSwitch
                   name="serverValidationErrors"
                   label="Enable server validation errors"
                   layout={ToggleSwitchLayout.spaceBetween}
+                  applyInputHeight
                 />
               </FieldSet>
               <FormError>{apiErrorMessage}</FormError>

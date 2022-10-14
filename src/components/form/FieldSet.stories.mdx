@@ -34,6 +34,8 @@ It requires to be inside a `React Hook Form` context, i.e [Form](/docs/component
 
 The `indent` property can be used to control the indentation of the component (which may depend on its position and the components it contains).
 
+The `height` property can be used to adjust the component to the default input height to better integrate with a form that has input fields.
+
 If field names are specified in the `fields` prop, the `FieldSet` label will display an error state depending on those form fields.
 
 export const Template = ({ ...args }) => <FieldSet {...args} />
@@ -44,7 +46,7 @@ export const Template = ({ ...args }) => <FieldSet {...args} />
     args={{
       label: 'Privacy',
       children: (
-        <>
+        <div className="flex flex-col gap-y-2">
           <ToggleSwitch
             name="privacy"
             label="Accept Privacy"
@@ -55,7 +57,7 @@ export const Template = ({ ...args }) => <FieldSet {...args} />
             label="Accept terms of use"
             layout={ToggleSwitchLayout.spaceBetween}
           />
-        </>
+        </div>
       ),
     }}
     argTypes={{
