@@ -26,6 +26,7 @@ import {
   TextArea,
   ToggleSwitch,
   ToggleSwitchLayout,
+  Checkbox,
 } from '../form'
 import {
   PaginatedResponse,
@@ -198,10 +199,9 @@ export function FormExampleTemplate({
                 fields={['privacy']}
                 indent={FieldSetIndent.labelAndChildren}
               >
-                <ToggleSwitch
+                <Checkbox
                   name="privacy"
                   label="Accept the privacy policy"
-                  layout={ToggleSwitchLayout.spaceBetween}
                   applyInputHeight
                 />
               </FieldSet>
