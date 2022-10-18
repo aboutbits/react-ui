@@ -2,14 +2,10 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { useForm } from 'react-hook-form'
 import { Theme } from '../../../.storybook/components'
-import { Mode } from '../types'
+import { Mode, Size } from '../types'
 import { Form } from './Form'
 import { FieldSet } from './FieldSet'
-import {
-  ToggleSwitch,
-  ToggleSwitchSize,
-  ToggleSwitchLayout,
-} from './ToggleSwitch'
+import { ToggleSwitch, ToggleSwitchLayout } from './ToggleSwitch'
 
 <Meta
   title="Components/Form/ToggleSwitch"
@@ -43,7 +39,7 @@ export const Template = (args) => (
     args={{
       label: 'Airplane mode',
       layout: ToggleSwitchLayout.start,
-      size: ToggleSwitchSize.md,
+      size: Size.md,
       applyInputHeight: false,
       mode: Mode.light,
       disabled: false,
@@ -56,7 +52,7 @@ export const Template = (args) => (
         },
       },
       size: {
-        options: Object.values(ToggleSwitchSize),
+        options: Object.values(Size),
         control: {
           type: 'radio',
         },

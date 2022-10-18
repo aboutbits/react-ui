@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { ReactElement } from 'react'
 import { useFormContext, useWatch } from 'react-hook-form'
 import { useTheme } from '../../framework'
-import { Mode, ModeProps } from '../types'
+import { Mode, ModeProps, Size } from '../types'
 import { getClassNameWithoutMarginLeft } from '../utils/getClassNameWithoutMarginLeft'
 import { InputError } from './InputError'
 import { getCustomErrorCss, getCustomLabelCss } from './useCustomInputCss'
@@ -18,7 +18,7 @@ export type ToggleSwitchProps = Omit<
     name: string
     label?: string
     layout?: ToggleSwitchLayout
-    size?: ToggleSwitchSize
+    size?: Size
     applyInputHeight?: boolean
   }
 
@@ -28,17 +28,11 @@ export enum ToggleSwitchLayout {
   spaceBetween = 'spaceBetween',
 }
 
-export enum ToggleSwitchSize {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-}
-
 export function ToggleSwitch({
   name,
   label,
   layout = ToggleSwitchLayout.start,
-  size = ToggleSwitchSize.md,
+  size = Size.md,
   applyInputHeight = false,
   disabled = false,
   mode = Mode.light,

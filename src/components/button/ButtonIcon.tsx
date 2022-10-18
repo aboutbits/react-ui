@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 import { useTheme } from '../../framework'
-import { Mode, Tone } from '../types'
-import { ButtonIconCommonProps, ButtonStyleProps, Size, Variant } from './types'
+import { Mode, Size, Tone } from '../types'
+import { ButtonIconCommonProps, ButtonStyleProps, Variant } from './types'
 
 export type ButtonIconProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
