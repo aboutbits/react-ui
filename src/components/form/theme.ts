@@ -85,12 +85,12 @@ export default {
     light: {
       normal: '',
       error: 'text-critical-500',
-      disabled: 'text-neutral-400',
+      disabled: 'text-neutral-800/[0.36]',
     },
     dark: {
       normal: 'text-white',
       error: 'text-critical-300',
-      disabled: 'text-neutral-400',
+      disabled: 'text-white/[0.36]',
     },
   },
   inputError: {
