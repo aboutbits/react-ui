@@ -1,9 +1,10 @@
 import classNames from 'classnames'
-import { ReactElement } from 'react'
+import { ForwardedRef, forwardRef, ReactElement } from 'react'
 import { useFormContext, useWatch } from 'react-hook-form'
 import { useTheme } from '../../framework'
 import { Mode, ModeProps, Size } from '../types'
 import { getClassNameWithoutMarginLeft } from '../utils/getClassNameWithoutMarginLeft'
+import { useForwardedRef } from '../utils/useForwardedRef'
 import { InputError } from './InputError'
 import { getCustomErrorCss, getCustomLabelCss } from './useCustomInputCss'
 
@@ -28,23 +29,28 @@ export enum ToggleSwitchLayout {
   spaceBetween = 'spaceBetween',
 }
 
-export function ToggleSwitch({
-  name,
-  label,
-  layout = ToggleSwitchLayout.start,
-  size = Size.md,
-  applyInputHeight = false,
-  disabled = false,
-  mode = Mode.light,
-  className,
-  ...props
-}: ToggleSwitchProps): ReactElement {
+function ToggleSwitchComponent(
+  {
+    name,
+    label,
+    layout = ToggleSwitchLayout.start,
+    size = Size.md,
+    applyInputHeight = false,
+    disabled = false,
+    mode = Mode.light,
+    className,
+    ...props
+  }: ToggleSwitchProps,
+  ref: ForwardedRef<HTMLInputElement>
+): ReactElement {
   const {
     form: { toggleSwitch, inputLabel, inputError },
   } = useTheme()
   const { register } = useFormContext()
-  const field = register(name)
+  const { ref: fieldRef, ...field } = register(name)
   const checked = useWatch({ name })
+
+  const forwardedRef = useForwardedRef(ref)
 
   const customLabelCss = getCustomLabelCss(inputLabel, {
     mode,
@@ -84,9 +90,13 @@ export function ToggleSwitch({
           </span>
         )}
         <input
-          type="checkbox"
+          ref={(ref) => {
+            forwardedRef.current = ref
+            fieldRef(ref)
+          }}
           {...props}
           {...field}
+          type="checkbox"
           disabled={disabled}
           className={toggleSwitch.input.base}
         />
@@ -117,3 +127,5 @@ export function ToggleSwitch({
     </div>
   )
 }
+
+export const ToggleSwitch = forwardRef(ToggleSwitchComponent)
