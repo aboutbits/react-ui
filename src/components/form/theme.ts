@@ -166,25 +166,25 @@ export default {
         light: {
           normal: {
             base: 'outline-neutral-800',
-            checked: 'border-primary-500 bg-primary-500',
+            checked: 'border-transparent bg-primary-500',
             unchecked: 'border-neutral-600',
           },
           disabled: {
             base: '',
-            checked: 'border-neutral-200 bg-neutral-200',
-            unchecked: 'border-neutral-400',
+            checked: 'border-transparent bg-neutral-800/[0.36]',
+            unchecked: 'border-neutral-800/[0.36]',
           },
         },
         dark: {
           normal: {
             base: 'outline-white',
-            checked: 'border-primary-300 bg-primary-300',
+            checked: 'border-transparent bg-primary-300',
             unchecked: 'border-white',
           },
           disabled: {
             base: '',
-            checked: 'border-neutral-600 bg-neutral-600',
-            unchecked: 'border-neutral-400',
+            checked: 'border-transparent bg-white/[0.26]',
+            unchecked: 'border-white/[0.36]',
           },
         },
       },
@@ -212,7 +212,7 @@ export default {
           },
           disabled: {
             checked: 'bg-white',
-            unchecked: 'bg-neutral-400',
+            unchecked: 'bg-neutral-800/[0.36]',
           },
         },
         dark: {
@@ -221,8 +221,8 @@ export default {
             unchecked: 'bg-white',
           },
           disabled: {
-            checked: 'bg-neutral-400',
-            unchecked: 'bg-neutral-400',
+            checked: 'bg-white/[0.36]',
+            unchecked: 'bg-white/[0.36]',
           },
         },
       },
