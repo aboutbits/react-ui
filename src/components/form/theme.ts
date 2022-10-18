@@ -245,6 +245,77 @@ export default {
       },
     },
   },
+  checkbox: {
+    base: 'relative inline-flex items-start gap-x-2',
+    normal: 'cursor-pointer',
+    disabled: '',
+    layout: {
+      start: 'flex-row-reverse',
+      end: '',
+      spaceBetween: 'w-full justify-between',
+    },
+    inputHeight: {
+      base: 'min-h-[2.5rem]',
+      size: {
+        sm: 'pt-2',
+        md: 'pt-1.5',
+        lg: 'pt-0.5',
+      },
+    },
+    input: {
+      base: 'peer absolute h-0 w-0 opacity-0',
+    },
+    label: {
+      base: '',
+      size: {
+        sm: '',
+        md: 'pt-0.5',
+        lg: 'pt-1.5',
+      },
+    },
+    check: {
+      base: 'block shrink-0 outline-1 rounded-md outline-offset-[-1px] peer-focus:outline',
+      normal: '',
+      disabled: '',
+      modeState: {
+        light: {
+          normal: {
+            base: 'outline-neutral-800',
+            checked: 'fill-primary-500',
+            unchecked: 'fill-neutral-800',
+          },
+          disabled: {
+            base: 'fill-neutral-800/[0.36]',
+            checked: '',
+            unchecked: '',
+          },
+        },
+        dark: {
+          normal: {
+            base: 'outline-white',
+            checked: 'fill-primary-300',
+            unchecked: 'fill-white',
+          },
+          disabled: {
+            base: '',
+            checked: 'fill-white/[0.36]',
+            unchecked: 'fill-white/[0.36]',
+          },
+        },
+      },
+      size: {
+        sm: {
+          base: 'h-6 w-6',
+        },
+        md: {
+          base: 'h-7 w-7',
+        },
+        lg: {
+          base: 'h-9 w-9',
+        },
+      },
+    },
+  },
   selectItem: {
     input: {
       container: {

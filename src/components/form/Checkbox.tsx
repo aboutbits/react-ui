@@ -1,3 +1,5 @@
+import IconCheckBoxOutlineBlankRounded from '@aboutbits/react-material-icons/dist/IconCheckBoxOutlineBlankRounded'
+import IconCheckBoxRounded from '@aboutbits/react-material-icons/dist/IconCheckBoxRounded'
 import classNames from 'classnames'
 import { ForwardedRef, forwardRef, ReactElement } from 'react'
 import { useFormContext, useWatch } from 'react-hook-form'
@@ -8,7 +10,7 @@ import { useForwardedRef } from '../utils/useForwardedRef'
 import { InputError } from './InputError'
 import { getCustomErrorCss, getCustomLabelCss } from './useCustomInputCss'
 
-export type ToggleSwitchProps = Omit<
+export type CheckboxProps = Omit<
   React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
@@ -18,33 +20,33 @@ export type ToggleSwitchProps = Omit<
   ModeProps & {
     name: string
     label?: string
-    layout?: ToggleSwitchLayout
+    layout?: CheckboxLayout
     size?: Size
     applyInputHeight?: boolean
   }
 
-export enum ToggleSwitchLayout {
+export enum CheckboxLayout {
   start = 'start',
   end = 'end',
   spaceBetween = 'spaceBetween',
 }
 
-function ToggleSwitchComponent(
+function CheckboxComponent(
   {
     name,
     label,
-    layout = ToggleSwitchLayout.start,
+    layout = CheckboxLayout.start,
     size = Size.md,
     applyInputHeight = false,
     disabled = false,
     mode = Mode.light,
     className,
     ...props
-  }: ToggleSwitchProps,
+  }: CheckboxProps,
   ref: ForwardedRef<HTMLInputElement>
 ): ReactElement {
   const {
-    form: { toggleSwitch, inputLabel, inputError },
+    form: { checkbox, inputLabel, inputError },
   } = useTheme()
   const { register } = useFormContext()
   const { ref: fieldRef, ...field } = register(name)
@@ -69,20 +71,20 @@ function ToggleSwitchComponent(
     <div className={className}>
       <label
         className={classNames(
-          toggleSwitch.base,
-          toggleSwitch.layout[layout],
+          checkbox.base,
+          checkbox.layout[layout],
           applyInputHeight && [
-            toggleSwitch.inputHeight.base,
-            toggleSwitch.inputHeight.size[size],
+            checkbox.inputHeight.base,
+            checkbox.inputHeight.size[size],
           ],
-          toggleSwitch[disabledState]
+          checkbox[disabledState]
         )}
       >
         {label && (
           <span
             className={classNames(
-              toggleSwitch.label.base,
-              toggleSwitch.label.size[size],
+              checkbox.label.base,
+              checkbox.label.size[size],
               customLabelCss
             )}
           >
@@ -98,26 +100,22 @@ function ToggleSwitchComponent(
           {...field}
           type="checkbox"
           disabled={disabled}
-          className={toggleSwitch.input.base}
+          className={checkbox.input.base}
         />
         <span
           className={classNames(
-            toggleSwitch.switch.base,
-            toggleSwitch.switch.size[size].base,
-            toggleSwitch.switch[disabledState],
-            toggleSwitch.switch.modeState[mode][disabledState].base,
-            toggleSwitch.switch.modeState[mode][disabledState][checkedState]
+            checkbox.check.base,
+            checkbox.check.size[size].base,
+            checkbox.check[disabledState],
+            checkbox.check.modeState[mode][disabledState].base,
+            checkbox.check.modeState[mode][disabledState][checkedState]
           )}
         >
-          <span
-            className={classNames(
-              toggleSwitch.handle.base,
-              toggleSwitch.handle.size[size].base,
-              toggleSwitch.handle.size[size][checkedState],
-              toggleSwitch.handle[disabledState],
-              toggleSwitch.handle.modeState[mode][disabledState][checkedState]
-            )}
-          ></span>
+          {checked ? (
+            <IconCheckBoxRounded />
+          ) : (
+            <IconCheckBoxOutlineBlankRounded />
+          )}
         </span>
       </label>
       <InputError
@@ -128,4 +126,4 @@ function ToggleSwitchComponent(
   )
 }
 
-export const ToggleSwitch = forwardRef(ToggleSwitchComponent)
+export const Checkbox = forwardRef(CheckboxComponent)

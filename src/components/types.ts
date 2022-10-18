@@ -10,6 +10,12 @@ export enum Mode {
   dark = 'dark',
 }
 
+export enum Size {
+  sm = 'sm',
+  md = 'md',
+  lg = 'lg',
+}
+
 export enum Tone {
   primary = 'primary',
   neutral = 'neutral',

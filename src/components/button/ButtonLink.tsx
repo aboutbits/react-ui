@@ -1,12 +1,11 @@
 import classNames from 'classnames'
 import React from 'react'
 import { useLinkComponent, LinkComponentProps, useTheme } from '../../framework'
-import { Mode, Tone } from '../types'
+import { Mode, Size, Tone } from '../types'
 import {
   ButtonCommonProps,
   ButtonStyleProps,
   LinkCommonProps,
-  Size,
   Variant,
 } from './types'
 
