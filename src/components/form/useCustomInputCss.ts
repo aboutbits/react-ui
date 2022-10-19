@@ -81,5 +81,9 @@ export function getCustomErrorCss(
   parameters: Partial<CustomInputCssParameters> &
     Required<Pick<CustomInputCssParameters, 'mode'>>
 ) {
+  if (parameters.disabled) {
+    return theme[parameters.mode].disabled
+  }
+
   return theme[parameters.mode].normal
 }

@@ -54,12 +54,8 @@ function CheckboxComponent(
 
   const forwardedRef = useForwardedRef(ref)
 
-  const customLabelCss = getCustomLabelCss(inputLabel, {
-    mode,
-    disabled,
-  })
-
-  const customErrorCss = getCustomErrorCss(inputError, { mode })
+  const customLabelCss = getCustomLabelCss(inputLabel, { mode, disabled })
+  const customErrorCss = getCustomErrorCss(inputError, { mode, disabled })
   const errorCssWithoutMarginLeft = getClassNameWithoutMarginLeft(
     inputError.base
   )

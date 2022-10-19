@@ -97,9 +97,11 @@ export default {
     base: 'mt-1 ml-1 block text-xs font-medium',
     light: {
       normal: 'text-critical-500',
+      disabled: 'text-neutral-800/[0.36]',
     },
     dark: {
       normal: 'text-critical-300',
+      disabled: 'text-white/[0.36]',
     },
   },
   inputIcon: {
