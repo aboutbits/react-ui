@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { ReactElement } from 'react'
 import { useTheme } from '../../../framework'
 import { LoadingBar } from '../../loading'
-import { SectionListItem } from './SectionItem'
+import { SectionListItem } from './SectionListItem'
 
 export function SectionLoadingListItem({
   className,
