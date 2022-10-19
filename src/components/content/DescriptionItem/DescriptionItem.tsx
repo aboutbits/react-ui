@@ -3,23 +3,23 @@ import { ReactNode } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-export type SectionDescriptionItemTitleProps = ClassNameProps & {
+export type DescriptionItemTitleProps = ClassNameProps & {
   children?: ReactNode
 }
 
-export function SectionDescriptionItemTitle({
+export function DescriptionItemTitle({
   children,
   className,
-}: SectionDescriptionItemTitleProps) {
-  const { section } = useTheme()
+}: DescriptionItemTitleProps) {
+  const { content } = useTheme()
   return (
-    <dt className={classNames(section.descriptionItemTitle.base, className)}>
+    <dt className={classNames(content.descriptionItemTitle.base, className)}>
       {children}
     </dt>
   )
 }
 
-export type SectionDescriptionItemProps = ClassNameProps & {
+export type DescriptionItemProps = ClassNameProps & {
   /**
    * Defines the content of the section description item.
    * Will be placed inside dl.
@@ -36,19 +36,21 @@ export type SectionDescriptionItemProps = ClassNameProps & {
   hideIfEmpty?: boolean
 }
 
-export function SectionDescriptionItem({
+export function DescriptionItem({
   title,
   content,
   className,
   hideIfEmpty = false,
-}: SectionDescriptionItemProps) {
-  const { section } = useTheme()
+}: DescriptionItemProps) {
+  const { content: contentTheme } = useTheme()
 
   return (
     <>
       {((hideIfEmpty && content) || !hideIfEmpty) && (
-        <dl className={classNames(section.descriptionItem.base, className)}>
-          <SectionDescriptionItemTitle>{title}</SectionDescriptionItemTitle>
+        <dl
+          className={classNames(contentTheme.descriptionItem.base, className)}
+        >
+          <DescriptionItemTitle>{title}</DescriptionItemTitle>
           <dd>{content}</dd>
         </dl>
       )}
