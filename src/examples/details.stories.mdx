@@ -1,12 +1,11 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs'
 import { useIntl } from 'react-intl'
-import { ContentArea } from '../components/content'
+import { ContentArea, DescriptionItem } from '../components/content'
 import {
   Layout,
   Section,
   SectionContainer,
   SectionContent,
-  SectionDescriptionItem,
   SectionHeader,
 } from '../components/section'
 
@@ -24,17 +23,17 @@ export const Template = ({ title }) => {
         <SectionHeader title={title} />
         <SectionContainer>
           <SectionContent layout={Layout.oneColumnGrid}>
-            <SectionDescriptionItem
+            <DescriptionItem
               content="John Doe"
               title={intl.formatMessage({ id: 'shared.field.name' })}
             />
-            <SectionDescriptionItem
+            <DescriptionItem
               content="info@aboutbits.it"
               title={intl.formatMessage({ id: 'shared.field.email' })}
             />
-            <SectionDescriptionItem content="admin" title="Role" />
-            <SectionDescriptionItem content="English" title="Language" />
-            <SectionDescriptionItem
+            <DescriptionItem content="admin" title="Role" />
+            <DescriptionItem content="English" title="Language" />
+            <DescriptionItem
               content="John is a software engineer from Bolzano, Italy."
               title="Bio"
             />
@@ -61,17 +60,17 @@ export const TwoColumnTemplate = ({ title }) => {
         <SectionHeader title={title} />
         <SectionContainer>
           <SectionContent layout={Layout.twoColumnGrid}>
-            <SectionDescriptionItem
+            <DescriptionItem
               content="John Doe"
               title={intl.formatMessage({ id: 'shared.field.name' })}
             />
-            <SectionDescriptionItem
+            <DescriptionItem
               content="info@aboutbits.it"
               title={intl.formatMessage({ id: 'shared.field.email' })}
             />
-            <SectionDescriptionItem content="admin" title="Role" />
-            <SectionDescriptionItem content="English" title="Language" />
-            <SectionDescriptionItem
+            <DescriptionItem content="admin" title="Role" />
+            <DescriptionItem content="English" title="Language" />
+            <DescriptionItem
               className="xl:col-span-2"
               content="John is a software engineer from Bolzano, Italy."
               title="Bio"

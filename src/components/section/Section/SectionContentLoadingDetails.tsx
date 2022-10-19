@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import { SectionLoadingDescriptionItem } from '../SectionItem/SectionLoadingDescriptionItem'
+import { LoadingDescriptionItem } from '../../content'
 import { SectionContent, SectionContentProps } from './SectionContent'
 
 export type SectionContentLoadingDetailsProps = {
@@ -18,7 +18,7 @@ export function SectionContentLoadingDetails({
       {Array(numberOfItems)
         .fill(null)
         .map((_, index) => (
-          <SectionLoadingDescriptionItem key={index} />
+          <LoadingDescriptionItem key={index} />
         ))}
     </SectionContent>
   )

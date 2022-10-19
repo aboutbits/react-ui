@@ -17,7 +17,7 @@ export default {
       },
     },
     iconContainer: {
-      base: 'rounded-full bg-neutral-100 p-4 outline-1 outline-offset-2  mt-3 mb-4',
+      base: 'rounded-full bg-neutral-100 p-4 outline-1 outline-offset-2 mb-4 last:mb-0',
       tone: {
         primary: 'bg-primary-100',
         neutral: 'bg-neutral-100',
@@ -28,7 +28,7 @@ export default {
       },
     },
     title: {
-      base: 'text-center text-xl font-bold',
+      base: 'text-center text-xl font-bold leading-6 mb-1 last:mb-0',
       tone: {
         primary: 'text-primary-500',
         neutral: 'text-neutral-500',
@@ -39,7 +39,7 @@ export default {
       },
     },
     text: {
-      base: 'text-center',
+      base: 'text-center tracking-[0.00625rem]',
       tone: {
         primary: 'text-neutral-500',
         neutral: 'text-neutral-500',
@@ -48,6 +48,21 @@ export default {
         success: 'text-neutral-500',
         informative: 'text-neutral-500',
       },
+    },
+  },
+  descriptionItem: {
+    base: 'flex flex-col border-b border-neutral-200',
+  },
+  descriptionItemTitle: {
+    base: 'text-xs',
+  },
+  loadingDescriptionItem: {
+    base: '',
+    upper: {
+      base: 'p-1.5 w-40',
+    },
+    lower: {
+      base: 'p-2.5 pb-2.5-1px w-full mt-1 mb-1',
     },
   },
 }

@@ -7,8 +7,7 @@ import {
   DialogHeader,
   DialogProps,
 } from '../'
-import { Button } from '../../button'
-import { Variant } from '../../button/types'
+import { Button, Variant } from '../../button'
 import { Tone } from '../../types'
 
 export enum ConfirmationDialogVariant {

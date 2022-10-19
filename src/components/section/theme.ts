@@ -31,12 +31,6 @@ export default {
       base: 'flex flex-shrink-0',
     },
   },
-  descriptionItem: {
-    base: 'flex flex-col border-b border-neutral-200',
-  },
-  descriptionItemTitle: {
-    base: 'text-xs',
-  },
   listItemButton: {
     base: 'block w-full focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
@@ -88,15 +82,6 @@ export default {
       },
       end: {
         base: 'p-4 w-12',
-      },
-    },
-    descriptionItem: {
-      base: '',
-      upper: {
-        base: 'p-1.5 w-40',
-      },
-      lower: {
-        base: 'p-2.5 pb-2.5-1px w-full mt-1 mb-1',
       },
     },
   },
