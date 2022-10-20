@@ -8,7 +8,7 @@ import { joinFieldErrorMessages } from './utils'
 type Options<FormValues, Response> = {
   onSuccess?: (response: Response, values: FormValues) => void
   onError?: (error: AxiosError<ErrorBody> | Error, values: FormValues) => void
-  apiFallbackErrorMessageId?: string
+  apiFallbackErrorMessage?: string
 }
 
 export function useHandleFormSubmission<F extends FieldValues, Response>(
@@ -19,7 +19,7 @@ export function useHandleFormSubmission<F extends FieldValues, Response>(
   apiErrorMessage: string | null
   onSubmit: (values: F) => Promise<void>
 } {
-  const internationalization = useInternationalization()
+  const { messages } = useInternationalization()
   const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null)
   const isMountedRef = useRef(true)
 
@@ -61,14 +61,8 @@ export function useHandleFormSubmission<F extends FieldValues, Response>(
           }
 
           if (apiErrorMessage === null) {
-            if (options?.apiFallbackErrorMessageId) {
-              apiErrorMessage = internationalization.translate(
-                options.apiFallbackErrorMessageId
-              )
-            } else {
-              apiErrorMessage =
-                internationalization.translate('shared.error.api')
-            }
+            apiErrorMessage =
+              options?.apiFallbackErrorMessage ?? messages['error.api']
           }
 
           setApiErrorMessage(apiErrorMessage)
@@ -77,7 +71,7 @@ export function useHandleFormSubmission<F extends FieldValues, Response>(
         options?.onError?.(error as AxiosError<ErrorBody> | Error, values)
       }
     },
-    [internationalization, setError, options, submitAction]
+    [messages, setError, options, submitAction]
   )
 
   return {

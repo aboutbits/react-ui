@@ -134,7 +134,7 @@ export function SelectItemDialogSearch({
 }: {
   actions: Actions
 }): ReactElement {
-  const internationalization = useInternationalization()
+  const { messages } = useInternationalization()
   const form = useForm({
     defaultValues: initialValues,
   })
@@ -146,9 +146,7 @@ export function SelectItemDialogSearch({
         name="search"
         variant={Variant.soft}
         iconStart={IconSearch}
-        placeholder={internationalization.translate(
-          'shared.search.placeholder'
-        )}
+        placeholder={messages['search.placeholder']}
       />
     </Form>
   )
@@ -170,12 +168,10 @@ export function SelectItemDialogSuccess<ItemType, Error>({
   SelectItemDialogWithSearchProps<ItemType, Error>,
   'onConfirm' | 'renderListItem' | 'paginationConfig' | 'noSearchResults'
 >): ReactElement {
-  const internationalization = useInternationalization()
+  const { messages } = useInternationalization()
   const { form } = useTheme()
 
-  const empty = searching
-    ? internationalization.translate('shared.select.search.empty')
-    : noSearchResults
+  const empty = searching ? messages['select.search.empty'] : noSearchResults
 
   return data.items.length === 0 ? (
     <DialogContentEmpty text={empty} />

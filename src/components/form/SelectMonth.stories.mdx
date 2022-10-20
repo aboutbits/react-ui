@@ -3,6 +3,7 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
+import { InternationalizationMessages } from '../../../.storybook/components'
 import { Mode } from '../types'
 import { Form } from './Form'
 import { Month, MonthNames, SelectMonth } from './SelectMonth'
@@ -89,3 +90,22 @@ export const Template = ({ ...args }) => (
 
 The SelectMonth component shares the styles with the Select component.
 For customization of the styles please checkout the [theme section](/docs/components-form-select--default-story#theme) of the Select component.
+
+### Internationalization messages
+
+<InternationalizationMessages
+  items={[
+    'month.january',
+    'month.february',
+    'month.march',
+    'month.april',
+    'month.may',
+    'month.june',
+    'month.july',
+    'month.august',
+    'month.september',
+    'month.october',
+    'month.november',
+    'month.december',
+  ]}
+/>

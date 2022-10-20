@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/addon-docs'
+import { InternationalizationMessages } from '../../../.storybook/components'
 import { useHandleFormSubmission } from './useHandleFormSubmission'
 
 <Meta
@@ -19,12 +20,12 @@ npm i axios react-hook-form
 
 ### Parameter
 
-| parameter                           | type                                                                  | description                                                                                                       |
-| ----------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| submitAction                        | `() => Promise<Response>`                                             | The function that makes the actual request against the backend.                                                   |
-| options?.onSuccess?                 | `(response: Response, values: FormValues) => void`                    | Callback function after successful request.                                                                       |
-| options?.onError?                   | `(error: AxiosError<ErrorBody> \| Error, values: FormValues) => void` | Callback function after occurrence of an error.                                                                   |
-| options?.apiFallbackErrorMessageId? | `string`                                                              | Allows you to pass an optional string that gets injected into the translation function of the framework provider. |
+| parameter                         | type                                                                  | description                                                       |
+| --------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| submitAction                      | `() => Promise<Response>`                                             | The function that makes the actual request against the backend.   |
+| options?.onSuccess?               | `(response: Response, values: FormValues) => void`                    | Callback function after successful request.                       |
+| options?.onError?                 | `(error: AxiosError<ErrorBody> \| Error, values: FormValues) => void` | Callback function after occurrence of an error.                   |
+| options?.apiFallbackErrorMessage? | `string`                                                              | Allows you to pass an optional message string for a general error |
 
 ### Return value
 
@@ -32,6 +33,10 @@ npm i axios react-hook-form
 | --------------- | ---------------------------------------- | ---------------------------------------------------- |
 | apiErrorMessage | `string OR null`                         | Error message of the API request.                    |
 | onSubmit        | `(values: FieldValues) => Promise<void>` | Function to set as the submit function for the form. |
+
+### Internationalization messages
+
+<InternationalizationMessages items={['error.api']} />
 
 ## Usage
 
@@ -99,7 +104,7 @@ const onError = () => {
 const { apiErrorMessage, onSubmit } = useHandleFormSubmission(updateUser, {
   onSuccess,
   onError,
-  apiFallbackErrorMessageId: 'error.server.failed',
+  apiFallbackErrorMessage: 'Server error',
 })
 ```
 

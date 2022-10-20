@@ -18,15 +18,13 @@ export type SectionSearchProps = (
 
 export const SectionSearch = forwardRef<HTMLInputElement, SectionSearchProps>(
   ({ name = 'search', ...props }, ref) => {
-    const internationalization = useInternationalization()
+    const { messages } = useInternationalization()
 
     return (
       <Input
         name={name}
         ref={ref}
-        placeholder={internationalization.translate(
-          'shared.search.placeholder'
-        )}
+        placeholder={messages['search.placeholder']}
         variant={Variant.soft}
         iconStart={IconSearch}
         {...props}

@@ -1,6 +1,9 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
-import { Theme } from '../../../.storybook/components'
+import {
+  Theme,
+  InternationalizationMessages,
+} from '../../../.storybook/components'
 import { PaginationInMemory } from './PaginationInMemory'
 
 <Meta
@@ -46,8 +49,8 @@ export const Template = ({ children, ...args }) => {
 
 <Theme component="pagination" items={['page']} />
 
-### Internationalization
+### Internationalization messages
 
-- `shared.pagination.page`: Accessibility label for the page counter.
-- `shared.pagination.prev`: Accessibility label for previous page.
-- `shared.pagination.next`: Accessibility label for next page.
+<InternationalizationMessages
+  items={['pagination.page', 'pagination.prev', 'pagination.next']}
+/>

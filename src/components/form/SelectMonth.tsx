@@ -1,8 +1,8 @@
 import { forwardRef } from 'react'
-import { Mode } from '../types'
 import { useInternationalization } from '../../framework'
-import { Select, SelectProps } from './Select'
+import { Mode } from '../types'
 import { Option } from './Option'
+import { Select, SelectProps } from './Select'
 
 type SelectMonthProps = SelectProps
 
@@ -51,13 +51,13 @@ export const MonthNames: [
 
 export const SelectMonth = forwardRef<HTMLSelectElement, SelectMonthProps>(
   ({ mode = Mode.light, ...props }, ref) => {
-    const internationalization = useInternationalization()
+    const { messages } = useInternationalization()
 
     return (
       <Select mode={mode} {...props} ref={ref}>
         {Object.keys(Month).map((element: string) => (
           <Option mode={mode} key={element} value={element}>
-            {internationalization.translate(`shared.month.${element}`)}
+            {messages[`month.${element.toLowerCase()}`]}
           </Option>
         ))}
       </Select>

@@ -1,5 +1,8 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs'
-import { Theme } from '../../../.storybook/components'
+import {
+  Theme,
+  InternationalizationMessages,
+} from '../../../.storybook/components'
 import { PaginationPreviousContent } from './PaginationPreviousNextContent'
 
 <Meta
@@ -21,6 +24,6 @@ export const Template = ({ ...args }) => <PaginationPreviousContent {...args} />
 
 <Theme component="pagination" items={['prevNext']} />
 
-### Internationalization
+### Internationalization messages
 
-- `shared.pagination.prev`: Define the description text for the arrow back.
+<InternationalizationMessages items={['pagination.prev']} />
