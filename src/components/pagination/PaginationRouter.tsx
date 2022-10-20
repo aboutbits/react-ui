@@ -64,7 +64,7 @@ export function PaginationRouter({
     }
   },
 }: PaginationRouterProps) {
-  const internationalization = useInternationalization()
+  const { messages } = useInternationalization()
 
   const LinkComponent = useLinkComponent()
   const { pagination: paginationTheme } = useTheme()
@@ -78,7 +78,7 @@ export function PaginationRouter({
       <LinkComponent
         internal={true}
         {...linkProps({ pageIndex: pagination.previous.indexNumber, size })}
-        aria-label={internationalization.translate('shared.pagination.prev')}
+        aria-label={messages['pagination.prev']}
         aria-disabled={pagination.previous.isDisabled}
         role="previous-link"
         className={classNames(
@@ -102,10 +102,7 @@ export function PaginationRouter({
                   size,
                 })}
                 aria-current={page.isCurrent ? 'page' : false}
-                aria-label={internationalization.translate(
-                  'shared.pagination.page',
-                  { page: page.displayNumber }
-                )}
+                aria-label={`${messages['pagination.page']} ${page.displayNumber}`}
                 className={classNames(
                   paginationTheme.page.base,
                   paginationTheme.page.number,
@@ -126,7 +123,7 @@ export function PaginationRouter({
           pageIndex: pagination.next.indexNumber,
           size,
         })}
-        aria-label={internationalization.translate('shared.pagination.next')}
+        aria-label={messages['pagination.next']}
         aria-disabled={pagination.next.isDisabled}
         role="next-link"
         className={classNames(

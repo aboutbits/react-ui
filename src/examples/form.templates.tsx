@@ -2,7 +2,6 @@ import { IndexType } from '@aboutbits/pagination'
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { ReactElement, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useIntl } from 'react-intl'
 import * as Yup from 'yup'
 import { SubmitButton } from '../button'
 import { useHandleFormSubmission } from '../components/apiHooks/useHandleFormSubmission'
@@ -85,7 +84,6 @@ export function FormExampleTemplate({
     resolver,
     defaultValues,
   })
-  const intl = useIntl()
 
   const submitAction = useCallback(
     (data: FormData) =>
@@ -152,16 +150,10 @@ export function FormExampleTemplate({
                 id="email"
                 type="email"
                 name="email"
-                placeholder={intl.formatMessage({
-                  id: 'shared.field.email',
-                })}
-                label={intl.formatMessage({ id: 'shared.field.email' })}
+                placeholder="Email"
+                label="Email"
               />
-              <Select
-                id="language"
-                name="language"
-                label={intl.formatMessage({ id: 'shared.field.language' })}
-              >
+              <Select id="language" name="language" label="Language">
                 {i18n.supportedLanguages.map((supportedLanguage, index) => (
                   <Option key={index} value={supportedLanguage}>
                     {locales[supportedLanguage]}

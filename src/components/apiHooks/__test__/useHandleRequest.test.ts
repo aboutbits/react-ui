@@ -1,5 +1,6 @@
-import { act, renderHook } from '@testing-library/react-hooks'
 import { waitFor } from '@testing-library/react'
+import { act, renderHook } from '@testing-library/react-hooks'
+import defaultMessages from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleRequest } from '../useHandleRequest'
 
 describe('useHandleRequest', () => {
@@ -77,13 +78,13 @@ describe('useHandleRequest', () => {
   test('should set apiErrorMessage to fallbackErrorId on error without response', async () => {
     const { result } = renderHook(() =>
       useHandleRequest(onRequestWithoutErrorResponse, onSuccess, {
-        apiFallbackErrorMessageId: 'error.server.failed',
+        apiFallbackErrorMessage: 'Fallback error message',
       })
     )
 
     await act(() => result.current.onRequest())
 
-    expect(result.current.apiErrorMessage).toBe('error.server.failed')
+    expect(result.current.apiErrorMessage).toBe('Fallback error message')
   })
 
   test('should set default error message on error without response', async () => {
@@ -93,6 +94,6 @@ describe('useHandleRequest', () => {
 
     await act(() => result.current.onRequest())
 
-    expect(result.current.apiErrorMessage).toBe('shared.error.api')
+    expect(result.current.apiErrorMessage).toBe(defaultMessages['error.api'])
   })
 })

@@ -1,8 +1,6 @@
 import React from 'react'
-import { IntlProvider, useIntl } from 'react-intl'
 import { makeLinkComponent } from '../framework'
 import { defaultTheme as customTheme, ReactUIProvider } from '../src'
-import enMessages from '../src/translations/shared.en.json'
 import '../styles/index.css'
 
 // Add custom button tone for demo purpose
@@ -38,25 +36,15 @@ const LinkComponent = makeLinkComponent(
 
 export const decorators = [
   (Story) => {
-    const intl = useIntl()
-    const internationalization = {
-      translate: (key, values) => intl.formatMessage({ id: key }, values),
-    }
     return (
       <ReactUIProvider
         theme={customTheme}
-        internationalization={internationalization}
         linkComponent={LinkComponent}
       >
         <Story />
       </ReactUIProvider>
     )
   },
-  (Story) => (
-    <IntlProvider locale="en" messages={enMessages}>
-      <Story />
-    </IntlProvider>
-  ),
   (Story) => (
     <div className="text-neutral-800">
       <Story />

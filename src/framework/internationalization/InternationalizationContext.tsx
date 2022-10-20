@@ -1,11 +1,14 @@
 import { createContext, useContext } from 'react'
+import defaultMessages from './defaultMessages.en'
+
+export type InternationalizationMessages = Record<string, string>
 
 export type Internationalization = {
-  translate: (key: string, values?: unknown) => string
+  messages: InternationalizationMessages
 }
 
 export const defaultInternationalization: Internationalization = {
-  translate: (key) => key,
+  messages: defaultMessages,
 }
 
 export const InternationalizationContext = createContext<Internationalization>(
