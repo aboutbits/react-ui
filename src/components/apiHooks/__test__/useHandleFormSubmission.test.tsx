@@ -1,6 +1,7 @@
 import { act, waitFor } from '@testing-library/react'
 import { renderHook } from '@testing-library/react-hooks'
 import { useForm } from 'react-hook-form'
+import defaultMessages from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleFormSubmission } from '../useHandleFormSubmission'
 
 const getPromiseState = async (
@@ -142,13 +143,13 @@ describe('useHandleFormSubmission', () => {
     const { result } = renderHook(() =>
       useHandleFormSubmission(form.current, onDeleteWithoutErrorResponse, {
         onSuccess,
-        apiFallbackErrorMessageId: 'error.server.failed',
+        apiFallbackErrorMessage: 'Fallback error message',
       })
     )
 
     await act(() => result.current.onSubmit({}))
 
-    expect(result.current.apiErrorMessage).toBe('error.server.failed')
+    expect(result.current.apiErrorMessage).toBe('Fallback error message')
   })
 
   test('should set default error message on error without response', async () => {
@@ -162,7 +163,7 @@ describe('useHandleFormSubmission', () => {
 
     await act(() => result.current.onSubmit({}))
 
-    expect(result.current.apiErrorMessage).toBe('shared.error.api')
+    expect(result.current.apiErrorMessage).toBe(defaultMessages['error.api'])
   })
 
   test("should set default error message if it's not an axios error", async () => {
@@ -176,6 +177,6 @@ describe('useHandleFormSubmission', () => {
 
     await act(() => result.current.onSubmit({}))
 
-    expect(result.current.apiErrorMessage).toBe('shared.error.api')
+    expect(result.current.apiErrorMessage).toBe(defaultMessages['error.api'])
   })
 })
