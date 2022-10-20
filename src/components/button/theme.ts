@@ -74,7 +74,7 @@ export default {
           'bg-success-600 hover:bg-success-700 text-white outline-success-600',
         informative:
           'bg-informative-500 hover:bg-informative-600 text-white outline-informative-500',
-        disabled: 'bg-neutral-200 text-neutral-400',
+        disabled: 'bg-neutral-800/[0.16] text-neutral-800/[0.36]',
       },
       ghost: {
         primary:
@@ -89,7 +89,7 @@ export default {
           'hover:bg-success-500/10 focus:bg-success-500/10 border-success-600 focus:border-transparent text-success-600 outline-success-600',
         informative:
           'hover:bg-informative-500/10 focus:bg-informative-500/10 border-informative-500 focus:border-transparent text-informative-500 outline-informative-500',
-        disabled: 'border-neutral-200 text-neutral-400',
+        disabled: 'border-neutral-800/[0.36] text-neutral-800/[0.36]',
       },
       transparent: {
         primary:
@@ -104,7 +104,7 @@ export default {
           'hover:bg-success-500/10 text-success-600 focus:outline-success-600',
         informative:
           'hover:bg-informative-500/10 text-informative-500 focus:outline-informative-500',
-        disabled: 'text-neutral-400',
+        disabled: 'text-neutral-800/[0.36]',
       },
     },
     dark: {

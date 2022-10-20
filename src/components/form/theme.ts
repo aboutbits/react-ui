@@ -8,30 +8,31 @@ export default {
     modeVariant: {
       light: {
         base: {
-          normal: 'placeholder:text-neutral-500',
-          error: 'placeholder:text-neutral-500',
-          disabled: 'text-neutral-400 placeholder:text-neutral-400',
+          normal: 'placeholder:text-neutral-800/[0.36]',
+          error: 'placeholder:text-neutral-800/[0.36]',
+          disabled:
+            'text-neutral-800/[0.36] placeholder:text-neutral-800/[0.36]',
         },
         ghost: {
           normal:
             'bg-transparent border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
           error:
             'bg-transparent border-critical-500 focus:border-critical-500 focus:outline-critical-500',
-          disabled: 'bg-transparent border-neutral-400',
+          disabled: 'bg-transparent border-neutral-800/[0.36]',
         },
         soft: {
           normal:
-            'bg-neutral-100 border-neutral-100 focus:border-neutral-800 focus:outline-neutral-800',
+            'bg-neutral-800/[0.06] border-transparent focus:border-neutral-800 focus:outline-neutral-800',
           error:
-            'bg-neutral-100 border-critical-500 focus:border-critical-500 focus:outline-critical-500',
-          disabled: 'bg-neutral-100 border-neutral-100',
+            'bg-neutral-800/[0.06] border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+          disabled: 'bg-neutral-800/[0.16] border-transparent',
         },
         solid: {
           normal:
             'bg-white border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
           error:
             'bg-white border-critical-500 focus:border-critical-500 focus:outline-critical-500',
-          disabled: 'bg-white border-neutral-400',
+          disabled: 'bg-white border-neutral-800/[0.36]',
         },
         transparent: {
           normal:
@@ -43,30 +44,30 @@ export default {
       },
       dark: {
         base: {
-          normal: 'text-white placeholder:text-neutral-500',
-          error: 'text-white placeholder:text-neutral-500',
-          disabled: 'text-neutral-400 placeholder:text-neutral-400',
+          normal: 'text-white placeholder:text-white/[0.48]',
+          error: 'text-white placeholder:text-white/[0.48]',
+          disabled: 'text-white/[0.36] placeholder:text-white/[0.36]',
         },
         ghost: {
           normal:
             'bg-transparent border-neutral-200 focus:border-white focus:outline-white ',
           error:
             'bg-transparent border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
-          disabled: 'bg-transparent border-neutral-400',
+          disabled: 'bg-transparent border-white/[0.36]',
         },
         soft: {
           normal:
-            'bg-neutral-800 border-neutral-800 focus:border-white focus:outline-white',
+            'bg-white/[0.08] border-transparent focus:border-white focus:outline-white',
           error:
-            'bg-neutral-800 border-critical-300 focus:border-critical-300 focus:outline-critical-300',
-          disabled: 'bg-neutral-800 border-neutral-800',
+            'bg-white/[0.08] border-critical-300 focus:border-critical-300 focus:outline-critical-300',
+          disabled: 'bg-white/[0.16] border-transparent',
         },
         solid: {
           normal:
-            'bg-black border-neutral-200 focus:border-white focus:outline-white ',
+            'bg-neutral-800 border-neutral-200 focus:border-white focus:outline-white ',
           error:
-            'bg-black border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
-          disabled: 'bg-black border-neutral-400',
+            'bg-neutral-800 border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
+          disabled: 'bg-neutral-800 border-white/[0.36]',
         },
         transparent: {
           normal:
@@ -97,9 +98,11 @@ export default {
     base: 'mt-1 ml-1 block text-xs font-medium',
     light: {
       normal: 'text-critical-500',
+      disabled: 'text-neutral-800/[0.36]',
     },
     dark: {
       normal: 'text-critical-300',
+      disabled: 'text-white/[0.36]',
     },
   },
   inputIcon: {
