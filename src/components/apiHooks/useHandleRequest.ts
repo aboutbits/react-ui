@@ -7,7 +7,7 @@ export function useHandleRequest<Response>(
   requestAction: () => Promise<Response>,
   onSuccess: () => void,
   options?: {
-    apiFallbackErrorMessageId?: string
+    apiFallbackErrorMessage?: string
   }
 ): {
   apiErrorMessage: string | null
@@ -15,7 +15,7 @@ export function useHandleRequest<Response>(
   onRequest: () => Promise<void>
 } {
   const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null)
-  const internationalization = useInternationalization()
+  const { messages } = useInternationalization()
 
   const [isRequesting, setIsRequesting] = useState<boolean>(false)
 
@@ -30,12 +30,10 @@ export function useHandleRequest<Response>(
 
       if (maybeAxiosError?.response?.data.message) {
         setApiErrorMessage(maybeAxiosError?.response.data.message)
-      } else if (options?.apiFallbackErrorMessageId) {
-        setApiErrorMessage(
-          internationalization.translate(options.apiFallbackErrorMessageId)
-        )
+      } else if (options?.apiFallbackErrorMessage) {
+        setApiErrorMessage(options.apiFallbackErrorMessage)
       } else {
-        setApiErrorMessage(internationalization.translate('shared.error.api'))
+        setApiErrorMessage(messages['shared.error.api'])
       }
     } finally {
       setIsRequesting(false)

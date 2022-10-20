@@ -22,12 +22,12 @@ export function DialogHeaderCloseAction({
   label,
   ...props
 }: DialogHeaderCloseActionProps): ReactElement {
-  const internationalization = useInternationalization()
+  const { messages } = useInternationalization()
 
   return (
     <DialogHeaderLeftActionIcon
       icon={icon}
-      label={label || internationalization.translate('shared.button.close')}
+      label={label || messages['button.close']}
       {...props}
     />
   )

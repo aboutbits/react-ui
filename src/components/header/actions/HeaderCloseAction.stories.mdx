@@ -1,6 +1,7 @@
 import IconArrowBackIos from '@aboutbits/react-material-icons/dist/IconArrowBackIos'
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { InternationalizationMessages } from '../../../../.storybook/components'
 import { HeaderCloseAction } from './HeaderCloseAction'
 
 <Meta
@@ -41,6 +42,6 @@ export const Template = (args) => <HeaderCloseAction {...args} />
 
 <ArgsTable story="Default" />
 
-### Internationalization
+### Internationalization messages
 
-- `shared.button.close`: Accessibility label for close icon
+<InternationalizationMessages items={['button.close']} />

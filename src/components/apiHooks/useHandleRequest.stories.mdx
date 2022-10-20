@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/addon-docs'
+import { InternationalizationMessages } from '../../../.storybook/components'
 import { useHandleRequest } from './useHandleRequest'
 
 <Meta
@@ -20,11 +21,11 @@ npm i axios
 
 ### Parameter
 
-| parameter                           | type                      | description                                                                                                       |
-| ----------------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| requestAction                       | `() => Promise<Response>` | The function that makes the actual request against the backend.                                                   |
-| onSuccess                           | `() => void`              | Callback function after successful request.                                                                       |
-| options?.apiFallbackErrorMessageId? | `string`                  | Allows you to pass an optional string that gets injected into the translation function of the framework provider. |
+| parameter                         | type                      | description                                                        |
+| --------------------------------- | ------------------------- | ------------------------------------------------------------------ |
+| requestAction                     | `() => Promise<Response>` | The function that makes the actual request against the backend.    |
+| onSuccess                         | `() => void`              | Callback function after successful request.                        |
+| options?.apiFallbackErrorMessage? | `string`                  | Allows you to pass an optional message string for a general error. |
 
 ### Return value
 
@@ -33,6 +34,10 @@ npm i axios
 | apiErrorMessage | `string OR null`      | Error message of the API request.  |
 | isRequesting    | `boolean`             | True while the request is pending. |
 | onRequest       | `() => Promise<void>` | Function to fire the request.      |
+
+### Internationalization messages
+
+<InternationalizationMessages items={['error.api']} />
 
 ## Usage
 

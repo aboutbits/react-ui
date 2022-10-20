@@ -117,7 +117,7 @@ export function SelectItem<ItemType, Error>({
     () => replacePlaceholderColorWithTextColor(customCss.inputCss),
     [customCss.inputCss]
   )
-  const internationalization = useInternationalization()
+  const { messages } = useInternationalization()
   const { form } = useTheme()
 
   const fieldHasError = !!fieldState.error
@@ -189,7 +189,7 @@ export function SelectItem<ItemType, Error>({
             >
               <IconClose
                 className={form.selectItem.input.icon.base}
-                title={internationalization.translate('shared.select.clear')}
+                title={messages['select.clear']}
               />
             </button>
           </div>
