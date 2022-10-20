@@ -33,7 +33,7 @@ export function useHandleRequest<Response>(
       } else if (options?.apiFallbackErrorMessage) {
         setApiErrorMessage(options.apiFallbackErrorMessage)
       } else {
-        setApiErrorMessage(messages['shared.error.api'])
+        setApiErrorMessage(messages['error.api'])
       }
     } finally {
       setIsRequesting(false)
