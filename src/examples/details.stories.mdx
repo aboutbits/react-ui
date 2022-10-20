@@ -1,5 +1,4 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs'
-import { useIntl } from 'react-intl'
 import { ContentArea, DescriptionItem } from '../components/content'
 import {
   Layout,
@@ -16,21 +15,14 @@ import {
 The following example shows how a detailed view could look like, e.g. from a user.
 
 export const Template = ({ title }) => {
-  const intl = useIntl()
   return (
     <ContentArea>
       <Section>
         <SectionHeader title={title} />
         <SectionContainer>
           <SectionContent layout={Layout.oneColumnGrid}>
-            <DescriptionItem
-              content="John Doe"
-              title={intl.formatMessage({ id: 'shared.field.name' })}
-            />
-            <DescriptionItem
-              content="info@aboutbits.it"
-              title={intl.formatMessage({ id: 'shared.field.email' })}
-            />
+            <DescriptionItem content="John Doe" title="Name" />
+            <DescriptionItem content="info@aboutbits.it" title="Email" />
             <DescriptionItem content="admin" title="Role" />
             <DescriptionItem content="English" title="Language" />
             <DescriptionItem
@@ -53,21 +45,14 @@ export const Template = ({ title }) => {
 # Details with two columns layout (on xl screens)
 
 export const TwoColumnTemplate = ({ title }) => {
-  const intl = useIntl()
   return (
     <ContentArea>
       <Section>
         <SectionHeader title={title} />
         <SectionContainer>
           <SectionContent layout={Layout.twoColumnGrid}>
-            <DescriptionItem
-              content="John Doe"
-              title={intl.formatMessage({ id: 'shared.field.name' })}
-            />
-            <DescriptionItem
-              content="info@aboutbits.it"
-              title={intl.formatMessage({ id: 'shared.field.email' })}
-            />
+            <DescriptionItem content="John Doe" title="Name" />
+            <DescriptionItem content="info@aboutbits.it" title="Email" />
             <DescriptionItem content="admin" title="Role" />
             <DescriptionItem content="English" title="Language" />
             <DescriptionItem
