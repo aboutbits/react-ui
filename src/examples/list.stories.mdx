@@ -146,7 +146,7 @@ export const TemplateComplexList = ({
           />
         </SectionHeaderRow>
         <SectionFilter
-          initialValues={filter}
+          defaultValues={filter}
           onSubmit={(values) => setFilter(values)}
         >
           <SectionHeaderRow layout={SectionHeaderRowLayout.stretch}>
@@ -232,7 +232,7 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
   return (
     <Section>
       <SectionFilter
-        initialValues={filter}
+        defaultValues={filter}
         onSubmit={(values) => setFilter(values)}
       >
         <SectionHeaderArea>
@@ -399,7 +399,7 @@ export const TemplateListWithFilterDialog = ({
             title="Filter"
           />
           <SectionFilter
-            initialValues={filter}
+            defaultValues={filter}
             enableReinitialize
             autoSubmit={false}
             onSubmit={(values) => {
@@ -441,7 +441,7 @@ export const TemplateListWithFilterDialog = ({
               </SectionHeaderGroup>
             ) : (
               <SectionFilter
-                initialValues={filter}
+                defaultValues={filter}
                 enableReinitialize
                 onSubmit={(values) => setFilter(values)}
                 className="flex"

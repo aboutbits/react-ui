@@ -25,7 +25,7 @@ This component is a form wrapper that submits automatically by default. You can 
 Find more samples in the [List examples](/docs/examples-list--default-story).
 
 export const Template = ({ ...args }) => {
-  const [filter, setFilter] = useState(args.initialValues)
+  const [filter, setFilter] = useState(args.defaultValues)
   const content = Array.from(Array(10).keys())
     .map((item, index) => ({
       name: `User ${item + 1}`,
@@ -46,7 +46,7 @@ export const Template = ({ ...args }) => {
           <SectionFilter
             className="flex"
             {...args}
-            initialValues={filter}
+            defaultValues={filter}
             onSubmit={(values) => setFilter(values)}
           >
             <SectionHeaderGroup>
@@ -97,7 +97,7 @@ export const Template = ({ ...args }) => {
     name="Default"
     args={{
       autoSubmit: undefined,
-      initialValues: {
+      defaultValues: {
         role: '',
         department: '',
       },
