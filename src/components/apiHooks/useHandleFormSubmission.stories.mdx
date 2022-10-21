@@ -20,12 +20,13 @@ npm i axios react-hook-form
 
 ### Parameter
 
-| parameter                         | type                                                                  | description                                                       |
-| --------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| submitAction                      | `() => Promise<Response>`                                             | The function that makes the actual request against the backend.   |
-| options?.onSuccess?               | `(response: Response, values: FormValues) => void`                    | Callback function after successful request.                       |
-| options?.onError?                 | `(error: AxiosError<ErrorBody> \| Error, values: FormValues) => void` | Callback function after occurrence of an error.                   |
-| options?.apiFallbackErrorMessage? | `string`                                                              | Allows you to pass an optional message string for a general error |
+| parameter                         | type                                                                   | description                                                       |
+| --------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| form                              | `UseFormReturn<FieldValues>`                                           | The return value of `useForm`                                     |
+| submitAction                      | `() => Promise<Response>`                                              | The function that makes the actual request against the backend.   |
+| options?.onSuccess?               | `(response: Response, values: FieldValues) => void`                    | Callback function after successful request.                       |
+| options?.onError?                 | `(error: AxiosError<ErrorBody> \| Error, values: FieldValues) => void` | Callback function after occurrence of an error.                   |
+| options?.apiFallbackErrorMessage? | `string`                                                               | Allows you to pass an optional message string for a general error |
 
 ### Return value
 
@@ -64,12 +65,15 @@ const onError = (error, values) => {
 }
 
 function UpdateUserForm(): ReactElement {
-  const { apiErrorMessage, onSubmit } = useHandleFormSubmission(updateUser, {
-    onSuccess,
-    onError,
-  })
-
   const form = useForm()
+  const { apiErrorMessage, onSubmit } = useHandleFormSubmission(
+    form,
+    updateUser,
+    {
+      onSuccess,
+      onError,
+    }
+  )
 
   return (
     <Form form={form} onSubmit={onSubmit}>
@@ -87,6 +91,7 @@ If you are not sure, whether the backend always returns the error message in an 
 ```ts
 import { useHandleRequest } from '@aboutbits/react-ui/apiHooks'
 import Axios, { AxiosResponse } from 'axios'
+import { useForm } from 'react-hook-form'
 import { useHandleFormSubmission } from './useHandleFormSubmission'
 
 const updateUser = Axios.put<void, AxiosResponse<void>>(
@@ -101,11 +106,16 @@ const onError = () => {
   console.log('Error')
 }
 
-const { apiErrorMessage, onSubmit } = useHandleFormSubmission(updateUser, {
-  onSuccess,
-  onError,
-  apiFallbackErrorMessage: 'Server error',
-})
+const form = useForm()
+const { apiErrorMessage, onSubmit } = useHandleFormSubmission(
+  form,
+  updateUser,
+  {
+    onSuccess,
+    onError,
+    apiFallbackErrorMessage: 'Server error',
+  }
+)
 ```
 
 ### Validation errors per field
