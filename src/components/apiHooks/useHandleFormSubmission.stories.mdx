@@ -65,12 +65,15 @@ const onError = (error, values) => {
 }
 
 function UpdateUserForm(): ReactElement {
-  const { apiErrorMessage, onSubmit } = useHandleFormSubmission(updateUser, {
-    onSuccess,
-    onError,
-  })
-
   const form = useForm()
+  const { apiErrorMessage, onSubmit } = useHandleFormSubmission(
+    form,
+    updateUser,
+    {
+      onSuccess,
+      onError,
+    }
+  )
 
   return (
     <Form form={form} onSubmit={onSubmit}>
@@ -88,6 +91,7 @@ If you are not sure, whether the backend always returns the error message in an 
 ```ts
 import { useHandleRequest } from '@aboutbits/react-ui/apiHooks'
 import Axios, { AxiosResponse } from 'axios'
+import { useForm } from 'react-hook-form'
 import { useHandleFormSubmission } from './useHandleFormSubmission'
 
 const updateUser = Axios.put<void, AxiosResponse<void>>(
@@ -102,11 +106,16 @@ const onError = () => {
   console.log('Error')
 }
 
-const { apiErrorMessage, onSubmit } = useHandleFormSubmission(updateUser, {
-  onSuccess,
-  onError,
-  apiFallbackErrorMessage: 'Server error',
-})
+const form = useForm()
+const { apiErrorMessage, onSubmit } = useHandleFormSubmission(
+  form,
+  updateUser,
+  {
+    onSuccess,
+    onError,
+    apiFallbackErrorMessage: 'Server error',
+  }
+)
 ```
 
 ### Validation errors per field
