@@ -60,7 +60,7 @@ export type SelectItemDialogWithSearchProps<ItemType, Error> = DialogProps & {
   title: ReactNode
 }
 
-const initialValues: FilterParameters = {
+const defaultValues: FilterParameters = {
   search: '',
 }
 
@@ -77,7 +77,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
 }: SelectItemDialogWithSearchProps<ItemType, Error>): ReactElement {
   const { queryParameters, page, size, actions } = useQueryAndPagination({
     ...paginationConfig,
-    defaultQueryParameters: initialValues,
+    defaultQueryParameters: defaultValues,
   })
 
   const { data, error } = useGetData({
@@ -135,9 +135,7 @@ export function SelectItemDialogSearch({
   actions: Actions
 }): ReactElement {
   const { messages } = useInternationalization()
-  const form = useForm({
-    defaultValues: initialValues,
-  })
+  const form = useForm({ defaultValues })
 
   return (
     <Form form={form} onSubmit={actions.updateQuery} className="flex-1">
