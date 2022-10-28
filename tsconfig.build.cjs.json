@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "strict": true,
-    "target": "ES6",
+    "target": "ES5",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "jsx": "react-jsx",
-    "outDir": "./",
+    "outDir": "./dist/cjs",
     "declaration": true,
     "importHelpers": true
   },
