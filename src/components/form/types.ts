@@ -1,4 +1,4 @@
-export enum Variant {
+export enum InputVariant {
   ghost = 'ghost',
   soft = 'soft',
   solid = 'solid',
@@ -6,5 +6,5 @@ export enum Variant {
 }
 
 export type VariantProps = {
-  variant?: Variant
+  variant?: InputVariant
 }

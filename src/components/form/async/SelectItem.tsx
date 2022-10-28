@@ -8,7 +8,7 @@ import { DialogProps } from '../../dialog'
 import { ClassNameProps, Mode } from '../../types'
 import { InputError } from '../InputError'
 import { InputLabel } from '../InputLabel'
-import { Variant } from '../types'
+import { InputVariant } from '../types'
 import { useCustomInputCss } from '../useCustomInputCss'
 import {
   SelectItemDialogWithSearch,
@@ -111,7 +111,7 @@ export function SelectItem<ItemType, Error>({
   const customCss = useCustomInputCss(name, {
     disabled,
     mode: Mode.light,
-    variant: Variant.ghost,
+    variant: InputVariant.ghost,
   })
   const customCssEmptyInput = useMemo(
     () => replacePlaceholderColorWithTextColor(customCss.inputCss),

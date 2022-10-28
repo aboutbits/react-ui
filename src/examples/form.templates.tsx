@@ -1,10 +1,9 @@
 import { IndexType } from '@aboutbits/pagination'
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { ReactElement, useCallback, useEffect, useState } from 'react'
+import { ReactElement, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
-import { SubmitButton } from '../button'
-import { useHandleFormSubmission } from '../components/apiHooks/useHandleFormSubmission'
+import { useHandleFormSubmission } from '../components/apiHooks'
 import { ContentArea } from '../components/content'
 import {
   Layout,
@@ -26,12 +25,13 @@ import {
   ToggleSwitch,
   ToggleSwitchLayout,
   Checkbox,
-} from '../form'
+} from '../components/form'
 import {
   PaginatedResponse,
   SearchQueryParameters,
   SelectItem,
-} from '../formAsync'
+} from '../components/form/async'
+import { SubmitButton } from '../components/button'
 import { i18n, locales } from './i18n'
 
 type FormData = {

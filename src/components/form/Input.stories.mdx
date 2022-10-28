@@ -9,7 +9,7 @@ import { Theme } from '../../../.storybook/components'
 import { Mode } from '../types'
 import { Form } from './Form'
 import { Input } from './Input'
-import { Variant } from './types'
+import { InputVariant } from './types'
 
 <Meta
   title="Components/Form/Input"
@@ -50,7 +50,7 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
       placeholder: 'Your Name',
       type: 'text',
       mode: Mode.light,
-      variant: Variant.ghost,
+      variant: InputVariant.ghost,
       disabled: false,
       iconStart: 'None',
       iconEnd: 'None',
@@ -63,7 +63,7 @@ export const Template = ({ ...args }) => <Input {...args} name="name" />
         },
       },
       variant: {
-        options: Object.values(Variant),
+        options: Object.values(InputVariant),
         control: {
           type: 'radio',
         },
@@ -112,7 +112,7 @@ The `Variant` defines the background and the border.
     name="VariantGhost"
     args={{
       label: 'Ghost input',
-      variant: Variant.ghost,
+      variant: InputVariant.ghost,
     }}
   >
     {Template.bind({})}
@@ -121,7 +121,7 @@ The `Variant` defines the background and the border.
     name="VariantSoft"
     args={{
       label: 'Soft input',
-      variant: Variant.soft,
+      variant: InputVariant.soft,
     }}
   >
     {Template.bind({})}
@@ -130,7 +130,7 @@ The `Variant` defines the background and the border.
     name="VariantSolid"
     args={{
       label: 'Solid input',
-      variant: Variant.solid,
+      variant: InputVariant.solid,
     }}
   >
     {Template.bind({})}
@@ -139,7 +139,7 @@ The `Variant` defines the background and the border.
     name="VariantTransparent"
     args={{
       label: 'Transparent input',
-      variant: Variant.transparent,
+      variant: InputVariant.transparent,
     }}
   >
     {Template.bind({})}

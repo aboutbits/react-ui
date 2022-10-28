@@ -22,7 +22,7 @@ import { DialogListItemButton } from '../../dialog/DialogItem/DialogListItemButt
 import { PaginationInMemoryProps } from '../../pagination'
 import { AutoSubmit } from '../AutoSubmit'
 import { Input } from '../Input'
-import { Variant } from '../types'
+import { InputVariant } from '../types'
 import { DialogContentListLoading } from '../../dialog/Dialog/DialogContentListLoading'
 import { DialogHeaderRow } from '../../dialog/DialogHeader/DialogHeaderRow'
 import { Form } from '../Form'
@@ -142,7 +142,7 @@ export function SelectItemDialogSearch({
       <AutoSubmit />
       <Input
         name="search"
-        variant={Variant.soft}
+        variant={InputVariant.soft}
         iconStart={IconSearch}
         placeholder={messages['search.placeholder']}
       />

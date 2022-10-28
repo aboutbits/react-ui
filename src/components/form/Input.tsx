@@ -7,7 +7,7 @@ import { useForwardedRef } from '../utils/useForwardedRef'
 import { InputError } from './InputError'
 import { IconPosition, InputIcon } from './InputIcon'
 import { InputLabel } from './InputLabel'
-import { Variant, VariantProps } from './types'
+import { InputVariant, VariantProps } from './types'
 import { useCustomInputCss } from './useCustomInputCss'
 
 export type InputBaseProps = React.DetailedHTMLProps<
@@ -37,7 +37,7 @@ function InputComponent(
     name,
     label,
     mode = Mode.light,
-    variant = Variant.solid,
+    variant = InputVariant.solid,
     disabled,
     className,
     iconStart,

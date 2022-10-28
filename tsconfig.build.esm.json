@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "strict": true,
-    "module": "commonjs",
-    "target": "ES5",
+    "target": "ES6",
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
-    "outDir": "./",
+    "outDir": "./dist/esm",
     "declaration": true,
     "importHelpers": true
   },
