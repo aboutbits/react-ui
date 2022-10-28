@@ -2,6 +2,7 @@
   "name": "@aboutbits/react-ui",
   "version": "1.0.0",
   "main": "index.js",
+  "module": "dist/esm/index.js",
   "types": "index.d.ts",
   "private": false,
   "publishConfig": {
