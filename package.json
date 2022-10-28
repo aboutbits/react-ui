@@ -146,97 +146,97 @@
     ".": {
       "types": "./index.d.ts",
       "require": "./index.js",
-      "import": "./dist/esm/index.mjs"
+      "import": "./dist/esm/index.js"
     },
     "./framework": {
       "types": "./framework/index.d.ts",
       "require": "./framework/index.js",
-      "import": "./dist/esm/framework/index.mjs"
+      "import": "./dist/esm/framework/index.js"
     },
     "./action": {
       "types": "./action.d.ts",
       "require": "./action.js",
-      "import": "./dist/esm/action.mjs"
+      "import": "./dist/esm/action.js"
     },
     "./alert": {
       "types": "./alert.d.ts",
       "require": "./alert.js",
-      "import": "./dist/esm/alert.mjs"
+      "import": "./dist/esm/alert.js"
     },
     "./button": {
       "types": "./button.d.ts",
       "require": "./button.js",
-      "import": "./dist/esm/button.mjs"
+      "import": "./dist/esm/button.js"
     },
     "./content": {
       "types": "./content.d.ts",
       "require": "./content.js",
-      "import": "./dist/esm/content.mjs"
+      "import": "./dist/esm/content.js"
     },
     "./dialog": {
       "types": "./dialog.d.ts",
       "require": "./dialog.js",
-      "import": "./dist/esm/dialog.mjs"
+      "import": "./dist/esm/dialog.js"
     },
     "./form": {
       "types": "./form.d.ts",
       "require": "./form.js",
-      "import": "./dist/esm/form.mjs"
+      "import": "./dist/esm/form.js"
     },
     "./formAsync": {
       "types": "./formAsync.d.ts",
       "require": "./formAsync.js",
-      "import": "./dist/esm/formAsync.mjs"
+      "import": "./dist/esm/formAsync.js"
     },
     "./apiHooks": {
       "types": "./apiHooks.d.ts",
       "require": "./apiHooks.js",
-      "import": "./dist/esm/apiHooks.mjs"
+      "import": "./dist/esm/apiHooks.js"
     },
     "./header": {
       "types": "./header.d.ts",
       "require": "./header.js",
-      "import": "./dist/esm/header.mjs"
+      "import": "./dist/esm/header.js"
     },
     "./link": {
       "types": "./link.d.ts",
       "require": "./link.js",
-      "import": "./dist/esm/link.mjs"
+      "import": "./dist/esm/link.js"
     },
     "./loading": {
       "types": "./loading.d.ts",
       "require": "./loading.js",
-      "import": "./dist/esm/loading.mjs"
+      "import": "./dist/esm/loading.js"
     },
     "./menu": {
       "types": "./menu.d.ts",
       "require": "./menu.js",
-      "import": "./dist/esm/menu.mjs"
+      "import": "./dist/esm/menu.js"
     },
     "./pagination": {
       "types": "./pagination.d.ts",
       "require": "./pagination.js",
-      "import": "./dist/esm/pagination.mjs"
+      "import": "./dist/esm/pagination.js"
     },
     "./section": {
       "types": "./section.d.ts",
       "require": "./section.js",
-      "import": "./dist/esm/section.mjs"
+      "import": "./dist/esm/section.js"
     },
     "./selectDialog": {
       "types": "./selectDialog.d.ts",
       "require": "./selectDialog.js",
-      "import": "./dist/esm/selectDialog.mjs"
+      "import": "./dist/esm/selectDialog.js"
     },
     "./submitButton": {
       "types": "./submitButton.d.ts",
       "require": "./submitButton.js",
-      "import": "./dist/esm/submitButton.mjs"
+      "import": "./dist/esm/submitButton.js"
     },
     "./tabs": {
       "types": "./tabs.d.ts",
       "require": "./tabs.js",
-      "import": "./dist/esm/tabs.mjs"
+      "import": "./dist/esm/tabs.js"
     }
   }
 }
