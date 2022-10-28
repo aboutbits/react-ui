@@ -1,1 +1,1 @@
-export * from './components/form'
+export * from './components/form/index'

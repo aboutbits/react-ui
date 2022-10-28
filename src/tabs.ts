@@ -1,1 +1,1 @@
-export * from './components/tabs'
+export * from './components/tabs/index'

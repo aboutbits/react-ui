@@ -1,1 +1,1 @@
-export * from './components/pagination'
+export * from './components/pagination/index'

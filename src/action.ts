@@ -1,1 +1,1 @@
-export * from './components/action'
+export * from './components/action/index'

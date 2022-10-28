@@ -1,1 +1,1 @@
-export * from './components/loading'
+export * from './components/loading/index'

@@ -1,1 +1,1 @@
-export * from './components/form/async'
+export * from './components/form/async/index'

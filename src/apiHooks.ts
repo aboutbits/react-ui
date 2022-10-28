@@ -1,1 +1,1 @@
-export * from './components/apiHooks'
+export * from './components/apiHooks/index'
