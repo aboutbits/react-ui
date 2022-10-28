@@ -142,7 +142,7 @@
   ],
   "exports": {
     "./package.json": "./package.json",
-    "./tailwind-preset.js": "./tailwind-preset.js",
+    "./tailwind-preset": "./tailwind-preset.js",
     ".": {
       "types": "./index.d.ts",
       "require": "./index.js",
