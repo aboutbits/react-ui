@@ -147,97 +147,97 @@
     ".": {
       "types": "./index.d.ts",
       "require": "./index.js",
-      "import": "./dist/mjs/index.js"
+      "import": "./dist/mjs/index.mjs"
     },
     "./framework": {
       "types": "./framework/index.d.ts",
       "require": "./framework/index.js",
-      "import": "./dist/mjs/framework/index.js"
+      "import": "./dist/mjs/framework/index.mjs"
     },
     "./action": {
       "types": "./action.d.ts",
       "require": "./action.js",
-      "import": "./dist/mjs/action.js"
+      "import": "./dist/mjs/action.mjs"
     },
     "./alert": {
       "types": "./alert.d.ts",
       "require": "./alert.js",
-      "import": "./dist/mjs/alert.js"
+      "import": "./dist/mjs/alert.mjs"
     },
     "./button": {
       "types": "./button.d.ts",
       "require": "./button.js",
-      "import": "./dist/mjs/button.js"
+      "import": "./dist/mjs/button.mjs"
     },
     "./content": {
       "types": "./content.d.ts",
       "require": "./content.js",
-      "import": "./dist/mjs/content.js"
+      "import": "./dist/mjs/content.mjs"
     },
     "./dialog": {
       "types": "./dialog.d.ts",
       "require": "./dialog.js",
-      "import": "./dist/mjs/dialog.js"
+      "import": "./dist/mjs/dialog.mjs"
     },
     "./form": {
       "types": "./form.d.ts",
       "require": "./form.js",
-      "import": "./dist/mjs/form.js"
+      "import": "./dist/mjs/form.mjs"
     },
     "./formAsync": {
       "types": "./formAsync.d.ts",
       "require": "./formAsync.js",
-      "import": "./dist/mjs/formAsync.js"
+      "import": "./dist/mjs/formAsync.mjs"
     },
     "./apiHooks": {
       "types": "./apiHooks.d.ts",
       "require": "./apiHooks.js",
-      "import": "./dist/mjs/apiHooks.js"
+      "import": "./dist/mjs/apiHooks.mjs"
     },
     "./header": {
       "types": "./header.d.ts",
       "require": "./header.js",
-      "import": "./dist/mjs/header.js"
+      "import": "./dist/mjs/header.mjs"
     },
     "./link": {
       "types": "./link.d.ts",
       "require": "./link.js",
-      "import": "./dist/mjs/link.js"
+      "import": "./dist/mjs/link.mjs"
     },
     "./loading": {
       "types": "./loading.d.ts",
       "require": "./loading.js",
-      "import": "./dist/mjs/loading.js"
+      "import": "./dist/mjs/loading.mjs"
     },
     "./menu": {
       "types": "./menu.d.ts",
       "require": "./menu.js",
-      "import": "./dist/mjs/menu.js"
+      "import": "./dist/mjs/menu.mjs"
     },
     "./pagination": {
       "types": "./pagination.d.ts",
       "require": "./pagination.js",
-      "import": "./dist/mjs/pagination.js"
+      "import": "./dist/mjs/pagination.mjs"
     },
     "./section": {
       "types": "./section.d.ts",
       "require": "./section.js",
-      "import": "./dist/mjs/section.js"
+      "import": "./dist/mjs/section.mjs"
     },
     "./selectDialog": {
       "types": "./selectDialog.d.ts",
       "require": "./selectDialog.js",
-      "import": "./dist/mjs/selectDialog.js"
+      "import": "./dist/mjs/selectDialog.mjs"
     },
     "./submitButton": {
       "types": "./submitButton.d.ts",
       "require": "./submitButton.js",
-      "import": "./dist/mjs/submitButton.js"
+      "import": "./dist/mjs/submitButton.mjs"
     },
     "./tabs": {
       "types": "./tabs.d.ts",
       "require": "./tabs.js",
-      "import": "./dist/mjs/tabs.js"
+      "import": "./dist/mjs/tabs.mjs"
     }
   }
 }
