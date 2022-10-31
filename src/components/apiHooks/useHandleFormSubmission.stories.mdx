@@ -42,8 +42,7 @@ npm i axios react-hook-form
 ## Usage
 
 ```tsx
-import { useHandleFormSubmission } from '@aboutbits/react-ui/apiHooks'
-import { Form } from '@aboutbits/react-ui/form'
+import { useHandleFormSubmission, Form } from '@aboutbits/react-ui'
 import Axios, { AxiosResponse } from 'axios'
 import { ReactElement } from 'react'
 import { useForm } from 'react-hook-form'
@@ -89,10 +88,9 @@ function UpdateUserForm(): ReactElement {
 If you are not sure, whether the backend always returns the error message in an appropriate format, you can define a fallback message id.
 
 ```ts
-import { useHandleRequest } from '@aboutbits/react-ui/apiHooks'
+import { useHandleFormSubmission } from '@aboutbits/react-ui'
 import Axios, { AxiosResponse } from 'axios'
 import { useForm } from 'react-hook-form'
-import { useHandleFormSubmission } from './useHandleFormSubmission'
 
 const updateUser = Axios.put<void, AxiosResponse<void>>(
   'http://localhost:8080/users/1'
