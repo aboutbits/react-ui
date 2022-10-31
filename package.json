@@ -36,20 +36,27 @@
     "version": "npm run test && npm run lint && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@aboutbits/pagination": "^1.1.0",
     "@aboutbits/react-material-icons": "^1.1.2",
     "@aboutbits/react-pagination": "^0.0.10",
     "@aboutbits/react-toolbox": "^0.1.2",
-    "@reach/dialog": "^0.17.0",
-    "@reach/menu-button": "^0.17.0",
-    "axios": "^0.27.2",
-    "classnames": "^2.3.1"
+    "@reach/dialog": "^0.17.0 || ^0.18.0",
+    "@reach/menu-button": "^0.17.0 || ^0.18.0",
+    "axios": "^0.27.0 || ^1.1.0",
+    "react": "^16.0.0 || ^17.0.0",
+    "classnames": "^2.0.0"
   },
   "devDependencies": {
     "@aboutbits/internationalization": "^0.2.1",
+    "@aboutbits/pagination": "^1.1.0",
+    "@aboutbits/react-material-icons": "^1.1.2",
+    "@aboutbits/react-pagination": "^0.0.10",
+    "@aboutbits/react-toolbox": "^0.1.2",
     "@babel/core": "^7.18.5",
     "@hookform/resolvers": "^2.9.8",
+    "@reach/menu-button": "^0.17.0",
+    "@reach/dialog": "^0.17.0",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-links": "^6.5.12",
     "@storybook/addon-postcss": "^2.0.0",
@@ -67,6 +74,7 @@
     "autoprefixer": "^10.4.12",
     "babel-jest": "^28.1.1",
     "babel-loader": "^8.2.5",
+    "classnames": "^2.3.1",
     "cssnano": "^5.1.12",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
