@@ -15,16 +15,16 @@ import {
   DialogHeaderTitle,
   DialogPosition,
   DialogProps,
+  DialogContentListLoading,
+  DialogHeaderRow,
+  DialogFooterWithPaginationInMemory,
+  DialogContentList,
+  DialogListItemButton,
 } from '../../dialog'
-import { DialogFooterWithPaginationInMemory } from '../../dialog/DialogFooter/DialogFooterWithPaginationInMemory'
-import { DialogContentList } from '../../dialog/Dialog/DialogContentList'
-import { DialogListItemButton } from '../../dialog/DialogItem/DialogListItemButton'
 import { PaginationInMemoryProps } from '../../pagination'
 import { AutoSubmit } from '../AutoSubmit'
 import { Input } from '../Input'
 import { InputVariant } from '../types'
-import { DialogContentListLoading } from '../../dialog/Dialog/DialogContentListLoading'
-import { DialogHeaderRow } from '../../dialog/DialogHeader/DialogHeaderRow'
 import { Form } from '../Form'
 
 type FilterParameters = {

@@ -5,7 +5,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "jsx": "react-jsx",
-    "outDir": "./",
+    "outDir": "./dist/cjs",
     "declaration": true,
     "importHelpers": true
   },
