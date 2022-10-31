@@ -1,6 +1,5 @@
 import React from 'react'
-import { makeLinkComponent } from '../framework'
-import { defaultTheme as customTheme, ReactUIProvider } from '../src'
+import { defaultTheme as customTheme, ReactUIProvider, makeLinkComponent } from '../src'
 import '../styles/index.css'
 
 // Add custom button tone for demo purpose
