@@ -2,7 +2,7 @@ import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { Tone, Mode, Size } from '../types'
-import { Variant } from './types'
+import { ButtonVariant } from './types'
 import { ButtonIconLink } from './ButtonIconLink'
 
 <Meta title="Components/Button/ButtonIconLink" component={ButtonIconLink} />
@@ -18,7 +18,7 @@ export const Template = ({ ...args }) => <ButtonIconLink {...args} />
       href: '#',
       disabled: false,
       mode: Mode.light,
-      variant: Variant.solid,
+      variant: ButtonVariant.solid,
       size: Size.md,
       tone: Tone.primary,
       icon: 'Add',
@@ -29,7 +29,7 @@ export const Template = ({ ...args }) => <ButtonIconLink {...args} />
         control: { type: 'radio' },
       },
       variant: {
-        options: Object.values(Variant),
+        options: Object.values(ButtonVariant),
         control: { type: 'radio' },
       },
       size: {

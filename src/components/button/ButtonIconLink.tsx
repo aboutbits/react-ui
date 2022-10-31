@@ -6,7 +6,7 @@ import {
   ButtonIconCommonProps,
   ButtonStyleProps,
   LinkCommonProps,
-  Variant,
+  ButtonVariant,
 } from './types'
 
 export type ButtonIconLinkProps = LinkComponentProps &
@@ -19,7 +19,7 @@ const ButtonIconLink = React.forwardRef<HTMLAnchorElement, ButtonIconLinkProps>(
     {
       href,
       mode = Mode.light,
-      variant = Variant.solid,
+      variant = ButtonVariant.solid,
       size = Size.md,
       tone = Tone.primary,
       icon: Icon,
