@@ -8,7 +8,7 @@ import { Mode } from '../types'
 import { Form } from './Form'
 import { Select } from './Select'
 import { Option } from './Option'
-import { Variant } from './types'
+import { InputVariant } from './types'
 
 <Meta
   title="Components/Form/Select"
@@ -54,7 +54,7 @@ export const Template = ({ ...args }) => (
     args={{
       label: 'User rights',
       mode: Mode.light,
-      variant: Variant.ghost,
+      variant: InputVariant.ghost,
     }}
     argTypes={{
       mode: {
@@ -64,7 +64,7 @@ export const Template = ({ ...args }) => (
         },
       },
       variant: {
-        options: Object.values(Variant),
+        options: Object.values(InputVariant),
         control: {
           type: 'radio',
         },

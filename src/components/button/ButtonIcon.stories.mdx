@@ -3,7 +3,7 @@ import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { Theme } from '../../../.storybook/components'
 import { Tone, Mode, Size } from '../types'
-import { Variant } from './types'
+import { ButtonVariant } from './types'
 import { ButtonIcon } from './ButtonIcon'
 
 <Meta title="Components/Button/ButtonIcon" component={ButtonIcon} />
@@ -18,7 +18,7 @@ export const Template = ({ ...args }) => <ButtonIcon {...args} />
     args={{
       disabled: false,
       mode: Mode.light,
-      variant: Variant.solid,
+      variant: ButtonVariant.solid,
       size: Size.md,
       tone: Tone.primary,
       icon: 'Add',
@@ -29,7 +29,7 @@ export const Template = ({ ...args }) => <ButtonIcon {...args} />
         control: { type: 'radio' },
       },
       variant: {
-        options: Object.values(Variant),
+        options: Object.values(ButtonVariant),
         control: { type: 'radio' },
       },
       size: {
@@ -91,13 +91,13 @@ The `Variant` determine if there is a background fill and a border. The `transpa
 
 <Canvas>
   <Story name="VariantSolid">
-    <ButtonIcon icon={IconAdd} variant={Variant.solid} />
+    <ButtonIcon icon={IconAdd} variant={ButtonVariant.solid} />
   </Story>
   <Story name="VariantGhost">
-    <ButtonIcon icon={IconAdd} variant={Variant.ghost} />
+    <ButtonIcon icon={IconAdd} variant={ButtonVariant.ghost} />
   </Story>
   <Story name="VariantTransparent">
-    <ButtonIcon icon={IconAdd} variant={Variant.transparent} />
+    <ButtonIcon icon={IconAdd} variant={ButtonVariant.transparent} />
   </Story>
 </Canvas>
 

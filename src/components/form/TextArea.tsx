@@ -4,7 +4,7 @@ import { Mode, ModeProps } from '../types'
 import { useForwardedRef } from '../utils/useForwardedRef'
 import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
-import { Variant, VariantProps } from './types'
+import { InputVariant, VariantProps } from './types'
 import { useCustomInputCss } from './useCustomInputCss'
 
 export type TextAreaBaseProps = React.DetailedHTMLProps<
@@ -30,7 +30,7 @@ export function TextAreaComponent(
     name,
     label,
     mode = Mode.light,
-    variant = Variant.ghost,
+    variant = InputVariant.ghost,
     disabled,
     className,
     ...props

@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { Theme } from '../../../.storybook/components'
-import { Button, Variant } from '../button'
+import { Button, ButtonVariant } from '../button'
 import { Tone } from '../types'
 import { Actions } from './Actions'
 
@@ -28,7 +28,7 @@ export const Template = ({ children, ...args }) => (
           'Two buttons': (
             <>
               <Button tone={Tone.success}>Save</Button>
-              <Button variant={Variant.ghost} tone={Tone.neutral}>
+              <Button variant={ButtonVariant.ghost} tone={Tone.neutral}>
                 Cancel
               </Button>
             </>
@@ -56,7 +56,7 @@ export const Template = ({ children, ...args }) => (
   <Story name="Multiple children">
     <Actions>
       <Button tone={Tone.success}>Save</Button>
-      <Button variant={Variant.ghost} tone={Tone.neutral}>
+      <Button variant={ButtonVariant.ghost} tone={Tone.neutral}>
         Cancel
       </Button>
     </Actions>

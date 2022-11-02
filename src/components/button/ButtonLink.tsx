@@ -6,7 +6,7 @@ import {
   ButtonCommonProps,
   ButtonStyleProps,
   LinkCommonProps,
-  Variant,
+  ButtonVariant,
 } from './types'
 
 export type ButtonLinkProps = LinkComponentProps &
@@ -19,7 +19,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     {
       href,
       mode = Mode.light,
-      variant = Variant.solid,
+      variant = ButtonVariant.solid,
       size = Size.md,
       tone = Tone.primary,
       iconStart: IconStart,

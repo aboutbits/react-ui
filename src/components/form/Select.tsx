@@ -6,7 +6,7 @@ import { Mode, ModeProps } from '../types'
 import { useForwardedRef } from '../utils/useForwardedRef'
 import { InputError } from './InputError'
 import { InputLabel } from './InputLabel'
-import { Variant, VariantProps } from './types'
+import { InputVariant, VariantProps } from './types'
 import { useCustomInputCss } from './useCustomInputCss'
 
 export type SelectBaseProps = React.DetailedHTMLProps<
@@ -34,7 +34,7 @@ export function SelectComponent(
     name,
     label,
     mode = Mode.light,
-    variant = Variant.ghost,
+    variant = InputVariant.ghost,
     disabled,
     children,
     className,

@@ -43,7 +43,7 @@ npm i axios
 
 ```tsx
 import Axios, { AxiosResponse } from 'axios'
-import { useHandleRequest } from '@aboutbits/react-ui/apiHooks'
+import { useHandleRequest } from '@aboutbits/react-ui'
 import { ReactElement } from 'react'
 
 const deleteUser = Axios.delete<void, AxiosResponse<void>>(
@@ -76,7 +76,7 @@ function DeleteUser(): ReactElement {
 If you are not sure, whether the backend always returns the error message in an appropriate format, you can define a fallback message id.
 
 ```ts
-import { useHandleRequest } from '@aboutbits/react-ui/apiHooks'
+import { useHandleRequest } from '@aboutbits/react-ui'
 import Axios, { AxiosResponse } from 'axios'
 
 const deleteUser = Axios.delete<void, AxiosResponse<void>>(

@@ -1,7 +1,7 @@
 import { ComponentType } from 'react'
 import { IconProps, ModeProps, Size, Tone } from '../types'
 
-export enum Variant {
+export enum ButtonVariant {
   solid = 'solid',
   ghost = 'ghost',
   transparent = 'transparent',
@@ -11,7 +11,7 @@ export type ButtonStyleProps = ModeProps & {
   /**
    * Defines the variant of the button.
    **/
-  variant?: Variant
+  variant?: ButtonVariant
   /**
    * Defines the size of the button.
    **/

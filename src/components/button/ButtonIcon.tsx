@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { useTheme } from '../../framework'
 import { Mode, Size, Tone } from '../types'
-import { ButtonIconCommonProps, ButtonStyleProps, Variant } from './types'
+import { ButtonIconCommonProps, ButtonStyleProps, ButtonVariant } from './types'
 
 export type ButtonIconProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -15,7 +15,7 @@ const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
   (
     {
       mode = Mode.light,
-      variant = Variant.solid,
+      variant = ButtonVariant.solid,
       size = Size.md,
       tone = Tone.primary,
       icon: Icon,

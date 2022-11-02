@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogProps,
 } from '../'
-import { Button, Variant } from '../../button'
+import { Button, ButtonVariant } from '../../button'
 import { Tone } from '../../types'
 
 export enum ConfirmationDialogVariant {
@@ -80,7 +80,7 @@ export function ConfirmationDialog({
           <DialogFooterActions>
             {dismissButtonText && (
               <Button
-                variant={Variant.ghost}
+                variant={ButtonVariant.ghost}
                 tone={Tone.neutral}
                 disabled={disableDismiss}
                 onClick={onDismiss}
@@ -89,7 +89,7 @@ export function ConfirmationDialog({
               </Button>
             )}
             <Button
-              variant={Variant.solid}
+              variant={ButtonVariant.solid}
               tone={variantConfirmationButtonTone[variant]}
               disabled={disableConfirm}
               onClick={onConfirm}
