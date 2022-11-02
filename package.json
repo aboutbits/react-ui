@@ -39,7 +39,7 @@
   "peerDependencies": {
     "@aboutbits/pagination": "^1.1.0",
     "@aboutbits/react-material-icons": "^1.1.2",
-    "@aboutbits/react-pagination": "^0.0.10",
+    "@aboutbits/react-pagination": "^0.0.10 || ^1.0.0",
     "@aboutbits/react-toolbox": "^0.1.2",
     "@reach/dialog": "^0.17.0 || ^0.18.0",
     "@reach/menu-button": "^0.17.0 || ^0.18.0",
@@ -52,7 +52,7 @@
     "@aboutbits/internationalization": "^0.2.1",
     "@aboutbits/pagination": "^1.1.0",
     "@aboutbits/react-material-icons": "^1.1.2",
-    "@aboutbits/react-pagination": "^0.0.10",
+    "@aboutbits/react-pagination": "^1.0.1",
     "@aboutbits/react-toolbox": "^0.1.2",
     "@babel/core": "^7.18.5",
     "@hookform/resolvers": "^2.9.8",
