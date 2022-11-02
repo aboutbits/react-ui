@@ -37,8 +37,10 @@ export function useHandleFormSubmission<F extends FieldValues, Response>(
         options?.onSuccess?.(response, values)
       } catch (error) {
         if (isMountedRef.current) {
+          // isAxios is not exported in version 0.27
+          // eslint-disable-next-line import/no-named-as-default-member
           const isAxiosError = axios.isAxiosError(error)
-          let apiErrorMessage = null
+          let apiErrorMessage: string | null = null
 
           if (isAxiosError) {
             const axiosError = error as AxiosError<ErrorBody>
