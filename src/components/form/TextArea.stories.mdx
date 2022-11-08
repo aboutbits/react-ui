@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import { Mode } from '../types'
 import { Form } from './Form'
 import { TextArea } from './TextArea'
+import { InputVariant } from './types'
 
 <Meta
   title="Components/Form/TextArea"
@@ -48,8 +49,9 @@ export const Template = ({ ...args }) => <TextArea {...args} />
       cols: 5,
       maxLength: 240,
       spellCheck: true,
-      mode: Mode.light,
       disabled: false,
+      mode: Mode.light,
+      variant: InputVariant.solid,
     }}
   >
     {Template.bind({})}

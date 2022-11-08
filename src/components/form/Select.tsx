@@ -34,7 +34,7 @@ export function SelectComponent(
     name,
     label,
     mode = Mode.light,
-    variant = InputVariant.ghost,
+    variant = InputVariant.solid,
     disabled,
     children,
     className,
