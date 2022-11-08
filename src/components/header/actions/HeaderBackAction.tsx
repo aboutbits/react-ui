@@ -24,7 +24,7 @@ export function HeaderBackAction({
   return (
     <HeaderLeftActionIcon
       icon={icon}
-      label={label || messages['shared.button.goBack']}
+      label={label || messages['button.goBack']}
       {...props}
     />
   )
