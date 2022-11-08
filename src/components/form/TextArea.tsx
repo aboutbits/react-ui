@@ -30,7 +30,7 @@ export function TextAreaComponent(
     name,
     label,
     mode = Mode.light,
-    variant = InputVariant.ghost,
+    variant = InputVariant.solid,
     disabled,
     className,
     ...props
