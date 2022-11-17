@@ -26,10 +26,10 @@ export function useHandleRequest<Response>(
       await requestAction()
       onSuccess()
     } catch (error) {
-      const maybeAxiosError = error as AxiosError<ErrorBody>
+      const maybeAxiosError = error as AxiosError<ErrorBody | undefined>
 
-      if (maybeAxiosError?.response?.data.message) {
-        setApiErrorMessage(maybeAxiosError?.response.data.message)
+      if (maybeAxiosError?.response?.data?.message) {
+        setApiErrorMessage(maybeAxiosError.response.data.message)
       } else if (options?.apiFallbackErrorMessage) {
         setApiErrorMessage(options.apiFallbackErrorMessage)
       } else {
