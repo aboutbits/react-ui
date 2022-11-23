@@ -12,7 +12,7 @@ type Options<FormValues, Response> = {
 }
 
 export function useHandleFormSubmission<F extends FieldValues, Response>(
-  { setError }: UseFormReturn<F>,
+  { setError, clearErrors }: UseFormReturn<F>,
   submitAction: (body: F) => Promise<Response>,
   options?: Options<F, Response>
 ): {
@@ -32,6 +32,7 @@ export function useHandleFormSubmission<F extends FieldValues, Response>(
   const onSubmit = useCallback(
     async (values: F): Promise<void> => {
       try {
+        clearErrors('apiError' as Path<F>)
         setApiErrorMessage(null)
         const response = await submitAction(values)
         options?.onSuccess?.(response, values)
@@ -68,12 +69,16 @@ export function useHandleFormSubmission<F extends FieldValues, Response>(
           }
 
           setApiErrorMessage(apiErrorMessage)
+          setError('apiError' as Path<F>, {
+            type: 'custom',
+            message: apiErrorMessage,
+          })
         }
 
         options?.onError?.(error as AxiosError<ErrorBody> | Error, values)
       }
     },
-    [messages, setError, options, submitAction]
+    [messages, setError, clearErrors, options, submitAction]
   )
 
   return {
