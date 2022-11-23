@@ -44,7 +44,7 @@ export function useHandleFormSubmission<F extends FieldValues, Response>(
           let apiErrorMessage: string | null = null
 
           if (isAxiosError) {
-            const axiosError = error as AxiosError<ErrorBody>
+            const axiosError = error as AxiosError<ErrorBody | undefined>
 
             if (axiosError.response?.data?.errors) {
               const errors = joinFieldErrorMessages(
