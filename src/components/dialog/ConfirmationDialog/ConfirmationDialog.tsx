@@ -20,7 +20,7 @@ const variantConfirmationButtonTone: Record<ConfirmationDialogVariant, Tone> = {
   [ConfirmationDialogVariant.critical]: Tone.critical,
 }
 
-type ConfirmDialogProps = Omit<DialogProps, 'children'> & {
+export type ConfirmDialogProps = Omit<DialogProps, 'children'> & {
   /**
    * Defines if the entire dialog is dismissible. This includes escaping, clicking the button, and clicking outside of the dialog.
    **/
