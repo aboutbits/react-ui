@@ -74,6 +74,7 @@ const ButtonIconLink = React.forwardRef<HTMLAnchorElement, ButtonIconLinkProps>(
 
     return (
       <LinkComponent
+        {...props}
         ref={ref}
         href={href}
         internal={internal}
