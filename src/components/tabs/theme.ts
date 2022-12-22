@@ -1,6 +1,6 @@
 export default {
   tabs: {
-    base: 'flex gap-x-3 overflow-x-auto',
+    base: 'relative flex gap-x-3 overflow-x-auto',
   },
   tab: {
     base: 'flex items-center whitespace-nowrap rounded-full fill-current py-2 px-5 font-medium -outline-offset-2 outline-primary-500 focus:outline',

@@ -4,7 +4,7 @@ type Props = {
   active: boolean | null | undefined
 }
 
-export function useScrollToElementOnFirstRender<T extends Element>({
+export function useScrollToElementOnFirstRender<T extends HTMLElement>({
   active,
 }: Props) {
   const elementRef = useRef<T>(null)
@@ -16,7 +16,7 @@ export function useScrollToElementOnFirstRender<T extends Element>({
       const tabList = tab?.parentElement
 
       if (tabList) {
-        tabList.scrollLeft = tab.getBoundingClientRect().left
+        tabList.scrollLeft = tab.offsetLeft
       }
     }
   }, [active])
