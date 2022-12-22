@@ -17,7 +17,7 @@ export type TabProps = {
   active?: boolean
 }
 
-export function useTab<T extends Element>({ name, active }: TabProps) {
+export function useTab<T extends HTMLElement>({ name, active }: TabProps) {
   const { tabs } = useTheme()
   const tabsContext = useContext(TabsContext)
 
