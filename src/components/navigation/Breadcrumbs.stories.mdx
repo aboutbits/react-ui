@@ -1,0 +1,72 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { Theme } from '../../../.storybook/components'
+import { Breadcrumbs, Breadcrumb, BreadcrumbsLoading } from './'
+
+<Meta
+  title="Components/Navigation/Breadcrumbs"
+  component={Breadcrumbs}
+  subcomponents={{
+    'Breadcrumb.Link': Breadcrumb.Link,
+    'Breadcrumb.Text': Breadcrumb.Text,
+    'Breadcrumb.Loading': Breadcrumb.Loading,
+  }}
+/>
+
+# Breadcrumbs
+
+This components render breadcrumbs, which can be used as a secondary navigation that helps to see the users location.
+
+Typically, you use the `Breadcrumb.Link` component for the parent links and the `Breadcrumb.Text` component for the current page.
+You can use the `BreadcrumbLoading` component or the `Breadcrumb.Loading` components to show a loading state.
+
+export const Template = (args) => (
+  <Breadcrumbs {...args}>
+    <Breadcrumb.Link href="#">Start</Breadcrumb.Link>
+    <Breadcrumb.Link href="#">User</Breadcrumb.Link>
+    <Breadcrumb.Text>Settings</Breadcrumb.Text>
+  </Breadcrumbs>
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props of `Breadcrumb`
+
+<ArgsTable story="Default" />
+
+## Loading default
+
+export const TemplateLoadingDefault = () => (
+  <BreadcrumbsLoading numberOfItems={3} />
+)
+
+<Canvas>
+  <Story name="LoadingDefault">{TemplateLoadingDefault.bind({})}</Story>
+</Canvas>
+
+## Loading Custom
+
+export const TemplateLoadingCustom = () => (
+  <Breadcrumbs>
+    <Breadcrumb.Loading loadingBarClassName="!w-10" />
+    <Breadcrumb.Loading />
+    <Breadcrumb.Text>Settings</Breadcrumb.Text>
+  </Breadcrumbs>
+)
+
+<Canvas>
+  <Story name="Loading Custom">{TemplateLoadingCustom.bind({})}</Story>
+</Canvas>
+
+### Theme
+
+<Theme
+  component="navigation"
+  items={[
+    'breadcrumb',
+    'breadcrumbLink',
+    'breadcrumbText',
+    'breadcrumbLoading',
+  ]}
+/>
