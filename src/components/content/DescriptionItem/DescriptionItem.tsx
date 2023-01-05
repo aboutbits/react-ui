@@ -1,23 +1,8 @@
-import classNames from 'classnames'
 import { ReactNode } from 'react'
-import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
-
-export type DescriptionItemTitleProps = ClassNameProps & {
-  children?: ReactNode
-}
-
-export function DescriptionItemTitle({
-  children,
-  className,
-}: DescriptionItemTitleProps) {
-  const { content } = useTheme()
-  return (
-    <dt className={classNames(content.descriptionItemTitle.base, className)}>
-      {children}
-    </dt>
-  )
-}
+import { DescriptionItemContainer } from './DescriptionItemContainer'
+import { DescriptionItemContent } from './DescriptionItemContent'
+import { DescriptionItemTitle } from './DescriptionItemTitle'
 
 export type DescriptionItemProps = ClassNameProps & {
   /**
@@ -42,17 +27,13 @@ export function DescriptionItem({
   className,
   hideIfEmpty = false,
 }: DescriptionItemProps) {
-  const { content: contentTheme } = useTheme()
-
   return (
     <>
       {((hideIfEmpty && content) || !hideIfEmpty) && (
-        <dl
-          className={classNames(contentTheme.descriptionItem.base, className)}
-        >
+        <DescriptionItemContainer className={className}>
           <DescriptionItemTitle>{title}</DescriptionItemTitle>
-          <dd>{content}</dd>
-        </dl>
+          <DescriptionItemContent>{content}</DescriptionItemContent>
+        </DescriptionItemContainer>
       )}
     </>
   )

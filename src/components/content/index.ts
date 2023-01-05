@@ -1,4 +1,7 @@
 export * from './ContentArea/ContentArea'
 export * from './ContentMessage/ContentMessage'
 export * from './DescriptionItem/DescriptionItem'
+export * from './DescriptionItem/DescriptionItemContainer'
+export * from './DescriptionItem/DescriptionItemTitle'
+export * from './DescriptionItem/DescriptionItemContent'
 export * from './DescriptionItem/LoadingDescriptionItem'

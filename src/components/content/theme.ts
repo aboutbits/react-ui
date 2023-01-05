@@ -56,6 +56,9 @@ export default {
   descriptionItemTitle: {
     base: 'text-xs',
   },
+  descriptionItemContent: {
+    base: '',
+  },
   loadingDescriptionItem: {
     base: '',
     upper: {
