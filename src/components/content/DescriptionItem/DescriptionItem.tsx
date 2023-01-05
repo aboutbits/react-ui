@@ -1,7 +1,10 @@
 import { ReactNode } from 'react'
 import { ClassNameProps } from '../../types'
 import { DescriptionItemContainer } from './DescriptionItemContainer'
-import { DescriptionItemContent } from './DescriptionItemContent'
+import {
+  DescriptionItemContent,
+  DescriptionItemContentVerticalAlign,
+} from './DescriptionItemContent'
 import { DescriptionItemTitle } from './DescriptionItemTitle'
 
 export type DescriptionItemProps = ClassNameProps & {
@@ -19,12 +22,17 @@ export type DescriptionItemProps = ClassNameProps & {
    * Defines if the component appears or not depending on if the content is empty (null) or not.
    **/
   hideIfEmpty?: boolean
+  /**
+   * Defines the vertical alignment of the content.
+   */
+  contentVerticalAlign?: DescriptionItemContentVerticalAlign
 }
 
 export function DescriptionItem({
   title,
   content,
   className,
+  contentVerticalAlign,
   hideIfEmpty = false,
 }: DescriptionItemProps) {
   return (
@@ -32,7 +40,9 @@ export function DescriptionItem({
       {((hideIfEmpty && content) || !hideIfEmpty) && (
         <DescriptionItemContainer className={className}>
           <DescriptionItemTitle>{title}</DescriptionItemTitle>
-          <DescriptionItemContent>{content}</DescriptionItemContent>
+          <DescriptionItemContent verticalAlign={contentVerticalAlign}>
+            {content}
+          </DescriptionItemContent>
         </DescriptionItemContainer>
       )}
     </>

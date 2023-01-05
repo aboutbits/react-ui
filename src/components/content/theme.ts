@@ -57,7 +57,12 @@ export default {
     base: 'text-xs',
   },
   descriptionItemContent: {
-    base: '',
+    base: 'flex-1 flex',
+    verticalAlign: {
+      start: 'items-start',
+      center: 'items-center',
+      end: 'items-end',
+    },
   },
   loadingDescriptionItem: {
     base: '',
