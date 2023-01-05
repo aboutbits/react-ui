@@ -20,4 +20,5 @@ export default {
   'month.november': 'November',
   'month.december': 'December',
   'error.api': 'The backend failed to handle the request.',
+  'form.saved': 'Saved successfully',
 }

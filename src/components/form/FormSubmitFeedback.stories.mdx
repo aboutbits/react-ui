@@ -1,0 +1,63 @@
+import IconCheckCircle from '@aboutbits/react-material-icons/dist/IconCheckCircle'
+import IconSave from '@aboutbits/react-material-icons/dist/IconSave'
+import { action } from '@storybook/addon-actions'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { useForm } from 'react-hook-form'
+import { Theme } from '../../../.storybook/components'
+import { SubmitButton } from '../button/SubmitButton'
+import { Form } from './Form'
+import { FormSubmitFeedback } from './FormSubmitFeedback'
+
+<Meta
+  title="Components/Form/FormSubmitFeedback"
+  component={FormSubmitFeedback}
+  decorators={[
+    (Story) => {
+      const form = useForm()
+      return (
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+          <SubmitButton className="mt-4">Submit</SubmitButton>
+        </Form>
+      )
+    },
+  ]}
+/>
+
+# FormSubmitFeedback
+
+This component is useful to show a feedback message after a form has been submitted.
+After a customizable delay, the message will be hidden again.
+
+Note that the `SubmitButton` is only used for demonstration purposes and is not part of the `FormSubmitFeedback` component.
+
+export const Template = ({ children, ...args }) => (
+  <FormSubmitFeedback {...args}>{children}</FormSubmitFeedback>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    argTypes={{
+      icon: {
+        options: ['None', 'CheckCircle', 'Save'],
+        mapping: {
+          None: null,
+          CheckCircle: IconCheckCircle,
+          Save: IconSave,
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+<Theme component="form" items={['formSubmitFeedback']} />
