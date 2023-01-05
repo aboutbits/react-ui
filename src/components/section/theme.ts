@@ -3,7 +3,8 @@ export default {
     base: '',
   },
   container: {
-    base: 'bg-white border border-neutral-400 rounded-lg overflow-hidden',
+    // [transform:translateZ(0)] fixes an overflow issue with rounded borders and position sticky in Safari
+    base: 'bg-white border border-neutral-400 rounded-lg overflow-hidden [transform:translateZ(0)]',
   },
   content: {
     base: 'px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
