@@ -85,4 +85,10 @@ export default {
       },
     },
   },
+  footerWithSubmit: {
+    base: 'flex flex-wrap items-center gap-y-4',
+    actions: 'flex-1',
+    formSubmitFeedback:
+      'w-full justify-center lg:order-first lg:w-auto lg:justify-start',
+  },
 }
