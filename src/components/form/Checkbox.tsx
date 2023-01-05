@@ -2,13 +2,13 @@ import IconCheckBoxOutlineBlankRounded from '@aboutbits/react-material-icons/dis
 import IconCheckBoxRounded from '@aboutbits/react-material-icons/dist/IconCheckBoxRounded'
 import classNames from 'classnames'
 import { ForwardedRef, forwardRef, ReactElement } from 'react'
-import { useFormContext, useWatch } from 'react-hook-form'
 import { useTheme } from '../../framework'
 import { Mode, ModeProps, Size } from '../types'
 import { getClassNameWithoutMarginLeft } from '../utils/getClassNameWithoutMarginLeft'
 import { useForwardedRef } from '../utils/useForwardedRef'
 import { InputError } from './InputError'
 import { getCustomErrorCss, getCustomLabelCss } from './useCustomInputCss'
+import { useFormField } from './useFormField'
 
 export type CheckboxProps = Omit<
   React.DetailedHTMLProps<
@@ -39,6 +39,7 @@ function CheckboxComponent(
     size = Size.md,
     applyInputHeight = false,
     disabled = false,
+    readOnly = false,
     mode = Mode.light,
     className,
     ...props
@@ -48,9 +49,7 @@ function CheckboxComponent(
   const {
     form: { checkbox, inputLabel, inputError },
   } = useTheme()
-  const { register } = useFormContext()
-  const { ref: fieldRef, ...field } = register(name)
-  const checked = useWatch({ name })
+  const { fieldRef, fieldProps } = useFormField(name)
 
   const forwardedRef = useForwardedRef(ref)
 
@@ -59,9 +58,6 @@ function CheckboxComponent(
   const errorCssWithoutMarginLeft = getClassNameWithoutMarginLeft(
     inputError.base
   )
-
-  const checkedState = checked ? 'checked' : 'unchecked'
-  const disabledState = disabled ? 'disabled' : 'normal'
 
   return (
     <div className={className}>
@@ -73,7 +69,11 @@ function CheckboxComponent(
             checkbox.inputHeight.base,
             checkbox.inputHeight.size[size],
           ],
-          checkbox[disabledState]
+          !readOnly && !disabled
+            ? checkbox.normal
+            : disabled
+            ? checkbox.disabled
+            : null
         )}
       >
         {label && (
@@ -90,28 +90,28 @@ function CheckboxComponent(
         <input
           ref={(ref) => {
             forwardedRef.current = ref
-            fieldRef(ref)
+            fieldRef?.(ref)
           }}
           {...props}
-          {...field}
+          {...fieldProps}
           type="checkbox"
-          disabled={disabled}
+          disabled={disabled || readOnly}
+          readOnly={readOnly}
           className={checkbox.input.base}
         />
         <span
           className={classNames(
             checkbox.check.base,
             checkbox.check.size[size].base,
-            checkbox.check[disabledState],
-            checkbox.check.modeState[mode][disabledState].base,
-            checkbox.check.modeState[mode][disabledState][checkedState]
+            checkbox.check[disabled ? 'disabled' : 'normal'],
+            checkbox.check.modeState[mode][disabled ? 'disabled' : 'normal']
+              .base
           )}
         >
-          {checked ? (
-            <IconCheckBoxRounded />
-          ) : (
-            <IconCheckBoxOutlineBlankRounded />
-          )}
+          <IconCheckBoxRounded className={checkbox.check.iconChecked.base} />
+          <IconCheckBoxOutlineBlankRounded
+            className={checkbox.check.iconUnchecked.base}
+          />
         </span>
       </label>
       <InputError

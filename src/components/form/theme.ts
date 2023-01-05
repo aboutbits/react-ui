@@ -266,7 +266,7 @@ export default {
       },
     },
     input: {
-      base: 'peer absolute h-0 w-0 opacity-0',
+      base: 'peer-checkbox peer/checkbox absolute h-0 w-0 opacity-0',
     },
     label: {
       base: '',
@@ -277,34 +277,32 @@ export default {
       },
     },
     check: {
-      base: 'block shrink-0 outline-1 rounded-md outline-offset-[-1px] peer-focus:outline',
+      base: 'block shrink-0 outline-1 rounded-md outline-offset-[-1px] peer-focus/checkbox:outline',
       normal: '',
       disabled: '',
       modeState: {
         light: {
           normal: {
-            base: 'outline-neutral-800',
-            checked: 'fill-primary-500',
-            unchecked: 'fill-neutral-800',
+            base: 'outline-neutral-800 fill-neutral-800 peer-checked/checkbox:fill-primary-500',
           },
           disabled: {
             base: 'fill-neutral-800/[0.36]',
-            checked: '',
-            unchecked: '',
           },
         },
         dark: {
           normal: {
-            base: 'outline-white',
-            checked: 'fill-primary-300',
-            unchecked: 'fill-white',
+            base: 'outline-white fill-white peer-checked/checkbox:fill-primary-300',
           },
           disabled: {
-            base: '',
-            checked: 'fill-white/[0.36]',
-            unchecked: 'fill-white/[0.36]',
+            base: 'fill-white/[0.36]',
           },
         },
+      },
+      iconChecked: {
+        base: 'hidden [.peer-checkbox:checked~*_&]:block',
+      },
+      iconUnchecked: {
+        base: 'block  [.peer-checkbox:checked~*_&]:hidden',
       },
       size: {
         sm: {

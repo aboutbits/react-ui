@@ -1,29 +1,9 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { action } from '@storybook/addon-actions'
-import { useForm } from 'react-hook-form'
 import { Theme } from '../../../.storybook/components'
 import { Mode, Size } from '../types'
-import { Form } from './Form'
-import { FieldSet } from './FieldSet'
 import { Checkbox, CheckboxLayout } from './Checkbox'
 
-<Meta
-  title="Components/Form/Checkbox"
-  component={Checkbox}
-  decorators={[
-    (Story) => {
-      const form = useForm({
-        defaultValues: { active: false },
-        mode: 'onTouched',
-      })
-      return (
-        <Form form={form} onSubmit={action('onSubmit')}>
-          <Story />
-        </Form>
-      )
-    },
-  ]}
-/>
+<Meta title="Components/Form/Checkbox" component={Checkbox} />
 
 # Checkbox
 
@@ -47,6 +27,8 @@ export const Template = (args) => <Checkbox {...args} name="accept-privacy" />
       applyInputHeight: false,
       mode: Mode.light,
       disabled: false,
+      readOnly: false,
+      checked: undefined,
     }}
     argTypes={{
       layout: {
@@ -63,6 +45,12 @@ export const Template = (args) => <Checkbox {...args} name="accept-privacy" />
       },
       mode: {
         options: Object.values(Mode),
+        control: {
+          type: 'radio',
+        },
+      },
+      checked: {
+        options: [undefined, true, false],
         control: {
           type: 'radio',
         },
@@ -99,13 +87,13 @@ export const TemplateWithLongText = () => (
 You can use the [FieldSet](/docs/components-form-fieldset--default-story) and the `applyInputHeight` prop to arrange the `Checkbox` properly inside a form layout.
 
 export const TemplateInsideForm = () => (
-  <FieldSet label="Privacy">
-    <Checkbox
-      name="chbeckbox-inside-form"
-      label="Accept the privacy policy"
-      applyInputHeight
-    />
-  </FieldSet>
+  // <FieldSet label="Privacy"> // TODO: Usage outside of a form
+  <Checkbox
+    name="chbeckbox-inside-form"
+    label="Accept the privacy policy"
+    applyInputHeight
+  />
+  // </FieldSet>
 )
 
 <Canvas>
