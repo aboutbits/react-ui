@@ -135,9 +135,9 @@ export function FormExampleTemplate({
               <DescriptionItem
                 title="ID"
                 content="42"
-                contentAlignVertical={
-                  DescriptionItemContentAlignVertical.center
-                }
+                contentOptions={{
+                  alignVertical: DescriptionItemContentAlignVertical.center,
+                }}
               />
               <Input
                 id="username"

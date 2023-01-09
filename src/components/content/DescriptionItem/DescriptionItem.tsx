@@ -3,7 +3,7 @@ import { ClassNameProps } from '../../types'
 import { DescriptionItemContainer } from './DescriptionItemContainer'
 import {
   DescriptionItemContent,
-  DescriptionItemContentAlignVertical,
+  DescriptionItemContentProps,
 } from './DescriptionItemContent'
 import { DescriptionItemTitle } from './DescriptionItemTitle'
 
@@ -23,24 +23,24 @@ export type DescriptionItemProps = ClassNameProps & {
    **/
   hideIfEmpty?: boolean
   /**
-   * Defines the vertical alignment of the content.
+   * Defines the options for the description item content.
    */
-  contentAlignVertical?: DescriptionItemContentAlignVertical
+  contentOptions?: DescriptionItemContentProps
 }
 
 export function DescriptionItem({
   title,
   content,
   className,
-  contentAlignVertical,
   hideIfEmpty = false,
+  contentOptions,
 }: DescriptionItemProps) {
   return (
     <>
       {((hideIfEmpty && content) || !hideIfEmpty) && (
         <DescriptionItemContainer className={className}>
           <DescriptionItemTitle>{title}</DescriptionItemTitle>
-          <DescriptionItemContent alignVertical={contentAlignVertical}>
+          <DescriptionItemContent {...contentOptions}>
             {content}
           </DescriptionItemContent>
         </DescriptionItemContainer>
