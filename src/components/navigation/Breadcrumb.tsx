@@ -13,10 +13,10 @@ function Link({
   const LinkComponent = useLinkComponent()
 
   return (
-    <span>
+    <span className={classNames(navigation.breadcrumbLink.base, className)}>
       <LinkComponent
         internal={internal}
-        className={classNames(navigation.breadcrumbLink.base, className)}
+        className={navigation.breadcrumbLink.link}
         {...props}
       >
         {children}
