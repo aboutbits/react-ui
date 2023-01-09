@@ -9,6 +9,7 @@ export function TabLink({
   name,
   active,
   className,
+  internal = true,
   children,
   ...props
 }: TabLinkProps): ReactElement {
@@ -25,6 +26,7 @@ export function TabLink({
       {...props}
       ref={ref}
       className={classNames(tabClassName, className)}
+      internal={internal}
     >
       {children}
     </LinkComponent>
