@@ -6,7 +6,7 @@ export default {
     base: 'flex max-w-sm flex-col items-center justify-center',
     contentContainer: 'flex justify-center items-center',
     icon: {
-      base: 'h-6 w-6 fill-current',
+      base: 'fill-current',
       tone: {
         primary: 'text-primary-500',
         neutral: 'text-neutral-500',
@@ -15,16 +15,36 @@ export default {
         success: 'text-success-500',
         informative: 'text-informative-500',
       },
+      style: {
+        rounded: 'h-6 w-6',
+        plain: 'h-14 w-14',
+      },
     },
     iconContainer: {
-      base: 'rounded-full bg-neutral-100 p-4 outline-1 outline-offset-2 mb-4 last:mb-0',
-      tone: {
-        primary: 'bg-primary-100',
-        neutral: 'bg-neutral-100',
-        warning: 'bg-warning-100',
-        critical: 'bg-critical-100',
-        success: 'bg-success-100',
-        informative: 'bg-informative-100',
+      base: 'mb-4 last:mb-0',
+      style: {
+        rounded: {
+          base: 'rounded-full p-4',
+          tone: {
+            primary: 'bg-primary-100',
+            neutral: 'bg-neutral-100',
+            warning: 'bg-warning-100',
+            critical: 'bg-critical-100',
+            success: 'bg-success-100',
+            informative: 'bg-informative-100',
+          },
+        },
+        plain: {
+          base: '',
+          tone: {
+            primary: '',
+            neutral: '',
+            warning: '',
+            critical: '',
+            success: '',
+            informative: '',
+          },
+        },
       },
     },
     title: {
