@@ -7,7 +7,7 @@ import { useHandleFormSubmission } from '../components/apiHooks'
 import {
   ContentArea,
   DescriptionItem,
-  DescriptionItemContentVerticalAlign,
+  DescriptionItemContentAlignVertical,
 } from '../components/content'
 import {
   Layout,
@@ -135,8 +135,8 @@ export function FormExampleTemplate({
               <DescriptionItem
                 title="ID"
                 content="42"
-                contentVerticalAlign={
-                  DescriptionItemContentVerticalAlign.center
+                contentAlignVertical={
+                  DescriptionItemContentAlignVertical.center
                 }
               />
               <Input

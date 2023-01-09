@@ -3,19 +3,19 @@ import { ReactNode } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
-export enum DescriptionItemContentVerticalAlign {
+export enum DescriptionItemContentAlignVertical {
   start = 'start',
   center = 'center',
   end = 'end',
 }
 
 export type DescriptionItemContentProps = ClassNameProps & {
-  verticalAlign?: DescriptionItemContentVerticalAlign
+  alignVertical?: DescriptionItemContentAlignVertical
   children?: ReactNode
 }
 
 export function DescriptionItemContent({
-  verticalAlign = DescriptionItemContentVerticalAlign.start,
+  alignVertical = DescriptionItemContentAlignVertical.start,
   children,
   className,
 }: DescriptionItemContentProps) {
@@ -24,7 +24,7 @@ export function DescriptionItemContent({
     <dd
       className={classNames(
         content.descriptionItemContent.base,
-        content.descriptionItemContent.verticalAlign[verticalAlign],
+        content.descriptionItemContent.alignVertical[alignVertical],
         className
       )}
     >

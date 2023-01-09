@@ -58,7 +58,7 @@ export default {
   },
   descriptionItemContent: {
     base: 'flex-1 flex',
-    verticalAlign: {
+    alignVertical: {
       start: 'items-start',
       center: 'items-center',
       end: 'items-end',
