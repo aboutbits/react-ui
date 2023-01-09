@@ -11,13 +11,13 @@ import { SectionFooterArea } from './SectionFooterArea'
 export type SectionFooterWithSubmitProps = {
   submitButtonText?: ReactNode
   enableSubmitFeedback?: boolean
-  submitFeedbackProps?: FormSubmitFeedbackProps
+  submitFeedbackOptions?: FormSubmitFeedbackProps
 }
 
 export function SectionFooterWithSubmit({
   submitButtonText,
   enableSubmitFeedback = true,
-  submitFeedbackProps,
+  submitFeedbackOptions,
 }: SectionFooterWithSubmitProps): ReactElement {
   const { section } = useTheme()
   const { messages } = useInternationalization()
@@ -32,7 +32,7 @@ export function SectionFooterWithSubmit({
       {enableSubmitFeedback && (
         <FormSubmitFeedback
           className={section.footerWithSubmit.formSubmitFeedback}
-          {...submitFeedbackProps}
+          {...submitFeedbackOptions}
         />
       )}
     </SectionFooterArea>
