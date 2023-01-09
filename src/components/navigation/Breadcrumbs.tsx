@@ -14,7 +14,7 @@ export function Breadcrumbs({
   const { navigation } = useTheme()
 
   return (
-    <div className={classNames(navigation.breadcrumb.base, className)}>
+    <div className={classNames(navigation.breadcrumbs.base, className)}>
       {children}
     </div>
   )
