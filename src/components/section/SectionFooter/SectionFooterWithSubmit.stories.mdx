@@ -1,7 +1,10 @@
 import { action } from '@storybook/addon-actions'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useForm } from 'react-hook-form'
-import { Theme } from '../../../../.storybook/components'
+import {
+  InternationalizationMessages,
+  Theme,
+} from '../../../../.storybook/components'
 import { Form } from '../../form/Form'
 import { SectionFooterWithSubmit } from './SectionFooterWithSubmit'
 
@@ -39,3 +42,7 @@ export const Template = (args) => <SectionFooterWithSubmit {...args} />
 ### Theme
 
 <Theme component="section" items={['footerWithSubmit']} />
+
+### Internationalization messages
+
+<InternationalizationMessages items={['form.submit', 'form.saved']} />
