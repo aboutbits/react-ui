@@ -10,16 +10,16 @@ export function BreadcrumbLoading({
   className?: string
   loadingBarProps?: LoadingBarProps
 }): ReactElement {
-  const { navigation } = useTheme()
+  const { breadcrumbs } = useTheme()
 
   const { className: loadingBarClassName, ...restLoadingBarProps } =
     loadingBarProps || {}
 
   return (
-    <div className={classNames(navigation.breadcrumbLoading.base, className)}>
+    <div className={classNames(breadcrumbs.breadcrumbLoading.base, className)}>
       <LoadingBar
         className={classNames(
-          navigation.breadcrumbLoading.loadingBar,
+          breadcrumbs.breadcrumbLoading.loadingBar,
           loadingBarClassName
         )}
         {...restLoadingBarProps}

@@ -8,14 +8,14 @@ export function BreadcrumbLink({
   children,
   ...props
 }: LinkComponentProps): ReactElement {
-  const { navigation } = useTheme()
+  const { breadcrumbs } = useTheme()
   const LinkComponent = useLinkComponent()
 
   return (
-    <span className={classNames(navigation.breadcrumbLink.base, className)}>
+    <span className={classNames(breadcrumbs.breadcrumbLink.base, className)}>
       <LinkComponent
         internal={internal}
-        className={navigation.breadcrumbLink.link}
+        className={breadcrumbs.breadcrumbLink.link}
         {...props}
       >
         {children}

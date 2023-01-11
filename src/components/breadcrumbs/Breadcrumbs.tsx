@@ -11,10 +11,10 @@ export function Breadcrumbs({
   className,
   children,
 }: BreadcrumbsProps): ReactElement {
-  const { navigation } = useTheme()
+  const { breadcrumbs } = useTheme()
 
   return (
-    <div className={classNames(navigation.breadcrumbs.base, className)}>
+    <div className={classNames(breadcrumbs.breadcrumbs.base, className)}>
       {children}
     </div>
   )

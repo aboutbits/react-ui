@@ -9,10 +9,10 @@ export function BreadcrumbText({
   className?: string
   children?: ReactNode
 }): ReactElement {
-  const { navigation } = useTheme()
+  const { breadcrumbs } = useTheme()
 
   return (
-    <span className={classNames(navigation.breadcrumbText.base, className)}>
+    <span className={classNames(breadcrumbs.breadcrumbText.base, className)}>
       {children}
     </span>
   )
