@@ -23,9 +23,9 @@ export type DescriptionItemProps = ClassNameProps & {
    **/
   hideIfEmpty?: boolean
   /**
-   * Defines the options for the description item content.
+   * Defines the props for the description item content.
    */
-  contentOptions?: DescriptionItemContentProps
+  contentProps?: DescriptionItemContentProps
 }
 
 export function DescriptionItem({
@@ -33,14 +33,14 @@ export function DescriptionItem({
   content,
   className,
   hideIfEmpty = false,
-  contentOptions,
+  contentProps,
 }: DescriptionItemProps) {
   return (
     <>
       {((hideIfEmpty && content) || !hideIfEmpty) && (
         <DescriptionItemContainer className={className}>
           <DescriptionItemTitle>{title}</DescriptionItemTitle>
-          <DescriptionItemContent {...contentOptions}>
+          <DescriptionItemContent {...contentProps}>
             {content}
           </DescriptionItemContent>
         </DescriptionItemContainer>

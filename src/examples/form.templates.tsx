@@ -135,7 +135,7 @@ export function FormExampleTemplate({
               <DescriptionItem
                 title="ID"
                 content="42"
-                contentOptions={{
+                contentProps={{
                   alignVertical: DescriptionItemContentAlignVertical.center,
                 }}
               />
