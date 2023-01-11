@@ -1,14 +1,16 @@
 import { ForwardedRef, forwardRef } from 'react'
-import { useFormState } from 'react-hook-form'
+import { Control, useFormState } from 'react-hook-form'
 import { Button, ButtonProps } from './Button'
 
-export type SubmitButtonProps = ButtonProps
+export type SubmitButtonProps = ButtonProps & {
+  formControl?: Control
+}
 
 function SubmitButtonComponent(
-  { children, disabled = false, ...props }: SubmitButtonProps,
+  { children, disabled = false, formControl, ...props }: SubmitButtonProps,
   ref: ForwardedRef<HTMLButtonElement>
 ) {
-  const { isSubmitting } = useFormState()
+  const { isSubmitting } = useFormState({ control: formControl })
 
   return (
     <Button
