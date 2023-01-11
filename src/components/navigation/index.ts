@@ -1,3 +1,5 @@
 export * from './Breadcrumbs'
-export * from './Breadcrumb'
 export * from './BreadcrumbsLoading'
+export * from './BreadcrumbLink'
+export * from './BreadcrumbText'
+export * from './BreadcrumbLoading'

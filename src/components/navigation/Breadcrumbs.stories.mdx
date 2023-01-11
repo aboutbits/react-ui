@@ -1,14 +1,20 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { Theme } from '../../../.storybook/components'
-import { Breadcrumbs, Breadcrumb, BreadcrumbsLoading } from './'
+import {
+  Breadcrumbs,
+  BreadcrumbsLoading,
+  BreadcrumbLink,
+  BreadcrumbText,
+  BreadcrumbLoading,
+} from './'
 
 <Meta
   title="Components/Navigation/Breadcrumbs"
   component={Breadcrumbs}
   subcomponents={{
-    'Breadcrumb.Link': Breadcrumb.Link,
-    'Breadcrumb.Text': Breadcrumb.Text,
-    'Breadcrumb.Loading': Breadcrumb.Loading,
+    BreadcrumbLink,
+    BreadcrumbText,
+    BreadcrumbLoading,
   }}
 />
 
@@ -16,14 +22,14 @@ import { Breadcrumbs, Breadcrumb, BreadcrumbsLoading } from './'
 
 This components render breadcrumbs, which can be used as a secondary navigation that helps to see the users location.
 
-Typically, you use the `Breadcrumb.Link` component for the parent links and the `Breadcrumb.Text` component for the current page.
-You can use the `BreadcrumbLoading` component or the `Breadcrumb.Loading` components to show a loading state.
+Typically, you use the `BreadcrumbLink` component for the parent links and the `BreadcrumbText` component for the current page.
+You can use the `BreadcrumbLoading` component or the `BreadcrumbLoading` components to show a loading state.
 
 export const Template = (args) => (
   <Breadcrumbs {...args}>
-    <Breadcrumb.Link href="#">Start</Breadcrumb.Link>
-    <Breadcrumb.Link href="#">User</Breadcrumb.Link>
-    <Breadcrumb.Text>Settings</Breadcrumb.Text>
+    <BreadcrumbLink href="#">Start</BreadcrumbLink>
+    <BreadcrumbLink href="#">User</BreadcrumbLink>
+    <BreadcrumbText>Settings</BreadcrumbText>
   </Breadcrumbs>
 )
 
@@ -49,9 +55,9 @@ export const TemplateLoadingDefault = () => (
 
 export const TemplateLoadingCustom = () => (
   <Breadcrumbs>
-    <Breadcrumb.Loading loadingBarClassName="!w-10" />
-    <Breadcrumb.Loading />
-    <Breadcrumb.Text>Settings</Breadcrumb.Text>
+    <BreadcrumbLoading loadingBarProps={{ className: '!w-10' }} />
+    <BreadcrumbLoading />
+    <BreadcrumbText>Settings</BreadcrumbText>
   </Breadcrumbs>
 )
 
