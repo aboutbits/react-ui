@@ -9,6 +9,7 @@ import form from '../../components/form/theme'
 import header from '../../components/header/theme'
 import link from '../../components/link/theme'
 import loading from '../../components/loading/theme'
+import breadcrumbs from '../../components/breadcrumbs/theme'
 import menu from '../../components/menu/theme'
 import pagination from '../../components/pagination/theme'
 import section from '../../components/section/theme'
@@ -24,6 +25,7 @@ export const defaultTheme = {
   header,
   link,
   loading,
+  breadcrumbs,
   section,
   menu,
   pagination,

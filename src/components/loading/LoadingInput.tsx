@@ -1,13 +1,12 @@
 import classNames from 'classnames'
 import { ReactElement } from 'react'
 import { useTheme } from '../../framework'
+import { ClassNameProps } from '../types'
 import { LoadingBar } from './LoadingBar'
 
-export function LoadingInput({
-  className,
-}: {
-  className?: string
-}): ReactElement {
+export type LoadingInputProps = ClassNameProps
+
+export function LoadingInput({ className }: LoadingInputProps): ReactElement {
   const { loading } = useTheme()
   return (
     <div className={classNames(loading.input.base, className)}>
