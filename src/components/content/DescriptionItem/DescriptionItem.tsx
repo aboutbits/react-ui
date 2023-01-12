@@ -25,7 +25,7 @@ export type DescriptionItemProps = ClassNameProps & {
   /**
    * Defines the props for the description item content.
    */
-  contentProps?: DescriptionItemContentProps
+  contentProps?: Omit<DescriptionItemContentProps, 'children'>
 }
 
 export function DescriptionItem({
