@@ -10,18 +10,20 @@ export function Theme({
   component: string
   items?: string[]
 }): ReactElement {
-  const theme = items
-    ? Object.fromEntries(
-        // eslint-disable-next-line
-        // @ts-ignore
-        items.map((item) => [item, defaultTheme?.[component]?.[item]])
-      )
-    : defaultTheme?.[component]
+  const theme = {
+    [component]: items
+      ? Object.fromEntries(
+          // eslint-disable-next-line
+          // @ts-ignore
+          items.map((item) => [item, defaultTheme?.[component]?.[item]])
+        )
+      : defaultTheme?.[component],
+  }
 
   return (
     <>
       <Description
-        markdown={`This component uses the following defaults from the \`${component}\` theme:`}
+        markdown={`This component uses the following theme defaults:`}
       />
       <Source code={JSON.stringify(theme, null, 2)} language="json" />
     </>
