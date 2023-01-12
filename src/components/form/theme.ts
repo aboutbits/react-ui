@@ -357,4 +357,10 @@ export default {
       },
     },
   },
+  formSubmitFeedback: {
+    base: 'flex items-center gap-x-2.5 text-sm font-medium text-success-700',
+    icon: {
+      base: 'h-5 w-5 shrink-0 fill-current',
+    },
+  },
 }

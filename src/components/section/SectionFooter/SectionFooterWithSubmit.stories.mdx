@@ -1,0 +1,48 @@
+import { action } from '@storybook/addon-actions'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { useForm } from 'react-hook-form'
+import {
+  InternationalizationMessages,
+  Theme,
+} from '../../../../.storybook/components'
+import { Form } from '../../form/Form'
+import { SectionFooterWithSubmit } from './SectionFooterWithSubmit'
+
+<Meta
+  title="Components/Section/SectionFooterWithSubmit"
+  component={SectionFooterWithSubmit}
+  decorators={[
+    (Story) => {
+      const form = useForm()
+      return (
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
+      )
+    },
+  ]}
+/>
+
+# SectionFooterWithSubmit
+
+This component can conveniently be used to add a section footer with a submit button. It also provices a feedback message when the form is submitted.
+
+It leverages on [SectionFooterArea](/docs/components-section-sectionfooterarea--default-story), [SubmitButton](/docs/components-button-submitbutton--default-story) and [FormSubmitFeedback](/docs/components-form-formsubmitfeedback--default-story).
+
+export const Template = (args) => <SectionFooterWithSubmit {...args} />
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+<Theme component="section" items={['footerWithSubmit']} />
+
+### Internationalization messages
+
+<InternationalizationMessages items={['form.submit', 'form.saved']} />
