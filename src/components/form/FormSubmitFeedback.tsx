@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { ComponentType, ReactElement, ReactNode } from 'react'
 import { useInternationalization, useTheme } from '../../framework'
 import { IconProps } from '../types'
-import { useFormSubmitState } from './useFormSubmitState'
+import { useDelayedFormSubmitState } from './useFormSubmitState'
 
 export type FormSubmitFeedbackProps = {
   savedMessage?: ReactNode
@@ -20,9 +20,9 @@ export function FormSubmitFeedback({
 }: FormSubmitFeedbackProps): ReactElement | null {
   const { form } = useTheme()
   const { messages } = useInternationalization()
-  const { isSubmitted } = useFormSubmitState(successDelay)
+  const { isSubmitSuccessful } = useDelayedFormSubmitState(successDelay)
 
-  return isSubmitted ? (
+  return isSubmitSuccessful ? (
     <div className={classNames(form.formSubmitFeedback.base, className)}>
       {Icon ? <Icon className={form.formSubmitFeedback.icon.base} /> : null}
       <span>{savedMessage ?? messages['form.saved']}</span>
