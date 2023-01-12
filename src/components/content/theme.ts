@@ -76,6 +76,14 @@ export default {
   descriptionItemTitle: {
     base: 'text-xs',
   },
+  descriptionItemContent: {
+    base: 'flex-1 flex',
+    alignVertical: {
+      start: 'items-start',
+      center: 'items-center',
+      end: 'items-end',
+    },
+  },
   loadingDescriptionItem: {
     base: '',
     upper: {

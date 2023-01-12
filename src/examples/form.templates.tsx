@@ -4,7 +4,11 @@ import { ReactElement, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { useHandleFormSubmission } from '../components/apiHooks'
-import { ContentArea } from '../components/content'
+import {
+  ContentArea,
+  DescriptionItem,
+  DescriptionItemContentAlignVertical,
+} from '../components/content'
 import {
   Layout,
   Section,
@@ -48,6 +52,7 @@ type FormData = {
 }
 
 const defaultValues = {
+  username: 'john.doe',
   email: 'john@aboutbits.it',
   name: {
     first: 'John',
@@ -62,6 +67,7 @@ const defaultValues = {
 
 const resolver = yupResolver(
   Yup.object().shape({
+    username: Yup.string().required().min(3),
     email: Yup.string().email().required(),
     name: Yup.object().shape({
       first: Yup.string().required().min(3),
@@ -126,6 +132,20 @@ export function FormExampleTemplate({
           <SectionHeader title="User edit" />
           <SectionContainer>
             <SectionContent layout={Layout.twoColumnGrid}>
+              <DescriptionItem
+                title="ID"
+                content="42"
+                contentProps={{
+                  alignVertical: DescriptionItemContentAlignVertical.center,
+                }}
+              />
+              <Input
+                id="username"
+                type="text"
+                name="username"
+                label="Username"
+                placeholder="Username"
+              />
               <FieldSet
                 label="Name"
                 fields={['name.first', 'name.last']}

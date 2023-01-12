@@ -1,23 +1,11 @@
-import classNames from 'classnames'
 import { ReactNode } from 'react'
-import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
-
-export type DescriptionItemTitleProps = ClassNameProps & {
-  children?: ReactNode
-}
-
-export function DescriptionItemTitle({
-  children,
-  className,
-}: DescriptionItemTitleProps) {
-  const { content } = useTheme()
-  return (
-    <dt className={classNames(content.descriptionItemTitle.base, className)}>
-      {children}
-    </dt>
-  )
-}
+import { DescriptionItemContainer } from './DescriptionItemContainer'
+import {
+  DescriptionItemContent,
+  DescriptionItemContentProps,
+} from './DescriptionItemContent'
+import { DescriptionItemTitle } from './DescriptionItemTitle'
 
 export type DescriptionItemProps = ClassNameProps & {
   /**
@@ -34,6 +22,10 @@ export type DescriptionItemProps = ClassNameProps & {
    * Defines if the component appears or not depending on if the content is empty (null) or not.
    **/
   hideIfEmpty?: boolean
+  /**
+   * Defines the props for the description item content.
+   */
+  contentProps?: Omit<DescriptionItemContentProps, 'children'>
 }
 
 export function DescriptionItem({
@@ -41,18 +33,17 @@ export function DescriptionItem({
   content,
   className,
   hideIfEmpty = false,
+  contentProps,
 }: DescriptionItemProps) {
-  const { content: contentTheme } = useTheme()
-
   return (
     <>
       {((hideIfEmpty && content) || !hideIfEmpty) && (
-        <dl
-          className={classNames(contentTheme.descriptionItem.base, className)}
-        >
+        <DescriptionItemContainer className={className}>
           <DescriptionItemTitle>{title}</DescriptionItemTitle>
-          <dd>{content}</dd>
-        </dl>
+          <DescriptionItemContent {...contentProps}>
+            {content}
+          </DescriptionItemContent>
+        </DescriptionItemContainer>
       )}
     </>
   )
