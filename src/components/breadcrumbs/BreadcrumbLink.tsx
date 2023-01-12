@@ -1,22 +1,32 @@
 import classNames from 'classnames'
 import { ReactElement } from 'react'
 import { LinkComponentProps, useLinkComponent, useTheme } from '../../framework'
+import { ClassNameProps } from '../types'
+
+export type BreadcrumbLinkProps = ClassNameProps &
+  Pick<LinkComponentProps, 'href' | 'children'> & {
+    linkProps?: Omit<LinkComponentProps, 'href' | 'children'> &
+      Partial<Pick<LinkComponentProps, 'href'>>
+  }
 
 export function BreadcrumbLink({
-  internal = true,
+  href,
   className,
   children,
-  ...props
-}: LinkComponentProps): ReactElement {
+  linkProps,
+}: BreadcrumbLinkProps): ReactElement {
   const { breadcrumbs } = useTheme()
   const LinkComponent = useLinkComponent()
 
   return (
     <span className={classNames(breadcrumbs.breadcrumbLink.base, className)}>
       <LinkComponent
-        internal={internal}
+        href={href}
         className={breadcrumbs.breadcrumbLink.link}
-        {...props}
+        {...({
+          ...linkProps,
+          internal: linkProps?.internal ?? true,
+        } as BreadcrumbLinkProps['linkProps'])}
       >
         {children}
       </LinkComponent>
