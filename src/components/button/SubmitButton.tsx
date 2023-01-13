@@ -1,16 +1,16 @@
 import { ForwardedRef, forwardRef } from 'react'
-import { Control, useFormState } from 'react-hook-form'
+import { Control, FieldValues, useFormState } from 'react-hook-form'
 import { Button, ButtonProps } from './Button'
 
-export type SubmitButtonProps = ButtonProps & {
-  formControl?: Control
+export type SubmitButtonProps<F extends FieldValues> = ButtonProps & {
+  formControl?: Control<F>
 }
 
-function SubmitButtonComponent(
-  { children, disabled = false, formControl, ...props }: SubmitButtonProps,
+function SubmitButtonComponent<F extends FieldValues>(
+  { children, disabled = false, formControl, ...props }: SubmitButtonProps<F>,
   ref: ForwardedRef<HTMLButtonElement>
 ) {
-  const { isSubmitting } = useFormState({ control: formControl })
+  const { isSubmitting } = useFormState<F>({ control: formControl })
 
   return (
     <Button
@@ -24,4 +24,9 @@ function SubmitButtonComponent(
   )
 }
 
-export const SubmitButton = forwardRef(SubmitButtonComponent)
+// Type assertion required for a component with forwarded ref and generic type
+export const SubmitButton = forwardRef(SubmitButtonComponent) as <
+  F extends FieldValues
+>(
+  props: SubmitButtonProps<F> & { ref?: ForwardedRef<HTMLButtonElement> }
+) => ReturnType<typeof SubmitButtonComponent>
