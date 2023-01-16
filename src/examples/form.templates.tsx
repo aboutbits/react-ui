@@ -4,20 +4,14 @@ import { ReactElement, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { useHandleFormSubmission } from '../components/apiHooks'
+import { SubmitButton } from '../components/button'
 import {
   ContentArea,
   DescriptionItem,
   DescriptionItemContentAlignVertical,
 } from '../components/content'
 import {
-  Layout,
-  Section,
-  SectionContainer,
-  SectionContent,
-  SectionFooterWithActions,
-  SectionHeader,
-} from '../components/section'
-import {
+  Checkbox,
   FieldSet,
   FieldSetIndent,
   Form,
@@ -28,14 +22,20 @@ import {
   TextArea,
   ToggleSwitch,
   ToggleSwitchLayout,
-  Checkbox,
 } from '../components/form'
 import {
   PaginatedResponse,
   SearchQueryParameters,
   SelectItem,
 } from '../components/form/async'
-import { SubmitButton } from '../components/button'
+import {
+  Section,
+  SectionContainer,
+  SectionContent,
+  SectionContentLayout,
+  SectionFooterWithActions,
+  SectionHeader,
+} from '../components/section'
 import { i18n, locales } from './i18n'
 
 type FormData = {
@@ -131,7 +131,7 @@ export function FormExampleTemplate({
         <Section>
           <SectionHeader title="User edit" />
           <SectionContainer>
-            <SectionContent layout={Layout.twoColumnGrid}>
+            <SectionContent layout={SectionContentLayout.twoColumnGrid}>
               <DescriptionItem
                 title="ID"
                 content="42"
