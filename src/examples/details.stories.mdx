@@ -1,10 +1,10 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs'
 import { ContentArea, DescriptionItem } from '../components/content'
 import {
-  Layout,
   Section,
   SectionContainer,
   SectionContent,
+  SectionContentLayout,
   SectionHeader,
 } from '../components/section'
 
@@ -20,7 +20,7 @@ export const Template = ({ title }) => {
       <Section>
         <SectionHeader title={title} />
         <SectionContainer>
-          <SectionContent layout={Layout.oneColumnGrid}>
+          <SectionContent layout={SectionContentLayout.oneColumnGrid}>
             <DescriptionItem content="John Doe" title="Name" />
             <DescriptionItem content="info@aboutbits.it" title="Email" />
             <DescriptionItem content="admin" title="Role" />
@@ -58,7 +58,7 @@ export const TwoColumnTemplate = ({ title }) => {
       <Section>
         <SectionHeader title={title} />
         <SectionContainer>
-          <SectionContent layout={Layout.twoColumnGrid}>
+          <SectionContent layout={SectionContentLayout.twoColumnGrid}>
             <DescriptionItem content="John Doe" title="Name" />
             <DescriptionItem content="info@aboutbits.it" title="Email" />
             <DescriptionItem content="admin" title="Role" />
