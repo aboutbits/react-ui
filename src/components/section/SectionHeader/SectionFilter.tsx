@@ -6,6 +6,7 @@ import {
   useEffect,
 } from 'react'
 import {
+  DefaultValues,
   FieldValues,
   SubmitHandler,
   useForm,
@@ -16,7 +17,8 @@ import { AutoSubmit, Form } from '../../form'
 import { ClassNameProps } from '../../types'
 
 export type SectionFilterProps<F extends FieldValues> = ClassNameProps &
-  UseFormProps<F> & {
+  Omit<UseFormProps<F>, 'defaultValues'> & {
+    defaultValues?: DefaultValues<F>
     /**
      * The function executed on submit
      */

@@ -26,7 +26,6 @@ const MyForm = ({
       if (formElement) {
         formElement.requestSubmit = async () => {
           const values = form.getValues()
-          await sleep(100)
           onSubmit(values)
         }
       }
@@ -77,20 +76,27 @@ describe('ReactHookFormAutoSubmit', () => {
     const handleSubmit = jest.fn()
     render(<MyForm autoSubmitInterval={50} onSubmit={handleSubmit} />)
 
+    const user = userEvent.setup()
+
     await act(async () => {
-      const user = userEvent.setup()
       await user.type(screen.getByLabelText(/name/i), 'John')
-      await sleep(100)
+    })
+
+    await waitFor(() => {
+      expect(handleSubmit).toHaveBeenNthCalledWith(1, {
+        name: 'John',
+      })
+    })
+
+    await act(async () => {
+      await sleep(1000)
       await user.clear(screen.getByLabelText(/name/i))
       await user.type(screen.getByLabelText(/name/i), 'Jane')
     })
 
     await waitFor(() => {
       expect(handleSubmit).toHaveBeenCalledTimes(2)
-      expect(handleSubmit).toHaveBeenCalledWith({
-        name: 'John',
-      })
-      expect(handleSubmit).toHaveBeenCalledWith({
+      expect(handleSubmit).toHaveBeenNthCalledWith(2, {
         name: 'Jane',
       })
     })
