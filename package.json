@@ -50,7 +50,6 @@
     "react": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@aboutbits/internationalization": "^0.2.1",
     "@babel/core": "^7.18.5",
     "@hookform/resolvers": "^2.9.8",
     "@storybook/addon-essentials": "^6.5.12",

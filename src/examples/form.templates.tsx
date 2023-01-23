@@ -36,7 +36,6 @@ import {
   SectionFooterWithActions,
   SectionHeader,
 } from '../components/section'
-import { i18n, locales } from './i18n'
 
 type FormData = {
   email: string
@@ -174,11 +173,9 @@ export function FormExampleTemplate({
                 label="Email"
               />
               <Select id="language" name="language" label="Language">
-                {i18n.supportedLanguages.map((supportedLanguage, index) => (
-                  <Option key={index} value={supportedLanguage}>
-                    {locales[supportedLanguage]}
-                  </Option>
-                ))}
+                <Option value="EN">English</Option>
+                <Option value="DE">German</Option>
+                <Option value="IT">Italian</Option>
               </Select>
               <Select id="role" name="role" label="Role">
                 <Option value="ADMIN">Admin</Option>

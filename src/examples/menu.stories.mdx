@@ -3,7 +3,6 @@ import { action } from '@storybook/addon-actions'
 import { useState } from 'react'
 import { Menu } from '../components/menu/Menu'
 import { MenuItem } from '../components/menu/MenuItem'
-import { i18n, locales } from './i18n'
 
 <Meta title="Examples/Menu" />
 
@@ -12,21 +11,23 @@ import { i18n, locales } from './i18n'
 The following example provides a language picker using the menu components. It allows the user to switch among the provided languages.
 
 export const Template = () => {
-  // You can use `intl.locale.toUpperCase()` to get the current language in projects
+  const supportedLanguages = {
+    EN: 'English',
+    DE: 'Deutsch',
+    IT: 'Italiano',
+  }
   const [currentLanguage, setCurrentLanguage] = useState('EN')
   return (
     <Menu menuButtonContent={currentLanguage} menuLabel="">
-      {i18n.supportedLanguages.map((supportedLanguage, index) => (
+      {Object.entries(supportedLanguages).map(([abbr, language]) => (
         <MenuItem
           onClick={() => {
-            setCurrentLanguage(supportedLanguage)
-            i18n.setLanguage(supportedLanguage)
-            action('onClick')(supportedLanguage)
-            // window.location.reload()
+            setCurrentLanguage(abbr)
+            action('onClick')(abbr)
           }}
-          key={index}
+          key={abbr}
         >
-          {locales[supportedLanguage]}
+          {language}
         </MenuItem>
       ))}
     </Menu>
