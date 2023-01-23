@@ -1,5 +1,4 @@
-import { waitFor } from '@testing-library/react'
-import { act, renderHook } from '@testing-library/react-hooks'
+import { waitFor, act, renderHook } from '@testing-library/react'
 import defaultMessages from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleRequest } from '../useHandleRequest'
 
