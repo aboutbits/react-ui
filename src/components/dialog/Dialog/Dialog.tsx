@@ -1,4 +1,4 @@
-import { DialogContent, DialogOverlay, DialogOverlayProps } from '@reach/dialog'
+import { Dialog as HeadlessDialog } from '@headlessui/react'
 import classNames from 'classnames'
 import { ReactElement, useRef } from 'react'
 import { useTheme } from '../../../framework'
@@ -6,8 +6,11 @@ import { ClassNameProps } from '../../types'
 import { DialogContext } from '../DialogContext'
 import { DialogPosition, DialogSize } from '../types'
 
+// see https://github.com/tailwindlabs/headlessui/issues/1394
+type DialogComponentType = Parameters<typeof HeadlessDialog>[0]
+
 export type DialogProps = ClassNameProps &
-  DialogOverlayProps & {
+  DialogComponentType & {
     size?: DialogSize
     children?: ReactElement
     mobilePosition?: DialogPosition
@@ -31,17 +34,17 @@ export function Dialog({
 
   return (
     <DialogContext.Provider value={{ size }}>
-      <DialogOverlay
+      <HeadlessDialog
         className={classNames(
           dialog.overlay.base,
           dialog.overlay.mobilePosition[mobilePosition],
           dialog.overlay.desktopPosition[desktopPosition],
           overlayClassName
         )}
-        initialFocusRef={initialFocusRef}
+        initialFocus={initialFocusRef}
         {...props}
       >
-        <DialogContent
+        <HeadlessDialog.Panel
           ref={initialFocusRef}
           aria-label={ariaLabel}
           className={classNames(
@@ -54,8 +57,8 @@ export function Dialog({
           )}
         >
           {children}
-        </DialogContent>
-      </DialogOverlay>
+        </HeadlessDialog.Panel>
+      </HeadlessDialog>
     </DialogContext.Provider>
   )
 }

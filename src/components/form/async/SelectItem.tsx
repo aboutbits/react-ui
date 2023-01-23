@@ -198,11 +198,11 @@ export function SelectItem<ItemType, Error>({
       </div>
       {showDialog && (
         <SelectItemDialogWithSearch
-          onDismiss={() => {
+          onClose={() => {
             field.onChange(field.value)
             setShowDialog(false)
           }}
-          isOpen={showDialog}
+          open={showDialog}
           onConfirm={(item: ItemType) => {
             field.onChange(extractIdFromItem(item))
             selectedItem.current = item

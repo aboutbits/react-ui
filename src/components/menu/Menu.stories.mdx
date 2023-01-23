@@ -23,7 +23,7 @@ export const Template = ({ menuLabel, className, ...args }) => {
       {array.map((item, index) => (
         <MenuItem
           key={index}
-          onClick={action('onClick')}
+          onClick={action(`onClick(${index})`)}
         >{`Menu item ${item}`}</MenuItem>
       ))}
     </Menu>

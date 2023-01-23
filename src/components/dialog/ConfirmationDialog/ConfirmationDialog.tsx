@@ -72,7 +72,7 @@ export function ConfirmationDialog({
   ...props
 }: ConfirmDialogProps): ReactElement {
   return (
-    <Dialog {...props}>
+    <Dialog onClose={onDismiss} {...props}>
       <>
         <DialogHeader title={title} />
         <DialogContent>{body}</DialogContent>
