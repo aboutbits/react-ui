@@ -36,7 +36,6 @@ export const Template = ({ buttonText, buttonTone, ...args }) => {
       {isOpen && (
         <ConfirmationDialog
           {...args}
-          open={isOpen}
           onDismiss={() => setIsOpen(false)}
           onConfirm={() => setIsOpen(false)}
         />

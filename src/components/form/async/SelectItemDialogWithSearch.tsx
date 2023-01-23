@@ -93,7 +93,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
       <>
         <DialogHeaderArea>
           <DialogHeaderRow>
-            <DialogHeaderCloseAction onClick={() => props.onClose(false)} />
+            <DialogHeaderCloseAction onClick={props.onDismiss} />
             <DialogHeaderTitle>{title}</DialogHeaderTitle>
           </DialogHeaderRow>
           <DialogHeaderRow className="my-2">

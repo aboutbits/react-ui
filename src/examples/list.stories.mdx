@@ -392,10 +392,9 @@ export const TemplateListWithFilterDialog = ({
   )
   return (
     <>
-      {isDialogEnabled && (
+      {isDialogEnabled && dialogShow && (
         <Dialog
-          open={dialogShow}
-          onClose={() => setDialogShow(false)}
+          onDismiss={() => setDialogShow(false)}
           title="Filter"
           className="mx-auto bg-white overflow-hidden"
         >

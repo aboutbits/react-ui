@@ -36,8 +36,8 @@ const DialogDecorator: DecoratorFn = (Story, context) => {
       <Story
         args={{
           ...context.args,
-          open: isOpen,
-          onClose: () => setIsOpen(false),
+          isOpen,
+          onDismiss: () => setIsOpen(false),
           content: context.parameters.content,
           overlayClassName: 'z-10',
         }}
@@ -53,7 +53,7 @@ const DialogTemplate = ({ content, ...args }: TemplateArgs) => {
         <DialogHeader title="Hello" />
         <DialogContent>{content}</DialogContent>
         <DialogFooterWithActions>
-          <Button onClick={() => args.onClose(false)}>OK</Button>
+          <Button onClick={args.onDismiss}>OK</Button>
         </DialogFooterWithActions>
       </>
     </Dialog>
@@ -173,13 +173,10 @@ export const WithClose: StoryType = (args: DialogProps) => {
   return (
     <Dialog {...args}>
       <>
-        <DialogHeaderWithClose
-          title="Hello"
-          onDismiss={() => args.onClose(false)}
-        />
+        <DialogHeaderWithClose title="Hello" onDismiss={args.onDismiss} />
         <DialogContent>This is a dialog with close button.</DialogContent>
         <DialogFooterWithActions>
-          <Button onClick={() => args.onClose(false)}>OK</Button>
+          <Button onClick={args.onDismiss}>OK</Button>
         </DialogFooterWithActions>
       </>
     </Dialog>
