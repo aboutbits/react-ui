@@ -124,4 +124,9 @@ function ToggleSwitchComponent(
   )
 }
 
-export const ToggleSwitch = forwardRef(ToggleSwitchComponent)
+// Type assertion required to omit the size prop from the HTMLInputElement type, in combination with forwardRef, to be compatible with React 17
+// Omit used in forwardRef forces the HTMLInputElement props to be listed individually in the generated d.ts file, and those are different in React 17 and 18.
+// See https://github.com/mui/material-ui/issues/35287
+export const ToggleSwitch = forwardRef(ToggleSwitchComponent) as (
+  props: ToggleSwitchProps & { ref?: ForwardedRef<HTMLInputElement> }
+) => ReturnType<typeof ToggleSwitchComponent>
