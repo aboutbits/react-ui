@@ -65,7 +65,7 @@ export const TemplateNormal = ({
 export const TemplateError = ({
   ...args
 }: SelectItemProps<User, Error>): ReactElement => {
-  const useGetData = ({}: SearchQueryParameters): {
+  const useGetData = (): {
     data?: PaginatedResponse<User>
     error?: Error
   } => {

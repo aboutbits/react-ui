@@ -48,7 +48,7 @@ describe('ReactHookFormAutoSubmit', () => {
     render(<MyForm onSubmit={handleSubmit} />)
 
     await waitFor(() => {
-      expect(handleSubmit).not.toBeCalled()
+      expect(handleSubmit).not.toHaveBeenCalled()
     })
   })
 
