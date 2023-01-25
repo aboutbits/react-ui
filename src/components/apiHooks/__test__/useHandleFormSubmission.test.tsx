@@ -1,5 +1,4 @@
-import { act, waitFor } from '@testing-library/react'
-import { renderHook } from '@testing-library/react-hooks'
+import { act, waitFor, renderHook } from '@testing-library/react'
 import { useForm } from 'react-hook-form'
 import defaultMessages from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleFormSubmission } from '../useHandleFormSubmission'

@@ -70,7 +70,7 @@ describe('SectionFilter', () => {
 
     await waitFor(async () => {
       await sleep(250) // Wait for possible auto submit to be triggered
-      expect(handleSubmit).not.toBeCalled()
+      expect(handleSubmit).not.toHaveBeenCalled()
     })
   })
 
@@ -131,7 +131,7 @@ describe('SectionFilter', () => {
 
     await waitFor(async () => {
       await sleep(250) // Wait for possible auto submit to be triggered
-      expect(handleSubmit).not.toBeCalled()
+      expect(handleSubmit).not.toHaveBeenCalled()
     })
   })
 

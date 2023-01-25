@@ -1,5 +1,5 @@
 import IconArrowDropUp from '@aboutbits/react-material-icons/dist/IconArrowDropUp'
-import { Menu as MenuReach, MenuButton, MenuList } from '@reach/menu-button'
+import { Menu as HeadlessMenu } from '@headlessui/react'
 import classNames from 'classnames'
 import { ReactNode } from 'react'
 import { useTheme } from '../../framework'
@@ -31,10 +31,10 @@ export function Menu({
   const { menu } = useTheme()
 
   return (
-    <MenuReach>
-      {({ isExpanded }) => (
+    <HeadlessMenu>
+      {({ open }) => (
         <>
-          <MenuButton
+          <HeadlessMenu.Button
             id={menuButtonId}
             aria-label={menuLabel}
             className={classNames(menu.menuButton.base, className)}
@@ -44,14 +44,16 @@ export function Menu({
               <IconArrowDropUp
                 className={classNames(
                   menu.menuButton.icon.base,
-                  !isExpanded && 'rotate-180 transform'
+                  !open && 'rotate-180 transform'
                 )}
               />
             </span>
-          </MenuButton>
-          <MenuList className={menu.menuList.base}>{children}</MenuList>
+          </HeadlessMenu.Button>
+          <HeadlessMenu.Items className={menu.menuList.base}>
+            {children}
+          </HeadlessMenu.Items>
         </>
       )}
-    </MenuReach>
+    </HeadlessMenu>
   )
 }

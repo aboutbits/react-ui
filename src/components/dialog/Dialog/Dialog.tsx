@@ -1,4 +1,4 @@
-import { DialogContent, DialogOverlay, DialogOverlayProps } from '@reach/dialog'
+import { Dialog as HeadlessDialog } from '@headlessui/react'
 import classNames from 'classnames'
 import { ReactElement, useRef } from 'react'
 import { useTheme } from '../../../framework'
@@ -6,17 +6,22 @@ import { ClassNameProps } from '../../types'
 import { DialogContext } from '../DialogContext'
 import { DialogPosition, DialogSize } from '../types'
 
-export type DialogProps = ClassNameProps &
-  DialogOverlayProps & {
-    size?: DialogSize
-    children?: ReactElement
-    mobilePosition?: DialogPosition
-    desktopPosition?: DialogPosition
-    'aria-label'?: string
-    overlayClassName?: string
-  }
+export type DialogProps = ClassNameProps & {
+  isOpen?: boolean
+  onDismiss?: () => void
+  initialFocusRef?: React.RefObject<HTMLDivElement>
+  size?: DialogSize
+  children?: ReactElement
+  mobilePosition?: DialogPosition
+  desktopPosition?: DialogPosition
+  'aria-label'?: string
+  overlayClassName?: string
+}
 
 export function Dialog({
+  isOpen,
+  onDismiss,
+  initialFocusRef: initialFocusRefProp,
   size = DialogSize.md,
   mobilePosition = DialogPosition.center,
   desktopPosition = DialogPosition.center,
@@ -27,21 +32,24 @@ export function Dialog({
   ...props
 }: DialogProps): ReactElement {
   const { dialog } = useTheme()
-  const initialFocusRef = useRef<HTMLDivElement>(null)
+  const nullRef = useRef<HTMLDivElement>(null)
+  const initialFocusRef = initialFocusRefProp ?? nullRef
 
   return (
     <DialogContext.Provider value={{ size }}>
-      <DialogOverlay
+      <HeadlessDialog
+        open={isOpen ?? true}
         className={classNames(
           dialog.overlay.base,
           dialog.overlay.mobilePosition[mobilePosition],
           dialog.overlay.desktopPosition[desktopPosition],
           overlayClassName
         )}
-        initialFocusRef={initialFocusRef}
+        initialFocus={initialFocusRef}
+        onClose={onDismiss ?? (() => undefined)}
         {...props}
       >
-        <DialogContent
+        <HeadlessDialog.Panel
           ref={initialFocusRef}
           aria-label={ariaLabel}
           className={classNames(
@@ -54,8 +62,8 @@ export function Dialog({
           )}
         >
           {children}
-        </DialogContent>
-      </DialogOverlay>
+        </HeadlessDialog.Panel>
+      </HeadlessDialog>
     </DialogContext.Provider>
   )
 }
