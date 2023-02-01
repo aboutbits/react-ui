@@ -3,7 +3,7 @@
 React UI is a very opinionated design library, that is based on React and TailwindCSS.
 The build in theming solution, allows you to change the look and feel of all components.
 
-Discover futher details about this design library on our [homepage](https://storybook.aboutbits.it/).
+Discover further details about this design library on our [homepage](https://storybook.aboutbits.it/).
 
 ## Table of content
 
