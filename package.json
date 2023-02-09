@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "start-storybook -p 4000",
     "build": "npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc --project tsconfig.json",
+    "build:esm": "tsc --project tsconfig.build.esm.json",
     "build:cjs": "tsc --project tsconfig.build.cjs.json",
     "lint": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx,.docs.mdx,.json .",
     "lint:fix": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx,.docs.mdx,.json --fix .",
