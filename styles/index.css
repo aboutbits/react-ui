@@ -2,8 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
-
-:root {
-  --reach-dialog: 1;
-  --reach-menu-button: 1;
-}
