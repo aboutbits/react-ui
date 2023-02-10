@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES5",
-    "outDir": "./dist/cjs"
+    "target": "ES6",
+    "outDir": "./dist/esm"
   }
 }
