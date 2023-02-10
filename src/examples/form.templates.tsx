@@ -1,8 +1,8 @@
 import { IndexType } from '@aboutbits/pagination'
-import { yupResolver } from '@hookform/resolvers/yup'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { ReactElement, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import * as Yup from 'yup'
+import { z } from 'zod'
 import { useHandleFormSubmission } from '../components/apiHooks'
 import { SubmitButton } from '../components/button'
 import {
@@ -37,26 +37,30 @@ import {
   SectionHeader,
 } from '../components/section'
 
-type FormData = {
-  email: string
-  name: {
-    first: string
-    last: string
-  }
-  language: string
-  role: string
-  bio: string
-  favProjectId: string | null
-  serverValidationErrors: boolean
-}
+const formSchema = z.object({
+  username: z.string().min(3),
+  email: z.string().email().min(1),
+  name: z.object({ first: z.string().min(3), last: z.string().min(3) }),
+  age: z.number().min(0),
+  medals: z.number().min(1).nullable(),
+  language: z.string().min(1),
+  role: z.string().min(1),
+  bio: z.string(),
+  favProjectId: z.string().nullable(),
+  serverValidationErrors: z.boolean(),
+})
 
-const defaultValues = {
+type FormData = z.infer<typeof formSchema>
+
+const defaultValues: FormData = {
   username: 'john.doe',
   email: 'john@aboutbits.it',
   name: {
     first: 'John',
     last: 'Doe',
   },
+  age: 25,
+  medals: null,
   language: 'EN',
   role: 'USER',
   bio: 'John is a software engineer from Bolzano, Italy',
@@ -64,29 +68,13 @@ const defaultValues = {
   serverValidationErrors: false,
 }
 
-const resolver = yupResolver(
-  Yup.object().shape({
-    username: Yup.string().required().min(3),
-    email: Yup.string().email().required(),
-    name: Yup.object().shape({
-      first: Yup.string().required().min(3),
-      last: Yup.string().required().min(3),
-    }),
-    language: Yup.string().required(),
-    role: Yup.string().required(),
-    bio: Yup.string(),
-    favProjectId: Yup.string().nullable().required(),
-    serverValidationErrors: Yup.boolean().required(),
-  })
-)
-
 export function FormExampleTemplate({
   onSubmit,
 }: {
   onSubmit: (data: FormData) => void
 }): ReactElement {
   const form = useForm<FormData>({
-    resolver,
+    resolver: zodResolver(formSchema),
     defaultValues,
   })
 
@@ -113,7 +101,6 @@ export function FormExampleTemplate({
             })
             return
           }
-
           onSubmit(data)
           resolve()
         }, 1000)
@@ -165,6 +152,20 @@ export function FormExampleTemplate({
                   />
                 </div>
               </FieldSet>
+              <Input
+                id="age"
+                type="number"
+                name="age"
+                placeholder="Age"
+                label="Age"
+              />
+              <Input
+                id="medals"
+                type="number"
+                name="medals"
+                placeholder="Medals"
+                label="Medals"
+              />
               <Input
                 id="email"
                 type="email"

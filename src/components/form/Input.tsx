@@ -42,12 +42,16 @@ function InputComponent(
     className,
     iconStart,
     iconEnd,
+    type,
     ...props
   }: InputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) {
   const { register } = useFormContext()
-  const { ref: fieldRef, ...field } = register(name)
+  const { ref: fieldRef, ...field } = register(name, {
+    valueAsNumber: type === 'number',
+    valueAsDate: type === 'date',
+  })
 
   const forwardedRef = useForwardedRef(ref)
 
@@ -81,6 +85,7 @@ function InputComponent(
             forwardedRef.current = ref
             fieldRef(ref)
           }}
+          type={type}
           {...props}
           {...field}
           disabled={disabled}
