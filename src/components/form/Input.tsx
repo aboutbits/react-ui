@@ -49,8 +49,32 @@ function InputComponent(
 ) {
   const { register } = useFormContext()
   const { ref: fieldRef, ...field } = register(name, {
-    valueAsNumber: type === 'number',
-    valueAsDate: type === 'date',
+    setValueAs: (input) => {
+      console.log('received input:', input)
+      const missing = null
+      const wrong = undefined
+      if (input === '') {
+        return missing
+      }
+      if (type === 'number') {
+        const converted = parseFloat(input)
+        if (isNaN(converted)) {
+          return wrong
+        }
+        return converted
+      } else if (type === 'date') {
+        if (typeof input === 'string') {
+          const converted = new Date(input)
+          if (converted.toString() === 'Invalid Date') {
+            return wrong
+          }
+          return converted
+        } else {
+          return input
+        }
+      }
+      return input
+    },
   })
 
   const forwardedRef = useForwardedRef(ref)

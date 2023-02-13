@@ -40,7 +40,11 @@ import {
 const formSchema = z.object({
   username: z.string().min(3),
   email: z.string().email().min(1),
-  name: z.object({ first: z.string().min(3), last: z.string().min(3) }),
+  name: z.object({
+    first: z.string().min(3),
+    last: z.string().min(3),
+    nick: z.string().nullable(),
+  }),
   age: z.number().min(0),
   medals: z.number().min(1).nullable(),
   language: z.string().min(1),
@@ -58,6 +62,7 @@ const defaultValues: FormData = {
   name: {
     first: 'John',
     last: 'Doe',
+    nick: null,
   },
   age: 25,
   medals: null,
@@ -149,6 +154,12 @@ export function FormExampleTemplate({
                     type="text"
                     name="name.last"
                     placeholder="Last name"
+                  />
+                  <Input
+                    id="name.nick"
+                    type="text"
+                    name="name.nick"
+                    placeholder="Nickname"
                   />
                 </div>
               </FieldSet>
