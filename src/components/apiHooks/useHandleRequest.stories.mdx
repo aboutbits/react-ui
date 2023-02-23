@@ -9,9 +9,9 @@ import { useHandleRequest } from './useHandleRequest'
 
 # useHandleRequest
 
-The useHandleRequest hook reduces the boilerplate code to handle a request against the backend.
-It takes a function that fires a request, and a success callback function as parameters.
-The hook will then return a function that fires the request and handles the error and intermediate state.
+The `useHandleRequest` hook reduces the boilerplate code to handle a request against the backend.
+It takes a request function and an optional success callback function as parameters.
+The hook returns a function to fire the request and handle the error and intermediate state.
 
 This component expects the following libraries to be installed:
 
@@ -21,19 +21,19 @@ npm i axios
 
 ### Parameter
 
-| parameter                         | type                      | description                                                        |
-| --------------------------------- | ------------------------- | ------------------------------------------------------------------ |
-| requestAction                     | `() => Promise<Response>` | The function that makes the actual request against the backend.    |
-| onSuccess                         | `() => void`              | Callback function after successful request.                        |
-| options?.apiFallbackErrorMessage? | `string`                  | Allows you to pass an optional message string for a general error. |
+| parameter                         | type                                            | description                                                        |
+| --------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------ |
+| requestAction                     | `(parameters: Parameters) => Promise<Response>` | The function that makes the actual request against the backend.    |
+| onSuccess                         | `(response: Response) => void`                  | The callback function after successful request.                    |
+| options?.apiFallbackErrorMessage? | `string`                                        | Allows you to pass an optional message string for a general error. |
 
 ### Return value
 
-| property        | type                  | description                        |
-| --------------- | --------------------- | ---------------------------------- |
-| apiErrorMessage | `string OR null`      | Error message of the API request.  |
-| isRequesting    | `boolean`             | True while the request is pending. |
-| onRequest       | `() => Promise<void>` | Function to fire the request.      |
+| property        | type                                                         | description                        |
+| --------------- | ------------------------------------------------------------ | ---------------------------------- |
+| apiErrorMessage | `string OR null`                                             | Error message of the API request.  |
+| isRequesting    | `boolean`                                                    | True while the request is pending. |
+| onRequest       | `(parameters: Parameters) => Promise<Response OR undefined>` | Function to fire the request.      |
 
 ### Internationalization messages
 
@@ -42,11 +42,11 @@ npm i axios
 ## Usage
 
 ```tsx
-import Axios, { AxiosResponse } from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { useHandleRequest } from '@aboutbits/react-ui'
 import { ReactElement } from 'react'
 
-const deleteUser = Axios.delete<void, AxiosResponse<void>>(
+const deleteUser = axios.delete<void, AxiosResponse<void>>(
   'http://localhost:8080/users/1'
 )
 
@@ -77,9 +77,9 @@ If you are not sure, whether the backend always returns the error message in an 
 
 ```ts
 import { useHandleRequest } from '@aboutbits/react-ui'
-import Axios, { AxiosResponse } from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
-const deleteUser = Axios.delete<void, AxiosResponse<void>>(
+const deleteUser = axios.delete<void, AxiosResponse<void>>(
   'http://localhost:8080/users/1'
 )
 
@@ -94,4 +94,32 @@ const { apiErrorMessage, isRequesting, onRequest } = useHandleRequest(
     apiFallbackErrorMessage: 'Server error',
   }
 )
+```
+
+### With parameters and without success callback
+
+You can also pass parameters to the request function and omit the success callback.
+
+```ts
+import { useHandleRequest } from '@aboutbits/react-ui'
+import axios, { AxiosResponse } from 'axios'
+
+const validate = (formData: FormData) => {
+  return axios.post<void, AxiosResponse<SuccessResponse>>(
+    'http://localhost:8080/validate-form',
+    formData
+  )
+}
+
+const { apiErrorMessage, isRequesting, onRequest } = useHandleRequest(validate)
+
+// ...
+
+const result = await onRequest(formData)
+
+if (result === undefined) {
+  console.log('Error')
+} else {
+  console.log('Success', result.data) // result is of type AxiosResponse<SuccessResponse>
+}
 ```

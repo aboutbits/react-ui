@@ -3,28 +3,56 @@ import { useState } from 'react'
 import { useInternationalization } from '../../framework'
 import { ErrorBody } from './types'
 
+// Overload for when there are no parameters
 export function useHandleRequest<Response>(
   requestAction: () => Promise<Response>,
-  onSuccess: () => void,
+  onSuccess?: (response: Response) => void,
   options?: {
     apiFallbackErrorMessage?: string
   }
 ): {
   apiErrorMessage: string | null
   isRequesting: boolean
-  onRequest: () => Promise<void>
+  onRequest: () => Promise<Response | undefined>
+}
+
+// Overload for when there are parameters
+export function useHandleRequest<Response, Parameters>(
+  requestAction: (parameters: Parameters) => Promise<Response>,
+  onSuccess?: (response: Response) => void,
+  options?: {
+    apiFallbackErrorMessage?: string
+  }
+): {
+  apiErrorMessage: string | null
+  isRequesting: boolean
+  onRequest: (parameters: Parameters) => Promise<Response | undefined>
+}
+
+// Implementation
+export function useHandleRequest<Response, Parameters = undefined>(
+  requestAction: (parameters?: Parameters) => Promise<Response>,
+  onSuccess?: (response: Response) => void,
+  options?: {
+    apiFallbackErrorMessage?: string
+  }
+): {
+  apiErrorMessage: string | null
+  isRequesting: boolean
+  onRequest: (parameters?: Parameters) => Promise<Response | undefined>
 } {
   const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null)
   const { messages } = useInternationalization()
 
   const [isRequesting, setIsRequesting] = useState<boolean>(false)
 
-  const onRequest = async () => {
+  const onRequest = async (parameters?: Parameters) => {
     try {
       setApiErrorMessage(null)
       setIsRequesting(true)
-      await requestAction()
-      onSuccess()
+      const response = await requestAction(parameters)
+      onSuccess?.(response)
+      return response
     } catch (error) {
       const maybeAxiosError = error as AxiosError<ErrorBody | undefined>
 
@@ -42,7 +70,7 @@ export function useHandleRequest<Response>(
 
   return {
     apiErrorMessage,
-    isRequesting: isRequesting,
+    isRequesting,
     onRequest,
   }
 }

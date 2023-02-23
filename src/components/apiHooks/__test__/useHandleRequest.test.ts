@@ -5,6 +5,9 @@ import { useHandleRequest } from '../useHandleRequest'
 describe('useHandleRequest', () => {
   const onRequest = () => new Promise((resolve) => setTimeout(resolve, 100))
 
+  const onRequestWithResponse = () =>
+    new Promise((resolve) => setTimeout(() => resolve({ success: true }), 100))
+
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const onSuccess = () => {}
 
@@ -18,6 +21,20 @@ describe('useHandleRequest', () => {
 
   const onRequestWithoutErrorResponse = () =>
     new Promise((resolve, reject) => setTimeout(() => reject(), 100))
+
+  const onRequestWithParametersWithSuccess = (id: number) =>
+    new Promise((resolve) =>
+      setTimeout(() => resolve({ id, success: true }), 100)
+    )
+
+  const onRequestWithParametersWithErrorResponse = (id: number) =>
+    new Promise((resolve, reject) =>
+      setTimeout(
+        () =>
+          reject({ response: { data: { message: `Server Error for ${id}` } } }),
+        100
+      )
+    )
 
   test('should return initial state on first render', () => {
     const { result } = renderHook(() => useHandleRequest(onRequest, onSuccess))
@@ -38,13 +55,24 @@ describe('useHandleRequest', () => {
   })
 
   test('should call onSuccess on successful request', async () => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    const onSuccess = jest.fn(() => {})
+    const onSuccess = jest.fn()
     const { result } = renderHook(() => useHandleRequest(onRequest, onSuccess))
 
     await act(() => result.current.onRequest())
-    expect(onSuccess).toHaveBeenCalled()
     expect(onSuccess).toHaveBeenCalledTimes(1)
+  })
+
+  test('should call onSuccess with response data on successful request', async () => {
+    const onSuccess = jest.fn()
+
+    const { result } = renderHook(() =>
+      useHandleRequest(onRequestWithResponse, onSuccess)
+    )
+
+    await act(() => result.current.onRequest())
+
+    expect(onSuccess).toHaveBeenCalledTimes(1)
+    expect(onSuccess).toHaveBeenNthCalledWith(1, { success: true })
   })
 
   test('should set apiErrorMessage on error with response', async () => {
@@ -94,5 +122,27 @@ describe('useHandleRequest', () => {
     await act(() => result.current.onRequest())
 
     expect(result.current.apiErrorMessage).toBe(defaultMessages['error.api'])
+  })
+
+  test('should work with parameters and without success callback on success', async () => {
+    const { result } = renderHook(() =>
+      useHandleRequest(onRequestWithParametersWithSuccess)
+    )
+
+    const onRequestResult = await act(() => result.current.onRequest(1))
+
+    expect(onRequestResult).toStrictEqual({ id: 1, success: true })
+    expect(result.current.apiErrorMessage).toBeNull()
+  })
+
+  test('should work with parameters and without success on error', async () => {
+    const { result } = renderHook(() =>
+      useHandleRequest(onRequestWithParametersWithErrorResponse)
+    )
+
+    const onRequestResult = await act(() => result.current.onRequest(1))
+
+    expect(onRequestResult).toBeUndefined()
+    expect(result.current.apiErrorMessage).toBe('Server Error for 1')
   })
 })
