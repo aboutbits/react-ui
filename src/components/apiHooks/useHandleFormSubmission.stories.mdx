@@ -30,10 +30,10 @@ npm i axios react-hook-form
 
 ### Return value
 
-| property        | type                                     | description                                          |
-| --------------- | ---------------------------------------- | ---------------------------------------------------- |
-| apiErrorMessage | `string OR null`                         | Error message of the API request.                    |
-| onSubmit        | `(values: FieldValues) => Promise<void>` | Function to set as the submit function for the form. |
+| property        | type                                                                                                                                                  | description                                          |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| apiErrorMessage | <code>string &#124; null</code>                                                                                                                       | Error message of the API request.                    |
+| onSubmit        | <code>(values: FieldValues) => Promise&lt;&#123;success: true, response: Response&#125; &#124; &#123;success: false, error: unknown &#125;&gt;</code> | Function to set as the submit function for the form. |
 
 ### Internationalization messages
 
