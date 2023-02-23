@@ -3,6 +3,10 @@ import { useState } from 'react'
 import { useInternationalization } from '../../framework'
 import { ErrorBody } from './types'
 
+export type UseHandleRequestReturnType<Response> = Promise<
+  { success: true; response: Response } | { success: false; error: unknown }
+>
+
 // Overload for when there are no parameters
 export function useHandleRequest<Response>(
   requestAction: () => Promise<Response>,
@@ -13,7 +17,7 @@ export function useHandleRequest<Response>(
 ): {
   apiErrorMessage: string | null
   isRequesting: boolean
-  onRequest: () => Promise<Response | undefined>
+  onRequest: () => UseHandleRequestReturnType<Response>
 }
 
 // Overload for when there are parameters
@@ -26,7 +30,7 @@ export function useHandleRequest<Response, Parameters>(
 ): {
   apiErrorMessage: string | null
   isRequesting: boolean
-  onRequest: (parameters: Parameters) => Promise<Response | undefined>
+  onRequest: (parameters: Parameters) => UseHandleRequestReturnType<Response>
 }
 
 // Implementation
@@ -39,7 +43,7 @@ export function useHandleRequest<Response, Parameters = undefined>(
 ): {
   apiErrorMessage: string | null
   isRequesting: boolean
-  onRequest: (parameters?: Parameters) => Promise<Response | undefined>
+  onRequest: (parameters?: Parameters) => UseHandleRequestReturnType<Response>
 } {
   const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null)
   const { messages } = useInternationalization()
@@ -47,12 +51,14 @@ export function useHandleRequest<Response, Parameters = undefined>(
   const [isRequesting, setIsRequesting] = useState<boolean>(false)
 
   const onRequest = async (parameters?: Parameters) => {
+    let returnValue: Awaited<UseHandleRequestReturnType<Response>>
+
     try {
       setApiErrorMessage(null)
       setIsRequesting(true)
       const response = await requestAction(parameters)
       onSuccess?.(response)
-      return response
+      returnValue = { success: true, response }
     } catch (error) {
       const maybeAxiosError = error as AxiosError<ErrorBody | undefined>
 
@@ -63,9 +69,13 @@ export function useHandleRequest<Response, Parameters = undefined>(
       } else {
         setApiErrorMessage(messages['error.api'])
       }
+
+      returnValue = { success: false, error }
     } finally {
       setIsRequesting(false)
     }
+
+    return returnValue
   }
 
   return {

@@ -1,4 +1,4 @@
-import { waitFor, act, renderHook } from '@testing-library/react'
+import { act, renderHook, waitFor } from '@testing-library/react'
 import defaultMessages from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleRequest } from '../useHandleRequest'
 
@@ -6,7 +6,7 @@ describe('useHandleRequest', () => {
   const onRequest = () => new Promise((resolve) => setTimeout(resolve, 100))
 
   const onRequestWithResponse = () =>
-    new Promise((resolve) => setTimeout(() => resolve({ success: true }), 100))
+    new Promise((resolve) => setTimeout(() => resolve({ foo: 'bar' }), 100))
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const onSuccess = () => {}
@@ -23,9 +23,7 @@ describe('useHandleRequest', () => {
     new Promise((resolve, reject) => setTimeout(() => reject(), 100))
 
   const onRequestWithParametersWithSuccess = (id: number) =>
-    new Promise((resolve) =>
-      setTimeout(() => resolve({ id, success: true }), 100)
-    )
+    new Promise((resolve) => setTimeout(() => resolve({ id }), 100))
 
   const onRequestWithParametersWithErrorResponse = (id: number) =>
     new Promise((resolve, reject) =>
@@ -72,7 +70,7 @@ describe('useHandleRequest', () => {
     await act(() => result.current.onRequest())
 
     expect(onSuccess).toHaveBeenCalledTimes(1)
-    expect(onSuccess).toHaveBeenNthCalledWith(1, { success: true })
+    expect(onSuccess).toHaveBeenNthCalledWith(1, { foo: 'bar' })
   })
 
   test('should set apiErrorMessage on error with response', async () => {
@@ -131,7 +129,10 @@ describe('useHandleRequest', () => {
 
     const onRequestResult = await act(() => result.current.onRequest(1))
 
-    expect(onRequestResult).toStrictEqual({ id: 1, success: true })
+    expect(onRequestResult).toStrictEqual({
+      success: true,
+      response: { id: 1 },
+    })
     expect(result.current.apiErrorMessage).toBeNull()
   })
 
@@ -142,7 +143,10 @@ describe('useHandleRequest', () => {
 
     const onRequestResult = await act(() => result.current.onRequest(1))
 
-    expect(onRequestResult).toBeUndefined()
+    expect(onRequestResult).toStrictEqual({
+      success: false,
+      error: { response: { data: { message: 'Server Error for 1' } } },
+    })
     expect(result.current.apiErrorMessage).toBe('Server Error for 1')
   })
 })
