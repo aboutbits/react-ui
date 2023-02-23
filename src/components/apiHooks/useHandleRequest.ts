@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useInternationalization } from '../../framework'
 import { ErrorBody } from './types'
 
-export type UseHandleRequestReturnType<Response> = Promise<
+export type UseHandleRequestOnRequestReturnType<Response> = Promise<
   { success: true; response: Response } | { success: false; error: unknown }
 >
 
@@ -17,7 +17,7 @@ export function useHandleRequest<Response>(
 ): {
   apiErrorMessage: string | null
   isRequesting: boolean
-  onRequest: () => UseHandleRequestReturnType<Response>
+  onRequest: () => UseHandleRequestOnRequestReturnType<Response>
 }
 
 // Overload for when there are parameters
@@ -30,7 +30,9 @@ export function useHandleRequest<Response, Parameters>(
 ): {
   apiErrorMessage: string | null
   isRequesting: boolean
-  onRequest: (parameters: Parameters) => UseHandleRequestReturnType<Response>
+  onRequest: (
+    parameters: Parameters
+  ) => UseHandleRequestOnRequestReturnType<Response>
 }
 
 // Implementation
@@ -43,7 +45,9 @@ export function useHandleRequest<Response, Parameters = undefined>(
 ): {
   apiErrorMessage: string | null
   isRequesting: boolean
-  onRequest: (parameters?: Parameters) => UseHandleRequestReturnType<Response>
+  onRequest: (
+    parameters?: Parameters
+  ) => UseHandleRequestOnRequestReturnType<Response>
 } {
   const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null)
   const { messages } = useInternationalization()
@@ -51,7 +55,7 @@ export function useHandleRequest<Response, Parameters = undefined>(
   const [isRequesting, setIsRequesting] = useState<boolean>(false)
 
   const onRequest = async (parameters?: Parameters) => {
-    let returnValue: Awaited<UseHandleRequestReturnType<Response>>
+    let returnValue: Awaited<UseHandleRequestOnRequestReturnType<Response>>
 
     try {
       setApiErrorMessage(null)
