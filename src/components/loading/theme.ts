@@ -3,12 +3,12 @@ export default {
     base: 'rounded animate-pulse bg-neutral-800/[0.16]',
   },
   input: {
-    base: '',
+    base: 'space-y-1',
     upper: {
       base: 'p-2 w-40',
     },
     lower: {
-      base: 'p-5 mt-1 w-full',
+      base: 'p-5 w-full',
     },
   },
 }
