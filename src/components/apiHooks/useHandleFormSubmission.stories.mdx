@@ -20,20 +20,23 @@ npm i axios react-hook-form
 
 ### Parameter
 
-| parameter                         | type                                                                   | description                                                       |
-| --------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| form                              | `UseFormReturn<FieldValues>`                                           | The return value of `useForm`                                     |
-| submitAction                      | `() => Promise<Response>`                                              | The function that makes the actual request against the backend.   |
-| options?.onSuccess?               | `(response: Response, values: FieldValues) => void`                    | Callback function after successful request.                       |
-| options?.onError?                 | `(error: AxiosError<ErrorBody> \| Error, values: FieldValues) => void` | Callback function after occurrence of an error.                   |
-| options?.apiFallbackErrorMessage? | `string`                                                               | Allows you to pass an optional message string for a general error |
+| parameter                         | type                                           | description                                                       |
+| --------------------------------- | ---------------------------------------------- | ----------------------------------------------------------------- |
+| form                              | `UseFormReturn<Values>`                        | The return value of `useForm`                                     |
+| submitAction                      | `() => Promise<Response>`                      | The function that makes the actual request against the backend.   |
+| options?.onSuccess?               | `(response: Response, values: Values) => void` | Callback function after successful request.                       |
+| options?.onError?                 | `(error: Error, values: Values) => void`       | Callback function after occurrence of an error.                   |
+| options?.apiFallbackErrorMessage? | `string`                                       | Allows you to pass an optional message string for a general error |
+| options?.throwOnError?            | `boolean`                                      | If set, it will throw the error on failure                        |
+
+Used type generics: `Values extends FieldValues`, `Response`, `Error = unknown`
 
 ### Return value
 
-| property        | type                                                                                                                                                  | description                                          |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| apiErrorMessage | <code>string &#124; null</code>                                                                                                                       | Error message of the API request.                    |
-| onSubmit        | <code>(values: FieldValues) => Promise&lt;&#123;success: true, response: Response&#125; &#124; &#123;success: false, error: unknown &#125;&gt;</code> | Function to set as the submit function for the form. |
+| property        | type                                                                    | description                                          |
+| --------------- | ----------------------------------------------------------------------- | ---------------------------------------------------- |
+| apiErrorMessage | <code>string &#124; null</code>                                         | Error message of the API request.                    |
+| onSubmit        | <code>(values: Values) => Promise&lt;Response &#124; unknown&gt;</code> | Function to set as the submit function for the form. |
 
 ### Internationalization messages
 
