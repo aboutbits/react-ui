@@ -7,6 +7,7 @@ export type UseHandleFormSubmissionOptions<Values, Response, Error> = {
   onSuccess?: (response: Response, values: Values) => void
   onError?: (error: Error, values: Values) => void
   apiFallbackErrorMessage?: string
+  throwOnError?: boolean
 }
 
 export type UseHandleFormSubmissionOnSubmit<Values, Response> = (
@@ -79,6 +80,10 @@ export function useHandleFormSubmission<
           }
 
           options?.onError?.(error as Error, values)
+
+          if (options?.throwOnError) {
+            throw error as Error
+          }
         }
       },
       [messages, setError, clearErrors, options, submitAction]
