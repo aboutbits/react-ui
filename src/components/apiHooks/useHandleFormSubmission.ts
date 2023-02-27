@@ -1,9 +1,9 @@
-import axios, { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { FieldValues, Path, UseFormReturn } from 'react-hook-form'
 import { useInternationalization } from '../../framework'
 import { ErrorBody } from './types'
-import { joinFieldErrorMessages } from './utils'
+import { isAxiosErrorWithErrorBody, joinFieldErrorMessages } from './utils'
 
 export type UseHandleFormSubmissionOptions<Values, Response> = {
   onSuccess?: (response: Response, values: Values) => void
@@ -13,11 +13,7 @@ export type UseHandleFormSubmissionOptions<Values, Response> = {
 
 export type UseHandleFormSubmissionOnSubmit<Values, Response> = (
   values: Values
-) => UseHandleFormSubmissionOnSubmitReturnType<Response>
-
-export type UseHandleFormSubmissionOnSubmitReturnType<Response> = Promise<
-  { success: true; response: Response } | { success: false; error: unknown }
->
+) => Promise<Response | undefined>
 
 export function useHandleFormSubmission<Values extends FieldValues, Response>(
   { setError, clearErrors }: UseFormReturn<Values>,
@@ -40,29 +36,20 @@ export function useHandleFormSubmission<Values extends FieldValues, Response>(
   const onSubmit: UseHandleFormSubmissionOnSubmit<Values, Response> =
     useCallback(
       async (values) => {
-        let returnValue: Awaited<
-          UseHandleFormSubmissionOnSubmitReturnType<Response>
-        >
-
         try {
           clearErrors('apiError' as Path<Values>)
           setApiErrorMessage(null)
           const response = await submitAction(values)
           options?.onSuccess?.(response, values)
-          returnValue = { success: true, response }
+          return response
         } catch (error) {
           if (isMountedRef.current) {
-            // isAxios is not exported in version 0.27
-            // eslint-disable-next-line import/no-named-as-default-member
-            const isAxiosError = axios.isAxiosError(error)
             let apiErrorMessage: string | null = null
 
-            if (isAxiosError) {
-              const axiosError = error as AxiosError<ErrorBody | undefined>
-
-              if (axiosError.response?.data?.errors) {
+            if (isAxiosErrorWithErrorBody(error)) {
+              if (error.response.data.errors) {
                 const errors = joinFieldErrorMessages(
-                  axiosError.response.data.errors
+                  error.response.data.errors
                 )
                 Object.entries(errors).forEach(([field, error]) =>
                   setError(field as Path<Values>, {
@@ -72,8 +59,8 @@ export function useHandleFormSubmission<Values extends FieldValues, Response>(
                 )
               }
 
-              if (axiosError.response?.data?.message) {
-                apiErrorMessage = axiosError.response?.data?.message
+              if (error.response.data.message) {
+                apiErrorMessage = error.response?.data?.message
               }
             }
 
@@ -90,11 +77,7 @@ export function useHandleFormSubmission<Values extends FieldValues, Response>(
           }
 
           options?.onError?.(error as AxiosError<ErrorBody> | Error, values)
-
-          returnValue = { success: false, error }
         }
-
-        return returnValue
       },
       [messages, setError, clearErrors, options, submitAction]
     )
