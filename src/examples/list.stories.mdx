@@ -122,21 +122,6 @@ export const TemplateComplexList = ({
         (filter.role === '' || item.role === filter.role) &&
         (filter.department === '' || item.department === filter.department)
     )
-  const Filter = ({ variant, className }) => (
-    <SectionHeaderGroup className={className}>
-      <Select id="role" name="role" variant={variant}>
-        <Option value="">All roles</Option>
-        <Option value="ADMIN">Admin</Option>
-        <Option value="USER">User</Option>
-      </Select>
-      <Select id="department" name="department" variant={variant}>
-        <Option value="">All departments</Option>
-        <Option value="HR">Human Resources</Option>
-        <Option value="IT">Engineering</Option>
-        <Option value="SALES">Sales</Option>
-      </Select>
-    </SectionHeaderGroup>
-  )
   return (
     <Section>
       <SectionHeaderArea>
@@ -159,14 +144,23 @@ export const TemplateComplexList = ({
               className="flex-col md:flex-row gap-y-2"
             >
               <SectionSearch className="w-full md:w-auto grow" />
-              <Filter
-                variant={InputVariant.transparent}
-                className="hidden md:flex"
-              />
-              <Filter
-                variant={InputVariant.soft}
-                className="grid md:hidden grid-cols-2 w-full"
-              />
+              <SectionHeaderGroup className="grid grid-cols-2 w-full md:block md:flex md:w-auto">
+                <Select id="role" name="role" variant={InputVariant.soft}>
+                  <Option value="">All roles</Option>
+                  <Option value="ADMIN">Admin</Option>
+                  <Option value="USER">User</Option>
+                </Select>
+                <Select
+                  id="department"
+                  name="department"
+                  variant={InputVariant.soft}
+                >
+                  <Option value="">All departments</Option>
+                  <Option value="HR">Human Resources</Option>
+                  <Option value="IT">Engineering</Option>
+                  <Option value="SALES">Sales</Option>
+                </Select>
+              </SectionHeaderGroup>
             </SectionHeaderGroup>
           </SectionHeaderRow>
         </SectionFilter>
