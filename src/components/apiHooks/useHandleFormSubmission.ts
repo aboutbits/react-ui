@@ -1,13 +1,11 @@
-import { AxiosError } from 'axios'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { FieldValues, Path, UseFormReturn } from 'react-hook-form'
 import { useInternationalization } from '../../framework'
-import { ErrorBody } from './types'
 import { isAxiosErrorWithErrorBody, joinFieldErrorMessages } from './utils'
 
-export type UseHandleFormSubmissionOptions<Values, Response> = {
+export type UseHandleFormSubmissionOptions<Values, Response, Error> = {
   onSuccess?: (response: Response, values: Values) => void
-  onError?: (error: AxiosError<ErrorBody> | Error, values: Values) => void
+  onError?: (error: Error, values: Values) => void
   apiFallbackErrorMessage?: string
 }
 
@@ -15,10 +13,14 @@ export type UseHandleFormSubmissionOnSubmit<Values, Response> = (
   values: Values
 ) => Promise<Response | undefined>
 
-export function useHandleFormSubmission<Values extends FieldValues, Response>(
+export function useHandleFormSubmission<
+  Values extends FieldValues,
+  Response,
+  Error = unknown
+>(
   { setError, clearErrors }: UseFormReturn<Values>,
   submitAction: (body: Values) => Promise<Response>,
-  options?: UseHandleFormSubmissionOptions<Values, Response>
+  options?: UseHandleFormSubmissionOptions<Values, Response, Error>
 ): {
   apiErrorMessage: string | null
   onSubmit: UseHandleFormSubmissionOnSubmit<Values, Response>
@@ -76,7 +78,7 @@ export function useHandleFormSubmission<Values extends FieldValues, Response>(
             })
           }
 
-          options?.onError?.(error as AxiosError<ErrorBody> | Error, values)
+          options?.onError?.(error as Error, values)
         }
       },
       [messages, setError, clearErrors, options, submitAction]
