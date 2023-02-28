@@ -9,7 +9,7 @@ import { useHandleFormSubmission } from './useHandleFormSubmission'
 
 # useHandleFormSubmission
 
-The useHandleFormSubmission hook reduces the boilerplate code to handle a `React Hook Form` submission.
+The `useHandleFormSubmission` hook reduces the boilerplate code to handle a `React Hook Form` submission.
 The success callback will be called if the request was successful, otherwise the hook will try to extract validation errors and global errors.
 
 This component expects the following libraries to be installed:
@@ -88,7 +88,7 @@ function UpdateUserForm(): ReactElement {
 
 ### With fallback error message
 
-If you are not sure, whether the backend always returns the error message in an appropriate format, you can define a fallback message id.
+If you are not sure, whether the backend always returns the error message in an appropriate format, you can define a fallback message.
 
 ```ts
 import { useHandleFormSubmission } from '@aboutbits/react-ui'
@@ -121,7 +121,7 @@ const { apiErrorMessage, onSubmit } = useHandleFormSubmission(
 
 ### Validation errors per field
 
-The `useHandleFormSubmission` hook expects an error of the following type to do proper per error handling.
+The `useHandleFormSubmission` hook expects an error of the following type to do proper error handling.
 The `errors` property will be used to extract validation errors per field, whereas the `message` property will be used for global error messages.
 
 ```ts
