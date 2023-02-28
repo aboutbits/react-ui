@@ -129,10 +129,7 @@ describe('useHandleRequest', () => {
 
     const onRequestResult = await act(() => result.current.onRequest(1))
 
-    expect(onRequestResult).toStrictEqual({
-      success: true,
-      response: { id: 1 },
-    })
+    expect(onRequestResult).toStrictEqual({ id: 1 })
     expect(result.current.apiErrorMessage).toBeNull()
   })
 
@@ -143,10 +140,7 @@ describe('useHandleRequest', () => {
 
     const onRequestResult = await act(() => result.current.onRequest(1))
 
-    expect(onRequestResult).toStrictEqual({
-      success: false,
-      error: { response: { data: { message: 'Server Error for 1' } } },
-    })
+    expect(onRequestResult).toBeUndefined()
     expect(result.current.apiErrorMessage).toBe('Server Error for 1')
   })
 })
