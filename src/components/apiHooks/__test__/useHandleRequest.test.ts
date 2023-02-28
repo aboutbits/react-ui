@@ -14,7 +14,11 @@ describe('useHandleRequest', () => {
   const onRequestWithErrorResponse = () =>
     new Promise((resolve, reject) =>
       setTimeout(
-        () => reject({ response: { data: { message: 'Server Error' } } }),
+        () =>
+          reject({
+            isAxiosError: true,
+            response: { data: { message: 'Server Error' } },
+          }),
         100
       )
     )
@@ -29,7 +33,10 @@ describe('useHandleRequest', () => {
     new Promise((resolve, reject) =>
       setTimeout(
         () =>
-          reject({ response: { data: { message: `Server Error for ${id}` } } }),
+          reject({
+            isAxiosError: true,
+            response: { data: { message: `Server Error for ${id}` } },
+          }),
         100
       )
     )
@@ -142,5 +149,26 @@ describe('useHandleRequest', () => {
 
     expect(onRequestResult).toBeUndefined()
     expect(result.current.apiErrorMessage).toBe('Server Error for 1')
+  })
+
+  test('onRequest should throw on error if option is set', async () => {
+    const { result } = renderHook(() =>
+      useHandleRequest(onRequestWithErrorResponse, undefined, {
+        throwOnError: true,
+      })
+    )
+
+    let error = null
+
+    try {
+      await act(() => result.current.onRequest())
+    } catch (e) {
+      error = e
+    }
+
+    expect(error).toEqual({
+      isAxiosError: true,
+      response: { data: { message: 'Server Error' } },
+    })
   })
 })
