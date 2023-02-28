@@ -9,7 +9,7 @@ import { useHandleFormSubmission } from './useHandleFormSubmission'
 
 # useHandleFormSubmission
 
-The useHandleFormSubmission hook reduces the boilerplate code to handle a `React Hook Form` submission.
+The `useHandleFormSubmission` hook reduces the boilerplate code to handle a `React Hook Form` submission.
 The success callback will be called if the request was successful, otherwise the hook will try to extract validation errors and global errors.
 
 This component expects the following libraries to be installed:
@@ -20,20 +20,23 @@ npm i axios react-hook-form
 
 ### Parameter
 
-| parameter                         | type                                                                   | description                                                       |
-| --------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| form                              | `UseFormReturn<FieldValues>`                                           | The return value of `useForm`                                     |
-| submitAction                      | `() => Promise<Response>`                                              | The function that makes the actual request against the backend.   |
-| options?.onSuccess?               | `(response: Response, values: FieldValues) => void`                    | Callback function after successful request.                       |
-| options?.onError?                 | `(error: AxiosError<ErrorBody> \| Error, values: FieldValues) => void` | Callback function after occurrence of an error.                   |
-| options?.apiFallbackErrorMessage? | `string`                                                               | Allows you to pass an optional message string for a general error |
+| parameter                         | type                                           | description                                                       |
+| --------------------------------- | ---------------------------------------------- | ----------------------------------------------------------------- |
+| form                              | `UseFormReturn<Values>`                        | The return value of `useForm`                                     |
+| submitAction                      | `() => Promise<Response>`                      | The function that makes the actual request against the backend.   |
+| options?.onSuccess?               | `(response: Response, values: Values) => void` | Callback function after successful request.                       |
+| options?.onError?                 | `(error: Error, values: Values) => void`       | Callback function after occurrence of an error.                   |
+| options?.apiFallbackErrorMessage? | `string`                                       | Allows you to pass an optional message string for a general error |
+| options?.throwOnError?            | `boolean`                                      | If set, it will throw the error on failure                        |
+
+Used type generics: `Values extends FieldValues`, `Response`, `Error = unknown`
 
 ### Return value
 
-| property        | type                                     | description                                          |
-| --------------- | ---------------------------------------- | ---------------------------------------------------- |
-| apiErrorMessage | `string OR null`                         | Error message of the API request.                    |
-| onSubmit        | `(values: FieldValues) => Promise<void>` | Function to set as the submit function for the form. |
+| property        | type                                                                    | description                                          |
+| --------------- | ----------------------------------------------------------------------- | ---------------------------------------------------- |
+| apiErrorMessage | <code>string &#124; null</code>                                         | Error message of the API request.                    |
+| onSubmit        | <code>(values: Values) => Promise&lt;Response &#124; unknown&gt;</code> | Function to set as the submit function for the form. |
 
 ### Internationalization messages
 
@@ -85,7 +88,7 @@ function UpdateUserForm(): ReactElement {
 
 ### With fallback error message
 
-If you are not sure, whether the backend always returns the error message in an appropriate format, you can define a fallback message id.
+If you are not sure, whether the backend always returns the error message in an appropriate format, you can define a fallback message.
 
 ```ts
 import { useHandleFormSubmission } from '@aboutbits/react-ui'
@@ -118,7 +121,7 @@ const { apiErrorMessage, onSubmit } = useHandleFormSubmission(
 
 ### Validation errors per field
 
-The `useHandleFormSubmission` hook expects an error of the following type to do proper per error handling.
+The `useHandleFormSubmission` hook expects an error of the following type to do proper error handling.
 The `errors` property will be used to extract validation errors per field, whereas the `message` property will be used for global error messages.
 
 ```ts

@@ -14,7 +14,8 @@ const getPromiseState = async (
 }
 
 describe('useHandleFormSubmission', () => {
-  const onMutate = () => new Promise((resolve) => setTimeout(resolve, 500))
+  const onMutate = () =>
+    new Promise((resolve) => setTimeout(() => resolve({ foo: 'bar' }), 500))
 
   const onSuccess = () => undefined
 
@@ -177,5 +178,53 @@ describe('useHandleFormSubmission', () => {
     await act(() => result.current.onSubmit({}))
 
     expect(result.current.apiErrorMessage).toBe(defaultMessages['error.api'])
+  })
+
+  test('onSubmit should return the response on success', async () => {
+    const { result: form } = renderHook(() => useForm())
+
+    const { result: hookResult } = renderHook(() =>
+      useHandleFormSubmission(form.current, onMutate, {
+        onSuccess,
+      })
+    )
+
+    const onSubmitResult = await act(() => hookResult.current.onSubmit({}))
+
+    expect(onSubmitResult).toEqual({ foo: 'bar' })
+  })
+
+  test('onSubmit should return nothing on error', async () => {
+    const { result: form } = renderHook(() => useForm())
+
+    const { result: hookResult } = renderHook(() =>
+      useHandleFormSubmission(form.current, onDeleteWithErrorResponse, {
+        onSuccess,
+      })
+    )
+
+    const onSubmitResult = await act(() => hookResult.current.onSubmit({}))
+
+    expect(onSubmitResult).toEqual(undefined)
+  })
+
+  test('onSubmit should throw on error if option is set', async () => {
+    const { result: form } = renderHook(() => useForm())
+
+    const { result: hookResult } = renderHook(() =>
+      useHandleFormSubmission(form.current, onDeleteWithErrorResponse, {
+        throwOnError: true,
+      })
+    )
+
+    let error = null
+
+    try {
+      await act(() => hookResult.current.onSubmit({}))
+    } catch (e) {
+      error = e
+    }
+
+    expect(error).toEqual(axiosError)
   })
 })
