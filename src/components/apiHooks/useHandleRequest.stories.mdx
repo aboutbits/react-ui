@@ -21,19 +21,21 @@ npm i axios
 
 ### Parameter
 
-| parameter                         | type                                            | description                                                        |
-| --------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------ |
-| requestAction                     | `(parameters: Parameters) => Promise<Response>` | The function that makes the actual request against the backend.    |
-| onSuccess                         | `(response: Response) => void`                  | The callback function after successful request.                    |
-| options?.apiFallbackErrorMessage? | `string`                                        | Allows you to pass an optional message string for a general error. |
+| parameter                         | type                                             | description                                                        |
+| --------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------ |
+| requestAction                     | `(parameters?: Parameters) => Promise<Response>` | The function that makes the actual request against the backend.    |
+| onSuccess                         | `(response: Response) => void`                   | The callback function after successful request.                    |
+| options?.apiFallbackErrorMessage? | `string`                                         | Allows you to pass an optional message string for a general error. |
+
+_Hint_: If parameters are specified in the `requestAction` function, the `onRequest` function expects the same parameters.
 
 ### Return value
 
-| property        | type                                                                              | description                        |
-| --------------- | --------------------------------------------------------------------------------- | ---------------------------------- |
-| apiErrorMessage | <code>string &#124; null</code>                                                   | Error message of the API request.  |
-| isRequesting    | `boolean`                                                                         | True while the request is pending. |
-| onRequest       | <code>(parameters: Parameters) => Promise&lt;Response &#124; undefined&gt;</code> | Function to fire the request.      |
+| property        | type                                                                               | description                        |
+| --------------- | ---------------------------------------------------------------------------------- | ---------------------------------- |
+| apiErrorMessage | <code>string &#124; null</code>                                                    | Error message of the API request.  |
+| isRequesting    | `boolean`                                                                          | True while the request is pending. |
+| onRequest       | <code>(parameters?: Parameters) => Promise&lt;Response &#124; undefined&gt;</code> | Function to fire the request.      |
 
 ### Internationalization messages
 
