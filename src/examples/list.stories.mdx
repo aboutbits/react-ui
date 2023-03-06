@@ -122,6 +122,10 @@ export const TemplateComplexList = ({
         (filter.role === '' || item.role === filter.role) &&
         (filter.department === '' || item.department === filter.department)
     )
+  const isScreenMedium = useMatchMediaQuery('(min-width: 768px)')
+  const filterVariant = isScreenMedium
+    ? InputVariant.soft
+    : InputVariant.transparent
   return (
     <Section>
       <SectionHeaderArea>
@@ -145,7 +149,7 @@ export const TemplateComplexList = ({
             >
               <SectionSearch className="w-full md:w-auto grow" />
               <SectionHeaderGroup className="grid grid-cols-2 w-full md:block md:flex md:w-auto">
-                <Select id="role" name="role" variant={InputVariant.soft}>
+                <Select id="role" name="role" variant={filterVariant}>
                   <Option value="">All roles</Option>
                   <Option value="ADMIN">Admin</Option>
                   <Option value="USER">User</Option>
@@ -153,7 +157,7 @@ export const TemplateComplexList = ({
                 <Select
                   id="department"
                   name="department"
-                  variant={InputVariant.soft}
+                  variant={filterVariant}
                 >
                   <Option value="">All departments</Option>
                   <Option value="HR">Human Resources</Option>
