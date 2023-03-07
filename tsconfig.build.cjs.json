@@ -3,5 +3,13 @@
   "compilerOptions": {
     "target": "ES5",
     "outDir": "./dist/cjs"
-  }
+  },
+  "exclude": [
+    "**/__test__/*",
+    "**/__tests__/*",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "src/examples/*",
+    ".storybook/*"
+  ]
 }

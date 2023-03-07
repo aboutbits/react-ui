@@ -1,6 +1,6 @@
 import { Source } from '@storybook/addon-docs'
 import { Description } from '@storybook/components'
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import defaultMessages from '../../src/framework/internationalization/defaultMessages.en'
 
 export function InternationalizationMessages({

@@ -3,5 +3,13 @@
   "compilerOptions": {
     "target": "ES6",
     "outDir": "./dist/esm"
-  }
+  },
+  "exclude": [
+    "**/__test__/*",
+    "**/__tests__/*",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "src/examples/*",
+    ".storybook/*"
+  ]
 }

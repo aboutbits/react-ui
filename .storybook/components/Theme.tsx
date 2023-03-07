@@ -1,6 +1,6 @@
 import { Source } from '@storybook/addon-docs'
 import { Description } from '@storybook/components'
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import { defaultTheme } from '../../src/framework/theme/theme'
 
 export function Theme({
@@ -17,6 +17,8 @@ export function Theme({
           // @ts-ignore
           items.map((item) => [item, defaultTheme?.[component]?.[item]])
         )
+        // eslint-disable-next-line
+        // @ts-ignore
       : defaultTheme?.[component],
   }
 

@@ -6,14 +6,8 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
     "declaration": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "resolveJsonModule": true
   },
-  "exclude": [
-    "**/__test__/*",
-    "**/__tests__/*",
-    "**/*.stories.tsx",
-    "**/*.stories.ts",
-    "src/examples/*"
-  ],
-  "include": ["src"]
+  "include": ["src", ".storybook/**/*"]
 }

@@ -1,4 +1,3 @@
-import React from 'react'
 import { defaultTheme as customTheme, ReactUIProvider, makeLinkComponent } from '../src'
 import '../styles/index.css'
 

@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory, DecoratorFn } from '@storybook/react'
-import React, { ReactElement, ReactNode, useState } from 'react'
+import { ReactElement, ReactNode, useState } from 'react'
 import { Button } from '../../button'
 import {
   Dialog,
