@@ -1,9 +1,9 @@
 import { IndexType } from '@aboutbits/pagination'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { ReactElement, useCallback, useEffect, useState } from 'react'
+import { action } from '@storybook/addon-actions'
+import { ReactElement, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
-import { useHandleFormSubmission } from '../components/apiHooks'
 import { SubmitButton } from '../components/button'
 import {
   ContentArea,
@@ -15,8 +15,8 @@ import {
   FieldSet,
   FieldSetIndent,
   Form,
-  FormError,
-  Input,
+  Input2,
+  Input3,
   Option,
   Select,
   TextArea,
@@ -80,53 +80,23 @@ const resolver = yupResolver(
   })
 )
 
-export function FormExampleTemplate({
-  onSubmit,
-}: {
-  onSubmit: (data: FormData) => void
-}): ReactElement {
+export function FormExampleTemplate(): ReactElement {
   const form = useForm<FormData>({
     resolver,
     defaultValues,
   })
 
-  const submitAction = useCallback(
-    (data: FormData) =>
-      new Promise<void>((resolve, reject) =>
-        setTimeout(() => {
-          if (data.serverValidationErrors) {
-            reject({
-              isAxiosError: true,
-              response: {
-                data: {
-                  message: 'Oops, something went wrong.',
-                  errors: {
-                    'name.first': [
-                      'This is not a good name',
-                      'Please choose another name',
-                    ],
-                    bio: ['Please provide a better bio'],
-                    privacy: ['You must accept the privacy policy'],
-                  },
-                },
-              },
-            })
-            return
-          }
+  const inputRef = useRef<HTMLInputElement>(null)
 
-          onSubmit(data)
-          resolve()
-        }, 1000)
-      ),
-    [onSubmit]
-  )
-
-  const { onSubmit: onSubmitHandler, apiErrorMessage } =
-    useHandleFormSubmission(form, submitAction)
+  const testFunc = () => {
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }
 
   return (
     <ContentArea>
-      <Form form={form} onSubmit={onSubmitHandler} className="space-y-3">
+      <Form form={form} onSubmit={action('onSubmit')} className="space-y-3">
         <Section>
           <SectionHeader title="User edit" />
           <SectionContainer>
@@ -138,34 +108,40 @@ export function FormExampleTemplate({
                   alignVertical: DescriptionItemContentAlignVertical.center,
                 }}
               />
-              <Input
+              <Input3
                 id="username"
                 type="text"
                 name="username"
                 label="Username"
                 placeholder="Username"
+                ref={inputRef}
               />
+              <button onClick={testFunc} type="button">
+                TEST
+              </button>
               <FieldSet
                 label="Name"
                 fields={['name.first', 'name.last']}
                 indent={FieldSetIndent.label}
               >
                 <div className="flex md:flex-row flex-col justify-between gap-3 [&>*]:flex-1">
-                  <Input
+                  <Input2
                     id="name.first"
                     type="text"
                     name="name.first"
+                    label="First name"
                     placeholder="First name"
                   />
-                  <Input
+                  <Input2
                     id="name.last"
                     type="text"
                     name="name.last"
+                    label="Last name"
                     placeholder="Last name"
                   />
                 </div>
               </FieldSet>
-              <Input
+              <Input2
                 id="email"
                 type="email"
                 name="email"
@@ -226,7 +202,6 @@ export function FormExampleTemplate({
                   applyInputHeight
                 />
               </FieldSet>
-              <FormError>{apiErrorMessage}</FormError>
             </SectionContent>
             <SectionFooterWithActions>
               <SubmitButton>Save</SubmitButton>

@@ -44,7 +44,7 @@
     "@headlessui/react": "^1.7.7",
     "axios": "^0.27.0 || ^1.1.0",
     "classnames": "^2.0.0",
-    "react-hook-form": "^7.36.1"
+    "react-hook-form": "^7.43.5"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0"
