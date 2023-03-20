@@ -7,7 +7,10 @@ import {
   useContext,
 } from 'react'
 
-export type LinkComponentProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+export type LinkComponentProps = React.DetailedHTMLProps<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
+> & {
   /**
    * Define the href for the Link.
    **/
