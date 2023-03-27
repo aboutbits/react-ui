@@ -3,29 +3,28 @@ import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/inMemory
 import { Actions } from '@aboutbits/react-pagination/dist/types'
 import { AsyncView } from '@aboutbits/react-toolbox'
 import { ReactElement, ReactNode } from 'react'
-import { useForm } from 'react-hook-form'
+import { FormProvider, useForm } from 'react-hook-form'
 import { useInternationalization, useTheme } from '../../../framework'
 import {
   Dialog,
   DialogContentArea,
   DialogContentEmpty,
   DialogContentError,
+  DialogContentList,
+  DialogContentListLoading,
+  DialogFooterWithPaginationInMemory,
   DialogHeaderArea,
   DialogHeaderCloseAction,
+  DialogHeaderRow,
   DialogHeaderTitle,
+  DialogListItemButton,
   DialogPosition,
   DialogProps,
-  DialogContentListLoading,
-  DialogHeaderRow,
-  DialogFooterWithPaginationInMemory,
-  DialogContentList,
-  DialogListItemButton,
 } from '../../dialog'
 import { PaginationInMemoryProps } from '../../pagination'
 import { AutoSubmit } from '../AutoSubmit'
 import { Input } from '../Input'
 import { InputVariant } from '../types'
-import { Form } from '../Form'
 
 type FilterParameters = {
   search: string
@@ -138,15 +137,24 @@ export function SelectItemDialogSearch({
   const form = useForm({ defaultValues })
 
   return (
-    <Form form={form} onSubmit={actions.updateQuery} className="flex-1">
-      <AutoSubmit />
-      <Input
-        name="search"
-        variant={InputVariant.soft}
-        iconStart={IconSearch}
-        placeholder={messages['search.placeholder']}
-      />
-    </Form>
+    <FormProvider {...form}>
+      <form
+        onSubmit={(event) => {
+          // Stop propagation to prevent submitting a form outside of the dialog (bubbling up the React tree)
+          event.stopPropagation()
+          return form.handleSubmit(actions.updateQuery)(event)
+        }}
+        className="flex-1"
+      >
+        <AutoSubmit />
+        <Input
+          name="search"
+          variant={InputVariant.soft}
+          iconStart={IconSearch}
+          placeholder={messages['search.placeholder']}
+        />
+      </form>
+    </FormProvider>
   )
 }
 
