@@ -1,4 +1,4 @@
-import { replacePlaceholderColorWithTextColor } from '../SelectItem'
+import { replacePlaceholderColorWithTextColor } from '../replacePlaceholderColorWithTextColor'
 
 describe('cssClassConverter', () => {
   it('should change nothing, no text-<color> or placeholder:text-<color>', () => {
