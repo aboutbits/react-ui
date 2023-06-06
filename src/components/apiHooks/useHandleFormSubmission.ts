@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { FieldValues, Path, UseFormReturn } from 'react-hook-form'
 import { useInternationalization } from '../../framework'
+import { useIsMounted } from './useIsMounted'
 import { isAxiosErrorWithErrorBody, joinFieldErrorMessages } from './utils'
 
 export type UseHandleFormSubmissionOptions<Values, Response, Error> = {
@@ -28,13 +29,7 @@ export function useHandleFormSubmission<
 } {
   const { messages } = useInternationalization()
   const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null)
-  const isMountedRef = useRef(true)
-
-  useEffect(() => {
-    return () => {
-      isMountedRef.current = false
-    }
-  }, [])
+  const isMounted = useIsMounted()
 
   const onSubmit: UseHandleFormSubmissionOnSubmit<Values, Response> =
     useCallback(
@@ -46,7 +41,7 @@ export function useHandleFormSubmission<
           options?.onSuccess?.(response, values)
           return response
         } catch (error) {
-          if (isMountedRef.current) {
+          if (isMounted()) {
             let apiErrorMessage: string | null = null
 
             if (isAxiosErrorWithErrorBody(error)) {
@@ -86,7 +81,7 @@ export function useHandleFormSubmission<
           }
         }
       },
-      [messages, setError, clearErrors, options, submitAction]
+      [messages, setError, clearErrors, options, submitAction, isMounted]
     )
 
   return {
