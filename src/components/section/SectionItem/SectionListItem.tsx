@@ -33,7 +33,10 @@ export type SectionListItemButtonProps = ClassNameProps & {
 export const SectionListItemButton = React.forwardRef<
   HTMLButtonElement,
   SectionListItemButtonProps
->(({ children, onClick, className, ...props }, ref) => {
+>(function SectionListItemButton(
+  { children, onClick, className, ...props },
+  ref
+) {
   const { section } = useTheme()
 
   return (
@@ -53,14 +56,15 @@ export const SectionListItemButton = React.forwardRef<
   )
 })
 
-SectionListItemButton.displayName = 'SectionListItemButton'
-
 export type SectionListItemLinkProps = LinkComponentProps
 
 export const SectionListItemLink = React.forwardRef<
   HTMLAnchorElement,
   SectionListItemLinkProps
->(({ children, className, internal = true, ...props }, ref) => {
+>(function SectionListItemLink(
+  { children, className, internal = true, ...props },
+  ref
+) {
   const LinkComponent = useLinkComponent()
   const { section } = useTheme()
 
@@ -80,8 +84,6 @@ export const SectionListItemLink = React.forwardRef<
     </LinkComponent>
   )
 })
-
-SectionListItemLink.displayName = 'SectionListItemLink'
 
 type SectionListItemWithActionProps = ClassNameProps & {
   /**

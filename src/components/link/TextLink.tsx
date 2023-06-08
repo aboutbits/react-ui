@@ -2,8 +2,8 @@ import React from 'react'
 import classNames from 'classnames'
 import { useTheme, useLinkComponent, LinkComponentProps } from '../../framework'
 
-const TextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
-  ({ children, className, internal = true, ...props }, ref) => {
+export const TextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
+  function TextLink({ children, className, internal = true, ...props }, ref) {
     const LinkComponent = useLinkComponent()
     const { link } = useTheme()
     return (
@@ -18,7 +18,3 @@ const TextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
     )
   }
 )
-
-TextLink.displayName = 'TextLink'
-
-export { TextLink }

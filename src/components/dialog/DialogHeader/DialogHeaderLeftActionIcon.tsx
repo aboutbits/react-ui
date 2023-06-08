@@ -12,7 +12,7 @@ export type DialogHeaderLeftActionIconProps = Omit<
 export const DialogHeaderLeftActionIcon = forwardRef<
   HTMLButtonElement,
   DialogHeaderLeftActionIconProps
->(({ className, ...props }, ref) => {
+>(function DialogHeaderLeftActionIcon({ className, ...props }, ref) {
   const { dialog } = useTheme()
 
   return (
@@ -25,5 +25,3 @@ export const DialogHeaderLeftActionIcon = forwardRef<
     />
   )
 })
-
-DialogHeaderLeftActionIcon.displayName = 'DialogHeaderLeftActionIcon'

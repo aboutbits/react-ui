@@ -11,8 +11,8 @@ export type ButtonProps = React.DetailedHTMLProps<
   ButtonStyleProps &
   ButtonCommonProps
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(
     {
       mode = Mode.light,
       variant = ButtonVariant.solid,
@@ -26,7 +26,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       ...props
     },
     ref
-  ) => {
+  ) {
     const { button } = useTheme()
     return (
       <button
@@ -70,8 +70,3 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     )
   }
 )
-
-// This improves readability in dev tools
-Button.displayName = 'Button'
-
-export { Button }

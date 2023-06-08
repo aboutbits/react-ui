@@ -10,7 +10,7 @@ type Props = SelectProps &
   }
 
 export const SelectYear = forwardRef<HTMLSelectElement, Props>(
-  ({ from, to, mode = Mode.light, ...props }, ref) => {
+  function SelectYear({ from, to, mode = Mode.light, ...props }, ref) {
     if (from > to) {
       return null
     }
@@ -29,5 +29,3 @@ export const SelectYear = forwardRef<HTMLSelectElement, Props>(
     )
   }
 )
-
-SelectYear.displayName = 'SelectYear'

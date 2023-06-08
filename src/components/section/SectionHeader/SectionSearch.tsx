@@ -17,7 +17,7 @@ export type SectionSearchProps = (
   Partial<Pick<InputProps, 'name'>>
 
 export const SectionSearch = forwardRef<HTMLInputElement, SectionSearchProps>(
-  ({ name = 'search', ...props }, ref) => {
+  function SectionSearch({ name = 'search', ...props }, ref) {
     const { messages } = useInternationalization()
 
     return (
@@ -32,5 +32,3 @@ export const SectionSearch = forwardRef<HTMLInputElement, SectionSearchProps>(
     )
   }
 )
-
-SectionSearch.displayName = 'SectionSearch'

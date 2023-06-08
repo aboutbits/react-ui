@@ -50,7 +50,7 @@ export const MonthNames: [
 ]
 
 export const SelectMonth = forwardRef<HTMLSelectElement, SelectMonthProps>(
-  ({ mode = Mode.light, ...props }, ref) => {
+  function SelectMonth({ mode = Mode.light, ...props }, ref) {
     const { messages } = useInternationalization()
 
     return (
@@ -64,5 +64,3 @@ export const SelectMonth = forwardRef<HTMLSelectElement, SelectMonthProps>(
     )
   }
 )
-
-SelectMonth.displayName = 'SelectMonth'
