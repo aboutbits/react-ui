@@ -1,0 +1,100 @@
+import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { useForm } from 'react-hook-form'
+import * as Yup from 'yup'
+import { InputVariant } from '../formNew/types'
+import { Mode } from '../types'
+import { Form } from './Form'
+import { InputFormField } from './InputFormField'
+
+<Meta
+  title="Components/React Hook Form/InputFormField"
+  component={InputFormField}
+  decorators={[
+    (Story) => {
+      const resolver = yupResolver(
+        Yup.object().shape({
+          name: Yup.string().required('Required'),
+        })
+      )
+      const form = useForm({
+        resolver,
+        defaultValues: { name: '' },
+        mode: 'onTouched',
+      })
+      return (
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
+      )
+    },
+  ]}
+/>
+
+# Input
+
+An [InputField](../?path=/docs/components-formnew-inputfield--default-story) within the context of a `react-hook-form` form and with the default type `text`.
+
+The form value that is returned for validation is of type `string` by default. If `transformEmptyToNull` is `true` and the input is empty, `null` is returned.
+
+export const Template = ({ ...args }) => (
+  <InputFormField {...args} name="name" />
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      id: 'name',
+      label: 'Name',
+      placeholder: 'Your Name',
+      type: 'text',
+      mode: Mode.light,
+      variant: InputVariant.solid,
+      disabled: false,
+      iconStart: 'None',
+      iconEnd: 'None',
+    }}
+    argTypes={{
+      mode: {
+        options: Object.values(Mode),
+        control: {
+          type: 'radio',
+        },
+      },
+      variant: {
+        options: Object.values(InputVariant),
+        control: {
+          type: 'radio',
+        },
+      },
+      iconStart: {
+        options: ['None', 'Search', 'Badge'],
+        mapping: {
+          None: undefined,
+          Search: IconSearch,
+          Badge: IconBadge,
+        },
+        control: { type: 'select' },
+      },
+      iconEnd: {
+        options: ['None', 'Search', 'Badge'],
+        mapping: {
+          None: undefined,
+          Search: IconSearch,
+          Badge: IconBadge,
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
