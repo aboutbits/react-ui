@@ -11,12 +11,13 @@ import { Input } from './Input'
 
 A themed `input` element.
 
-export const Template = ({ ...args }) => <Input {...args} name="name" />
+export const Template = ({ ...args }) => <Input {...args} />
 
 <Canvas>
   <Story
     name="Default"
     args={{
+      name: 'name',
       placeholder: '',
       disabled: false,
       iconStart: 'None',
