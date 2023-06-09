@@ -1,11 +1,11 @@
 import { useFormState, get } from 'react-hook-form'
 import { Theme, useTheme } from '../../framework'
 import { Mode } from '../types'
-import { InputVariant } from './types'
+import { FormVariant } from './types'
 
 export type CustomInputCssParameters = {
   mode: Mode
-  variant: InputVariant
+  variant: FormVariant
   disabled?: boolean
   hasError?: boolean
 }

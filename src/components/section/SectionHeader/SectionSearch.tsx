@@ -6,7 +6,7 @@ import {
   InputProps,
   InputWithLabelProps,
   InputWithoutLabelProps,
-  InputVariant,
+  FormVariant,
 } from '../../form'
 
 // Make name optional to use 'search' as default
@@ -25,7 +25,7 @@ export const SectionSearch = forwardRef<HTMLInputElement, SectionSearchProps>(
         name={name}
         ref={ref}
         placeholder={messages['search.placeholder']}
-        variant={InputVariant.soft}
+        variant={FormVariant.soft}
         iconStart={IconSearch}
         {...props}
       />

@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { useTheme } from '../../../framework'
 import { Mode } from '../../types'
-import { FormTone, InputVariant } from '../types'
+import { FormTone, FormVariant } from '../types'
 
 export function useInputCss({
   mode,
@@ -12,7 +12,7 @@ export function useInputCss({
   withIconEnd,
 }: {
   mode: Mode
-  variant: InputVariant
+  variant: FormVariant
   tone: FormTone
   disabled: boolean
   withIconStart: boolean

@@ -1,4 +1,4 @@
-export enum InputVariant {
+export enum FormVariant {
   ghost = 'ghost',
   soft = 'soft',
   solid = 'solid',
@@ -17,8 +17,8 @@ export type FormToneProps = {
   tone?: FormTone
 }
 
-export type VariantProps = {
-  variant?: InputVariant
+export type FormVariantProps = {
+  variant?: FormVariant
 }
 
 export enum Status {

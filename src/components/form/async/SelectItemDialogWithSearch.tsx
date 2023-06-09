@@ -24,7 +24,7 @@ import {
 import { PaginationInMemoryProps } from '../../pagination'
 import { AutoSubmit } from '../AutoSubmit'
 import { Input } from '../Input'
-import { InputVariant } from '../types'
+import { FormVariant } from '../types'
 
 type FilterParameters = {
   search: string
@@ -149,7 +149,7 @@ export function SelectItemDialogSearch({
         <AutoSubmit />
         <Input
           name="search"
-          variant={InputVariant.soft}
+          variant={FormVariant.soft}
           iconStart={IconSearch}
           placeholder={messages['search.placeholder']}
         />

@@ -2,7 +2,7 @@ import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { Theme } from '../../../../.storybook/components'
-import { InputVariant, FormTone } from '../types'
+import { FormVariant, FormTone } from '../types'
 import { Input } from './Input'
 
 <Meta title="Components/FormNew/primitive/Input" component={Input} />
@@ -64,7 +64,7 @@ The `Variant` defines the background and the border.
     name="VariantGhost"
     args={{
       placeholder: 'Ghost',
-      variant: InputVariant.ghost,
+      variant: FormVariant.ghost,
     }}
   >
     {Template.bind({})}
@@ -73,7 +73,7 @@ The `Variant` defines the background and the border.
     name="VariantSoft"
     args={{
       placeholder: 'Soft',
-      variant: InputVariant.soft,
+      variant: FormVariant.soft,
     }}
   >
     {Template.bind({})}
@@ -82,7 +82,7 @@ The `Variant` defines the background and the border.
     name="VariantSolid"
     args={{
       placeholder: 'Solid',
-      variant: InputVariant.solid,
+      variant: FormVariant.solid,
     }}
   >
     {Template.bind({})}
@@ -91,7 +91,7 @@ The `Variant` defines the background and the border.
     name="VariantTransparent"
     args={{
       placeholder: 'Transparent',
-      variant: InputVariant.transparent,
+      variant: FormVariant.transparent,
     }}
   >
     {Template.bind({})}

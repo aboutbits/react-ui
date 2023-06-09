@@ -35,11 +35,7 @@ import {
   SectionFooterWithActions,
   SectionFooterWithPaginationInMemory,
 } from '../components/section'
-import {
-  Select,
-  InputVariant as InputVariant,
-  Option,
-} from '../components/form'
+import { Select, FormVariant, Option } from '../components/form'
 import { Tone } from '../components/types'
 import { SectionContentEmpty } from '../components/section/Section/ConvenientSectionContentMessage'
 
@@ -124,8 +120,8 @@ export const TemplateComplexList = ({
     )
   const isScreenMedium = useMatchMediaQuery('(min-width: 768px)')
   const filterVariant = isScreenMedium
-    ? InputVariant.soft
-    : InputVariant.transparent
+    ? FormVariant.soft
+    : FormVariant.transparent
   return (
     <Section>
       <SectionHeaderArea>
@@ -365,7 +361,7 @@ export const TemplateListWithFilterDialog = ({
     )
   const Filters = () => (
     <>
-      <Select id="role" name="role" variant={InputVariant.transparent}>
+      <Select id="role" name="role" variant={FormVariant.transparent}>
         <Option value="">All roles</Option>
         <Option value="ADMIN">Admin</Option>
         <Option value="USER">User</Option>
@@ -373,7 +369,7 @@ export const TemplateListWithFilterDialog = ({
       <Select
         id="department"
         name="department"
-        variant={InputVariant.transparent}
+        variant={FormVariant.transparent}
       >
         <Option value="">All departments</Option>
         <Option value="HR">Human Resources</Option>

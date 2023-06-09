@@ -2,7 +2,12 @@ import classNames from 'classnames'
 import { ComponentType, forwardRef } from 'react'
 import { useTheme } from '../../../framework'
 import { IconProps, Mode, ModeProps } from '../../types'
-import { FormTone, FormToneProps, InputVariant, VariantProps } from '../types'
+import {
+  FormTone,
+  FormToneProps,
+  FormVariant,
+  FormVariantProps,
+} from '../types'
 import { IconPosition, InputIcon } from './InputIcon'
 import { useInputCss } from './useThemedCss'
 
@@ -12,7 +17,7 @@ export type InputProps = React.DetailedHTMLProps<
 > &
   ModeProps &
   FormToneProps &
-  VariantProps & {
+  FormVariantProps & {
     name: string
     iconStart?: ComponentType<IconProps>
     iconEnd?: ComponentType<IconProps>
@@ -25,7 +30,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   function InputComponent(
     {
       mode = Mode.light,
-      variant = InputVariant.solid,
+      variant = FormVariant.solid,
       tone = FormTone.neutral,
       disabled = false,
       className,

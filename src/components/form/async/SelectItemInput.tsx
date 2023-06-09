@@ -6,7 +6,7 @@ import { useInternationalization, useTheme } from '../../../framework'
 import { Mode } from '../../types'
 import { InputError } from '../InputError'
 import { InputLabel } from '../InputLabel'
-import { InputVariant } from '../types'
+import { FormVariant } from '../types'
 import { useCustomInputCss } from '../useCustomInputCss'
 import { replacePlaceholderColorWithTextColor } from './replacePlaceholderColorWithTextColor'
 
@@ -23,7 +23,7 @@ export type SelectItemInputProps<ItemType> = {
   onOpenSelect: () => void
   onClear: () => void
   mode?: Mode
-  variant?: InputVariant
+  variant?: FormVariant
   className?: string
 }
 
@@ -40,7 +40,7 @@ export function SelectItemInput<ItemType>({
   onOpenSelect,
   onClear,
   mode = Mode.light,
-  variant = InputVariant.ghost,
+  variant = FormVariant.ghost,
   className,
 }: SelectItemInputProps<ItemType>) {
   const componentRef = useRef<HTMLDivElement | null>(null)

@@ -3,7 +3,7 @@ import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { Mode } from '../types'
 import { InputField } from './InputField'
-import { InputVariant, Status } from './types'
+import { FormVariant, Status } from './types'
 
 <Meta title="Components/FormNew/InputField" component={InputField} />
 
@@ -24,7 +24,7 @@ export const Template = ({ ...args }) => <InputField {...args} name="name" />
       placeholder: 'Your Name',
       type: 'text',
       mode: Mode.light,
-      variant: InputVariant.solid,
+      variant: FormVariant.solid,
       disabled: false,
       iconStart: 'None',
       iconEnd: 'None',
@@ -37,7 +37,7 @@ export const Template = ({ ...args }) => <InputField {...args} name="name" />
         },
       },
       variant: {
-        options: Object.values(InputVariant),
+        options: Object.values(FormVariant),
         control: {
           type: 'radio',
         },
