@@ -13,13 +13,13 @@ An input field independent of any form validation library.
 
 Is composed of the primitives [Input](../?path=/docs/components-formnew-primitive-input--default-story), [InputLabel](../?path=/docs/components-formnew-primitive-inputlabel--default-story) and [InputMessage](../?path=/docs/components-formnew-primitive-inputmessage--default-story).
 
-export const Template = ({ ...args }) => <InputField {...args} name="name" />
+export const Template = ({ ...args }) => <InputField {...args} />
 
 <Canvas>
   <Story
     name="Default"
     args={{
-      id: 'name',
+      name: 'name',
       label: 'Name',
       placeholder: 'Your Name',
       type: 'text',
@@ -30,18 +30,6 @@ export const Template = ({ ...args }) => <InputField {...args} name="name" />
       iconEnd: 'None',
     }}
     argTypes={{
-      mode: {
-        options: Object.values(Mode),
-        control: {
-          type: 'radio',
-        },
-      },
-      variant: {
-        options: Object.values(FormVariant),
-        control: {
-          type: 'radio',
-        },
-      },
       iconStart: {
         options: ['None', 'Search', 'Badge'],
         mapping: {
