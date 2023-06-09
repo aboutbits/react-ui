@@ -1,5 +1,5 @@
+import { useId } from '@headlessui/react/dist/hooks/use-id'
 import { forwardRef } from 'react'
-import { useId } from '../utils/useId'
 import {
   Input,
   InputLabel,
@@ -28,7 +28,8 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
     const tone =
       status === Status.invalid ? FormTone.critical : FormTone.neutral
 
-    const id = useId(props.id)
+    const autoId = useId()
+    const id = props.id ?? autoId
 
     return (
       <div className={className}>
