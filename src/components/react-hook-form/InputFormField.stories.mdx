@@ -16,7 +16,7 @@ import { InputFormField } from './InputFormField'
   decorators={[
     (Story) => {
       const resolver = yupResolver(
-        Yup.object().shape({
+        Yup.object({
           name: Yup.string().required('Required'),
         })
       )
@@ -40,15 +40,13 @@ An [InputField](../?path=/docs/components-formnew-inputfield--default-story) wit
 
 The form value that is returned for validation is of type `string` by default. If `transformEmptyToNull` is `true` and the input is empty, `null` is returned.
 
-export const Template = ({ ...args }) => (
-  <InputFormField {...args} name="name" />
-)
+export const Template = ({ ...args }) => <InputFormField {...args} />
 
 <Canvas>
   <Story
     name="Default"
     args={{
-      id: 'name',
+      name: 'name',
       label: 'Name',
       placeholder: 'Your Name',
       type: 'text',
@@ -59,18 +57,6 @@ export const Template = ({ ...args }) => (
       iconEnd: 'None',
     }}
     argTypes={{
-      mode: {
-        options: Object.values(Mode),
-        control: {
-          type: 'radio',
-        },
-      },
-      variant: {
-        options: Object.values(InputVariant),
-        control: {
-          type: 'radio',
-        },
-      },
       iconStart: {
         options: ['None', 'Search', 'Badge'],
         mapping: {
