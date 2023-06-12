@@ -1,8 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { Mode } from '../types'
 import { Option } from './primitive/Option'
 import { SelectField } from './SelectField'
-import { FormVariant, Status } from './types'
+import { Status } from './types'
 
 <Meta title="Components/FormNew/SelectField" component={SelectField} />
 
@@ -20,9 +19,6 @@ export const Template = ({ ...args }) => <SelectField {...args} />
     args={{
       label: 'Role',
       message: 'Your role inside the department',
-      mode: Mode.light,
-      variant: FormVariant.solid,
-      disabled: false,
       children: (
         <>
           <Option value="admin">Admin</Option>
@@ -31,6 +27,8 @@ export const Template = ({ ...args }) => <SelectField {...args} />
       ),
     }}
     argTypes={{
+      disabled: { type: 'boolean' },
+      children: { control: { disable: true } },
       status: {
         options: ['undefined', 'invalid'],
         mapping: { undefined: undefined, invalid: Status.invalid },

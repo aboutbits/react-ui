@@ -26,6 +26,10 @@ export const Template = ({ ...args }) => <Select {...args} />
         </>
       ),
     }}
+    argTypes={{
+      disabled: { type: 'boolean' },
+      children: { control: { disable: true } },
+    }}
   >
     {Template.bind({})}
   </Story>

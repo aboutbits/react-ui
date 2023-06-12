@@ -4,8 +4,6 @@ import { action } from '@storybook/addon-actions'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 import { Option } from '../formNew/primitive/Option'
-import { FormVariant } from '../formNew/types'
-import { Mode } from '../types'
 import { Form } from './Form'
 import { SelectFormField } from './SelectFormField'
 
@@ -52,9 +50,6 @@ export const roles = ['ADMIN', 'USER']
       name: 'role',
       label: 'Role',
       message: 'Your role inside the department',
-      mode: Mode.light,
-      variant: FormVariant.solid,
-      disabled: false,
       children: [
         ...roles.map((role) => (
           <Option key={role} value={role}>
@@ -62,6 +57,10 @@ export const roles = ['ADMIN', 'USER']
           </Option>
         )),
       ],
+    }}
+    argTypes={{
+      disabled: { type: 'boolean' },
+      children: { control: { disable: true } },
     }}
   >
     {Template.bind({})}
