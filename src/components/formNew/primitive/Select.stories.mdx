@@ -152,3 +152,27 @@ The `Tone` defines the background and the border.
     {Template.bind({})}
   </Story>
 </Canvas>
+
+## Initial placeholder
+
+To initially show a placeholder before the user selects an option, add a `hidden` option with an empty value.
+
+<Canvas>
+  <Story
+    name="Initial placeholder"
+    args={{
+      children: (
+        <>
+          <Option value="" hidden>
+            Please select an option
+          </Option>
+          <Option value="1">Option 1</Option>
+          <Option value="2">Option 2</Option>
+          <Option value="3">Option 3</Option>
+        </>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
