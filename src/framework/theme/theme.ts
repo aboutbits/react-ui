@@ -6,6 +6,7 @@ import button from '../../components/button/theme'
 import content from '../../components/content/theme'
 import dialog from '../../components/dialog/theme'
 import form from '../../components/form/theme'
+import formNew from '../../components/formNew/theme'
 import header from '../../components/header/theme'
 import link from '../../components/link/theme'
 import loading from '../../components/loading/theme'
@@ -22,6 +23,7 @@ export const defaultTheme = {
   content,
   dialog,
   form,
+  formNew,
   header,
   link,
   loading,

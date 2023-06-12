@@ -6,7 +6,7 @@ import {
   InputProps,
   InputWithLabelProps,
   InputWithoutLabelProps,
-  InputVariant,
+  FormVariant,
 } from '../../form'
 
 // Make name optional to use 'search' as default
@@ -17,7 +17,7 @@ export type SectionSearchProps = (
   Partial<Pick<InputProps, 'name'>>
 
 export const SectionSearch = forwardRef<HTMLInputElement, SectionSearchProps>(
-  ({ name = 'search', ...props }, ref) => {
+  function SectionSearch({ name = 'search', ...props }, ref) {
     const { messages } = useInternationalization()
 
     return (
@@ -25,12 +25,10 @@ export const SectionSearch = forwardRef<HTMLInputElement, SectionSearchProps>(
         name={name}
         ref={ref}
         placeholder={messages['search.placeholder']}
-        variant={InputVariant.soft}
+        variant={FormVariant.soft}
         iconStart={IconSearch}
         {...props}
       />
     )
   }
 )
-
-SectionSearch.displayName = 'SectionSearch'

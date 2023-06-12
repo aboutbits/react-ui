@@ -1,0 +1,154 @@
+import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { Mode } from '../types'
+import { InputField } from './InputField'
+import { FormVariant, Status } from './types'
+
+<Meta title="Components/FormNew/InputField" component={InputField} />
+
+# InputField
+
+An input field independent of any form validation library.
+
+Is composed of the primitives [Input](../?path=/docs/components-formnew-primitive-input--default-story), [InputLabel](../?path=/docs/components-formnew-primitive-inputlabel--default-story) and [InputMessage](../?path=/docs/components-formnew-primitive-inputmessage--default-story).
+
+export const Template = ({ ...args }) => <InputField {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      name: 'name',
+      label: 'Name',
+      placeholder: 'Your Name',
+      type: 'text',
+      mode: Mode.light,
+      variant: FormVariant.solid,
+      disabled: false,
+      iconStart: 'None',
+      iconEnd: 'None',
+    }}
+    argTypes={{
+      iconStart: {
+        options: ['None', 'Search', 'Badge'],
+        mapping: {
+          None: undefined,
+          Search: IconSearch,
+          Badge: IconBadge,
+        },
+        control: { type: 'select' },
+      },
+      iconEnd: {
+        options: ['None', 'Search', 'Badge'],
+        mapping: {
+          None: undefined,
+          Search: IconSearch,
+          Badge: IconBadge,
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+## With label
+
+<Canvas>
+  <Story
+    name="With label"
+    args={{
+      label: 'Label',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With message
+
+<Canvas>
+  <Story
+    name="With message"
+    args={{
+      message: 'This is the message',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With label and message
+
+<Canvas>
+  <Story
+    name="With label and message"
+    args={{
+      label: 'Label',
+      message: 'This is the message',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Status invalid
+
+<Canvas>
+  <Story
+    name="Status invalid"
+    args={{
+      label: 'Label',
+      message: 'This is the message',
+      status: Status.invalid,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+  <Story
+    name="Disabled"
+    args={{
+      label: 'Label',
+      message: 'This is the message',
+      disabled: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With icons
+
+<Canvas>
+  <Story
+    name="With icon start"
+    args={{
+      label: 'Label',
+      message: 'This is the message',
+      iconStart: IconSearch,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="With icon end"
+    args={{
+      label: 'Label',
+      message: 'This is the message',
+      iconEnd: IconBadge,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

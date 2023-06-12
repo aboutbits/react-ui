@@ -1,0 +1,43 @@
+import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { Theme } from '../../../../.storybook/components'
+import { InputIcon, IconPosition } from './InputIcon'
+
+<Meta title="Components/FormNew/primitive/InputIcon" component={InputIcon} />
+
+# InputIcon
+
+A themed `Icon` component to be used with field components.
+
+export const Template = ({ ...args }) => <InputIcon {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      icon: 'Search',
+      position: IconPosition.start,
+    }}
+    argTypes={{
+      icon: {
+        options: ['Search', 'Badge'],
+        mapping: {
+          Search: IconSearch,
+          Badge: IconBadge,
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+<Theme component="formNew" items={['inputIcon']} />

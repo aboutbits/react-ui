@@ -11,8 +11,8 @@ export type ButtonIconProps = React.DetailedHTMLProps<
   ButtonStyleProps &
   ButtonIconCommonProps
 
-const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
-  (
+export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
+  function ButtonIcon(
     {
       mode = Mode.light,
       variant = ButtonVariant.solid,
@@ -24,7 +24,7 @@ const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
       ...props
     },
     ref
-  ) => {
+  ) {
     const { button } = useTheme()
 
     return (
@@ -57,7 +57,3 @@ const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
     )
   }
 )
-
-ButtonIcon.displayName = 'ButtonIcon'
-
-export { ButtonIcon }
