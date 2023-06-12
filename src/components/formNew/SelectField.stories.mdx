@@ -52,6 +52,13 @@ export const Template = ({ ...args }) => <SelectField {...args} />
     name="With label"
     args={{
       label: 'Label',
+      children: (
+        <>
+          <Option value="1">Option 1</Option>
+          <Option value="2">Option 2</Option>
+          <Option value="3">Option 3</Option>
+        </>
+      ),
     }}
   >
     {Template.bind({})}
@@ -65,6 +72,13 @@ export const Template = ({ ...args }) => <SelectField {...args} />
     name="With message"
     args={{
       message: 'This is the message',
+      children: (
+        <>
+          <Option value="1">Option 1</Option>
+          <Option value="2">Option 2</Option>
+          <Option value="3">Option 3</Option>
+        </>
+      ),
     }}
   >
     {Template.bind({})}
@@ -79,6 +93,13 @@ export const Template = ({ ...args }) => <SelectField {...args} />
     args={{
       label: 'Label',
       message: 'This is the message',
+      children: (
+        <>
+          <Option value="1">Option 1</Option>
+          <Option value="2">Option 2</Option>
+          <Option value="3">Option 3</Option>
+        </>
+      ),
     }}
   >
     {Template.bind({})}
@@ -94,6 +115,13 @@ export const Template = ({ ...args }) => <SelectField {...args} />
       label: 'Label',
       message: 'This is the message',
       status: Status.invalid,
+      children: (
+        <>
+          <Option value="1">Option 1</Option>
+          <Option value="2">Option 2</Option>
+          <Option value="3">Option 3</Option>
+        </>
+      ),
     }}
   >
     {Template.bind({})}
@@ -109,6 +137,13 @@ export const Template = ({ ...args }) => <SelectField {...args} />
       label: 'Label',
       message: 'This is the message',
       disabled: true,
+      children: (
+        <>
+          <Option value="1">Option 1</Option>
+          <Option value="2">Option 2</Option>
+          <Option value="3">Option 3</Option>
+        </>
+      ),
     }}
   >
     {Template.bind({})}
