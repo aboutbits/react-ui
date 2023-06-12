@@ -1,0 +1,57 @@
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { useForm } from 'react-hook-form'
+import * as Yup from 'yup'
+import { CheckboxFormField } from './CheckboxFormField'
+import { Form } from './Form'
+
+<Meta
+  title="Components/React Hook Form/CheckboxFormField"
+  component={CheckboxFormField}
+  decorators={[
+    (Story) => {
+      const resolver = yupResolver(
+        Yup.object({
+          newsletter: Yup.boolean().required('Required'),
+        })
+      )
+      const form = useForm({
+        resolver,
+        defaultValues: { newsletter: false },
+        mode: 'onTouched',
+      })
+      return (
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
+      )
+    },
+  ]}
+/>
+
+# CheckboxFormField
+
+A [CheckboxField](../?path=/docs/components-formnew-checkboxfield--default-story) within the context of a `react-hook-form` form.
+
+The form value that is returned for validation is of type `boolean`.
+
+export const Template = ({ ...args }) => <CheckboxFormField {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      name: 'newsletter',
+      label: 'Subscribe me to the newsletter',
+      message: 'Read more about our writing policy on the home page',
+      disabled: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
