@@ -239,4 +239,20 @@ export default {
       },
     },
   },
+  fieldset: {
+    container: {
+      indent: {
+        none: '',
+        label: '',
+        labelAndChildren: 'ml-1',
+      },
+    },
+    legend: {
+      indent: {
+        none: '',
+        label: 'ml-1',
+        labelAndChildren: '',
+      },
+    },
+  },
 }
