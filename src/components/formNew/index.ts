@@ -1,4 +1,6 @@
 export * from './CheckboxField'
 export * from './InputField'
+export * from './SelectField'
+export * from './TextAreaField'
 export * from './primitive'
 export * from './types'

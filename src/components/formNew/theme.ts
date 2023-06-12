@@ -148,6 +148,18 @@ export default {
       end: 'right-0 pr-3.5',
     },
   },
+  select: {
+    base: 'pr-9 text-ellipsis overflow-hidden',
+  },
+  option: {
+    base: 'bg-transparent',
+    light: {
+      normal: '',
+    },
+    dark: {
+      normal: '',
+    },
+  },
   checkbox: {
     base: 'relative inline-flex items-start gap-x-2',
     normal: 'cursor-pointer',
