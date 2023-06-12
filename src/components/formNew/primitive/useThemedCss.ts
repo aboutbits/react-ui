@@ -72,6 +72,27 @@ export function useInputMessageCss({
   )
 }
 
+export function useTextAreaCss({
+  mode,
+  variant,
+  tone,
+  disabled,
+}: {
+  mode: Mode
+  variant: FormVariant
+  tone: FormTone
+  disabled: boolean
+}) {
+  return useInputCss({
+    mode,
+    variant,
+    tone,
+    disabled,
+    withIconStart: false,
+    withIconEnd: false,
+  })
+}
+
 export function useSelectCss({
   mode,
   variant,
