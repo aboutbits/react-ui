@@ -1,0 +1,72 @@
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { useForm } from 'react-hook-form'
+import * as Yup from 'yup'
+import { Option } from '../formNew/primitive/Option'
+import { Form } from './Form'
+import { SelectFormField } from './SelectFormField'
+
+<Meta
+  title="Components/React Hook Form/SelectFormField"
+  component={SelectFormField}
+  decorators={[
+    (Story) => {
+      const resolver = yupResolver(
+        Yup.object({
+          role: Yup.mixed().oneOf(roles).required(),
+        })
+      )
+      const form = useForm({
+        resolver,
+        defaultValues: { role: roles[0] },
+        mode: 'onTouched',
+      })
+      return (
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
+      )
+    },
+  ]}
+/>
+
+# SelectFormField
+
+A [SelectField](../?path=/docs/components-formnew-selectfield--default-story) within the context of a `react-hook-form` form.
+
+The form value that is returned for validation is of type `string` by default. If `transformEmptyToNull` is `true` and the input is empty, `null` is returned.
+
+This component also manages the value of React Hook Form. If the selected value is not in the list of children, the value is set to the first option (or an empty string if there are no options).
+
+export const Template = ({ ...args }) => <SelectFormField {...args} />
+
+export const roles = ['ADMIN', 'USER']
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      name: 'role',
+      label: 'Role',
+      message: 'Your role inside the department',
+      children: [
+        ...roles.map((role) => (
+          <Option key={role} value={role}>
+            {role.charAt(0) + role.slice(1).toLowerCase()}
+          </Option>
+        )),
+      ],
+    }}
+    argTypes={{
+      disabled: { type: 'boolean' },
+      children: { control: { disable: true } },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
