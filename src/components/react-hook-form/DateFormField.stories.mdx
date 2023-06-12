@@ -1,0 +1,82 @@
+import IconEvent from '@aboutbits/react-material-icons/dist/IconEvent'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { useForm } from 'react-hook-form'
+import * as Yup from 'yup'
+import { FormVariant } from '../formNew/types'
+import { Mode } from '../types'
+import { Form } from './Form'
+import { DateFormField } from './DateFormField'
+
+<Meta
+  title="Components/React Hook Form/DateFormField"
+  component={DateFormField}
+  decorators={[
+    (Story) => {
+      const resolver = yupResolver(
+        Yup.object({
+          birthDate: Yup.date().required('Required'),
+        })
+      )
+      const form = useForm({
+        resolver,
+        defaultValues: { birthDate: new Date() },
+        mode: 'onTouched',
+      })
+      return (
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
+      )
+    },
+  ]}
+/>
+
+# DateFormField
+
+An [InputField](../?path=/docs/components-formnew-inputfield--default-story) within the context of a `react-hook-form` form and with the default type `date`.
+
+The form value that is returned for validation is of type `Date | null`. `null` is returned if the input is an empty string.
+
+export const Template = ({ ...args }) => <DateFormField {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      name: 'birthDate',
+      label: 'Birth date',
+      message: 'If you are a minor, make sure to have parental permission',
+      mode: Mode.light,
+      variant: FormVariant.solid,
+      disabled: false,
+      iconStart: 'None',
+      iconEnd: 'None',
+    }}
+    argTypes={{
+      iconStart: {
+        options: ['None', 'Event'],
+        mapping: {
+          None: undefined,
+          Event: IconEvent,
+        },
+        control: { type: 'select' },
+      },
+      iconEnd: {
+        options: ['None', 'Event'],
+        mapping: {
+          None: undefined,
+          Event: IconEvent,
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
