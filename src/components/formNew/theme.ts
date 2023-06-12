@@ -148,4 +148,83 @@ export default {
       end: 'right-0 pr-3.5',
     },
   },
+  checkbox: {
+    base: 'relative inline-flex items-start gap-x-2',
+    normal: 'cursor-pointer',
+    disabled: '',
+    layout: {
+      START: 'flex-row-reverse',
+      END: '',
+      SPACE_BETWEEN: 'w-full justify-between',
+    },
+    inputHeight: {
+      base: 'min-h-[2.5rem]',
+      size: {
+        sm: 'pt-2',
+        md: 'pt-1.5',
+        lg: 'pt-0.5',
+      },
+    },
+    input: {
+      base: 'peer absolute h-0 w-0 opacity-0',
+    },
+    label: {
+      base: '',
+      mode: {
+        light: {
+          normal: '',
+          disabled: 'text-neutral-800/[0.36]',
+        },
+        dark: {
+          normal: 'text-white',
+          disabled: 'text-white/[0.36]',
+        },
+      },
+      size: {
+        sm: '',
+        md: 'pt-0.5',
+        lg: 'pt-1.5',
+      },
+    },
+    check: {
+      base: 'block shrink-0 outline-1 rounded-md outline-offset-[-1px] peer-focus:outline',
+      normal: '',
+      disabled: '',
+      mode: {
+        light: 'outline-neutral-800',
+        dark: 'outline-white',
+      },
+      size: {
+        sm: 'h-6 w-6',
+        md: 'h-7 w-7',
+        lg: 'h-9 w-9',
+      },
+      checked: {
+        base: '[[type=checkbox]:not(:checked)~&]:hidden',
+        modeState: {
+          light: {
+            normal: 'fill-primary-500',
+            disabled: 'fill-neutral-800/[0.36]',
+          },
+          dark: {
+            normal: 'fill-primary-300',
+            disabled: 'fill-white/[0.36]',
+          },
+        },
+      },
+      unchecked: {
+        base: '[[type=checkbox]:checked~&]:hidden',
+        modeState: {
+          light: {
+            normal: 'fill-neutral-800',
+            disabled: 'fill-neutral-800/[0.36]',
+          },
+          dark: {
+            normal: 'fill-white',
+            disabled: 'fill-white/[0.36]',
+          },
+        },
+      },
+    },
+  },
 }
