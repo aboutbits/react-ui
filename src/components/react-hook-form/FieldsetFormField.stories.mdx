@@ -14,12 +14,13 @@ import { InputFormField } from './InputFormField'
     (Story) => {
       const resolver = yupResolver(
         Yup.object({
-          name: Yup.string().required('Required'),
+          firstName: Yup.string().required('Required'),
+          lastName: Yup.string().required('Required'),
         })
       )
       const form = useForm({
         resolver,
-        defaultValues: { name: '' },
+        defaultValues: { firstName: '', lastName: '' },
         mode: 'onTouched',
       })
       return (
@@ -35,15 +36,22 @@ import { InputFormField } from './InputFormField'
 
 A [FieldsetField](../?path=/docs/components-formnew-fieldsetfield--default-story) within the context of a `react-hook-form` form.
 
+The `FieldSetFormField` label will display an error state depending on the specified form `fields`.
+
 export const Template = ({ ...args }) => <FieldsetFormField {...args} />
 
 <Canvas>
   <Story
     name="Default"
     args={{
-      name: 'name',
+      fields: ['firstName', 'lastName'],
       label: 'Name',
-      children: <InputFormField name="name" />,
+      children: (
+        <div className="flex [&>*]:flex-1 gap-x-4">
+          <InputFormField name="firstName" />
+          <InputFormField name="lastName" />
+        </div>
+      ),
     }}
     argTypes={{
       disabled: { type: 'boolean' },

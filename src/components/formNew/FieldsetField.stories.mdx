@@ -8,8 +8,6 @@ import { Status } from './types'
 
 A fieldset field independent of any form validation library.
 
-Is composed of the primitives [Fieldset](../?path=/docs/components-formnew-primitive-fieldset--default-story) and [InputMessage](../?path=/docs/components-formnew-primitive-inputmessage--default-story).
-
 export const Template = ({ ...args }) => <FieldsetField {...args} />
 
 <Canvas>
@@ -17,7 +15,6 @@ export const Template = ({ ...args }) => <FieldsetField {...args} />
     name="Default"
     args={{
       label: 'Label',
-      disabled: false,
       children: <>Fieldset Content</>,
     }}
     argTypes={{

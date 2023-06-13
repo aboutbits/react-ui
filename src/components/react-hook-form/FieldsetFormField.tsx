@@ -1,34 +1,27 @@
-import { FieldPath, FieldValues } from 'react-hook-form'
-import { Status, FieldsetField, FieldsetFieldProps } from '../formNew'
-import { useFieldError } from './util/useFieldError'
+import { FieldPath, FieldValues, get, useFormState } from 'react-hook-form'
+import { FieldsetField, FieldsetFieldProps, Status } from '../formNew'
 
-export type FieldsetFormProps<
-  TFieldValues extends FieldValues,
-  TFieldName extends FieldPath<TFieldValues>
-> = Omit<FieldsetFieldProps, 'status'> & {
-  name: TFieldName
+export type FieldsetFormProps<TFieldValues extends FieldValues> = Omit<
+  FieldsetFieldProps,
+  'status'
+> & {
+  fields: FieldPath<TFieldValues>[]
 }
 
 /**
  * A [FieldsetField](../?path=/docs/components-formnew-fieldsetfield--default-story) within the context of a `react-hook-form` form.
+ *
+ * The `FieldSetFormField` label will display an error state depending on the specified form `fields`.
  */
 export function FieldsetFormField<
-  TFieldValues extends FieldValues = FieldValues,
-  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
->({
-  name,
-  message,
-  children,
-  ...props
-}: FieldsetFormProps<TFieldValues, TFieldName>) {
-  const error = useFieldError(name)
+  TFieldValues extends FieldValues = FieldValues
+>({ fields, children, ...props }: FieldsetFormProps<TFieldValues>) {
+  const { errors } = useFormState({ name: fields })
+
+  const hasError = fields.some((name) => !!get(errors, name))
 
   return (
-    <FieldsetField
-      {...props}
-      message={error?.message?.toString() || message}
-      status={error ? Status.invalid : undefined}
-    >
+    <FieldsetField {...props} status={hasError ? Status.invalid : undefined}>
       {children}
     </FieldsetField>
   )
