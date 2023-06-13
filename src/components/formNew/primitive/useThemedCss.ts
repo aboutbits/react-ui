@@ -3,6 +3,7 @@ import { useTheme } from '../../../framework'
 import { Mode, Size } from '../../types'
 import { FormTone, FormVariant } from '../types'
 import { CheckboxLayout } from './Checkbox'
+import { ToggleSwitchLayout } from './ToggleSwitch'
 
 export function useInputCss({
   mode,
@@ -175,4 +176,105 @@ export function useCheckboxInputCss() {
   } = useTheme()
 
   return classNames(theme.base)
+}
+
+export function useToggleSwitchCss({
+  layout,
+  disabled,
+  applyInputHeight,
+  size,
+}: {
+  layout: ToggleSwitchLayout
+  disabled: boolean
+  applyInputHeight: boolean
+  size: Size
+}) {
+  const {
+    formNew: { toggleSwitch: theme },
+  } = useTheme()
+
+  return classNames(
+    theme.base,
+    theme.layout[layout],
+    applyInputHeight && [theme.inputHeight.base, theme.inputHeight.size[size]],
+    disabled ? theme.disabled : theme.normal
+  )
+}
+
+export function useToggleSwitchLabelCss({
+  mode,
+  size,
+  disabled,
+}: {
+  mode: Mode
+  size: Size
+  disabled: boolean
+}) {
+  const {
+    formNew: {
+      toggleSwitch: { label: theme },
+    },
+  } = useTheme()
+
+  return classNames(
+    theme.base,
+    theme.size[size],
+    disabled ? theme.mode[mode].disabled : theme.mode[mode].normal
+  )
+}
+
+export function useToggleSwitchInputCss() {
+  const {
+    formNew: {
+      toggleSwitch: { input: theme },
+    },
+  } = useTheme()
+
+  return classNames(theme.base)
+}
+
+export function useToggleSwitchSwitchCss({
+  mode,
+  size,
+  disabled,
+}: {
+  mode: Mode
+  size: Size
+  disabled: boolean
+}) {
+  const {
+    formNew: {
+      toggleSwitch: { switch: theme },
+    },
+  } = useTheme()
+
+  return classNames(
+    theme.base,
+    theme.size[size].base,
+    disabled ? theme.disabled : theme.normal,
+    disabled ? theme.modeState[mode].disabled : theme.modeState[mode].normal
+  )
+}
+
+export function useToggleSwitchHandleCss({
+  mode,
+  size,
+  disabled,
+}: {
+  mode: Mode
+  size: Size
+  disabled: boolean
+}) {
+  const {
+    formNew: {
+      toggleSwitch: { handle: theme },
+    },
+  } = useTheme()
+
+  return classNames(
+    theme.base,
+    theme.size[size],
+    disabled ? theme.disabled : theme.normal,
+    disabled ? theme.modeState[mode].disabled : theme.modeState[mode].normal
+  )
 }
