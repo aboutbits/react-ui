@@ -60,21 +60,17 @@ export const SelectMonthField = forwardRef<
 >(function SelectMonthField(props, ref) {
   return (
     <SelectField {...props} ref={ref}>
-      <SelectMonthFieldOptions mode={props.mode} />
+      {useSelectMonthFieldOptions({ mode: props.mode })}
     </SelectField>
   )
 })
 
-export const SelectMonthFieldOptions = ({ mode }: { mode?: Mode }) => {
+export const useSelectMonthFieldOptions = ({ mode }: { mode?: Mode }) => {
   const { messages } = useInternationalization()
 
-  return (
-    <>
-      {Object.keys(Month).map((element: string) => (
-        <Option mode={mode} key={element} value={element}>
-          {messages[`month.${element.toLowerCase()}`]}
-        </Option>
-      ))}
-    </>
-  )
+  return Object.keys(Month).map((element: string) => (
+    <Option mode={mode} key={element} value={element}>
+      {messages[`month.${element.toLowerCase()}`]}
+    </Option>
+  ))
 }

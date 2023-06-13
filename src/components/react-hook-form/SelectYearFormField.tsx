@@ -1,8 +1,8 @@
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues } from 'react-hook-form'
 import {
-  SelectYearFieldOptions,
   SelectYearFieldOptionsProps,
+  useSelectYearFieldOptions,
 } from '../formNew/SelectYearField'
 import { SelectFormField, SelectFormFieldProps } from './SelectFormField'
 
@@ -22,13 +22,9 @@ export const SelectYearFormField = forwardRef(function SelectYearFormField<
   { from, to, ...props }: SelectYearFormField<TFieldValues, TFieldName>,
   ref: ForwardedRef<HTMLSelectElement>
 ) {
-  if (from > to) {
-    return null
-  }
-
   return (
     <SelectFormField<TFieldValues, TFieldName> {...props} ref={ref}>
-      <SelectYearFieldOptions from={from} to={to} mode={props.mode} />
+      {useSelectYearFieldOptions({ from, to, mode: props.mode })}
     </SelectFormField>
   )
 })

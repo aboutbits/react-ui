@@ -13,12 +13,12 @@ import { SelectYearFormField } from './SelectYearFormField'
     (Story) => {
       const resolver = yupResolver(
         Yup.object({
-          year: Yup.number().required('Required'),
+          year: Yup.string().required('Required'),
         })
       )
       const form = useForm({
         resolver,
-        defaultValues: { year: undefined },
+        defaultValues: { year: '' },
         mode: 'onTouched',
       })
       return (

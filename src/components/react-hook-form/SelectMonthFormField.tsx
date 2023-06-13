@@ -1,6 +1,6 @@
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues } from 'react-hook-form'
-import { SelectMonthFieldOptions } from '../formNew/SelectMonthField'
+import { useSelectMonthFieldOptions } from '../formNew/SelectMonthField'
 import { SelectFormField, SelectFormFieldProps } from './SelectFormField'
 
 export type SelectMonthFormField<
@@ -15,12 +15,12 @@ export const SelectMonthFormField = forwardRef(function SelectMonthFormField<
   TFieldValues extends FieldValues = FieldValues,
   TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 >(
-  { ...props }: SelectMonthFormField<TFieldValues, TFieldName>,
+  props: SelectMonthFormField<TFieldValues, TFieldName>,
   ref: ForwardedRef<HTMLSelectElement>
 ) {
   return (
     <SelectFormField<TFieldValues, TFieldName> {...props} ref={ref}>
-      <SelectMonthFieldOptions mode={props.mode} />
+      {useSelectMonthFieldOptions({ mode: props.mode })}
     </SelectFormField>
   )
 })

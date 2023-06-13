@@ -17,13 +17,9 @@ export const SelectYearField = forwardRef<
   HTMLSelectElement,
   SelectMonthFieldProps
 >(function SelectYearField({ from, to, ...props }, ref) {
-  if (from > to) {
-    return null
-  }
-
   return (
     <SelectField {...props} ref={ref}>
-      <SelectYearFieldOptions from={from} to={to} mode={props.mode} />
+      {useSelectYearFieldOptions({ from, to, mode: props.mode })}
     </SelectField>
   )
 })
@@ -34,22 +30,22 @@ export type SelectYearFieldOptionsProps = {
   to: number
 }
 
-export const SelectYearFieldOptions = ({
+export const useSelectYearFieldOptions = ({
   mode,
   from,
   to,
 }: SelectYearFieldOptionsProps) => {
+  if (from > to) {
+    return null
+  }
+
   const selectOptions = Array(to - from + 1)
     .fill(0)
     .map((_, index: number) => index + from)
 
-  return (
-    <>
-      {selectOptions.map((year: number) => (
-        <Option mode={mode} key={year} value={year}>
-          {year}
-        </Option>
-      ))}
-    </>
-  )
+  return selectOptions.map((year: number) => (
+    <Option mode={mode} key={year} value={year.toString()}>
+      {year}
+    </Option>
+  ))
 }
