@@ -116,7 +116,8 @@ export default {
     },
   },
   inputMessage: {
-    base: 'mt-1 ml-1 block text-xs font-medium',
+    base: 'mt-1 block text-xs font-medium',
+    indent: 'ml-1',
     light: {
       tone: {
         NEUTRAL: '',

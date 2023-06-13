@@ -49,6 +49,7 @@ export const ToggleSwitchField = forwardRef<
           tone={tone}
           disabled={disabled}
           message={message}
+          noIndent
         />
       )}
     </div>

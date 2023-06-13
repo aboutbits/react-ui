@@ -59,10 +59,12 @@ export function useInputMessageCss({
   mode,
   tone,
   disabled,
+  noIndent,
 }: {
   mode: Mode
   tone: FormTone
   disabled: boolean
+  noIndent?: boolean
 }) {
   const {
     formNew: { inputMessage: theme },
@@ -70,6 +72,7 @@ export function useInputMessageCss({
 
   return classNames(
     theme.base,
+    !noIndent && theme.indent,
     disabled ? theme[mode].disabled : theme[mode].tone[tone]
   )
 }
