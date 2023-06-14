@@ -1,0 +1,56 @@
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { useForm } from 'react-hook-form'
+import * as Yup from 'yup'
+import { Form } from './Form'
+import { SelectMonthFormField } from './SelectMonthFormField'
+
+<Meta
+  title="Components/React Hook Form/SelectMonthFormField"
+  component={SelectMonthFormField}
+  decorators={[
+    (Story) => {
+      const resolver = yupResolver(
+        Yup.object({
+          month: Yup.string().required('Required'),
+        })
+      )
+      const form = useForm({
+        resolver,
+        defaultValues: { month: '' },
+        mode: 'onTouched',
+      })
+      return (
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
+      )
+    },
+  ]}
+/>
+
+# SelectMonthFormField
+
+A [SelectFormField](../?path=/docs/components-reacthookform-selectformfield--default-story) for months.
+
+export const Template = ({ ...args }) => <SelectMonthFormField {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      name: 'month',
+      label: 'Month of birth',
+    }}
+    argTypes={{
+      disabled: { type: 'boolean' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

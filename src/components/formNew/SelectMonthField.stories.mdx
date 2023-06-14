@@ -1,0 +1,72 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { InternationalizationMessages } from '../../../.storybook/components'
+import { SelectMonthField } from './SelectMonthField'
+
+<Meta
+  title="Components/FormNew/SelectMonthField"
+  component={SelectMonthField}
+/>
+
+# SelectMonthField
+
+A select field for months independent of any form validation library.
+
+It uses the [SelectField](../?path=/docs/components-formnew-selectfield--default-story) and [Option](../?path=/docs/components-formnew-primitive-option--default-story) components.
+
+The component works with the custom enum `Month` which will return a string for the selected value.
+
+```ts
+enum Month {
+  JANUARY = 'JANUARY',
+  FEBRUARY = 'FEBRUARY',
+  MARCH = 'MARCH',
+  APRIL = 'APRIL',
+  MAY = 'MAY',
+  JUNE = 'JUNE',
+  JULY = 'JULY',
+  AUGUST = 'AUGUST',
+  SEPTEMBER = 'SEPTEMBER',
+  OCTOBER = 'OCTOBER',
+  NOVEMBER = 'NOVEMBER',
+  DECEMBER = 'DECEMBER',
+}
+```
+
+export const Template = (args) => <SelectMonthField {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      label: 'Month of birth',
+    }}
+    argTypes={{
+      disabled: { type: 'boolean' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Internationalization messages
+
+<InternationalizationMessages
+  items={[
+    'month.january',
+    'month.february',
+    'month.march',
+    'month.april',
+    'month.may',
+    'month.june',
+    'month.july',
+    'month.august',
+    'month.september',
+    'month.october',
+    'month.november',
+    'month.december',
+  ]}
+/>
