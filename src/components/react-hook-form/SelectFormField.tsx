@@ -34,6 +34,7 @@ export type SelectFormFieldProps<
  * The form value that is returned for validation is of type `string` by default. If `transformEmptyToNull` is `true` and the input is empty, `null` is returned.
  *
  * This component also manages the value of React Hook Form. If the selected value is not in the list of children, the value is set to the first option (or an empty string if there are no options).
+ * For this to work, the direct children of this component must be `Option` components (an array of `Option`s, not React Fragments or other components).
  */
 export const SelectFormField = forwardRef(function SelectFormField<
   TFieldValues extends FieldValues = FieldValues,
