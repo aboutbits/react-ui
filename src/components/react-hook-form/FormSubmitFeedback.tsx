@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { ComponentType, ReactElement, ReactNode } from 'react'
 import { useInternationalization, useTheme } from '../../framework'
 import { IconProps } from '../types'
-import { useDelayedFormSubmitState } from './useDelayedFormSubmitState'
+import { useDelayedFormSubmitState } from './util/useDelayedFormSubmitState'
 
 export type FormSubmitFeedbackProps = {
   savedMessage?: ReactNode

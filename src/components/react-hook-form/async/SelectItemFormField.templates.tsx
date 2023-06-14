@@ -1,9 +1,12 @@
 import { ReactElement, useEffect, useState } from 'react'
-import { SelectItem, SelectItemProps } from './SelectItem'
 import {
   PaginatedResponse,
   SearchQueryParameters,
 } from './SelectItemDialogWithSearch'
+import {
+  SelectItemFormField,
+  SelectItemFormFieldProps,
+} from './SelectItemFormField'
 
 type User = {
   id: number
@@ -58,13 +61,13 @@ const useGetData = ({
 
 export const TemplateNormal = ({
   ...args
-}: SelectItemProps<User, Error>): ReactElement => {
-  return <SelectItem {...args} useGetData={useGetData} />
+}: SelectItemFormFieldProps<User, Error>): ReactElement => {
+  return <SelectItemFormField {...args} useGetData={useGetData} />
 }
 
 export const TemplateError = ({
   ...args
-}: SelectItemProps<User, Error>): ReactElement => {
+}: SelectItemFormFieldProps<User, Error>): ReactElement => {
   const useGetData = (): {
     data?: PaginatedResponse<User>
     error?: Error
@@ -73,12 +76,12 @@ export const TemplateError = ({
       error: new Error('Something went wrong'),
     }
   }
-  return <SelectItem {...args} useGetData={useGetData} />
+  return <SelectItemFormField {...args} useGetData={useGetData} />
 }
 
 export const TemplateEmpty = ({
   ...args
-}: SelectItemProps<User, Error>): ReactElement => {
+}: SelectItemFormFieldProps<User, Error>): ReactElement => {
   const useGetData = ({
     size,
   }: SearchQueryParameters): {
@@ -94,5 +97,5 @@ export const TemplateEmpty = ({
       },
     }
   }
-  return <SelectItem {...args} useGetData={useGetData} />
+  return <SelectItemFormField {...args} useGetData={useGetData} />
 }

@@ -1,5 +1,6 @@
 export * from './CheckboxField'
 export * from './FieldsetField'
+export * from './FormError'
 export * from './InputField'
 export * from './SelectField'
 export * from './TextAreaField'
