@@ -240,6 +240,22 @@ export default {
       },
     },
   },
+  fieldset: {
+    container: {
+      indent: {
+        none: '',
+        label: '',
+        labelAndChildren: 'ml-1',
+      },
+    },
+    legend: {
+      indent: {
+        none: '',
+        label: 'ml-1',
+        labelAndChildren: '',
+      },
+    },
+  },
   toggleSwitch: {
     base: 'relative inline-flex items-start gap-x-2',
     normal: 'cursor-pointer',

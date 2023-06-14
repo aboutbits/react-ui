@@ -1,0 +1,67 @@
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { useForm } from 'react-hook-form'
+import * as Yup from 'yup'
+import { Form } from './Form'
+import { FieldsetFormField } from './FieldsetFormField'
+import { InputFormField } from './InputFormField'
+
+<Meta
+  title="Components/React Hook Form/FieldsetFormField"
+  component={FieldsetFormField}
+  decorators={[
+    (Story) => {
+      const resolver = yupResolver(
+        Yup.object({
+          firstName: Yup.string().required('Required'),
+          lastName: Yup.string().required('Required'),
+        })
+      )
+      const form = useForm({
+        resolver,
+        defaultValues: { firstName: '', lastName: '' },
+        mode: 'onTouched',
+      })
+      return (
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
+      )
+    },
+  ]}
+/>
+
+# FieldsetFormField
+
+A [FieldsetField](../?path=/docs/components-formnew-fieldsetfield--default-story) within the context of a `react-hook-form` form.
+
+The `FieldSetFormField` label will display an error state depending on the specified form `fields`.
+
+export const Template = ({ ...args }) => <FieldsetFormField {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      fields: ['firstName', 'lastName'],
+      label: 'Name',
+      children: (
+        <div className="flex [&>*]:flex-1 gap-x-4">
+          <InputFormField name="firstName" />
+          <InputFormField name="lastName" />
+        </div>
+      ),
+    }}
+    argTypes={{
+      disabled: { type: 'boolean' },
+      children: { control: { disable: true } },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

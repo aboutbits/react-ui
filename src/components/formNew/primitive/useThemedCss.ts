@@ -3,6 +3,7 @@ import { useTheme } from '../../../framework'
 import { Mode, Size } from '../../types'
 import { FormTone, FormVariant } from '../types'
 import { CheckboxLayout } from './Checkbox'
+import { FieldSetIndent } from './Fieldset'
 import { ToggleSwitchLayout } from './ToggleSwitch'
 
 export function useInputCss({
@@ -179,6 +180,46 @@ export function useCheckboxInputCss() {
   } = useTheme()
 
   return classNames(theme.base)
+}
+
+export function useFieldsetCss({ indent }: { indent: FieldSetIndent }) {
+  const {
+    formNew: { fieldset: theme },
+  } = useTheme()
+
+  return classNames(theme.container.indent[indent])
+}
+
+export function useFieldsetLegendCss({
+  mode,
+  tone,
+  disabled,
+  indent,
+}: {
+  mode: Mode
+  tone: FormTone
+  disabled: boolean
+  indent: FieldSetIndent
+}) {
+  const {
+    formNew: {
+      fieldset: { legend: theme },
+    },
+  } = useTheme()
+
+  const labeCss = useInputLabelCss({
+    mode,
+    tone,
+    disabled,
+  })
+
+  const labelCssWithoutMarginLeft = getClassNameWithoutMarginLeft(labeCss)
+
+  return classNames(labelCssWithoutMarginLeft, theme.indent[indent])
+}
+
+export function getClassNameWithoutMarginLeft(className: string): string {
+  return className.replace(/(^|\s)ml-\w+(?=\s|$)/, '')
 }
 
 export function useToggleSwitchCss({
