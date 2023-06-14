@@ -116,7 +116,8 @@ export default {
     },
   },
   inputMessage: {
-    base: 'mt-1 ml-1 block text-xs font-medium',
+    base: 'mt-1 block text-xs font-medium',
+    indent: 'ml-1',
     light: {
       tone: {
         NEUTRAL: '',
@@ -236,6 +237,96 @@ export default {
             disabled: 'fill-white/[0.36]',
           },
         },
+      },
+    },
+  },
+  toggleSwitch: {
+    base: 'relative inline-flex items-start gap-x-2',
+    normal: 'cursor-pointer',
+    disabled: '',
+    layout: {
+      START: 'flex-row-reverse',
+      END: '',
+      SPACE_BETWEEN: 'w-full justify-between',
+    },
+    inputHeight: {
+      base: 'min-h-[2.5rem]',
+      size: {
+        sm: 'pt-2',
+        md: 'pt-1.5',
+        lg: 'pt-0.5',
+      },
+    },
+    input: {
+      base: 'peer absolute h-0 w-0 opacity-0',
+    },
+    label: {
+      base: '',
+      mode: {
+        light: {
+          normal: '',
+          disabled: 'text-neutral-800/[0.36]',
+        },
+        dark: {
+          normal: 'text-white',
+          disabled: 'text-white/[0.36]',
+        },
+      },
+      size: {
+        sm: '',
+        md: 'pt-0.5',
+        lg: 'pt-1.5',
+      },
+    },
+    switch: {
+      base: 'block shrink-0 rounded-full border-2 p-0.5 outline-1 outline-offset-2 peer-focus:outline',
+      normal: 'transition-colors duration-200 ease-in-out',
+      disabled: '',
+      modeState: {
+        light: {
+          normal:
+            'outline-neutral-800 border-neutral-600 [[type=checkbox]:checked~&]:border-transparent [[type=checkbox]:checked~&]:bg-primary-500',
+          disabled:
+            'border-neutral-800/[0.36] [[type=checkbox]:checked~&]:border-transparent [[type=checkbox]:checked~&]:bg-neutral-800/[0.36]',
+        },
+        dark: {
+          normal:
+            'outline-white border-white [[type=checkbox]:checked~&]:border-transparent [[type=checkbox]:checked~&]:bg-primary-300',
+          disabled:
+            'border-white/[0.36] [[type=checkbox]:checked~&]:border-transparent [[type=checkbox]:checked~&]:bg-white/[0.26]',
+        },
+      },
+      size: {
+        sm: {
+          base: 'w-10',
+        },
+        md: {
+          base: 'w-12',
+        },
+        lg: {
+          base: 'w-16',
+        },
+      },
+    },
+    handle: {
+      base: 'block h-5 w-5 rounded-full',
+      normal: 'transition duration-200 ease-in-out',
+      disabled: '',
+      modeState: {
+        light: {
+          normal: 'bg-neutral-600 [[type=checkbox]:checked+span>&]:bg-white',
+          disabled:
+            'bg-neutral-800/[0.36] [[type=checkbox]:checked+span>&]:bg-white',
+        },
+        dark: {
+          normal: 'bg-white [[type=checkbox]:checked+span>&]:bg-neutral-800',
+          disabled: 'bg-white/[0.36]',
+        },
+      },
+      size: {
+        sm: 'h-4 w-4 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-4',
+        md: 'h-5 w-5 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-5',
+        lg: 'h-7 w-7 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-7',
       },
     },
   },

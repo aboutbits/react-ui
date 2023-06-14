@@ -47,6 +47,7 @@ export const CheckboxField = forwardRef<HTMLInputElement, CheckboxFieldProps>(
             tone={tone}
             disabled={disabled}
             message={message}
+            noIndent
           />
         )}
       </div>

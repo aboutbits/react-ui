@@ -7,6 +7,7 @@ export type InputMessageProps = ClassNameProps &
   ModeProps &
   FormToneProps & {
     disabled?: boolean
+    noIndent?: boolean
     /**
      * The content of the message.
      */
@@ -19,11 +20,12 @@ export type InputMessageProps = ClassNameProps &
 export function InputMessage({
   mode = Mode.light,
   tone = FormTone.neutral,
+  noIndent = false,
   disabled = false,
   className,
   message,
 }: InputMessageProps) {
-  const inputMessageCss = useInputMessageCss({ mode, tone, disabled })
+  const inputMessageCss = useInputMessageCss({ mode, tone, disabled, noIndent })
 
   return (
     <span className={classNames(inputMessageCss, className)}>{message}</span>
