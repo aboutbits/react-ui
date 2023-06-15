@@ -62,7 +62,7 @@ export function SelectItemInput<ItemType>({
     [inputCss]
   )
   const { messages } = useInternationalization()
-  const { form } = useTheme()
+  const { formNew } = useTheme()
 
   return (
     <div ref={componentRef} className={className}>
@@ -74,18 +74,18 @@ export function SelectItemInput<ItemType>({
           onClick={() => onOpenSelect()}
           className={classNames(
             customCssEmptyInput,
-            form.selectItem.input.container.base,
+            formNew.selectItem.input.container.base,
             hasError
-              ? form.selectItem.input.container.error
-              : form.selectItem.input.container.normal
+              ? formNew.selectItem.input.container.error
+              : formNew.selectItem.input.container.normal
           )}
         >
-          <span className={form.selectItem.input.placeholder.base}>
+          <span className={formNew.selectItem.input.placeholder.base}>
             {placeholder}
           </span>
-          <span className={form.selectItem.input.iconContainer.base}>
+          <span className={formNew.selectItem.input.iconContainer.base}>
             <IconKeyboardArrowDown
-              className={form.selectItem.input.icon.base}
+              className={formNew.selectItem.input.icon.base}
             />
           </span>
         </button>
@@ -93,17 +93,17 @@ export function SelectItemInput<ItemType>({
         <div
           className={classNames(
             inputCss,
-            form.selectItem.input.container.base,
+            formNew.selectItem.input.container.base,
             hasError
-              ? form.selectItem.input.container.error
-              : form.selectItem.input.container.normal
+              ? formNew.selectItem.input.container.error
+              : formNew.selectItem.input.container.normal
           )}
         >
           <button
             type="button"
             id={id}
             onClick={() => onOpenSelect()}
-            className={form.selectItem.input.selectButton.base}
+            className={formNew.selectItem.input.selectButton.base}
           >
             <span>
               {renderInputValue && selectedItem
@@ -115,14 +115,14 @@ export function SelectItemInput<ItemType>({
             type="button"
             onClick={() => onClear()}
             className={classNames(
-              form.selectItem.input.iconContainer.base,
+              formNew.selectItem.input.iconContainer.base,
               hasError
-                ? form.selectItem.input.iconContainer.error
-                : form.selectItem.input.iconContainer.normal
+                ? formNew.selectItem.input.iconContainer.error
+                : formNew.selectItem.input.iconContainer.normal
             )}
           >
             <IconClose
-              className={form.selectItem.input.icon.base}
+              className={formNew.selectItem.input.icon.base}
               title={messages['select.clear']}
             />
           </button>

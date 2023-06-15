@@ -346,4 +346,39 @@ export default {
       },
     },
   },
+  formError: {
+    base: 'xl:col-span-full',
+  },
+  selectItem: {
+    input: {
+      container: {
+        base: 'flex flex-row text-left gap-x-2 focus-within:outline focus-within:outline-1 focus-within:-outline-offset-2',
+        normal: 'focus-within:outline-neutral-800',
+        error: 'focus-within:outline-critical-500',
+      },
+      selectButton: {
+        base: 'flex-1 text-left -my-2.5 -ml-2 pl-2.5 focus:ring-0 focus:outline-none',
+      },
+      placeholder: {
+        base: 'flex-1',
+      },
+      iconContainer: {
+        base: 'mr-1',
+        normal: 'focus:outline-neutral-800',
+        error: 'focus:outline-critical-500',
+      },
+      icon: {
+        base: 'h-5 w-5',
+      },
+    },
+    dialogContentArea: {
+      base: 'border-t border-neutral-200',
+    },
+  },
+  formSubmitFeedback: {
+    base: 'flex items-center gap-x-2.5 text-sm font-medium text-success-700',
+    icon: {
+      base: 'h-5 w-5 shrink-0 fill-current',
+    },
+  },
 }

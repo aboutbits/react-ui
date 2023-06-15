@@ -3,10 +3,7 @@ import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues } from 'react-hook-form'
 import { useInternationalization } from '../../../framework'
 import { FormVariant } from '../../formNew'
-import {
-  InputFormField,
-  InputFormFieldProps,
-} from '../../react-hook-form/InputFormField'
+import { InputFormField, InputFormFieldProps } from '../../react-hook-form'
 
 // Make name optional to use 'search' as default
 export type SectionSearchProps<

@@ -4,8 +4,7 @@ import React, { useCallback } from 'react'
 import { act } from 'react-dom/test-utils'
 import { ReactUIProvider, defaultTheme } from '../../../../framework'
 import { Option } from '../../../formNew/primitive'
-import { InputFormField } from '../../../react-hook-form/InputFormField'
-import { SelectFormField } from '../../../react-hook-form/SelectFormField'
+import { InputFormField, SelectFormField } from '../../../react-hook-form'
 import { SectionFilter } from '../SectionFilter'
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
