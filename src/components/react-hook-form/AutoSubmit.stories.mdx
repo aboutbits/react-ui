@@ -4,10 +4,10 @@ import { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import { AutoSubmit } from './AutoSubmit'
 import { Form } from './Form'
-import { Input } from './Input'
+import { InputFormField } from './InputFormField'
 
 <Meta
-  title="Components/Form/AutoSubmit"
+  title="Components/React Hook Form/AutoSubmit"
   component={AutoSubmit}
   decorators={[
     (Story) => {
@@ -26,7 +26,7 @@ import { Input } from './Input'
             see the automatically submitted form values.
           </div>
           <Story />
-          <Input name="text" />
+          <InputFormField name="text" />
         </Form>
       )
     },

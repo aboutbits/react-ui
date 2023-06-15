@@ -13,7 +13,8 @@ import {
   UseFormProps,
   useFormState,
 } from 'react-hook-form'
-import { AutoSubmit, Form } from '../../form'
+import { AutoSubmit } from '../../react-hook-form/AutoSubmit'
+import { Form } from '../../react-hook-form/Form'
 import { ClassNameProps } from '../../types'
 
 export type SectionFilterProps<F extends FieldValues> = ClassNameProps &

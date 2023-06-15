@@ -2,14 +2,14 @@ import { ReactElement, ReactNode, useRef, useState } from 'react'
 import { useController } from 'react-hook-form'
 import { DialogProps } from '../../dialog'
 import { ClassNameProps, ModeProps } from '../../types'
-import { VariantProps } from '../types'
+import { VariantProps } from '../../form/types'
 import {
   SelectItemDialogWithSearch,
   SelectItemDialogWithSearchProps,
 } from './SelectItemDialogWithSearch'
 import { SelectItemInput } from './SelectItemInput'
 
-export type SelectItemProps<ItemType, Error> = {
+export type SelectItemFormFieldProps<ItemType, Error> = {
   id: string
   name: string
   /**
@@ -50,7 +50,7 @@ export type SelectItemProps<ItemType, Error> = {
     | 'paginationConfig'
   >
 
-export function SelectItem<ItemType, Error>({
+export function SelectItemFormField<ItemType, Error>({
   disabled = false,
   id,
   name,
@@ -70,7 +70,7 @@ export function SelectItem<ItemType, Error>({
   renderErrorMessage,
   paginationConfig,
   extractIdFromItem,
-}: SelectItemProps<ItemType, Error>): ReactElement {
+}: SelectItemFormFieldProps<ItemType, Error>): ReactElement {
   const { field, fieldState } = useController({ name })
 
   const [showDialog, setShowDialog] = useState<boolean>(false)

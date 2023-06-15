@@ -23,8 +23,8 @@ import {
 } from '../../dialog'
 import { PaginationInMemoryProps } from '../../pagination'
 import { AutoSubmit } from '../AutoSubmit'
-import { Input } from '../Input'
-import { FormVariant } from '../types'
+import { Input } from '../../form/Input'
+import { FormVariant } from '../../form/types'
 
 type FilterParameters = {
   search: string

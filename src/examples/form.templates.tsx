@@ -15,7 +15,6 @@ import {
   FieldSet,
   FieldSetIndent,
   Form,
-  FormError,
   Input,
   Option,
   Select,
@@ -23,11 +22,12 @@ import {
   ToggleSwitch,
   ToggleSwitchLayout,
 } from '../components/form'
+import { FormError } from '../components/formNew'
 import {
   PaginatedResponse,
   SearchQueryParameters,
-  SelectItem,
-} from '../components/form/async'
+  SelectItemFormField,
+} from '../components/react-hook-form/async'
 import {
   Section,
   SectionContainer,
@@ -188,7 +188,7 @@ export function FormExampleTemplate({
                 name="bio"
                 label="Bio"
               />
-              <SelectItem<Project, Error>
+              <SelectItemFormField<Project, Error>
                 id="favProjectId"
                 name="favProjectId"
                 label="Favorite Project"

@@ -9,16 +9,16 @@ import {
   InternationalizationMessages,
 } from '../../../../.storybook/components'
 import { Form } from '../Form'
-import { SelectItem } from './SelectItem'
+import { SelectItemFormField } from './SelectItemFormField'
 import {
   TemplateNormal,
   TemplateError,
   TemplateEmpty,
-} from './SelectItem.templates'
+} from './SelectItemFormField.templates'
 
 <Meta
-  title="Components/Form/SelectItem"
-  component={SelectItem}
+  title="Components/React Hook Form/SelectItemFormField"
+  component={SelectItemFormField}
   decorators={[
     (Story, context) => {
       const resolver = yupResolver(
@@ -39,7 +39,7 @@ import {
   ]}
 />
 
-# SelectItem
+# SelectItemFormField
 
 The component can be conveniently used to let the user select an item from a paginated list that is loaded asynchronously.
 
@@ -81,7 +81,7 @@ It uses the [Dialog](/docs/components-dialog-dialog--default) to display the sel
   items={['select.clear', 'select.search.empty', 'search.placeholder']}
 />
 
-Additionally, the SelectItem component shares the styles with the Input component.
+Additionally, the SelectItemFormField component shares the styles with the Input component.
 For customization of the styles please checkout the [theme section](/docs/components-form-input--default-story#theme) of the Input component.
 
 <Canvas>
