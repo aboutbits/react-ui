@@ -1,0 +1,148 @@
+import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { Theme } from '../../../../.storybook/components'
+import { FormVariant, FormTone } from '../types'
+import { Input } from './Input'
+
+<Meta title="Components/Form/primitive/Input" component={Input} />
+
+# Input
+
+A themed `input` element.
+
+export const Template = ({ ...args }) => <Input {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      name: 'name',
+      placeholder: '',
+      disabled: false,
+      iconStart: 'None',
+      iconEnd: 'None',
+    }}
+    argTypes={{
+      iconStart: {
+        options: ['None', 'Search', 'Badge'],
+        mapping: {
+          None: undefined,
+          Search: IconSearch,
+          Badge: IconBadge,
+        },
+        control: { type: 'select' },
+      },
+      iconEnd: {
+        options: ['None', 'Search', 'Badge'],
+        mapping: {
+          None: undefined,
+          Search: IconSearch,
+          Badge: IconBadge,
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+### Theme
+
+<Theme component="form" items={['input']} />
+
+## Variants
+
+The `Variant` defines the background and the border.
+
+<Canvas>
+  <Story
+    name="VariantGhost"
+    args={{
+      placeholder: 'Ghost',
+      variant: FormVariant.ghost,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="VariantSoft"
+    args={{
+      placeholder: 'Soft',
+      variant: FormVariant.soft,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="VariantSolid"
+    args={{
+      placeholder: 'Solid',
+      variant: FormVariant.solid,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="VariantTransparent"
+    args={{
+      placeholder: 'Transparent',
+      variant: FormVariant.transparent,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Tones
+
+The `Tone` defines the background and the border.
+
+<Canvas>
+  <Story
+    name="ToneNeutral"
+    args={{
+      placeholder: 'Neutral',
+      tone: FormTone.neutral,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="ToneCritical"
+    args={{
+      placeholder: 'Critical',
+      tone: FormTone.critical,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Icons
+
+<Canvas>
+  <Story
+    name="IconStart"
+    args={{
+      iconStart: IconSearch,
+      placeholder: 'Search',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="IconEnd"
+    args={{
+      iconEnd: IconBadge,
+      placeholder: 'Name',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -15,7 +15,7 @@ import {
   FormError,
   Option,
   ToggleSwitchLayout,
-} from '../components/formNew'
+} from '../components/form'
 import {
   CheckboxFormField,
   FieldsetFormField,

@@ -1,6 +1,6 @@
 import { ChangeEvent, ForwardedRef, forwardRef } from 'react'
 import { Controller, FieldPath, FieldValues } from 'react-hook-form'
-import { InputField, InputFieldProps, Status } from '../formNew'
+import { InputField, InputFieldProps, Status } from '../form'
 
 export type DateFormFieldProps<
   TFieldValues extends FieldValues,
@@ -10,7 +10,7 @@ export type DateFormFieldProps<
 }
 
 /**
- * An [InputField](../?path=/docs/components-formnew-inputfield--docs) within the context of a `react-hook-form` form and with the default type `date`.
+ * An [InputField](../?path=/docs/components-form-inputfield--docs) within the context of a `react-hook-form` form and with the default type `date`.
  *
  * The form value that is returned for validation is of type `Date | null`. `null` is returned if the input is an empty string.
  */

@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 import React, { useCallback } from 'react'
 import { act } from 'react-dom/test-utils'
 import { ReactUIProvider, defaultTheme } from '../../../../framework'
-import { Option } from '../../../formNew/primitive'
+import { Option } from '../../../form'
 import { InputFormField, SelectFormField } from '../../../react-hook-form'
 import { SectionFilter } from '../SectionFilter'
 

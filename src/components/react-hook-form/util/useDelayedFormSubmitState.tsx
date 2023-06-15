@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { useDelayedState } from '../../utils/useDelayedState'
+import { useDelayedState } from '../../util/useDelayedState'
 
 export function useDelayedFormSubmitState(successDelay = 2000) {
   const {

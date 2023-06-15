@@ -21,7 +21,7 @@ import {
   DialogPosition,
   DialogProps,
 } from '../../dialog'
-import { FormVariant } from '../../formNew/types'
+import { FormVariant } from '../../form/types'
 import { PaginationInMemoryProps } from '../../pagination'
 import { InputFormField } from '../../react-hook-form'
 import { AutoSubmit } from '../AutoSubmit'
@@ -175,7 +175,7 @@ export function SelectItemDialogSuccess<ItemType, Error>({
   'onConfirm' | 'renderListItem' | 'paginationConfig' | 'noSearchResults'
 >): ReactElement {
   const { messages } = useInternationalization()
-  const { formNew } = useTheme()
+  const { form } = useTheme()
 
   const empty = searching ? messages['select.search.empty'] : noSearchResults
 
@@ -185,7 +185,7 @@ export function SelectItemDialogSuccess<ItemType, Error>({
     <>
       <DialogContentArea
         enableScrollLayout={false}
-        className={formNew.selectItem.dialogContentArea.base}
+        className={form.selectItem.dialogContentArea.base}
       >
         <DialogContentList>
           {data.items.map((item, index) => (

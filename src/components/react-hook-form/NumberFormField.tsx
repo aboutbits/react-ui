@@ -1,6 +1,6 @@
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues } from 'react-hook-form'
-import { InputFormFieldProps, InputFormField } from './InputFormField'
+import { InputFormField, InputFormFieldProps } from './InputFormField'
 
 export type NumberFormFieldProps<
   TFieldValues extends FieldValues,
@@ -11,7 +11,7 @@ export type NumberFormFieldProps<
 >
 
 /**
- * An [InputField](../?path=/docs/components-formnew-inputfield--default-story) within the context of a `react-hook-form` form and with the default type `number`.
+ * An [InputField](../?path=/docs/components-form-inputfield--default-story) within the context of a `react-hook-form` form and with the default type `number`.
  *
  * The form value that is returned for validation is of type `number | null`. `null` is returned if the input is an empty string.
  */

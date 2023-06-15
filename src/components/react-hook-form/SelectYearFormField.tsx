@@ -1,9 +1,6 @@
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues } from 'react-hook-form'
-import {
-  SelectYearFieldOptionsProps,
-  useSelectYearFieldOptions,
-} from '../formNew/SelectYearField'
+import { SelectYearFieldOptionsProps, useSelectYearFieldOptions } from '../form'
 import { SelectFormField, SelectFormFieldProps } from './SelectFormField'
 
 export type SelectYearFormField<

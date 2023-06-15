@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useRef } from 'react'
 import { useWatch } from 'react-hook-form'
-import { useDebounce } from '../utils/useDebounce'
+import { useDebounce } from '../util/useDebounce'
 
 export function AutoSubmit({
   interval = 200,

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { CheckboxField, CheckboxFieldProps, Status } from '../formNew'
-import { useForwardedRef } from '../utils/useForwardedRef'
+import { CheckboxField, CheckboxFieldProps, Status } from '../form'
+import { useForwardedRef } from '../util/useForwardedRef'
 import { useFieldError } from './util/useFieldError'
 
 export type CheckboxFormFieldProps = Omit<CheckboxFieldProps, 'status'> & {
@@ -9,7 +9,7 @@ export type CheckboxFormFieldProps = Omit<CheckboxFieldProps, 'status'> & {
 }
 
 /**
- * A [CheckboxField](../?path=/docs/components-formnew-checkboxfield--default-story) within the context of a `react-hook-form` form.
+ * A [CheckboxField](../?path=/docs/components-form-checkboxfield--default-story) within the context of a `react-hook-form` form.
  *
  * The form value that is returned for validation is of type `boolean`.
  */
