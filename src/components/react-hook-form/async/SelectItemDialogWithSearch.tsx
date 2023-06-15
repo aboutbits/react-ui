@@ -175,7 +175,7 @@ export function SelectItemDialogSuccess<ItemType, Error>({
   'onConfirm' | 'renderListItem' | 'paginationConfig' | 'noSearchResults'
 >): ReactElement {
   const { messages } = useInternationalization()
-  const { form } = useTheme()
+  const { formNew } = useTheme()
 
   const empty = searching ? messages['select.search.empty'] : noSearchResults
 
@@ -185,7 +185,7 @@ export function SelectItemDialogSuccess<ItemType, Error>({
     <>
       <DialogContentArea
         enableScrollLayout={false}
-        className={form.selectItem.dialogContentArea.base}
+        className={formNew.selectItem.dialogContentArea.base}
       >
         <DialogContentList>
           {data.items.map((item, index) => (
