@@ -5,7 +5,7 @@ import {
   RegisterOptions,
   useFormContext,
 } from 'react-hook-form'
-import { InputField, InputFieldProps, Status } from '../formNew'
+import { InputField, InputFieldProps, Status } from '../form'
 import { useForwardedRef } from '../utils/useForwardedRef'
 import { useFieldError } from './util/useFieldError'
 
@@ -19,7 +19,7 @@ export type InputFormFieldProps<
 }
 
 /**
- * An [InputField](../?path=/docs/components-formnew-inputfield--default-story) within the context of a `react-hook-form` form.
+ * An [InputField](../?path=/docs/components-form-inputfield--default-story) within the context of a `react-hook-form` form.
  *
  * The form value that is returned for validation is of type `string` by default. If `transformEmptyToNull` is `true` and the input is empty, `null` is returned.
  */

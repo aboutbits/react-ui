@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode, useRef, useState } from 'react'
 import { useController } from 'react-hook-form'
 import { DialogProps } from '../../dialog'
-import { FormVariantProps } from '../../formNew'
+import { FormVariantProps } from '../../form'
 import { ClassNameProps, ModeProps } from '../../types'
 import {
   SelectItemDialogWithSearch,

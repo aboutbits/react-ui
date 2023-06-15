@@ -1,7 +1,7 @@
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues, useFormContext } from 'react-hook-form'
+import { Status, TextAreaField, TextAreaFieldProps } from '../form'
 import { useForwardedRef } from '../utils/useForwardedRef'
-import { TextAreaField, TextAreaFieldProps, Status } from '../formNew'
 import { InputFormFieldProps } from './InputFormField'
 import { useFieldError } from './util/useFieldError'
 
@@ -15,7 +15,7 @@ export type TextAreaFormFieldProps<
   >
 
 /**
- * A [TextAreaField](../?path=/docs/components-formnew-fields-textareafield--default-story) within the context of a `react-hook-form` form.
+ * A [TextAreaField](../?path=/docs/components-form-fields-textareafield--default-story) within the context of a `react-hook-form` form.
  *
  * The form value that is returned for validation is of type `string` by default. If `transformEmptyToNull` is `true` and the input is empty, `null` is returned.
  */

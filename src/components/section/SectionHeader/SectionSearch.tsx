@@ -2,7 +2,7 @@ import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues } from 'react-hook-form'
 import { useInternationalization } from '../../../framework'
-import { FormVariant } from '../../formNew'
+import { FormVariant } from '../../form'
 import { InputFormField, InputFormFieldProps } from '../../react-hook-form'
 
 // Make name optional to use 'search' as default

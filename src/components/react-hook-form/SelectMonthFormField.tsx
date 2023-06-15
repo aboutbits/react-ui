@@ -1,6 +1,6 @@
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues } from 'react-hook-form'
-import { useSelectMonthFieldOptions } from '../formNew/SelectMonthField'
+import { useSelectMonthFieldOptions } from '../form'
 import { SelectFormField, SelectFormFieldProps } from './SelectFormField'
 
 export type SelectMonthFormField<

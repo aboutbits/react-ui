@@ -1,5 +1,5 @@
 import { FieldPath, FieldValues, get, useFormState } from 'react-hook-form'
-import { FieldsetField, FieldsetFieldProps, Status } from '../formNew'
+import { FieldsetField, FieldsetFieldProps, Status } from '../form'
 
 export type FieldsetFormProps<TFieldValues extends FieldValues> = Omit<
   FieldsetFieldProps,
@@ -9,7 +9,7 @@ export type FieldsetFormProps<TFieldValues extends FieldValues> = Omit<
 }
 
 /**
- * A [FieldsetField](../?path=/docs/components-formnew-fieldsetfield--default-story) within the context of a `react-hook-form` form.
+ * A [FieldsetField](../?path=/docs/components-form-fieldsetfield--default-story) within the context of a `react-hook-form` form.
  *
  * The `FieldSetFormField` label will display an error state depending on the specified form `fields`.
  */

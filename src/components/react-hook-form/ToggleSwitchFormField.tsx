@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { Status, ToggleSwitchField, ToggleSwitchFieldProps } from '../formNew'
+import { Status, ToggleSwitchField, ToggleSwitchFieldProps } from '../form'
 import { useForwardedRef } from '../utils/useForwardedRef'
 import { useFieldError } from './util/useFieldError'
 
@@ -12,7 +12,7 @@ export type ToggleSwitchFormFieldProps = Omit<
 }
 
 /**
- * A [ToggleSwitchField](../?path=/docs/components-formnew-toggleswitchfield--default-story) within the context of a `react-hook-form` form.
+ * A [ToggleSwitchField](../?path=/docs/components-form-toggleswitchfield--default-story) within the context of a `react-hook-form` form.
  *
  * The form value that is returned for validation is of type `boolean`.
  */
