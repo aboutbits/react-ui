@@ -11,9 +11,10 @@ import {
 import { FormTone, Status, StatusProps } from './types'
 
 export type TextAreaFieldProps = Omit<TextAreaProps, 'tone'> &
-  Pick<InputLabelProps, 'label'> &
   Pick<InputMessageProps, 'message'> &
-  StatusProps
+  StatusProps & {
+    label?: InputLabelProps['children']
+  }
 
 /**
  * A text area field independent of any form validation library.
@@ -34,13 +35,9 @@ export const TextAreaField = forwardRef<
   return (
     <div className={className}>
       {!!label && (
-        <InputLabel
-          mode={mode}
-          tone={tone}
-          disabled={disabled}
-          htmlFor={id}
-          label={label}
-        />
+        <InputLabel mode={mode} tone={tone} disabled={disabled} htmlFor={id}>
+          {label}
+        </InputLabel>
       )}
       <TextArea
         {...props}

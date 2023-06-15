@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import { ReactNode } from 'react'
 import { Mode, ModeProps } from '../../types'
 import { FormTone, FormToneProps } from '../types'
 import { useFieldsetCss, useFieldsetLegendCss } from './useThemedCss'
@@ -15,7 +16,7 @@ export type FieldsetProps = React.DetailedHTMLProps<
 > &
   ModeProps &
   FormToneProps & {
-    label?: string
+    label?: ReactNode
     indent?: FieldSetIndent
   }
 

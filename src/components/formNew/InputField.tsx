@@ -11,9 +11,10 @@ import {
 import { FormTone, Status, StatusProps } from './types'
 
 export type InputFieldProps = Omit<InputProps, 'tone'> &
-  Pick<InputLabelProps, 'label'> &
   Pick<InputMessageProps, 'message'> &
-  StatusProps
+  StatusProps & {
+    label?: InputLabelProps['children']
+  }
 
 /**
  * An input field independent of any form validation library.
@@ -32,13 +33,9 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
     return (
       <div className={className}>
         {!!label && (
-          <InputLabel
-            mode={mode}
-            tone={tone}
-            disabled={disabled}
-            htmlFor={id}
-            label={label}
-          />
+          <InputLabel mode={mode} tone={tone} disabled={disabled} htmlFor={id}>
+            {label}
+          </InputLabel>
         )}
         <Input
           {...props}

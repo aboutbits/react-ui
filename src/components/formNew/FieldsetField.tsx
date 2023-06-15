@@ -1,9 +1,7 @@
-import { Fieldset, FieldsetProps, InputLabelProps } from './primitive'
+import { Fieldset, FieldsetProps } from './primitive'
 import { FormTone, Status, StatusProps } from './types'
 
-export type FieldsetFieldProps = Omit<FieldsetProps, 'tone'> &
-  Pick<InputLabelProps, 'label'> &
-  StatusProps
+export type FieldsetFieldProps = Omit<FieldsetProps, 'tone'> & StatusProps
 
 /**
  * A fieldset field independent of any form validation library.

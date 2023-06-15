@@ -1,14 +1,15 @@
 import classNames from 'classnames'
-import { ClassNameProps, Mode, ModeProps } from '../../types'
+import { Mode, ModeProps } from '../../types'
 import { FormTone, FormToneProps } from '../types'
 import { useInputLabelCss } from './useThemedCss'
 
-export type InputLabelProps = ClassNameProps &
+export type InputLabelProps = React.DetailedHTMLProps<
+  React.LabelHTMLAttributes<HTMLLabelElement>,
+  HTMLLabelElement
+> &
   ModeProps &
   FormToneProps & {
     disabled?: boolean
-    htmlFor: string
-    label?: string
   }
 
 /**
@@ -19,14 +20,14 @@ export function InputLabel({
   tone = FormTone.neutral,
   disabled = false,
   className,
-  htmlFor,
-  label,
+  children,
+  ...props
 }: InputLabelProps) {
   const inputLabelCss = useInputLabelCss({ mode, tone, disabled })
 
   return (
-    <label htmlFor={htmlFor} className={classNames(inputLabelCss, className)}>
-      {label}
+    <label {...props} className={classNames(inputLabelCss, className)}>
+      {children}
     </label>
   )
 }

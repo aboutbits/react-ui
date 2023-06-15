@@ -66,7 +66,7 @@ export function SelectItemInput<ItemType>({
 
   return (
     <div ref={componentRef} className={className}>
-      <InputLabel htmlFor={id} label={label} />
+      <InputLabel htmlFor={id}>{label}</InputLabel>
       {value === '' ? (
         <button
           type="button"
