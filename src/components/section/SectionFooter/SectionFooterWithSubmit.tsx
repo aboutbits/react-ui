@@ -5,7 +5,7 @@ import { SubmitButton } from '../../button'
 import {
   FormSubmitFeedback,
   FormSubmitFeedbackProps,
-} from '../../react-hook-form/FormSubmitFeedback'
+} from '../../react-hook-form'
 import { SectionFooterArea } from './SectionFooterArea'
 
 export type SectionFooterWithSubmitProps = {

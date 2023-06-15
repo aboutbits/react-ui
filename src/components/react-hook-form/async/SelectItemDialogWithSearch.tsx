@@ -23,7 +23,7 @@ import {
 } from '../../dialog'
 import { FormVariant } from '../../formNew/types'
 import { PaginationInMemoryProps } from '../../pagination'
-import { InputFormField } from '../../react-hook-form/InputFormField'
+import { InputFormField } from '../../react-hook-form'
 import { AutoSubmit } from '../AutoSubmit'
 
 type FilterParameters = {
