@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
-import { useId } from '@headlessui/react/dist/hooks/use-id'
 import { Mode } from '../types'
+import { useId } from '../utils/useId'
 import {
   InputLabel,
   InputLabelProps,
@@ -12,9 +12,10 @@ import {
 import { FormTone, FormVariant, Status, StatusProps } from './types'
 
 export type SelectFieldProps = Omit<SelectProps, 'tone'> &
-  Pick<InputLabelProps, 'label'> &
   Pick<InputMessageProps, 'message'> &
-  StatusProps
+  StatusProps & {
+    label?: InputLabelProps['children']
+  }
 
 /**
  * A select field independent of any form validation library.
@@ -39,19 +40,14 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
     const tone =
       status === Status.invalid ? FormTone.critical : FormTone.neutral
 
-    const autoId = useId()
-    const id = props.id ?? autoId
+    const id = useId(props.id)
 
     return (
       <div className={className}>
         {!!label && (
-          <InputLabel
-            mode={mode}
-            tone={tone}
-            disabled={disabled}
-            htmlFor={id}
-            label={label}
-          />
+          <InputLabel mode={mode} tone={tone} disabled={disabled} htmlFor={id}>
+            {label}
+          </InputLabel>
         )}
         <Select
           {...props}

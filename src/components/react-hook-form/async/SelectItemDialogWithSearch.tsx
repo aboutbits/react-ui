@@ -21,10 +21,10 @@ import {
   DialogPosition,
   DialogProps,
 } from '../../dialog'
+import { FormVariant } from '../../formNew/types'
 import { PaginationInMemoryProps } from '../../pagination'
+import { InputFormField } from '../../react-hook-form/InputFormField'
 import { AutoSubmit } from '../AutoSubmit'
-import { Input } from '../../form/Input'
-import { FormVariant } from '../../form/types'
 
 type FilterParameters = {
   search: string
@@ -147,7 +147,7 @@ export function SelectItemDialogSearch({
         className="flex-1"
       >
         <AutoSubmit />
-        <Input
+        <InputFormField
           name="search"
           variant={FormVariant.soft}
           iconStart={IconSearch}

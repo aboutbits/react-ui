@@ -1,8 +1,8 @@
 import { ReactElement, ReactNode, useRef, useState } from 'react'
 import { useController } from 'react-hook-form'
 import { DialogProps } from '../../dialog'
+import { FormVariantProps } from '../../formNew'
 import { ClassNameProps, ModeProps } from '../../types'
-import { VariantProps } from '../../form/types'
 import {
   SelectItemDialogWithSearch,
   SelectItemDialogWithSearchProps,
@@ -39,7 +39,7 @@ export type SelectItemFormFieldProps<ItemType, Error> = {
    */
   extractIdFromItem: (item: ItemType) => string
 } & ModeProps &
-  VariantProps &
+  FormVariantProps &
   ClassNameProps &
   Pick<
     SelectItemDialogWithSearchProps<ItemType, Error>,
