@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import { Mode } from '../types'
-import { useId } from '../utils/useId'
+import { useId } from '../util/useId'
 import {
   InputLabel,
   InputLabelProps,

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { Status, ToggleSwitchField, ToggleSwitchFieldProps } from '../form'
-import { useForwardedRef } from '../utils/useForwardedRef'
+import { useForwardedRef } from '../util/useForwardedRef'
 import { useFieldError } from './util/useFieldError'
 
 export type ToggleSwitchFormFieldProps = Omit<

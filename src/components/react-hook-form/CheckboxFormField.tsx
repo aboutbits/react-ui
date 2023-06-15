@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { CheckboxField, CheckboxFieldProps, Status } from '../form'
-import { useForwardedRef } from '../utils/useForwardedRef'
+import { useForwardedRef } from '../util/useForwardedRef'
 import { useFieldError } from './util/useFieldError'
 
 export type CheckboxFormFieldProps = Omit<CheckboxFieldProps, 'status'> & {

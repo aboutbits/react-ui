@@ -1,7 +1,7 @@
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues, useFormContext } from 'react-hook-form'
 import { Status, TextAreaField, TextAreaFieldProps } from '../form'
-import { useForwardedRef } from '../utils/useForwardedRef'
+import { useForwardedRef } from '../util/useForwardedRef'
 import { InputFormFieldProps } from './InputFormField'
 import { useFieldError } from './util/useFieldError'
 

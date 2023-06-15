@@ -16,7 +16,7 @@ import {
   useWatch,
 } from 'react-hook-form'
 import { Option, SelectField, SelectFieldProps, Status } from '../form'
-import { useForwardedRef } from '../utils/useForwardedRef'
+import { useForwardedRef } from '../util/useForwardedRef'
 import { useFieldError } from './util/useFieldError'
 
 export type SelectFormFieldProps<

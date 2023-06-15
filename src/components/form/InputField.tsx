@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { useId } from '../utils/useId'
+import { useId } from '../util/useId'
 import {
   Input,
   InputLabel,
