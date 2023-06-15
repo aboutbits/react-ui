@@ -3,11 +3,12 @@ import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyb
 import classNames from 'classnames'
 import { ReactNode, useMemo, useRef } from 'react'
 import { useInternationalization, useTheme } from '../../../framework'
+import { FormTone, InputMessage } from '../../formNew'
+import { InputLabel } from '../../formNew/primitive/InputLabel'
+import { useInputCss } from '../../formNew/primitive/useThemedCss'
+import { FormVariant } from '../../formNew/types'
 import { Mode } from '../../types'
-import { InputError } from '../../form/InputError'
-import { InputLabel } from '../../form/InputLabel'
-import { FormVariant } from '../../form/types'
-import { useCustomInputCss } from '../../form/useCustomInputCss'
+import { useFieldError } from '../util/useFieldError'
 import { replacePlaceholderColorWithTextColor } from './replacePlaceholderColorWithTextColor'
 
 export type SelectItemInputProps<ItemType> = {
@@ -32,7 +33,7 @@ export function SelectItemInput<ItemType>({
   name,
   label,
   placeholder,
-  disabled,
+  disabled = false,
   value,
   selectedItem,
   hasError,
@@ -45,22 +46,27 @@ export function SelectItemInput<ItemType>({
 }: SelectItemInputProps<ItemType>) {
   const componentRef = useRef<HTMLDivElement | null>(null)
 
-  const customCss = useCustomInputCss(name, {
-    disabled,
+  const error = useFieldError(name)
+
+  const inputCss = useInputCss({
     mode,
     variant,
+    tone: error ? FormTone.critical : FormTone.neutral,
+    disabled,
+    withIconStart: false,
+    withIconEnd: false,
   })
 
   const customCssEmptyInput = useMemo(
-    () => replacePlaceholderColorWithTextColor(customCss.inputCss),
-    [customCss.inputCss]
+    () => replacePlaceholderColorWithTextColor(inputCss),
+    [inputCss]
   )
   const { messages } = useInternationalization()
   const { form } = useTheme()
 
   return (
     <div ref={componentRef} className={className}>
-      <InputLabel inputId={id} label={label} className={customCss.labelCss} />
+      <InputLabel htmlFor={id} label={label} />
       {value === '' ? (
         <button
           type="button"
@@ -86,7 +92,7 @@ export function SelectItemInput<ItemType>({
       ) : (
         <div
           className={classNames(
-            customCss.inputCss,
+            inputCss,
             form.selectItem.input.container.base,
             hasError
               ? form.selectItem.input.container.error
@@ -122,7 +128,14 @@ export function SelectItemInput<ItemType>({
           </button>
         </div>
       )}
-      <InputError name={name} className={customCss.errorCss} />
+      {!!error && (
+        <InputMessage
+          mode={mode}
+          tone={FormTone.critical}
+          disabled={disabled}
+          message={error.message?.toString()}
+        />
+      )}
     </div>
   )
 }

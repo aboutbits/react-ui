@@ -1,34 +1,40 @@
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
-import { forwardRef } from 'react'
+import { ForwardedRef, forwardRef } from 'react'
+import { FieldPath, FieldValues } from 'react-hook-form'
 import { useInternationalization } from '../../../framework'
+import { FormVariant } from '../../formNew'
 import {
-  Input,
-  InputProps,
-  InputWithLabelProps,
-  InputWithoutLabelProps,
-  FormVariant,
-} from '../../form'
+  InputFormField,
+  InputFormFieldProps,
+} from '../../react-hook-form/InputFormField'
 
 // Make name optional to use 'search' as default
-export type SectionSearchProps = (
-  | Omit<InputWithoutLabelProps, 'ref' | 'name'>
-  | Omit<InputWithLabelProps, 'ref' | 'name'>
-) &
-  Partial<Pick<InputProps, 'name'>>
+export type SectionSearchProps<
+  TFieldValues extends FieldValues,
+  TFieldName extends FieldPath<TFieldValues>
+> = Omit<InputFormFieldProps<TFieldValues, TFieldName>, 'ref' | 'name'> &
+  Partial<Pick<InputFormFieldProps<TFieldValues, TFieldName>, 'name'>>
 
-export const SectionSearch = forwardRef<HTMLInputElement, SectionSearchProps>(
-  function SectionSearch({ name = 'search', ...props }, ref) {
-    const { messages } = useInternationalization()
+export const SectionSearch = forwardRef(function SectionSearch<
+  TFieldValues extends FieldValues,
+  TFieldName extends FieldPath<TFieldValues>
+>(
+  {
+    name = 'search' as TFieldName,
+    ...props
+  }: SectionSearchProps<TFieldValues, TFieldName>,
+  ref: ForwardedRef<HTMLInputElement>
+) {
+  const { messages } = useInternationalization()
 
-    return (
-      <Input
-        name={name}
-        ref={ref}
-        placeholder={messages['search.placeholder']}
-        variant={FormVariant.soft}
-        iconStart={IconSearch}
-        {...props}
-      />
-    )
-  }
-)
+  return (
+    <InputFormField
+      name={name}
+      ref={ref}
+      placeholder={messages['search.placeholder']}
+      variant={FormVariant.soft}
+      iconStart={IconSearch}
+      {...props}
+    />
+  )
+})
