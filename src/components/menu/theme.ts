@@ -10,6 +10,10 @@ export default {
     active: 'bg-primary-100',
   },
   menuList: {
-    base: 'py-2 mb-1 w-32 shadow focus:outline-none bg-white',
+    base: 'py-2 mb-2 w-32 shadow focus:outline-none bg-white',
+    direction: {
+      up: '-mt-2 absolute -translate-y-full',
+      down: '',
+    },
   },
 }
