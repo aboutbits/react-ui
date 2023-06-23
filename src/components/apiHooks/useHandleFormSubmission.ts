@@ -26,17 +26,21 @@ export function useHandleFormSubmission<
 ): {
   apiErrorMessage: string | null
   onSubmit: UseHandleFormSubmissionOnSubmit<Values, Response>
+  clearError: () => void
 } {
   const { messages } = useInternationalization()
   const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null)
+  const clearError = useCallback(() => {
+    clearErrors('apiError' as Path<Values>)
+    setApiErrorMessage(null)
+  }, [clearErrors])
   const isMounted = useIsMounted()
 
   const onSubmit: UseHandleFormSubmissionOnSubmit<Values, Response> =
     useCallback(
       async (values) => {
         try {
-          clearErrors('apiError' as Path<Values>)
-          setApiErrorMessage(null)
+          clearError()
           const response = await submitAction(values)
           options?.onSuccess?.(response, values)
           return response
@@ -81,11 +85,12 @@ export function useHandleFormSubmission<
           }
         }
       },
-      [messages, setError, clearErrors, options, submitAction, isMounted]
+      [messages, setError, clearError, options, submitAction, isMounted]
     )
 
   return {
     apiErrorMessage,
     onSubmit,
+    clearError,
   }
 }
