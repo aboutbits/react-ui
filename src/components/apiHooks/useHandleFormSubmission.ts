@@ -26,7 +26,7 @@ export function useHandleFormSubmission<
 ): {
   apiErrorMessage: string | null
   onSubmit: UseHandleFormSubmissionOnSubmit<Values, Response>
-  clearError: () => void
+  clearApiErrorMessage: () => void
 } {
   const { messages } = useInternationalization()
   const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null)
@@ -91,6 +91,6 @@ export function useHandleFormSubmission<
   return {
     apiErrorMessage,
     onSubmit,
-    clearError,
+    clearApiErrorMessage: clearError,
   }
 }
