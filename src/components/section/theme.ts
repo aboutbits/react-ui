@@ -34,6 +34,7 @@ export default {
   },
   listItemButton: {
     base: 'block w-full focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
+    icon: 'fill-current',
   },
   listItemLink: {
     base: 'block focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',

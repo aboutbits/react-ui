@@ -1,8 +1,23 @@
 export default {
+  menuContainer: 'relative',
   menuButton: {
     base: 'flex items-center underline focus:no-underline focus:outline-none focus:ring',
     icon: {
       base: 'w-6 h-6 fill-current',
+      direction: {
+        up: {
+          state: {
+            open: 'rotate-180 transform',
+            closed: '',
+          },
+        },
+        down: {
+          state: {
+            open: '',
+            closed: 'rotate-180 transform',
+          },
+        },
+      },
     },
   },
   menuItem: {
