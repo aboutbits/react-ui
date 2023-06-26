@@ -91,6 +91,7 @@ export default {
   },
   listItemButton: {
     base: 'block w-full focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
+    icon: 'fill-current',
   },
   footerArea: {
     base: 'px-6 py-4 border-t border-neutral-200 bg-neutral-100 text-xs',

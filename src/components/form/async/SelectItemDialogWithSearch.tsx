@@ -74,6 +74,8 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
   title,
   ...props
 }: SelectItemDialogWithSearchProps<ItemType, Error>): ReactElement {
+  const { form: theme } = useTheme()
+
   const { queryParameters, page, size, actions } = useQueryAndPagination({
     ...paginationConfig,
     defaultQueryParameters: defaultValues,
@@ -95,7 +97,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
             <DialogHeaderCloseAction onClick={props.onDismiss} />
             <DialogHeaderTitle>{title}</DialogHeaderTitle>
           </DialogHeaderRow>
-          <DialogHeaderRow className="my-2">
+          <DialogHeaderRow className={theme.selectItem.dialogHeaderSearch}>
             <SelectItemDialogSearch actions={actions} />
           </DialogHeaderRow>
         </DialogHeaderArea>
@@ -135,6 +137,7 @@ export function SelectItemDialogSearch({
 }): ReactElement {
   const { messages } = useInternationalization()
   const form = useForm({ defaultValues })
+  const { form: theme } = useTheme()
 
   return (
     <FormProvider {...form}>
@@ -144,7 +147,7 @@ export function SelectItemDialogSearch({
           event.stopPropagation()
           return form.handleSubmit(actions.updateQuery)(event)
         }}
-        className="flex-1"
+        className={theme.selectItem.form}
       >
         <AutoSubmit />
         <Input

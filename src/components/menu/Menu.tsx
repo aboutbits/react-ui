@@ -50,7 +50,7 @@ export function Menu({
   return (
     <HeadlessMenu>
       {({ open }) => (
-        <div className="relative">
+        <div className={menu.menuContainer}>
           {direction === MenuDirection.up && items}
           <HeadlessMenu.Button
             id={menuButtonId}
@@ -62,7 +62,9 @@ export function Menu({
               <IconArrowDropUp
                 className={classNames(
                   menu.menuButton.icon.base,
-                  !open && 'rotate-180 transform'
+                  menu.menuButton.icon.direction[direction].state[
+                    open ? 'open' : 'closed'
+                  ]
                 )}
               />
             </span>

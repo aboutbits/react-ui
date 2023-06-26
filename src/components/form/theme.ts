@@ -341,9 +341,11 @@ export default {
         base: 'h-5 w-5',
       },
     },
+    form: 'flex-1',
     dialogContentArea: {
       base: 'border-t border-neutral-200',
     },
+    dialogHeaderSearch: 'my-2',
   },
   fieldSet: {
     container: {
