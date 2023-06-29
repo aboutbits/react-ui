@@ -14,8 +14,8 @@ export type ButtonLinkProps = LinkComponentProps &
   ButtonCommonProps &
   LinkCommonProps
 
-const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
-  (
+export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
+  function ButtonLink(
     {
       href,
       mode = Mode.light,
@@ -31,7 +31,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       ...props
     },
     ref
-  ) => {
+  ) {
     const LinkComponent = useLinkComponent()
     const { button } = useTheme()
 
@@ -100,8 +100,3 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     )
   }
 )
-
-// This improves readability in dev tools
-ButtonLink.displayName = 'ButtonLink'
-
-export { ButtonLink }

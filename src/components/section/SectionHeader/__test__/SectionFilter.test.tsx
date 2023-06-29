@@ -2,8 +2,9 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React, { useCallback } from 'react'
 import { act } from 'react-dom/test-utils'
-import { defaultTheme, ReactUIProvider } from '../../../../framework'
-import { Input, Option, Select } from '../../../form'
+import { ReactUIProvider, defaultTheme } from '../../../../framework'
+import { Option } from '../../../form'
+import { InputFormField, SelectFormField } from '../../../react-hook-form'
 import { SectionFilter } from '../SectionFilter'
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
@@ -50,12 +51,12 @@ const MyForm = ({
         autoSubmitInterval={autoSubmitInterval}
         ref={formRef}
       >
-        <Input name="name" id="name" label="name" />
-        <Select name="color" id="color" label="color">
+        <InputFormField name="name" id="name" label="name" />
+        <SelectFormField name="color" id="color" label="color">
           <Option value=""></Option>
           <Option value="red">Red</Option>
           <Option value="green">Green</Option>
-        </Select>
+        </SelectFormField>
       </SectionFilter>
     </ReactUIProvider>
   )

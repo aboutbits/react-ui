@@ -11,23 +11,23 @@ import {
   DescriptionItemContentAlignVertical,
 } from '../components/content'
 import {
-  Checkbox,
-  FieldSet,
   FieldSetIndent,
-  Form,
   FormError,
-  Input,
   Option,
-  Select,
-  TextArea,
-  ToggleSwitch,
   ToggleSwitchLayout,
 } from '../components/form'
 import {
+  CheckboxFormField,
+  FieldsetFormField,
+  Form,
+  InputFormField,
   PaginatedResponse,
   SearchQueryParameters,
-  SelectItem,
-} from '../components/form/async'
+  SelectFormField,
+  SelectItemFormField,
+  TextAreaFormField,
+  ToggleSwitchFormField,
+} from '../components/react-hook-form'
 import {
   Section,
   SectionContainer,
@@ -138,57 +138,57 @@ export function FormExampleTemplate({
                   alignVertical: DescriptionItemContentAlignVertical.center,
                 }}
               />
-              <Input
+              <InputFormField
                 id="username"
                 type="text"
                 name="username"
                 label="Username"
                 placeholder="Username"
               />
-              <FieldSet
+              <FieldsetFormField
                 label="Name"
                 fields={['name.first', 'name.last']}
                 indent={FieldSetIndent.label}
               >
                 <div className="flex md:flex-row flex-col justify-between gap-3 [&>*]:flex-1">
-                  <Input
+                  <InputFormField
                     id="name.first"
                     type="text"
                     name="name.first"
                     placeholder="First name"
                   />
-                  <Input
+                  <InputFormField
                     id="name.last"
                     type="text"
                     name="name.last"
                     placeholder="Last name"
                   />
                 </div>
-              </FieldSet>
-              <Input
+              </FieldsetFormField>
+              <InputFormField
                 id="email"
                 type="email"
                 name="email"
                 placeholder="Email"
                 label="Email"
               />
-              <Select id="language" name="language" label="Language">
+              <SelectFormField id="language" name="language" label="Language">
                 <Option value="EN">English</Option>
                 <Option value="DE">German</Option>
                 <Option value="IT">Italian</Option>
-              </Select>
-              <Select id="role" name="role" label="Role">
+              </SelectFormField>
+              <SelectFormField id="role" name="role" label="Role">
                 <Option value="ADMIN">Admin</Option>
                 <Option value="USER">User</Option>
-              </Select>
-              <TextArea
+              </SelectFormField>
+              <TextAreaFormField
                 id="bio"
                 rows={3}
                 className="xl:col-span-full"
                 name="bio"
                 label="Bio"
               />
-              <SelectItem<Project, Error>
+              <SelectItemFormField<Project, Error>
                 id="favProjectId"
                 name="favProjectId"
                 label="Favorite Project"
@@ -203,29 +203,29 @@ export function FormExampleTemplate({
                 useGetData={useGetData}
                 paginationConfig={{ indexType: IndexType.ZERO_BASED }}
               />
-              <FieldSet
+              <FieldsetFormField
                 label="Privacy"
                 fields={['privacy']}
                 indent={FieldSetIndent.labelAndChildren}
               >
-                <Checkbox
+                <CheckboxFormField
                   name="privacy"
                   label="Accept the privacy policy"
                   applyInputHeight
                 />
-              </FieldSet>
-              <FieldSet
+              </FieldsetFormField>
+              <FieldsetFormField
                 label="Server validation"
                 fields={['serverValidationErrors']}
                 indent={FieldSetIndent.labelAndChildren}
               >
-                <ToggleSwitch
+                <ToggleSwitchFormField
                   name="serverValidationErrors"
                   label="Enable server validation errors"
                   layout={ToggleSwitchLayout.spaceBetween}
                   applyInputHeight
                 />
-              </FieldSet>
+              </FieldsetFormField>
               <FormError>{apiErrorMessage}</FormError>
             </SectionContent>
             <SectionFooterWithActions>

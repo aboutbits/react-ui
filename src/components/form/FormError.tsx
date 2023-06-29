@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import { ReactNode } from 'react'
 import { useTheme } from '../../framework'
-import { ClassNameProps, Tone } from '../types'
 import { Alert } from '../alert'
+import { ClassNameProps, Tone } from '../types'
 
 export type FormErrorProps = ClassNameProps & {
   children?: ReactNode

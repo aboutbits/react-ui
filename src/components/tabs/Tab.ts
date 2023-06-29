@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { useCallback, useContext, useMemo } from 'react'
 import { useTheme } from '../../framework'
-import { useScrollToElementOnFirstRender } from '../utils/useScrollToElementOnFristRender'
+import { useScrollToElementOnFirstRender } from '../util/useScrollToElementOnFristRender'
 import { TabsContext } from './TabsContext'
 
 export type TabProps = {

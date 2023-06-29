@@ -1,0 +1,83 @@
+import IconPerson from '@aboutbits/react-material-icons/dist/IconPerson'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { useForm } from 'react-hook-form'
+import * as Yup from 'yup'
+import { FormVariant } from '../form'
+import { Mode } from '../types'
+import { Form } from './Form'
+import { NumberFormField } from './NumberFormField'
+
+<Meta
+  title="Components/React Hook Form/NumberFormField"
+  component={NumberFormField}
+  decorators={[
+    (Story) => {
+      const resolver = yupResolver(
+        Yup.object({
+          age: Yup.number().required('Required'),
+        })
+      )
+      const form = useForm({
+        resolver,
+        defaultValues: { age: '' },
+        mode: 'onTouched',
+      })
+      return (
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
+      )
+    },
+  ]}
+/>
+
+# NumberFormField
+
+An [InputField](../?path=/docs/components-form-inputfield--default-story) within the context of a `react-hook-form` form and with the default type `number`.
+
+The form value that is returned for validation is of type `number | null`. `null` is returned if the input is an empty string.
+
+export const Template = ({ ...args }) => <NumberFormField {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      name: 'age',
+      label: 'Age',
+      placeholder: 'Age',
+      message: 'Please enter your real age',
+      mode: Mode.light,
+      variant: FormVariant.solid,
+      disabled: false,
+      iconStart: 'None',
+      iconEnd: 'None',
+    }}
+    argTypes={{
+      iconStart: {
+        options: ['None', 'Person'],
+        mapping: {
+          None: undefined,
+          Person: IconPerson,
+        },
+        control: { type: 'select' },
+      },
+      iconEnd: {
+        options: ['None', 'Person'],
+        mapping: {
+          None: undefined,
+          Person: IconPerson,
+        },
+        control: { type: 'select' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
