@@ -4,6 +4,7 @@ import { Mode, Size } from '../../types'
 import { FormTone, FormVariant } from '../types'
 import { CheckboxLayout } from './Checkbox'
 import { FieldSetIndent } from './Fieldset'
+import { RadioLayout } from './Radio'
 import { ToggleSwitchLayout } from './ToggleSwitch'
 
 export function useInputCss({
@@ -176,6 +177,62 @@ export function useCheckboxInputCss() {
   const {
     form: {
       checkbox: { input: theme },
+    },
+  } = useTheme()
+
+  return classNames(theme.base)
+}
+
+export function useRadioCss({
+  layout,
+  disabled,
+  applyInputHeight,
+  size,
+}: {
+  layout: RadioLayout
+  disabled: boolean
+  applyInputHeight: boolean
+  size: Size
+}) {
+  const {
+    form: { radio: theme },
+  } = useTheme()
+
+  return classNames(
+    theme.base,
+    theme.layout[layout],
+    applyInputHeight && [theme.inputHeight.base, theme.inputHeight.size[size]],
+    disabled ? theme.disabled : theme.normal
+  )
+}
+
+export function useRadioLabelCss({
+  mode,
+  size,
+  disabled,
+}: {
+  mode: Mode
+  size: Size
+  disabled: boolean
+}) {
+  const {
+    form: {
+      radio: { label: theme },
+    },
+  } = useTheme()
+  return classNames(
+    theme.base,
+    theme.size[size],
+    disabled
+      ? theme.mode[mode].disabled
+      : theme.mode[mode][disabled ? 'disabled' : 'normal']
+  )
+}
+
+export function useRadioInputCss() {
+  const {
+    form: {
+      radio: { input: theme },
     },
   } = useTheme()
 
