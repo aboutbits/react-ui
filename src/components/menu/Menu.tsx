@@ -5,6 +5,11 @@ import { ReactNode } from 'react'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 
+export enum MenuDirection {
+  up = 'up',
+  down = 'down',
+}
+
 export type MenuProps = ClassNameProps & {
   /**
    * Defines the accessibility label for the menu.
@@ -19,6 +24,7 @@ export type MenuProps = ClassNameProps & {
    **/
   menuButtonId?: string
   children?: ReactNode
+  direction: MenuDirection
 }
 
 export function Menu({
@@ -27,13 +33,25 @@ export function Menu({
   menuButtonContent,
   children,
   menuButtonId,
+  direction,
 }: MenuProps) {
   const { menu } = useTheme()
 
+  const items = (
+    <HeadlessMenu.Items
+      className={classNames(
+        menu.menuList.base,
+        menu.menuList.direction[direction]
+      )}
+    >
+      {children}
+    </HeadlessMenu.Items>
+  )
   return (
     <HeadlessMenu>
       {({ open }) => (
-        <>
+        <div className={menu.menuContainer}>
+          {direction === MenuDirection.up && items}
           <HeadlessMenu.Button
             id={menuButtonId}
             aria-label={menuLabel}
@@ -44,15 +62,15 @@ export function Menu({
               <IconArrowDropUp
                 className={classNames(
                   menu.menuButton.icon.base,
-                  !open && 'rotate-180 transform'
+                  menu.menuButton.icon.direction[direction].state[
+                    open ? 'open' : 'closed'
+                  ]
                 )}
               />
             </span>
           </HeadlessMenu.Button>
-          <HeadlessMenu.Items className={menu.menuList.base}>
-            {children}
-          </HeadlessMenu.Items>
-        </>
+          {direction === MenuDirection.down && items}
+        </div>
       )}
     </HeadlessMenu>
   )

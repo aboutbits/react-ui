@@ -371,9 +371,11 @@ export default {
         base: 'h-5 w-5',
       },
     },
+    form: 'flex-1',
     dialogContentArea: {
       base: 'border-t border-neutral-200',
     },
+    dialogHeaderSearch: 'my-2',
   },
   formSubmitFeedback: {
     base: 'flex items-center gap-x-2.5 text-sm font-medium text-success-700',

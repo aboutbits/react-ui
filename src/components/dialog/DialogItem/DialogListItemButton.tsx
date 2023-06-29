@@ -32,7 +32,11 @@ export const DialogListItemButton = forwardRef<
       {...props}
     >
       {children}
-      <IconKeyboardArrowRight width="24" height="24" className="fill-current" />
+      <IconKeyboardArrowRight
+        width="24"
+        height="24"
+        className={dialog.listItemButton.icon}
+      />
     </button>
   )
 })
