@@ -155,11 +155,12 @@ export function useCheckboxLabelCss({
   mode,
   size,
   disabled,
+  required,
 }: {
   mode: Mode
   size: Size
   disabled: boolean
-}) {
+} & RequiredProps) {
   const {
     form: {
       checkbox: { label: theme },
@@ -170,7 +171,8 @@ export function useCheckboxLabelCss({
     theme.size[size],
     disabled
       ? theme.mode[mode].disabled
-      : theme.mode[mode][disabled ? 'disabled' : 'normal']
+      : theme.mode[mode][disabled ? 'disabled' : 'normal'],
+    required && theme.mode[mode].required
   )
 }
 

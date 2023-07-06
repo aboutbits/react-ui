@@ -3,7 +3,7 @@ import IconCheckBoxRounded from '@aboutbits/react-material-icons/dist/IconCheckB
 import classNames from 'classnames'
 import { forwardRef, ReactNode } from 'react'
 import { useTheme } from '../../../framework'
-import { IconProps, Mode, ModeProps, Size } from '../../types'
+import { IconProps, Mode, ModeProps, RequiredProps, Size } from '../../types'
 import {
   useCheckboxCss,
   useCheckboxInputCss,
@@ -21,9 +21,10 @@ export type CheckboxProps = Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   >,
-  'size' | 'placeholder'
+  'size' | 'placeholder' | 'required'
 > &
-  ModeProps & {
+  ModeProps &
+  RequiredProps & {
     label?: ReactNode
     layout?: CheckboxLayout
     size?: Size
@@ -45,6 +46,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       disabled = false,
       label,
       className,
+      required = false,
       ...props
     },
     ref
@@ -55,7 +57,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       applyInputHeight,
       size,
     })
-    const checkboxLabelCss = useCheckboxLabelCss({ mode, size, disabled })
+    const checkboxLabelCss = useCheckboxLabelCss({
+      mode,
+      size,
+      disabled,
+      required,
+    })
     const checkboxInputCss = useCheckboxInputCss()
 
     return (
@@ -66,6 +73,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           ref={ref}
           type="checkbox"
           disabled={disabled}
+          required={required}
           className={checkboxInputCss}
         />
         <IconCheckbox mode={mode} size={size} disabled={disabled} />
