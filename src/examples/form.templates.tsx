@@ -58,7 +58,7 @@ const defaultValues = {
     last: 'Doe',
   },
   language: 'EN',
-  role: 'USER',
+  role: '',
   bio: 'John is a software engineer from Bolzano, Italy',
   favProjectId: '1',
   serverValidationErrors: false,
@@ -177,7 +177,8 @@ export function FormExampleTemplate({
                 <Option value="DE">German</Option>
                 <Option value="IT">Italian</Option>
               </SelectFormField>
-              <SelectFormField id="role" name="role" label="Role">
+              <SelectFormField required id="role" name="role" label="Role">
+                <Option value="">Select a role...</Option>
                 <Option value="ADMIN">Admin</Option>
                 <Option value="USER">User</Option>
               </SelectFormField>
