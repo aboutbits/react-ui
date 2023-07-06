@@ -8,30 +8,40 @@ describe('useHandleRequest', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const onSuccess = () => {}
 
+  const expectedErrorMessage = 'Server Error'
+
   const onRequestWithErrorResponse = () =>
-    new Promise((resolve, reject) =>
+    new Promise((_resolve, reject) =>
       setTimeout(
-        () => reject({ response: { data: { message: 'Server Error' } } }),
+        () =>
+          reject({
+            isAxiosError: true,
+            response: { data: { message: expectedErrorMessage } },
+          }),
         100
       )
     )
 
   const onRequestWithoutErrorResponse = () =>
-    new Promise((resolve, reject) => setTimeout(() => reject(), 100))
+    new Promise((_resolve, reject) => setTimeout(() => reject(), 100))
 
   test('should return initial state on first render', () => {
-    const { result } = renderHook(() => useHandleRequest(onRequest, onSuccess))
+    const { result } = renderHook(() =>
+      useHandleRequest(onRequest, { onSuccess })
+    )
 
     expect(result.current.apiErrorMessage).toBe(null)
-    expect(result.current.onRequest).toBeDefined()
+    expect(result.current.triggerRequest).toBeDefined()
     expect(result.current.isRequesting).toBeFalsy()
   })
 
   test('should set is requesting while waiting for response', async () => {
-    const { result } = renderHook(() => useHandleRequest(onRequest, onSuccess))
+    const { result } = renderHook(() =>
+      useHandleRequest(onRequest, { onSuccess })
+    )
 
     act(() => {
-      result.current.onRequest()
+      result.current.triggerRequest()
     })
 
     await waitFor(() => expect(result.current.isRequesting).toBeFalsy())
@@ -40,34 +50,36 @@ describe('useHandleRequest', () => {
   test('should call onSuccess on successful request', async () => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const onSuccess = jest.fn(() => {})
-    const { result } = renderHook(() => useHandleRequest(onRequest, onSuccess))
+    const { result } = renderHook(() =>
+      useHandleRequest(onRequest, { onSuccess })
+    )
 
-    await act(() => result.current.onRequest())
+    await act(() => result.current.triggerRequest())
     expect(onSuccess).toHaveBeenCalled()
     expect(onSuccess).toHaveBeenCalledTimes(1)
   })
 
   test('should set apiErrorMessage on error with response', async () => {
     const { result } = renderHook(() =>
-      useHandleRequest(onRequestWithErrorResponse, onSuccess)
+      useHandleRequest(onRequestWithErrorResponse, { onSuccess })
     )
 
-    await act(() => result.current.onRequest())
+    await act(() => result.current.triggerRequest())
 
-    expect(result.current.apiErrorMessage).toBe('Server Error')
+    expect(result.current.apiErrorMessage).toBe(expectedErrorMessage)
   })
 
   test('should reset apiErrorMessage before calling onRequest', async () => {
     const { result } = renderHook(() =>
-      useHandleRequest(onRequestWithErrorResponse, onSuccess)
+      useHandleRequest(onRequestWithErrorResponse, { onSuccess })
     )
 
-    await act(() => result.current.onRequest())
+    await act(() => result.current.triggerRequest())
 
     expect(result.current.apiErrorMessage).toBe('Server Error')
 
     act(() => {
-      result.current.onRequest()
+      result.current.triggerRequest()
     })
 
     expect(result.current.apiErrorMessage).toBe(null)
@@ -76,22 +88,23 @@ describe('useHandleRequest', () => {
 
   test('should set apiErrorMessage to fallbackErrorId on error without response', async () => {
     const { result } = renderHook(() =>
-      useHandleRequest(onRequestWithoutErrorResponse, onSuccess, {
+      useHandleRequest(onRequestWithoutErrorResponse, {
+        onSuccess,
         apiFallbackErrorMessage: 'Fallback error message',
       })
     )
 
-    await act(() => result.current.onRequest())
+    await act(() => result.current.triggerRequest())
 
     expect(result.current.apiErrorMessage).toBe('Fallback error message')
   })
 
   test('should set default error message on error without response', async () => {
     const { result } = renderHook(() =>
-      useHandleRequest(onRequestWithoutErrorResponse, onSuccess)
+      useHandleRequest(onRequestWithoutErrorResponse, { onSuccess })
     )
 
-    await act(() => result.current.onRequest())
+    await act(() => result.current.triggerRequest())
 
     expect(result.current.apiErrorMessage).toBe(defaultMessages['error.api'])
   })

@@ -1,4 +1,4 @@
-import { joinFieldErrorMessages } from '../utils'
+import { joinFieldErrorMessages } from '../helpers'
 
 describe('joinFieldErrorMessages', () => {
   it('should return an empty object if no field errors are available', () => {
