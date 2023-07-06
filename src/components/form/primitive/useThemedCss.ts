@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { useTheme } from '../../../framework'
-import { Mode, Size } from '../../types'
+import { Mode, RequiredProps, Size } from '../../types'
 import { FormTone, FormVariant } from '../types'
 import { CheckboxLayout } from './Checkbox'
 import { FieldSetIndent } from './Fieldset'
@@ -41,18 +41,20 @@ export function useInputLabelCss({
   mode,
   tone,
   disabled,
+  required,
 }: {
   mode: Mode
   tone: FormTone
   disabled: boolean
-}) {
+} & RequiredProps) {
   const {
     form: { inputLabel: theme },
   } = useTheme()
 
   return classNames(
     theme.base,
-    disabled ? theme[mode].disabled : theme[mode].tone[tone]
+    disabled ? theme[mode].disabled : theme[mode].tone[tone],
+    required && theme[mode].required
   )
 }
 
@@ -207,13 +209,14 @@ export function useFieldsetLegendCss({
     },
   } = useTheme()
 
-  const labeCss = useInputLabelCss({
+  const labelCss = useInputLabelCss({
     mode,
     tone,
     disabled,
+    required: false,
   })
 
-  const labelCssWithoutMarginLeft = getClassNameWithoutMarginLeft(labeCss)
+  const labelCssWithoutMarginLeft = getClassNameWithoutMarginLeft(labelCss)
 
   return classNames(labelCssWithoutMarginLeft, theme.indent[indent])
 }

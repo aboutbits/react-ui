@@ -32,6 +32,13 @@ export type ModeProps = {
   mode?: Mode
 }
 
+export type RequiredProps = {
+  /**
+   * Defines whether the input is required
+   */
+  required?: boolean
+}
+
 export type UseSearchQuery = {
   /**
    * Defines the passed value for the search input.

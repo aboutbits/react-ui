@@ -113,6 +113,23 @@ export const Template = ({ ...args }) => <InputField {...args} />
   </Story>
 </Canvas>
 
+## Required
+
+The `required` property defines whether the input is shown as required.
+
+<Canvas>
+  <Story
+    name="Required"
+    args={{
+      label: 'Label',
+      message: 'This is the message',
+      required: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Disabled
 
 <Canvas>
