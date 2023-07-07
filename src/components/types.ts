@@ -32,11 +32,18 @@ export type ModeProps = {
   mode?: Mode
 }
 
-export type RequiredProps = {
+export type RequiredProps<T extends boolean = boolean> = {
   /**
    * Defines whether the input is required
    */
-  required?: boolean
+  required?: T
+}
+
+export type ShowRequiredProps<T extends boolean = boolean> = {
+  /**
+   * Defines whether to show that the input is required
+   */
+  showRequired?: T
 }
 
 export type UseSearchQuery = {

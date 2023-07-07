@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { Mode, RequiredProps } from '../types'
+import { Mode, RequiredProps, ShowRequiredProps } from '../types'
 import { useId } from '../util/useId'
 import {
   InputLabel,
@@ -14,7 +14,8 @@ import { FormTone, FormVariant, Status, StatusProps } from './types'
 export type SelectFieldProps = Omit<SelectProps, 'tone'> &
   Pick<InputMessageProps, 'message'> &
   StatusProps &
-  RequiredProps & {
+  RequiredProps &
+  ShowRequiredProps & {
     label?: InputLabelProps['children']
   }
 
@@ -35,6 +36,7 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
       label,
       children,
       required,
+      showRequired,
       ...props
     },
     ref
@@ -53,6 +55,7 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
             disabled={disabled}
             htmlFor={id}
             required={required}
+            showRequired={showRequired}
           >
             {label}
           </InputLabel>

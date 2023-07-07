@@ -2,7 +2,12 @@ import { ReactElement, ReactNode, useRef, useState } from 'react'
 import { useController } from 'react-hook-form'
 import { DialogProps } from '../../dialog'
 import { FormVariantProps } from '../../form'
-import { ClassNameProps, ModeProps, RequiredProps } from '../../types'
+import {
+  ClassNameProps,
+  ModeProps,
+  RequiredProps,
+  ShowRequiredProps,
+} from '../../types'
 import {
   SelectItemDialogWithSearch,
   SelectItemDialogWithSearchProps,
@@ -42,6 +47,7 @@ export type SelectItemFormFieldProps<ItemType, Error> = {
   FormVariantProps &
   ClassNameProps &
   RequiredProps &
+  ShowRequiredProps &
   Pick<
     SelectItemDialogWithSearchProps<ItemType, Error>,
     | 'useGetData'
@@ -72,6 +78,7 @@ export function SelectItemFormField<ItemType, Error>({
   paginationConfig,
   extractIdFromItem,
   required,
+  showRequired,
 }: SelectItemFormFieldProps<ItemType, Error>): ReactElement {
   const { field, fieldState } = useController({ name })
 
@@ -82,6 +89,7 @@ export function SelectItemFormField<ItemType, Error>({
     <>
       <SelectItemInput
         required={required}
+        showRequired={showRequired}
         id={id}
         name={name}
         label={label}
