@@ -229,14 +229,14 @@ export function useRadioLabelCss({
   )
 }
 
-export function useRadioInputCss() {
+export function useRadioInputCss({ size }: { size: Size }) {
   const {
     form: {
       radio: { input: theme },
     },
   } = useTheme()
 
-  return classNames(theme.base)
+  return classNames(theme.base, theme.size[size])
 }
 
 export function useFieldsetCss({ indent }: { indent: FieldSetIndent }) {

@@ -241,13 +241,13 @@ export default {
     },
   },
   radio: {
-    base: 'relative inline-flex items-start gap-x-2',
+    base: 'flex items-center gap-x-3',
     normal: 'cursor-pointer',
     disabled: '',
     layout: {
-      START: 'flex-row-reverse',
-      END: '',
-      SPACE_BETWEEN: 'w-full justify-between',
+      START: '',
+      END: 'flex-row-reverse',
+      SPACE_BETWEEN: 'flex-row-reverse w-full justify-between',
     },
     inputHeight: {
       base: 'min-h-[2.5rem]',
@@ -258,7 +258,12 @@ export default {
       },
     },
     input: {
-      base: 'peer absolute h-0 w-0 opacity-0',
+      base: 'peer outline-none text-primary-500 focus:ring-primary-500 cursor-pointer focus:ring-offset-white',
+      size: {
+        sm: 'h-4 w-4',
+        md: 'h-5 w-5',
+        lg: 'h-6 w-6',
+      },
     },
     label: {
       base: '',
@@ -274,8 +279,8 @@ export default {
       },
       size: {
         sm: '',
-        md: 'pt-0.5',
-        lg: 'pt-1.5',
+        md: '',
+        lg: '',
       },
     },
     check: {

@@ -8,15 +8,20 @@ import { Radio } from './Radio'
 
 A themed `radio` element.
 
-export const Template = ({ ...args }) => <Radio {...args} />
+export const Template = ({ ...args }) => (
+  <div className="space-y-4">
+    <Radio {...args} />
+    <Radio {...args} label="Option 2" />
+    <Radio {...args} label="Option 3" />
+  </div>
+)
 
 <Canvas>
   <Story
     name="Default"
     args={{
       name: 'name',
-      label: 'Accept privacy policy',
-      disabled: false,
+      label: 'Option 1',
     }}
   >
     {Template.bind({})}

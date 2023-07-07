@@ -1,8 +1,6 @@
-import { yupResolver } from '@hookform/resolvers/yup'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { action } from '@storybook/addon-actions'
 import { useForm } from 'react-hook-form'
-import * as Yup from 'yup'
 import { Form } from './Form'
 import { RadioFormField } from './RadioFormField'
 
@@ -11,16 +9,7 @@ import { RadioFormField } from './RadioFormField'
   component={RadioFormField}
   decorators={[
     (Story) => {
-      const formSchema = Yup.object({
-        acceptPrivacy: Yup.boolean(),
-      })
-      const defaultValues = {
-        acceptPrivacy: false,
-      }
-      const form = useForm({
-        resolver: yupResolver(formSchema),
-        defaultValues,
-      })
+      const form = useForm()
       return (
         <Form form={form} onSubmit={action('onSubmit')}>
           <Story />
@@ -34,14 +23,20 @@ import { RadioFormField } from './RadioFormField'
 
 A [Radio](../?path=/docs/components-form-primitive-radio--default-story) within the context of a `react-hook-form` form.
 
-export const Template = ({ ...args }) => <RadioFormField {...args} />
+export const Template = ({ ...args }) => (
+  <div className="space-y-4">
+    <RadioFormField {...args} />
+    <RadioFormField {...args} label="Option 2" />
+    <RadioFormField {...args} label="Option 3" />
+  </div>
+)
 
 <Canvas>
   <Story
     name="Default"
     args={{
       name: 'privacy',
-      label: 'Accept privacy policy',
+      label: 'Option 1',
     }}
   >
     {Template.bind({})}
