@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { Mode, ModeProps, RequiredProps, ShowRequiredProps } from '../../types'
+import { Mode, ModeProps } from '../../types'
 import { FormTone, FormToneProps } from '../types'
 import { useInputLabelCss } from './useThemedCss'
 
@@ -8,9 +8,8 @@ export type InputLabelProps = React.DetailedHTMLProps<
   HTMLLabelElement
 > &
   ModeProps &
-  FormToneProps &
-  RequiredProps &
-  ShowRequiredProps & {
+  FormToneProps & {
+    showRequired?: boolean
     disabled?: boolean
   }
 
@@ -23,13 +22,14 @@ export function InputLabel({
   disabled = false,
   className,
   children,
+  showRequired = false,
   ...props
 }: InputLabelProps) {
   const inputLabelCss = useInputLabelCss({
     mode,
     tone,
     disabled,
-    required: props.required && props.showRequired,
+    showRequired,
   })
 
   return (

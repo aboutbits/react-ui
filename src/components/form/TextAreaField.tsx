@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { RequiredProps, ShowRequiredProps } from '../types'
+import { HideRequiredProps, RequiredProps } from '../types'
 import { useId } from '../util/useId'
 import {
   InputLabel,
@@ -15,7 +15,7 @@ export type TextAreaFieldProps = Omit<TextAreaProps, 'tone'> &
   Pick<InputMessageProps, 'message'> &
   StatusProps &
   RequiredProps &
-  ShowRequiredProps & {
+  HideRequiredProps & {
     label?: InputLabelProps['children']
   }
 
@@ -36,7 +36,7 @@ export const TextAreaField = forwardRef<
     disabled,
     className,
     required,
-    showRequired,
+    hideRequired,
     ...props
   },
   ref
@@ -53,8 +53,7 @@ export const TextAreaField = forwardRef<
           tone={tone}
           disabled={disabled}
           htmlFor={id}
-          required={required}
-          showRequired={showRequired}
+          showRequired={required && !hideRequired}
         >
           {label}
         </InputLabel>

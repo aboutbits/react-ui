@@ -4,9 +4,9 @@ import { DialogProps } from '../../dialog'
 import { FormVariantProps } from '../../form'
 import {
   ClassNameProps,
+  HideRequiredProps,
   ModeProps,
   RequiredProps,
-  ShowRequiredProps,
 } from '../../types'
 import {
   SelectItemDialogWithSearch,
@@ -47,7 +47,7 @@ export type SelectItemFormFieldProps<ItemType, Error> = {
   FormVariantProps &
   ClassNameProps &
   RequiredProps &
-  ShowRequiredProps &
+  HideRequiredProps &
   Pick<
     SelectItemDialogWithSearchProps<ItemType, Error>,
     | 'useGetData'
@@ -78,7 +78,7 @@ export function SelectItemFormField<ItemType, Error>({
   paginationConfig,
   extractIdFromItem,
   required,
-  showRequired,
+  hideRequired,
 }: SelectItemFormFieldProps<ItemType, Error>): ReactElement {
   const { field, fieldState } = useController({ name })
 
@@ -89,7 +89,7 @@ export function SelectItemFormField<ItemType, Error>({
     <>
       <SelectItemInput
         required={required}
-        showRequired={showRequired}
+        hideRequired={hideRequired}
         id={id}
         name={name}
         label={label}

@@ -285,10 +285,12 @@ export default {
       mode: {
         light: {
           normal: '',
+          required: "after:content-['*'] after:ml-0.5 after:text-critical-500",
           disabled: 'text-neutral-800/[0.36]',
         },
         dark: {
           normal: 'text-white',
+          required: "after:content-['*'] after:ml-0.5 after:text-critical-500",
           disabled: 'text-white/[0.36]',
         },
       },

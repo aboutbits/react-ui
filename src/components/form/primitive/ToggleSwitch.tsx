@@ -1,6 +1,12 @@
 import classNames from 'classnames'
 import { forwardRef, ReactNode } from 'react'
-import { Mode, ModeProps, Size } from '../../types'
+import {
+  HideRequiredProps,
+  Mode,
+  ModeProps,
+  RequiredProps,
+  Size,
+} from '../../types'
 import {
   useToggleSwitchCss,
   useToggleSwitchHandleCss,
@@ -22,7 +28,9 @@ export type ToggleSwitchProps = Omit<
   >,
   'size' | 'placeholder'
 > &
-  ModeProps & {
+  ModeProps &
+  RequiredProps &
+  HideRequiredProps & {
     label?: ReactNode
     layout?: ToggleSwitchLayout
     size?: Size
@@ -42,28 +50,36 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
       disabled = false,
       label,
       className,
+      required,
+      hideRequired,
       ...props
     },
     ref
   ) {
-    const checkboxCss = useToggleSwitchCss({
+    const toggleSwitchCss = useToggleSwitchCss({
       layout,
       disabled,
       applyInputHeight,
       size,
     })
-    const checkboxLabelCss = useToggleSwitchLabelCss({ mode, size, disabled })
-    const checkboxInputCss = useToggleSwitchInputCss()
+    const toggleSwitchLabelCss = useToggleSwitchLabelCss({
+      mode,
+      size,
+      disabled,
+      showRequired: required && !hideRequired,
+    })
+    const toggleSwitchInputCss = useToggleSwitchInputCss()
 
     return (
-      <label className={classNames(checkboxCss, className)}>
-        {label && <span className={checkboxLabelCss}>{label}</span>}
+      <label className={classNames(toggleSwitchCss, className)}>
+        {label && <span className={toggleSwitchLabelCss}>{label}</span>}
         <input
           {...props}
+          required={required}
           ref={ref}
           type="checkbox"
           disabled={disabled}
-          className={checkboxInputCss}
+          className={toggleSwitchInputCss}
         />
         <ToggleSwitchSwitch mode={mode} size={size} disabled={disabled} />
       </label>
