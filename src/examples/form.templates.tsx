@@ -3,7 +3,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { ReactElement, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
-import { useHandleFormSubmission } from '../components/apiHooks'
 import { SubmitButton } from '../components/button'
 import {
   ContentArea,
@@ -27,6 +26,7 @@ import {
   SelectItemFormField,
   TextAreaFormField,
   ToggleSwitchFormField,
+  useHandleSubmit,
 } from '../components/react-hook-form'
 import {
   Section,
@@ -121,12 +121,11 @@ export function FormExampleTemplate({
     [onSubmit]
   )
 
-  const { onSubmit: onSubmitHandler, apiErrorMessage } =
-    useHandleFormSubmission(form, submitAction)
+  const { triggerSubmit, apiErrorMessage } = useHandleSubmit(form, submitAction)
 
   return (
     <ContentArea>
-      <Form form={form} onSubmit={onSubmitHandler} className="space-y-3">
+      <Form form={form} onSubmit={triggerSubmit} className="space-y-3">
         <Section>
           <SectionHeader title="User edit" />
           <SectionContainer>
