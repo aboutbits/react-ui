@@ -1,4 +1,4 @@
-import { AxiosError, isAxiosError } from 'axios'
+import axios, { AxiosError } from 'axios'
 import { ErrorBody } from './types'
 
 export function joinFieldErrorMessages(
@@ -24,7 +24,9 @@ export function isAxiosErrorWithErrorBody(
 ): error is Omit<AxiosError<ErrorBody>, 'response'> &
   Required<Pick<AxiosError<ErrorBody>, 'response'>> {
   return (
-    isAxiosError(error) &&
+    // isAxiosError is not exported as default member in version 0.27
+    // eslint-disable-next-line import/no-named-as-default-member
+    axios.isAxiosError(error) &&
     typeof error.response?.data === 'object' &&
     error.response.data !== null
   )
