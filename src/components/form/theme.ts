@@ -105,7 +105,7 @@ export default {
         NEUTRAL: '',
         CRITICAL: 'text-critical-500',
       },
-      required: "after:content-['*'] after:ml-0.5 after:text-critical-500",
+      required: "after:content-['*'] after:ml-0.5",
       disabled: 'text-neutral-800/[0.36]',
     },
     dark: {
@@ -113,7 +113,7 @@ export default {
         NEUTRAL: 'text-white',
         CRITICAL: 'text-critical-300',
       },
-      required: "after:content-['*'] after:ml-0.5 after:text-critical-500",
+      required: "after:content-['*'] after:ml-0.5",
       disabled: 'text-white/[0.36]',
     },
   },
@@ -188,12 +188,12 @@ export default {
       mode: {
         light: {
           normal: '',
-          required: "after:content-['*'] after:ml-0.5 after:text-critical-500",
+          required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-neutral-800/[0.36]',
         },
         dark: {
           normal: 'text-white',
-          required: "after:content-['*'] after:ml-0.5 after:text-critical-500",
+          required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-white/[0.36]',
         },
       },
@@ -285,12 +285,12 @@ export default {
       mode: {
         light: {
           normal: '',
-          required: "after:content-['*'] after:ml-0.5 after:text-critical-500",
+          required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-neutral-800/[0.36]',
         },
         dark: {
           normal: 'text-white',
-          required: "after:content-['*'] after:ml-0.5 after:text-critical-500",
+          required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-white/[0.36]',
         },
       },
