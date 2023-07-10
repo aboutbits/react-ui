@@ -24,7 +24,7 @@ export function isAxiosErrorWithErrorBody(
 ): error is Omit<AxiosError<ErrorBody>, 'response'> &
   Required<Pick<AxiosError<ErrorBody>, 'response'>> {
   return (
-    // isAxios is not exported in version 0.27
+    // isAxiosError is not exported as default member in version 0.27
     // eslint-disable-next-line import/no-named-as-default-member
     axios.isAxiosError(error) &&
     typeof error.response?.data === 'object' &&
