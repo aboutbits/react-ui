@@ -88,8 +88,6 @@ export function SelectItemFormField<ItemType, Error>({
   return (
     <>
       <SelectItemInput
-        required={required}
-        hideRequired={hideRequired}
         id={id}
         name={name}
         label={label}
@@ -98,6 +96,8 @@ export function SelectItemFormField<ItemType, Error>({
         selectedItem={selectedItem.current}
         hasError={!!fieldState.error}
         disabled={disabled}
+        required={required}
+        hideRequired={hideRequired}
         mode={mode}
         variant={variant}
         className={className}

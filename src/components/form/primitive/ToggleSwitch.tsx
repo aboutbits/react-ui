@@ -75,10 +75,10 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
         {label && <span className={toggleSwitchLabelCss}>{label}</span>}
         <input
           {...props}
-          required={required}
           ref={ref}
           type="checkbox"
           disabled={disabled}
+          required={required}
           className={toggleSwitchInputCss}
         />
         <ToggleSwitchSwitch mode={mode} size={size} disabled={disabled} />
