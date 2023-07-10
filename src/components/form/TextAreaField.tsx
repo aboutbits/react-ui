@@ -53,7 +53,7 @@ export const TextAreaField = forwardRef<
           tone={tone}
           disabled={disabled}
           htmlFor={id}
-          showRequired={required && !hideRequired}
+          required={required && !hideRequired}
         >
           {label}
         </InputLabel>

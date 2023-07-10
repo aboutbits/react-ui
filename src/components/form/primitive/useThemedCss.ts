@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { useTheme } from '../../../framework'
-import { Mode, Size } from '../../types'
+import { Mode, RequiredProps, Size } from '../../types'
 import { FormTone, FormVariant } from '../types'
 import { CheckboxLayout } from './Checkbox'
 import { FieldSetIndent } from './Fieldset'
@@ -41,13 +41,12 @@ export function useInputLabelCss({
   mode,
   tone,
   disabled,
-  showRequired,
+  required,
 }: {
   mode: Mode
   tone: FormTone
   disabled: boolean
-  showRequired: boolean | undefined
-}) {
+} & RequiredProps) {
   const {
     form: { inputLabel: theme },
   } = useTheme()
@@ -55,7 +54,7 @@ export function useInputLabelCss({
   return classNames(
     theme.base,
     disabled ? theme[mode].disabled : theme[mode].tone[tone],
-    showRequired && theme[mode].required
+    required && theme[mode].required
   )
 }
 
@@ -156,13 +155,12 @@ export function useCheckboxLabelCss({
   mode,
   size,
   disabled,
-  showRequired,
+  required,
 }: {
   mode: Mode
   size: Size
   disabled: boolean
-  showRequired: boolean | undefined
-}) {
+} & RequiredProps) {
   const {
     form: {
       checkbox: { label: theme },
@@ -174,7 +172,7 @@ export function useCheckboxLabelCss({
     disabled
       ? theme.mode[mode].disabled
       : theme.mode[mode][disabled ? 'disabled' : 'normal'],
-    showRequired && theme.mode[mode].required
+    required && theme.mode[mode].required
   )
 }
 
@@ -201,14 +199,13 @@ export function useFieldsetLegendCss({
   tone,
   disabled,
   indent,
-  showRequired,
+  required,
 }: {
   mode: Mode
   tone: FormTone
   disabled: boolean
   indent: FieldSetIndent
-  showRequired: boolean | undefined
-}) {
+} & RequiredProps) {
   const {
     form: {
       fieldset: { legend: theme },
@@ -219,7 +216,7 @@ export function useFieldsetLegendCss({
     mode,
     tone,
     disabled,
-    showRequired,
+    required,
   })
 
   const labelCssWithoutMarginLeft = getClassNameWithoutMarginLeft(labelCss)
@@ -258,13 +255,12 @@ export function useToggleSwitchLabelCss({
   mode,
   size,
   disabled,
-  showRequired,
+  required,
 }: {
   mode: Mode
   size: Size
   disabled: boolean
-  showRequired: boolean | undefined
-}) {
+} & RequiredProps) {
   const {
     form: {
       toggleSwitch: { label: theme },
@@ -275,7 +271,7 @@ export function useToggleSwitchLabelCss({
     theme.base,
     theme.size[size],
     disabled ? theme.mode[mode].disabled : theme.mode[mode].normal,
-    showRequired && theme.mode[mode].required
+    required && theme.mode[mode].required
   )
 }
 

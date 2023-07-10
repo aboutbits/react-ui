@@ -67,7 +67,7 @@ export function SelectItemInput<ItemType>({
 
   return (
     <div ref={componentRef} className={className}>
-      <InputLabel htmlFor={id} showRequired={required && !hideRequired}>
+      <InputLabel htmlFor={id} required={required && !hideRequired}>
         {label}
       </InputLabel>
       {value === '' ? (
