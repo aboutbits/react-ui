@@ -3,11 +3,12 @@ name: Test
 on: push
 
 env:
-  PROJECT_URL: storybook.aboutbits.it
+  VERCEL_SCOPE: aboutbits
+  VERCEL_ORG_ID: team_e2WfHoRuw9BQVW7oYmMSKRJ6
 
 jobs:
   setup:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -20,7 +21,7 @@ jobs:
       - run: npm ci
 
   checks:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: [setup]
     steps:
       - uses: actions/checkout@v3
@@ -36,7 +37,7 @@ jobs:
       - run: npm run typecheck
 
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: [setup]
     steps:
       - uses: actions/checkout@v3
@@ -50,25 +51,42 @@ jobs:
       - run: npm ci
       - run: npm run test
 
-  deploy:
-    runs-on: ubuntu-20.04
+  deploy-current:
+    runs-on: ubuntu-22.04
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
     if: github.ref == 'refs/heads/main'
     needs:
       - test
       - checks
+    env:
+      VERCEL_PROJECT_ID: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: amondnet/vercel-action@v20
         with:
-          node-version: 16
-      - run: npm ci
-      - name: Build
-        run: npm run build-storybook
-      - name: Add CNAME file
-        run: echo ${{ env.PROJECT_URL }} > storybook-static/CNAME
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@3.6.2
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ env.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}
+          scope: ${{ env.VERCEL_SCOPE }}
+
+  deploy-next:
+    runs-on: ubuntu-22.04
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
+    if: github.ref == 'refs/heads/next'
+    needs:
+      - test
+      - checks
+    env:
+      VERCEL_PROJECT_ID: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
+    steps:
+      - uses: actions/checkout@v3
+      - uses: amondnet/vercel-action@v20
         with:
-          branch: gh-pages
-          folder: storybook-static
-          clean: true
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ env.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}
+          scope: ${{ env.VERCEL_SCOPE }}

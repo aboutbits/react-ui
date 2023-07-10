@@ -3,7 +3,7 @@
 React UI is a very opinionated design library, that is based on React and TailwindCSS.
 The build in theming solution, allows you to change the look and feel of all components.
 
-Discover further details about this design library on our [homepage](https://storybook.aboutbits.it/).
+Discover further details about this design library on our [homepage](https://react-ui.aboutbits.it/).
 
 ## Table of content
 
@@ -24,7 +24,7 @@ npm install @aboutbits/react-ui
 
 You can use the `tailwind-preset.js` file as preset in your project's `tailwind.config.js`to load the default colors.
 
-Further documentation of each component can be found [here](https://storybook.aboutbits.it/).
+Further documentation of each component can be found [here](https://react-ui.aboutbits.it/).
 
 **Hint**: If you're using Next.js or Webpack in your project, you can use the [ReactUI integrations](https://github.com/aboutbits/react-ui-integrations) to easily integrate ReactUI.
 
