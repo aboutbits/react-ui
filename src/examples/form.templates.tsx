@@ -21,6 +21,7 @@ import {
   Form,
   InputFormField,
   PaginatedResponse,
+  RadioFormField,
   SearchQueryParameters,
   SelectFormField,
   SelectItemFormField,
@@ -36,6 +37,11 @@ import {
   SectionFooterWithActions,
   SectionHeader,
 } from '../components/section'
+
+enum UiMode {
+  Light = 'light',
+  Dark = 'dark',
+}
 
 type FormData = {
   email: string
@@ -76,6 +82,7 @@ const resolver = yupResolver(
     role: Yup.string().required(),
     bio: Yup.string(),
     favProjectId: Yup.string().nullable().required(),
+    uiMode: Yup.mixed().oneOf(Object.values(UiMode)),
     serverValidationErrors: Yup.boolean().required(),
   })
 )
@@ -202,6 +209,20 @@ export function FormExampleTemplate({
                 useGetData={useGetData}
                 paginationConfig={{ indexType: IndexType.ZERO_BASED }}
               />
+              <FieldsetFormField
+                label="Preferred UI mode"
+                fields={['uiMode']}
+                className="space-y-4"
+              >
+                {Object.values(UiMode).map((mode) => (
+                  <RadioFormField
+                    key={mode}
+                    name="uiMode"
+                    label={mode}
+                    value={mode}
+                  />
+                ))}
+              </FieldsetFormField>
               <FieldsetFormField
                 label="Privacy"
                 fields={['privacy']}

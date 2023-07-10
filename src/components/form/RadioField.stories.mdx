@@ -1,22 +1,29 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import { CheckboxField } from './CheckboxField'
+import { RadioField } from './RadioField'
 import { Status } from './types'
 
-<Meta title="Components/Form/CheckboxField" component={CheckboxField} />
+<Meta title="Components/Form/RadioField" component={RadioField} />
 
-# CheckboxField
+# RadioField
 
-A checkbox field.
+A radio field.
 
-It is composed of the primitives [Checkbox](../?path=/docs/components-form-primitive-checkbox--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
+It is composed of the primitives [Radio](../?path=/docs/components-form-primitive-radio--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
 
-export const Template = ({ ...args }) => <CheckboxField {...args} />
+export const Template = ({ ...args }) => (
+  <div className="space-y-4">
+    <RadioField {...args} />
+    <RadioField {...args} label="Option 2" />
+    <RadioField {...args} label="Option 3" />
+  </div>
+)
 
 <Canvas>
   <Story
     name="Default"
     args={{
-      label: 'Name',
+      name: 'example-default',
+      label: 'Option 1',
       disabled: false,
     }}
   >
@@ -34,7 +41,8 @@ export const Template = ({ ...args }) => <CheckboxField {...args} />
   <Story
     name="With message"
     args={{
-      label: 'Label',
+      name: 'example-with-message',
+      label: 'Option 1',
       message: 'This is the message',
     }}
   >
@@ -48,7 +56,8 @@ export const Template = ({ ...args }) => <CheckboxField {...args} />
   <Story
     name="Status invalid"
     args={{
-      label: 'Label',
+      name: 'example-invalid',
+      label: 'Option 1',
       message: 'This is the message',
       status: Status.invalid,
     }}
@@ -63,7 +72,8 @@ export const Template = ({ ...args }) => <CheckboxField {...args} />
   <Story
     name="Disabled"
     args={{
-      label: 'Label',
+      name: 'example-disabled',
+      label: 'Option 1',
       message: 'This is the message',
       disabled: true,
     }}
