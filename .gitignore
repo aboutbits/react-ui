@@ -33,3 +33,6 @@ yarn-error.log*
 
 # Build
 /dist
+
+# ESLint
+.eslintcache
