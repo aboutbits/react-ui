@@ -15,7 +15,7 @@ export type RadioFieldProps = Omit<RadioProps, 'tone'> &
 /**
  * A radio field.
  *
- * Is composed of the primitives [Radio](../?path=/docs/components-form-primitive-radio--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
+ * It is composed of the primitives [Radio](../?path=/docs/components-form-primitive-radio--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
  */
 export const RadioField = forwardRef<HTMLInputElement, RadioFieldProps>(
   function RadioField(

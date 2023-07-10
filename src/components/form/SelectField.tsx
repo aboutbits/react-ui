@@ -20,7 +20,7 @@ export type SelectFieldProps = Omit<SelectProps, 'tone'> &
 /**
  * A select field independent of any form validation library.
  *
- * Is composed of the primitives [Select](../?path=/docs/components-form-primitive-select--default-story), [InputLabel](../?path=/docs/components-form-primitive-inputlabel--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
+ * It is composed of the primitives [Select](../?path=/docs/components-form-primitive-select--default-story), [InputLabel](../?path=/docs/components-form-primitive-inputlabel--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
  */
 export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
   function SelectField(
