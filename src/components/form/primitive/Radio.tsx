@@ -1,7 +1,14 @@
 import classNames from 'classnames'
 import { forwardRef, ReactNode } from 'react'
-import { Mode, ModeProps, Size } from '../../types'
-import { useRadioCss, useRadioInputCss, useRadioLabelCss } from './useThemedCss'
+import IconRadioButtonCheckedRounded from '@aboutbits/react-material-icons/dist/IconRadioButtonCheckedRounded'
+import IconRadioButtonUncheckedOutlined from '@aboutbits/react-material-icons/dist/IconRadioButtonUncheckedOutlined'
+import { IconProps, Mode, ModeProps, Size } from '../../types'
+import {
+  useRadioCss,
+  useRadioIconCss,
+  useRadioInputCss,
+  useRadioLabelCss,
+} from './useThemedCss'
 
 export enum RadioLayout {
   start = 'START',
@@ -59,7 +66,42 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
         disabled={disabled}
         className={radioInputCss}
       />
+      <IconRadio mode={mode} size={size} disabled={disabled} />
       {label && <span className={radioLabelCss}>{label}</span>}
     </label>
   )
 })
+
+const IconRadio: React.FC<
+  IconProps &
+    Required<ModeProps> & {
+      size: Size
+      disabled: boolean
+    }
+> = ({ size, mode, disabled, className, ...props }) => {
+  const iconCssChecked = useRadioIconCss({
+    mode,
+    size,
+    disabled,
+    checked: true,
+  })
+  const iconCssUnchecked = useRadioIconCss({
+    mode,
+    size,
+    disabled,
+    checked: false,
+  })
+
+  return (
+    <>
+      <IconRadioButtonCheckedRounded
+        className={classNames(iconCssChecked, className)}
+        {...props}
+      />
+      <IconRadioButtonUncheckedOutlined
+        className={classNames(iconCssUnchecked, className)}
+        {...props}
+      />
+    </>
+  )
+}

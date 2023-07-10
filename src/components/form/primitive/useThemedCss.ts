@@ -239,6 +239,35 @@ export function useRadioInputCss({ size }: { size: Size }) {
   return classNames(theme.base, theme.size[size])
 }
 
+export function useRadioIconCss({
+  mode,
+  size,
+  disabled,
+  checked,
+}: {
+  mode: Mode
+  size: Size
+  disabled: boolean
+  checked: boolean
+}) {
+  const {
+    form: {
+      radio: { icon: theme },
+    },
+  } = useTheme()
+
+  const disabledState = disabled ? 'disabled' : 'normal'
+  const checkedState = checked ? 'checked' : 'unchecked'
+  return classNames(
+    theme.base,
+    theme.size[size],
+    theme.mode[mode],
+    theme[disabledState],
+    theme[checkedState].base,
+    theme[checkedState].modeState[mode][disabledState]
+  )
+}
+
 export function useFieldsetCss({ indent }: { indent: FieldSetIndent }) {
   const {
     form: { fieldset: theme },

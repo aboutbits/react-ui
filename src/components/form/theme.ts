@@ -258,7 +258,7 @@ export default {
       },
     },
     input: {
-      base: 'peer outline-none text-primary-500 focus:ring-primary-500 cursor-pointer focus:ring-offset-white',
+      base: 'peer absolute h-0 w-0 opacity-0',
       size: {
         sm: 'h-4 w-4',
         md: 'h-5 w-5',
@@ -283,8 +283,8 @@ export default {
         lg: '',
       },
     },
-    check: {
-      base: 'block shrink-0 outline-1 rounded-md outline-offset-[-1px] peer-focus:outline',
+    icon: {
+      base: 'block shrink-0 outline-1 rounded-full peer-focus:outline',
       normal: '',
       disabled: '',
       mode: {
@@ -297,7 +297,7 @@ export default {
         lg: 'h-9 w-9',
       },
       checked: {
-        base: '[input:not(:checked)~&]:hidden', // changed
+        base: '[input:not(:checked)~&]:hidden',
         modeState: {
           light: {
             normal: 'fill-primary-500',
@@ -310,7 +310,7 @@ export default {
         },
       },
       unchecked: {
-        base: '[input:checked~&]:hidden', // changed
+        base: '[input:checked~&]:hidden',
         modeState: {
           light: {
             normal: 'fill-neutral-800',
