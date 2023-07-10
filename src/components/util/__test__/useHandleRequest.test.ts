@@ -3,7 +3,7 @@ import defaultMessages from '../../../framework/internationalization/defaultMess
 import { useHandleRequest } from '../useHandleRequest'
 
 describe('useHandleRequest', () => {
-  const onRequest = () => new Promise((resolve) => setTimeout(resolve, 100))
+  const onRequest = () => new Promise((resolve) => setTimeout(resolve, 10))
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const onSuccess = () => {}
@@ -18,12 +18,12 @@ describe('useHandleRequest', () => {
             isAxiosError: true,
             response: { data: { message: expectedErrorMessage } },
           }),
-        100
+        10
       )
     )
 
   const onRequestWithoutErrorResponse = () =>
-    new Promise((_resolve, reject) => setTimeout(() => reject(), 100))
+    new Promise((_resolve, reject) => setTimeout(() => reject(), 10))
 
   test('should return initial state on first render', () => {
     const { result } = renderHook(() =>

@@ -14,7 +14,7 @@ const getPromiseState = async (
 }
 
 describe('useHandleSubmit', () => {
-  const onMutate = () => new Promise((resolve) => setTimeout(resolve, 500))
+  const submitAction = () => new Promise((resolve) => setTimeout(resolve, 10))
 
   const onSuccess = () => undefined
 
@@ -25,7 +25,7 @@ describe('useHandleSubmit', () => {
   }
 
   const onDeleteWithErrorResponse = () =>
-    new Promise((_resolve, reject) => setTimeout(() => reject(axiosError), 100))
+    new Promise((_resolve, reject) => setTimeout(() => reject(axiosError), 10))
 
   const onDeleteWithUnexpectedError = () =>
     new Promise((_resolve, reject) =>
@@ -34,23 +34,25 @@ describe('useHandleSubmit', () => {
           reject({
             message: 'The request did not reach the server',
           }),
-        100
+        10
       )
     )
 
   const onDeleteWithoutErrorResponse = () =>
-    new Promise((_resolve, reject) => setTimeout(() => reject(), 100))
+    new Promise((_resolve, reject) => setTimeout(() => reject(), 10))
 
   test('should return initial state on first render', () => {
     const { result: form } = renderHook(() => useForm())
 
-    const { result } = renderHook(() => useHandleSubmit(form.current, onMutate))
+    const { result } = renderHook(() =>
+      useHandleSubmit(form.current, submitAction)
+    )
 
     expect(result.current.apiErrorMessage).toBe(null)
     expect(result.current.triggerSubmit).toBeDefined()
   })
 
-  test('should set is submitting during mutation', async () => {
+  test('should set is submitting during submission', async () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result } = renderHook(() =>
@@ -74,16 +76,15 @@ describe('useHandleSubmit', () => {
     })
   })
 
-  test('should call onSuccess on successful mutation', async () => {
-    const onSuccess = jest.fn(() => undefined)
+  test('should call onSuccess on successful submission', async () => {
     const { result: form } = renderHook(() => useForm())
 
+    const onSuccess = jest.fn(() => undefined)
     const { result } = renderHook(() =>
-      useHandleSubmit(form.current, onMutate, { onSuccess })
+      useHandleSubmit(form.current, submitAction, { onSuccess })
     )
 
     await act(() => result.current.triggerSubmit({}))
-    expect(onSuccess).toHaveBeenCalled()
     expect(onSuccess).toHaveBeenCalledTimes(1)
   })
 
@@ -101,12 +102,14 @@ describe('useHandleSubmit', () => {
     expect(result.current.apiErrorMessage).toBe(expectedErrorMessage)
   })
 
-  test('should call onError on error', async () => {
-    const onError = jest.fn(() => undefined)
+  test('should call onError and not onSuccess on error', async () => {
     const { result: form } = renderHook(() => useForm())
 
+    const onSuccess = jest.fn(() => undefined)
+    const onError = jest.fn(() => undefined)
     const { result } = renderHook(() =>
       useHandleSubmit(form.current, onDeleteWithErrorResponse, {
+        onSuccess,
         onError,
       })
     )
@@ -120,6 +123,7 @@ describe('useHandleSubmit', () => {
       errorBody: { message: expectedErrorMessage },
     })
     expect(onError).toHaveBeenCalledTimes(1)
+    expect(onSuccess).not.toHaveBeenCalled()
   })
 
   test('should reset apiErrorMessage before calling onDelete', async () => {
@@ -183,5 +187,54 @@ describe('useHandleSubmit', () => {
     await act(() => result.current.triggerSubmit({}))
 
     expect(result.current.apiErrorMessage).toBe(defaultMessages['error.api'])
+  })
+
+  test('onSubmit should return the response on success', async () => {
+    const { result: form } = renderHook(() => useForm())
+
+    const response = { foo: 'bar' }
+    const { result: hookResult } = renderHook(() =>
+      useHandleSubmit(form.current, () => Promise.resolve(response), {
+        onSuccess,
+      })
+    )
+
+    const onSubmitResult = await act(() => hookResult.current.triggerSubmit({}))
+
+    expect(onSubmitResult).toEqual(response)
+  })
+
+  test('onSubmit should return nothing on error', async () => {
+    const { result: form } = renderHook(() => useForm())
+
+    const { result: hookResult } = renderHook(() =>
+      useHandleSubmit(form.current, onDeleteWithErrorResponse, {
+        onSuccess,
+      })
+    )
+
+    const onSubmitResult = await act(() => hookResult.current.triggerSubmit({}))
+
+    expect(onSubmitResult).toEqual(undefined)
+  })
+
+  test('onSubmit should throw on error if option is set', async () => {
+    const { result: form } = renderHook(() => useForm())
+
+    const { result: hookResult } = renderHook(() =>
+      useHandleSubmit(form.current, onDeleteWithErrorResponse, {
+        throwOnError: true,
+      })
+    )
+
+    let error = null
+
+    try {
+      await act(() => hookResult.current.triggerSubmit({}))
+    } catch (e) {
+      error = e
+    }
+
+    expect(error).toEqual(axiosError)
   })
 })
