@@ -1,31 +1,31 @@
 import { forwardRef } from 'react'
 import {
-  Checkbox,
-  CheckboxLayout,
-  CheckboxProps,
   InputMessage,
   InputMessageProps,
+  Radio,
+  RadioLayout,
+  RadioProps,
 } from './primitive'
 import { FormTone, Status, StatusProps } from './types'
 
-export type CheckboxFieldProps = Omit<CheckboxProps, 'tone'> &
+export type RadioFieldProps = Omit<RadioProps, 'tone'> &
   Pick<InputMessageProps, 'message'> &
   StatusProps
 
 /**
- * A checkbox field.
+ * A radio field.
  *
- * Is composed of the primitives [Checkbox](../?path=/docs/components-form-primitive-checkbox--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
+ * Is composed of the primitives [Radio](../?path=/docs/components-form-primitive-radio--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
  */
-export const CheckboxField = forwardRef<HTMLInputElement, CheckboxFieldProps>(
-  function CheckboxField(
+export const RadioField = forwardRef<HTMLInputElement, RadioFieldProps>(
+  function RadioField(
     {
       mode,
       status,
       disabled = false,
       className,
       message,
-      layout = CheckboxLayout.start,
+      layout = RadioLayout.start,
       ...props
     },
     ref
@@ -34,7 +34,7 @@ export const CheckboxField = forwardRef<HTMLInputElement, CheckboxFieldProps>(
 
     return (
       <div className={className}>
-        <Checkbox
+        <Radio
           {...props}
           mode={mode}
           disabled={disabled}

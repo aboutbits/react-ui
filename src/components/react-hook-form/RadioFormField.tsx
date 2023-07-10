@@ -1,28 +1,30 @@
 import { forwardRef } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { Radio, RadioProps } from '../form'
+import { RadioField, RadioFieldProps, Status } from '../form'
 import { useForwardedRef } from '../util/useForwardedRef'
+import { useFieldError } from './util/useFieldError'
 
-export type RadioFormFieldFieldProps = RadioProps & {
+export type RadioFormFieldFieldProps = Omit<RadioFieldProps, 'status'> & {
   name: string
 }
 
 /**
- * A [Radio](../?path=/docs/components-form-primitives-radio--docs) within the context of a `react-hook-form` form.
+ * A [RadioField](../?path=/docs/components-form-radiofield--default-story) within the context of a `react-hook-form` form.
  *
  * The form value that is returned for validation is of type `string`.
  */
 export const RadioFormField = forwardRef<
   HTMLInputElement,
   RadioFormFieldFieldProps
->(function RadioFormField({ mode, name, ...props }, ref) {
+>(function RadioFormField({ mode, name, message, ...props }, ref) {
   const { register } = useFormContext()
   const { ref: formFieldRef, ...formFieldProps } = register(name)
 
+  const error = useFieldError(name)
   const forwardedRef = useForwardedRef(ref)
 
   return (
-    <Radio
+    <RadioField
       mode={mode}
       {...props}
       {...formFieldProps}
@@ -30,6 +32,8 @@ export const RadioFormField = forwardRef<
         formFieldRef(e)
         forwardedRef.current = e
       }}
+      message={error?.message?.toString() || message}
+      status={error ? Status.invalid : undefined}
     />
   )
 })
