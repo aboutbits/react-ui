@@ -66,7 +66,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
       mode,
       size,
       disabled,
-      required: required && !hideRequired,
+      showRequired: required && !hideRequired,
     })
     const toggleSwitchInputCss = useToggleSwitchInputCss()
 

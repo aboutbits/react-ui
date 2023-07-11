@@ -70,7 +70,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       mode,
       size,
       disabled,
-      required: required && !hideRequired,
+      showRequired: required && !hideRequired,
     })
     const checkboxInputCss = useCheckboxInputCss()
 

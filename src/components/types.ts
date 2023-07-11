@@ -46,6 +46,13 @@ export type HideRequiredProps = {
   hideRequired?: boolean
 }
 
+export type ShowRequiredProps = {
+  /**
+   * Defines whether the label should be shown as for a required input
+   */
+  showRequired?: boolean
+}
+
 export type UseSearchQuery = {
   /**
    * Defines the passed value for the search input.

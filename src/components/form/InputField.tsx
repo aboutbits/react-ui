@@ -50,7 +50,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
             mode={mode}
             tone={tone}
             disabled={disabled}
-            required={required && !hideRequired}
+            showRequired={required && !hideRequired}
             htmlFor={id}
           >
             {label}

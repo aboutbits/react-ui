@@ -53,7 +53,7 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
             mode={mode}
             tone={tone}
             disabled={disabled}
-            required={required && !hideRequired}
+            showRequired={required && !hideRequired}
             htmlFor={id}
           >
             {label}
