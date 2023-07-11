@@ -1,10 +1,5 @@
-import { withThemeByClassName } from '@storybook/addon-styling'
 import { Preview } from '@storybook/react'
-import {
-  defaultTheme as customTheme,
-  ReactUIProvider,
-  makeLinkComponent,
-} from '../src'
+import { defaultTheme, ReactUIProvider, makeLinkComponent } from '../src'
 import '../styles/index.css'
 
 // Add custom button tone for demo purpose
@@ -42,19 +37,12 @@ const preview: Preview = {
     (Story) => {
       return (
         <div className="text-paragraph-md">
-          <ReactUIProvider theme={customTheme} linkComponent={LinkComponent}>
+          <ReactUIProvider theme={defaultTheme} linkComponent={LinkComponent}>
             <Story />
           </ReactUIProvider>
         </div>
       )
     },
-    withThemeByClassName({
-      themes: {
-        light: 'light',
-        dark: 'dark',
-      },
-      defaultTheme: 'light',
-    }),
   ],
 }
 
