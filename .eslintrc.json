@@ -24,11 +24,7 @@
   "overrides": [
     {
       "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
-      "extends": [
-        "plugin:import/recommended",
-        "plugin:import/typescript",
-        "plugin:jest/recommended"
-      ],
+      "extends": ["plugin:import/recommended", "plugin:import/typescript"],
       "rules": {
         "react/prop-types": "off"
       }
