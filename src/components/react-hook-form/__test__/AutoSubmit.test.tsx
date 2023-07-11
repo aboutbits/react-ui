@@ -1,12 +1,12 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { act } from 'react-dom/test-utils'
 import { useForm } from 'react-hook-form'
 import { AutoSubmit } from '../AutoSubmit'
 import { Form } from '../Form'
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 type FormValues = {
   name: string
@@ -17,7 +17,7 @@ const MyForm = ({
   onSubmit,
 }: {
   autoSubmitInterval?: number
-  onSubmit
+  onSubmit: (values: FormValues) => void
 }) => {
   const form = useForm<FormValues>({
     defaultValues: {

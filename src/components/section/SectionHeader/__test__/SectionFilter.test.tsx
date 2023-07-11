@@ -1,13 +1,13 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { act } from 'react-dom/test-utils'
 import { ReactUIProvider, defaultTheme } from '../../../../framework'
 import { Option } from '../../../form'
 import { InputFormField, SelectFormField } from '../../../react-hook-form'
 import { SectionFilter } from '../SectionFilter'
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 type FormValues = {
   name: string
@@ -25,7 +25,7 @@ const MyForm = ({
   defaultValues,
 }: {
   autoSubmitInterval?: number
-  onSubmit
+  onSubmit: (formValues: FormValues) => void
   defaultValues: FormValues
 }) => {
   // The requestSubmit has to be mocked, since it is not implement in jsdom
