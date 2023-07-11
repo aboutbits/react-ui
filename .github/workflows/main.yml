@@ -1,4 +1,4 @@
-name: Test
+name: Main
 
 on: push
 
@@ -51,7 +51,7 @@ jobs:
       - run: npm ci
       - run: npm run test
 
-  deploy-current:
+  deploy-main:
     runs-on: ubuntu-22.04
     concurrency:
       group: ${{ github.ref }}
