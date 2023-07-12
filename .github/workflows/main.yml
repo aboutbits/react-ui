@@ -51,9 +51,6 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - uses: aboutbits/github-actions-vercel/deploy@v1
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ env.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}
           arguments: --prod
 
   deploy-next:
@@ -74,7 +71,4 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - uses: aboutbits/github-actions-vercel/deploy@v1
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ env.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}
           arguments: --prod
