@@ -15,16 +15,12 @@ jobs:
       - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - uses: aboutbits/github-actions-node/lint@v1
-
-  typecheck:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v3
-      - uses: aboutbits/github-actions-node/setup-and-install@v1
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - uses: aboutbits/github-actions-node/typecheck@v1
+      - name: Lint code
+        run: npm run lint
+        shell: bash
+      - name: Typecheck code
+        run: npm run typecheck
+        shell: bash
 
   test:
     runs-on: ubuntu-22.04
@@ -33,7 +29,9 @@ jobs:
       - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - uses: aboutbits/github-actions-node/test@v1
+      - name: Test code
+        run: npm run test
+        shell: bash
 
   deploy-main:
     runs-on: ubuntu-22.04
@@ -43,7 +41,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs:
       - lint
-      - typecheck
       - test
     env:
       VERCEL_PROJECT_ID: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
@@ -64,7 +61,6 @@ jobs:
     if: github.ref == 'refs/heads/next'
     needs:
       - lint
-      - typecheck
       - test
     env:
       VERCEL_PROJECT_ID: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
