@@ -228,7 +228,7 @@ describe('useHandleSubmit', () => {
       })
     )
 
-    let error = null
+    let error
 
     try {
       await act(() => hookResult.current.triggerSubmit({}))
