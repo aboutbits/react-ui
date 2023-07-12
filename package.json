@@ -69,7 +69,6 @@
     "@types/prettier": "^2.7.3",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
-    "@types/testing-library__jest-dom": "5.14.5",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
