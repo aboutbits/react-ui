@@ -7,49 +7,26 @@ env:
   VERCEL_ORG_ID: team_e2WfHoRuw9BQVW7oYmMSKRJ6
 
 jobs:
-  setup:
+  lint:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: aboutbits/github-actions-node/lint@v1
         with:
           node-version: 16
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - run: npm ci
 
-  checks:
+  typecheck:
     runs-on: ubuntu-22.04
-    needs: [setup]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: aboutbits/github-actions-node/typecheck@v1
         with:
           node-version: 16
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
 
   test:
     runs-on: ubuntu-22.04
-    needs: [setup]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: aboutbits/github-actions-node/test@v1
         with:
           node-version: 16
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - run: npm ci
-      - run: npm run test
 
   deploy-main:
     runs-on: ubuntu-22.04
@@ -58,8 +35,9 @@ jobs:
       cancel-in-progress: true
     if: github.ref == 'refs/heads/main'
     needs:
+      - lint
+      - typecheck
       - test
-      - checks
     env:
       VERCEL_PROJECT_ID: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
     steps:
@@ -78,8 +56,9 @@ jobs:
       cancel-in-progress: true
     if: github.ref == 'refs/heads/next'
     needs:
+      - lint
+      - typecheck
       - test
-      - checks
     env:
       VERCEL_PROJECT_ID: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
     steps:

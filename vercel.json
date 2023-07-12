@@ -1,0 +1,4 @@
+{
+  "buildCommand": "storybook build",
+  "outputDirectory": "storybook-static"
+}
