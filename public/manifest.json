@@ -1,7 +1,7 @@
 {
-  "name": "AboutBits",
-  "short_name": "AboutBits",
-  "start_url": "https://aboutbits.it",
+  "name": "AboutBits React UI",
+  "short_name": "React UI",
+  "start_url": "https://react-ui.aboutbits.it",
   "icons": [
     {
       "src": "/icons/72x72.png",
