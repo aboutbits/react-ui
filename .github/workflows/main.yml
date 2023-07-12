@@ -15,10 +15,10 @@ jobs:
       - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: Lint code
+      - name: Lint
         run: npm run lint
         shell: bash
-      - name: Typecheck code
+      - name: Typecheck
         run: npm run typecheck
         shell: bash
 
@@ -29,7 +29,7 @@ jobs:
       - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: Test code
+      - name: Test
         run: npm run test
         shell: bash
 
@@ -46,12 +46,15 @@ jobs:
       VERCEL_PROJECT_ID: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
     steps:
       - uses: actions/checkout@v3
-      - uses: amondnet/vercel-action@v20
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: aboutbits/github-actions-vercel/deploy@v1
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ env.VERCEL_ORG_ID }}
           vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}
-          scope: ${{ env.VERCEL_SCOPE }}
+          arguments: --prod
 
   deploy-next:
     runs-on: ubuntu-22.04
@@ -66,9 +69,12 @@ jobs:
       VERCEL_PROJECT_ID: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
     steps:
       - uses: actions/checkout@v3
-      - uses: amondnet/vercel-action@v20
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: aboutbits/github-actions-vercel/deploy@v1
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ env.VERCEL_ORG_ID }}
           vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}
-          scope: ${{ env.VERCEL_SCOPE }}
+          arguments: --prod
