@@ -1,4 +1,5 @@
 import { act, waitFor, renderHook } from '@testing-library/react'
+import { vi } from 'vitest'
 import { useForm } from 'react-hook-form'
 import defaultMessages from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleSubmit } from '../useHandleSubmit'
@@ -79,7 +80,7 @@ describe('useHandleSubmit', () => {
   test('should call onSuccess on successful submission', async () => {
     const { result: form } = renderHook(() => useForm())
 
-    const onSuccess = jest.fn(() => undefined)
+    const onSuccess = vi.fn(() => undefined)
     const { result } = renderHook(() =>
       useHandleSubmit(form.current, submitAction, { onSuccess })
     )
@@ -105,8 +106,8 @@ describe('useHandleSubmit', () => {
   test('should call onError and not onSuccess on error', async () => {
     const { result: form } = renderHook(() => useForm())
 
-    const onSuccess = jest.fn(() => undefined)
-    const onError = jest.fn(() => undefined)
+    const onSuccess = vi.fn(() => undefined)
+    const onError = vi.fn(() => undefined)
     const { result } = renderHook(() =>
       useHandleSubmit(form.current, onDeleteWithErrorResponse, {
         onSuccess,

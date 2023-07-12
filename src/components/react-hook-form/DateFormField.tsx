@@ -1,5 +1,10 @@
 import { ChangeEvent, ForwardedRef, forwardRef } from 'react'
-import { Controller, FieldPath, FieldValues } from 'react-hook-form'
+import {
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+} from 'react-hook-form'
 import { InputField, InputFieldProps, Status } from '../form'
 
 export type DateFormFieldProps<
@@ -38,9 +43,9 @@ export const DateFormField = forwardRef(function DateFormField<
           const date = new Date(value)
 
           if (value === '') {
-            onChange(null)
+            onChange(null as FieldPathValue<TFieldValues, TFieldName>)
           } else if (!isNaN(date.getTime())) {
-            onChange(date)
+            onChange(date as FieldPathValue<TFieldValues, TFieldName>)
           }
         }
 

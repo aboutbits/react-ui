@@ -1,4 +1,5 @@
 import { waitFor, act, renderHook } from '@testing-library/react'
+import { vi } from 'vitest'
 import defaultMessages from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleRequest } from '../useHandleRequest'
 
@@ -49,7 +50,7 @@ describe('useHandleRequest', () => {
 
   test('should call onSuccess on successful request', async () => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    const onSuccess = jest.fn(() => {})
+    const onSuccess = vi.fn(() => {})
     const { result } = renderHook(() =>
       useHandleRequest(onRequest, { onSuccess })
     )

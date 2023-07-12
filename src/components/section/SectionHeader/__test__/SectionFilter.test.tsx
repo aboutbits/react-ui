@@ -1,13 +1,14 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { act } from 'react-dom/test-utils'
+import { vi } from 'vitest'
 import { ReactUIProvider, defaultTheme } from '../../../../framework'
 import { Option } from '../../../form'
 import { InputFormField, SelectFormField } from '../../../react-hook-form'
 import { SectionFilter } from '../SectionFilter'
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 type FormValues = {
   name: string
@@ -25,7 +26,7 @@ const MyForm = ({
   defaultValues,
 }: {
   autoSubmitInterval?: number
-  onSubmit
+  onSubmit: (formValues: FormValues) => void
   defaultValues: FormValues
 }) => {
   // The requestSubmit has to be mocked, since it is not implement in jsdom
@@ -64,7 +65,7 @@ const MyForm = ({
 
 describe('SectionFilter', () => {
   test('should not submit form on mount', async () => {
-    const handleSubmit = jest.fn()
+    const handleSubmit = vi.fn()
     render(
       <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />
     )
@@ -76,7 +77,7 @@ describe('SectionFilter', () => {
   })
 
   test('should submit form only once on data change and receiving new default values', async () => {
-    const handleSubmit = jest.fn()
+    const handleSubmit = vi.fn()
     const { rerender } = render(
       <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />
     )
@@ -112,7 +113,7 @@ describe('SectionFilter', () => {
   })
 
   test('should change field values when default values change', async () => {
-    const handleSubmit = jest.fn()
+    const handleSubmit = vi.fn()
     const { rerender } = render(
       <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />
     )
@@ -137,7 +138,7 @@ describe('SectionFilter', () => {
   })
 
   test('should only change non-dirty field values when default values change', async () => {
-    const handleSubmit = jest.fn()
+    const handleSubmit = vi.fn()
     const { rerender } = render(
       <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />
     )
@@ -162,7 +163,7 @@ describe('SectionFilter', () => {
   })
 
   test('should submit after value change after rerender', async () => {
-    const handleSubmit = jest.fn()
+    const handleSubmit = vi.fn()
     const { rerender } = render(
       <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />
     )

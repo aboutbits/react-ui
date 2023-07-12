@@ -3,5 +3,15 @@
   "compilerOptions": {
     "target": "ES5",
     "outDir": "./dist/cjs"
-  }
+  },
+  "exclude": [
+    "src/vitest.ts",
+    "**/__test__/*",
+    "**/__tests__/*",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "src/examples/*",
+    ".storybook/*"
+  ],
+  "include": ["src"]
 }

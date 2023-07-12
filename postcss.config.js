@@ -1,9 +1,9 @@
-let plugins = ['tailwindcss', 'autoprefixer']
-
-if (process.env.NODE_ENV === 'production') {
-  plugins.push(['cssnano', { preset: 'default' }])
-}
+const prod = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  plugins,
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+    cssnano: prod ? { preset: 'default' } : undefined,
+  },
 }
