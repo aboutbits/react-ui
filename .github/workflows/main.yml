@@ -61,7 +61,7 @@ jobs:
       - test
       - checks
     env:
-      VERCEL_PROJECT_ID: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
+      VERCEL_PROJECT_ID: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
     steps:
       - uses: actions/checkout@v3
       - uses: amondnet/vercel-action@v20
@@ -81,7 +81,7 @@ jobs:
       - test
       - checks
     env:
-      VERCEL_PROJECT_ID: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
+      VERCEL_PROJECT_ID: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
     steps:
       - uses: actions/checkout@v3
       - uses: amondnet/vercel-action@v20
