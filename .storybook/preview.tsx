@@ -1,5 +1,6 @@
 import { Preview } from '@storybook/react'
 import { defaultTheme, Theme, ReactUIProvider, makeLinkComponent } from '../src'
+import { Background } from './types'
 import '../styles/index.css'
 
 // Add custom button tone for demo purpose
@@ -43,6 +44,19 @@ const preview: Preview = {
       source: {
         excludeDecorators: true,
       },
+    },
+    backgrounds: {
+      default: Background.White,
+      values: [
+        {
+          name: Background.White,
+          value: '#fff',
+        },
+        {
+          name: Background.Black,
+          value: '#000',
+        },
+      ],
     },
   },
   decorators: [

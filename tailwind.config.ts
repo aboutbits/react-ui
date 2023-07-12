@@ -16,6 +16,7 @@ export default {
       },
     },
   },
+  darkMode: 'class',
   presets: [require('./tailwind-preset.js')],
   plugins: [require('@tailwindcss/forms')],
 } satisfies Config
