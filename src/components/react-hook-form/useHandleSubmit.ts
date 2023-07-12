@@ -3,13 +3,16 @@ import {
   joinFieldErrorMessages,
   useHandleRequest,
   UseHandleRequestOptions,
+  UseHandleRequestReturn,
   UseHandleRequestTrigger,
 } from '../util'
 
 const DEFAULT_ERROR_FIELD_PATH = 'apiError'
 
-export type UseHandleSubmitReturn<V, R> = {
-  apiErrorMessage: string | null
+export type UseHandleSubmitReturn<V, R> = Pick<
+  UseHandleRequestReturn<V, R>,
+  'apiErrorMessage'
+> & {
   isSubmitting: boolean
   triggerSubmit: UseHandleRequestTrigger<V, R>
 }
