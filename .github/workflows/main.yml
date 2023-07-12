@@ -3,6 +3,7 @@ name: Main
 on: push
 
 env:
+  NODE_VERSION: 16
   VERCEL_SCOPE: aboutbits
   VERCEL_ORG_ID: team_e2WfHoRuw9BQVW7oYmMSKRJ6
 
@@ -10,23 +11,26 @@ jobs:
   lint:
     runs-on: ubuntu-22.04
     steps:
-      - uses: aboutbits/github-actions-node/lint@v1
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: aboutbits/github-actions-node/lint@v1
 
   typecheck:
     runs-on: ubuntu-22.04
     steps:
-      - uses: aboutbits/github-actions-node/typecheck@v1
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: aboutbits/github-actions-node/typecheck@v1
 
   test:
     runs-on: ubuntu-22.04
     steps:
-      - uses: aboutbits/github-actions-node/test@v1
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: aboutbits/github-actions-node/test@v1
 
   deploy-main:
     runs-on: ubuntu-22.04
