@@ -43,6 +43,7 @@ jobs:
       - test
     env:
       VERCEL_PROJECT_ID: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v1
@@ -63,6 +64,7 @@ jobs:
       - test
     env:
       VERCEL_PROJECT_ID: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v1
