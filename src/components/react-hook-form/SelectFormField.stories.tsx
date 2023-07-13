@@ -33,6 +33,7 @@ const meta = {
   },
   argTypes: {
     disabled: { type: 'boolean' },
+    required: { type: 'boolean' },
   },
   decorators: [
     (Story) => {
