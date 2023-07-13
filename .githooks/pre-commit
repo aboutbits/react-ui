@@ -3,5 +3,4 @@
 set -e
 set -o pipefail
 
-npm run lint
-npm run typecheck
+npm run checks

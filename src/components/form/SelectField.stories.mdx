@@ -33,6 +33,8 @@ export const Template = ({ ...args }) => <SelectField {...args} />
         options: ['undefined', 'invalid'],
         mapping: { undefined: undefined, invalid: Status.invalid },
       },
+      required: { type: 'boolean' },
+      hideRequired: { type: 'boolean' },
     }}
   >
     {Template.bind({})}

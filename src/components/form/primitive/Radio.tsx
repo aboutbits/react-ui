@@ -32,8 +32,6 @@ export type RadioProps = Omit<
 
 /**
  * A themed radio input that can be used in controlled or uncontrolled mode.
- *
- * It inherits styles from the primitive [InputLabel](../?path=/docs/components-form-primitive-inputlabel--default-story).
  */
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   {

@@ -5,7 +5,7 @@ import { ReactNode, useMemo, useRef } from 'react'
 import { useInternationalization, useTheme } from '../../../framework'
 import { FormTone, FormVariant, InputLabel, InputMessage } from '../../form'
 import { useInputCss } from '../../form/primitive/useThemedCss'
-import { Mode } from '../../types'
+import { Mode, RequiredProps, HideRequiredProps } from '../../types'
 import { useId } from '../../util'
 import { useFieldError } from '../util/useFieldError'
 import { replacePlaceholderColorWithTextColor } from './replacePlaceholderColorWithTextColor'
@@ -23,7 +23,8 @@ export type SelectItemInputProps<Item, SelectedItem extends Item | null> = {
   mode?: Mode
   variant?: FormVariant
   className?: string
-}
+} & RequiredProps &
+  HideRequiredProps
 
 export function SelectItemInput<Item, SelectedItem extends Item | null>({
   name,
@@ -38,6 +39,8 @@ export function SelectItemInput<Item, SelectedItem extends Item | null>({
   mode = Mode.light,
   variant = FormVariant.ghost,
   className,
+  required,
+  hideRequired,
 }: SelectItemInputProps<Item, SelectedItem>) {
   const id = useId()
   const componentRef = useRef<HTMLDivElement | null>(null)
@@ -62,7 +65,9 @@ export function SelectItemInput<Item, SelectedItem extends Item | null>({
 
   return (
     <div ref={componentRef} className={className}>
-      <InputLabel htmlFor={id}>{label}</InputLabel>
+      <InputLabel htmlFor={id} showRequired={required && !hideRequired}>
+        {label}
+      </InputLabel>
       {selectedItem === null ? (
         <button
           type="button"
