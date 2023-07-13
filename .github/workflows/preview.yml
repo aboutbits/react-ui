@@ -1,0 +1,33 @@
+name: Preview
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+env:
+  NODE_VERSION: 16
+
+jobs:
+  preview-link:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: aboutbits/github-actions-vercel/add-domain@v1
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-scope: aboutbits
+          vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
+          vercel-project-id: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
+          domain: ${{ github.event.pull_request.number }}.react-ui.aboutbits.dev
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '${{ github.event.pull_request.number }}.react-ui.aboutbits.dev'
+            })
