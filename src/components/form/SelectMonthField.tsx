@@ -1,40 +1,11 @@
 import { forwardRef } from 'react'
+import { z } from 'zod'
 import { useInternationalization } from '../../framework'
 import { Mode } from '../types'
 import { SelectField, SelectFieldProps } from './SelectField'
 import { Option } from './primitive'
 
-export type SelectMonthFieldProps = Omit<SelectFieldProps, 'children'>
-
-export enum Month {
-  JANUARY = 'JANUARY',
-  FEBRUARY = 'FEBRUARY',
-  MARCH = 'MARCH',
-  APRIL = 'APRIL',
-  MAY = 'MAY',
-  JUNE = 'JUNE',
-  JULY = 'JULY',
-  AUGUST = 'AUGUST',
-  SEPTEMBER = 'SEPTEMBER',
-  OCTOBER = 'OCTOBER',
-  NOVEMBER = 'NOVEMBER',
-  DECEMBER = 'DECEMBER',
-}
-
-export const MonthNames: [
-  'JANUARY',
-  'FEBRUARY',
-  'MARCH',
-  'APRIL',
-  'MAY',
-  'JUNE',
-  'JULY',
-  'AUGUST',
-  'SEPTEMBER',
-  'OCTOBER',
-  'NOVEMBER',
-  'DECEMBER'
-] = [
+export const MONTHS = [
   'JANUARY',
   'FEBRUARY',
   'MARCH',
@@ -47,7 +18,13 @@ export const MonthNames: [
   'OCTOBER',
   'NOVEMBER',
   'DECEMBER',
-]
+] as const
+
+export const zodMonth = z.enum(MONTHS)
+
+export type Month = (typeof MONTHS)[number]
+
+export type SelectMonthFieldProps = Omit<SelectFieldProps, 'children'>
 
 /**
  * A select field for months independent of any form validation library.
@@ -68,9 +45,9 @@ export const SelectMonthField = forwardRef<
 export const useSelectMonthFieldOptions = ({ mode }: { mode?: Mode }) => {
   const { messages } = useInternationalization()
 
-  return Object.keys(Month).map((element: string) => (
-    <Option mode={mode} key={element} value={element}>
-      {messages[`month.${element.toLowerCase()}`]}
+  return MONTHS.map((month) => (
+    <Option mode={mode} key={month} value={month}>
+      {messages[`month.${month.toLowerCase()}`]}
     </Option>
   ))
 }

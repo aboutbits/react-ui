@@ -6,42 +6,40 @@ import { useInternationalization, useTheme } from '../../../framework'
 import { FormTone, FormVariant, InputLabel, InputMessage } from '../../form'
 import { useInputCss } from '../../form/primitive/useThemedCss'
 import { Mode } from '../../types'
+import { useId } from '../../util'
 import { useFieldError } from '../util/useFieldError'
 import { replacePlaceholderColorWithTextColor } from './replacePlaceholderColorWithTextColor'
 
-export type SelectItemInputProps<ItemType> = {
-  id: string
+export type SelectItemInputProps<Item, SelectedItem extends Item | null> = {
   name: string
   label: string
   placeholder: string
-  disabled?: boolean
-  selectedItem?: ItemType
-  value?: string | number | undefined | null
-  hasError?: boolean
-  renderInputValue?: (item: ItemType) => ReactNode
+  selectedItem: SelectedItem
+  renderItem: (item: Item) => ReactNode
   onOpenSelect: () => void
   onClear: () => void
+  disabled?: boolean
+  hasError?: boolean
   mode?: Mode
   variant?: FormVariant
   className?: string
 }
 
-export function SelectItemInput<ItemType>({
-  id,
+export function SelectItemInput<Item, SelectedItem extends Item | null>({
   name,
   label,
   placeholder,
-  disabled = false,
-  value,
   selectedItem,
-  hasError,
-  renderInputValue,
+  renderItem,
   onOpenSelect,
   onClear,
+  disabled = false,
+  hasError,
   mode = Mode.light,
   variant = FormVariant.ghost,
   className,
-}: SelectItemInputProps<ItemType>) {
+}: SelectItemInputProps<Item, SelectedItem>) {
+  const id = useId()
   const componentRef = useRef<HTMLDivElement | null>(null)
 
   const error = useFieldError(name)
@@ -65,7 +63,7 @@ export function SelectItemInput<ItemType>({
   return (
     <div ref={componentRef} className={className}>
       <InputLabel htmlFor={id}>{label}</InputLabel>
-      {value === '' ? (
+      {selectedItem === null ? (
         <button
           type="button"
           id={id}
@@ -103,11 +101,7 @@ export function SelectItemInput<ItemType>({
             onClick={() => onOpenSelect()}
             className={form.selectItem.input.selectButton.base}
           >
-            <span>
-              {renderInputValue && selectedItem
-                ? renderInputValue(selectedItem)
-                : value}
-            </span>
+            <span>{renderItem(selectedItem)}</span>
           </button>
           <button
             type="button"
