@@ -11,7 +11,7 @@ export function FieldsetField({
   children,
   ...props
 }: FieldsetFieldProps) {
-  const tone = status === Status.invalid ? FormTone.critical : FormTone.neutral
+  const tone = status === Status.Invalid ? FormTone.Critical : FormTone.Neutral
 
   return (
     <Fieldset {...props} tone={tone}>

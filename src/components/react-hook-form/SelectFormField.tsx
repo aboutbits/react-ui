@@ -102,7 +102,7 @@ export const SelectFormField = forwardRef(function SelectFormField<
         forwardedRef.current = e
       }}
       message={error?.message?.toString() || message}
-      status={error ? Status.invalid : undefined}
+      status={error ? Status.Invalid : undefined}
     >
       {children}
     </SelectField>

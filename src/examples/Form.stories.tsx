@@ -223,12 +223,12 @@ export const UserEdit: Story = () => {
         <Section>
           <SectionHeader title="User edit" />
           <SectionContainer>
-            <SectionContent layout={SectionContentLayout.twoColumnGrid}>
+            <SectionContent layout={SectionContentLayout.TwoColumnGrid}>
               <DescriptionItem
                 title="ID"
                 content="42"
                 contentProps={{
-                  alignVertical: DescriptionItemContentAlignVertical.center,
+                  alignVertical: DescriptionItemContentAlignVertical.Center,
                 }}
               />
               <InputFormField
@@ -242,10 +242,10 @@ export const UserEdit: Story = () => {
               <FieldsetFormField
                 label="Name"
                 fields={['name.first', 'name.last']}
-                indent={FieldSetIndent.label}
+                indent={FieldSetIndent.Label}
                 showRequired
               >
-                <div className="flex md:flex-row flex-col justify-between gap-3 [&>*]:flex-1">
+                <div className="flex MD:flex-row flex-col justify-between gap-3 [&>*]:flex-1">
                   <InputFormField
                     id="name.first"
                     type="text"
@@ -325,7 +325,7 @@ export const UserEdit: Story = () => {
               <FieldsetFormField
                 label="Privacy"
                 fields={['privacy']}
-                indent={FieldSetIndent.labelAndChildren}
+                indent={FieldSetIndent.LabelAndChildren}
               >
                 <CheckboxFormField
                   name="privacy"
@@ -336,18 +336,18 @@ export const UserEdit: Story = () => {
               <FieldsetFormField
                 label="Server validation"
                 fields={['serverValidationErrors']}
-                indent={FieldSetIndent.labelAndChildren}
+                indent={FieldSetIndent.LabelAndChildren}
               >
                 <ToggleSwitchFormField
                   name="serverValidationErrors"
                   label="Enable server validation errors"
-                  layout={ToggleSwitchLayout.spaceBetween}
+                  layout={ToggleSwitchLayout.SpaceBetween}
                   applyInputHeight
                 />
               </FieldsetFormField>
               {showSuccess && (
                 <Alert
-                  tone={Tone.success}
+                  tone={Tone.Success}
                   icon={IconCheck}
                   className="xl:col-span-full"
                 >

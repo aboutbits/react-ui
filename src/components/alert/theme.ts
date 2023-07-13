@@ -2,12 +2,12 @@ export default {
   container: {
     base: 'flex items-start p-4 rounded-lg',
     tone: {
-      primary: 'bg-primary-50 text-primary-600',
-      neutral: 'bg-neutral-50 text-neutral-600',
-      warning: 'bg-warning-50 text-warning-600',
-      critical: 'bg-critical-50 text-critical-600',
-      success: 'bg-success-50 text-success-600',
-      informative: 'bg-informative-50 text-informative-600',
+      PRIMARY: 'bg-primary-50 text-primary-600',
+      NEUTRAL: 'bg-neutral-50 text-neutral-600',
+      WARNING: 'bg-warning-50 text-warning-600',
+      CRITICAL: 'bg-critical-50 text-critical-600',
+      SUCCESS: 'bg-success-50 text-success-600',
+      INFORMATIVE: 'bg-informative-50 text-informative-600',
     },
   },
   icon: {
@@ -16,9 +16,9 @@ export default {
   content: {
     base: 'grow flex justify-between items-start gap-y-4 gap-x-6',
     actionsPosition: {
-      responsive: 'flex-wrap',
-      fixedRight: '',
-      fixedBottom: 'flex-col',
+      RESPONSIVE: 'flex-wrap',
+      FIXED_RIGHT: '',
+      FIXED_BOTTOM: 'flex-col',
     },
   },
   texts: {

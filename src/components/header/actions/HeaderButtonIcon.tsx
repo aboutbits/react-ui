@@ -33,7 +33,7 @@ export function HeaderButtonIcon({
         onClick={onClick}
         icon={icon}
         label={label}
-        size={Size.md}
+        size={Size.Md}
         className={header.buttonIcon.mobile}
         {...props}
       />
@@ -41,7 +41,7 @@ export function HeaderButtonIcon({
         onClick={onClick}
         icon={icon}
         label={label}
-        size={Size.lg}
+        size={Size.Lg}
         className={header.buttonIcon.desktop}
         {...props}
       />

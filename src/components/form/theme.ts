@@ -3,7 +3,7 @@ export default {
     base: 'block w-full p-2.5-1px border leading-5 appearance-none outline-none focus:ring-0 focus:outline focus:outline-1 focus:-outline-offset-2 rounded-lg',
     field: 'relative',
     modeVariant: {
-      light: {
+      LIGHT: {
         base: {
           tone: {
             NEUTRAL: 'placeholder:text-neutral-800/[0.36]',
@@ -12,7 +12,7 @@ export default {
           disabled:
             'text-neutral-800/[0.36] placeholder:text-neutral-800/[0.36]',
         },
-        ghost: {
+        GHOST: {
           tone: {
             NEUTRAL:
               'bg-transparent border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
@@ -21,7 +21,7 @@ export default {
           },
           disabled: 'bg-transparent border-neutral-800/[0.36]',
         },
-        soft: {
+        SOFT: {
           tone: {
             NEUTRAL:
               'bg-neutral-800/[0.06] border-transparent focus:border-neutral-800 focus:outline-neutral-800',
@@ -30,7 +30,7 @@ export default {
           },
           disabled: 'bg-neutral-800/[0.16] border-transparent',
         },
-        solid: {
+        SOLID: {
           tone: {
             NEUTRAL:
               'bg-white border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
@@ -39,7 +39,7 @@ export default {
           },
           disabled: 'bg-white border-neutral-800/[0.36]',
         },
-        transparent: {
+        TRANSPARENT: {
           tone: {
             NEUTRAL:
               'bg-transparent border-transparent focus:border-neutral-800 focus:outline-neutral-800 hover:bg-neutral-100 hover:border-neutral-100',
@@ -49,7 +49,7 @@ export default {
           disabled: 'bg-transparent border-transparent',
         },
       },
-      dark: {
+      DARK: {
         base: {
           tone: {
             NEUTRAL: 'text-white placeholder:text-white/[0.48]',
@@ -57,7 +57,7 @@ export default {
           },
           disabled: 'text-white/[0.36] placeholder:text-white/[0.36]',
         },
-        ghost: {
+        GHOST: {
           tone: {
             NEUTRAL:
               'bg-transparent border-neutral-200 focus:border-white focus:outline-white ',
@@ -66,7 +66,7 @@ export default {
           },
           disabled: 'bg-transparent border-white/[0.36]',
         },
-        soft: {
+        SOFT: {
           tone: {
             NEUTRAL:
               'bg-white/[0.08] border-transparent focus:border-white focus:outline-white',
@@ -75,7 +75,7 @@ export default {
           },
           disabled: 'bg-white/[0.16] border-transparent',
         },
-        solid: {
+        SOLID: {
           tone: {
             NEUTRAL:
               'bg-neutral-800 border-neutral-200 focus:border-white focus:outline-white ',
@@ -84,7 +84,7 @@ export default {
           },
           disabled: 'bg-neutral-800 border-white/[0.36]',
         },
-        transparent: {
+        TRANSPARENT: {
           tone: {
             NEUTRAL:
               'bg-transparent border-transparent focus:border-white focus:outline-white',
@@ -100,7 +100,7 @@ export default {
   },
   inputLabel: {
     base: 'block pb-1 ml-1 text-xs font-medium',
-    light: {
+    LIGHT: {
       tone: {
         NEUTRAL: '',
         CRITICAL: 'text-critical-500',
@@ -108,7 +108,7 @@ export default {
       required: "after:content-['*'] after:ml-0.5",
       disabled: 'text-neutral-800/[0.36]',
     },
-    dark: {
+    DARK: {
       tone: {
         NEUTRAL: 'text-white',
         CRITICAL: 'text-critical-300',
@@ -120,14 +120,14 @@ export default {
   inputMessage: {
     base: 'mt-1 block text-xs font-medium',
     indent: 'ml-1',
-    light: {
+    LIGHT: {
       tone: {
         NEUTRAL: '',
         CRITICAL: 'text-critical-500',
       },
       disabled: 'text-neutral-800/[0.36]',
     },
-    dark: {
+    DARK: {
       tone: {
         NEUTRAL: 'text-white',
         CRITICAL: 'text-critical-300',
@@ -137,18 +137,18 @@ export default {
   },
   inputIcon: {
     base: 'w-5 h-5 fill-current',
-    light: {
+    LIGHT: {
       normal: '',
       disabled: 'text-neutral-400',
     },
-    dark: {
+    DARK: {
       normal: 'text-white',
       disabled: 'text-neutral-400',
     },
     container: {
       base: 'absolute top-0 bottom-0 flex items-center pointer-events-none',
-      start: 'left-0 pl-3.5',
-      end: 'right-0 pr-3.5',
+      START: 'left-0 pl-3.5',
+      END: 'right-0 pr-3.5',
     },
   },
   select: {
@@ -156,10 +156,10 @@ export default {
   },
   option: {
     base: 'bg-transparent',
-    light: {
+    LIGHT: {
       normal: '',
     },
-    dark: {
+    DARK: {
       normal: '',
     },
   },
@@ -175,9 +175,9 @@ export default {
     inputHeight: {
       base: 'min-h-[2.5rem]',
       size: {
-        sm: 'pt-2',
-        md: 'pt-1.5',
-        lg: 'pt-0.5',
+        SM: 'pt-2',
+        MD: 'pt-1.5',
+        LG: 'pt-0.5',
       },
     },
     input: {
@@ -186,21 +186,21 @@ export default {
     label: {
       base: '',
       mode: {
-        light: {
+        LIGHT: {
           normal: '',
           required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-neutral-800/[0.36]',
         },
-        dark: {
+        DARK: {
           normal: 'text-white',
           required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-white/[0.36]',
         },
       },
       size: {
-        sm: '',
-        md: 'pt-0.5',
-        lg: 'pt-1.5',
+        SM: '',
+        MD: 'pt-0.5',
+        LG: 'pt-1.5',
       },
     },
     check: {
@@ -208,22 +208,22 @@ export default {
       normal: '',
       disabled: '',
       mode: {
-        light: 'outline-neutral-800',
-        dark: 'outline-white',
+        LIGHT: 'outline-neutral-800',
+        DARK: 'outline-white',
       },
       size: {
-        sm: 'h-6 w-6',
-        md: 'h-7 w-7',
-        lg: 'h-9 w-9',
+        SM: 'h-6 w-6',
+        MD: 'h-7 w-7',
+        LG: 'h-9 w-9',
       },
       checked: {
         base: '[[type=checkbox]:not(:checked)~&]:hidden',
         modeState: {
-          light: {
+          LIGHT: {
             normal: 'fill-primary-500',
             disabled: 'fill-neutral-800/[0.36]',
           },
-          dark: {
+          DARK: {
             normal: 'fill-primary-300',
             disabled: 'fill-white/[0.36]',
           },
@@ -232,11 +232,11 @@ export default {
       unchecked: {
         base: '[[type=checkbox]:checked~&]:hidden',
         modeState: {
-          light: {
+          LIGHT: {
             normal: 'fill-neutral-800',
             disabled: 'fill-neutral-800/[0.36]',
           },
-          dark: {
+          DARK: {
             normal: 'fill-white',
             disabled: 'fill-white/[0.36]',
           },
@@ -256,35 +256,35 @@ export default {
     inputHeight: {
       base: 'min-h-[2.5rem]',
       size: {
-        sm: 'pt-2',
-        md: 'pt-1.5',
-        lg: 'pt-0.5',
+        SM: 'pt-2',
+        MD: 'pt-1.5',
+        LG: 'pt-0.5',
       },
     },
     input: {
       base: 'peer absolute h-0 w-0 opacity-0',
       size: {
-        sm: 'h-4 w-4',
-        md: 'h-5 w-5',
-        lg: 'h-6 w-6',
+        SM: 'h-4 w-4',
+        MD: 'h-5 w-5',
+        LG: 'h-6 w-6',
       },
     },
     label: {
       base: '',
       mode: {
-        light: {
+        LIGHT: {
           normal: '',
           disabled: 'text-neutral-800/[0.36]',
         },
-        dark: {
+        DARK: {
           normal: 'text-white',
           disabled: 'text-white/[0.36]',
         },
       },
       size: {
-        sm: '',
-        md: '',
-        lg: '',
+        SM: '',
+        MD: '',
+        LG: '',
       },
     },
     icon: {
@@ -292,22 +292,22 @@ export default {
       normal: '',
       disabled: '',
       mode: {
-        light: 'outline-neutral-800',
-        dark: 'outline-white',
+        LIGHT: 'outline-neutral-800',
+        DARK: 'outline-white',
       },
       size: {
-        sm: 'h-6 w-6',
-        md: 'h-7 w-7',
-        lg: 'h-9 w-9',
+        SM: 'h-6 w-6',
+        MD: 'h-7 w-7',
+        LG: 'h-9 w-9',
       },
       checked: {
         base: '[input:not(:checked)~&]:hidden',
         modeState: {
-          light: {
+          LIGHT: {
             normal: 'fill-primary-500',
             disabled: 'fill-neutral-800/[0.36]',
           },
-          dark: {
+          DARK: {
             normal: 'fill-primary-300',
             disabled: 'fill-white/[0.36]',
           },
@@ -316,11 +316,11 @@ export default {
       unchecked: {
         base: '[input:checked~&]:hidden',
         modeState: {
-          light: {
+          LIGHT: {
             normal: 'fill-neutral-800',
             disabled: 'fill-neutral-800/[0.36]',
           },
-          dark: {
+          DARK: {
             normal: 'fill-white',
             disabled: 'fill-white/[0.36]',
           },
@@ -331,16 +331,16 @@ export default {
   fieldset: {
     container: {
       indent: {
-        none: '',
-        label: '',
-        labelAndChildren: 'ml-1',
+        NONE: '',
+        LABEL: '',
+        LABEL_AND_CHILDREN: 'ml-1',
       },
     },
     legend: {
       indent: {
-        none: '',
-        label: 'ml-1',
-        labelAndChildren: '',
+        NONE: '',
+        LABEL: 'ml-1',
+        LABEL_AND_CHILDREN: '',
       },
     },
   },
@@ -356,9 +356,9 @@ export default {
     inputHeight: {
       base: 'min-h-[2.5rem]',
       size: {
-        sm: 'pt-2',
-        md: 'pt-1.5',
-        lg: 'pt-0.5',
+        SM: 'pt-2',
+        MD: 'pt-1.5',
+        LG: 'pt-0.5',
       },
     },
     input: {
@@ -367,21 +367,21 @@ export default {
     label: {
       base: '',
       mode: {
-        light: {
+        LIGHT: {
           normal: '',
           required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-neutral-800/[0.36]',
         },
-        dark: {
+        DARK: {
           normal: 'text-white',
           required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-white/[0.36]',
         },
       },
       size: {
-        sm: '',
-        md: 'pt-0.5',
-        lg: 'pt-1.5',
+        SM: '',
+        MD: 'pt-0.5',
+        LG: 'pt-1.5',
       },
     },
     switch: {
@@ -389,13 +389,13 @@ export default {
       normal: 'transition-colors duration-200 ease-in-out',
       disabled: '',
       modeState: {
-        light: {
+        LIGHT: {
           normal:
             'outline-neutral-800 border-neutral-600 [[type=checkbox]:checked~&]:border-transparent [[type=checkbox]:checked~&]:bg-primary-500',
           disabled:
             'border-neutral-800/[0.36] [[type=checkbox]:checked~&]:border-transparent [[type=checkbox]:checked~&]:bg-neutral-800/[0.36]',
         },
-        dark: {
+        DARK: {
           normal:
             'outline-white border-white [[type=checkbox]:checked~&]:border-transparent [[type=checkbox]:checked~&]:bg-primary-300',
           disabled:
@@ -403,13 +403,13 @@ export default {
         },
       },
       size: {
-        sm: {
+        SM: {
           base: 'w-10',
         },
-        md: {
+        MD: {
           base: 'w-12',
         },
-        lg: {
+        LG: {
           base: 'w-16',
         },
       },
@@ -419,20 +419,20 @@ export default {
       normal: 'transition duration-200 ease-in-out',
       disabled: '',
       modeState: {
-        light: {
+        LIGHT: {
           normal: 'bg-neutral-600 [[type=checkbox]:checked+span>&]:bg-white',
           disabled:
             'bg-neutral-800/[0.36] [[type=checkbox]:checked+span>&]:bg-white',
         },
-        dark: {
+        DARK: {
           normal: 'bg-white [[type=checkbox]:checked+span>&]:bg-neutral-800',
           disabled: 'bg-white/[0.36]',
         },
       },
       size: {
-        sm: 'h-4 w-4 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-4',
-        md: 'h-5 w-5 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-5',
-        lg: 'h-7 w-7 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-7',
+        SM: 'h-4 w-4 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-4',
+        MD: 'h-5 w-5 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-5',
+        LG: 'h-7 w-7 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-7',
       },
     },
   },

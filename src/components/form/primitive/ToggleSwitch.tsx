@@ -16,9 +16,9 @@ import {
 } from './useThemedCss'
 
 export enum ToggleSwitchLayout {
-  start = 'START',
-  end = 'END',
-  spaceBetween = 'SPACE_BETWEEN',
+  Start = 'START',
+  End = 'END',
+  SpaceBetween = 'SPACE_BETWEEN',
 }
 
 export type ToggleSwitchProps = Omit<
@@ -43,9 +43,9 @@ export type ToggleSwitchProps = Omit<
 export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
   function ToggleSwitch(
     {
-      mode = Mode.light,
-      layout = ToggleSwitchLayout.start,
-      size = Size.md,
+      mode = Mode.Light,
+      layout = ToggleSwitchLayout.Start,
+      size = Size.Md,
       applyInputHeight = false,
       disabled = false,
       label,

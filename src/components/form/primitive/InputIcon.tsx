@@ -11,8 +11,8 @@ export type InputIconProps = {
 } & ModeProps
 
 export enum IconPosition {
-  start = 'start',
-  end = 'end',
+  Start = 'START',
+  End = 'END',
 }
 
 /**
@@ -21,7 +21,7 @@ export enum IconPosition {
 export function InputIcon({
   icon: Icon,
   position,
-  mode = Mode.light,
+  mode = Mode.Light,
   disabled = false,
   className,
 }: InputIconProps): ReactElement {

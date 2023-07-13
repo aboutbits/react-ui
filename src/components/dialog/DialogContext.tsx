@@ -6,7 +6,7 @@ type DialogContextType = {
 }
 
 const initialContext = {
-  size: DialogSize.md,
+  size: DialogSize.Md,
 }
 
 export const DialogContext = createContext<DialogContextType>(initialContext)

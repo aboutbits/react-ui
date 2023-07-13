@@ -25,9 +25,9 @@ export type TextAreaProps = React.DetailedHTMLProps<
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   function TextArea(
     {
-      mode = Mode.light,
-      variant = FormVariant.solid,
-      tone = FormTone.neutral,
+      mode = Mode.Light,
+      variant = FormVariant.Solid,
+      tone = FormTone.Neutral,
       disabled = false,
       className,
       ...props

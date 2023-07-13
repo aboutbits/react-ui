@@ -11,7 +11,7 @@ export function AlertSuccess({
   ...props
 }: Omit<AlertProps, 'tone' | 'icon'>): ReactElement {
   return (
-    <Alert tone={Tone.success} icon={IconCheck} {...props}>
+    <Alert tone={Tone.Success} icon={IconCheck} {...props}>
       {children}
     </Alert>
   )
@@ -22,7 +22,7 @@ export function AlertWarning({
   ...props
 }: Omit<AlertProps, 'tone' | 'icon'>): ReactElement {
   return (
-    <Alert tone={Tone.warning} icon={IconWarning} {...props}>
+    <Alert tone={Tone.Warning} icon={IconWarning} {...props}>
       {children}
     </Alert>
   )
@@ -33,7 +33,7 @@ export function AlertCritical({
   ...props
 }: Omit<AlertProps, 'tone' | 'icon'>): ReactElement {
   return (
-    <Alert tone={Tone.critical} icon={IconWarning} {...props}>
+    <Alert tone={Tone.Critical} icon={IconWarning} {...props}>
       {children}
     </Alert>
   )
@@ -44,7 +44,7 @@ export function AlertInformative({
   ...props
 }: Omit<AlertProps, 'tone' | 'icon'>): ReactElement {
   return (
-    <Alert tone={Tone.informative} icon={IconInfo} {...props}>
+    <Alert tone={Tone.Informative} icon={IconInfo} {...props}>
       {children}
     </Alert>
   )

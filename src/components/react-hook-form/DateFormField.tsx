@@ -57,7 +57,7 @@ export const DateFormField = forwardRef(function DateFormField<
             value={inputValue}
             onChange={inputOnChange}
             message={error?.message?.toString() || message}
-            status={error ? Status.invalid : undefined}
+            status={error ? Status.Invalid : undefined}
             ref={ref}
           />
         )

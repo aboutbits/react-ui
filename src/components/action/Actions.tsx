@@ -4,9 +4,9 @@ import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 
 export enum ActionsPosition {
-  start = 'start',
-  center = 'center',
-  end = 'end',
+  Start = 'START',
+  Center = 'CENTER',
+  End = 'END',
 }
 
 export type ActionsProps = ClassNameProps & {
@@ -21,7 +21,7 @@ export type ActionsProps = ClassNameProps & {
 }
 
 export function Actions({
-  position = ActionsPosition.end,
+  position = ActionsPosition.End,
   children,
   className,
 }: ActionsProps): ReactElement {

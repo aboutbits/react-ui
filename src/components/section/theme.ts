@@ -7,10 +7,10 @@ export default {
     base: 'bg-white border border-neutral-400 rounded-lg overflow-hidden [transform:translateZ(0)]',
   },
   content: {
-    base: 'px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
+    base: 'px-4 MD:px-6 pt-4 MD:pt-6 pb-8 MD:pb-9',
     layout: {
-      oneColumnGrid: 'grid gap-y-6',
-      twoColumnGrid: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6',
+      ONE_COLUMN_GRID: 'grid gap-y-6',
+      TWO_COLUMN_GRID: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6',
     },
   },
   contentTitle: { base: 'text-2xl' },
@@ -21,10 +21,10 @@ export default {
     base: '',
   },
   contentTwoColumn: {
-    base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
+    base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-4 MD:px-6 pt-4 MD:pt-6 pb-8 MD:pb-9',
   },
   listItem: {
-    base: 'flex border-b border-neutral-200 last:border-0 items-center min-h-[3.5rem] bg-white px-4 md:px-6',
+    base: 'flex border-b border-neutral-200 last:border-0 items-center min-h-[3.5rem] bg-white px-4 MD:px-6',
   },
   listItemWithAction: {
     base: 'justify-between space-x-4',
@@ -40,17 +40,17 @@ export default {
     base: 'block focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   subsectionTitle: {
-    base: 'bg-neutral-100 px-4 md:px-6 py-1 border-b border-t first:border-t-none border-neutral-200 text-sm text-neutral-600',
+    base: 'bg-neutral-100 px-4 MD:px-6 py-1 border-b border-t first:border-t-none border-neutral-200 text-sm text-neutral-600',
   },
   headerArea: {
     base: 'pb-2 flex flex-col gap-y-2',
   },
   headerSpacer: {
     size: {
-      sm: '',
-      md: 'h-2',
-      lg: 'h-4',
-      xl: 'h-6',
+      SM: '',
+      MD: 'h-2',
+      LG: 'h-4',
+      XL: 'h-6',
     },
   },
   headerTitle: {
@@ -59,22 +59,22 @@ export default {
   headerRow: {
     base: '',
     layout: {
-      stretch: '',
-      spaceBetween: 'flex justify-between gap-x-2.5',
-      start: 'flex justify-start gap-x-2.5',
-      center: 'flex justify-center gap-x-2.5',
-      end: 'flex justify-end gap-x-2.5',
+      STRETCH: '',
+      SPACE_BETWEEN: 'flex justify-between gap-x-2.5',
+      START: 'flex justify-start gap-x-2.5',
+      CENTER: 'flex justify-center gap-x-2.5',
+      END: 'flex justify-end gap-x-2.5',
     },
   },
   headerGroup: {
     base: 'flex items-center gap-y-2',
     spacing: {
-      sm: 'gap-x-2.5',
-      md: 'gap-x-6',
+      SM: 'gap-x-2.5',
+      MD: 'gap-x-6',
     },
   },
   footerArea: {
-    base: 'px-4 md:px-6 py-4 bg-neutral-100 border-t border-neutral-200 text-xs',
+    base: 'px-4 MD:px-6 py-4 bg-neutral-100 border-t border-neutral-200 text-xs',
   },
   loading: {
     listItem: {
@@ -91,6 +91,6 @@ export default {
     base: 'flex flex-wrap items-center gap-y-4',
     actions: 'flex-1',
     formSubmitFeedback:
-      'w-full justify-center lg:order-first lg:w-auto lg:justify-start',
+      'w-full justify-center LG:order-first LG:w-auto LG:justify-start',
   },
 }

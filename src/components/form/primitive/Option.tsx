@@ -16,7 +16,7 @@ export type OptionProps = Omit<
  * A custom themed `option` element to be used with [Select](../?path=/docs/components-form-primitive-select--default-story).
  */
 export const Option = forwardRef(function Option(
-  { value = '', mode = Mode.light, className, children, ...props }: OptionProps,
+  { value = '', mode = Mode.Light, className, children, ...props }: OptionProps,
   ref: ForwardedRef<HTMLOptionElement>
 ) {
   const {

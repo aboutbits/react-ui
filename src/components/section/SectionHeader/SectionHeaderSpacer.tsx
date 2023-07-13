@@ -4,14 +4,14 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 export enum SectionHeaderSpacerSize {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-  xl = 'xl',
+  Sm = 'SM',
+  Md = 'MD',
+  Lg = 'LG',
+  Xl = 'XL',
 }
 
 export function SectionHeaderSpacer({
-  size = SectionHeaderSpacerSize.sm,
+  size = SectionHeaderSpacerSize.Sm,
   className,
 }: {
   size?: SectionHeaderSpacerSize

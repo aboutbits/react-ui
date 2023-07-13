@@ -15,8 +15,8 @@ export function HeaderRightActionIcon(
   return (
     <HeaderRightArea className={header.rightActionIcon.base}>
       <HeaderButtonIcon
-        variant={ButtonVariant.transparent}
-        tone={Tone.neutral}
+        variant={ButtonVariant.Transparent}
+        tone={Tone.Neutral}
         {...props}
       />
     </HeaderRightArea>

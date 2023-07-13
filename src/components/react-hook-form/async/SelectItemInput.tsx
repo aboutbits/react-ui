@@ -36,8 +36,8 @@ export function SelectItemInput<Item, SelectedItem extends Item | null>({
   onClear,
   disabled = false,
   hasError,
-  mode = Mode.light,
-  variant = FormVariant.ghost,
+  mode = Mode.Light,
+  variant = FormVariant.Ghost,
   className,
   required,
   hideRequired,
@@ -50,7 +50,7 @@ export function SelectItemInput<Item, SelectedItem extends Item | null>({
   const inputCss = useInputCss({
     mode,
     variant,
-    tone: error ? FormTone.critical : FormTone.neutral,
+    tone: error ? FormTone.Critical : FormTone.Neutral,
     disabled,
     withIconStart: false,
     withIconEnd: false,
@@ -128,7 +128,7 @@ export function SelectItemInput<Item, SelectedItem extends Item | null>({
       {!!error && (
         <InputMessage
           mode={mode}
-          tone={FormTone.critical}
+          tone={FormTone.Critical}
           disabled={disabled}
           message={error.message?.toString()}
         />

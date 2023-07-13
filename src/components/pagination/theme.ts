@@ -7,7 +7,7 @@ export default {
       base: 'inline-block w-5 h-5 fill-current my-0.5',
     },
     text: {
-      base: 'hidden lg:block',
+      base: 'hidden LG:block',
     },
   },
   pagesList: { base: 'flex items-center' },

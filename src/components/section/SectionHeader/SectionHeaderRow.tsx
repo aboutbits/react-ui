@@ -4,15 +4,15 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 export enum SectionHeaderRowLayout {
-  stretch = 'stretch',
-  spaceBetween = 'spaceBetween',
-  start = 'start',
-  center = 'center',
-  end = 'end',
+  Stretch = 'STRETCH',
+  SpaceBetween = 'SPACE_BETWEEN',
+  Start = 'START',
+  Center = 'CENTER',
+  End = 'END',
 }
 
 export function SectionHeaderRow({
-  layout = SectionHeaderRowLayout.spaceBetween,
+  layout = SectionHeaderRowLayout.SpaceBetween,
   children,
   className,
 }: {

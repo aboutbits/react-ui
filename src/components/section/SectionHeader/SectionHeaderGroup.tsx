@@ -4,12 +4,12 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 export enum SectionHeaderGroupSpacing {
-  sm = 'sm',
-  md = 'md',
+  Sm = 'SM',
+  Md = 'MD',
 }
 
 export function SectionHeaderGroup({
-  spacing = SectionHeaderGroupSpacing.sm,
+  spacing = SectionHeaderGroupSpacing.Sm,
   children,
   className,
 }: {

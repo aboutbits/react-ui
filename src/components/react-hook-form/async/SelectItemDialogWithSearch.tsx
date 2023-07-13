@@ -90,7 +90,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
   const searching = queryParameters.search !== ''
 
   return (
-    <Dialog mobilePosition={DialogPosition.fullscreen} {...props}>
+    <Dialog mobilePosition={DialogPosition.Fullscreen} {...props}>
       <>
         <DialogHeaderArea>
           <DialogHeaderRow>
@@ -152,7 +152,7 @@ export function SelectItemDialogSearch({
         <AutoSubmit />
         <InputFormField
           name="search"
-          variant={FormVariant.soft}
+          variant={FormVariant.Soft}
           iconStart={IconSearch}
           placeholder={messages['search.placeholder']}
         />

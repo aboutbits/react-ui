@@ -14,10 +14,10 @@ export type ButtonIconProps = React.DetailedHTMLProps<
 export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
   function ButtonIcon(
     {
-      mode = Mode.light,
-      variant = ButtonVariant.solid,
-      size = Size.md,
-      tone = Tone.primary,
+      mode = Mode.Light,
+      variant = ButtonVariant.Solid,
+      size = Size.Md,
+      tone = Tone.Primary,
       icon: Icon,
       label,
       className,

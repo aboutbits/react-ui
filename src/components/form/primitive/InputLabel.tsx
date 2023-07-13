@@ -17,8 +17,8 @@ export type InputLabelProps = React.DetailedHTMLProps<
  * A themed `label` element.
  */
 export function InputLabel({
-  mode = Mode.light,
-  tone = FormTone.neutral,
+  mode = Mode.Light,
+  tone = FormTone.Neutral,
   disabled = false,
   className,
   children,

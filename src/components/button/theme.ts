@@ -3,35 +3,35 @@ export default {
     base: 'inline-flex items-center justify-center font-medium rounded-lg outline-1 outline-offset-2 focus:outline',
     variantSize: {
       base: {
-        sm: 'px-4 py-1.5 text-sm leading-5',
-        md: 'px-6 py-2.5 text-sm leading-5',
-        lg: 'px-8 py-4 text-lg leading-7',
+        SM: 'px-4 py-1.5 text-sm leading-5',
+        MD: 'px-6 py-2.5 text-sm leading-5',
+        LG: 'px-8 py-4 text-lg leading-7',
       },
-      ghost: {
-        sm: 'px-4-1px py-1.5-1px border',
-        md: 'px-6-1px py-2.5-1px border',
-        lg: 'px-8-1px py-4-1px border',
+      GHOST: {
+        SM: 'px-4-1px py-1.5-1px border',
+        MD: 'px-6-1px py-2.5-1px border',
+        LG: 'px-8-1px py-4-1px border',
       },
     },
     icon: {
       base: 'fill-current',
       size: {
-        sm: 'w-4 h-4',
-        md: 'w-4 h-4',
-        lg: 'w-7 h-7',
+        SM: 'w-4 h-4',
+        MD: 'w-4 h-4',
+        LG: 'w-7 h-7',
       },
       iconStart: {
         size: {
-          sm: '-ml-1 mr-1',
-          md: '-ml-2 mr-2',
-          lg: '-ml-3 mr-3',
+          SM: '-ml-1 mr-1',
+          MD: '-ml-2 mr-2',
+          LG: '-ml-3 mr-3',
         },
       },
       iconEnd: {
         size: {
-          sm: 'ml-1 -mr-1',
-          md: 'ml-2 -mr-2',
-          lg: 'ml-3 -mr-3',
+          SM: 'ml-1 -mr-1',
+          MD: 'ml-2 -mr-2',
+          LG: 'ml-3 -mr-3',
         },
       },
     },
@@ -41,27 +41,27 @@ export default {
     icon: {
       base: 'fill-current inline-block align-top',
       size: {
-        sm: 'w-5 h-5',
-        md: 'w-6 h-6',
-        lg: 'w-9 h-9',
+        SM: 'w-5 h-5',
+        MD: 'w-6 h-6',
+        LG: 'w-9 h-9',
       },
     },
     variantSize: {
       base: {
-        sm: 'p-1.5',
-        md: 'p-2',
-        lg: 'p-3',
+        SM: 'p-1.5',
+        MD: 'p-2',
+        LG: 'p-3',
       },
-      ghost: {
-        sm: 'p-1.5-1px border',
-        md: 'p-2-1px border',
-        lg: 'p-3-1px border',
+      GHOST: {
+        SM: 'p-1.5-1px border',
+        MD: 'p-2-1px border',
+        LG: 'p-3-1px border',
       },
     },
   },
   modeVariantTone: {
-    light: {
-      solid: {
+    LIGHT: {
+      SOLID: {
         primary:
           'bg-primary-500 hover:bg-primary-600 text-white outline-primary-500',
         neutral:
@@ -76,7 +76,7 @@ export default {
           'bg-informative-500 hover:bg-informative-600 text-white outline-informative-500',
         disabled: 'bg-neutral-800/[0.16] text-neutral-800/[0.36]',
       },
-      ghost: {
+      GHOST: {
         primary:
           'hover:bg-primary-500/10 focus:bg-primary-500/10 border-primary-500 focus:border-transparent text-primary-500 outline-primary-500',
         neutral:
@@ -91,7 +91,7 @@ export default {
           'hover:bg-informative-500/10 focus:bg-informative-500/10 border-informative-500 focus:border-transparent text-informative-500 outline-informative-500',
         disabled: 'border-neutral-800/[0.36] text-neutral-800/[0.36]',
       },
-      transparent: {
+      TRANSPARENT: {
         primary:
           'hover:bg-primary-500/10 text-primary-500 focus:outline-primary-500',
         neutral:
@@ -107,8 +107,8 @@ export default {
         disabled: 'text-neutral-800/[0.36]',
       },
     },
-    dark: {
-      solid: {
+    DARK: {
+      SOLID: {
         primary:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
         neutral:
@@ -123,7 +123,7 @@ export default {
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
         disabled: 'bg-white/[0.26] text-white/[0.36]',
       },
-      ghost: {
+      GHOST: {
         primary:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
         neutral:
@@ -138,7 +138,7 @@ export default {
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
         disabled: 'border-white/[0.36] text-white/[0.36]',
       },
-      transparent: {
+      TRANSPARENT: {
         primary: 'hover:bg-white/10 text-white focus:outline-white',
         neutral: 'hover:bg-white/10 text-white focus:outline-white',
         critical: 'hover:bg-white/10 text-white focus:outline-white',

@@ -29,7 +29,7 @@ export const SectionSearch = forwardRef(function SectionSearch<
       name={name}
       ref={ref}
       placeholder={messages['search.placeholder']}
-      variant={FormVariant.soft}
+      variant={FormVariant.Soft}
       iconStart={IconSearch}
       {...props}
     />

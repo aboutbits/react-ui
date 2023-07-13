@@ -2,42 +2,42 @@ export default {
   overlay: {
     base: 'fixed inset-0 flex justify-center items-center bg-black/[0.36]',
     mobilePosition: {
-      center: 'p-6',
-      fullscreen: 'p-0',
+      CENTER: 'p-6',
+      FULLSCREEN: 'p-0',
     },
     desktopPosition: {
-      center: 'lg:p-8',
-      fullscreen: 'lg:p-0',
+      CENTER: 'LG:p-8',
+      FULLSCREEN: 'LG:p-0',
     },
   },
   dialog: {
     base: 'flex flex-col min-h-0 outline-none bg-white shadow-dialog max-h-full overflow-hidden',
     mobilePositionSize: {
-      center: {
+      CENTER: {
         base: 'rounded-lg',
-        sm: 'w-full max-w-xs',
-        md: 'w-full max-w-xl',
-        lg: 'w-full max-w-3xl',
+        SM: 'w-full max-w-xs',
+        MD: 'w-full max-w-xl',
+        LG: 'w-full max-w-3xl',
       },
-      fullscreen: {
+      FULLSCREEN: {
         base: 'w-full h-full',
-        sm: '',
-        md: '',
-        lg: '',
+        SM: '',
+        MD: '',
+        LG: '',
       },
     },
     desktopPositionSize: {
-      center: {
-        base: 'lg:h-auto lg:rounded-lg',
-        sm: 'lg:w-full lg:max-w-xs',
-        md: 'lg:w-full lg:max-w-xl',
-        lg: 'lg:w-full lg:max-w-3xl',
+      CENTER: {
+        base: 'LG:h-auto LG:rounded-lg',
+        SM: 'LG:w-full LG:max-w-xs',
+        MD: 'LG:w-full LG:max-w-xl',
+        LG: 'LG:w-full LG:max-w-3xl',
       },
-      fullscreen: {
-        base: 'lg:w-full lg:h-full lg:max-w-none lg:rounded-none',
-        sm: '',
-        md: '',
-        lg: '',
+      FULLSCREEN: {
+        base: 'LG:w-full LG:h-full LG:max-w-none LG:rounded-none',
+        SM: '',
+        MD: '',
+        LG: '',
       },
     },
   },
@@ -47,28 +47,28 @@ export default {
   headerRow: {
     base: 'items-center',
     layout: {
-      stretch: '',
-      spaceBetween: 'flex justify-between gap-x-2.5',
-      start: 'flex justify-start gap-x-2.5',
-      center: 'flex justify-center gap-x-2.5',
-      end: 'flex justify-end gap-x-2.5',
+      STRETCH: '',
+      SPACE_BETWEEN: 'flex justify-between gap-x-2.5',
+      START: 'flex justify-start gap-x-2.5',
+      CENTER: 'flex justify-center gap-x-2.5',
+      END: 'flex justify-end gap-x-2.5',
     },
   },
   headerGroup: {
     base: 'flex items-center gap-y-2',
     spacing: {
-      sm: 'gap-x-2.5',
-      md: 'gap-x-6',
+      SM: 'gap-x-2.5',
+      MD: 'gap-x-6',
     },
   },
   headerLeftArea: {
-    base: 'flex items-center mr-2 space-x-3 lg:space-x-4',
+    base: 'flex items-center mr-2 space-x-3 LG:space-x-4',
   },
   headerLeftActionIcon: {
     base: '-ml-2',
   },
   headerRightArea: {
-    base: 'flex items-center ml-2 space-x-3 lg:space-x-4',
+    base: 'flex items-center ml-2 space-x-3 LG:space-x-4',
   },
   headerTitle: {
     base: 'flex-1 text-2xl truncate',
@@ -99,14 +99,14 @@ export default {
   footerActions: {
     base: 'flex flex-col gap-2',
     position: {
-      start: 'justify-start',
-      center: 'justify-center',
-      end: 'justify-end',
+      START: 'justify-start',
+      CENTER: 'justify-center',
+      END: 'justify-end',
     },
     dialogSize: {
-      sm: '',
-      md: 'sm:flex-row',
-      lg: 'sm:flex-row',
+      SM: '',
+      MD: 'SM:flex-row',
+      LG: 'SM:flex-row',
     },
   },
   loading: {

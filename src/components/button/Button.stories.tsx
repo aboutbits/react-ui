@@ -53,12 +53,12 @@ const meta = {
             obj={{
               button: {
                 mode: {
-                  light: {
-                    solid: {
+                  LIGHT: {
+                    SOLID: {
                       urgent:
                         'bg-purple-500 hover:bg-purple-600 text-white outline-purple-500',
                     },
-                    ghost: {
+                    GHOST: {
                       urgent:
                         'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500',
                     },
@@ -80,27 +80,27 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {}
 
 export const ModeDark: Story = {
-  args: { mode: Mode.dark },
+  args: { mode: Mode.Dark },
   parameters: {
     backgrounds: { default: Background.Black },
   },
 }
 
 export const VariantSolid: Story = {
-  args: { variant: ButtonVariant.solid },
+  args: { variant: ButtonVariant.Solid },
 }
 export const VariantGhost: Story = {
-  args: { variant: ButtonVariant.ghost },
+  args: { variant: ButtonVariant.Ghost },
 }
 
 export const SizeSmall: Story = {
-  args: { size: Size.sm },
+  args: { size: Size.Sm },
 }
 export const SizeMedium: Story = {
-  args: { size: Size.md },
+  args: { size: Size.Md },
 }
 export const SizeLarge: Story = {
-  args: { size: Size.lg },
+  args: { size: Size.Lg },
 }
 
 export const Disabled: Story = {

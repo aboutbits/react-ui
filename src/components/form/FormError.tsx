@@ -17,7 +17,7 @@ export function FormError({ children, className }: FormErrorProps) {
 
   return (
     <Alert
-      tone={Tone.critical}
+      tone={Tone.Critical}
       className={classNames(className, form.formError.base)}
     >
       {children}

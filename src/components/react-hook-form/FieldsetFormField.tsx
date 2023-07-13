@@ -21,7 +21,7 @@ export function FieldsetFormField<
   const hasError = fields.some((name) => !!get(errors, name))
 
   return (
-    <FieldsetField {...props} status={hasError ? Status.invalid : undefined}>
+    <FieldsetField {...props} status={hasError ? Status.Invalid : undefined}>
       {children}
     </FieldsetField>
   )

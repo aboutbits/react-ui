@@ -14,10 +14,10 @@ export type ButtonProps = React.DetailedHTMLProps<
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
     {
-      mode = Mode.light,
-      variant = ButtonVariant.solid,
-      size = Size.md,
-      tone = Tone.primary,
+      mode = Mode.Light,
+      variant = ButtonVariant.Solid,
+      size = Size.Md,
+      tone = Tone.Primary,
       iconStart: IconStart,
       iconEnd: IconEnd,
       type = 'button',

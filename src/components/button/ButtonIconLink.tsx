@@ -20,10 +20,10 @@ export const ButtonIconLink = React.forwardRef<
 >(function ButtonIconLink(
   {
     href,
-    mode = Mode.light,
-    variant = ButtonVariant.solid,
-    size = Size.md,
-    tone = Tone.primary,
+    mode = Mode.Light,
+    variant = ButtonVariant.Solid,
+    size = Size.Md,
+    tone = Tone.Primary,
     icon: Icon,
     internal = true,
     disabled = false,

@@ -1,10 +1,10 @@
 export enum DialogSize {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
+  Sm = 'SM',
+  Md = 'MD',
+  Lg = 'LG',
 }
 
 export enum DialogPosition {
-  center = 'center',
-  fullscreen = 'fullscreen',
+  Center = 'CENTER',
+  Fullscreen = 'FULLSCREEN',
 }
