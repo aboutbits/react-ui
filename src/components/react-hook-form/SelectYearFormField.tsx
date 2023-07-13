@@ -3,7 +3,7 @@ import { FieldPath, FieldValues } from 'react-hook-form'
 import { SelectYearFieldOptionsProps, useSelectYearFieldOptions } from '../form'
 import { SelectFormField, SelectFormFieldProps } from './SelectFormField'
 
-export type SelectYearFormField<
+export type SelectYearFormFieldProps<
   TFieldValues extends FieldValues,
   TFieldName extends FieldPath<TFieldValues>
 > = Omit<SelectFormFieldProps<TFieldValues, TFieldName>, 'children'> &
@@ -16,7 +16,7 @@ export const SelectYearFormField = forwardRef(function SelectYearFormField<
   TFieldValues extends FieldValues = FieldValues,
   TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 >(
-  { from, to, ...props }: SelectYearFormField<TFieldValues, TFieldName>,
+  { from, to, ...props }: SelectYearFormFieldProps<TFieldValues, TFieldName>,
   ref: ForwardedRef<HTMLSelectElement>
 ) {
   return (
