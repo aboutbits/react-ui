@@ -35,10 +35,10 @@
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest watch --passWithNoTests",
     "typecheck": "tsc --project tsconfig.json --noEmit",
-    "quality": "npm run test && npm run lint && npm run typecheck",
-    "prepublishOnly": "npm run quality",
+    "qc": "npm run test && npm run lint && npm run typecheck",
+    "prepublishOnly": "npm run qc",
     "prepare": "npm run build",
-    "preversion": "npm run quality",
+    "preversion": "npm run qc",
     "version": "git add -A src",
     "postversion": "git push && git push --tags"
   },
