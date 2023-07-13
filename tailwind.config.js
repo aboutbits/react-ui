@@ -8,7 +8,7 @@ module.exports = {
     './src/**/*.stories.tsx',
     './src/**/*.templates.tsx',
     './src/**/*.mdx',
-    './.storybook/preview.js',
+    './.storybook/preview.tsx',
   ],
   theme: {
     extend: {
@@ -17,6 +17,7 @@ module.exports = {
       },
     },
   },
+  darkMode: 'class',
   presets: [require('./tailwind-preset.js')],
   plugins: [require('@tailwindcss/forms')],
 }

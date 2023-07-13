@@ -28,8 +28,6 @@ export function SectionContent({
 }: SectionContentProps) {
   const { section } = useTheme()
   const layoutStyle =
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     typeof layout !== 'undefined' ? section.content.layout[layout] : ''
 
   return (

@@ -1,7 +1,8 @@
 import { act, waitFor, renderHook } from '@testing-library/react'
+import { vi } from 'vitest'
 import { useForm } from 'react-hook-form'
 import defaultMessages from '../../../framework/internationalization/defaultMessages.en'
-import { useHandleFormSubmission } from '../useHandleFormSubmission'
+import { useHandleSubmit } from '../useHandleSubmit'
 
 const getPromiseState = async (
   promise: Promise<unknown>
@@ -13,77 +14,78 @@ const getPromiseState = async (
   )
 }
 
-describe('useHandleFormSubmission', () => {
-  const onMutate = () =>
-    new Promise((resolve) => setTimeout(() => resolve({ foo: 'bar' }), 500))
+describe('useHandleSubmit', () => {
+  const submitAction = () => new Promise((resolve) => setTimeout(resolve, 10))
 
   const onSuccess = () => undefined
 
+  const expectedErrorMessage = 'Server Error'
   const axiosError = {
     isAxiosError: true,
-    response: { data: { message: 'Server Error' } },
+    response: { data: { message: expectedErrorMessage } },
   }
 
   const onDeleteWithErrorResponse = () =>
-    new Promise((resolve, reject) => setTimeout(() => reject(axiosError), 100))
+    new Promise((_resolve, reject) => setTimeout(() => reject(axiosError), 10))
 
   const onDeleteWithUnexpectedError = () =>
-    new Promise((resolve, reject) =>
+    new Promise((_resolve, reject) =>
       setTimeout(
         () =>
           reject({
             message: 'The request did not reach the server',
           }),
-        100
+        10
       )
     )
 
   const onDeleteWithoutErrorResponse = () =>
-    new Promise((resolve, reject) => setTimeout(() => reject(), 100))
+    new Promise((_resolve, reject) => setTimeout(() => reject(), 10))
 
   test('should return initial state on first render', () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result } = renderHook(() =>
-      useHandleFormSubmission(form.current, onMutate)
+      useHandleSubmit(form.current, submitAction)
     )
 
     expect(result.current.apiErrorMessage).toBe(null)
-    expect(result.current.onSubmit).toBeDefined()
+    expect(result.current.triggerSubmit).toBeDefined()
   })
 
-  test('should set is submitting during mutation', async () => {
+  test('should set is submitting during submission', async () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result } = renderHook(() =>
-      useHandleFormSubmission(form.current, onDeleteWithErrorResponse)
+      useHandleSubmit(form.current, onDeleteWithErrorResponse)
     )
 
-    // eslint-disable-next-line
-    // @ts-ignore
-    let submitPromise: Promise<void> = null
+    let submitPromise: Promise<void> | undefined
 
     await act(async () => {
-      submitPromise = form.current.handleSubmit(result.current.onSubmit)()
+      submitPromise = form.current.handleSubmit(result.current.triggerSubmit)()
     })
 
-    expect(await getPromiseState(submitPromise)).toBe('pending')
+    expect(submitPromise && (await getPromiseState(submitPromise))).toBe(
+      'pending'
+    )
 
     await waitFor(async () => {
-      expect(await getPromiseState(submitPromise)).toBe('resolved')
+      expect(submitPromise && (await getPromiseState(submitPromise))).toBe(
+        'resolved'
+      )
     })
   })
 
-  test('should call onSuccess on successful mutation', async () => {
-    const onSuccess = jest.fn(() => undefined)
+  test('should call onSuccess on successful submission', async () => {
     const { result: form } = renderHook(() => useForm())
 
+    const onSuccess = vi.fn(() => undefined)
     const { result } = renderHook(() =>
-      useHandleFormSubmission(form.current, onMutate, { onSuccess })
+      useHandleSubmit(form.current, submitAction, { onSuccess })
     )
 
-    await act(() => result.current.onSubmit({}))
-    expect(onSuccess).toHaveBeenCalled()
+    await act(() => result.current.triggerSubmit({}))
     expect(onSuccess).toHaveBeenCalledTimes(1)
   })
 
@@ -91,47 +93,55 @@ describe('useHandleFormSubmission', () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result } = renderHook(() =>
-      useHandleFormSubmission(form.current, onDeleteWithErrorResponse, {
+      useHandleSubmit(form.current, onDeleteWithErrorResponse, {
         onSuccess,
       })
     )
 
-    await act(() => result.current.onSubmit({}))
+    await act(() => result.current.triggerSubmit({}))
 
-    expect(result.current.apiErrorMessage).toBe('Server Error')
+    expect(result.current.apiErrorMessage).toBe(expectedErrorMessage)
   })
 
-  test('should call onError on error', async () => {
-    const onError = jest.fn(() => undefined)
+  test('should call onError and not onSuccess on error', async () => {
     const { result: form } = renderHook(() => useForm())
 
+    const onSuccess = vi.fn(() => undefined)
+    const onError = vi.fn(() => undefined)
     const { result } = renderHook(() =>
-      useHandleFormSubmission(form.current, onDeleteWithErrorResponse, {
+      useHandleSubmit(form.current, onDeleteWithErrorResponse, {
+        onSuccess,
         onError,
       })
     )
     const values = {}
 
-    await act(() => result.current.onSubmit(values))
-    expect(onError).toHaveBeenCalledWith(axiosError, values)
+    await act(() => result.current.triggerSubmit(values))
+    expect(onError).toHaveBeenCalledWith({
+      error: axiosError,
+      apiErrorMessage: result.current.apiErrorMessage,
+      values,
+      errorBody: { message: expectedErrorMessage },
+    })
     expect(onError).toHaveBeenCalledTimes(1)
+    expect(onSuccess).not.toHaveBeenCalled()
   })
 
   test('should reset apiErrorMessage before calling onDelete', async () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result } = renderHook(() =>
-      useHandleFormSubmission(form.current, onDeleteWithErrorResponse, {
+      useHandleSubmit(form.current, onDeleteWithErrorResponse, {
         onSuccess,
       })
     )
 
-    await act(() => result.current.onSubmit({}))
+    await act(() => result.current.triggerSubmit({}))
 
-    expect(result.current.apiErrorMessage).toBe('Server Error')
+    expect(result.current.apiErrorMessage).toBe(expectedErrorMessage)
 
     act(() => {
-      result.current.onSubmit({})
+      result.current.triggerSubmit({})
     })
 
     expect(result.current.apiErrorMessage).toBe(null)
@@ -141,13 +151,13 @@ describe('useHandleFormSubmission', () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result } = renderHook(() =>
-      useHandleFormSubmission(form.current, onDeleteWithoutErrorResponse, {
+      useHandleSubmit(form.current, onDeleteWithoutErrorResponse, {
         onSuccess,
         apiFallbackErrorMessage: 'Fallback error message',
       })
     )
 
-    await act(() => result.current.onSubmit({}))
+    await act(() => result.current.triggerSubmit({}))
 
     expect(result.current.apiErrorMessage).toBe('Fallback error message')
   })
@@ -156,12 +166,12 @@ describe('useHandleFormSubmission', () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result } = renderHook(() =>
-      useHandleFormSubmission(form.current, onDeleteWithoutErrorResponse, {
+      useHandleSubmit(form.current, onDeleteWithoutErrorResponse, {
         onSuccess,
       })
     )
 
-    await act(() => result.current.onSubmit({}))
+    await act(() => result.current.triggerSubmit({}))
 
     expect(result.current.apiErrorMessage).toBe(defaultMessages['error.api'])
   })
@@ -170,12 +180,12 @@ describe('useHandleFormSubmission', () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result } = renderHook(() =>
-      useHandleFormSubmission(form.current, onDeleteWithUnexpectedError, {
+      useHandleSubmit(form.current, onDeleteWithUnexpectedError, {
         onSuccess,
       })
     )
 
-    await act(() => result.current.onSubmit({}))
+    await act(() => result.current.triggerSubmit({}))
 
     expect(result.current.apiErrorMessage).toBe(defaultMessages['error.api'])
   })
@@ -183,27 +193,28 @@ describe('useHandleFormSubmission', () => {
   test('onSubmit should return the response on success', async () => {
     const { result: form } = renderHook(() => useForm())
 
+    const response = { foo: 'bar' }
     const { result: hookResult } = renderHook(() =>
-      useHandleFormSubmission(form.current, onMutate, {
+      useHandleSubmit(form.current, () => Promise.resolve(response), {
         onSuccess,
       })
     )
 
-    const onSubmitResult = await act(() => hookResult.current.onSubmit({}))
+    const onSubmitResult = await act(() => hookResult.current.triggerSubmit({}))
 
-    expect(onSubmitResult).toEqual({ foo: 'bar' })
+    expect(onSubmitResult).toEqual(response)
   })
 
   test('onSubmit should return nothing on error', async () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result: hookResult } = renderHook(() =>
-      useHandleFormSubmission(form.current, onDeleteWithErrorResponse, {
+      useHandleSubmit(form.current, onDeleteWithErrorResponse, {
         onSuccess,
       })
     )
 
-    const onSubmitResult = await act(() => hookResult.current.onSubmit({}))
+    const onSubmitResult = await act(() => hookResult.current.triggerSubmit({}))
 
     expect(onSubmitResult).toEqual(undefined)
   })
@@ -212,7 +223,7 @@ describe('useHandleFormSubmission', () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result: hookResult } = renderHook(() =>
-      useHandleFormSubmission(form.current, onDeleteWithErrorResponse, {
+      useHandleSubmit(form.current, onDeleteWithErrorResponse, {
         throwOnError: true,
       })
     )
@@ -220,7 +231,7 @@ describe('useHandleFormSubmission', () => {
     let error = null
 
     try {
-      await act(() => hookResult.current.onSubmit({}))
+      await act(() => hookResult.current.triggerSubmit({}))
     } catch (e) {
       error = e
     }

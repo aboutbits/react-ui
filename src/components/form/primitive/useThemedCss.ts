@@ -4,6 +4,7 @@ import { Mode, ShowRequiredProps, Size } from '../../types'
 import { FormTone, FormVariant } from '../types'
 import { CheckboxLayout } from './Checkbox'
 import { FieldSetIndent } from './Fieldset'
+import { RadioLayout } from './Radio'
 import { ToggleSwitchLayout } from './ToggleSwitch'
 
 export function useInputCss({
@@ -184,6 +185,91 @@ export function useCheckboxInputCss() {
   } = useTheme()
 
   return classNames(theme.base)
+}
+
+export function useRadioCss({
+  layout,
+  disabled,
+  applyInputHeight,
+  size,
+}: {
+  layout: RadioLayout
+  disabled: boolean
+  applyInputHeight: boolean
+  size: Size
+}) {
+  const {
+    form: { radio: theme },
+  } = useTheme()
+
+  return classNames(
+    theme.base,
+    theme.layout[layout],
+    applyInputHeight && [theme.inputHeight.base, theme.inputHeight.size[size]],
+    disabled ? theme.disabled : theme.normal
+  )
+}
+
+export function useRadioLabelCss({
+  mode,
+  size,
+  disabled,
+}: {
+  mode: Mode
+  size: Size
+  disabled: boolean
+}) {
+  const {
+    form: {
+      radio: { label: theme },
+    },
+  } = useTheme()
+  return classNames(
+    theme.base,
+    theme.size[size],
+    disabled
+      ? theme.mode[mode].disabled
+      : theme.mode[mode][disabled ? 'disabled' : 'normal']
+  )
+}
+
+export function useRadioInputCss({ size }: { size: Size }) {
+  const {
+    form: {
+      radio: { input: theme },
+    },
+  } = useTheme()
+
+  return classNames(theme.base, theme.size[size])
+}
+
+export function useRadioIconCss({
+  mode,
+  size,
+  disabled,
+  checked,
+}: {
+  mode: Mode
+  size: Size
+  disabled: boolean
+  checked: boolean
+}) {
+  const {
+    form: {
+      radio: { icon: theme },
+    },
+  } = useTheme()
+
+  const disabledState = disabled ? 'disabled' : 'normal'
+  const checkedState = checked ? 'checked' : 'unchecked'
+  return classNames(
+    theme.base,
+    theme.size[size],
+    theme.mode[mode],
+    theme[disabledState],
+    theme[checkedState].base,
+    theme[checkedState].modeState[mode][disabledState]
+  )
 }
 
 export function useFieldsetCss({ indent }: { indent: FieldSetIndent }) {

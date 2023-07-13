@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { useForm } from 'react-hook-form'
+import { Form } from './Form'
+import { RadioFormField } from './RadioFormField'
+
+<Meta
+  title="Components/React Hook Form/RadioFormField"
+  component={RadioFormField}
+  decorators={[
+    (Story) => {
+      const form = useForm()
+      return (
+        <Form form={form} onSubmit={action('onSubmit')}>
+          <Story />
+        </Form>
+      )
+    },
+  ]}
+/>
+
+# RadioFormField
+
+A [RadioField](../?path=/docs/components-form-radiofield--default-story) within the context of a `react-hook-form` form.
+
+export const Template = ({ ...args }) => (
+  <div className="space-y-4">
+    <RadioFormField {...args} />
+    <RadioFormField {...args} label="Option 2" />
+    <RadioFormField {...args} label="Option 3" />
+  </div>
+)
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      name: 'privacy',
+      label: 'Option 1',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />

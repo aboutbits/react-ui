@@ -1,25 +1,24 @@
-import { Source } from '@storybook/addon-docs'
-import { Description } from '@storybook/components'
-import React, { ReactElement } from 'react'
+import { Markdown, Subheading } from '@storybook/addon-docs'
+import { ReactElement } from 'react'
 import defaultMessages from '../../src/framework/internationalization/defaultMessages.en'
+import { SourceJson } from './SourceJson'
 
 export function InternationalizationMessages({
   items,
 }: {
-  items: string[]
+  items: (keyof typeof defaultMessages)[]
 }): ReactElement {
   const messages = Object.fromEntries(
-    // eslint-disable-next-line
-    // @ts-ignore
-    items.map((item) => [item, defaultMessages?.[item]])
+    items.map((item) => [item, defaultMessages[item]])
   )
 
   return (
     <>
-      <Description
-        markdown={`This component uses the following message keys and default values:`}
-      />
-      <Source code={JSON.stringify(messages, null, 2)} language="json" />
+      <Subheading>Internationalization messages</Subheading>
+      <Markdown>
+        This component uses the following message keys and default values:
+      </Markdown>
+      <SourceJson obj={messages} />
     </>
   )
 }

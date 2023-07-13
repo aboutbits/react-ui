@@ -1,12 +1,13 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { act } from 'react-dom/test-utils'
 import { useForm } from 'react-hook-form'
+import { vi } from 'vitest'
 import { AutoSubmit } from '../AutoSubmit'
 import { Form } from '../Form'
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 type FormValues = {
   name: string
@@ -17,7 +18,7 @@ const MyForm = ({
   onSubmit,
 }: {
   autoSubmitInterval?: number
-  onSubmit
+  onSubmit: (values: FormValues) => void
 }) => {
   const form = useForm<FormValues>({
     defaultValues: {
@@ -49,7 +50,7 @@ const MyForm = ({
 
 describe('ReactHookFormAutoSubmit', () => {
   test('should not submit form on mount', async () => {
-    const handleSubmit = jest.fn()
+    const handleSubmit = vi.fn()
     render(<MyForm onSubmit={handleSubmit} />)
 
     await waitFor(() => {
@@ -58,7 +59,7 @@ describe('ReactHookFormAutoSubmit', () => {
   })
 
   test('should submit form once on quick data change', async () => {
-    const handleSubmit = jest.fn()
+    const handleSubmit = vi.fn()
     render(<MyForm onSubmit={handleSubmit} />)
 
     await act(async () => {
@@ -78,7 +79,7 @@ describe('ReactHookFormAutoSubmit', () => {
   })
 
   test('should submit form twice on slow data change', async () => {
-    const handleSubmit = jest.fn()
+    const handleSubmit = vi.fn()
     render(<MyForm autoSubmitInterval={50} onSubmit={handleSubmit} />)
 
     const user = userEvent.setup()
@@ -108,7 +109,7 @@ describe('ReactHookFormAutoSubmit', () => {
   })
 
   test('should submit form on unmount if not yet submitted', async () => {
-    const handleSubmit = jest.fn()
+    const handleSubmit = vi.fn()
     const { unmount } = render(
       <MyForm autoSubmitInterval={1000} onSubmit={handleSubmit} />
     )

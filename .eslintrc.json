@@ -24,11 +24,7 @@
   "overrides": [
     {
       "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
-      "extends": [
-        "plugin:import/recommended",
-        "plugin:import/typescript",
-        "plugin:jest/recommended"
-      ],
+      "extends": ["plugin:import/recommended", "plugin:import/typescript"],
       "rules": {
         "react/prop-types": "off"
       }
@@ -58,7 +54,12 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true
+      }
+    ],
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "import/order": [

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
+    "target": "ES6",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -8,12 +9,5 @@
     "declaration": true,
     "importHelpers": true
   },
-  "exclude": [
-    "**/__test__/*",
-    "**/__tests__/*",
-    "**/*.stories.tsx",
-    "**/*.stories.ts",
-    "src/examples/*"
-  ],
-  "include": ["src"]
+  "include": ["src", ".storybook/**/*", "public"]
 }

@@ -22,7 +22,7 @@ export type InputFieldProps = Omit<InputProps, 'tone' | 'required'> &
 /**
  * An input field independent of any form validation library.
  *
- * Is composed of the primitives [Input](../?path=/docs/components-form-primitive-input--default-story), [InputLabel](../?path=/docs/components-form-primitive-inputlabel--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
+ * It is composed of the primitives [Input](../?path=/docs/components-form-primitive-input--default-story), [InputLabel](../?path=/docs/components-form-primitive-inputlabel--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
  */
 export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
   function InputField(

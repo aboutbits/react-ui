@@ -3,7 +3,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { ReactElement, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
-import { useHandleFormSubmission } from '../components/apiHooks'
 import { SubmitButton } from '../components/button'
 import {
   ContentArea,
@@ -22,11 +21,13 @@ import {
   Form,
   InputFormField,
   PaginatedResponse,
+  RadioFormField,
   SearchQueryParameters,
   SelectFormField,
   SelectItemFormField,
   TextAreaFormField,
   ToggleSwitchFormField,
+  useHandleSubmit,
 } from '../components/react-hook-form'
 import {
   Section,
@@ -36,6 +37,11 @@ import {
   SectionFooterWithActions,
   SectionHeader,
 } from '../components/section'
+
+enum UiMode {
+  Light = 'light',
+  Dark = 'dark',
+}
 
 type FormData = {
   email: string
@@ -76,6 +82,7 @@ const resolver = yupResolver(
     role: Yup.string().required(),
     bio: Yup.string(),
     favProjectId: Yup.string().nullable().required(),
+    uiMode: Yup.mixed().oneOf(Object.values(UiMode)),
     serverValidationErrors: Yup.boolean().required(),
   })
 )
@@ -121,12 +128,11 @@ export function FormExampleTemplate({
     [onSubmit]
   )
 
-  const { onSubmit: onSubmitHandler, apiErrorMessage } =
-    useHandleFormSubmission(form, submitAction)
+  const { triggerSubmit, apiErrorMessage } = useHandleSubmit(form, submitAction)
 
   return (
     <ContentArea>
-      <Form form={form} onSubmit={onSubmitHandler} className="space-y-3">
+      <Form form={form} onSubmit={triggerSubmit} className="space-y-3">
         <Section>
           <SectionHeader title="User edit" />
           <SectionContainer>
@@ -215,6 +221,20 @@ export function FormExampleTemplate({
                 paginationConfig={{ indexType: IndexType.ZERO_BASED }}
                 required
               />
+              <FieldsetFormField
+                label="Preferred UI mode"
+                fields={['uiMode']}
+                className="space-y-4"
+              >
+                {Object.values(UiMode).map((mode) => (
+                  <RadioFormField
+                    key={mode}
+                    name="uiMode"
+                    label={mode}
+                    value={mode}
+                  />
+                ))}
+              </FieldsetFormField>
               <FieldsetFormField
                 label="Privacy"
                 fields={['privacy']}
