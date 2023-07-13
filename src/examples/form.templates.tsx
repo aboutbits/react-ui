@@ -156,7 +156,7 @@ export function FormExampleTemplate({
                 label="Name"
                 fields={['name.first', 'name.last']}
                 indent={FieldSetIndent.label}
-                required
+                showRequired
               >
                 <div className="flex md:flex-row flex-col justify-between gap-3 [&>*]:flex-1">
                   <InputFormField
