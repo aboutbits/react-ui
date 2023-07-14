@@ -300,7 +300,7 @@ export const UserEdit: Story = () => {
                 dialogLabel="Projects"
                 noSearchResults="No projects available."
                 initialItem={{ id: 1, name: 'Project 1' }}
-                getItemId={(item: Project) => item.id}
+                extractIdFromItem={(item: Project) => item.id}
                 renderListItem={(item) => item.name}
                 renderErrorMessage={(error) => error.message}
                 useGetData={useGetData}

@@ -24,7 +24,7 @@ export type SelectItemFormFieldProps<
   'name' | 'label' | 'placeholder' | 'disabled'
 > & {
   renderInputItem?: (item: Item) => ReactNode
-  getItemId: (item: Item) => ItemId
+  extractIdFromItem: (item: Item) => ItemId
   /**
    * The item that should be rendered on first render.
    */
@@ -77,7 +77,7 @@ export function SelectItemFormField<
   renderListItem,
   renderErrorMessage,
   paginationConfig,
-  getItemId,
+  extractIdFromItem,
   required,
   hideRequired,
 }: SelectItemFormFieldProps<Item, SelectedItem, ItemId, Error>) {
@@ -117,7 +117,7 @@ export function SelectItemFormField<
           }}
           isOpen={showDialog}
           onConfirm={(item: Item) => {
-            field.onChange(getItemId(item))
+            field.onChange(extractIdFromItem(item))
             selectedItem.current = item
             setShowDialog(false)
           }}

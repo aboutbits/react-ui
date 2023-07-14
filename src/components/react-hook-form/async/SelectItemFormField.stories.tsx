@@ -39,7 +39,7 @@ const meta = {
     dialogTitle: 'Users',
     dialogLabel: 'Users',
     noSearchResults: 'No users available.',
-    getItemId: (item) => (item as User).id,
+    extractIdFromItem: (item) => (item as User).id,
     renderListItem: (item) => (item as User).name,
     renderErrorMessage: (error) => (error as ErrorBody).message,
     paginationConfig: { indexType: IndexType.ZERO_BASED },
