@@ -1,11 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "outDir": "./dist/cjs",
-    "removeComments": true,
-    "declaration": false,
-    "declarationMap": false
+    "emitDeclarationOnly": true,
+    "outDir": "./dist/types",
+    "declaration": true,
+    "declarationMap": true,
+    "removeComments": false
   },
   "exclude": [
     "src/vitest.ts",

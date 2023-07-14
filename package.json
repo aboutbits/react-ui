@@ -3,7 +3,7 @@
   "version": "1.5.1",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist/**/*",
     "tailwind-preset.js"
@@ -26,9 +26,10 @@
   },
   "scripts": {
     "dev": "storybook dev -p 4000 --no-open",
-    "build": "rimraf dist && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc --project tsconfig.build.esm.json",
-    "build:cjs": "tsc --project tsconfig.build.cjs.json",
+    "build": "rimraf dist && npm run build:types && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:types": "tsc -p tsconfig.types.json",
     "lint": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx,.docs.mdx,.json --cache .",
     "lint:fix": "npm run lint -- --fix",
     "test": "vitest run --passWithNoTests",

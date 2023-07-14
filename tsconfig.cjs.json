@@ -1,10 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "es2020",
-    "outDir": "./dist/esm",
-    "declaration": true,
-    "declarationMap": true
+    "module": "commonjs",
+    "outDir": "./dist/cjs",
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    "removeComments": true
   },
   "exclude": [
     "src/vitest.ts",
