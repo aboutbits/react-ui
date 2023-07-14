@@ -1,4 +1,4 @@
-export default {
+export const defaultMessages = {
   'button.goBack': 'Go Back',
   'button.close': 'Close',
   'pagination.prev': 'Prev',
