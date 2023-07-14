@@ -94,7 +94,7 @@ export function PaginationInMemory({
   return (
     <PaginationContainer className={className}>
       <SectionPaginationInMemoryButton
-        aria-label={messages['pagination.prev'] || 'pagination.prev'}
+        aria-label={messages['pagination.prev']}
         disabled={pagination.previous.isDisabled}
         onChangePage={onChangePage}
         pageIndex={pagination.previous.indexNumber}
@@ -125,7 +125,7 @@ export function PaginationInMemory({
       </PaginationPagesList>
 
       <SectionPaginationInMemoryButton
-        aria-label={messages['pagination.next'] || 'pagination.next'}
+        aria-label={messages['pagination.next']}
         disabled={pagination.next.isDisabled}
         onChangePage={onChangePage}
         pageIndex={pagination.next.indexNumber}

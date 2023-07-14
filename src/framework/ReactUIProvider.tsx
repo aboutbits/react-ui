@@ -1,4 +1,4 @@
-import { ReactNode, useContext } from 'react'
+import { ReactNode, useContext, useMemo } from 'react'
 import {
   Internationalization,
   InternationalizationContext,
@@ -8,14 +8,14 @@ import {
   LinkComponentContext,
 } from './router/LinkComponentContext'
 import { Router, RouterContext } from './router/RouterContext'
-import { Theme } from './theme/theme'
 import { ThemeContext } from './theme/ThemeContext'
+import { Theme } from './theme/theme'
 
 export type ReactUIProviderProps = {
   theme?: Theme
   linkComponent?: LinkComponent
   router?: Router
-  internationalization?: Internationalization
+  internationalization?: Partial<Internationalization>
   children?: ReactNode
 }
 
@@ -31,12 +31,17 @@ export function ReactUIProvider({
   const internationalizationFromContext = useContext(
     InternationalizationContext
   )
+  const mergedInternationalization = useMemo(
+    () => ({
+      ...internationalizationFromContext,
+      ...internationalization,
+    }),
+    [internationalization, internationalizationFromContext]
+  )
 
   return (
     <ThemeContext.Provider value={theme}>
-      <InternationalizationContext.Provider
-        value={internationalization || internationalizationFromContext}
-      >
+      <InternationalizationContext.Provider value={mergedInternationalization}>
         <RouterContext.Provider value={router || routerComponentFromContext}>
           <LinkComponentContext.Provider
             value={linkComponent || linkComponentFromContext}

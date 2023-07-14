@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react'
-import defaultMessages from './defaultMessages.en'
+import { defaultMessages } from './defaultMessages.en'
 
-export type InternationalizationMessages = Record<string, string>
+export type InternationalizationMessages = typeof defaultMessages
 
 export type Internationalization = {
   messages: InternationalizationMessages
