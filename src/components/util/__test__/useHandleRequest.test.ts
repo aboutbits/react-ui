@@ -1,6 +1,6 @@
-import { waitFor, act, renderHook } from '@testing-library/react'
+import { act, renderHook, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
-import defaultMessages from '../../../framework/internationalization/defaultMessages.en'
+import { defaultMessages } from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleRequest } from '../useHandleRequest'
 
 describe('useHandleRequest', () => {
@@ -31,7 +31,7 @@ describe('useHandleRequest', () => {
       useHandleRequest(onRequest, { onSuccess })
     )
 
-    expect(result.current.apiErrorMessage).toBe(null)
+    expect(result.current.apiErrorMessage).toBeNull()
     expect(result.current.triggerRequest).toBeDefined()
     expect(result.current.isRequesting).toBeFalsy()
   })
@@ -83,7 +83,7 @@ describe('useHandleRequest', () => {
       result.current.triggerRequest()
     })
 
-    expect(result.current.apiErrorMessage).toBe(null)
+    expect(result.current.apiErrorMessage).toBeNull()
     await waitFor(() => expect(result.current.isRequesting).toBeFalsy())
   })
 

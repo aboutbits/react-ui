@@ -1,8 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES5",
-    "outDir": "./dist/cjs"
+    "module": "commonjs",
+    "outDir": "./dist/cjs",
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    "removeComments": true
   },
   "exclude": [
     "src/vitest.ts",

@@ -15,11 +15,10 @@ import {
   SectionContainer,
   SectionContent,
   SectionContentLayout,
-  SectionFooterWithActions,
+  SectionFooterWithSubmit,
   SectionHeader,
 } from '../components'
 import { Alert } from '../components/alert'
-import { SubmitButton } from '../components/button'
 import {
   FieldSetIndent,
   FormError,
@@ -349,9 +348,7 @@ export const UserEdit: Story = () => {
               )}
               <FormError>{apiErrorMessage}</FormError>
             </SectionContent>
-            <SectionFooterWithActions>
-              <SubmitButton>Save</SubmitButton>
-            </SectionFooterWithActions>
+            <SectionFooterWithSubmit />
           </SectionContainer>
         </Section>
       </Form>

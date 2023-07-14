@@ -1,7 +1,7 @@
-import { act, waitFor, renderHook } from '@testing-library/react'
-import { vi } from 'vitest'
+import { act, renderHook, waitFor } from '@testing-library/react'
 import { useForm } from 'react-hook-form'
-import defaultMessages from '../../../framework/internationalization/defaultMessages.en'
+import { vi } from 'vitest'
+import { defaultMessages } from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleSubmit } from '../useHandleSubmit'
 
 const getPromiseState = async (
@@ -49,7 +49,7 @@ describe('useHandleSubmit', () => {
       useHandleSubmit(form.current, submitAction)
     )
 
-    expect(result.current.apiErrorMessage).toBe(null)
+    expect(result.current.apiErrorMessage).toBeNull()
     expect(result.current.triggerSubmit).toBeDefined()
   })
 
@@ -144,7 +144,7 @@ describe('useHandleSubmit', () => {
       result.current.triggerSubmit({})
     })
 
-    expect(result.current.apiErrorMessage).toBe(null)
+    expect(result.current.apiErrorMessage).toBeNull()
   })
 
   test('should set apiErrorMessage to fallbackErrorId on error without response', async () => {
@@ -228,7 +228,7 @@ describe('useHandleSubmit', () => {
       })
     )
 
-    let error = null
+    let error
 
     try {
       await act(() => hookResult.current.triggerSubmit({}))

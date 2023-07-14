@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "es2020",
+    "outDir": "./dist/esm",
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    "removeComments": true
+  },
+  "exclude": [
+    "src/vitest.ts",
+    "**/__test__/*",
+    "**/__tests__/*",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "src/examples/*",
+    ".storybook/*"
+  ],
+  "include": ["src"]
+}

@@ -44,7 +44,7 @@ export const useSelectMonthFieldOptions = ({ mode }: { mode?: Mode }) => {
 
   return MONTHS.map((month) => (
     <Option mode={mode} key={month} value={month}>
-      {messages[`month.${month.toLowerCase()}`]}
+      {messages[`month.${month.toLowerCase() as Lowercase<Month>}`]}
     </Option>
   ))
 }
