@@ -15,7 +15,7 @@ export type ReactUIProviderProps = {
   theme?: Theme
   linkComponent?: LinkComponent
   router?: Router
-  internationalization?: Partial<Internationalization>
+  internationalization?: Internationalization
   children?: ReactNode
 }
 
@@ -31,13 +31,15 @@ export function ReactUIProvider({
   const internationalizationFromContext = useContext(
     InternationalizationContext
   )
-  const mergedInternationalization = useMemo(
-    () => ({
-      ...internationalizationFromContext,
-      ...internationalization,
-    }),
-    [internationalization, internationalizationFromContext]
-  )
+  const mergedInternationalization = useMemo(() => {
+    if (internationalization) {
+      return {
+        ...internationalizationFromContext,
+        ...internationalization,
+      } as typeof internationalizationFromContext
+    }
+    return internationalizationFromContext
+  }, [internationalization, internationalizationFromContext])
 
   return (
     <ThemeContext.Provider value={theme}>

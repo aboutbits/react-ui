@@ -1,20 +1,20 @@
 import { createContext, useContext } from 'react'
 import { defaultMessages } from './defaultMessages.en'
 
-export type InternationalizationMessages = typeof defaultMessages
+export type InternationalizationMessages = Record<string, string>
 
 export type Internationalization = {
   messages: InternationalizationMessages
 }
 
-export const defaultInternationalization: Internationalization = {
+export const defaultInternationalization = {
   messages: defaultMessages,
-}
+} satisfies Internationalization
 
-export const InternationalizationContext = createContext<Internationalization>(
-  defaultInternationalization
-)
+export const InternationalizationContext = createContext<
+  typeof defaultInternationalization & Internationalization
+>(defaultInternationalization)
 
-export function useInternationalization(): Internationalization {
+export function useInternationalization() {
   return useContext(InternationalizationContext)
 }
