@@ -45,7 +45,7 @@ export function useHandleSubmit<
         options?.onError?.({ error, apiErrorMessage, values, errorBody })
         setError(DEFAULT_ERROR_FIELD_PATH as Path<FV>, {
           type: 'custom',
-          message: apiErrorMessage,
+          message: apiErrorMessage ?? undefined,
         })
         if (errorBody?.errors) {
           const errorMessages = joinFieldErrorMessages(errorBody.errors)

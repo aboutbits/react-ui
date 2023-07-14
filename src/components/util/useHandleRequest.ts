@@ -15,7 +15,7 @@ export type UseHandleRequestOptions<V, R, E> = {
     errorBody,
   }: {
     error: E
-    apiErrorMessage: string | undefined
+    apiErrorMessage: string | null
     values: V
     errorBody: ErrorBody | undefined
   }) => void
