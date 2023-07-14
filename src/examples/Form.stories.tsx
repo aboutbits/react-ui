@@ -245,7 +245,7 @@ export const UserEdit: Story = () => {
                 indent={FieldSetIndent.Label}
                 showRequired
               >
-                <div className="flex MD:flex-row flex-col justify-between gap-3 [&>*]:flex-1">
+                <div className="flex md:flex-row flex-col justify-between gap-3 [&>*]:flex-1">
                   <InputFormField
                     id="name.first"
                     type="text"

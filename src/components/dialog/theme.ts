@@ -6,8 +6,8 @@ export default {
       FULLSCREEN: 'p-0',
     },
     desktopPosition: {
-      CENTER: 'LG:p-8',
-      FULLSCREEN: 'LG:p-0',
+      CENTER: 'lg:p-8',
+      FULLSCREEN: 'lg:p-0',
     },
   },
   dialog: {
@@ -28,13 +28,13 @@ export default {
     },
     desktopPositionSize: {
       CENTER: {
-        base: 'LG:h-auto LG:rounded-lg',
-        SM: 'LG:w-full LG:max-w-xs',
-        MD: 'LG:w-full LG:max-w-xl',
-        LG: 'LG:w-full LG:max-w-3xl',
+        base: 'lg:h-auto lg:rounded-lg',
+        SM: 'lg:w-full lg:max-w-xs',
+        MD: 'lg:w-full lg:max-w-xl',
+        LG: 'lg:w-full lg:max-w-3xl',
       },
       FULLSCREEN: {
-        base: 'LG:w-full LG:h-full LG:max-w-none LG:rounded-none',
+        base: 'lg:w-full lg:h-full lg:max-w-none lg:rounded-none',
         SM: '',
         MD: '',
         LG: '',
@@ -62,13 +62,13 @@ export default {
     },
   },
   headerLeftArea: {
-    base: 'flex items-center mr-2 space-x-3 LG:space-x-4',
+    base: 'flex items-center mr-2 space-x-3 lg:space-x-4',
   },
   headerLeftActionIcon: {
     base: '-ml-2',
   },
   headerRightArea: {
-    base: 'flex items-center ml-2 space-x-3 LG:space-x-4',
+    base: 'flex items-center ml-2 space-x-3 lg:space-x-4',
   },
   headerTitle: {
     base: 'flex-1 text-2xl truncate',
@@ -105,8 +105,8 @@ export default {
     },
     dialogSize: {
       SM: '',
-      MD: 'SM:flex-row',
-      LG: 'SM:flex-row',
+      MD: 'sm:flex-row',
+      LG: 'sm:flex-row',
     },
   },
   loading: {

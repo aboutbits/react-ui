@@ -141,10 +141,10 @@ export const TemplateComplexList = ({
           <SectionHeaderRow layout={SectionHeaderRowLayout.stretch}>
             <SectionHeaderGroup
               spacing={SectionHeaderGroupSpacing.md}
-              className="flex-col MD:flex-row gap-y-2"
+              className="flex-col md:flex-row gap-y-2"
             >
-              <SectionSearch className="w-full MD:w-auto grow" />
-              <SectionHeaderGroup className="grid grid-cols-2 w-full MD:block MD:flex MD:w-auto">
+              <SectionSearch className="w-full md:w-auto grow" />
+              <SectionHeaderGroup className="grid grid-cols-2 w-full md:block md:flex md:w-auto">
                 <Select id="role" name="role" variant={filterVariant}>
                   <Option value="">All roles</Option>
                   <Option value="ADMIN">Admin</Option>
@@ -236,15 +236,15 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
         <SectionHeaderArea>
           <SectionHeaderRow>
             <SectionHeaderTitle>List of users</SectionHeaderTitle>
-            <SectionSearch className="hidden MD:block" />
+            <SectionSearch className="hidden md:block" />
           </SectionHeaderRow>
           <SectionHeaderRow
             layout={SectionHeaderRowLayout.stretch}
-            className="block MD:hidden"
+            className="block md:hidden"
           >
             <SectionSearch />
           </SectionHeaderRow>
-          <SectionHeaderSpacer className="MD:hidden" />
+          <SectionHeaderSpacer className="md:hidden" />
         </SectionHeaderArea>
       </SectionFilter>
       <SectionContainer>
@@ -314,7 +314,7 @@ export const TemplateWithSubtitle = () => {
         <UserList role="ADMIN" />
         <SectionFooterWithActions>
           <Button>Submit</Button>
-          <Button variant={ButtonVariant.ghost} className="LG:order-first">
+          <Button variant={ButtonVariant.ghost} className="lg:order-first">
             Cancel
           </Button>
         </SectionFooterWithActions>

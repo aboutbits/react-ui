@@ -1,10 +1,10 @@
 export default {
   actions: {
-    base: 'flex flex-col LG:flex-row gap-4',
+    base: 'flex flex-col lg:flex-row gap-4',
     position: {
-      START: 'LG:justify-start',
-      CENTER: 'LG:justify-center',
-      END: 'LG:justify-end',
+      START: 'lg:justify-start',
+      CENTER: 'lg:justify-center',
+      END: 'lg:justify-end',
     },
   },
 }

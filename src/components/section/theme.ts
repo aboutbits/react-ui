@@ -7,7 +7,7 @@ export default {
     base: 'bg-white border border-neutral-400 rounded-lg overflow-hidden [transform:translateZ(0)]',
   },
   content: {
-    base: 'px-4 MD:px-6 pt-4 MD:pt-6 pb-8 MD:pb-9',
+    base: 'px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
     layout: {
       ONE_COLUMN_GRID: 'grid gap-y-6',
       TWO_COLUMN_GRID: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6',
@@ -21,10 +21,10 @@ export default {
     base: '',
   },
   contentTwoColumn: {
-    base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-4 MD:px-6 pt-4 MD:pt-6 pb-8 MD:pb-9',
+    base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
   },
   listItem: {
-    base: 'flex border-b border-neutral-200 last:border-0 items-center min-h-[3.5rem] bg-white px-4 MD:px-6',
+    base: 'flex border-b border-neutral-200 last:border-0 items-center min-h-[3.5rem] bg-white px-4 md:px-6',
   },
   listItemWithAction: {
     base: 'justify-between space-x-4',
@@ -40,7 +40,7 @@ export default {
     base: 'block focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   subsectionTitle: {
-    base: 'bg-neutral-100 px-4 MD:px-6 py-1 border-b border-t first:border-t-none border-neutral-200 text-sm text-neutral-600',
+    base: 'bg-neutral-100 px-4 md:px-6 py-1 border-b border-t first:border-t-none border-neutral-200 text-sm text-neutral-600',
   },
   headerArea: {
     base: 'pb-2 flex flex-col gap-y-2',
@@ -74,7 +74,7 @@ export default {
     },
   },
   footerArea: {
-    base: 'px-4 MD:px-6 py-4 bg-neutral-100 border-t border-neutral-200 text-xs',
+    base: 'px-4 md:px-6 py-4 bg-neutral-100 border-t border-neutral-200 text-xs',
   },
   loading: {
     listItem: {
