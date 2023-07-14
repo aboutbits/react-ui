@@ -1,5 +1,4 @@
 import { forwardRef } from 'react'
-import { z } from 'zod'
 import { useInternationalization } from '../../framework'
 import { Mode } from '../types'
 import { SelectField, SelectFieldProps } from './SelectField'
@@ -19,8 +18,6 @@ export const MONTHS = [
   'NOVEMBER',
   'DECEMBER',
 ] as const
-
-export const zodMonth = z.enum(MONTHS)
 
 export type Month = (typeof MONTHS)[number]
 
