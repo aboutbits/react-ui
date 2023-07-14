@@ -19,12 +19,12 @@ export function HeaderCloseAction({
   label,
   ...props
 }: HeaderCloseActionProps): ReactElement {
-  const { formatMessage } = useInternationalization()
+  const { messages } = useInternationalization()
 
   return (
     <HeaderLeftActionIcon
       icon={icon}
-      label={label || formatMessage('button.close')}
+      label={label || messages['button.close']}
       {...props}
     />
   )

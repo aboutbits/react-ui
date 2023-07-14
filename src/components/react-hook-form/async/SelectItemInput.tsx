@@ -59,7 +59,7 @@ export function SelectItemInput<ItemType>({
     () => replacePlaceholderColorWithTextColor(inputCss),
     [inputCss]
   )
-  const { formatMessage } = useInternationalization()
+  const { messages } = useInternationalization()
   const { form } = useTheme()
 
   return (
@@ -121,7 +121,7 @@ export function SelectItemInput<ItemType>({
           >
             <IconClose
               className={form.selectItem.input.icon.base}
-              title={formatMessage('select.clear')}
+              title={messages['select.clear']}
             />
           </button>
         </div>

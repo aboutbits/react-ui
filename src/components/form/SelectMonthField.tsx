@@ -66,11 +66,11 @@ export const SelectMonthField = forwardRef<
 })
 
 export const useSelectMonthFieldOptions = ({ mode }: { mode?: Mode }) => {
-  const { formatMessage } = useInternationalization()
+  const { messages } = useInternationalization()
 
   return Object.keys(Month).map((element) => (
     <Option mode={mode} key={element} value={element}>
-      {formatMessage(`month.${element.toLowerCase() as Lowercase<Month>}`)}
+      {messages[`month.${element.toLowerCase() as Lowercase<Month>}`]}
     </Option>
   ))
 }
