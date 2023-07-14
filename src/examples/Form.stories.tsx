@@ -144,11 +144,6 @@ export const UserEdit: Story = () => {
       .refine((val) => !val.includes(' '), {
         message: 'Space characters are not allowed',
       }),
-    age: z
-      .number()
-      .min(0)
-      .nullable()
-      .transform((v) => (v === null ? z.NEVER : v)),
     email: z.string().email(),
     name: z.object({
       first: z.string().min(3),
@@ -157,9 +152,9 @@ export const UserEdit: Story = () => {
     language: languageSchema,
     role: roleSchema,
     bio: z.string().nullable(),
-    favProjectId: z.string().nullable(),
+    favProjectId: z.number().nullable(),
     uiMode: uiModeSchema,
-    privacy: z.boolean().transform((v) => (v === false ? z.NEVER : v)),
+    privacy: z.literal(true),
     serverValidationErrors: z.boolean(),
   })
 
@@ -168,7 +163,6 @@ export const UserEdit: Story = () => {
   const defaultPerson: DefaultValues<Person> = {
     username: 'john.doe',
     email: 'john@aboutbits.it',
-    age: 0,
     name: {
       first: 'John',
       last: 'Doe',
@@ -176,7 +170,7 @@ export const UserEdit: Story = () => {
     language: 'EN',
     role: 'USER',
     bio: 'John is a software engineer from Bolzano, Italy',
-    favProjectId: '1',
+    favProjectId: 1,
     privacy: true,
     serverValidationErrors: false,
   }
@@ -305,7 +299,6 @@ export const UserEdit: Story = () => {
                 renderErrorMessage={(error) => error.message}
                 useGetData={useGetData}
                 paginationConfig={{ indexType: IndexType.ZERO_BASED }}
-                required
               />
               <FieldsetFormField
                 label="Preferred UI mode"
