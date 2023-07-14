@@ -28,7 +28,7 @@ export type UseHandleRequestTrigger<V, R> = (
 ) => Promise<R | undefined>
 
 export type UseHandleRequestReturn<V, R> = {
-  apiErrorMessage: string | undefined
+  apiErrorMessage: string | null
   isRequesting: boolean
   triggerRequest: UseHandleRequestTrigger<V, R>
 }
@@ -42,14 +42,14 @@ export function useHandleRequest<
   options?: UseHandleRequestOptions<Values, Response, Error>
 ): UseHandleRequestReturn<Values, Response> {
   const [isRequesting, setIsRequesting] = useState(false)
-  const [apiErrorMessage, setApiErrorMessage] = useState<string>()
+  const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null)
   const { messages } = useInternationalization()
   const isMounted = useIsMounted()
 
   const triggerRequest: UseHandleRequestTrigger<Values, Response> = useCallback(
     async (values) => {
       try {
-        setApiErrorMessage(undefined)
+        setApiErrorMessage(null)
         setIsRequesting(true)
         const response = await requestAction(values)
         if (isMounted()) {
