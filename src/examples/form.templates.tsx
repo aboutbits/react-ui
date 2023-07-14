@@ -3,7 +3,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { ReactElement, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
-import { SubmitButton } from '../components/button'
 import {
   ContentArea,
   DescriptionItem,
@@ -34,7 +33,7 @@ import {
   SectionContainer,
   SectionContent,
   SectionContentLayout,
-  SectionFooterWithActions,
+  SectionFooterWithSubmit,
   SectionHeader,
 } from '../components/section'
 
@@ -248,9 +247,7 @@ export function FormExampleTemplate({
               </FieldsetFormField>
               <FormError>{apiErrorMessage}</FormError>
             </SectionContent>
-            <SectionFooterWithActions>
-              <SubmitButton>Save</SubmitButton>
-            </SectionFooterWithActions>
+            <SectionFooterWithSubmit />
           </SectionContainer>
         </Section>
       </Form>
