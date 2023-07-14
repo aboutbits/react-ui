@@ -2,6 +2,7 @@ import { ReactNode, useContext, useMemo } from 'react'
 import {
   Internationalization,
   InternationalizationContext,
+  InternationalizationMessages,
 } from './internationalization/InternationalizationContext'
 import {
   LinkComponent,
@@ -15,7 +16,9 @@ export type ReactUIProviderProps = {
   theme?: Theme
   linkComponent?: LinkComponent
   router?: Router
-  internationalization?: Internationalization
+  internationalization?: Internationalization<
+    Partial<InternationalizationMessages> & Record<string, string>
+  >
   children?: ReactNode
 }
 
@@ -36,7 +39,11 @@ export function ReactUIProvider({
       return {
         ...internationalizationFromContext,
         ...internationalization,
-      } as typeof internationalizationFromContext
+        messages: {
+          ...internationalizationFromContext.messages,
+          ...internationalization.messages,
+        },
+      }
     }
     return internationalizationFromContext
   }, [internationalization, internationalizationFromContext])
