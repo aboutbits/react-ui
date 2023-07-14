@@ -19,12 +19,12 @@ export function HeaderBackAction({
   label,
   ...props
 }: HeaderBackActionProps): ReactElement {
-  const { messages } = useInternationalization()
+  const { formatMessage } = useInternationalization()
 
   return (
     <HeaderLeftActionIcon
       icon={icon}
-      label={label || messages['button.goBack']}
+      label={label || formatMessage('button.goBack')}
       {...props}
     />
   )

@@ -19,13 +19,13 @@ export function FormSubmitFeedback({
   className,
 }: FormSubmitFeedbackProps): ReactElement | null {
   const { form } = useTheme()
-  const { messages } = useInternationalization()
+  const { formatMessage } = useInternationalization()
   const { isSubmitSuccessful } = useDelayedFormSubmitState(successDelay)
 
   return isSubmitSuccessful ? (
     <div className={classNames(form.formSubmitFeedback.base, className)}>
       {Icon ? <Icon className={form.formSubmitFeedback.icon.base} /> : null}
-      <span>{savedMessage ?? messages['form.saved']}</span>
+      <span>{savedMessage ?? formatMessage('form.saved')}</span>
     </div>
   ) : null
 }

@@ -20,13 +20,13 @@ export function SectionFooterWithSubmit({
   submitFeedbackProps,
 }: SectionFooterWithSubmitProps): ReactElement {
   const { section } = useTheme()
-  const { messages } = useInternationalization()
+  const { formatMessage } = useInternationalization()
 
   return (
     <SectionFooterArea className={section.footerWithSubmit.base}>
       <Actions className={section.footerWithSubmit.actions}>
         <SubmitButton>
-          {submitButtonText ?? messages['form.submit']}
+          {submitButtonText ?? formatMessage('form.submit')}
         </SubmitButton>
       </Actions>
       {enableSubmitFeedback && (

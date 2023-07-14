@@ -1,7 +1,9 @@
 import { createContext, useContext } from 'react'
 import { defaultMessages } from './defaultMessages.en'
 
-export type InternationalizationMessages = Record<string, string>
+type MessageKey = string
+
+export type InternationalizationMessages = Record<MessageKey, string>
 
 export type Internationalization = {
   messages: InternationalizationMessages
@@ -9,12 +11,22 @@ export type Internationalization = {
 
 export const defaultInternationalization = {
   messages: defaultMessages,
-} satisfies Internationalization
+}
 
-export const InternationalizationContext = createContext<
-  typeof defaultInternationalization & Internationalization
->(defaultInternationalization)
+export const InternationalizationContext = createContext<Internationalization>(
+  defaultInternationalization
+)
 
 export function useInternationalization() {
-  return useContext(InternationalizationContext)
+  const { messages } = useContext(InternationalizationContext)
+  return {
+    formatMessage: (key: MessageKey) => {
+      const message = messages[key]
+      if (message) {
+        return message
+      }
+      console.warn(`Missing React UI translation for key '${key}'`)
+      return key
+    },
+  }
 }

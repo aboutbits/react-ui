@@ -43,7 +43,7 @@ export function useHandleRequest<
 ): UseHandleRequestReturn<Values, Response> {
   const [isRequesting, setIsRequesting] = useState(false)
   const [apiErrorMessage, setApiErrorMessage] = useState<string>()
-  const { messages } = useInternationalization()
+  const { formatMessage } = useInternationalization()
   const isMounted = useIsMounted()
 
   const triggerRequest: UseHandleRequestTrigger<Values, Response> = useCallback(
@@ -63,7 +63,7 @@ export function useHandleRequest<
         const apiErrorMessage =
           errorBody?.message ??
           options?.apiFallbackErrorMessage ??
-          messages[DEFAULT_ERROR_MESSAGE_PATH]
+          formatMessage(DEFAULT_ERROR_MESSAGE_PATH)
         setApiErrorMessage(apiErrorMessage)
         if (isMounted()) {
           options?.onError?.({
@@ -81,7 +81,7 @@ export function useHandleRequest<
         setIsRequesting(false)
       }
     },
-    [messages, options, requestAction, isMounted]
+    [formatMessage, options, requestAction, isMounted]
   )
 
   return {

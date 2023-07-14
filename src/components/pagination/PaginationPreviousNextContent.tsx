@@ -5,13 +5,13 @@ import { useTheme, useInternationalization } from '../../framework'
 
 export function PaginationPreviousContent(): ReactElement {
   const { pagination } = useTheme()
-  const { messages } = useInternationalization()
+  const { formatMessage } = useInternationalization()
 
   return (
     <>
       <IconKeyboardArrowLeft className={pagination.prevNext.icon.base} />
       <span className={pagination.prevNext.text.base}>
-        {messages['pagination.prev']}
+        {formatMessage('pagination.prev')}
       </span>
     </>
   )
@@ -19,12 +19,12 @@ export function PaginationPreviousContent(): ReactElement {
 
 export function PaginationNextContent(): ReactElement {
   const { pagination } = useTheme()
-  const { messages } = useInternationalization()
+  const { formatMessage } = useInternationalization()
 
   return (
     <>
       <span className={pagination.prevNext.text.base}>
-        {messages['pagination.next']}
+        {formatMessage('pagination.next')}
       </span>
       <IconKeyboardArrowRight className={pagination.prevNext.icon.base} />
     </>

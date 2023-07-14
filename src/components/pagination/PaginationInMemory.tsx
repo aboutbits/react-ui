@@ -85,7 +85,7 @@ export function PaginationInMemory({
   config,
   className,
 }: PaginationInMemoryProps) {
-  const { messages } = useInternationalization()
+  const { formatMessage } = useInternationalization()
   const { pagination: paginationTheme } = useTheme()
   const pagination = calculatePagination(page, size, total, config)
 
@@ -94,7 +94,7 @@ export function PaginationInMemory({
   return (
     <PaginationContainer className={className}>
       <SectionPaginationInMemoryButton
-        aria-label={messages['pagination.prev']}
+        aria-label={formatMessage('pagination.prev')}
         disabled={pagination.previous.isDisabled}
         onChangePage={onChangePage}
         pageIndex={pagination.previous.indexNumber}
@@ -108,7 +108,9 @@ export function PaginationInMemory({
             <PaginationPagesListItem key={page.indexNumber}>
               <SectionPaginationInMemoryButton
                 aria-current={page.isCurrent ? 'page' : false}
-                aria-label={`${messages['pagination.page']} ${page.displayNumber}`}
+                aria-label={`${formatMessage('pagination.page')} ${
+                  page.displayNumber
+                }`}
                 className={classNames(
                   paginationTheme.page.number,
                   page.isCurrent ? paginationTheme.page.current : ''
@@ -125,7 +127,7 @@ export function PaginationInMemory({
       </PaginationPagesList>
 
       <SectionPaginationInMemoryButton
-        aria-label={messages['pagination.next']}
+        aria-label={formatMessage('pagination.next')}
         disabled={pagination.next.isDisabled}
         onChangePage={onChangePage}
         pageIndex={pagination.next.indexNumber}

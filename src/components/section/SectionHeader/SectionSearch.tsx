@@ -22,13 +22,13 @@ export const SectionSearch = forwardRef(function SectionSearch<
   }: SectionSearchProps<TFieldValues, TFieldName>,
   ref: ForwardedRef<HTMLInputElement>
 ) {
-  const { messages } = useInternationalization()
+  const { formatMessage } = useInternationalization()
 
   return (
     <InputFormField
       name={name}
       ref={ref}
-      placeholder={messages['search.placeholder']}
+      placeholder={formatMessage('search.placeholder')}
       variant={FormVariant.soft}
       iconStart={IconSearch}
       {...props}
