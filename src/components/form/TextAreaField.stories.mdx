@@ -25,6 +25,10 @@ export const Template = ({ ...args }) => <TextAreaField {...args} />
       disabled: false,
       rows: 4,
     }}
+    argTypes={{
+      required: { type: 'boolean' },
+      hideRequired: { type: 'boolean' },
+    }}
   >
     {Template.bind({})}
   </Story>

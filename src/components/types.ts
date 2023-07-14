@@ -32,6 +32,27 @@ export type ModeProps = {
   mode?: Mode
 }
 
+export type RequiredProps = {
+  /**
+   * Defines whether the input is required
+   */
+  required?: boolean
+}
+
+export type HideRequiredProps = {
+  /**
+   * Defines whether to hide that the input is required
+   */
+  hideRequired?: boolean
+}
+
+export type ShowRequiredProps = {
+  /**
+   * Defines whether the label should be shown as for a required input
+   */
+  showRequired?: boolean
+}
+
 export type UseSearchQuery = {
   /**
    * Defines the passed value for the search input.

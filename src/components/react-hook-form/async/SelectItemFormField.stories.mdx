@@ -62,6 +62,9 @@ It uses the [Dialog](/docs/components-dialog-dialog--default) to display the sel
       paginationConfig: { indexType: IndexType.ZERO_BASED },
       dialogProps: { overlayClassName: 'z-10' },
     }}
+    argTypes={{
+      hideRequired: { type: 'boolean' },
+    }}
   >
     {TemplateNormal.bind({})}
   </Story>

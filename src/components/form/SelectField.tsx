@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { Mode } from '../types'
+import { HideRequiredProps, Mode, RequiredProps } from '../types'
 import { useId } from '../util/useId'
 import {
   InputLabel,
@@ -13,7 +13,9 @@ import { FormTone, FormVariant, Status, StatusProps } from './types'
 
 export type SelectFieldProps = Omit<SelectProps, 'tone'> &
   Pick<InputMessageProps, 'message'> &
-  StatusProps & {
+  StatusProps &
+  RequiredProps &
+  HideRequiredProps & {
     label?: InputLabelProps['children']
   }
 
@@ -33,6 +35,8 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
       message,
       label,
       children,
+      required,
+      hideRequired,
       ...props
     },
     ref
@@ -45,7 +49,13 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
     return (
       <div className={className}>
         {!!label && (
-          <InputLabel mode={mode} tone={tone} disabled={disabled} htmlFor={id}>
+          <InputLabel
+            mode={mode}
+            tone={tone}
+            disabled={disabled}
+            showRequired={required && !hideRequired}
+            htmlFor={id}
+          >
             {label}
           </InputLabel>
         )}
@@ -57,6 +67,7 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
           variant={variant}
           tone={tone}
           disabled={disabled}
+          required={required}
         >
           {children}
         </Select>

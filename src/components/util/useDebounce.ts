@@ -12,6 +12,7 @@ export function useDebounce<T>(data: T, interval: number): T {
         window.clearTimeout(handler)
       }
     }
+    return undefined
   }, [data, interval])
 
   return liveData
