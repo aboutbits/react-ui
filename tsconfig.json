@@ -18,5 +18,5 @@
     "jsx": "react-jsx",
     "importHelpers": true
   },
-  "include": ["src", ".storybook/**/*"]
+  "include": ["src", ".storybook/**/*", "public"]
 }

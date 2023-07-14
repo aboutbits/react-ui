@@ -52,6 +52,9 @@ export const Template = ({ ...args }) => <TextAreaFormField {...args} />
       variant: FormVariant.solid,
       disabled: false,
     }}
+    argTypes={{
+      required: { type: 'boolean' },
+    }}
   >
     {Template.bind({})}
   </Story>

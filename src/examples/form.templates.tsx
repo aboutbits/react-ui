@@ -63,7 +63,7 @@ const defaultValues = {
     last: 'Doe',
   },
   language: 'EN',
-  role: 'USER',
+  role: '',
   bio: 'John is a software engineer from Bolzano, Italy',
   favProjectId: '1',
   serverValidationErrors: false,
@@ -149,11 +149,13 @@ export function FormExampleTemplate({
                 name="username"
                 label="Username"
                 placeholder="Username"
+                required
               />
               <FieldsetFormField
                 label="Name"
                 fields={['name.first', 'name.last']}
                 indent={FieldSetIndent.label}
+                showRequired
               >
                 <div className="flex md:flex-row flex-col justify-between gap-3 [&>*]:flex-1">
                   <InputFormField
@@ -161,12 +163,14 @@ export function FormExampleTemplate({
                     type="text"
                     name="name.first"
                     placeholder="First name"
+                    required
                   />
                   <InputFormField
                     id="name.last"
                     type="text"
                     name="name.last"
                     placeholder="Last name"
+                    required
                   />
                 </div>
               </FieldsetFormField>
@@ -176,13 +180,20 @@ export function FormExampleTemplate({
                 name="email"
                 placeholder="Email"
                 label="Email"
+                required
               />
-              <SelectFormField id="language" name="language" label="Language">
+              <SelectFormField
+                id="language"
+                name="language"
+                label="Language"
+                required
+              >
                 <Option value="EN">English</Option>
                 <Option value="DE">German</Option>
                 <Option value="IT">Italian</Option>
               </SelectFormField>
-              <SelectFormField id="role" name="role" label="Role">
+              <SelectFormField id="role" name="role" label="Role" required>
+                <Option value="">Select a role...</Option>
                 <Option value="ADMIN">Admin</Option>
                 <Option value="USER">User</Option>
               </SelectFormField>
@@ -207,6 +218,7 @@ export function FormExampleTemplate({
                 renderErrorMessage={(error) => error.message}
                 useGetData={useGetData}
                 paginationConfig={{ indexType: IndexType.ZERO_BASED }}
+                required
               />
               <FieldsetFormField
                 label="Preferred UI mode"
@@ -243,6 +255,7 @@ export function FormExampleTemplate({
                   label="Enable server validation errors"
                   layout={ToggleSwitchLayout.spaceBetween}
                   applyInputHeight
+                  required
                 />
               </FieldsetFormField>
               <FormError>{apiErrorMessage}</FormError>

@@ -1,4 +1,5 @@
 import { forwardRef } from 'react'
+import { HideRequiredProps, RequiredProps } from '../types'
 import { useId } from '../util/useId'
 import {
   Input,
@@ -10,9 +11,11 @@ import {
 } from './primitive'
 import { FormTone, Status, StatusProps } from './types'
 
-export type InputFieldProps = Omit<InputProps, 'tone'> &
+export type InputFieldProps = Omit<InputProps, 'tone' | 'required'> &
   Pick<InputMessageProps, 'message'> &
-  StatusProps & {
+  StatusProps &
+  RequiredProps &
+  HideRequiredProps & {
     label?: InputLabelProps['children']
   }
 
@@ -23,7 +26,17 @@ export type InputFieldProps = Omit<InputProps, 'tone'> &
  */
 export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
   function InputField(
-    { label, message, mode, status, disabled, className, ...props },
+    {
+      label,
+      message,
+      mode,
+      status,
+      disabled,
+      className,
+      required,
+      hideRequired,
+      ...props
+    },
     ref
   ) {
     const tone =
@@ -32,8 +45,14 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
     const id = useId(props.id)
     return (
       <div className={className}>
-        {!!label && (
-          <InputLabel mode={mode} tone={tone} disabled={disabled} htmlFor={id}>
+        {label && (
+          <InputLabel
+            mode={mode}
+            tone={tone}
+            disabled={disabled}
+            showRequired={required && !hideRequired}
+            htmlFor={id}
+          >
             {label}
           </InputLabel>
         )}
@@ -44,8 +63,9 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           mode={mode}
           tone={tone}
           disabled={disabled}
+          required={required}
         />
-        {!!message && (
+        {message && (
           <InputMessage
             mode={mode}
             tone={tone}

@@ -1,4 +1,5 @@
 import { forwardRef } from 'react'
+import { HideRequiredProps, RequiredProps } from '../types'
 import { useId } from '../util/useId'
 import {
   InputLabel,
@@ -12,7 +13,9 @@ import { FormTone, Status, StatusProps } from './types'
 
 export type TextAreaFieldProps = Omit<TextAreaProps, 'tone'> &
   Pick<InputMessageProps, 'message'> &
-  StatusProps & {
+  StatusProps &
+  RequiredProps &
+  HideRequiredProps & {
     label?: InputLabelProps['children']
   }
 
@@ -25,7 +28,17 @@ export const TextAreaField = forwardRef<
   HTMLTextAreaElement,
   TextAreaFieldProps
 >(function TextAreaField(
-  { label, message, mode, status, disabled, className, ...props },
+  {
+    label,
+    message,
+    mode,
+    status,
+    disabled,
+    className,
+    required,
+    hideRequired,
+    ...props
+  },
   ref
 ) {
   const tone = status === Status.invalid ? FormTone.critical : FormTone.neutral
@@ -35,7 +48,13 @@ export const TextAreaField = forwardRef<
   return (
     <div className={className}>
       {!!label && (
-        <InputLabel mode={mode} tone={tone} disabled={disabled} htmlFor={id}>
+        <InputLabel
+          mode={mode}
+          tone={tone}
+          disabled={disabled}
+          showRequired={required && !hideRequired}
+          htmlFor={id}
+        >
           {label}
         </InputLabel>
       )}
@@ -46,6 +65,7 @@ export const TextAreaField = forwardRef<
         mode={mode}
         tone={tone}
         disabled={disabled}
+        required={required}
       />
       {!!message && (
         <InputMessage

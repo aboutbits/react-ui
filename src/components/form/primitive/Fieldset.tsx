@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { ReactNode } from 'react'
-import { Mode, ModeProps } from '../../types'
+import { Mode, ModeProps, ShowRequiredProps } from '../../types'
 import { FormTone, FormToneProps } from '../types'
 import { useFieldsetCss, useFieldsetLegendCss } from './useThemedCss'
 
@@ -15,7 +15,8 @@ export type FieldsetProps = React.DetailedHTMLProps<
   HTMLFieldSetElement
 > &
   ModeProps &
-  FormToneProps & {
+  FormToneProps &
+  ShowRequiredProps & {
     label?: ReactNode
     indent?: FieldSetIndent
   }
@@ -35,6 +36,7 @@ export function Fieldset({
   label,
   className,
   children,
+  showRequired,
   ...props
 }: FieldsetProps) {
   const fieldsetCss = useFieldsetCss({ indent })
@@ -43,6 +45,7 @@ export function Fieldset({
     tone,
     disabled,
     indent,
+    showRequired,
   })
 
   return (
