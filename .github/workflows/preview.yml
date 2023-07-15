@@ -12,11 +12,22 @@ env:
   PREVIEW_DOMAIN: react-ui.aboutbits.dev
 
 jobs:
-  comment-link:
+  create-link:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     if: ${{ github.event.pull_request.action == 'opened' }}
     steps:
+      - uses: actions/checkout@v3
+      - uses: aboutbits/github-actions-node/setup@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: aboutbits/github-actions-vercel/add-domain@v1
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-scope: aboutbits
+          vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
+          vercel-project-id: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
+          domain: ${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}
       - uses: actions/github-script@v6
         with:
           script: |
@@ -42,13 +53,6 @@ jobs:
           vercel-scope: aboutbits
           vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
           vercel-project-id: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
-      - uses: aboutbits/github-actions-vercel/add-domain@v1
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-scope: aboutbits
-          vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
-          vercel-project-id: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
-          domain: ${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}
       - uses: aboutbits/github-actions-vercel/link-domain@v1
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}

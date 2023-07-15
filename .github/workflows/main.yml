@@ -6,6 +6,14 @@ env:
   NODE_VERSION: 16
 
 jobs:
+  debug:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - name: Debug
+        run: echo "${{ github.event.pull_request.number }}"
+        shell: bash
+
   lint:
     runs-on: ubuntu-22.04
     timeout-minutes: 10
