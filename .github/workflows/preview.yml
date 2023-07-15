@@ -14,6 +14,7 @@ env:
 jobs:
   comment-link:
     runs-on: ubuntu-22.04
+    timeout-minutes: 5
     if: ${{ github.event.pull_request.action == 'opened' }}
     steps:
       - uses: actions/github-script@v6
@@ -28,6 +29,7 @@ jobs:
 
   deploy-preview:
     runs-on: ubuntu-22.04
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v1
