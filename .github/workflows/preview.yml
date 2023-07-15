@@ -1,9 +1,6 @@
 name: Preview
 
 on:
-  workflow_run:
-    workflows: [Main]
-    types: [completed]
   pull_request:
     types: [opened, reopened, synchronize]
 
@@ -12,6 +9,33 @@ env:
   PREVIEW_DOMAIN: react-ui.aboutbits.dev
 
 jobs:
+  checks:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Lint
+        run: npm run lint
+        shell: bash
+      - name: Typecheck
+        run: npm run typecheck
+        shell: bash
+
+  test:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Test
+        run: npm run test
+        shell: bash
+
   create-link:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
@@ -41,6 +65,9 @@ jobs:
   deploy-preview:
     runs-on: ubuntu-22.04
     timeout-minutes: 20
+    needs:
+      - checks
+      - test
     steps:
       - uses: actions/checkout@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v1

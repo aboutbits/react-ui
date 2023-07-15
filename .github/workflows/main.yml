@@ -1,20 +1,15 @@
 name: Main
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 env:
   NODE_VERSION: 16
 
 jobs:
-  debug:
-    runs-on: ubuntu-22.04
-    timeout-minutes: 10
-    steps:
-      - name: Debug
-        run: echo "${{ github.event.pull_request.number }}"
-        shell: bash
-
-  lint:
+  checks:
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
@@ -49,7 +44,7 @@ jobs:
       cancel-in-progress: true
     if: github.ref == 'refs/heads/main'
     needs:
-      - lint
+      - checks
       - test
     steps:
       - uses: actions/checkout@v3
