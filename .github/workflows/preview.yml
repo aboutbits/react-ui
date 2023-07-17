@@ -43,6 +43,7 @@ jobs:
     steps:
       - uses: aboutbits/github-actions-base/github-comment-issue@v1
         with:
+          github-token: ${{ github.token }}
           issue-number: ${{ github.event.pull_request.number }}
           message: "Preview link: [https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}](https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }})'"
 
@@ -66,7 +67,6 @@ jobs:
       - uses: aboutbits/github-actions-vercel/link-domain@v1
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
-          vercel-project-id: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
+          vercel-scope: aboutbits
           domain: ${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}
           url: ${{ steps.deploy.outputs.url }}
