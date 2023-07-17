@@ -36,16 +36,20 @@ jobs:
         run: npm run test
         shell: bash
 
-  create-link:
+  comment-link:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     if: ${{ github.event.action == 'opened' }}
     steps:
-      - uses: aboutbits/github-actions-base/github-comment-issue@v1
+      - uses: actions/github-script@v6
         with:
-          github-token: ${{ github.token }}
-          issue-number: ${{ github.event.pull_request.number }}
-          message: "Preview link: [https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}](https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }})'"
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Preview link: [https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}](https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }})'
+            })
 
   deploy-preview:
     runs-on: ubuntu-22.04
@@ -68,5 +72,5 @@ jobs:
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-scope: aboutbits
-          domain: ${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}
-          url: ${{ steps.deploy.outputs.url }}
+          deployment-domain: ${{ steps.deploy.outputs.url }}
+          preview-domain: ${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}
