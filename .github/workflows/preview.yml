@@ -39,20 +39,12 @@ jobs:
   create-link:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
+    if: ${{ github.event.action == 'opened' }}
     steps:
-      - run: echo "${{ github.event.action }}"
-        shell: bash
-      - run: echo "${{ github.event.action == 'opened' }}"
-        shell: bash
-      - uses: actions/github-script@v6
+      - uses: aboutbits/github-actions-base/github-comment-issue@v1
         with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '[https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}](https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }})'
-            })
+          issue-number: ${{ github.event.pull_request.number }}
+          message: "Preview link: [https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}](https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }})'"
 
   deploy-preview:
     runs-on: ubuntu-22.04
@@ -69,13 +61,11 @@ jobs:
         uses: aboutbits/github-actions-vercel/deploy@v1
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-scope: aboutbits
           vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
           vercel-project-id: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
       - uses: aboutbits/github-actions-vercel/link-domain@v1
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-scope: aboutbits
           vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
           vercel-project-id: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
           domain: ${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}
