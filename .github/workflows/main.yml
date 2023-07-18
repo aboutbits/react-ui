@@ -8,13 +8,14 @@ on:
 env:
   NODE_VERSION: 16
 
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   checks:
     runs-on: ubuntu-22.04
     timeout-minutes: 10
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v1
@@ -30,9 +31,6 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     timeout-minutes: 10
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v1
@@ -45,9 +43,6 @@ jobs:
   deploy-main:
     runs-on: ubuntu-22.04
     timeout-minutes: 20
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
     if: github.ref == 'refs/heads/main'
     needs:
       - checks
