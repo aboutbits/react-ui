@@ -1,4 +1,5 @@
 {
+  "framework": "storybook",
   "buildCommand": "storybook build",
   "outputDirectory": "storybook-static"
 }
