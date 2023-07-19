@@ -47,7 +47,7 @@ export function HeaderBackAction({
         : window.history.length > 1
 
     if (canGoBack) {
-      window.history.back()
+      router.back()
     } else {
       router.push(fallbackUrl)
     }
