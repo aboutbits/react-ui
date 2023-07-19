@@ -1,5 +1,5 @@
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
-import { ComponentType, ReactElement } from 'react'
+import { ComponentProps, ComponentType, ReactElement } from 'react'
 import { useInternationalization, useRouter } from '../../../framework'
 import { IconProps } from '../../types'
 import {
@@ -12,18 +12,26 @@ export type HeaderBackActionProps = Omit<
   'icon' | 'onClick'
 > & {
   /**
-   * Defines the url to navigate to if it's not possible to go back in browser history
-   */
-  fallbackUrl: string
-  /**
    * Defines the icon of the button.
    **/
   icon?: ComponentType<IconProps>
-  /**
-   * The optional onClick handler. If not provided, the default action is to go back in browser history (if possible) or navigate to the fallback url.
-   */
-  onClick?: HeaderLeftActionIconProps['onClick']
-}
+} & HeaderBackActionOnClickOrFallbackUrlProps
+
+export type HeaderBackActionOnClickOrFallbackUrlProps =
+  | {
+      /**
+       * Defines the url to navigate to if it's not possible to go back in browser history
+       */
+      fallbackUrl: string
+      onClick?: never
+    }
+  | {
+      /**
+       * The optional onClick handler. If not provided, the default action is to go back in browser history (if possible) or navigate to the fallback url.
+       */
+      onClick: HeaderLeftActionIconProps['onClick']
+      fallbackUrl?: never
+    }
 
 export function HeaderBackAction({
   icon = IconArrowBack,
@@ -35,7 +43,13 @@ export function HeaderBackAction({
   const router = useRouter()
   const { messages } = useInternationalization()
 
-  const goBack = () => {
+  const goBack: ComponentProps<typeof HeaderLeftActionIcon>['onClick'] = (
+    event
+  ) => {
+    if (onClick) {
+      return onClick(event)
+    }
+
     const canGoBack =
       window &&
       'navigation' in window &&
@@ -57,7 +71,7 @@ export function HeaderBackAction({
     <HeaderLeftActionIcon
       icon={icon}
       label={label || messages['button.goBack']}
-      onClick={onClick ?? goBack}
+      onClick={goBack}
       {...props}
     />
   )
