@@ -12,13 +12,13 @@ export type HeaderBackActionProps = Omit<
   'icon' | 'onClick'
 > & {
   /**
+   * Defines the url to navigate to if it's not possible to go back in browser history
+   */
+  fallbackUrl: string
+  /**
    * Defines the icon of the button.
    **/
   icon?: ComponentType<IconProps>
-  /**
-   * Defines the url to navigate to if it's not possible to go back in browser history
-   */
-  fallbackUrl?: string
   /**
    * The optional onClick handler. If not provided, the default action is to go back in browser history (if possible) or navigate to the fallback url.
    */
@@ -46,7 +46,7 @@ export function HeaderBackAction({
         ? window.navigation.canGoBack
         : window.history.length > 1
 
-    if (canGoBack || !fallbackUrl) {
+    if (canGoBack) {
       window.history.back()
     } else {
       router.push(fallbackUrl)
