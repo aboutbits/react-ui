@@ -1,7 +1,6 @@
 import { ReactElement, ReactNode } from 'react'
-import { useRouter } from '../../framework'
-import { HeaderArea } from './areas/HeaderArea'
 import { HeaderBackAction } from './actions/HeaderBackAction'
+import { HeaderArea } from './areas/HeaderArea'
 import { HeaderTitle } from './areas/HeaderTitle'
 
 export type HeaderWithBackNavigationProps = {
@@ -20,11 +19,9 @@ export function HeaderWithBackNavigation({
   title,
   onBack,
 }: HeaderWithBackNavigationProps): ReactElement {
-  const router = useRouter()
-
   return (
     <HeaderArea>
-      <HeaderBackAction onClick={onBack || router.back} />
+      <HeaderBackAction onClick={onBack} />
       <HeaderTitle>{title}</HeaderTitle>
     </HeaderArea>
   )
