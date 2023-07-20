@@ -29,7 +29,6 @@ import {
   SectionHeaderRowLayout,
   SectionHeaderGroup,
   SectionHeaderGroupSpacing,
-  SectionSearch,
   SectionListItemButton,
   SectionFooterWithActions,
   SectionFooterWithPaginationInMemory,
@@ -37,7 +36,11 @@ import {
 import { FormVariant, Option } from '../components/form'
 import { Tone } from '../components/types'
 import { SectionContentEmpty } from '../components/section/Section/ConvenientSectionContentMessage'
-import { SelectFormField, FilterForm } from '../components/react-hook-form'
+import {
+  SelectFormField,
+  FilterForm,
+  SearchFormField,
+} from '../components/react-hook-form'
 
 <Meta title="Examples/List" />
 
@@ -143,7 +146,7 @@ export const TemplateComplexList = ({
               spacing={SectionHeaderGroupSpacing.md}
               className="flex-col md:flex-row gap-y-2"
             >
-              <SectionSearch className="w-full md:w-auto grow" />
+              <SearchFormField className="w-full md:w-auto grow" />
               <SectionHeaderGroup className="grid grid-cols-2 w-full md:block md:flex md:w-auto">
                 <SelectFormField name="role" variant={filterVariant}>
                   <Option value="">All roles</Option>
@@ -243,13 +246,13 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
             }
           >
             <SectionHeaderTitle>List of users</SectionHeaderTitle>
-            <SectionSearch />
+            <SearchFormField />
           </SectionHeaderRow>
           {/* <SectionHeaderRow
             layout={SectionHeaderRowLayout.stretch}
             className="block md:hidden"
           >
-            <SectionSearch />
+            <SearchFormField />
           </SectionHeaderRow> */}
           <SectionHeaderSpacer className="md:hidden" />
         </SectionHeaderArea>
@@ -383,7 +386,7 @@ export const TemplateListWithFilterDialog = ({
         <Option value="IT">Engineering</Option>
         <Option value="SALES">Sales</Option>
       </SelectFormField>
-      <SectionSearch className="col-span-full" />
+      <SearchFormField className="col-span-full" />
     </>
   )
   return (
