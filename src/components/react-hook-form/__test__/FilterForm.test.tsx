@@ -63,7 +63,7 @@ const MyForm = ({
   )
 }
 
-describe('SectionFilter', () => {
+describe('FilterForm', () => {
   test('should not submit form on mount', async () => {
     const handleSubmit = vi.fn()
     render(

@@ -29,15 +29,15 @@ import {
   SectionHeaderRowLayout,
   SectionHeaderGroup,
   SectionHeaderGroupSpacing,
-  SectionFilter,
   SectionSearch,
   SectionListItemButton,
   SectionFooterWithActions,
   SectionFooterWithPaginationInMemory,
 } from '../components/section'
-import { Select, FormVariant, Option } from '../components/form'
+import { FormVariant, Option } from '../components/form'
 import { Tone } from '../components/types'
 import { SectionContentEmpty } from '../components/section/Section/ConvenientSectionContentMessage'
+import { SelectFormField, FilterForm } from '../components/react-hook-form'
 
 <Meta title="Examples/List" />
 
@@ -134,7 +134,7 @@ export const TemplateComplexList = ({
             tone={Tone.neutral}
           />
         </SectionHeaderRow>
-        <SectionFilter
+        <FilterForm
           defaultValues={filter}
           onSubmit={(values) => setFilter(values)}
         >
@@ -145,12 +145,12 @@ export const TemplateComplexList = ({
             >
               <SectionSearch className="w-full md:w-auto grow" />
               <SectionHeaderGroup className="grid grid-cols-2 w-full md:block md:flex md:w-auto">
-                <Select id="role" name="role" variant={filterVariant}>
+                <SelectFormField name="role" variant={filterVariant}>
                   <Option value="">All roles</Option>
                   <Option value="ADMIN">Admin</Option>
                   <Option value="USER">User</Option>
-                </Select>
-                <Select
+                </SelectFormField>
+                <SelectFormField
                   id="department"
                   name="department"
                   variant={filterVariant}
@@ -159,11 +159,11 @@ export const TemplateComplexList = ({
                   <Option value="HR">Human Resources</Option>
                   <Option value="IT">Engineering</Option>
                   <Option value="SALES">Sales</Option>
-                </Select>
+                </SelectFormField>
               </SectionHeaderGroup>
             </SectionHeaderGroup>
           </SectionHeaderRow>
-        </SectionFilter>
+        </FilterForm>
         <SectionHeaderSpacer />
       </SectionHeaderArea>
       <SectionContainer>
@@ -219,6 +219,7 @@ export const TemplateComplexList = ({
 # List with search
 
 export const TemplateSearch = ({ numberOfTotalItems }) => {
+  const isScreenMedium = useMatchMediaQuery('(min-width: 768px)')
   const [filter, setFilter] = useState({ search: '' })
   const content = Array.from(Array(numberOfTotalItems).keys())
     .map((item, index) => ({
@@ -229,24 +230,30 @@ export const TemplateSearch = ({ numberOfTotalItems }) => {
     .filter((item) => item.name.includes(filter.search))
   return (
     <Section>
-      <SectionFilter
+      <FilterForm
         defaultValues={filter}
         onSubmit={(values) => setFilter(values)}
       >
         <SectionHeaderArea>
-          <SectionHeaderRow>
-            <SectionHeaderTitle>List of users</SectionHeaderTitle>
-            <SectionSearch className="hidden md:block" />
-          </SectionHeaderRow>
           <SectionHeaderRow
+            layout={
+              isScreenMedium
+                ? SectionHeaderRowLayout.spaceBetween
+                : SectionHeaderRowLayout.stretch
+            }
+          >
+            <SectionHeaderTitle>List of users</SectionHeaderTitle>
+            <SectionSearch />
+          </SectionHeaderRow>
+          {/* <SectionHeaderRow
             layout={SectionHeaderRowLayout.stretch}
             className="block md:hidden"
           >
             <SectionSearch />
-          </SectionHeaderRow>
+          </SectionHeaderRow> */}
           <SectionHeaderSpacer className="md:hidden" />
         </SectionHeaderArea>
-      </SectionFilter>
+      </FilterForm>
       <SectionContainer>
         {content.length === 0 ? (
           <SectionContentEmpty
@@ -361,12 +368,12 @@ export const TemplateListWithFilterDialog = ({
     )
   const Filters = () => (
     <>
-      <Select id="role" name="role" variant={FormVariant.transparent}>
+      <SelectFormField id="role" name="role" variant={FormVariant.transparent}>
         <Option value="">All roles</Option>
         <Option value="ADMIN">Admin</Option>
         <Option value="USER">User</Option>
-      </Select>
-      <Select
+      </SelectFormField>
+      <SelectFormField
         id="department"
         name="department"
         variant={FormVariant.transparent}
@@ -375,7 +382,7 @@ export const TemplateListWithFilterDialog = ({
         <Option value="HR">Human Resources</Option>
         <Option value="IT">Engineering</Option>
         <Option value="SALES">Sales</Option>
-      </Select>
+      </SelectFormField>
       <SectionSearch className="col-span-full" />
     </>
   )
@@ -391,7 +398,7 @@ export const TemplateListWithFilterDialog = ({
             onDismiss={() => setDialogShow(false)}
             title="Filter"
           />
-          <SectionFilter
+          <FilterForm
             defaultValues={filter}
             enableReinitialize
             autoSubmit={false}
@@ -408,7 +415,7 @@ export const TemplateListWithFilterDialog = ({
                 Apply filter
               </SubmitButton>
             </DialogFooterWithActions>
-          </SectionFilter>
+          </FilterForm>
         </Dialog>
       )}
       <Section>
@@ -433,7 +440,7 @@ export const TemplateListWithFilterDialog = ({
                 </div>
               </SectionHeaderGroup>
             ) : (
-              <SectionFilter
+              <FilterForm
                 defaultValues={filter}
                 enableReinitialize
                 onSubmit={(values) => setFilter(values)}
@@ -442,7 +449,7 @@ export const TemplateListWithFilterDialog = ({
                 <SectionHeaderGroup>
                   <Filters />
                 </SectionHeaderGroup>
-              </SectionFilter>
+              </FilterForm>
             )}
           </SectionHeaderRow>
         </SectionHeaderArea>
