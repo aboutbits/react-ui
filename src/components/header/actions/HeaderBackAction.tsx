@@ -63,7 +63,7 @@ export function HeaderBackAction({
     if (canGoBack) {
       router.back()
     } else {
-      router.push(fallbackUrl)
+      router.replace(fallbackUrl)
     }
   }
 

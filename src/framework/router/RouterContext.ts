@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react'
 
 export type Router = {
   back: () => void
-  push: (path: string) => void
+  replace: (path: string) => void
 }
 
 export const defaultRouter: Router = {
@@ -11,7 +11,7 @@ export const defaultRouter: Router = {
       window.history.back()
     }
   },
-  push: (path: string) => {
+  replace: (path: string) => {
     if (window) {
       window.location.href = path
     }
