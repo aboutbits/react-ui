@@ -1,10 +1,4 @@
-import {
-  ForwardedRef,
-  forwardRef,
-  ReactElement,
-  ReactNode,
-  useEffect,
-} from 'react'
+import { ForwardedRef, forwardRef, ReactNode, useEffect } from 'react'
 import {
   DefaultValues,
   FieldValues,
@@ -14,32 +8,36 @@ import {
   useFormState,
 } from 'react-hook-form'
 import { isEqual } from 'lodash'
-import { AutoSubmit, Form } from '../../react-hook-form'
-import { ClassNameProps } from '../../types'
+import { ClassNameProps } from '../types'
+import { AutoSubmit } from './AutoSubmit'
+import { Form } from './Form'
 
-export type SectionFilterProps<F extends FieldValues> = ClassNameProps &
-  Omit<UseFormProps<F>, 'defaultValues'> & {
-    defaultValues?: DefaultValues<F>
+export type FilterFormProps<TFieldValues extends FieldValues> = ClassNameProps &
+  Omit<UseFormProps<TFieldValues>, 'defaultValues'> & {
+    defaultValues?: DefaultValues<TFieldValues>
+    onSubmit: SubmitHandler<TFieldValues>
     /**
-     * The function executed on submit
-     */
-    onSubmit: SubmitHandler<F>
-    /**
-     * If the form should submit automatically on change. Defaults to true.
+     * Whether the form should submit automatically on change.
+     *
+     * @default true
      */
     autoSubmit?: boolean
     /**
-     * The auto-submit interval in milliseconds
+     * The auto-submit interval in milliseconds.
      */
     autoSubmitInterval?: number
     /**
-     * If the form should reset when the default values change. Defaults to false.
+     * Whether the form should reset when the default values change.
+     *
+     * @default true
      */
     enableReinitialize?: boolean
     children?: ReactNode
   }
 
-export function SectionFilterComponent<F extends FieldValues>(
+export const FilterForm = forwardRef(function FilterForm<
+  TFieldValues extends FieldValues
+>(
   {
     className,
     onSubmit,
@@ -48,9 +46,9 @@ export function SectionFilterComponent<F extends FieldValues>(
     enableReinitialize = true,
     children,
     ...props
-  }: SectionFilterProps<F>,
+  }: FilterFormProps<TFieldValues>,
   ref: ForwardedRef<HTMLFormElement>
-): ReactElement | null {
+) {
   const form = useForm(props)
   const { dirtyFields } = useFormState({ control: form.control })
 
@@ -69,7 +67,7 @@ export function SectionFilterComponent<F extends FieldValues>(
     }
   }, [enableReinitialize, props.defaultValues, form])
 
-  const handleSubmit: SubmitHandler<F> = (data, event) => {
+  const handleSubmit: SubmitHandler<TFieldValues> = (data, event) => {
     // Only submit the form if there are dirty fields
     if (Object.keys(dirtyFields).length > 0) {
       onSubmit(data, event)
@@ -82,11 +80,4 @@ export function SectionFilterComponent<F extends FieldValues>(
       {children}
     </Form>
   )
-}
-
-// Type assertion required for a component with forwarded ref and generic type
-export const SectionFilter = forwardRef(SectionFilterComponent) as <
-  F extends FieldValues
->(
-  props: SectionFilterProps<F> & { ref?: React.ForwardedRef<HTMLFormElement> }
-) => ReturnType<typeof SectionFilterComponent>
+})
