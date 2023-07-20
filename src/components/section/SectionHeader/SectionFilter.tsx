@@ -13,6 +13,7 @@ import {
   UseFormProps,
   useFormState,
 } from 'react-hook-form'
+import { isEqual } from 'lodash'
 import { AutoSubmit, Form } from '../../react-hook-form'
 import { ClassNameProps } from '../../types'
 
@@ -55,17 +56,20 @@ export function SectionFilterComponent<F extends FieldValues>(
 
   useEffect(() => {
     if (enableReinitialize && props.defaultValues) {
-      // Only override the values of the non-dirty fields
-      // to prevent overriding the user's input
+      // Only override the values of the non-dirty fields to prevent overriding the user's input
       form.reset(props.defaultValues, {
         keepDirtyValues: true,
       })
-      // Set the form as non-dirty
-      form.reset(form.getValues())
+      // Set the form as non-dirty if the current values and the default values match
+      // If they do not match, it means that the user changed some fields and we want those to stay dirty so that they are submitted
+      const currentValues = form.getValues()
+      if (isEqual(currentValues, props.defaultValues)) {
+        form.reset(currentValues)
+      }
     }
   }, [enableReinitialize, props.defaultValues, form])
 
-  const onSubmitNew: SubmitHandler<F> = (data, event) => {
+  const handleSubmit: SubmitHandler<F> = (data, event) => {
     // Only submit the form if there are dirty fields
     if (Object.keys(dirtyFields).length > 0) {
       onSubmit(data, event)
@@ -73,7 +77,7 @@ export function SectionFilterComponent<F extends FieldValues>(
   }
 
   return (
-    <Form form={form} onSubmit={onSubmitNew} className={className} ref={ref}>
+    <Form form={form} onSubmit={handleSubmit} className={className} ref={ref}>
       {autoSubmit && <AutoSubmit interval={autoSubmitInterval} />}
       {children}
     </Form>
