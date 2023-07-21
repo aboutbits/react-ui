@@ -2,7 +2,6 @@ import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues } from 'react-hook-form'
 import { useInternationalization } from '../../framework'
-import { FormVariant } from '../form'
 import { InputFormField, InputFormFieldProps } from './InputFormField'
 
 export type SearchFormFieldProps<
@@ -28,7 +27,6 @@ export const SearchFormField = forwardRef(function SearchFormField<
       name={name}
       ref={ref}
       placeholder={messages['search.placeholder']}
-      variant={FormVariant.soft}
       iconStart={IconSearch}
       {...props}
     />
