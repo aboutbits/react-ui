@@ -11,7 +11,7 @@ export type FormErrorProps = ClassNameProps & {
 export function FormError({ children, className }: FormErrorProps) {
   const { form } = useTheme()
 
-  if (typeof children === 'undefined' || children === null) {
+  if (children === undefined || children === null) {
     return null
   }
 

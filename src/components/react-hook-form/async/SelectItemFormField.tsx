@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useRef, useState } from 'react'
+import { ReactNode, useRef, useState } from 'react'
 import { useController } from 'react-hook-form'
 import { DialogProps } from '../../dialog'
 import { FormVariantProps } from '../../form'
@@ -12,44 +12,36 @@ import {
   SelectItemDialogWithSearch,
   SelectItemDialogWithSearchProps,
 } from './SelectItemDialogWithSearch'
-import { SelectItemInput } from './SelectItemInput'
+import { SelectItemInput, SelectItemInputProps } from './SelectItemInput'
 
-export type SelectItemFormFieldProps<ItemType, Error> = {
-  id: string
-  name: string
+export type SelectItemFormFieldProps<
+  Item,
+  SelectedItem extends Item | null,
+  ItemId,
+  Error
+> = Pick<
+  SelectItemInputProps<Item, SelectedItem>,
+  'name' | 'label' | 'placeholder' | 'disabled'
+> & {
+  renderInputItem?: (item: Item) => ReactNode
+  extractIdFromItem: (item: Item) => ItemId
   /**
-   * The initialItem allows you to pass the component the lookup object on first render.
-   * Afterwards on changed selection the component will handle it by itself.
+   * The item that should be rendered on first render.
    */
-  initialItem?: ItemType
-  /**
-   * Specify what you want to render in the input, once a value has been selected.
-   * If nothing is specified it will try to render it the same way as the list item.
-   *
-   * If no lookup value is available, it will render the id.
-   */
-  renderInputValue?: (item: ItemType) => ReactNode
+  initialItem?: Item
   dialogTitle: ReactNode
   dialogLabel: string
   /**
-   * To configure the dialog in more detail you can pass dialog props.
+   * Props of the dialog for a detailed configuration.
    */
   dialogProps?: DialogProps
-  label: string
-  placeholder: string
-  disabled?: boolean
-  /**
-   * This function will be used to extract the id value from the selected item.
-   * @param item
-   */
-  extractIdFromItem: (item: ItemType) => string
 } & ModeProps &
   FormVariantProps &
   ClassNameProps &
   RequiredProps &
   HideRequiredProps &
   Pick<
-    SelectItemDialogWithSearchProps<ItemType, Error>,
+    SelectItemDialogWithSearchProps<Item, Error>,
     | 'useGetData'
     | 'noSearchResults'
     | 'renderListItem'
@@ -57,15 +49,24 @@ export type SelectItemFormFieldProps<ItemType, Error> = {
     | 'paginationConfig'
   >
 
-export function SelectItemFormField<ItemType, Error>({
+/*
+ * A [SelectItemField](../?path=/docs/components-form-selectitemfield--default-story) within the context of a `react-hook-form` form.
+ *
+ * It is composed of the primitives [InputLabel](../?path=/docs/components-form-primitive-inputlabel--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
+ */
+export function SelectItemFormField<
+  Item,
+  SelectedItem extends Item | null,
+  ItemId,
+  Error
+>({
   disabled = false,
-  id,
   name,
   className,
   mode,
   variant,
   initialItem,
-  renderInputValue,
+  renderInputItem,
   label,
   placeholder,
   useGetData,
@@ -79,34 +80,34 @@ export function SelectItemFormField<ItemType, Error>({
   extractIdFromItem,
   required,
   hideRequired,
-}: SelectItemFormFieldProps<ItemType, Error>): ReactElement {
+}: SelectItemFormFieldProps<Item, SelectedItem, ItemId, Error>) {
   const { field, fieldState } = useController({ name })
 
   const [showDialog, setShowDialog] = useState<boolean>(false)
-  const selectedItem = useRef<ItemType | undefined>(initialItem)
+  const selectedItem = useRef<Item | null>(
+    initialItem === undefined ? null : initialItem
+  )
 
   return (
     <>
       <SelectItemInput
-        id={id}
         name={name}
         label={label}
         placeholder={placeholder}
-        value={field.value}
         selectedItem={selectedItem.current}
-        hasError={!!fieldState.error}
+        renderItem={renderInputItem ? renderInputItem : renderListItem}
+        onOpenSelect={() => setShowDialog(true)}
+        onClear={() => {
+          field.onChange(null)
+          selectedItem.current = null
+        }}
         disabled={disabled}
+        hasError={!!fieldState.error}
         required={required}
         hideRequired={hideRequired}
         mode={mode}
         variant={variant}
         className={className}
-        renderInputValue={renderInputValue ? renderInputValue : renderListItem}
-        onOpenSelect={() => setShowDialog(true)}
-        onClear={() => {
-          field.onChange('')
-          selectedItem.current = undefined
-        }}
       />
       {showDialog && (
         <SelectItemDialogWithSearch
@@ -115,7 +116,7 @@ export function SelectItemFormField<ItemType, Error>({
             setShowDialog(false)
           }}
           isOpen={showDialog}
-          onConfirm={(item: ItemType) => {
+          onConfirm={(item: Item) => {
             field.onChange(extractIdFromItem(item))
             selectedItem.current = item
             setShowDialog(false)
