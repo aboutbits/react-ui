@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const colors = require('tailwindcss/colors')
+import type { Config } from 'tailwindcss'
+import colors from 'tailwindcss/colors'
 
-/** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
-module.exports = {
+export default {
   content: [
     './src/**/theme.ts',
     './src/**/*.stories.tsx',
@@ -20,4 +19,4 @@ module.exports = {
   darkMode: 'class',
   presets: [require('./tailwind-preset.js')],
   plugins: [require('@tailwindcss/forms')],
-}
+} satisfies Config

@@ -1,0 +1,35 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import { action } from '@storybook/addon-actions'
+import { InternationalizationMessages } from '../../../.storybook/components'
+import { Section, SectionHeaderArea } from '../section'
+import { FilterForm } from './FilterForm'
+import { SearchFormField } from './SearchFormField'
+
+<Meta
+  title="Components/React Hook Form/SearchFormField"
+  component={SearchFormField}
+/>
+
+# SearchFormField
+
+A standardized search input. Frequently used in combination with `FilterForm`.
+
+export const Template = (args) => (
+  <Section>
+    <SectionHeaderArea>
+      <FilterForm defaultValues={{ search: '' }} onSubmit={action('filter')}>
+        <SearchFormField {...args} />
+      </FilterForm>
+    </SectionHeaderArea>
+  </Section>
+)
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+### Props
+
+<ArgsTable story="Default" />
+
+<InternationalizationMessages items={['search.placeholder']} />

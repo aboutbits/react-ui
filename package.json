@@ -51,6 +51,7 @@
     "@headlessui/react": "^1.7.7",
     "axios": "^1.4.0",
     "classnames": "^2.0.0",
+    "lodash": "^4.17.21",
     "react-hook-form": "^7.44.3"
   },
   "peerDependencies": {
@@ -94,6 +95,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-textarea-autosize": "^8.5.2",
+    "remark-gfm": "^3.0.1",
     "rimraf": "^5.0.1",
     "storybook": "^7.0.26",
     "tailwindcss": "^3.2.4",
