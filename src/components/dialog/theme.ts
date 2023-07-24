@@ -74,7 +74,7 @@ export default {
     base: 'flex-1 text-2xl truncate',
   },
   contentArea: {
-    base: 'overflow-auto min-h-0 flex-1 min-h-0',
+    base: 'overflow-auto min-h-0 flex-1 min-h-0 border-t',
     scrolled: {
       off: 'border-transparent',
       on: 'border-neutral-200',
