@@ -68,7 +68,7 @@ describe('useHandleSubmit', () => {
 
     let submitPromise: Promise<void> | undefined
 
-    await act(async () => {
+    act(() => {
       submitPromise = form.current.handleSubmit(result.current.triggerSubmit)()
     })
 
@@ -147,7 +147,7 @@ describe('useHandleSubmit', () => {
     expect(result.current.apiErrorMessage).toBe(expectedErrorMessage)
 
     act(() => {
-      result.current.triggerSubmit({})
+      void result.current.triggerSubmit({})
     })
 
     expect(result.current.apiErrorMessage).toBeNull()

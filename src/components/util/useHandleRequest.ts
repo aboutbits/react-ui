@@ -73,7 +73,7 @@ export function useHandleRequest<
             errorBody,
           })
           if (options?.throwOnError) {
-            throw error as Error
+            throw error
           }
         }
         return undefined

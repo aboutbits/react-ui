@@ -32,7 +32,7 @@ const MyForm = ({
   // The requestSubmit has to be mocked, since it is not implement in jsdom
   const formRef = useCallback((formElement: HTMLFormElement | null) => {
     if (formElement) {
-      formElement.requestSubmit = async () => {
+      formElement.requestSubmit = () => {
         const event = new Event('submit', {
           bubbles: true,
           cancelable: true,

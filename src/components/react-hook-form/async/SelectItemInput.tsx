@@ -136,7 +136,7 @@ export function SelectItemInput<Item, SelectedItem extends Item | null>({
           mode={mode}
           tone={FormTone.critical}
           disabled={disabled}
-          message={error.message?.toString()}
+          message={error?.message}
         />
       )}
     </div>

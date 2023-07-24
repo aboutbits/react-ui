@@ -114,7 +114,9 @@ const useGetData = ({
               name: `Project ${index}`,
             }),
           )
-          .filter((project) => (search ? project.name.includes(search) : true)),
+          .filter((project) =>
+            search !== undefined ? project.name.includes(search) : true,
+          ),
       )
     }, 1000)
   }, [search, page, size])

@@ -76,7 +76,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <label className={classNames(checkboxCss, className)}>
-        {label && <span className={checkboxLabelCss}>{label}</span>}
+        {Boolean(label) && <span className={checkboxLabelCss}>{label}</span>}
         <input
           {...props}
           ref={ref}
@@ -91,13 +91,17 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   },
 )
 
-export const IconCheckbox: React.FC<
-  IconProps &
-    Required<ModeProps> & {
-      size: Size
-      disabled: boolean
-    }
-> = ({ size, mode, disabled, className, ...props }) => {
+export const IconCheckbox = ({
+  size,
+  mode,
+  disabled,
+  className,
+  ...props
+}: IconProps &
+  Required<ModeProps> & {
+    size: Size
+    disabled: boolean
+  }) => {
   const {
     form: {
       checkbox: { check: theme },

@@ -7,12 +7,12 @@ export type Router = {
 
 export const defaultRouter: Router = {
   back: () => {
-    if (window) {
+    if (typeof window !== 'undefined') {
       window.history.back()
     }
   },
   replace: (path: string) => {
-    if (window) {
+    if (typeof window !== 'undefined') {
       window.location.href = path
     }
   },

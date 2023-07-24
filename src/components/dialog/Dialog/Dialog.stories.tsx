@@ -35,7 +35,10 @@ const DialogDecorator: DecoratorFn = (Story, context) => {
           setIsOpen(true)
         }}
       >
-        {context.parameters.buttonText || 'Open Dialog'}
+        {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/strict-boolean-expressions
+          context.parameters.buttonText || 'Open Dialog'
+        }
       </Button>
       <Story
         args={{
@@ -44,6 +47,7 @@ const DialogDecorator: DecoratorFn = (Story, context) => {
           onDismiss: () => {
             setIsOpen(false)
           },
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           content: context.parameters.content,
           overlayClassName: 'z-10',
         }}

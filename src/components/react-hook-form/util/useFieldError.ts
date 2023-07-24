@@ -18,6 +18,6 @@ export function useFieldError<
 export function getFieldError<
   TFieldValues extends FieldValues,
   TFieldName extends FieldPath<TFieldValues>,
->(obj: FieldErrors<TFieldValues>, path?: TFieldName): FieldError | undefined {
-  return get(obj, path)
+>(obj: FieldErrors<TFieldValues>, path?: TFieldName) {
+  return get(obj, path) as FieldError | undefined
 }

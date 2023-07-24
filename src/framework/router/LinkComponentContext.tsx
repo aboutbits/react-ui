@@ -29,6 +29,7 @@ export type LinkComponent =
   | ComponentType<LinkComponentProps>
 
 export const DefaultLinkComponent = makeLinkComponent((props, ref) => (
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
   <a ref={ref} {...props} />
 ))
 

@@ -2,9 +2,9 @@ import { AxiosError, isAxiosError } from 'axios'
 import { ErrorBody } from './types'
 
 export function joinFieldErrorMessages(
-  errors: Record<string, string[] | null>,
+  errors: Record<string, string[] | null> | null,
 ): Record<string, string> {
-  if (!errors && typeof errors !== 'object') {
+  if (!errors || typeof errors !== 'object') {
     return {}
   }
 

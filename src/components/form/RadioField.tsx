@@ -41,7 +41,7 @@ export const RadioField = forwardRef<HTMLInputElement, RadioFieldProps>(
           layout={layout}
           ref={ref}
         />
-        {message && (
+        {message !== undefined && (
           <InputMessage
             mode={mode}
             tone={tone}

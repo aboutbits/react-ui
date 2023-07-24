@@ -117,7 +117,7 @@ const useGetDataSuccess = ({
             }
           })
           .filter((user) => {
-            if (search) {
+            if (search !== undefined) {
               return user.name.includes(search)
             } else {
               return true

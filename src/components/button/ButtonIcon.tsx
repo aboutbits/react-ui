@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classNames from 'classnames'
 import { useTheme } from '../../framework'
 import { Mode, Size, Tone } from '../types'
@@ -11,7 +11,7 @@ export type ButtonIconProps = React.DetailedHTMLProps<
   ButtonStyleProps &
   ButtonIconCommonProps
 
-export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
+export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
   function ButtonIcon(
     {
       mode = Mode.light,
@@ -30,16 +30,13 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
     return (
       <button
         className={classNames(
-          /* eslint-disable @typescript-eslint/ban-ts-comment */
           button.buttonIcon.base,
           !props.disabled
-            ? // @ts-expect-error
-              button.modeVariantTone[mode][variant][tone]
+            ? button.modeVariantTone[mode][variant][tone]
             : button.modeVariantTone[mode][variant].disabled,
-          button.buttonIcon.variantSize.base[size],
-          // @ts-expect-error
-          button.buttonIcon.variantSize[variant]?.[size],
-          /* eslint-enable */
+          button.buttonIcon.variantSize[
+            variant === ButtonVariant.ghost ? variant : 'base'
+          ][size],
           className,
         )}
         aria-label={label}

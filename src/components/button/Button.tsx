@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React from 'react'
+import { forwardRef } from 'react'
 import { useTheme } from '../../framework'
 import { Mode, Size, Tone } from '../types'
 import { ButtonCommonProps, ButtonStyleProps, ButtonVariant } from './types'
@@ -11,7 +11,7 @@ export type ButtonProps = React.DetailedHTMLProps<
   ButtonStyleProps &
   ButtonCommonProps
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
     {
       mode = Mode.light,
@@ -31,16 +31,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={classNames(
-          /* eslint-disable @typescript-eslint/ban-ts-comment */
           button.button.base,
           !props.disabled
-            ? // @ts-expect-error
-              button.modeVariantTone[mode][variant][tone]
+            ? button.modeVariantTone[mode][variant][tone]
             : button.modeVariantTone[mode][variant].disabled,
-          button.button.variantSize.base[size],
-          // @ts-expect-error
-          button.button.variantSize[variant]?.[size],
-          /* eslint-enable */
+          button.button.variantSize[
+            variant === ButtonVariant.ghost ? variant : 'base'
+          ][size],
           className,
         )}
         ref={ref}

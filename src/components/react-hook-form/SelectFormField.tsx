@@ -54,7 +54,7 @@ export const SelectFormField = forwardRef(function SelectFormField<
 ) {
   const { register } = useFormContext<TFieldValues>()
   const { ref: formFieldRef, ...formFieldProps } = register<TFieldName>(name, {
-    setValueAs: (input) => {
+    setValueAs: (input: unknown) => {
       if (input === '' && transformEmptyToNull) {
         return null
       }
@@ -101,7 +101,7 @@ export const SelectFormField = forwardRef(function SelectFormField<
         formFieldRef(e)
         forwardedRef.current = e
       }}
-      message={error?.message?.toString() || message}
+      message={error?.message ?? message}
       status={error ? Status.invalid : undefined}
     >
       {children}

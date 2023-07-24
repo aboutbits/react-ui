@@ -44,7 +44,7 @@ describe('useHandleRequest', () => {
     )
 
     act(() => {
-      result.current.triggerRequest()
+      void result.current.triggerRequest()
     })
 
     await waitFor(() => {
@@ -84,7 +84,7 @@ describe('useHandleRequest', () => {
     expect(result.current.apiErrorMessage).toBe('Server Error')
 
     act(() => {
-      result.current.triggerRequest()
+      void result.current.triggerRequest()
     })
 
     expect(result.current.apiErrorMessage).toBeNull()

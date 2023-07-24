@@ -30,7 +30,7 @@ const MyForm = ({
   const formRef = useCallback(
     (formElement: HTMLFormElement | null) => {
       if (formElement) {
-        formElement.requestSubmit = async () => {
+        formElement.requestSubmit = () => {
           const values = form.getValues()
           onSubmit(values)
         }

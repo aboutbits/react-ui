@@ -72,7 +72,9 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
 
     return (
       <label className={classNames(toggleSwitchCss, className)}>
-        {label && <span className={toggleSwitchLabelCss}>{label}</span>}
+        {Boolean(label) && (
+          <span className={toggleSwitchLabelCss}>{label}</span>
+        )}
         <input
           {...props}
           ref={ref}

@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React from 'react'
+import { forwardRef } from 'react'
 import { useLinkComponent, LinkComponentProps, useTheme } from '../../framework'
 import { Mode, Size, Tone } from '../types'
 import {
@@ -14,7 +14,7 @@ export type ButtonLinkProps = LinkComponentProps &
   ButtonCommonProps &
   LinkCommonProps
 
-export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
+export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   function ButtonLink(
     {
       href,
@@ -36,16 +36,13 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     const { button } = useTheme()
 
     const linkClassNames = classNames(
-      /* eslint-disable @typescript-eslint/ban-ts-comment */
       button.button.base,
-      !disabled
-        ? // @ts-expect-error
-          button.modeVariantTone[mode][variant][tone]
-        : button.modeVariantTone[mode][variant].disabled,
-      button.button.variantSize.base[size],
-      // @ts-expect-error
-      button.button.variantSize[variant]?.[size],
-      /* eslint-enable */
+      disabled
+        ? button.modeVariantTone[mode][variant].disabled
+        : button.modeVariantTone[mode][variant][tone],
+      button.button.variantSize[
+        variant === ButtonVariant.ghost ? variant : 'base'
+      ][size],
       className,
     )
 

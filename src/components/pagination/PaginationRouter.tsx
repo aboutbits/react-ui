@@ -80,7 +80,6 @@ export function PaginationRouter({
         {...linkProps({ pageIndex: pagination.previous.indexNumber, size })}
         aria-label={messages['pagination.prev']}
         aria-disabled={pagination.previous.isDisabled}
-        role="previous-link"
         className={classNames(
           paginationTheme.page.base,
           pagination.previous.isDisabled
@@ -125,7 +124,6 @@ export function PaginationRouter({
         })}
         aria-label={messages['pagination.next']}
         aria-disabled={pagination.next.isDisabled}
-        role="next-link"
         className={classNames(
           paginationTheme.page.base,
           pagination.next.isDisabled

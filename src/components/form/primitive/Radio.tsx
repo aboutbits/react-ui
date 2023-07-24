@@ -65,18 +65,22 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
         className={radioInputCss}
       />
       <IconRadio mode={mode} size={size} disabled={disabled} />
-      {label && <span className={radioLabelCss}>{label}</span>}
+      {Boolean(label) && <span className={radioLabelCss}>{label}</span>}
     </label>
   )
 })
 
-const IconRadio: React.FC<
-  IconProps &
-    Required<ModeProps> & {
-      size: Size
-      disabled: boolean
-    }
-> = ({ size, mode, disabled, className, ...props }) => {
+const IconRadio = ({
+  size,
+  mode,
+  disabled,
+  className,
+  ...props
+}: IconProps &
+  Required<ModeProps> & {
+    size: Size
+    disabled: boolean
+  }) => {
   const iconCssChecked = useRadioIconCss({
     mode,
     size,

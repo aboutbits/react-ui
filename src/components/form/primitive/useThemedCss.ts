@@ -170,9 +170,7 @@ export function useCheckboxLabelCss({
   return classNames(
     theme.base,
     theme.size[size],
-    disabled
-      ? theme.mode[mode].disabled
-      : theme.mode[mode][disabled ? 'disabled' : 'normal'],
+    theme.mode[mode][disabled ? 'disabled' : 'normal'],
     showRequired && theme.mode[mode].required,
   )
 }
@@ -227,9 +225,7 @@ export function useRadioLabelCss({
   return classNames(
     theme.base,
     theme.size[size],
-    disabled
-      ? theme.mode[mode].disabled
-      : theme.mode[mode][disabled ? 'disabled' : 'normal'],
+    theme.mode[mode][disabled ? 'disabled' : 'normal'],
   )
 }
 

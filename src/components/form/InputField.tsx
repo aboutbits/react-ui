@@ -45,7 +45,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
     const id = useId(props.id)
     return (
       <div className={className}>
-        {label && (
+        {Boolean(label) && (
           <InputLabel
             mode={mode}
             tone={tone}
@@ -65,7 +65,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           disabled={disabled}
           required={required}
         />
-        {message && (
+        {message !== undefined && (
           <InputMessage
             mode={mode}
             tone={tone}

@@ -59,7 +59,7 @@ export function AlertIcon({
 } & ClassNameProps): ReactElement | null {
   const { alert } = useTheme()
 
-  if (Icon === undefined || Icon === null) {
+  if (Icon === undefined) {
     return null
   }
 
