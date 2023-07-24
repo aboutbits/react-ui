@@ -35,7 +35,7 @@ export const SectionListItemButton = React.forwardRef<
   SectionListItemButtonProps
 >(function SectionListItemButton(
   { children, onClick, className, ...props },
-  ref
+  ref,
 ) {
   const { section } = useTheme()
 
@@ -45,7 +45,7 @@ export const SectionListItemButton = React.forwardRef<
       className={classNames(
         section.listItemButton.base,
         section.listItem.base,
-        className
+        className,
       )}
       ref={ref}
       {...props}
@@ -67,7 +67,7 @@ export const SectionListItemLink = React.forwardRef<
   SectionListItemLinkProps
 >(function SectionListItemLink(
   { children, className, internal = true, ...props },
-  ref
+  ref,
 ) {
   const LinkComponent = useLinkComponent()
   const { section } = useTheme()
@@ -77,7 +77,7 @@ export const SectionListItemLink = React.forwardRef<
       className={classNames(
         section.listItemLink.base,
         section.listItem.base,
-        className
+        className,
       )}
       internal={internal}
       ref={ref}

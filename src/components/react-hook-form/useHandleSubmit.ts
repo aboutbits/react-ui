@@ -24,11 +24,11 @@ export type UseHandleSubmitReturn<V, R> = Pick<
 export function useHandleSubmit<
   FV extends FieldValues,
   Response = unknown,
-  Error = unknown
+  Error = unknown,
 >(
   { setError, clearErrors }: UseFormReturn<FV>,
   submitAction: (fieldValues: FV) => Promise<Response>,
-  options?: UseHandleRequestOptions<FV, Response, Error>
+  options?: UseHandleRequestOptions<FV, Response, Error>,
 ): UseHandleSubmitReturn<FV, Response> {
   const { apiErrorMessage, isRequesting, triggerRequest } = useHandleRequest<
     FV,
@@ -49,15 +49,15 @@ export function useHandleSubmit<
         })
         if (errorBody?.errors) {
           const errorMessages = joinFieldErrorMessages(errorBody.errors)
-          Object.entries(errorMessages).forEach(([field, message]) =>
+          Object.entries(errorMessages).forEach(([field, message]) => {
             setError(field as Path<FV>, {
               type: 'custom',
               message,
             })
-          )
+          })
         }
       },
-    }
+    },
   )
 
   return {

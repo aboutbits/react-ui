@@ -65,7 +65,7 @@ export function SectionPaginationInMemoryButton({
       className={classNames(
         paginationTheme.page.base,
         disabled ? paginationTheme.page.disabled : paginationTheme.page.enabled,
-        className
+        className,
       )}
       onClick={() => {
         onChangePage(pageIndex)
@@ -111,7 +111,7 @@ export function PaginationInMemory({
                 aria-label={`${messages['pagination.page']} ${page.displayNumber}`}
                 className={classNames(
                   paginationTheme.page.number,
-                  page.isCurrent ? paginationTheme.page.current : ''
+                  page.isCurrent ? paginationTheme.page.current : '',
                 )}
                 onChangePage={onChangePage}
                 pageIndex={page.indexNumber}

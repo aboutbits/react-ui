@@ -30,7 +30,7 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       children,
       ...props
     },
-    ref
+    ref,
   ) {
     const LinkComponent = useLinkComponent()
     const { button } = useTheme()
@@ -39,14 +39,14 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       /* eslint-disable @typescript-eslint/ban-ts-comment */
       button.button.base,
       !disabled
-        ? // @ts-ignore
+        ? // @ts-expect-error
           button.modeVariantTone[mode][variant][tone]
         : button.modeVariantTone[mode][variant].disabled,
       button.button.variantSize.base[size],
-      // @ts-ignore
+      // @ts-expect-error
       button.button.variantSize[variant]?.[size],
       /* eslint-enable */
-      className
+      className,
     )
 
     const content = (
@@ -56,7 +56,7 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             className={classNames(
               button.button.icon.base,
               button.button.icon.size[size],
-              button.button.icon.iconStart.size[size]
+              button.button.icon.iconStart.size[size],
             )}
           />
         )}
@@ -66,7 +66,7 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             className={classNames(
               button.button.icon.base,
               button.button.icon.size[size],
-              button.button.icon.iconEnd.size[size]
+              button.button.icon.iconEnd.size[size],
             )}
           />
         )}
@@ -98,5 +98,5 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         {content}
       </LinkComponent>
     )
-  }
+  },
 )

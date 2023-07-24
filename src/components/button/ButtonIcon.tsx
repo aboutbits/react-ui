@@ -23,7 +23,7 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) {
     const { button } = useTheme()
 
@@ -33,14 +33,14 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
           /* eslint-disable @typescript-eslint/ban-ts-comment */
           button.buttonIcon.base,
           !props.disabled
-            ? // @ts-ignore
+            ? // @ts-expect-error
               button.modeVariantTone[mode][variant][tone]
             : button.modeVariantTone[mode][variant].disabled,
           button.buttonIcon.variantSize.base[size],
-          // @ts-ignore
+          // @ts-expect-error
           button.buttonIcon.variantSize[variant]?.[size],
           /* eslint-enable */
-          className
+          className,
         )}
         aria-label={label}
         type="button"
@@ -50,10 +50,10 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
         <Icon
           className={classNames(
             button.buttonIcon.icon.base,
-            button.buttonIcon.icon.size[size]
+            button.buttonIcon.icon.size[size],
           )}
         />
       </button>
     )
-  }
+  },
 )

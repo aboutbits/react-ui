@@ -31,7 +31,7 @@ export const ButtonIconLink = React.forwardRef<
     className,
     ...props
   },
-  ref
+  ref,
 ) {
   const { button } = useTheme()
   const LinkComponent = useLinkComponent()
@@ -40,21 +40,21 @@ export const ButtonIconLink = React.forwardRef<
     /* eslint-disable @typescript-eslint/ban-ts-comment */
     button.buttonIcon.base,
     !disabled
-      ? // @ts-ignore
+      ? // @ts-expect-error
         button.modeVariantTone[mode][variant][tone]
       : button.modeVariantTone[mode][variant].disabled,
     button.buttonIcon.variantSize.base[size],
-    // @ts-ignore
+    // @ts-expect-error
     button.buttonIcon.variantSize[variant]?.[size],
     /* eslint-enable */
-    className
+    className,
   )
 
   const icon = (
     <Icon
       className={classNames(
         button.buttonIcon.icon.base,
-        button.buttonIcon.icon.size[size]
+        button.buttonIcon.icon.size[size],
       )}
     />
   )

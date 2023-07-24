@@ -5,12 +5,12 @@ import { defaultMessages } from '../../../framework/internationalization/default
 import { useHandleSubmit } from '../useHandleSubmit'
 
 const getPromiseState = async (
-  promise: Promise<unknown>
+  promise: Promise<unknown>,
 ): Promise<'pending' | 'resolved' | 'rejected'> => {
   const t = {}
   return await Promise.race([promise, t]).then(
     (v) => (v === t ? 'pending' : 'resolved'),
-    () => 'rejected'
+    () => 'rejected',
   )
 }
 
@@ -26,27 +26,33 @@ describe('useHandleSubmit', () => {
   }
 
   const onDeleteWithErrorResponse = () =>
-    new Promise((_resolve, reject) => setTimeout(() => reject(axiosError), 10))
+    new Promise((_resolve, reject) =>
+      setTimeout(() => {
+        reject(axiosError)
+      }, 10),
+    )
 
   const onDeleteWithUnexpectedError = () =>
     new Promise((_resolve, reject) =>
-      setTimeout(
-        () =>
-          reject({
-            message: 'The request did not reach the server',
-          }),
-        10
-      )
+      setTimeout(() => {
+        reject({
+          message: 'The request did not reach the server',
+        })
+      }, 10),
     )
 
   const onDeleteWithoutErrorResponse = () =>
-    new Promise((_resolve, reject) => setTimeout(() => reject(), 10))
+    new Promise((_resolve, reject) =>
+      setTimeout(() => {
+        reject()
+      }, 10),
+    )
 
   test('should return initial state on first render', () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result } = renderHook(() =>
-      useHandleSubmit(form.current, submitAction)
+      useHandleSubmit(form.current, submitAction),
     )
 
     expect(result.current.apiErrorMessage).toBeNull()
@@ -57,7 +63,7 @@ describe('useHandleSubmit', () => {
     const { result: form } = renderHook(() => useForm())
 
     const { result } = renderHook(() =>
-      useHandleSubmit(form.current, onDeleteWithErrorResponse)
+      useHandleSubmit(form.current, onDeleteWithErrorResponse),
     )
 
     let submitPromise: Promise<void> | undefined
@@ -67,12 +73,12 @@ describe('useHandleSubmit', () => {
     })
 
     expect(submitPromise && (await getPromiseState(submitPromise))).toBe(
-      'pending'
+      'pending',
     )
 
     await waitFor(async () => {
       expect(submitPromise && (await getPromiseState(submitPromise))).toBe(
-        'resolved'
+        'resolved',
       )
     })
   })
@@ -82,7 +88,7 @@ describe('useHandleSubmit', () => {
 
     const onSuccess = vi.fn(() => undefined)
     const { result } = renderHook(() =>
-      useHandleSubmit(form.current, submitAction, { onSuccess })
+      useHandleSubmit(form.current, submitAction, { onSuccess }),
     )
 
     await act(() => result.current.triggerSubmit({}))
@@ -95,7 +101,7 @@ describe('useHandleSubmit', () => {
     const { result } = renderHook(() =>
       useHandleSubmit(form.current, onDeleteWithErrorResponse, {
         onSuccess,
-      })
+      }),
     )
 
     await act(() => result.current.triggerSubmit({}))
@@ -112,7 +118,7 @@ describe('useHandleSubmit', () => {
       useHandleSubmit(form.current, onDeleteWithErrorResponse, {
         onSuccess,
         onError,
-      })
+      }),
     )
     const values = {}
 
@@ -133,7 +139,7 @@ describe('useHandleSubmit', () => {
     const { result } = renderHook(() =>
       useHandleSubmit(form.current, onDeleteWithErrorResponse, {
         onSuccess,
-      })
+      }),
     )
 
     await act(() => result.current.triggerSubmit({}))
@@ -154,7 +160,7 @@ describe('useHandleSubmit', () => {
       useHandleSubmit(form.current, onDeleteWithoutErrorResponse, {
         onSuccess,
         apiFallbackErrorMessage: 'Fallback error message',
-      })
+      }),
     )
 
     await act(() => result.current.triggerSubmit({}))
@@ -168,7 +174,7 @@ describe('useHandleSubmit', () => {
     const { result } = renderHook(() =>
       useHandleSubmit(form.current, onDeleteWithoutErrorResponse, {
         onSuccess,
-      })
+      }),
     )
 
     await act(() => result.current.triggerSubmit({}))
@@ -182,7 +188,7 @@ describe('useHandleSubmit', () => {
     const { result } = renderHook(() =>
       useHandleSubmit(form.current, onDeleteWithUnexpectedError, {
         onSuccess,
-      })
+      }),
     )
 
     await act(() => result.current.triggerSubmit({}))
@@ -197,7 +203,7 @@ describe('useHandleSubmit', () => {
     const { result: hookResult } = renderHook(() =>
       useHandleSubmit(form.current, () => Promise.resolve(response), {
         onSuccess,
-      })
+      }),
     )
 
     const onSubmitResult = await act(() => hookResult.current.triggerSubmit({}))
@@ -211,7 +217,7 @@ describe('useHandleSubmit', () => {
     const { result: hookResult } = renderHook(() =>
       useHandleSubmit(form.current, onDeleteWithErrorResponse, {
         onSuccess,
-      })
+      }),
     )
 
     const onSubmitResult = await act(() => hookResult.current.triggerSubmit({}))
@@ -225,7 +231,7 @@ describe('useHandleSubmit', () => {
     const { result: hookResult } = renderHook(() =>
       useHandleSubmit(form.current, onDeleteWithErrorResponse, {
         throwOnError: true,
-      })
+      }),
     )
 
     let error

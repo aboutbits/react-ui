@@ -8,7 +8,7 @@ export type SubmitButtonProps<F extends FieldValues> = ButtonProps & {
 
 function SubmitButtonComponent<F extends FieldValues>(
   { children, disabled = false, formControl, ...props }: SubmitButtonProps<F>,
-  ref: ForwardedRef<HTMLButtonElement>
+  ref: ForwardedRef<HTMLButtonElement>,
 ) {
   const { isSubmitting } = useFormState<F>({ control: formControl })
 
@@ -26,7 +26,7 @@ function SubmitButtonComponent<F extends FieldValues>(
 
 // Type assertion required for a component with forwarded ref and generic type
 export const SubmitButton = forwardRef(SubmitButtonComponent) as <
-  F extends FieldValues
+  F extends FieldValues,
 >(
-  props: SubmitButtonProps<F> & { ref?: ForwardedRef<HTMLButtonElement> }
+  props: SubmitButtonProps<F> & { ref?: ForwardedRef<HTMLButtonElement> },
 ) => ReturnType<typeof SubmitButtonComponent>

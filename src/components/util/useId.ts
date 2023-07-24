@@ -20,10 +20,10 @@ let id = 0
 const useIsomorphicLayoutEffect = canUseDOM() ? useLayoutEffect : useEffect
 
 function canUseDOM() {
-  return !!(
+  return Boolean(
     typeof window !== 'undefined' &&
-    window.document &&
-    window.document.createElement
+      window.document &&
+      window.document.createElement,
   )
 }
 
@@ -42,7 +42,7 @@ function useId(idFromProps: string | number): string | number
 function useId(idFromProps: string | undefined | null): string | undefined
 function useId(idFromProps: number | undefined | null): number | undefined
 function useId(
-  idFromProps: string | number | undefined | null
+  idFromProps: string | number | undefined | null,
 ): string | number | undefined
 function useId(): string | undefined
 
@@ -69,7 +69,7 @@ function useId(providedId?: number | string | undefined | null) {
   }, [])
 
   useEffect(() => {
-    if (serverHandoffComplete === false) {
+    if (!serverHandoffComplete) {
       // Flag all future uses of `useId` to skip the update dance. This is in
       // `useEffect` because it goes after `useLayoutEffect`, ensuring we don't
       // accidentally bail out of the patch-up dance prematurely.

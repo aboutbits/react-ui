@@ -43,7 +43,7 @@ export function AlertContainer({
       className={classNames(
         alert.container.base,
         alert.container.tone[tone],
-        className
+        className,
       )}
     >
       {children}
@@ -82,7 +82,7 @@ export function AlertContent({
       className={classNames(
         alert.content.base,
         alert.content.actionsPosition[actionsPosition],
-        className
+        className,
       )}
     >
       {children}

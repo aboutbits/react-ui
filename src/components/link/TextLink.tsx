@@ -16,5 +16,5 @@ export const TextLink = React.forwardRef<HTMLAnchorElement, LinkComponentProps>(
         {children}
       </LinkComponent>
     )
-  }
+  },
 )

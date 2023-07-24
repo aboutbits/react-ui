@@ -38,7 +38,7 @@ export function HeaderWithBackNavigation({
 }: HeaderWithBackNavigationProps): ReactElement {
   const onClickOrFallbackUrlProps = {
     onClick: onBack,
-    fallbackUrl: fallbackUrl,
+    fallbackUrl,
   } as HeaderBackActionOnClickOrFallbackUrlProps
 
   return (

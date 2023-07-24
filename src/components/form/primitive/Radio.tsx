@@ -44,7 +44,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
     className,
     ...props
   },
-  ref
+  ref,
 ) {
   const radioCss = useRadioCss({
     layout,

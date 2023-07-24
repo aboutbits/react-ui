@@ -6,19 +6,19 @@ import { InputFormField, InputFormFieldProps } from './InputFormField'
 
 export type SearchFormFieldProps<
   TFieldValues extends FieldValues,
-  TFieldName extends FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues>,
 > = Omit<InputFormFieldProps<TFieldValues, TFieldName>, 'ref' | 'name'> &
   Partial<Pick<InputFormFieldProps<TFieldValues, TFieldName>, 'name'>>
 
 export const SearchFormField = forwardRef(function SearchFormField<
   TFieldValues extends FieldValues,
-  TFieldName extends FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues>,
 >(
   {
     name = 'search' as TFieldName,
     ...props
   }: SearchFormFieldProps<TFieldValues, TFieldName>,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   const { messages } = useInternationalization()
 

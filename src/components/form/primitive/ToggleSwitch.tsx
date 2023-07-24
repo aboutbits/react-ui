@@ -54,7 +54,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
       hideRequired,
       ...props
     },
-    ref
+    ref,
   ) {
     const toggleSwitchCss = useToggleSwitchCss({
       layout,
@@ -84,7 +84,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
         <ToggleSwitchSwitch mode={mode} size={size} disabled={disabled} />
       </label>
     )
-  }
+  },
 )
 
 export const ToggleSwitchSwitch = ({

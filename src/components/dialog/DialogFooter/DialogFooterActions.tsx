@@ -29,7 +29,7 @@ export function DialogFooterActions({
         dialog.footerActions.base,
         dialog.footerActions.dialogSize[size],
         dialog.footerActions.position[position],
-        className
+        className,
       )}
     >
       {children}

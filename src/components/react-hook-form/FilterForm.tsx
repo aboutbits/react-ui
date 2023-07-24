@@ -36,7 +36,7 @@ export type FilterFormProps<TFieldValues extends FieldValues> = ClassNameProps &
   }
 
 export const FilterForm = forwardRef(function FilterForm<
-  TFieldValues extends FieldValues
+  TFieldValues extends FieldValues,
 >(
   {
     className,
@@ -47,7 +47,7 @@ export const FilterForm = forwardRef(function FilterForm<
     children,
     ...props
   }: FilterFormProps<TFieldValues>,
-  ref: ForwardedRef<HTMLFormElement>
+  ref: ForwardedRef<HTMLFormElement>,
 ) {
   const form = useForm(props)
   const { dirtyFields } = useFormState({ control: form.control })

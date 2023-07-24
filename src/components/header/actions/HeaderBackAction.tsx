@@ -44,10 +44,11 @@ export function HeaderBackAction({
   const { messages } = useInternationalization()
 
   const goBack: ComponentProps<typeof HeaderLeftActionIcon>['onClick'] = (
-    event
+    event,
   ) => {
     if (onClick) {
-      return onClick(event)
+      onClick(event)
+      return
     }
 
     const canGoBack =

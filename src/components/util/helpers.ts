@@ -2,7 +2,7 @@ import { AxiosError, isAxiosError } from 'axios'
 import { ErrorBody } from './types'
 
 export function joinFieldErrorMessages(
-  errors: Record<string, string[] | null>
+  errors: Record<string, string[] | null>,
 ): Record<string, string> {
   if (!errors && typeof errors !== 'object') {
     return {}
@@ -20,7 +20,7 @@ export function joinFieldErrorMessages(
 }
 
 export function isAxiosErrorWithErrorBody(
-  error: unknown
+  error: unknown,
 ): error is Omit<AxiosError<ErrorBody>, 'response'> &
   Required<Pick<AxiosError<ErrorBody>, 'response'>> {
   return (

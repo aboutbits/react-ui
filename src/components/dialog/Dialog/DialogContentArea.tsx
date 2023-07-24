@@ -31,7 +31,7 @@ export function DialogContentArea({
         enableScrollLayout
           ? dialog.contentArea.scrolled[isScrolled ? 'on' : 'off']
           : null,
-        className
+        className,
       )}
     >
       {children}

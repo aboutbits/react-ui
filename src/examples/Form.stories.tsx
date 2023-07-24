@@ -112,9 +112,9 @@ const useGetData = ({
             (index): Project => ({
               id: index,
               name: `Project ${index}`,
-            })
+            }),
           )
-          .filter((project) => (search ? project.name.includes(search) : true))
+          .filter((project) => (search ? project.name.includes(search) : true)),
       )
     }, 1000)
   }, [search, page, size])
@@ -206,7 +206,7 @@ export const UserEdit: Story = () => {
         action('onSubmit')(data)
         setShowSuccess(true)
         resolve()
-      }, 1000)
+      }, 1000),
     )
   })
 
@@ -238,7 +238,7 @@ export const UserEdit: Story = () => {
                 indent={FieldSetIndent.label}
                 showRequired
               >
-                <div className="flex md:flex-row flex-col justify-between gap-3 [&>*]:flex-1">
+                <div className="flex flex-col justify-between gap-3 md:flex-row [&>*]:flex-1">
                   <InputFormField
                     id="name.first"
                     type="text"

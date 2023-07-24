@@ -16,7 +16,7 @@ export function Theme<T extends keyof ThemeType, R extends keyof ThemeType[T]>({
   const theme = {
     [component]: items
       ? Object.fromEntries(
-          items.map((item) => [item, defaultTheme[component][item]])
+          items.map((item) => [item, defaultTheme[component][item]]),
         )
       : defaultTheme[component],
   }

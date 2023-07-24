@@ -32,7 +32,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) {
     const textAreaCss = useTextAreaCss({ mode, variant, tone, disabled })
 
@@ -44,5 +44,5 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         className={classNames(textAreaCss, className)}
       />
     )
-  }
+  },
 )

@@ -25,7 +25,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       ...props
     },
-    ref
+    ref,
   ) {
     const { button } = useTheme()
     return (
@@ -34,14 +34,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           /* eslint-disable @typescript-eslint/ban-ts-comment */
           button.button.base,
           !props.disabled
-            ? // @ts-ignore
+            ? // @ts-expect-error
               button.modeVariantTone[mode][variant][tone]
             : button.modeVariantTone[mode][variant].disabled,
           button.button.variantSize.base[size],
-          // @ts-ignore
+          // @ts-expect-error
           button.button.variantSize[variant]?.[size],
           /* eslint-enable */
-          className
+          className,
         )}
         ref={ref}
         type={type}
@@ -52,7 +52,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             className={classNames(
               button.button.icon.base,
               button.button.icon.size[size],
-              button.button.icon.iconStart.size[size]
+              button.button.icon.iconStart.size[size],
             )}
           />
         )}
@@ -62,11 +62,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             className={classNames(
               button.button.icon.base,
               button.button.icon.size[size],
-              button.button.icon.iconEnd.size[size]
+              button.button.icon.iconEnd.size[size],
             )}
           />
         )}
       </button>
     )
-  }
+  },
 )

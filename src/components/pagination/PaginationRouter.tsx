@@ -85,7 +85,7 @@ export function PaginationRouter({
           paginationTheme.page.base,
           pagination.previous.isDisabled
             ? paginationTheme.page.disabled
-            : paginationTheme.page.enabled
+            : paginationTheme.page.enabled,
         )}
       >
         <PaginationPreviousContent />
@@ -107,7 +107,7 @@ export function PaginationRouter({
                   paginationTheme.page.base,
                   paginationTheme.page.number,
                   paginationTheme.page.enabled,
-                  page.isCurrent ? paginationTheme.page.current : ''
+                  page.isCurrent ? paginationTheme.page.current : '',
                 )}
               >
                 {page.displayNumber}
@@ -130,7 +130,7 @@ export function PaginationRouter({
           paginationTheme.page.base,
           pagination.next.isDisabled
             ? paginationTheme.page.disabled
-            : paginationTheme.page.enabled
+            : paginationTheme.page.enabled,
         )}
       >
         <PaginationNextContent />

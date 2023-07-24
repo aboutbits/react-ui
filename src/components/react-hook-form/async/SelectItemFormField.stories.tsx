@@ -122,10 +122,12 @@ const useGetDataSuccess = ({
             } else {
               return true
             }
-          })
+          }),
       )
     }, 1000)
-    return () => clearTimeout(id)
+    return () => {
+      clearTimeout(id)
+    }
   }, [search, page, size])
 
   if (data === undefined) {

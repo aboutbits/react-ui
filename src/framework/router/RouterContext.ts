@@ -18,7 +18,7 @@ export const defaultRouter: Router = {
   },
 }
 
-export const RouterContext = createContext<Router>(<Router>defaultRouter)
+export const RouterContext = createContext<Router>(defaultRouter)
 
 export function useRouter(): Router {
   return useContext(RouterContext)

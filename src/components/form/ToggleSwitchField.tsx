@@ -30,7 +30,7 @@ export const ToggleSwitchField = forwardRef<
     layout = ToggleSwitchLayout.start,
     ...props
   },
-  ref
+  ref,
 ) {
   const tone = status === Status.invalid ? FormTone.critical : undefined
 

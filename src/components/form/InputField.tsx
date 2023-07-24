@@ -37,7 +37,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
       hideRequired,
       ...props
     },
-    ref
+    ref,
   ) {
     const tone =
       status === Status.invalid ? FormTone.critical : FormTone.neutral
@@ -75,5 +75,5 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
         )}
       </div>
     )
-  }
+  },
 )

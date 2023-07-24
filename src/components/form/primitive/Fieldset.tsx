@@ -50,7 +50,7 @@ export function Fieldset({
 
   return (
     <fieldset {...props} className={classNames(fieldsetCss, className)}>
-      {!!label && <legend className={fieldsetLegendCss}>{label}</legend>}
+      {Boolean(label) && <legend className={fieldsetLegendCss}>{label}</legend>}
       {children}
     </fieldset>
   )

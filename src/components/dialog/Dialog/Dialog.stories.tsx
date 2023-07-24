@@ -30,14 +30,20 @@ const DialogDecorator: DecoratorFn = (Story, context) => {
 
   return (
     <div>
-      <Button onClick={() => setIsOpen(true)}>
+      <Button
+        onClick={() => {
+          setIsOpen(true)
+        }}
+      >
         {context.parameters.buttonText || 'Open Dialog'}
       </Button>
       <Story
         args={{
           ...context.args,
           isOpen,
-          onDismiss: () => setIsOpen(false),
+          onDismiss: () => {
+            setIsOpen(false)
+          },
           content: context.parameters.content,
           overlayClassName: 'z-10',
         }}
