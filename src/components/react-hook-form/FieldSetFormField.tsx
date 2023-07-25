@@ -1,27 +1,31 @@
-import { FieldPath, FieldValues, get, useFormState } from 'react-hook-form'
+import { FieldPath, FieldValues } from 'react-hook-form'
 import { FieldSetField, FieldSetFieldProps, Status } from '../form'
+import { useFieldError } from './util'
 
 export type FieldSetFormProps<TFieldValues extends FieldValues> = Omit<
   FieldSetFieldProps,
-  'status'
+  'status' | 'name'
 > & {
-  fields: FieldPath<TFieldValues>[]
+  name: FieldPath<TFieldValues>
 }
 
 /**
  * A [FieldSetField](../?path=/docs/components-form-fieldsetfield--default-story) within the context of a `react-hook-form` form.
  *
- * The `FieldSetFormField` label will display an error state depending on the specified form `fields`.
+ * The `FieldSetFormField` label will display an error state depending on the specified `name` of the radio form fields.
  */
 export function FieldSetFormField<
   TFieldValues extends FieldValues = FieldValues,
->({ fields, children, ...props }: FieldSetFormProps<TFieldValues>) {
-  const { errors } = useFormState({ name: fields })
-
-  const hasError = fields.some((name) => Boolean(get(errors, name)))
+>({ name, children, message, ...props }: FieldSetFormProps<TFieldValues>) {
+  const error = useFieldError(name)
 
   return (
-    <FieldSetField {...props} status={hasError ? Status.invalid : undefined}>
+    <FieldSetField
+      {...props}
+      name={name}
+      message={error?.message ?? message}
+      status={error ? Status.invalid : undefined}
+    >
       {children}
     </FieldSetField>
   )

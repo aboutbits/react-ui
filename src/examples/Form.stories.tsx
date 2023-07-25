@@ -20,6 +20,7 @@ import {
 } from '../components'
 import { Alert } from '../components/alert'
 import {
+  FieldSetField,
   FieldSetIndent,
   FormError,
   Option,
@@ -234,9 +235,8 @@ export const UserEdit: Story = () => {
                 placeholder="Username"
                 required
               />
-              <FieldSetFormField
+              <FieldSetField
                 label="Name"
-                fields={['name.first', 'name.last']}
                 indent={FieldSetIndent.label}
                 showRequired
               >
@@ -256,7 +256,7 @@ export const UserEdit: Story = () => {
                     required
                   />
                 </div>
-              </FieldSetFormField>
+              </FieldSetField>
               <InputFormField
                 id="email"
                 type="email"
@@ -303,22 +303,23 @@ export const UserEdit: Story = () => {
               />
               <FieldSetFormField
                 label="Preferred UI mode"
-                fields={['uiMode']}
-                className="space-y-4"
+                name="uiMode"
                 showRequired
               >
-                {UI_MODES.map((mode) => (
-                  <RadioFormField
-                    key={mode}
-                    name="uiMode"
-                    label={mode.charAt(0) + mode.slice(1).toLowerCase()}
-                    value={mode}
-                  />
-                ))}
+                <div className="mt-2 space-y-4">
+                  {UI_MODES.map((mode) => (
+                    <RadioFormField
+                      key={mode}
+                      name="uiMode"
+                      label={mode.charAt(0) + mode.slice(1).toLowerCase()}
+                      value={mode}
+                    />
+                  ))}
+                </div>
               </FieldSetFormField>
-              <FieldSetFormField
+              <FieldSetField
                 label="Privacy"
-                fields={['privacy']}
+                name="privacy"
                 indent={FieldSetIndent.labelAndChildren}
               >
                 <CheckboxFormField
@@ -326,10 +327,10 @@ export const UserEdit: Story = () => {
                   label="Accept the privacy policy"
                   applyInputHeight
                 />
-              </FieldSetFormField>
+              </FieldSetField>
               <FieldSetFormField
                 label="Server validation"
-                fields={['serverValidationErrors']}
+                name="serverValidationErrors"
                 indent={FieldSetIndent.labelAndChildren}
               >
                 <ToggleSwitchFormField
