@@ -71,7 +71,9 @@ export function PaginationRouter({
 
   const pagination = calculatePagination(page, size, total, config)
 
-  if (pagination === null) return null
+  if (pagination === null) {
+    return null
+  }
 
   return (
     <PaginationContainer className={className}>
