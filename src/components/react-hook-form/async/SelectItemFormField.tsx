@@ -9,9 +9,9 @@ import {
   RequiredProps,
 } from '../../types'
 import {
-  SelectItemDialogWithSearch,
-  SelectItemDialogWithSearchProps,
-} from './SelectItemDialogWithSearch'
+  SelectItemFormFieldDialog,
+  SelectItemFormFieldDialogProps,
+} from './SelectItemFormFieldDialog'
 import { SelectItemInput, SelectItemInputProps } from './SelectItemInput'
 
 export type SelectItemFormFieldProps<
@@ -41,7 +41,7 @@ export type SelectItemFormFieldProps<
   RequiredProps &
   HideRequiredProps &
   Pick<
-    SelectItemDialogWithSearchProps<Item, Error>,
+    SelectItemFormFieldDialogProps<Item, Error>,
     | 'useGetData'
     | 'noSearchResults'
     | 'renderListItem'
@@ -112,7 +112,7 @@ export function SelectItemFormField<
         className={className}
       />
       {showDialog && (
-        <SelectItemDialogWithSearch
+        <SelectItemFormFieldDialog
           onDismiss={() => {
             field.onChange(field.value)
             setShowDialog(false)

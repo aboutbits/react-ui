@@ -22,7 +22,7 @@ import { Form } from '../Form'
 import {
   SearchQueryParameters,
   PaginatedResponse,
-} from './SelectItemDialogWithSearch'
+} from './SelectItemFormFieldDialog'
 import { SelectItemFormField } from './SelectItemFormField'
 
 type User = {

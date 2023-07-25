@@ -45,7 +45,7 @@ export type PaginatedResponse<T> = {
   perPage: number
 }
 
-export type SelectItemDialogWithSearchProps<ItemType, Error> = DialogProps & {
+export type SelectItemFormFieldDialogProps<ItemType, Error> = DialogProps & {
   onConfirm: (item: ItemType) => void
   useGetData: (params: SearchQueryParameters & PaginationQueryParameters) => {
     data?: PaginatedResponse<ItemType>
@@ -63,7 +63,7 @@ const defaultValues: FilterParameters = {
   search: '',
 }
 
-export function SelectItemDialogWithSearch<ItemType, Error>({
+export function SelectItemFormFieldDialog<ItemType, Error>({
   onConfirm,
   useGetData,
   renderListItem,
@@ -73,7 +73,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
   numberOfLoadingItems = 5,
   title,
   ...props
-}: SelectItemDialogWithSearchProps<ItemType, Error>): ReactElement {
+}: SelectItemFormFieldDialogProps<ItemType, Error>): ReactElement {
   const { form: theme } = useTheme()
 
   const { queryParameters, page, size, actions } = useQueryAndPagination({
@@ -174,7 +174,7 @@ export function SelectItemDialogSuccess<ItemType, Error>({
   actions: Actions
   searching: boolean
 } & Pick<
-  SelectItemDialogWithSearchProps<ItemType, Error>,
+  SelectItemFormFieldDialogProps<ItemType, Error>,
   'onConfirm' | 'renderListItem' | 'paginationConfig' | 'noSearchResults'
 >): ReactElement {
   const { messages } = useInternationalization()
