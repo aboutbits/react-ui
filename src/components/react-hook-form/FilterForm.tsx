@@ -3,9 +3,9 @@ import {
   DefaultValues,
   FieldValues,
   SubmitHandler,
-  useForm,
   UseFormProps,
   useFormState,
+  useForm,
 } from 'react-hook-form'
 import { isEqual } from 'lodash'
 import { ClassNameProps } from '../types'
