@@ -13,7 +13,7 @@ export type NumberFormFieldProps<
 /**
  * An [InputField](../?path=/docs/components-form-inputfield--default-story) within the context of a `react-hook-form` form and with the default type `number`.
  *
- * The form value that is returned for validation is of type `number | null`. `null` is returned if the input is an empty string.
+ * The form value that is returned for validation is of type `number | null`. `null` is returned if the input is an empty string or nullish.
  */
 export const NumberFormField = forwardRef(function NumberFormField<
   TFieldValues extends FieldValues = FieldValues,
@@ -26,8 +26,8 @@ export const NumberFormField = forwardRef(function NumberFormField<
     <InputFormField
       type="number"
       registerOptions={{
-        setValueAs: (input) => {
-          if (input === '') {
+        setValueAs: (input: string | null | undefined) => {
+          if (input === '' || input === null || input === undefined) {
             return null
           }
           return Number(input)
