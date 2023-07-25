@@ -1,21 +1,21 @@
-import { Fieldset, FieldsetProps } from './primitive'
+import { FieldSet, FieldSetProps } from './primitive'
 import { FormTone, Status, StatusProps } from './types'
 
-export type FieldsetFieldProps = Omit<FieldsetProps, 'tone'> & StatusProps
+export type FieldSetFieldProps = Omit<FieldSetProps, 'tone'> & StatusProps
 
 /**
  * A fieldset field independent of any form validation library.
  */
-export function FieldsetField({
+export function FieldSetField({
   status,
   children,
   ...props
-}: FieldsetFieldProps) {
+}: FieldSetFieldProps) {
   const tone = status === Status.invalid ? FormTone.critical : FormTone.neutral
 
   return (
-    <Fieldset {...props} tone={tone}>
+    <FieldSet {...props} tone={tone}>
       {children}
-    </Fieldset>
+    </FieldSet>
   )
 }

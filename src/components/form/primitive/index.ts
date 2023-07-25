@@ -1,5 +1,5 @@
 export * from './Checkbox'
-export * from './Fieldset'
+export * from './FieldSet'
 export * from './Input'
 export * from './InputIcon'
 export * from './InputLabel'

@@ -27,7 +27,7 @@ import {
 } from '../components/form'
 import {
   CheckboxFormField,
-  FieldsetFormField,
+  FieldSetFormField,
   Form,
   InputFormField,
   PaginatedResponse,
@@ -234,7 +234,7 @@ export const UserEdit: Story = () => {
                 placeholder="Username"
                 required
               />
-              <FieldsetFormField
+              <FieldSetFormField
                 label="Name"
                 fields={['name.first', 'name.last']}
                 indent={FieldSetIndent.label}
@@ -256,7 +256,7 @@ export const UserEdit: Story = () => {
                     required
                   />
                 </div>
-              </FieldsetFormField>
+              </FieldSetFormField>
               <InputFormField
                 id="email"
                 type="email"
@@ -301,7 +301,7 @@ export const UserEdit: Story = () => {
                 useGetData={useGetData}
                 paginationConfig={{ indexType: IndexType.ZERO_BASED }}
               />
-              <FieldsetFormField
+              <FieldSetFormField
                 label="Preferred UI mode"
                 fields={['uiMode']}
                 className="space-y-4"
@@ -315,8 +315,8 @@ export const UserEdit: Story = () => {
                     value={mode}
                   />
                 ))}
-              </FieldsetFormField>
-              <FieldsetFormField
+              </FieldSetFormField>
+              <FieldSetFormField
                 label="Privacy"
                 fields={['privacy']}
                 indent={FieldSetIndent.labelAndChildren}
@@ -326,8 +326,8 @@ export const UserEdit: Story = () => {
                   label="Accept the privacy policy"
                   applyInputHeight
                 />
-              </FieldsetFormField>
-              <FieldsetFormField
+              </FieldSetFormField>
+              <FieldSetFormField
                 label="Server validation"
                 fields={['serverValidationErrors']}
                 indent={FieldSetIndent.labelAndChildren}
@@ -338,7 +338,7 @@ export const UserEdit: Story = () => {
                   layout={ToggleSwitchLayout.spaceBetween}
                   applyInputHeight
                 />
-              </FieldsetFormField>
+              </FieldSetFormField>
               {showSuccess && (
                 <Alert
                   tone={Tone.success}

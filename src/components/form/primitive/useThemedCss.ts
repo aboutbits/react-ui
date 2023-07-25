@@ -3,7 +3,7 @@ import { useTheme } from '../../../framework'
 import { Mode, ShowRequiredProps, Size } from '../../types'
 import { FormTone, FormVariant } from '../types'
 import { CheckboxLayout } from './Checkbox'
-import { FieldSetIndent } from './Fieldset'
+import { FieldSetIndent } from './FieldSet'
 import { RadioLayout } from './Radio'
 import { ToggleSwitchLayout } from './ToggleSwitch'
 
@@ -268,7 +268,7 @@ export function useRadioIconCss({
   )
 }
 
-export function useFieldsetCss({ indent }: { indent: FieldSetIndent }) {
+export function useFieldSetCss({ indent }: { indent: FieldSetIndent }) {
   const {
     form: { fieldset: theme },
   } = useTheme()
@@ -276,7 +276,7 @@ export function useFieldsetCss({ indent }: { indent: FieldSetIndent }) {
   return classNames(theme.container.indent[indent])
 }
 
-export function useFieldsetLegendCss({
+export function useFieldSetLegendCss({
   mode,
   tone,
   disabled,

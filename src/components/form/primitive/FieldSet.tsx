@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { ReactNode } from 'react'
 import { Mode, ModeProps, ShowRequiredProps } from '../../types'
 import { FormTone, FormToneProps } from '../types'
-import { useFieldsetCss, useFieldsetLegendCss } from './useThemedCss'
+import { useFieldSetCss, useFieldSetLegendCss } from './useThemedCss'
 
 export enum FieldSetIndent {
   none = 'none',
@@ -10,7 +10,7 @@ export enum FieldSetIndent {
   label = 'label',
 }
 
-export type FieldsetProps = React.DetailedHTMLProps<
+export type FieldSetProps = React.DetailedHTMLProps<
   React.FieldsetHTMLAttributes<HTMLFieldSetElement>,
   HTMLFieldSetElement
 > &
@@ -28,7 +28,7 @@ export type FieldsetProps = React.DetailedHTMLProps<
  *
  * The `indent` property can be used to control the indentation of the component (which may depend on its position and the components it contains).
  */
-export function Fieldset({
+export function FieldSet({
   mode = Mode.light,
   tone = FormTone.neutral,
   indent = FieldSetIndent.none,
@@ -38,9 +38,9 @@ export function Fieldset({
   children,
   showRequired,
   ...props
-}: FieldsetProps) {
-  const fieldsetCss = useFieldsetCss({ indent })
-  const fieldsetLegendCss = useFieldsetLegendCss({
+}: FieldSetProps) {
+  const fieldsetCss = useFieldSetCss({ indent })
+  const fieldsetLegendCss = useFieldSetLegendCss({
     mode,
     tone,
     disabled,
