@@ -9,7 +9,7 @@ export function InternationalizationMessages({
   items: (keyof typeof defaultMessages)[]
 }): ReactElement {
   const messages = Object.fromEntries(
-    items.map((item) => [item, defaultMessages[item]])
+    items.map((item) => [item, defaultMessages[item]]),
   )
 
   return (

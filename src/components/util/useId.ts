@@ -20,10 +20,10 @@ let id = 0
 const useIsomorphicLayoutEffect = canUseDOM() ? useLayoutEffect : useEffect
 
 function canUseDOM() {
-  return !!(
+  return Boolean(
     typeof window !== 'undefined' &&
-    window.document &&
-    window.document.createElement
+      typeof window.document !== 'undefined' &&
+      typeof window.document.createElement !== 'undefined',
   )
 }
 
@@ -31,22 +31,16 @@ function genId() {
   return ++id
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line
 const maybeReactUseId: undefined | (() => string) = (React as any)[
   'useId'.toString()
 ]
 
 function useId(idFromProps: string): string
-function useId(idFromProps: number): number
-function useId(idFromProps: string | number): string | number
-function useId(idFromProps: string | undefined | null): string | undefined
-function useId(idFromProps: number | undefined | null): number | undefined
-function useId(
-  idFromProps: string | number | undefined | null
-): string | number | undefined
-function useId(): string | undefined
+function useId(idFromProps: undefined | null): undefined
+function useId(idFromProps?: string | undefined | null): string | undefined
 
-function useId(providedId?: number | string | undefined | null) {
+function useId(providedId?: string | undefined | null) {
   if (maybeReactUseId !== undefined) {
     const generatedId = maybeReactUseId()
     return providedId ?? generatedId
@@ -69,7 +63,7 @@ function useId(providedId?: number | string | undefined | null) {
   }, [])
 
   useEffect(() => {
-    if (serverHandoffComplete === false) {
+    if (!serverHandoffComplete) {
       // Flag all future uses of `useId` to skip the update dance. This is in
       // `useEffect` because it goes after `useLayoutEffect`, ensuring we don't
       // accidentally bail out of the patch-up dance prematurely.

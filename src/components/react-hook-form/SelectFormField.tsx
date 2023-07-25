@@ -21,7 +21,7 @@ import { useFieldError } from './util/useFieldError'
 
 export type SelectFormFieldProps<
   TFieldValues extends FieldValues,
-  TFieldName extends FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues>,
 > = Omit<SelectFieldProps, 'status' | 'onChange' | 'onBlur'> & {
   name: TFieldName
   transformEmptyToNull?: boolean
@@ -38,7 +38,7 @@ export type SelectFormFieldProps<
  */
 export const SelectFormField = forwardRef(function SelectFormField<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >(
   {
     mode,
@@ -50,11 +50,11 @@ export const SelectFormField = forwardRef(function SelectFormField<
     children,
     ...props
   }: SelectFormFieldProps<TFieldValues, TFieldName>,
-  ref: ForwardedRef<HTMLSelectElement>
+  ref: ForwardedRef<HTMLSelectElement>,
 ) {
   const { register } = useFormContext<TFieldValues>()
   const { ref: formFieldRef, ...formFieldProps } = register<TFieldName>(name, {
-    setValueAs: (input) => {
+    setValueAs: (input: unknown) => {
       if (input === '' && transformEmptyToNull) {
         return null
       }
@@ -75,7 +75,7 @@ export const SelectFormField = forwardRef(function SelectFormField<
     const childrenArray = Children.toArray(children)
 
     const childWithFormValueExists = childrenArray.some(
-      (child) => isOption(child) && child.props.value === formValue
+      (child) => isOption(child) && child.props.value === formValue,
     )
 
     if (!childWithFormValueExists) {
@@ -101,7 +101,7 @@ export const SelectFormField = forwardRef(function SelectFormField<
         formFieldRef(e)
         forwardedRef.current = e
       }}
-      message={error?.message?.toString() || message}
+      message={error?.message ?? message}
       status={error ? Status.invalid : undefined}
     >
       {children}
@@ -110,7 +110,7 @@ export const SelectFormField = forwardRef(function SelectFormField<
 })
 
 function isOption(
-  child: ReactNode
+  child: ReactNode,
 ): child is ReactElement<ComponentProps<typeof Option>> {
   return isValidElement(child) && child.type === Option
 }

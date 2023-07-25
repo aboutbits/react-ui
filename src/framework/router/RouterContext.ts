@@ -7,18 +7,18 @@ export type Router = {
 
 export const defaultRouter: Router = {
   back: () => {
-    if (window) {
+    if (typeof window !== 'undefined') {
       window.history.back()
     }
   },
   replace: (path: string) => {
-    if (window) {
+    if (typeof window !== 'undefined') {
       window.location.href = path
     }
   },
 }
 
-export const RouterContext = createContext<Router>(<Router>defaultRouter)
+export const RouterContext = createContext<Router>(defaultRouter)
 
 export function useRouter(): Router {
   return useContext(RouterContext)

@@ -11,7 +11,7 @@ import { useFieldError } from './util/useFieldError'
 
 export type InputFormFieldProps<
   TFieldValues extends FieldValues,
-  TFieldName extends FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues>,
 > = Omit<InputFieldProps, 'status' | 'onChange' | 'onBlur'> & {
   name: TFieldName
   transformEmptyToNull?: boolean
@@ -25,7 +25,7 @@ export type InputFormFieldProps<
  */
 export const InputFormField = forwardRef(function InputFormField<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >(
   {
     mode,
@@ -36,11 +36,11 @@ export const InputFormField = forwardRef(function InputFormField<
     message,
     ...props
   }: InputFormFieldProps<TFieldValues, TFieldName>,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   const { register } = useFormContext<TFieldValues>()
   const { ref: formFieldRef, ...formFieldProps } = register<TFieldName>(name, {
-    setValueAs: (input) => {
+    setValueAs: (input: unknown) => {
       if (input === '' && transformEmptyToNull) {
         return null
       }
@@ -62,7 +62,7 @@ export const InputFormField = forwardRef(function InputFormField<
         formFieldRef(e)
         forwardedRef.current = e
       }}
-      message={error?.message?.toString() || message}
+      message={error?.message ?? message}
       status={error ? Status.invalid : undefined}
     />
   )

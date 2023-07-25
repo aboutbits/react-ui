@@ -27,7 +27,7 @@ export function DialogHeaderCloseAction({
   return (
     <DialogHeaderLeftActionIcon
       icon={icon}
-      label={label || messages['button.close']}
+      label={label ?? messages['button.close']}
       {...props}
     />
   )

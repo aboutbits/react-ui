@@ -24,7 +24,7 @@ export type UseHandleRequestOptions<V, R, E> = {
 }
 
 export type UseHandleRequestTrigger<V, R> = (
-  values: V
+  values: V,
 ) => Promise<R | undefined>
 
 export type UseHandleRequestReturn<V, R> = {
@@ -36,10 +36,10 @@ export type UseHandleRequestReturn<V, R> = {
 export function useHandleRequest<
   Values = void,
   Response = unknown,
-  Error = unknown
+  Error = unknown,
 >(
   requestAction: (values: Values) => Promise<Response>,
-  options?: UseHandleRequestOptions<Values, Response, Error>
+  options?: UseHandleRequestOptions<Values, Response, Error>,
 ): UseHandleRequestReturn<Values, Response> {
   const [isRequesting, setIsRequesting] = useState(false)
   const [apiErrorMessage, setApiErrorMessage] = useState<string>()
@@ -73,7 +73,7 @@ export function useHandleRequest<
             errorBody,
           })
           if (options?.throwOnError) {
-            throw error as Error
+            throw error
           }
         }
         return undefined
@@ -81,7 +81,7 @@ export function useHandleRequest<
         setIsRequesting(false)
       }
     },
-    [messages, options, requestAction, isMounted]
+    [messages, options, requestAction, isMounted],
   )
 
   return {

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
-import React, { ReactNode } from 'react'
+import { ReactNode, forwardRef } from 'react'
 import {
   LinkComponentProps,
   useLinkComponent,
@@ -30,12 +30,12 @@ export type SectionListItemButtonProps = ClassNameProps & {
   children?: ReactNode
 }
 
-export const SectionListItemButton = React.forwardRef<
+export const SectionListItemButton = forwardRef<
   HTMLButtonElement,
   SectionListItemButtonProps
 >(function SectionListItemButton(
   { children, onClick, className, ...props },
-  ref
+  ref,
 ) {
   const { section } = useTheme()
 
@@ -45,7 +45,7 @@ export const SectionListItemButton = React.forwardRef<
       className={classNames(
         section.listItemButton.base,
         section.listItem.base,
-        className
+        className,
       )}
       ref={ref}
       {...props}
@@ -62,12 +62,12 @@ export const SectionListItemButton = React.forwardRef<
 
 export type SectionListItemLinkProps = LinkComponentProps
 
-export const SectionListItemLink = React.forwardRef<
+export const SectionListItemLink = forwardRef<
   HTMLAnchorElement,
   SectionListItemLinkProps
 >(function SectionListItemLink(
   { children, className, internal = true, ...props },
-  ref
+  ref,
 ) {
   const LinkComponent = useLinkComponent()
   const { section } = useTheme()
@@ -77,7 +77,7 @@ export const SectionListItemLink = React.forwardRef<
       className={classNames(
         section.listItemLink.base,
         section.listItem.base,
-        className
+        className,
       )}
       internal={internal}
       ref={ref}

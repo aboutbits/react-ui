@@ -35,6 +35,7 @@ yarn-error.log*
 /dist
 .vercel
 storybook-static
+*.tsbuildinfo
 
 # ESLint
 .eslintcache

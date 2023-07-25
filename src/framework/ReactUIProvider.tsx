@@ -32,7 +32,7 @@ export function ReactUIProvider({
   const linkComponentFromContext = useContext(LinkComponentContext)
   const routerComponentFromContext = useContext(RouterContext)
   const internationalizationFromContext = useContext(
-    InternationalizationContext
+    InternationalizationContext,
   )
   const mergedInternationalization = useMemo(() => {
     if (internationalization) {

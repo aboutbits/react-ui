@@ -28,7 +28,7 @@ export const CheckboxField = forwardRef<HTMLInputElement, CheckboxFieldProps>(
       layout = CheckboxLayout.start,
       ...props
     },
-    ref
+    ref,
   ) {
     const tone = status === Status.invalid ? FormTone.critical : undefined
 
@@ -41,7 +41,7 @@ export const CheckboxField = forwardRef<HTMLInputElement, CheckboxFieldProps>(
           layout={layout}
           ref={ref}
         />
-        {message && (
+        {message !== undefined && (
           <InputMessage
             mode={mode}
             tone={tone}
@@ -52,5 +52,5 @@ export const CheckboxField = forwardRef<HTMLInputElement, CheckboxFieldProps>(
         )}
       </div>
     )
-  }
+  },
 )

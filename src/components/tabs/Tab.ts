@@ -26,7 +26,7 @@ export function useTab<T extends HTMLElement>({ name, active }: TabProps) {
   const className = useMemo(
     () =>
       classNames(tabs.tab.base, tabActive ? tabs.tab.active : tabs.tab.normal),
-    [tabs, tabActive]
+    [tabs, tabActive],
   )
 
   const { elementRef: ref } = useScrollToElementOnFirstRender<T>({

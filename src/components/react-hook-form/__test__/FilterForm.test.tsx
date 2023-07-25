@@ -32,7 +32,7 @@ const MyForm = ({
   // The requestSubmit has to be mocked, since it is not implement in jsdom
   const formRef = useCallback((formElement: HTMLFormElement | null) => {
     if (formElement) {
-      formElement.requestSubmit = async () => {
+      formElement.requestSubmit = () => {
         const event = new Event('submit', {
           bubbles: true,
           cancelable: true,
@@ -67,7 +67,7 @@ describe('FilterForm', () => {
   test('should not submit form on mount', async () => {
     const handleSubmit = vi.fn()
     render(
-      <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />
+      <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />,
     )
 
     await waitFor(async () => {
@@ -79,7 +79,7 @@ describe('FilterForm', () => {
   test('should submit form only once on data change and receiving new default values', async () => {
     const handleSubmit = vi.fn()
     const { rerender } = render(
-      <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />
+      <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />,
     )
 
     await act(async () => {
@@ -103,7 +103,7 @@ describe('FilterForm', () => {
           name: 'John',
           color: '',
         }}
-      />
+      />,
     )
 
     await waitFor(async () => {
@@ -115,7 +115,7 @@ describe('FilterForm', () => {
   test('should change field values when default values change', async () => {
     const handleSubmit = vi.fn()
     const { rerender } = render(
-      <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />
+      <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />,
     )
 
     expect(screen.getByLabelText('name')).toHaveValue('')
@@ -125,7 +125,7 @@ describe('FilterForm', () => {
       <MyForm
         onSubmit={handleSubmit}
         defaultValues={{ name: 'Jane', color: 'green' }}
-      />
+      />,
     )
 
     expect(screen.getByLabelText('name')).toHaveValue('Jane')
@@ -140,7 +140,7 @@ describe('FilterForm', () => {
   test('should only change non-dirty field values when default values change', async () => {
     const handleSubmit = vi.fn()
     const { rerender } = render(
-      <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />
+      <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />,
     )
 
     expect(screen.getByLabelText('name')).toHaveValue('')
@@ -155,7 +155,7 @@ describe('FilterForm', () => {
       <MyForm
         onSubmit={handleSubmit}
         defaultValues={{ name: 'Jane', color: 'green' }}
-      />
+      />,
     )
 
     expect(screen.getByLabelText('name')).toHaveValue('John')
@@ -165,7 +165,7 @@ describe('FilterForm', () => {
   test('should submit after value change after rerender', async () => {
     const handleSubmit = vi.fn()
     const { rerender } = render(
-      <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />
+      <MyForm onSubmit={handleSubmit} defaultValues={emptyDefaultValues} />,
     )
 
     expect(screen.getByLabelText('name')).toHaveValue('')
@@ -175,7 +175,7 @@ describe('FilterForm', () => {
       <MyForm
         onSubmit={handleSubmit}
         defaultValues={{ name: 'Jane', color: 'green' }}
-      />
+      />,
     )
 
     await act(async () => {

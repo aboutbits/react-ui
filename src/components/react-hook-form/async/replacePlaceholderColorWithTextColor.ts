@@ -13,16 +13,18 @@ export const replacePlaceholderColorWithTextColor = (css: string): string => {
       // Removes TailwindCSS text-<color>
       .filter((item) =>
         item.includes('text')
-          ? !!item.match(
-              /:|(text-(left|center|right|justify)|text-opacity-.*)/g
+          ? Boolean(
+              item.match(
+                /:|(text-(left|center|right|justify)|text-opacity-.*)/g,
+              ),
             )
-          : true
+          : true,
       )
       // Transforms TailwindCSS placeholder:text-* to text-*
       .map((item) =>
         item.includes('placeholder:text-')
           ? item.replace('placeholder:text-', 'text-')
-          : item
+          : item,
       )
       .join(' ')
   )

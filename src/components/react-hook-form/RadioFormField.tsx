@@ -32,7 +32,7 @@ export const RadioFormField = forwardRef<
         formFieldRef(e)
         forwardedRef.current = e
       }}
-      message={error?.message?.toString() || message}
+      message={error?.message ?? message}
       status={error ? Status.invalid : undefined}
     />
   )

@@ -16,7 +16,7 @@ export const DialogListItemButton = forwardRef<
   React.PropsWithChildren<DialogListItemButtonProps>
 >(function DialogListItemButton(
   { children, onClick, className, ...props },
-  ref
+  ref,
 ) {
   const { dialog } = useTheme()
 
@@ -26,7 +26,7 @@ export const DialogListItemButton = forwardRef<
       className={classNames(
         dialog.listItemButton.base,
         dialog.listItem.base,
-        className
+        className,
       )}
       ref={ref}
       {...props}

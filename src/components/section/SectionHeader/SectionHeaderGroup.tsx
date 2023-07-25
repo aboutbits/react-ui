@@ -23,7 +23,7 @@ export function SectionHeaderGroup({
       className={classNames(
         section.headerGroup.base,
         section.headerGroup.spacing[spacing],
-        className
+        className,
       )}
     >
       {children}

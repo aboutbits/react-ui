@@ -18,7 +18,7 @@ export type SelectItemFormFieldProps<
   Item,
   SelectedItem extends Item | null,
   ItemId,
-  Error
+  Error,
 > = Pick<
   SelectItemInputProps<Item, SelectedItem>,
   'name' | 'label' | 'placeholder' | 'disabled'
@@ -58,7 +58,7 @@ export function SelectItemFormField<
   Item,
   SelectedItem extends Item | null,
   ItemId,
-  Error
+  Error,
 >({
   disabled = false,
   name,
@@ -85,7 +85,7 @@ export function SelectItemFormField<
 
   const [showDialog, setShowDialog] = useState<boolean>(false)
   const selectedItem = useRef<Item | null>(
-    initialItem === undefined ? null : initialItem
+    initialItem === undefined ? null : initialItem,
   )
 
   return (
@@ -96,13 +96,15 @@ export function SelectItemFormField<
         placeholder={placeholder}
         selectedItem={selectedItem.current}
         renderItem={renderInputItem ? renderInputItem : renderListItem}
-        onOpenSelect={() => setShowDialog(true)}
+        onOpenSelect={() => {
+          setShowDialog(true)
+        }}
         onClear={() => {
           field.onChange(null)
           selectedItem.current = null
         }}
         disabled={disabled}
-        hasError={!!fieldState.error}
+        hasError={Boolean(fieldState.error)}
         required={required}
         hideRequired={hideRequired}
         mode={mode}

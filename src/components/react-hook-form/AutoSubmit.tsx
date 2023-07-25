@@ -19,7 +19,7 @@ export function AutoSubmit({
   useEffect(() => {
     if (initialRender.current) {
       initialRender.current = false
-    } else if (debouncedValueToSave) {
+    } else {
       formInput.current?.form?.requestSubmit()
       dataChanged.current = false
     }

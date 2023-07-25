@@ -4,7 +4,7 @@ import { InputFormField, InputFormFieldProps } from './InputFormField'
 
 export type NumberFormFieldProps<
   TFieldValues extends FieldValues,
-  TFieldName extends FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues>,
 > = Omit<
   InputFormFieldProps<TFieldValues, TFieldName>,
   'transformEmptyToNull' | 'type'
@@ -17,10 +17,10 @@ export type NumberFormFieldProps<
  */
 export const NumberFormField = forwardRef(function NumberFormField<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >(
   { ...props }: NumberFormFieldProps<TFieldValues, TFieldName>,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   return (
     <InputFormField

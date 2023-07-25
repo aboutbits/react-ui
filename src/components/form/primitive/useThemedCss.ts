@@ -34,7 +34,7 @@ export function useInputCss({
       ? [modeCss.base.disabled, modeVariantCss.disabled]
       : [modeCss.base.tone[tone], modeVariantCss.tone[tone]],
     withIconStart && theme.withIconStart,
-    withIconEnd && theme.withIconEnd
+    withIconEnd && theme.withIconEnd,
   )
 }
 
@@ -55,7 +55,7 @@ export function useInputLabelCss({
   return classNames(
     theme.base,
     disabled ? theme[mode].disabled : theme[mode].tone[tone],
-    showRequired && theme[mode].required
+    showRequired && theme[mode].required,
   )
 }
 
@@ -77,7 +77,7 @@ export function useInputMessageCss({
   return classNames(
     theme.base,
     !noIndent && theme.indent,
-    disabled ? theme[mode].disabled : theme[mode].tone[tone]
+    disabled ? theme[mode].disabled : theme[mode].tone[tone],
   )
 }
 
@@ -148,7 +148,7 @@ export function useCheckboxCss({
     theme.base,
     theme.layout[layout],
     applyInputHeight && [theme.inputHeight.base, theme.inputHeight.size[size]],
-    disabled ? theme.disabled : theme.normal
+    disabled ? theme.disabled : theme.normal,
   )
 }
 
@@ -170,10 +170,8 @@ export function useCheckboxLabelCss({
   return classNames(
     theme.base,
     theme.size[size],
-    disabled
-      ? theme.mode[mode].disabled
-      : theme.mode[mode][disabled ? 'disabled' : 'normal'],
-    showRequired && theme.mode[mode].required
+    theme.mode[mode][disabled ? 'disabled' : 'normal'],
+    showRequired && theme.mode[mode].required,
   )
 }
 
@@ -206,7 +204,7 @@ export function useRadioCss({
     theme.base,
     theme.layout[layout],
     applyInputHeight && [theme.inputHeight.base, theme.inputHeight.size[size]],
-    disabled ? theme.disabled : theme.normal
+    disabled ? theme.disabled : theme.normal,
   )
 }
 
@@ -227,9 +225,7 @@ export function useRadioLabelCss({
   return classNames(
     theme.base,
     theme.size[size],
-    disabled
-      ? theme.mode[mode].disabled
-      : theme.mode[mode][disabled ? 'disabled' : 'normal']
+    theme.mode[mode][disabled ? 'disabled' : 'normal'],
   )
 }
 
@@ -268,7 +264,7 @@ export function useRadioIconCss({
     theme.mode[mode],
     theme[disabledState],
     theme[checkedState].base,
-    theme[checkedState].modeState[mode][disabledState]
+    theme[checkedState].modeState[mode][disabledState],
   )
 }
 
@@ -333,7 +329,7 @@ export function useToggleSwitchCss({
     theme.base,
     theme.layout[layout],
     applyInputHeight && [theme.inputHeight.base, theme.inputHeight.size[size]],
-    disabled ? theme.disabled : theme.normal
+    disabled ? theme.disabled : theme.normal,
   )
 }
 
@@ -357,7 +353,7 @@ export function useToggleSwitchLabelCss({
     theme.base,
     theme.size[size],
     disabled ? theme.mode[mode].disabled : theme.mode[mode].normal,
-    showRequired && theme.mode[mode].required
+    showRequired && theme.mode[mode].required,
   )
 }
 
@@ -390,7 +386,7 @@ export function useToggleSwitchSwitchCss({
     theme.base,
     theme.size[size].base,
     disabled ? theme.disabled : theme.normal,
-    disabled ? theme.modeState[mode].disabled : theme.modeState[mode].normal
+    disabled ? theme.modeState[mode].disabled : theme.modeState[mode].normal,
   )
 }
 
@@ -413,6 +409,6 @@ export function useToggleSwitchHandleCss({
     theme.base,
     theme.size[size],
     disabled ? theme.disabled : theme.normal,
-    disabled ? theme.modeState[mode].disabled : theme.modeState[mode].normal
+    disabled ? theme.modeState[mode].disabled : theme.modeState[mode].normal,
   )
 }

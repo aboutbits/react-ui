@@ -145,7 +145,7 @@ export function SelectItemDialogSearch({
         onSubmit={(event) => {
           // Stop propagation to prevent submitting a form outside of the dialog (bubbling up the React tree)
           event.stopPropagation()
-          return form.handleSubmit(actions.updateQuery)(event)
+          void form.handleSubmit(actions.updateQuery)(event)
         }}
         className={theme.selectItem.form}
       >

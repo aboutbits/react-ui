@@ -24,7 +24,7 @@ export function HeaderCloseAction({
   return (
     <HeaderLeftActionIcon
       icon={icon}
-      label={label || messages['button.close']}
+      label={label ?? messages['button.close']}
       {...props}
     />
   )

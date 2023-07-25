@@ -21,7 +21,7 @@ export type FormProps<F extends FieldValues> = Omit<
 
 export const Form = forwardRef(function FormComponent<F extends FieldValues>(
   { form, onSubmit, children, ...props }: FormProps<F>,
-  ref: ForwardedRef<HTMLFormElement>
+  ref: ForwardedRef<HTMLFormElement>,
 ): ReactElement {
   return (
     <FormProvider {...form}>

@@ -1,9 +1,14 @@
 {
   "name": "@aboutbits/react-ui",
   "version": "1.5.1",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "dist/types/index.d.ts",
+      "import": "dist/esm/index.js",
+      "require": "dist/cjs/index.js"
+    }
+  },
   "files": [
     "dist/**/*",
     "tailwind-preset.js"
@@ -31,7 +36,7 @@
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:types": "tsc -p tsconfig.types.json",
     "build-storybook": "storybook build",
-    "lint": "eslint --ext .js,.ts,.tsx,.jsx,.stories.mdx,.docs.mdx,.json --cache .",
+    "lint": "eslint --cache .",
     "lint:fix": "npm run lint -- --fix",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest watch --passWithNoTests",
@@ -46,19 +51,22 @@
   "dependencies": {
     "@aboutbits/pagination": "^1.1.0",
     "@aboutbits/react-material-icons": "^1.1.2",
-    "@aboutbits/react-pagination": "^0.0.10 || ^1.0.0",
     "@aboutbits/react-toolbox": "^0.1.2",
     "@headlessui/react": "^1.7.7",
     "axios": "^1.4.0",
     "classnames": "^2.0.0",
     "lodash": "^4.17.21",
-    "react-hook-form": "^7.44.3"
+    "react-hook-form": "^7.45.2"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@hookform/resolvers": "^2.9.10",
+    "@aboutbits/eslint-config": "^2.1.2",
+    "@aboutbits/prettier-config": "^1.6.0",
+    "@aboutbits/react-pagination": "^1.0.2",
+    "@aboutbits/ts-config": "^1.1.2",
+    "@hookform/resolvers": "^3.1.1",
     "@storybook/addon-essentials": "^7.0.26",
     "@storybook/addon-links": "^7.0.26",
     "@storybook/addon-mdx-gfm": "^7.0.26",
@@ -75,23 +83,23 @@
     "@types/prettier": "^2.7.3",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
-    "@typescript-eslint/eslint-plugin": "^5.49.0",
-    "@typescript-eslint/parser": "^5.49.0",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "autoprefixer": "^10.4.13",
     "cssnano": "^5.1.14",
-    "eslint": "^8.32.0",
-    "eslint-config-prettier": "^8.6.0",
+    "eslint": "^8.45.0",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-mdx": "^2.0.5",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.32.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-mdx": "^2.1.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-storybook": "^0.6.12",
+    "eslint-plugin-storybook": "^0.6.13",
+    "eslint-plugin-tailwindcss": "^3.13.0",
     "jsdom": "^22.1.0",
     "next": "^13.1.5",
     "postcss": "^8.4.21",
-    "prettier": "^2.8.3",
+    "prettier": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-textarea-autosize": "^8.5.2",
@@ -103,5 +111,6 @@
     "vite": "^4.4.3",
     "vitest": "^0.33.0",
     "zod": "^3.21.4"
-  }
+  },
+  "prettier": "@aboutbits/prettier-config"
 }
