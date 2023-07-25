@@ -16,13 +16,13 @@ import { z } from 'zod'
 import {
   InternationalizationMessages,
   Theme,
-} from '../../../../.storybook/components'
-import { ErrorBody } from '../../util'
-import { Form } from '../Form'
+} from '../../../.storybook/components'
+import { ErrorBody } from '../util'
+import { Form } from './Form'
 import {
   SearchQueryParameters,
   PaginatedResponse,
-} from './SelectItemFormFieldDialog'
+} from './SelectItem/SelectItemFormFieldDialog'
 import { SelectItemFormField } from './SelectItemFormField'
 
 type User = {

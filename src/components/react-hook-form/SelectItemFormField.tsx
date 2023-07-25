@@ -1,18 +1,21 @@
 import { ReactNode, useRef, useState } from 'react'
 import { useController } from 'react-hook-form'
-import { DialogProps } from '../../dialog'
-import { FormVariantProps } from '../../form'
+import { DialogProps } from '../dialog'
+import { FormVariantProps } from '../form'
 import {
   ClassNameProps,
   HideRequiredProps,
   ModeProps,
   RequiredProps,
-} from '../../types'
+} from '../types'
 import {
   SelectItemFormFieldDialog,
   SelectItemFormFieldDialogProps,
-} from './SelectItemFormFieldDialog'
-import { SelectItemInput, SelectItemInputProps } from './SelectItemInput'
+} from './SelectItem/SelectItemFormFieldDialog'
+import {
+  SelectItemFormFieldInput,
+  SelectItemFormFieldInputProps,
+} from './SelectItem/SelectItemFormFieldInput'
 
 export type SelectItemFormFieldProps<
   Item,
@@ -20,7 +23,7 @@ export type SelectItemFormFieldProps<
   ItemId,
   Error,
 > = Pick<
-  SelectItemInputProps<Item, SelectedItem>,
+  SelectItemFormFieldInputProps<Item, SelectedItem>,
   'name' | 'label' | 'placeholder' | 'disabled'
 > & {
   renderInputItem?: (item: Item) => ReactNode
@@ -90,7 +93,7 @@ export function SelectItemFormField<
 
   return (
     <>
-      <SelectItemInput
+      <SelectItemFormFieldInput
         name={name}
         label={label}
         placeholder={placeholder}
