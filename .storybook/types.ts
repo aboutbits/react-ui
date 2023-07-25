@@ -1,4 +1,4 @@
 export enum Background {
-  White = 'WHITE',
-  Black = 'BLACK',
+  White = 'White',
+  Black = 'Black',
 }

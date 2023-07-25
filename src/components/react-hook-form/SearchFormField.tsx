@@ -1,25 +1,23 @@
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues } from 'react-hook-form'
-import { useInternationalization } from '../../../framework'
-import { FormVariant } from '../../form'
-import { InputFormField, InputFormFieldProps } from '../../react-hook-form'
+import { useInternationalization } from '../../framework'
+import { InputFormField, InputFormFieldProps } from './InputFormField'
 
-// Make name optional to use 'search' as default
-export type SectionSearchProps<
+export type SearchFormFieldProps<
   TFieldValues extends FieldValues,
   TFieldName extends FieldPath<TFieldValues>
 > = Omit<InputFormFieldProps<TFieldValues, TFieldName>, 'ref' | 'name'> &
   Partial<Pick<InputFormFieldProps<TFieldValues, TFieldName>, 'name'>>
 
-export const SectionSearch = forwardRef(function SectionSearch<
+export const SearchFormField = forwardRef(function SearchFormField<
   TFieldValues extends FieldValues,
   TFieldName extends FieldPath<TFieldValues>
 >(
   {
     name = 'search' as TFieldName,
     ...props
-  }: SectionSearchProps<TFieldValues, TFieldName>,
+  }: SearchFormFieldProps<TFieldValues, TFieldName>,
   ref: ForwardedRef<HTMLInputElement>
 ) {
   const { messages } = useInternationalization()
@@ -29,7 +27,6 @@ export const SectionSearch = forwardRef(function SectionSearch<
       name={name}
       ref={ref}
       placeholder={messages['search.placeholder']}
-      variant={FormVariant.soft}
       iconStart={IconSearch}
       {...props}
     />

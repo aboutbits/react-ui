@@ -1,6 +1,6 @@
-import { waitFor, act, renderHook } from '@testing-library/react'
+import { act, renderHook, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
-import defaultMessages from '../../../framework/internationalization/defaultMessages.en'
+import { defaultMessages } from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleRequest } from '../useHandleRequest'
 
 describe('useHandleRequest', () => {

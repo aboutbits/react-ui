@@ -76,6 +76,7 @@ export function useHandleRequest<
             throw error as Error
           }
         }
+        return undefined
       } finally {
         setIsRequesting(false)
       }

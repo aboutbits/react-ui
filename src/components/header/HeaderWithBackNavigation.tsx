@@ -1,7 +1,10 @@
 import { ReactElement, ReactNode } from 'react'
-import { useRouter } from '../../framework'
+import {
+  HeaderBackAction,
+  HeaderBackActionOnClickOrFallbackUrlProps,
+  HeaderBackActionProps,
+} from './actions/HeaderBackAction'
 import { HeaderArea } from './areas/HeaderArea'
-import { HeaderBackAction } from './actions/HeaderBackAction'
 import { HeaderTitle } from './areas/HeaderTitle'
 
 export type HeaderWithBackNavigationProps = {
@@ -9,22 +12,38 @@ export type HeaderWithBackNavigationProps = {
    * Define a header title.
    **/
   title: ReactNode
-
-  /**
-   * Override default onBack action.
-   **/
-  onBack?: () => void
-}
+} & Pick<HeaderBackActionProps, 'icon'> &
+  (
+    | {
+        /**
+         * Override default onBack action.
+         **/
+        onBack: Exclude<HeaderBackActionProps['onClick'], undefined>
+        fallbackUrl?: never
+      }
+    | {
+        /**
+         * Define a fallback url if it's not possible to go back in browser history
+         */
+        fallbackUrl: Exclude<HeaderBackActionProps['fallbackUrl'], undefined>
+        onBack?: never
+      }
+  )
 
 export function HeaderWithBackNavigation({
   title,
+  icon,
   onBack,
+  fallbackUrl,
 }: HeaderWithBackNavigationProps): ReactElement {
-  const router = useRouter()
+  const onClickOrFallbackUrlProps = {
+    onClick: onBack,
+    fallbackUrl: fallbackUrl,
+  } as HeaderBackActionOnClickOrFallbackUrlProps
 
   return (
     <HeaderArea>
-      <HeaderBackAction onClick={onBack || router.back} />
+      <HeaderBackAction icon={icon} {...onClickOrFallbackUrlProps} />
       <HeaderTitle>{title}</HeaderTitle>
     </HeaderArea>
   )

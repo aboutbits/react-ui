@@ -3,10 +3,10 @@ import userEvent from '@testing-library/user-event'
 import { useCallback } from 'react'
 import { act } from 'react-dom/test-utils'
 import { vi } from 'vitest'
-import { ReactUIProvider, defaultTheme } from '../../../../framework'
-import { Option } from '../../../form'
-import { InputFormField, SelectFormField } from '../../../react-hook-form'
-import { SectionFilter } from '../SectionFilter'
+import { ReactUIProvider, defaultTheme } from '../../../framework'
+import { Option } from '../../form'
+import { InputFormField, SelectFormField } from '../../react-hook-form'
+import { FilterForm } from '../FilterForm'
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
@@ -44,7 +44,7 @@ const MyForm = ({
 
   return (
     <ReactUIProvider theme={defaultTheme}>
-      <SectionFilter
+      <FilterForm
         defaultValues={defaultValues}
         onSubmit={(data) => {
           onSubmit(data)
@@ -58,12 +58,12 @@ const MyForm = ({
           <Option value="red">Red</Option>
           <Option value="green">Green</Option>
         </SelectFormField>
-      </SectionFilter>
+      </FilterForm>
     </ReactUIProvider>
   )
 }
 
-describe('SectionFilter', () => {
+describe('FilterForm', () => {
   test('should not submit form on mount', async () => {
     const handleSubmit = vi.fn()
     render(
