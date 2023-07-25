@@ -7,7 +7,7 @@ import { useFieldError } from './util/useFieldError'
 
 export type TextAreaFormFieldProps<
   TFieldValues extends FieldValues,
-  TFieldName extends FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues>,
 > = Omit<TextAreaFieldProps, 'status' | 'onChange' | 'onBlur'> &
   Pick<
     InputFormFieldProps<TFieldValues, TFieldName>,
@@ -21,7 +21,7 @@ export type TextAreaFormFieldProps<
  */
 export const TextAreaFormField = forwardRef(function TextAreaFormField<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >(
   {
     mode,
@@ -32,11 +32,11 @@ export const TextAreaFormField = forwardRef(function TextAreaFormField<
     message,
     ...props
   }: TextAreaFormFieldProps<TFieldValues, TFieldName>,
-  ref: ForwardedRef<HTMLTextAreaElement>
+  ref: ForwardedRef<HTMLTextAreaElement>,
 ) {
   const { register } = useFormContext<TFieldValues>()
   const { ref: formFieldRef, ...formFieldProps } = register<TFieldName>(name, {
-    setValueAs: (input) => {
+    setValueAs: (input: unknown) => {
       if (input === '' && transformEmptyToNull) {
         return null
       }
@@ -58,7 +58,7 @@ export const TextAreaFormField = forwardRef(function TextAreaFormField<
         formFieldRef(e)
         forwardedRef.current = e
       }}
-      message={error?.message?.toString() || message}
+      message={error?.message ?? message}
       status={error ? Status.invalid : undefined}
     />
   )

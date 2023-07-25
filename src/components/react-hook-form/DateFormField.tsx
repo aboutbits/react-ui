@@ -9,7 +9,7 @@ import { InputField, InputFieldProps, Status } from '../form'
 
 export type DateFormFieldProps<
   TFieldValues extends FieldValues,
-  TFieldName extends FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues>,
 > = Omit<InputFieldProps, 'status' | 'onChange'> & {
   name: TFieldName
 }
@@ -21,10 +21,10 @@ export type DateFormFieldProps<
  */
 export const DateFormField = forwardRef(function DateFormField<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >(
   { name, message, ...props }: DateFormFieldProps<TFieldValues, TFieldName>,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   return (
     <Controller
@@ -56,7 +56,7 @@ export const DateFormField = forwardRef(function DateFormField<
             type="date"
             value={inputValue}
             onChange={inputOnChange}
-            message={error?.message?.toString() || message}
+            message={error?.message ?? message}
             status={error ? Status.invalid : undefined}
             ref={ref}
           />

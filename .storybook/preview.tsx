@@ -28,7 +28,7 @@ const LinkComponent = makeLinkComponent(
     <a ref={ref} href={href} {...props}>
       {children}
     </a>
-  )
+  ),
 )
 
 const preview: Preview = {
@@ -62,7 +62,7 @@ const preview: Preview = {
   decorators: [
     (Story) => {
       return (
-        <div className="text-paragraph-md">
+        <div>
           <ReactUIProvider theme={theme} linkComponent={LinkComponent}>
             <Story />
           </ReactUIProvider>

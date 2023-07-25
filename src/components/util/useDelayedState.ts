@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 
 export function useDelayedState<State>(
-  readyState: State
+  readyState: State,
 ): [State, (status: State, duration?: number) => void] {
   const readyStateRef = useRef<State>(readyState)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)

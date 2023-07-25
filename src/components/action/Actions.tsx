@@ -32,7 +32,7 @@ export function Actions({
       className={classNames(
         action.actions.base,
         action.actions.position[position],
-        className
+        className,
       )}
     >
       {children}

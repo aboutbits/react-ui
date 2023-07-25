@@ -26,7 +26,7 @@ export function DialogHeaderRow({
       className={classNames(
         dialog.headerRow.base,
         dialog.headerRow.layout[layout],
-        className
+        className,
       )}
     >
       {children}

@@ -44,14 +44,15 @@ export function HeaderBackAction({
   const { messages } = useInternationalization()
 
   const goBack: ComponentProps<typeof HeaderLeftActionIcon>['onClick'] = (
-    event
+    event,
   ) => {
     if (onClick) {
-      return onClick(event)
+      onClick(event)
+      return
     }
 
     const canGoBack =
-      window &&
+      typeof window !== 'undefined' &&
       'navigation' in window &&
       typeof window.navigation === 'object' &&
       window.navigation !== null &&
@@ -70,7 +71,7 @@ export function HeaderBackAction({
   return (
     <HeaderLeftActionIcon
       icon={icon}
-      label={label || messages['button.goBack']}
+      label={label ?? messages['button.goBack']}
       onClick={goBack}
       {...props}
     />

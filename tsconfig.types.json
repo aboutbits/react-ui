@@ -5,7 +5,8 @@
     "outDir": "./dist/types",
     "declaration": true,
     "declarationMap": true,
-    "removeComments": false
+    "removeComments": false,
+    "noEmit": false
   },
   "exclude": [
     "src/vitest.ts",

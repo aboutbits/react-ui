@@ -23,7 +23,7 @@ export function Tabs({
       scrollOnFirstRender,
       onChange,
     }),
-    [activeName, scrollOnFirstRender, onChange]
+    [activeName, scrollOnFirstRender, onChange],
   )
 
   return (

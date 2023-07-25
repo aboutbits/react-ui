@@ -14,11 +14,11 @@ export type FieldsetFormProps<TFieldValues extends FieldValues> = Omit<
  * The `FieldSetFormField` label will display an error state depending on the specified form `fields`.
  */
 export function FieldsetFormField<
-  TFieldValues extends FieldValues = FieldValues
+  TFieldValues extends FieldValues = FieldValues,
 >({ fields, children, ...props }: FieldsetFormProps<TFieldValues>) {
   const { errors } = useFormState({ name: fields })
 
-  const hasError = fields.some((name) => !!get(errors, name))
+  const hasError = fields.some((name) => Boolean(get(errors, name)))
 
   return (
     <FieldsetField {...props} status={hasError ? Status.invalid : undefined}>

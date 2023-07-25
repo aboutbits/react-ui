@@ -24,7 +24,7 @@ const meta = {
     label: 'Do you like this component?',
     fields: ['like'],
     children: (
-      <div className="flex flex-col sm:flex-row gap-y-2 gap-x-4 mt-4">
+      <div className="mt-4 flex flex-col gap-x-4 gap-y-2 sm:flex-row">
         {YES_NO.map((value) => (
           <RadioFormField
             key={value}

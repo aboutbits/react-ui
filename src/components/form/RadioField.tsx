@@ -28,7 +28,7 @@ export const RadioField = forwardRef<HTMLInputElement, RadioFieldProps>(
       layout = RadioLayout.start,
       ...props
     },
-    ref
+    ref,
   ) {
     const tone = status === Status.invalid ? FormTone.critical : undefined
 
@@ -41,7 +41,7 @@ export const RadioField = forwardRef<HTMLInputElement, RadioFieldProps>(
           layout={layout}
           ref={ref}
         />
-        {message && (
+        {message !== undefined && (
           <InputMessage
             mode={mode}
             tone={tone}
@@ -52,5 +52,5 @@ export const RadioField = forwardRef<HTMLInputElement, RadioFieldProps>(
         )}
       </div>
     )
-  }
+  },
 )

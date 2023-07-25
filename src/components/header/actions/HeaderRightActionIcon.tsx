@@ -8,7 +8,7 @@ import { HeaderButtonIcon, HeaderButtonIconProps } from './HeaderButtonIcon'
 export type HeaderRightActionIconProps = HeaderButtonIconProps
 
 export function HeaderRightActionIcon(
-  props: HeaderRightActionIconProps
+  props: HeaderRightActionIconProps,
 ): ReactElement {
   const { header } = useTheme()
 

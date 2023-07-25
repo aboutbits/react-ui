@@ -20,7 +20,7 @@ export function ContentMessageTitle({
       className={classNames(
         content.message.title.base,
         content.message.title.tone[tone],
-        className
+        className,
       )}
     >
       {children}

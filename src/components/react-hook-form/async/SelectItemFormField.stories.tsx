@@ -117,15 +117,17 @@ const useGetDataSuccess = ({
             }
           })
           .filter((user) => {
-            if (search) {
+            if (search !== undefined) {
               return user.name.includes(search)
             } else {
               return true
             }
-          })
+          }),
       )
     }, 1000)
-    return () => clearTimeout(id)
+    return () => {
+      clearTimeout(id)
+    }
   }, [search, page, size])
 
   if (data === undefined) {

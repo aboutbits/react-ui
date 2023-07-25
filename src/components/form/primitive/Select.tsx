@@ -37,7 +37,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       children,
       ...props
     },
-    ref
+    ref,
   ) {
     const selectCss = useSelectCss({
       mode,
@@ -56,5 +56,5 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {children}
       </select>
     )
-  }
+  },
 )

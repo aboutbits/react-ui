@@ -20,7 +20,7 @@ export function BreadcrumbLoading({
       <LoadingBar
         className={classNames(
           breadcrumbs.breadcrumbLoading.loadingBar,
-          loadingBarClassName
+          loadingBarClassName,
         )}
         {...restLoadingBarProps}
       />

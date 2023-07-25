@@ -37,7 +37,7 @@ export function DescriptionItem({
 }: DescriptionItemProps) {
   return (
     <>
-      {((hideIfEmpty && content) || !hideIfEmpty) && (
+      {((hideIfEmpty && Boolean(content)) || !hideIfEmpty) && (
         <DescriptionItemContainer className={className}>
           <DescriptionItemTitle>{title}</DescriptionItemTitle>
           <DescriptionItemContent {...contentProps}>
