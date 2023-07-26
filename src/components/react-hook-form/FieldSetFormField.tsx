@@ -1,6 +1,6 @@
 import { FieldPath, FieldValues } from 'react-hook-form'
 import { FieldSetField, FieldSetFieldProps, Status } from '../form'
-import { useFieldError } from './util'
+import { useFieldError } from '.'
 
 export type FieldSetFormProps<TFieldValues extends FieldValues> = Omit<
   FieldSetFieldProps,
@@ -12,7 +12,7 @@ export type FieldSetFormProps<TFieldValues extends FieldValues> = Omit<
 /**
  * A [FieldSetField](../?path=/docs/components-form-fieldsetfield--default-story) within the context of a `react-hook-form` form.
  *
- * The `FieldSetFormField` label will display an error state depending on the specified `name` of the radio form fields.
+ * The `FieldSetFormField` label will display an error state depending on the specified form `fields`.
  */
 export function FieldSetFormField<
   TFieldValues extends FieldValues = FieldValues,

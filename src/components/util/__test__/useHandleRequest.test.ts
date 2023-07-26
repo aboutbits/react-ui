@@ -33,7 +33,7 @@ describe('useHandleRequest', () => {
       useHandleRequest(onRequest, { onSuccess }),
     )
 
-    expect(result.current.apiErrorMessage).toBeNull()
+    expect(result.current.apiErrorMessage).toBeUndefined()
     expect(result.current.triggerRequest).toBeDefined()
     expect(result.current.isRequesting).toBeFalsy()
   })
@@ -87,7 +87,7 @@ describe('useHandleRequest', () => {
       void result.current.triggerRequest()
     })
 
-    expect(result.current.apiErrorMessage).toBeNull()
+    expect(result.current.apiErrorMessage).toBeUndefined()
     await waitFor(() => {
       expect(result.current.isRequesting).toBeFalsy()
     })

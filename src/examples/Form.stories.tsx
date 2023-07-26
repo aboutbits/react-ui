@@ -156,13 +156,23 @@ export const UserEdit: Story = () => {
     bio: z.string().nullable(),
     favProjectId: z.number().nullable(),
     uiMode: uiModeSchema,
-    privacy: z.literal(true),
+    privacy: z.boolean().transform((v, ctx) => {
+      if (v) {
+        return v
+      }
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'You must accept the privacy policy',
+      })
+      return z.NEVER
+    }),
     serverValidationErrors: z.boolean(),
   })
 
-  type Person = z.infer<typeof personSchema>
-
-  const defaultPerson: DefaultValues<Person> = {
+  type Person = z.output<typeof personSchema>
+  type PersonIn = z.input<typeof personSchema>
+  const defaultProject: Project = { id: 1, name: 'Project 1' }
+  const defaultPerson: DefaultValues<PersonIn> = {
     username: 'john.doe',
     email: 'john@aboutbits.it',
     name: {
@@ -172,12 +182,12 @@ export const UserEdit: Story = () => {
     language: 'EN',
     role: 'USER',
     bio: 'John is a software engineer from Bolzano, Italy',
-    favProjectId: 1,
-    privacy: true,
+    favProjectId: defaultProject.id,
+    privacy: false,
     serverValidationErrors: false,
   }
 
-  const form = useForm<Person>({
+  const form = useForm<PersonIn, unknown, Person>({
     resolver: zodResolver(personSchema),
     defaultValues: defaultPerson,
   })
@@ -198,7 +208,6 @@ export const UserEdit: Story = () => {
                     'Please choose another name',
                   ],
                   bio: ['Please provide a better bio'],
-                  privacy: ['You must accept the privacy policy'],
                 },
               },
             },
@@ -294,8 +303,8 @@ export const UserEdit: Story = () => {
                 dialogTitle="Projects"
                 dialogLabel="Projects"
                 noSearchResults="No projects available."
-                initialItem={{ id: 1, name: 'Project 1' }}
-                extractIdFromItem={(item: Project) => item.id}
+                initialItem={defaultProject}
+                extractIdFromItem={(item) => item.id}
                 renderListItem={(item) => item.name}
                 renderErrorMessage={(error) => error.message}
                 useGetData={useGetData}
