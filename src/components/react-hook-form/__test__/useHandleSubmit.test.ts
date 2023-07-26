@@ -55,7 +55,7 @@ describe('useHandleSubmit', () => {
       useHandleSubmit(form.current, submitAction),
     )
 
-    expect(result.current.apiErrorMessage).toBeNull()
+    expect(result.current.apiErrorMessage).toBeUndefined()
     expect(result.current.triggerSubmit).toBeDefined()
   })
 
@@ -150,7 +150,7 @@ describe('useHandleSubmit', () => {
       void result.current.triggerSubmit({})
     })
 
-    expect(result.current.apiErrorMessage).toBeNull()
+    expect(result.current.apiErrorMessage).toBeUndefined()
   })
 
   test('should set apiErrorMessage to fallbackErrorId on error without response', async () => {
