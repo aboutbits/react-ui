@@ -50,8 +50,8 @@ export function useHandleSubmit<
     },
     {
       ...options,
-      onError: ({ error, apiErrorMessage, values, errorBody }) => {
-        options?.onError?.({ error, apiErrorMessage, values, errorBody })
+      onError: async ({ error, apiErrorMessage, values, errorBody }) => {
+        await options?.onError?.({ error, apiErrorMessage, values, errorBody })
         setError(DEFAULT_ERROR_FIELD_PATH as Path<TFieldValues>, {
           type: 'custom',
           message: apiErrorMessage,
