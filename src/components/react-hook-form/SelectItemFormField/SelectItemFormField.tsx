@@ -1,21 +1,21 @@
 import { ReactNode, useState } from 'react'
 import { useController } from 'react-hook-form'
-import { DialogProps } from '../dialog'
-import { FormVariantProps } from '../form'
+import { DialogProps } from '../../dialog'
+import { FormVariantProps } from '../../form'
 import {
   ClassNameProps,
   HideRequiredProps,
   ModeProps,
   RequiredProps,
-} from '../types'
+} from '../../types'
 import {
   SelectItemFormFieldDialog,
   SelectItemFormFieldDialogProps,
-} from './SelectItem/SelectItemFormFieldDialog'
+} from './SelectItemFormFieldDialog'
 import {
   SelectItemFormFieldInput,
   SelectItemFormFieldInputProps,
-} from './SelectItem/SelectItemFormFieldInput'
+} from './SelectItemFormFieldInput'
 
 export type SelectItemFormFieldProps<
   Item,

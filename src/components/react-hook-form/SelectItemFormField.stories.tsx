@@ -22,8 +22,8 @@ import { Form } from './Form'
 import {
   SearchQueryParameters,
   PaginatedResponse,
-} from './SelectItem/SelectItemFormFieldDialog'
-import { SelectItemFormField } from './SelectItemFormField'
+  SelectItemFormField,
+} from './SelectItemFormField'
 
 type User = {
   id: number
