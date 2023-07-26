@@ -4,6 +4,7 @@ import { Actions } from '@aboutbits/react-pagination/dist/types'
 import { AsyncView } from '@aboutbits/react-toolbox'
 import { ReactElement, ReactNode } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
+import { IndexType } from '@aboutbits/pagination'
 import { useInternationalization, useTheme } from '../../../framework'
 import {
   Dialog,
@@ -54,7 +55,7 @@ export type SelectItemFormFieldDialogProps<ItemType, Error> = DialogProps & {
   renderListItem: (item: ItemType) => ReactNode
   renderErrorMessage: (error: Error) => ReactNode
   noSearchResults: string
-  paginationConfig: { indexType: number }
+  paginationConfig: { indexType: IndexType }
   numberOfLoadingItems?: number
   title: ReactNode
 }

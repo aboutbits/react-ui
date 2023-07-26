@@ -1,4 +1,4 @@
-import { ReactNode, useRef, useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { useController } from 'react-hook-form'
 import { DialogProps } from '../dialog'
 import { FormVariantProps } from '../form'
@@ -87,8 +87,8 @@ export function SelectItemFormField<
   const { field, fieldState } = useController({ name })
 
   const [showDialog, setShowDialog] = useState<boolean>(false)
-  const selectedItem = useRef<Item | null>(
-    initialItem === undefined ? null : initialItem,
+  const [selectedItem, setSelectedItem] = useState<Item | null>(
+    initialItem ?? null,
   )
 
   return (
@@ -97,14 +97,14 @@ export function SelectItemFormField<
         name={name}
         label={label}
         placeholder={placeholder}
-        selectedItem={selectedItem.current}
+        selectedItem={selectedItem}
         renderItem={renderInputItem ? renderInputItem : renderListItem}
         onOpenSelect={() => {
           setShowDialog(true)
         }}
         onClear={() => {
           field.onChange(null)
-          selectedItem.current = null
+          setSelectedItem(null)
         }}
         disabled={disabled}
         hasError={Boolean(fieldState.error)}
@@ -123,7 +123,7 @@ export function SelectItemFormField<
           isOpen={showDialog}
           onConfirm={(item: Item) => {
             field.onChange(extractIdFromItem(item))
-            selectedItem.current = item
+            setSelectedItem(item)
             setShowDialog(false)
           }}
           useGetData={useGetData}

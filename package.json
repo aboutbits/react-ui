@@ -1,10 +1,14 @@
 {
   "name": "@aboutbits/react-ui",
   "version": "1.5.1",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "dist/types/index.d.ts",
+      "import": "dist/esm/index.js",
+      "require": "dist/cjs/index.js"
+    }
+  },
   "files": [
     "dist/**/*",
     "tailwind-preset.js"
@@ -53,13 +57,13 @@
     "axios": "^1.4.0",
     "classnames": "^2.0.0",
     "lodash": "^4.17.21",
-    "react-hook-form": "^7.44.3"
+    "react-hook-form": "^7.45.2"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@aboutbits/eslint-config": "^2.1.1",
+    "@aboutbits/eslint-config": "^2.1.2",
     "@aboutbits/prettier-config": "^1.6.0",
     "@aboutbits/react-pagination": "^1.0.2",
     "@aboutbits/ts-config": "^1.1.2",
