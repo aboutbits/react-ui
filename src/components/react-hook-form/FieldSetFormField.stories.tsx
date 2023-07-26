@@ -12,23 +12,25 @@ import { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Form } from './Form'
-import { FieldsetFormField } from './FieldsetFormField'
+import { FieldSetFormField } from './FieldSetFormField'
 import { RadioFormField } from './RadioFormField'
 
 const YES_NO = ['YES', 'NO'] as const
 const yesNoSchema = z.enum(YES_NO)
 
+const fieldName = 'like'
+
 const meta = {
-  component: FieldsetFormField,
+  component: FieldSetFormField,
   args: {
     label: 'Do you like this component?',
-    fields: ['like'],
+    field: fieldName,
     children: (
       <div className="mt-4 flex flex-col gap-x-4 gap-y-2 sm:flex-row">
         {YES_NO.map((value) => (
           <RadioFormField
             key={value}
-            name="like"
+            name={fieldName}
             label={value.charAt(0) + value.slice(1).toLowerCase()}
             value={value}
           />
@@ -73,9 +75,9 @@ const meta = {
       ),
     },
   },
-} satisfies Meta<typeof FieldsetFormField>
+} satisfies Meta<typeof FieldSetFormField>
 
 export default meta
-type Story = StoryObj<typeof FieldsetFormField>
+type Story = StoryObj<typeof FieldSetFormField>
 
 export const Default: Story = {}

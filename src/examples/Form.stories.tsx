@@ -20,6 +20,7 @@ import {
 } from '../components'
 import { Alert } from '../components/alert'
 import {
+  FieldSetField,
   FieldSetIndent,
   FormError,
   Option,
@@ -27,7 +28,7 @@ import {
 } from '../components/form'
 import {
   CheckboxFormField,
-  FieldsetFormField,
+  FieldSetFormField,
   Form,
   InputFormField,
   PaginatedResponse,
@@ -243,9 +244,8 @@ export const UserEdit: Story = () => {
                 placeholder="Username"
                 required
               />
-              <FieldsetFormField
+              <FieldSetField
                 label="Name"
-                fields={['name.first', 'name.last']}
                 indent={FieldSetIndent.label}
                 showRequired
               >
@@ -265,7 +265,7 @@ export const UserEdit: Story = () => {
                     required
                   />
                 </div>
-              </FieldsetFormField>
+              </FieldSetField>
               <InputFormField
                 id="email"
                 type="email"
@@ -310,24 +310,25 @@ export const UserEdit: Story = () => {
                 useGetData={useGetData}
                 paginationConfig={{ indexType: IndexType.ZERO_BASED }}
               />
-              <FieldsetFormField
+              <FieldSetFormField
                 label="Preferred UI mode"
-                fields={['uiMode']}
-                className="space-y-4"
+                field="uiMode"
                 showRequired
               >
-                {UI_MODES.map((mode) => (
-                  <RadioFormField
-                    key={mode}
-                    name="uiMode"
-                    label={mode.charAt(0) + mode.slice(1).toLowerCase()}
-                    value={mode}
-                  />
-                ))}
-              </FieldsetFormField>
-              <FieldsetFormField
+                <div className="mt-2 space-y-4">
+                  {UI_MODES.map((mode) => (
+                    <RadioFormField
+                      key={mode}
+                      name="uiMode"
+                      label={mode.charAt(0) + mode.slice(1).toLowerCase()}
+                      value={mode}
+                    />
+                  ))}
+                </div>
+              </FieldSetFormField>
+              <FieldSetField
                 label="Privacy"
-                fields={['privacy']}
+                name="privacy"
                 indent={FieldSetIndent.labelAndChildren}
               >
                 <CheckboxFormField
@@ -335,10 +336,10 @@ export const UserEdit: Story = () => {
                   label="Accept the privacy policy"
                   applyInputHeight
                 />
-              </FieldsetFormField>
-              <FieldsetFormField
+              </FieldSetField>
+              <FieldSetFormField
                 label="Server validation"
-                fields={['serverValidationErrors']}
+                field="serverValidationErrors"
                 indent={FieldSetIndent.labelAndChildren}
               >
                 <ToggleSwitchFormField
@@ -347,7 +348,7 @@ export const UserEdit: Story = () => {
                   layout={ToggleSwitchLayout.spaceBetween}
                   applyInputHeight
                 />
-              </FieldsetFormField>
+              </FieldSetFormField>
               {showSuccess && (
                 <Alert
                   tone={Tone.success}
