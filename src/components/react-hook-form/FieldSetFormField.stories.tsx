@@ -24,7 +24,7 @@ const meta = {
   component: FieldSetFormField,
   args: {
     label: 'Do you like this component?',
-    name: fieldName,
+    field: fieldName,
     children: (
       <div className="mt-4 flex flex-col gap-x-4 gap-y-2 sm:flex-row">
         {YES_NO.map((value) => (

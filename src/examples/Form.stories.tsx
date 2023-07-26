@@ -303,7 +303,7 @@ export const UserEdit: Story = () => {
               />
               <FieldSetFormField
                 label="Preferred UI mode"
-                name="uiMode"
+                field="uiMode"
                 showRequired
               >
                 <div className="mt-2 space-y-4">
@@ -330,7 +330,7 @@ export const UserEdit: Story = () => {
               </FieldSetField>
               <FieldSetFormField
                 label="Server validation"
-                name="serverValidationErrors"
+                field="serverValidationErrors"
                 indent={FieldSetIndent.labelAndChildren}
               >
                 <ToggleSwitchFormField

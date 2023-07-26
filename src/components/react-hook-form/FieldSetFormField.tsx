@@ -4,9 +4,9 @@ import { useFieldError } from './util'
 
 export type FieldSetFormProps<TFieldValues extends FieldValues> = Omit<
   FieldSetFieldProps,
-  'status' | 'name'
+  'status'
 > & {
-  name: FieldPath<TFieldValues>
+  field: FieldPath<TFieldValues>
 }
 
 /**
@@ -16,13 +16,12 @@ export type FieldSetFormProps<TFieldValues extends FieldValues> = Omit<
  */
 export function FieldSetFormField<
   TFieldValues extends FieldValues = FieldValues,
->({ name, children, message, ...props }: FieldSetFormProps<TFieldValues>) {
-  const error = useFieldError(name)
+>({ field, children, message, ...props }: FieldSetFormProps<TFieldValues>) {
+  const error = useFieldError(field)
 
   return (
     <FieldSetField
       {...props}
-      name={name}
       message={error?.message ?? message}
       status={error ? Status.invalid : undefined}
     >
