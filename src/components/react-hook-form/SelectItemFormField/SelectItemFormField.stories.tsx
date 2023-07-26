@@ -16,14 +16,14 @@ import { z } from 'zod'
 import {
   InternationalizationMessages,
   Theme,
-} from '../../../.storybook/components'
-import { ErrorBody } from '../util'
-import { Form } from './Form'
+} from '../../../../.storybook/components'
+import { ErrorBody } from '../../util'
+import { Form } from '../Form'
 import {
   SearchQueryParameters,
   PaginatedResponse,
   SelectItemFormField,
-} from './SelectItemFormField'
+} from '.'
 
 type User = {
   id: number
@@ -31,6 +31,7 @@ type User = {
 }
 
 const meta = {
+  title: 'components/react-hook-form/SelectItemFormField',
   component: SelectItemFormField,
   args: {
     name: 'userId',
