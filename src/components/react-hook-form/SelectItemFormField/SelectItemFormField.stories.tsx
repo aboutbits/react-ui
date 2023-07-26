@@ -22,8 +22,8 @@ import { Form } from '../Form'
 import {
   SearchQueryParameters,
   PaginatedResponse,
-} from './SelectItemDialogWithSearch'
-import { SelectItemFormField } from './SelectItemFormField'
+  SelectItemFormField,
+} from '.'
 
 type User = {
   id: number
@@ -31,6 +31,7 @@ type User = {
 }
 
 const meta = {
+  title: 'components/react-hook-form/SelectItemFormField',
   component: SelectItemFormField,
   args: {
     name: 'userId',

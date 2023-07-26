@@ -9,10 +9,13 @@ import {
   RequiredProps,
 } from '../../types'
 import {
-  SelectItemDialogWithSearch,
-  SelectItemDialogWithSearchProps,
-} from './SelectItemDialogWithSearch'
-import { SelectItemInput, SelectItemInputProps } from './SelectItemInput'
+  SelectItemFormFieldDialog,
+  SelectItemFormFieldDialogProps,
+} from './SelectItemFormFieldDialog'
+import {
+  SelectItemFormFieldInput,
+  SelectItemFormFieldInputProps,
+} from './SelectItemFormFieldInput'
 
 export type SelectItemFormFieldProps<
   Item,
@@ -20,7 +23,7 @@ export type SelectItemFormFieldProps<
   ItemId,
   Error,
 > = Pick<
-  SelectItemInputProps<Item, SelectedItem>,
+  SelectItemFormFieldInputProps<Item, SelectedItem>,
   'name' | 'label' | 'placeholder' | 'disabled'
 > & {
   renderInputItem?: (item: Item) => ReactNode
@@ -41,7 +44,7 @@ export type SelectItemFormFieldProps<
   RequiredProps &
   HideRequiredProps &
   Pick<
-    SelectItemDialogWithSearchProps<Item, Error>,
+    SelectItemFormFieldDialogProps<Item, Error>,
     | 'useGetData'
     | 'noSearchResults'
     | 'renderListItem'
@@ -90,7 +93,7 @@ export function SelectItemFormField<
 
   return (
     <>
-      <SelectItemInput
+      <SelectItemFormFieldInput
         name={name}
         label={label}
         placeholder={placeholder}
@@ -112,7 +115,7 @@ export function SelectItemFormField<
         className={className}
       />
       {showDialog && (
-        <SelectItemDialogWithSearch
+        <SelectItemFormFieldDialog
           onDismiss={() => {
             field.onChange(field.value)
             setShowDialog(false)
