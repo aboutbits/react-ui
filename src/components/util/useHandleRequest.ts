@@ -7,7 +7,13 @@ import { ErrorBody } from './types'
 export const DEFAULT_ERROR_MESSAGE_PATH = 'error.api'
 
 export type UseHandleRequestOptions<V, R, E> = {
-  onSuccess?: ({ response, values }: { response: R; values: V }) => void
+  onSuccess?: ({
+    response,
+    values,
+  }: {
+    response: R
+    values: V
+  }) => void | Promise<void>
   onError?: ({
     error,
     apiErrorMessage,
@@ -18,7 +24,7 @@ export type UseHandleRequestOptions<V, R, E> = {
     apiErrorMessage: string
     values: V
     errorBody: ErrorBody | undefined
-  }) => void
+  }) => void | Promise<void>
   apiFallbackErrorMessage?: string
   throwOnError?: boolean
 }
@@ -53,7 +59,7 @@ export function useHandleRequest<
         setIsRequesting(true)
         const response = await requestAction(values)
         if (isMounted()) {
-          options?.onSuccess?.({ response, values })
+          await options?.onSuccess?.({ response, values })
         }
         return response
       } catch (error) {
@@ -66,7 +72,7 @@ export function useHandleRequest<
           messages[DEFAULT_ERROR_MESSAGE_PATH]
         setApiErrorMessage(apiErrorMessage)
         if (isMounted()) {
-          options?.onError?.({
+          await options?.onError?.({
             error: error as Error,
             apiErrorMessage,
             values,
