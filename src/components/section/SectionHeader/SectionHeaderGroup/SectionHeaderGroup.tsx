@@ -1,12 +1,8 @@
 import classNames from 'classnames'
 import { ReactElement, ReactNode } from 'react'
-import { useTheme } from '../../../framework'
-import { ClassNameProps } from '../../types'
-
-export enum SectionHeaderGroupSpacing {
-  Sm = 'SM',
-  Md = 'MD',
-}
+import { useTheme } from '../../../../framework'
+import { ClassNameProps } from '../../../types'
+import { SectionHeaderGroupSpacing } from './types'
 
 export function SectionHeaderGroup({
   spacing = SectionHeaderGroupSpacing.Sm,

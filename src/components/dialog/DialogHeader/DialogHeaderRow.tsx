@@ -2,14 +2,7 @@ import classNames from 'classnames'
 import { ReactElement, ReactNode } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
-
-export enum DialogHeaderRowLayout {
-  Stretch = 'STRETCH',
-  SpaceBetween = 'SPACE_BETWEEN',
-  Start = 'START',
-  Center = 'CENTER',
-  End = 'END',
-}
+import { DialogHeaderRowLayout } from './types'
 
 export function DialogHeaderRow({
   layout = DialogHeaderRowLayout.SpaceBetween,

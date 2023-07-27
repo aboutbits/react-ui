@@ -1,9 +1,7 @@
 import { Size } from '../types'
-import {
-  SectionContentLayout,
-  SectionHeaderRowLayout,
-  SectionHeaderSpacerSize,
-} from '.'
+import { SectionContentLayout } from './Section/SectionContent/types'
+import { SectionHeaderRowLayout } from './SectionHeader/SectionHeaderRow/types'
+import { SectionHeaderSpacerSize } from './SectionHeader/SectionHeaderSpacer/types'
 
 export default {
   section: {

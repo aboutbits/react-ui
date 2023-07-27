@@ -1,14 +1,9 @@
 import classNames from 'classnames'
 import { ReactNode } from 'react'
-import { Mode, ModeProps, ShowRequiredProps } from '../../types'
-import { FormTone, FormToneProps } from '../types'
-import { useFieldSetCss, useFieldSetLegendCss } from './useThemedCss'
-
-export enum FieldSetIndent {
-  None = 'NONE',
-  LabelAndChildren = 'LABEL_AND_CHILDREN',
-  Label = 'LABEL',
-}
+import { Mode, ModeProps, ShowRequiredProps } from '../../../types'
+import { FormTone, FormToneProps } from '../../types'
+import { useFieldSetCss, useFieldSetLegendCss } from '../useThemedCss'
+import { FieldSetIndent } from './types'
 
 export type FieldSetProps = React.DetailedHTMLProps<
   React.FieldsetHTMLAttributes<HTMLFieldSetElement>,

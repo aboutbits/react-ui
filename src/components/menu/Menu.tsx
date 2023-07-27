@@ -4,11 +4,7 @@ import classNames from 'classnames'
 import { ReactNode } from 'react'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
-
-export enum MenuDirection {
-  Up = 'UP',
-  Down = 'DOWN',
-}
+import { MenuDirection } from './types'
 
 export type MenuProps = ClassNameProps & {
   /**

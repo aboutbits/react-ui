@@ -9,11 +9,7 @@ import {
 } from '../'
 import { Button, ButtonVariant } from '../../button'
 import { Tone } from '../../types'
-
-export enum ConfirmationDialogVariant {
-  Confirm = 'CONFIRM',
-  Critical = 'CRITICAL',
-}
+import { ConfirmationDialogVariant } from './types'
 
 const variantConfirmationButtonTone: Record<ConfirmationDialogVariant, Tone> = {
   [ConfirmationDialogVariant.Confirm]: Tone.Primary,

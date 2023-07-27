@@ -1,5 +1,5 @@
 import { Mode, Size, Tone } from '../types'
-import { ButtonVariant } from '.'
+import { ButtonVariant } from './types'
 
 export default {
   button: {

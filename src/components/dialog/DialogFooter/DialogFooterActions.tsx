@@ -3,12 +3,7 @@ import { ReactElement, ReactNode, useContext } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 import { DialogContext } from '../DialogContext'
-
-export enum DialogFooterActionsPosition {
-  Start = 'START',
-  Center = 'CENTER',
-  End = 'END',
-}
+import { DialogFooterActionsPosition } from './types'
 
 export type DialogFooterActionsProps = ClassNameProps & {
   children?: ReactNode

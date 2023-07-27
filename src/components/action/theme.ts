@@ -1,4 +1,4 @@
-import { ActionsPosition } from '.'
+import { ActionsPosition } from './types'
 
 export default {
   actions: {

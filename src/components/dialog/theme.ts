@@ -1,9 +1,7 @@
 import { Size } from '../types'
-import {
-  DialogFooterActionsPosition,
-  DialogHeaderRowLayout,
-  DialogPosition,
-} from '.'
+import { DialogFooterActionsPosition } from './DialogFooter/types'
+import { DialogHeaderRowLayout } from './DialogHeader/types'
+import { DialogPosition } from './types'
 
 export default {
   overlay: {

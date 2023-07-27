@@ -6,20 +6,15 @@ import {
   ModeProps,
   RequiredProps,
   Size,
-} from '../../types'
+} from '../../../types'
 import {
   useToggleSwitchCss,
   useToggleSwitchHandleCss,
   useToggleSwitchInputCss,
   useToggleSwitchLabelCss,
   useToggleSwitchSwitchCss,
-} from './useThemedCss'
-
-export enum ToggleSwitchLayout {
-  Start = 'START',
-  End = 'END',
-  SpaceBetween = 'SPACE_BETWEEN',
-}
+} from '../useThemedCss'
+import { ToggleSwitchLayout } from './types'
 
 export type ToggleSwitchProps = Omit<
   React.DetailedHTMLProps<

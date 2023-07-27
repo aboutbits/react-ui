@@ -1,15 +1,8 @@
 import classNames from 'classnames'
 import { ReactElement, ReactNode } from 'react'
-import { useTheme } from '../../../framework'
-import { ClassNameProps } from '../../types'
-
-export enum SectionHeaderRowLayout {
-  Stretch = 'STRETCH',
-  SpaceBetween = 'SPACE_BETWEEN',
-  Start = 'START',
-  Center = 'CENTER',
-  End = 'END',
-}
+import { useTheme } from '../../../../framework'
+import { ClassNameProps } from '../../../types'
+import { SectionHeaderRowLayout } from './types'
 
 export function SectionHeaderRow({
   layout = SectionHeaderRowLayout.SpaceBetween,

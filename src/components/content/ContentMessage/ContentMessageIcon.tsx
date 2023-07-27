@@ -2,11 +2,7 @@ import classNames from 'classnames'
 import { ComponentType } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps, IconProps, Tone } from '../../types'
-
-export enum ContentMessageIconStyle {
-  Rounded = 'ROUNDED',
-  Plain = 'PLAIN',
-}
+import { ContentMessageIconStyle } from './types'
 
 export type ContentMessageIconProps = ClassNameProps & {
   icon: ComponentType<IconProps>

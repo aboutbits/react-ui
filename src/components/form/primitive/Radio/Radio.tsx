@@ -2,19 +2,14 @@ import classNames from 'classnames'
 import { forwardRef, ReactNode } from 'react'
 import IconRadioButtonCheckedRounded from '@aboutbits/react-material-icons/dist/IconRadioButtonCheckedRounded'
 import IconRadioButtonUncheckedOutlined from '@aboutbits/react-material-icons/dist/IconRadioButtonUncheckedOutlined'
-import { IconProps, Mode, ModeProps, Size } from '../../types'
+import { IconProps, Mode, ModeProps, Size } from '../../../types'
 import {
   useRadioCss,
   useRadioIconCss,
   useRadioInputCss,
   useRadioLabelCss,
-} from './useThemedCss'
-
-export enum RadioLayout {
-  Start = 'START',
-  End = 'END',
-  SpaceBetween = 'SPACE_BETWEEN',
-}
+} from '../useThemedCss'
+import { RadioLayout } from './types'
 
 export type RadioProps = Omit<
   React.DetailedHTMLProps<

@@ -2,7 +2,7 @@ import IconCheckBoxOutlineBlankRounded from '@aboutbits/react-material-icons/dis
 import IconCheckBoxRounded from '@aboutbits/react-material-icons/dist/IconCheckBoxRounded'
 import classNames from 'classnames'
 import { forwardRef, ReactNode } from 'react'
-import { useTheme } from '../../../framework'
+import { useTheme } from '../../../../framework'
 import {
   HideRequiredProps,
   IconProps,
@@ -10,18 +10,13 @@ import {
   ModeProps,
   RequiredProps,
   Size,
-} from '../../types'
+} from '../../../types'
 import {
   useCheckboxCss,
   useCheckboxInputCss,
   useCheckboxLabelCss,
-} from './useThemedCss'
-
-export enum CheckboxLayout {
-  Start = 'START',
-  End = 'END',
-  SpaceBetween = 'SPACE_BETWEEN',
-}
+} from '../useThemedCss'
+import { CheckboxLayout } from './types'
 
 export type CheckboxProps = Omit<
   React.DetailedHTMLProps<
