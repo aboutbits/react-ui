@@ -6,30 +6,51 @@ export type ClassNameProps = {
 }
 
 export enum Mode {
-  light = 'light',
-  dark = 'dark',
+  Light = 'LIGHT',
+  Dark = 'DARK',
 }
 
 export enum Size {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
+  Sm = 'SM',
+  Md = 'MD',
+  Lg = 'LG',
 }
 
 export enum Tone {
-  primary = 'primary',
-  neutral = 'neutral',
-  warning = 'warning',
-  critical = 'critical',
-  success = 'success',
-  informative = 'informative',
+  Primary = 'PRIMARY',
+  Neutral = 'NEUTRAL',
+  Warning = 'WARNING',
+  Critical = 'CRITICAL',
+  Success = 'SUCCESS',
+  Informative = 'INFORMATIVE',
 }
 
 export type ModeProps = {
   /**
-   * Defines the mode, either light or dark
+   * Defines the mode, either LIGHT or DARK
    */
   mode?: Mode
+}
+
+export type RequiredProps = {
+  /**
+   * Defines whether the input is required
+   */
+  required?: boolean
+}
+
+export type HideRequiredProps = {
+  /**
+   * Defines whether to hide that the input is required
+   */
+  hideRequired?: boolean
+}
+
+export type ShowRequiredProps = {
+  /**
+   * Defines whether the label should be shown as for a required input
+   */
+  showRequired?: boolean
 }
 
 export type UseSearchQuery = {

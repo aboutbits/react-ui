@@ -10,7 +10,7 @@ export function Alert({
   title,
   actions,
   tone,
-  actionsPosition = AlertActionsPosition.responsive,
+  actionsPosition = AlertActionsPosition.Responsive,
   children,
 }: AlertProps): ReactElement {
   return (
@@ -43,7 +43,7 @@ export function AlertContainer({
       className={classNames(
         alert.container.base,
         alert.container.tone[tone],
-        className
+        className,
       )}
     >
       {children}
@@ -59,7 +59,7 @@ export function AlertIcon({
 } & ClassNameProps): ReactElement | null {
   const { alert } = useTheme()
 
-  if (Icon === undefined || Icon === null) {
+  if (Icon === undefined) {
     return null
   }
 
@@ -68,7 +68,7 @@ export function AlertIcon({
 
 export function AlertContent({
   className,
-  actionsPosition = AlertActionsPosition.responsive,
+  actionsPosition = AlertActionsPosition.Responsive,
   children,
 }: {
   className?: string
@@ -82,7 +82,7 @@ export function AlertContent({
       className={classNames(
         alert.content.base,
         alert.content.actionsPosition[actionsPosition],
-        className
+        className,
       )}
     >
       {children}

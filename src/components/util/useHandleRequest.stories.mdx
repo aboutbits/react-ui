@@ -1,0 +1,95 @@
+import { Meta } from '@storybook/addon-docs'
+import { InternationalizationMessages } from '../../../.storybook/components'
+import { useHandleRequest } from './useHandleRequest'
+
+<Meta
+  title="Components/APIHooks/useHandleRequest"
+  component={useHandleRequest}
+/>
+
+# useHandleRequest
+
+The useHandleRequest hook reduces the boilerplate code to handle a request against the backend.
+It takes a function that fires a request, and a success callback function as parameters.
+The hook will then return a function that fires the request and handles the error and intermediate state.
+
+This component expects the following libraries to be installed:
+
+```sh
+npm i axios
+```
+
+### Parameter
+
+| parameter                         | type                      | description                                                        |
+| --------------------------------- | ------------------------- | ------------------------------------------------------------------ |
+| requestAction                     | `() => Promise<Response>` | The function that makes the actual request against the backend.    |
+| onSuccess                         | `() => void`              | Callback function after successful request.                        |
+| options?.apiFallbackErrorMessage? | `string`                  | Allows you to pass an optional message string for a general error. |
+
+### Return value
+
+| property        | type                  | description                        |
+| --------------- | --------------------- | ---------------------------------- |
+| apiErrorMessage | `string OR null`      | Error message of the API request.  |
+| isRequesting    | `boolean`             | True while the request is pending. |
+| onRequest       | `() => Promise<void>` | Function to fire the request.      |
+
+<InternationalizationMessages items={['error.api']} />
+
+## Usage
+
+```tsx
+import Axios, { AxiosResponse } from 'axios'
+import { useHandleRequest } from '@aboutbits/react-ui'
+import { ReactElement } from 'react'
+
+const deleteUser = Axios.delete<void, AxiosResponse<void>>(
+  'http://localhost:8080/users/1'
+)
+
+const onSuccess = () => {
+  console.log('Success')
+}
+
+function DeleteUser(): ReactElement {
+  const { apiErrorMessage, isRequesting, onRequest } = useHandleRequest(
+    deleteUser,
+    onSuccess
+  )
+
+  return (
+    <>
+      <button onClick={onRequest} disabled={isRequesting}>
+        Delete User
+      </button>
+      {apiErrorMessage && <span>{apiErrorMessage}</span>}
+    </>
+  )
+}
+```
+
+### With fallback error message
+
+If you are not sure, whether the backend always returns the error message in an appropriate format, you can define a fallback message id.
+
+```ts
+import { useHandleRequest } from '@aboutbits/react-ui'
+import Axios, { AxiosResponse } from 'axios'
+
+const deleteUser = Axios.delete<void, AxiosResponse<void>>(
+  'http://localhost:8080/users/1'
+)
+
+const onSuccess = () => {
+  console.log('Success')
+}
+
+const { apiErrorMessage, isRequesting, onRequest } = useHandleRequest(
+  deleteUser,
+  onSuccess,
+  {
+    apiFallbackErrorMessage: 'Server error',
+  }
+)
+```

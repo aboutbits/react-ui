@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React from 'react'
+import { forwardRef } from 'react'
 import { useTheme } from '../../framework'
 import { Mode, Size, Tone } from '../types'
 import { ButtonCommonProps, ButtonStyleProps, ButtonVariant } from './types'
@@ -11,13 +11,13 @@ export type ButtonProps = React.DetailedHTMLProps<
   ButtonStyleProps &
   ButtonCommonProps
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(
     {
-      mode = Mode.light,
-      variant = ButtonVariant.solid,
-      size = Size.md,
-      tone = Tone.primary,
+      mode = Mode.Light,
+      variant = ButtonVariant.Solid,
+      size = Size.Md,
+      tone = Tone.Primary,
       iconStart: IconStart,
       iconEnd: IconEnd,
       type = 'button',
@@ -25,23 +25,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       ...props
     },
-    ref
-  ) => {
+    ref,
+  ) {
     const { button } = useTheme()
     return (
       <button
         className={classNames(
-          /* eslint-disable @typescript-eslint/ban-ts-comment */
           button.button.base,
           !props.disabled
-            ? // @ts-ignore
-              button.modeVariantTone[mode][variant][tone]
+            ? button.modeVariantTone[mode][variant][tone]
             : button.modeVariantTone[mode][variant].disabled,
-          button.button.variantSize.base[size],
-          // @ts-ignore
-          button.button.variantSize[variant]?.[size],
-          /* eslint-enable */
-          className
+          button.button.variantSize[
+            variant === ButtonVariant.Ghost ? variant : 'base'
+          ][size],
+          className,
         )}
         ref={ref}
         type={type}
@@ -52,7 +49,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             className={classNames(
               button.button.icon.base,
               button.button.icon.size[size],
-              button.button.icon.iconStart.size[size]
+              button.button.icon.iconStart.size[size],
             )}
           />
         )}
@@ -62,16 +59,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             className={classNames(
               button.button.icon.base,
               button.button.icon.size[size],
-              button.button.icon.iconEnd.size[size]
+              button.button.icon.iconEnd.size[size],
             )}
           />
         )}
       </button>
     )
-  }
+  },
 )
-
-// This improves readability in dev tools
-Button.displayName = 'Button'
-
-export { Button }

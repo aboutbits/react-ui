@@ -21,14 +21,18 @@ export function ContentMessage({
   icon,
   title,
   text,
-  tone = Tone.primary,
+  tone = Tone.Primary,
   iconProps,
 }: ContentMessageProps): ReactElement {
   return (
     <ContentMessageContainer className={className}>
       {icon && <ContentMessageIcon icon={icon} tone={tone} {...iconProps} />}
-      {title && <ContentMessageTitle tone={tone}>{title}</ContentMessageTitle>}
-      {text && <ContentMessageText tone={tone}>{text}</ContentMessageText>}
+      {Boolean(title) && (
+        <ContentMessageTitle tone={tone}>{title}</ContentMessageTitle>
+      )}
+      {Boolean(text) && (
+        <ContentMessageText tone={tone}>{text}</ContentMessageText>
+      )}
     </ContentMessageContainer>
   )
 }

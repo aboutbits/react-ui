@@ -2,9 +2,9 @@ import { ComponentType, ReactNode } from 'react'
 import { ClassNameProps, IconProps, Tone } from '../types'
 
 export enum AlertActionsPosition {
-  responsive = 'responsive',
-  fixedRight = 'fixedRight',
-  fixedBottom = 'fixedBottom',
+  Responsive = 'RESPONSIVE',
+  FixedRight = 'FIXED_RIGHT',
+  FixedBottom = 'FIXED_BOTTOM',
 }
 
 export type AlertProps = {

@@ -1,31 +1,31 @@
-import { Source } from '@storybook/addon-docs'
-import { Description } from '@storybook/components'
-import React, { ReactElement } from 'react'
-import { defaultTheme } from '../../src/framework/theme/theme'
+import { Markdown, Subheading } from '@storybook/addon-docs'
+import { ReactElement } from 'react'
+import {
+  defaultTheme,
+  Theme as ThemeType,
+} from '../../src/framework/theme/theme'
+import { SourceJson } from './SourceJson'
 
-export function Theme({
+export function Theme<T extends keyof ThemeType, R extends keyof ThemeType[T]>({
   component,
   items,
 }: {
-  component: string
-  items?: string[]
+  component: T
+  items?: Array<R>
 }): ReactElement {
   const theme = {
     [component]: items
       ? Object.fromEntries(
-          // eslint-disable-next-line
-          // @ts-ignore
-          items.map((item) => [item, defaultTheme?.[component]?.[item]])
+          items.map((item) => [item, defaultTheme[component][item]]),
         )
-      : defaultTheme?.[component],
+      : defaultTheme[component],
   }
 
   return (
     <>
-      <Description
-        markdown={`This component uses the following theme defaults:`}
-      />
-      <Source code={JSON.stringify(theme, null, 2)} language="json" />
+      <Subheading>Theme</Subheading>
+      <Markdown>This component uses the following theme defaults:</Markdown>
+      <SourceJson obj={theme} />
     </>
   )
 }

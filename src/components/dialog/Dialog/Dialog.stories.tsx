@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory, DecoratorFn } from '@storybook/react'
-import React, { ReactElement, ReactNode, useState } from 'react'
+import { ReactElement, ReactNode, useState } from 'react'
 import { Button } from '../../button'
 import {
   Dialog,
@@ -30,14 +30,24 @@ const DialogDecorator: DecoratorFn = (Story, context) => {
 
   return (
     <div>
-      <Button onClick={() => setIsOpen(true)}>
-        {context.parameters.buttonText || 'Open Dialog'}
+      <Button
+        onClick={() => {
+          setIsOpen(true)
+        }}
+      >
+        {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/strict-boolean-expressions
+          context.parameters.buttonText || 'Open Dialog'
+        }
       </Button>
       <Story
         args={{
           ...context.args,
           isOpen,
-          onDismiss: () => setIsOpen(false),
+          onDismiss: () => {
+            setIsOpen(false)
+          },
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           content: context.parameters.content,
           overlayClassName: 'z-10',
         }}
@@ -100,7 +110,7 @@ export const SizeSm: StoryType = DialogTemplate.bind({})
 Object.assign(SizeSm, {
   storyName: 'Size Sm',
   args: {
-    size: DialogSize.sm,
+    size: DialogSize.Sm,
   },
   parameters: {
     buttonText: 'Small dialog',
@@ -112,7 +122,7 @@ export const SizeMd: StoryType = DialogTemplate.bind({})
 Object.assign(SizeMd, {
   storyName: 'Size Md',
   args: {
-    size: DialogSize.md,
+    size: DialogSize.Md,
   },
   parameters: {
     buttonText: 'Medium dialog',
@@ -124,7 +134,7 @@ export const SizeLg: StoryType = DialogTemplate.bind({})
 Object.assign(SizeLg, {
   storyName: 'Size Lg',
   args: {
-    size: DialogSize.lg,
+    size: DialogSize.Lg,
   },
   parameters: {
     buttonText: 'Large dialog',
@@ -136,7 +146,7 @@ export const MobileFullscreen: StoryType = DialogTemplate.bind({})
 Object.assign(MobileFullscreen, {
   storyName: 'Mobile fullscreen',
   args: {
-    mobilePosition: DialogPosition.fullscreen,
+    mobilePosition: DialogPosition.Fullscreen,
   },
   parameters: {
     buttonText: 'Mobile fullscreen',
@@ -148,7 +158,7 @@ export const DesktopFullscreen: StoryType = DialogTemplate.bind({})
 Object.assign(DesktopFullscreen, {
   storyName: 'Desktop fullscreen',
   args: {
-    desktopPosition: DialogPosition.fullscreen,
+    desktopPosition: DialogPosition.Fullscreen,
   },
   parameters: {
     buttonText: 'Desktop fullscreen',
@@ -160,8 +170,8 @@ export const MobileAndDesktopFullscreen: StoryType = DialogTemplate.bind({})
 Object.assign(MobileAndDesktopFullscreen, {
   storyName: 'Mobile and desktop fullscreen',
   args: {
-    mobilePosition: DialogPosition.fullscreen,
-    desktopPosition: DialogPosition.fullscreen,
+    mobilePosition: DialogPosition.Fullscreen,
+    desktopPosition: DialogPosition.Fullscreen,
   },
   parameters: {
     buttonText: 'Mobile and desktop fullscreen',

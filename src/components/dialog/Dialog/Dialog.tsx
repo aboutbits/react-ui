@@ -22,9 +22,9 @@ export function Dialog({
   isOpen,
   onDismiss,
   initialFocusRef: initialFocusRefProp,
-  size = DialogSize.md,
-  mobilePosition = DialogPosition.center,
-  desktopPosition = DialogPosition.center,
+  size = DialogSize.Md,
+  mobilePosition = DialogPosition.Center,
+  desktopPosition = DialogPosition.Center,
   'aria-label': ariaLabel,
   className,
   overlayClassName,
@@ -43,7 +43,7 @@ export function Dialog({
           dialog.overlay.base,
           dialog.overlay.mobilePosition[mobilePosition],
           dialog.overlay.desktopPosition[desktopPosition],
-          overlayClassName
+          overlayClassName,
         )}
         initialFocus={initialFocusRef}
         onClose={onDismiss ?? (() => undefined)}
@@ -58,7 +58,7 @@ export function Dialog({
             dialog.dialog.mobilePositionSize[mobilePosition][size],
             dialog.dialog.desktopPositionSize[desktopPosition].base,
             dialog.dialog.desktopPositionSize[desktopPosition][size],
-            className
+            className,
           )}
         >
           {children}

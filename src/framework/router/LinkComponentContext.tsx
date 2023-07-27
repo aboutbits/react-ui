@@ -21,14 +21,15 @@ export type LinkComponentProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 } & Record<string, unknown>
 
 export const makeLinkComponent = (
-  render: ForwardRefRenderFunction<HTMLAnchorElement, LinkComponentProps>
-) => ({ __forwardRef__: forwardRef(render) } as const)
+  render: ForwardRefRenderFunction<HTMLAnchorElement, LinkComponentProps>,
+) => ({ __forwardRef__: forwardRef(render) }) as const
 
 export type LinkComponent =
   | ReturnType<typeof makeLinkComponent>
   | ComponentType<LinkComponentProps>
 
 export const DefaultLinkComponent = makeLinkComponent((props, ref) => (
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
   <a ref={ref} {...props} />
 ))
 

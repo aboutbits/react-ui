@@ -1,78 +1,14 @@
 {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "env": {
-    "node": true,
-    "browser": true,
-    "es6": true,
-    "commonjs": true
-  },
-  "plugins": [
-    "@typescript-eslint",
-    "import",
-    "react",
-    "react-hooks",
-    "prettier"
-  ],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "overrides": [
-    {
-      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
-      "extends": [
-        "plugin:import/recommended",
-        "plugin:import/typescript",
-        "plugin:jest/recommended"
-      ],
-      "rules": {
-        "react/prop-types": "off"
-      }
-    },
-    {
-      "files": ["*.md", "*.mdx"],
-      "extends": ["plugin:mdx/recommended", "plugin:storybook/recommended"],
-      "rules": {
-        "react/prop-types": "off"
-      }
-    }
-  ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    },
-    "import/resolver": {
-      "node": {
-        "paths": ["./"]
-      }
-    }
-  },
+  "extends": "@aboutbits/eslint-config/ts-react",
   "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2018
+    "project": true
   },
-  "rules": {
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/member-delimiter-style": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "unknown",
-          "parent",
-          "sibling",
-          "index"
-        ]
-      }
-    ]
-  }
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    ".next",
+    "out",
+    "storybook-static",
+    "!.storybook"
+  ]
 }

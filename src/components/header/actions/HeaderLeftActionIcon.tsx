@@ -8,15 +8,15 @@ import { HeaderButtonIcon, HeaderButtonIconProps } from './HeaderButtonIcon'
 export type HeaderLeftActionIconProps = Omit<HeaderButtonIconProps, 'variant'>
 
 export function HeaderLeftActionIcon(
-  props: HeaderLeftActionIconProps
+  props: HeaderLeftActionIconProps,
 ): ReactElement {
   const { header } = useTheme()
 
   return (
     <HeaderLeftArea className={header.leftActionIcon.base}>
       <HeaderButtonIcon
-        variant={ButtonVariant.transparent}
-        tone={Tone.neutral}
+        variant={ButtonVariant.Transparent}
+        tone={Tone.Neutral}
         {...props}
       />
     </HeaderLeftArea>

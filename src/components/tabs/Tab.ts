@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { useCallback, useContext, useMemo } from 'react'
 import { useTheme } from '../../framework'
-import { useScrollToElementOnFirstRender } from '../utils/useScrollToElementOnFristRender'
+import { useScrollToElementOnFirstRender } from '../util/useScrollToElementOnFristRender'
 import { TabsContext } from './TabsContext'
 
 export type TabProps = {
@@ -26,7 +26,7 @@ export function useTab<T extends HTMLElement>({ name, active }: TabProps) {
   const className = useMemo(
     () =>
       classNames(tabs.tab.base, tabActive ? tabs.tab.active : tabs.tab.normal),
-    [tabs, tabActive]
+    [tabs, tabActive],
   )
 
   const { elementRef: ref } = useScrollToElementOnFirstRender<T>({

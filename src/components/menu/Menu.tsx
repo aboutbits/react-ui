@@ -6,8 +6,8 @@ import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 
 export enum MenuDirection {
-  up = 'up',
-  down = 'down',
+  Up = 'UP',
+  Down = 'DOWN',
 }
 
 export type MenuProps = ClassNameProps & {
@@ -41,7 +41,7 @@ export function Menu({
     <HeadlessMenu.Items
       className={classNames(
         menu.menuList.base,
-        menu.menuList.direction[direction]
+        menu.menuList.direction[direction],
       )}
     >
       {children}
@@ -51,7 +51,7 @@ export function Menu({
     <HeadlessMenu>
       {({ open }) => (
         <div className={menu.menuContainer}>
-          {direction === MenuDirection.up && items}
+          {direction === MenuDirection.Up && items}
           <HeadlessMenu.Button
             id={menuButtonId}
             aria-label={menuLabel}
@@ -64,12 +64,12 @@ export function Menu({
                   menu.menuButton.icon.base,
                   menu.menuButton.icon.direction[direction].state[
                     open ? 'open' : 'closed'
-                  ]
+                  ],
                 )}
               />
             </span>
           </HeadlessMenu.Button>
-          {direction === MenuDirection.down && items}
+          {direction === MenuDirection.Down && items}
         </div>
       )}
     </HeadlessMenu>

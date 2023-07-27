@@ -4,21 +4,13 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 export type SectionContentProps = ClassNameProps & {
-  layout?: SectionContentLayout | Layout
+  layout?: SectionContentLayout
   children?: ReactNode
 }
 
 export enum SectionContentLayout {
-  oneColumnGrid = 'oneColumnGrid',
-  twoColumnGrid = 'twoColumnGrid',
-}
-
-/**
- * @deprecated use SectionContentLayout instead
- */
-export enum Layout {
-  oneColumnGrid = 'oneColumnGrid',
-  twoColumnGrid = 'twoColumnGrid',
+  OneColumnGrid = 'ONE_COLUMN_GRID',
+  TwoColumnGrid = 'TWO_COLUMN_GRID',
 }
 
 export function SectionContent({
@@ -28,8 +20,6 @@ export function SectionContent({
 }: SectionContentProps) {
   const { section } = useTheme()
   const layoutStyle =
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     typeof layout !== 'undefined' ? section.content.layout[layout] : ''
 
   return (

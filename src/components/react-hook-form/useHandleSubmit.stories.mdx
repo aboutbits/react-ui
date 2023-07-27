@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/addon-docs'
+import { InternationalizationMessages } from '../../../.storybook/components'
+import { useHandleSubmit } from './useHandleSubmit'
+
+<Meta component={useHandleSubmit} />
+
+# useHandleSubmit
+
+The `useHandleSubmit` hook reduces the boilerplate code to handle a `React Hook Form` submission.
+The success callback will be called if the request was successful, otherwise the hook will try to extract validation errors and global errors.
+
+This component expects the following libraries to be installed:
+
+```sh
+npm i axios react-hook-form
+```
+
+<InternationalizationMessages items={['error.api']} />
+
+## Usage
+
+```tsx
+import { useHandleSubmit, Form } from '@aboutbits/react-ui'
+import Axios from 'axios'
+import { useForm } from 'react-hook-form'
+
+const updateUser = () => Axios.put<void>('http://localhost:8080/users/1')
+
+export function UpdateUserForm() {
+  const form = useForm()
+  const { apiErrorMessage, triggerSubmit } = useHandleSubmit(form, updateUser, {
+    onSuccess: ({ response, values }) => {
+      console.log('Success', response, values)
+    },
+    onError: ({ error }) => {
+      if (Axios.isAxiosError(error) && error.response) {
+        console.log(error.response.data.message)
+      } else {
+        console.log('Got no response from server')
+      }
+    },
+  })
+
+  return (
+    <Form form={form} onSubmit={triggerSubmit}>
+      <button type="submit">Save form</button>
+      {apiErrorMessage && <span>{apiErrorMessage}</span>}
+    </Form>
+  )
+}
+```
+
+### With fallback error message
+
+If you are not sure, whether the backend always returns the error message in an appropriate format, you can define a fallback message id.
+
+```ts
+const { apiErrorMessage, triggerSubmit } = useHandleSubmit(form, updateUser, {
+  apiFallbackErrorMessage: 'Server error',
+})
+```
+
+### Validation errors per field
+
+The `useHandleSubmit` hook expects an error of the following type to do proper per error handling.
+The `errors` property will be used to extract validation errors per field, whereas the `message` property will be used for global error messages.
+
+```ts
+type ErrorBody = {
+  message?: string
+  errors?: Record<string, string[]>
+}
+```

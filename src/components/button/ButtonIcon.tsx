@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classNames from 'classnames'
 import { useTheme } from '../../framework'
 import { Mode, Size, Tone } from '../types'
@@ -11,36 +11,33 @@ export type ButtonIconProps = React.DetailedHTMLProps<
   ButtonStyleProps &
   ButtonIconCommonProps
 
-const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
-  (
+export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
+  function ButtonIcon(
     {
-      mode = Mode.light,
-      variant = ButtonVariant.solid,
-      size = Size.md,
-      tone = Tone.primary,
+      mode = Mode.Light,
+      variant = ButtonVariant.Solid,
+      size = Size.Md,
+      tone = Tone.Primary,
       icon: Icon,
       label,
       className,
       ...props
     },
-    ref
-  ) => {
+    ref,
+  ) {
     const { button } = useTheme()
 
     return (
       <button
         className={classNames(
-          /* eslint-disable @typescript-eslint/ban-ts-comment */
           button.buttonIcon.base,
           !props.disabled
-            ? // @ts-ignore
-              button.modeVariantTone[mode][variant][tone]
+            ? button.modeVariantTone[mode][variant][tone]
             : button.modeVariantTone[mode][variant].disabled,
-          button.buttonIcon.variantSize.base[size],
-          // @ts-ignore
-          button.buttonIcon.variantSize[variant]?.[size],
-          /* eslint-enable */
-          className
+          button.buttonIcon.variantSize[
+            variant === ButtonVariant.Ghost ? variant : 'base'
+          ][size],
+          className,
         )}
         aria-label={label}
         type="button"
@@ -50,14 +47,10 @@ const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
         <Icon
           className={classNames(
             button.buttonIcon.icon.base,
-            button.buttonIcon.icon.size[size]
+            button.buttonIcon.icon.size[size],
           )}
         />
       </button>
     )
-  }
+  },
 )
-
-ButtonIcon.displayName = 'ButtonIcon'
-
-export { ButtonIcon }

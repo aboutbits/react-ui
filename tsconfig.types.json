@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "outDir": "./dist/types",
+    "declaration": true,
+    "declarationMap": true,
+    "removeComments": false,
+    "noEmit": false
+  },
+  "exclude": [
+    "src/vitest.ts",
+    "**/__test__/*",
+    "**/__tests__/*",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "src/examples/*",
+    ".storybook/*"
+  ],
+  "include": ["src"]
+}

@@ -4,12 +4,12 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 export enum DialogHeaderGroupSpacing {
-  sm = 'sm',
-  md = 'md',
+  Sm = 'SM',
+  Md = 'MD',
 }
 
 export function DialogHeaderGroup({
-  spacing = DialogHeaderGroupSpacing.sm,
+  spacing = DialogHeaderGroupSpacing.Sm,
   children,
   className,
 }: {
@@ -23,7 +23,7 @@ export function DialogHeaderGroup({
       className={classNames(
         dialog.headerGroup.base,
         dialog.headerGroup.spacing[spacing],
-        className
+        className,
       )}
     >
       {children}

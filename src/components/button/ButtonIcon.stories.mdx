@@ -17,7 +17,7 @@ export const Template = ({ ...args }) => <ButtonIcon {...args} />
     name="Default"
     args={{
       disabled: false,
-      mode: Mode.light,
+      mode: Mode.Light,
       variant: ButtonVariant.solid,
       size: Size.md,
       tone: Tone.primary,
@@ -72,15 +72,15 @@ Additionally, all the `button.modeVariantTone` themes are used. See [Button](/do
 
 ## Mode
 
-The `Mode` determines if the component is placed on light or dark background.
+The `Mode` determines if the component is placed on LIGHT or DARK background.
 
 <Canvas>
   <Story name="ModeLight">
-    <ButtonIcon icon={IconAdd} mode={Mode.light} />
+    <ButtonIcon icon={IconAdd} mode={Mode.Light} />
   </Story>
   <Story name="ModeDark">
     <div className="p-5 bg-neutral-700">
-      <ButtonIcon icon={IconAdd} mode={Mode.dark} />
+      <ButtonIcon icon={IconAdd} mode={Mode.Dark} />
     </div>
   </Story>
 </Canvas>
@@ -152,15 +152,15 @@ If the provided colors are not satisfying the needs of a project, it is possible
 module.exports = {
   button: {
     variantTone: {
-      solid: {
+      SOLID: {
         purple:
           'bg-purple-500 hover:bg-purple-600 text-white outline-purple-500',
       },
-      ghost: {
+      GHOST: {
         purple:
           'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500',
       },
-      transparent: {
+      TRANSPARENT: {
         purple: 'hover:bg-purple-50 text-purple-500 focus:outline-purple-500',
       },
     },

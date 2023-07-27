@@ -1,43 +1,50 @@
+import { Size } from '../types'
+import {
+  DialogFooterActionsPosition,
+  DialogHeaderRowLayout,
+  DialogPosition,
+} from '.'
+
 export default {
   overlay: {
     base: 'fixed inset-0 flex justify-center items-center bg-black/[0.36]',
     mobilePosition: {
-      center: 'p-6',
-      fullscreen: 'p-0',
+      [DialogPosition.Center]: 'p-6',
+      [DialogPosition.Fullscreen]: 'p-0',
     },
     desktopPosition: {
-      center: 'lg:p-8',
-      fullscreen: 'lg:p-0',
+      [DialogPosition.Center]: 'lg:p-8',
+      [DialogPosition.Fullscreen]: 'lg:p-0',
     },
   },
   dialog: {
     base: 'flex flex-col min-h-0 outline-none bg-white shadow-dialog max-h-full overflow-hidden',
     mobilePositionSize: {
-      center: {
+      [DialogPosition.Center]: {
         base: 'rounded-lg',
-        sm: 'w-full max-w-xs',
-        md: 'w-full max-w-xl',
-        lg: 'w-full max-w-3xl',
+        [Size.Sm]: 'w-full max-w-xs',
+        [Size.Md]: 'w-full max-w-xl',
+        [Size.Lg]: 'w-full max-w-3xl',
       },
-      fullscreen: {
+      [DialogPosition.Fullscreen]: {
         base: 'w-full h-full',
-        sm: '',
-        md: '',
-        lg: '',
+        [Size.Sm]: '',
+        [Size.Md]: '',
+        [Size.Lg]: '',
       },
     },
     desktopPositionSize: {
-      center: {
+      [DialogPosition.Center]: {
         base: 'lg:h-auto lg:rounded-lg',
-        sm: 'lg:w-full lg:max-w-xs',
-        md: 'lg:w-full lg:max-w-xl',
-        lg: 'lg:w-full lg:max-w-3xl',
+        [Size.Sm]: 'lg:w-full lg:max-w-xs',
+        [Size.Md]: 'lg:w-full lg:max-w-xl',
+        [Size.Lg]: 'lg:w-full lg:max-w-3xl',
       },
-      fullscreen: {
+      [DialogPosition.Fullscreen]: {
         base: 'lg:w-full lg:h-full lg:max-w-none lg:rounded-none',
-        sm: '',
-        md: '',
-        lg: '',
+        [Size.Sm]: '',
+        [Size.Md]: '',
+        [Size.Lg]: '',
       },
     },
   },
@@ -47,18 +54,18 @@ export default {
   headerRow: {
     base: 'items-center',
     layout: {
-      stretch: '',
-      spaceBetween: 'flex justify-between gap-x-2.5',
-      start: 'flex justify-start gap-x-2.5',
-      center: 'flex justify-center gap-x-2.5',
-      end: 'flex justify-end gap-x-2.5',
+      [DialogHeaderRowLayout.Stretch]: '',
+      [DialogHeaderRowLayout.SpaceBetween]: 'flex justify-between gap-x-2.5',
+      [DialogHeaderRowLayout.Start]: 'flex justify-start gap-x-2.5',
+      [DialogHeaderRowLayout.Center]: 'flex justify-center gap-x-2.5',
+      [DialogHeaderRowLayout.End]: 'flex justify-end gap-x-2.5',
     },
   },
   headerGroup: {
     base: 'flex items-center gap-y-2',
     spacing: {
-      sm: 'gap-x-2.5',
-      md: 'gap-x-6',
+      [Size.Sm]: 'gap-x-2.5',
+      [Size.Md]: 'gap-x-6',
     },
   },
   headerLeftArea: {
@@ -99,14 +106,14 @@ export default {
   footerActions: {
     base: 'flex flex-col gap-2',
     position: {
-      start: 'justify-start',
-      center: 'justify-center',
-      end: 'justify-end',
+      [DialogFooterActionsPosition.Start]: 'justify-start',
+      [DialogFooterActionsPosition.Center]: 'justify-center',
+      [DialogFooterActionsPosition.End]: 'justify-end',
     },
     dialogSize: {
-      sm: '',
-      md: 'sm:flex-row',
-      lg: 'sm:flex-row',
+      [Size.Sm]: '',
+      [Size.Md]: 'sm:flex-row',
+      [Size.Lg]: 'sm:flex-row',
     },
   },
   loading: {

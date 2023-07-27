@@ -4,15 +4,15 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 export enum DialogHeaderRowLayout {
-  stretch = 'stretch',
-  spaceBetween = 'spaceBetween',
-  start = 'start',
-  center = 'center',
-  end = 'end',
+  Stretch = 'STRETCH',
+  SpaceBetween = 'SPACE_BETWEEN',
+  Start = 'START',
+  Center = 'CENTER',
+  End = 'END',
 }
 
 export function DialogHeaderRow({
-  layout = DialogHeaderRowLayout.spaceBetween,
+  layout = DialogHeaderRowLayout.SpaceBetween,
   children,
   className,
 }: {
@@ -26,7 +26,7 @@ export function DialogHeaderRow({
       className={classNames(
         dialog.headerRow.base,
         dialog.headerRow.layout[layout],
-        className
+        className,
       )}
     >
       {children}

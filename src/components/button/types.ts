@@ -2,9 +2,9 @@ import { ComponentType } from 'react'
 import { IconProps, ModeProps, Size, Tone } from '../types'
 
 export enum ButtonVariant {
-  solid = 'solid',
-  ghost = 'ghost',
-  transparent = 'transparent',
+  Solid = 'SOLID',
+  Ghost = 'GHOST',
+  Transparent = 'TRANSPARENT',
 }
 
 export type ButtonStyleProps = ModeProps & {
@@ -19,7 +19,7 @@ export type ButtonStyleProps = ModeProps & {
   /**
    * Defines the tone of the button. Basically the color, so be sure to have the colors defined in Tailwind.
    **/
-  tone?: Tone | string
+  tone?: Tone
 }
 
 export type ButtonCommonProps = {

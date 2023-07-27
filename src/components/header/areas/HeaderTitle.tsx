@@ -20,7 +20,7 @@ export function HeaderTitle({
       className={classNames(
         className,
         header.title.base,
-        !noTruncate && header.title.truncate
+        !noTruncate && header.title.truncate,
       )}
     >
       {children}

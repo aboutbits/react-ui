@@ -1,3 +1,5 @@
+import { MenuDirection } from '.'
+
 export default {
   menuContainer: 'relative',
   menuButton: {
@@ -5,13 +7,13 @@ export default {
     icon: {
       base: 'w-6 h-6 fill-current',
       direction: {
-        up: {
+        [MenuDirection.Up]: {
           state: {
             open: 'rotate-180 transform',
             closed: '',
           },
         },
-        down: {
+        [MenuDirection.Down]: {
           state: {
             open: '',
             closed: 'rotate-180 transform',
@@ -27,8 +29,8 @@ export default {
   menuList: {
     base: 'py-2 mb-2 w-32 shadow focus:outline-none bg-white absolute',
     direction: {
-      up: '-mt-2 -translate-y-full',
-      down: '',
+      [MenuDirection.Up]: '-mt-2 -translate-y-full',
+      [MenuDirection.Down]: '',
     },
   },
 }

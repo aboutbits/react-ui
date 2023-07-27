@@ -1,19 +1,8 @@
 {
+  "extends": "@aboutbits/ts-config/react",
   "compilerOptions": {
-    "strict": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsx",
-    "declaration": true,
-    "importHelpers": true
+    "skipLibCheck": true
   },
-  "exclude": [
-    "**/__test__/*",
-    "**/__tests__/*",
-    "**/*.stories.tsx",
-    "**/*.stories.ts",
-    "src/examples/*"
-  ],
-  "include": ["src"]
+  "exclude": ["node_modules", "dist"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", ".storybook/**/*"]
 }

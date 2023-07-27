@@ -8,15 +8,15 @@ import { HeaderButtonIcon, HeaderButtonIconProps } from './HeaderButtonIcon'
 export type HeaderRightActionIconProps = HeaderButtonIconProps
 
 export function HeaderRightActionIcon(
-  props: HeaderRightActionIconProps
+  props: HeaderRightActionIconProps,
 ): ReactElement {
   const { header } = useTheme()
 
   return (
     <HeaderRightArea className={header.rightActionIcon.base}>
       <HeaderButtonIcon
-        variant={ButtonVariant.transparent}
-        tone={Tone.neutral}
+        variant={ButtonVariant.Transparent}
+        tone={Tone.Neutral}
         {...props}
       />
     </HeaderRightArea>

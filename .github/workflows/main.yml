@@ -1,74 +1,61 @@
-name: Test
+name: Main
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 env:
-  PROJECT_URL: storybook.aboutbits.it
+  NODE_VERSION: 16
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  setup:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - run: npm ci
-
   checks:
-    runs-on: ubuntu-20.04
-    needs: [setup]
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
-          node-version: 16
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Lint
+        run: npm run lint
+        shell: bash
+      - name: Typecheck
+        run: npm run typecheck
+        shell: bash
 
   test:
-    runs-on: ubuntu-20.04
-    needs: [setup]
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
-          node-version: 16
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-      - run: npm ci
-      - run: npm run test
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Test
+        run: npm run test
+        shell: bash
 
-  deploy:
-    runs-on: ubuntu-20.04
+  deploy-main:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
     if: github.ref == 'refs/heads/main'
     needs:
-      - test
       - checks
+      - test
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
-          node-version: 16
-      - run: npm ci
-      - name: Build
-        run: npm run build-storybook
-      - name: Add CNAME file
-        run: echo ${{ env.PROJECT_URL }} > storybook-static/CNAME
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@3.6.2
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: aboutbits/github-actions-vercel/deploy@v1
         with:
-          branch: gh-pages
-          folder: storybook-static
-          clean: true
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
+          vercel-project-id: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
+          build-arguments: --prod
+          deploy-arguments: --prod

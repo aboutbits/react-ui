@@ -71,7 +71,9 @@ export function PaginationRouter({
 
   const pagination = calculatePagination(page, size, total, config)
 
-  if (pagination === null) return null
+  if (pagination === null) {
+    return null
+  }
 
   return (
     <PaginationContainer className={className}>
@@ -80,12 +82,11 @@ export function PaginationRouter({
         {...linkProps({ pageIndex: pagination.previous.indexNumber, size })}
         aria-label={messages['pagination.prev']}
         aria-disabled={pagination.previous.isDisabled}
-        role="previous-link"
         className={classNames(
           paginationTheme.page.base,
           pagination.previous.isDisabled
             ? paginationTheme.page.disabled
-            : paginationTheme.page.enabled
+            : paginationTheme.page.enabled,
         )}
       >
         <PaginationPreviousContent />
@@ -107,7 +108,7 @@ export function PaginationRouter({
                   paginationTheme.page.base,
                   paginationTheme.page.number,
                   paginationTheme.page.enabled,
-                  page.isCurrent ? paginationTheme.page.current : ''
+                  page.isCurrent ? paginationTheme.page.current : '',
                 )}
               >
                 {page.displayNumber}
@@ -125,12 +126,11 @@ export function PaginationRouter({
         })}
         aria-label={messages['pagination.next']}
         aria-disabled={pagination.next.isDisabled}
-        role="next-link"
         className={classNames(
           paginationTheme.page.base,
           pagination.next.isDisabled
             ? paginationTheme.page.disabled
-            : paginationTheme.page.enabled
+            : paginationTheme.page.enabled,
         )}
       >
         <PaginationNextContent />
