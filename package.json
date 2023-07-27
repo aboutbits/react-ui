@@ -5,7 +5,8 @@
     ".": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.js"
-    }
+    },
+    "./tailwind-preset.js": "./tailwind-preset.js"
   },
   "files": [
     "dist/**/*",
