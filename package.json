@@ -24,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/aboutbits/react-ui.git"
   },
-  "homepage": "https://storybook.aboutbits.it",
+  "homepage": "https://react-ui.aboutbits.it",
   "engines": {
     "npm": "^8 || ^9",
     "node": "^16 || ^18"
