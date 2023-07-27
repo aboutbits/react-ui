@@ -1,3 +1,9 @@
+import {
+  ContentMessageIconStyle,
+  DescriptionItemContentAlignVertical,
+  Tone,
+} from '..'
+
 export default {
   area: {
     base: 'space-y-9',
@@ -8,41 +14,41 @@ export default {
     icon: {
       base: 'fill-current',
       tone: {
-        PRIMARY: 'text-primary-500',
-        NEUTRAL: 'text-neutral-500',
-        WARNING: 'text-warning-500',
-        CRITICAL: 'text-critical-500',
-        SUCCESS: 'text-success-500',
-        INFORMATIVE: 'text-informative-500',
+        [Tone.Primary]: 'text-primary-500',
+        [Tone.Neutral]: 'text-neutral-500',
+        [Tone.Warning]: 'text-warning-500',
+        [Tone.Critical]: 'text-critical-500',
+        [Tone.Success]: 'text-success-500',
+        [Tone.Informative]: 'text-informative-500',
       },
       style: {
-        ROUNDED: 'h-6 w-6',
-        PLAIN: 'h-14 w-14',
+        [ContentMessageIconStyle.Rounded]: 'h-6 w-6',
+        [ContentMessageIconStyle.Plain]: 'h-14 w-14',
       },
     },
     iconContainer: {
       base: 'mb-4 last:mb-0',
       style: {
-        ROUNDED: {
+        [ContentMessageIconStyle.Rounded]: {
           base: 'rounded-full p-4',
           tone: {
-            PRIMARY: 'bg-primary-100',
-            NEUTRAL: 'bg-neutral-100',
-            WARNING: 'bg-warning-100',
-            CRITICAL: 'bg-critical-100',
-            SUCCESS: 'bg-success-100',
-            INFORMATIVE: 'bg-informative-100',
+            [Tone.Primary]: 'bg-primary-100',
+            [Tone.Neutral]: 'bg-neutral-100',
+            [Tone.Warning]: 'bg-warning-100',
+            [Tone.Critical]: 'bg-critical-100',
+            [Tone.Success]: 'bg-success-100',
+            [Tone.Informative]: 'bg-informative-100',
           },
         },
-        PLAIN: {
+        [ContentMessageIconStyle.Plain]: {
           base: '',
           tone: {
-            PRIMARY: '',
-            NEUTRAL: '',
-            WARNING: '',
-            CRITICAL: '',
-            SUCCESS: '',
-            INFORMATIVE: '',
+            [Tone.Primary]: '',
+            [Tone.Neutral]: '',
+            [Tone.Warning]: '',
+            [Tone.Critical]: '',
+            [Tone.Success]: '',
+            [Tone.Informative]: '',
           },
         },
       },
@@ -50,23 +56,23 @@ export default {
     title: {
       base: 'text-center text-xl font-bold leading-6 mb-1 last:mb-0',
       tone: {
-        PRIMARY: 'text-primary-500',
-        NEUTRAL: 'text-neutral-500',
-        WARNING: 'text-warning-500',
-        CRITICAL: 'text-critical-500',
-        SUCCESS: 'text-success-500',
-        INFORMATIVE: 'text-informative-500',
+        [Tone.Primary]: 'text-primary-500',
+        [Tone.Neutral]: 'text-neutral-500',
+        [Tone.Warning]: 'text-warning-500',
+        [Tone.Critical]: 'text-critical-500',
+        [Tone.Success]: 'text-success-500',
+        [Tone.Informative]: 'text-informative-500',
       },
     },
     text: {
       base: 'text-center tracking-[0.00625rem]',
       tone: {
-        PRIMARY: 'text-neutral-500',
-        NEUTRAL: 'text-neutral-500',
-        WARNING: 'text-neutral-500',
-        CRITICAL: 'text-neutral-500',
-        SUCCESS: 'text-neutral-500',
-        INFORMATIVE: 'text-neutral-500',
+        [Tone.Primary]: 'text-neutral-500',
+        [Tone.Neutral]: 'text-neutral-500',
+        [Tone.Warning]: 'text-neutral-500',
+        [Tone.Critical]: 'text-neutral-500',
+        [Tone.Success]: 'text-neutral-500',
+        [Tone.Informative]: 'text-neutral-500',
       },
     },
   },
@@ -79,9 +85,9 @@ export default {
   descriptionItemContent: {
     base: 'flex-1 flex',
     alignVertical: {
-      START: 'items-start',
-      CENTER: 'items-center',
-      END: 'items-end',
+      [DescriptionItemContentAlignVertical.Start]: 'items-start',
+      [DescriptionItemContentAlignVertical.Center]: 'items-center',
+      [DescriptionItemContentAlignVertical.End]: 'items-end',
     },
   },
   loadingDescriptionItem: {

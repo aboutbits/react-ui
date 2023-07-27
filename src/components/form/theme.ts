@@ -1,94 +1,106 @@
+import {
+  CheckboxLayout,
+  FieldSetIndent,
+  FormVariant,
+  IconPosition,
+  Mode,
+  RadioLayout,
+  Size,
+  ToggleSwitchLayout,
+  Tone,
+} from '..'
+
 export default {
   input: {
     base: 'block w-full p-2.5-1px border leading-5 appearance-none outline-none focus:ring-0 focus:outline focus:outline-1 focus:-outline-offset-2 rounded-lg',
     field: 'relative',
     modeVariant: {
-      LIGHT: {
+      [Mode.Light]: {
         base: {
           tone: {
-            NEUTRAL: 'placeholder:text-neutral-800/[0.36]',
-            CRITICAL: 'placeholder:text-neutral-800/[0.36]',
+            [Tone.Neutral]: 'placeholder:text-neutral-800/[0.36]',
+            [Tone.Critical]: 'placeholder:text-neutral-800/[0.36]',
           },
           disabled:
             'text-neutral-800/[0.36] placeholder:text-neutral-800/[0.36]',
         },
-        GHOST: {
+        [FormVariant.Ghost]: {
           tone: {
-            NEUTRAL:
+            [Tone.Neutral]:
               'bg-transparent border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
-            CRITICAL:
+            [Tone.Critical]:
               'bg-transparent border-critical-500 focus:border-critical-500 focus:outline-critical-500',
           },
           disabled: 'bg-transparent border-neutral-800/[0.36]',
         },
-        SOFT: {
+        [FormVariant.Soft]: {
           tone: {
-            NEUTRAL:
+            [Tone.Neutral]:
               'bg-neutral-800/[0.06] border-transparent focus:border-neutral-800 focus:outline-neutral-800',
-            CRITICAL:
+            [Tone.Critical]:
               'bg-neutral-800/[0.06] border-critical-500 focus:border-critical-500 focus:outline-critical-500',
           },
           disabled: 'bg-neutral-800/[0.16] border-transparent',
         },
-        SOLID: {
+        [FormVariant.Solid]: {
           tone: {
-            NEUTRAL:
+            [Tone.Neutral]:
               'bg-white border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
-            CRITICAL:
+            [Tone.Critical]:
               'bg-white border-critical-500 focus:border-critical-500 focus:outline-critical-500',
           },
           disabled: 'bg-white border-neutral-800/[0.36]',
         },
-        TRANSPARENT: {
+        [FormVariant.Transparent]: {
           tone: {
-            NEUTRAL:
+            [Tone.Neutral]:
               'bg-transparent border-transparent focus:border-neutral-800 focus:outline-neutral-800 hover:bg-neutral-100 hover:border-neutral-100',
-            CRITICAL:
+            [Tone.Critical]:
               'bg-transparent border-critical-500 focus:border-critical-500 focus:outline-critical-500',
           },
           disabled: 'bg-transparent border-transparent',
         },
       },
-      DARK: {
+      [Mode.Dark]: {
         base: {
           tone: {
-            NEUTRAL: 'text-white placeholder:text-white/[0.48]',
-            CRITICAL: 'text-white placeholder:text-white/[0.48]',
+            [Tone.Neutral]: 'text-white placeholder:text-white/[0.48]',
+            [Tone.Critical]: 'text-white placeholder:text-white/[0.48]',
           },
           disabled: 'text-white/[0.36] placeholder:text-white/[0.36]',
         },
-        GHOST: {
+        [FormVariant.Ghost]: {
           tone: {
-            NEUTRAL:
+            [Tone.Neutral]:
               'bg-transparent border-neutral-200 focus:border-white focus:outline-white ',
-            CRITICAL:
+            [Tone.Critical]:
               'bg-transparent border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
           },
           disabled: 'bg-transparent border-white/[0.36]',
         },
-        SOFT: {
+        [FormVariant.Soft]: {
           tone: {
-            NEUTRAL:
+            [Tone.Neutral]:
               'bg-white/[0.08] border-transparent focus:border-white focus:outline-white',
-            CRITICAL:
+            [Tone.Critical]:
               'bg-white/[0.08] border-critical-300 focus:border-critical-300 focus:outline-critical-300',
           },
           disabled: 'bg-white/[0.16] border-transparent',
         },
-        SOLID: {
+        [FormVariant.Solid]: {
           tone: {
-            NEUTRAL:
+            [Tone.Neutral]:
               'bg-neutral-800 border-neutral-200 focus:border-white focus:outline-white ',
-            CRITICAL:
+            [Tone.Critical]:
               'bg-neutral-800 border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
           },
           disabled: 'bg-neutral-800 border-white/[0.36]',
         },
-        TRANSPARENT: {
+        [FormVariant.Transparent]: {
           tone: {
-            NEUTRAL:
+            [Tone.Neutral]:
               'bg-transparent border-transparent focus:border-white focus:outline-white',
-            CRITICAL:
+            [Tone.Critical]:
               'bg-transparent border-critical-300 focus:border-critical-300 focus:outline-critical-300',
           },
           disabled: 'bg-transparent border-transparent',
@@ -100,18 +112,18 @@ export default {
   },
   inputLabel: {
     base: 'block pb-1 ml-1 text-xs font-medium',
-    LIGHT: {
+    [Mode.Light]: {
       tone: {
-        NEUTRAL: '',
-        CRITICAL: 'text-critical-500',
+        [Tone.Neutral]: '',
+        [Tone.Critical]: 'text-critical-500',
       },
       required: "after:content-['*'] after:ml-0.5",
       disabled: 'text-neutral-800/[0.36]',
     },
-    DARK: {
+    [Mode.Dark]: {
       tone: {
-        NEUTRAL: 'text-white',
-        CRITICAL: 'text-critical-300',
+        [Tone.Neutral]: 'text-white',
+        [Tone.Critical]: 'text-critical-300',
       },
       required: "after:content-['*'] after:ml-0.5",
       disabled: 'text-white/[0.36]',
@@ -120,35 +132,35 @@ export default {
   inputMessage: {
     base: 'mt-1 block text-xs font-medium',
     indent: 'ml-1',
-    LIGHT: {
+    [Mode.Light]: {
       tone: {
-        NEUTRAL: '',
-        CRITICAL: 'text-critical-500',
+        [Tone.Neutral]: '',
+        [Tone.Critical]: 'text-critical-500',
       },
       disabled: 'text-neutral-800/[0.36]',
     },
-    DARK: {
+    [Mode.Dark]: {
       tone: {
-        NEUTRAL: 'text-white',
-        CRITICAL: 'text-critical-300',
+        [Tone.Neutral]: 'text-white',
+        [Tone.Critical]: 'text-critical-300',
       },
       disabled: 'text-white/[0.36]',
     },
   },
   inputIcon: {
     base: 'w-5 h-5 fill-current',
-    LIGHT: {
+    [Mode.Light]: {
       normal: '',
       disabled: 'text-neutral-400',
     },
-    DARK: {
+    [Mode.Dark]: {
       normal: 'text-white',
       disabled: 'text-neutral-400',
     },
     container: {
       base: 'absolute top-0 bottom-0 flex items-center pointer-events-none',
-      START: 'left-0 pl-3.5',
-      END: 'right-0 pr-3.5',
+      [IconPosition.Start]: 'left-0 pl-3.5',
+      [IconPosition.End]: 'right-0 pr-3.5',
     },
   },
   select: {
@@ -156,10 +168,10 @@ export default {
   },
   option: {
     base: 'bg-transparent',
-    LIGHT: {
+    [Mode.Light]: {
       normal: '',
     },
-    DARK: {
+    [Mode.Dark]: {
       normal: '',
     },
   },
@@ -168,16 +180,16 @@ export default {
     normal: 'cursor-pointer',
     disabled: '',
     layout: {
-      START: 'flex-row-reverse',
-      END: '',
-      SPACE_BETWEEN: 'w-full justify-between',
+      [CheckboxLayout.Start]: 'flex-row-reverse',
+      [CheckboxLayout.End]: '',
+      [CheckboxLayout.SpaceBetween]: 'w-full justify-between',
     },
     inputHeight: {
       base: 'min-h-[2.5rem]',
       size: {
-        SM: 'pt-2',
-        MD: 'pt-1.5',
-        LG: 'pt-0.5',
+        [Size.Sm]: 'pt-2',
+        [Size.Md]: 'pt-1.5',
+        [Size.Lg]: 'pt-0.5',
       },
     },
     input: {
@@ -186,21 +198,21 @@ export default {
     label: {
       base: '',
       mode: {
-        LIGHT: {
+        [Mode.Light]: {
           normal: '',
           required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-neutral-800/[0.36]',
         },
-        DARK: {
+        [Mode.Dark]: {
           normal: 'text-white',
           required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-white/[0.36]',
         },
       },
       size: {
-        SM: '',
-        MD: 'pt-0.5',
-        LG: 'pt-1.5',
+        [Size.Sm]: '',
+        [Size.Md]: 'pt-0.5',
+        [Size.Lg]: 'pt-1.5',
       },
     },
     check: {
@@ -208,22 +220,22 @@ export default {
       normal: '',
       disabled: '',
       mode: {
-        LIGHT: 'outline-neutral-800',
-        DARK: 'outline-white',
+        [Mode.Light]: 'outline-neutral-800',
+        [Mode.Dark]: 'outline-white',
       },
       size: {
-        SM: 'h-6 w-6',
-        MD: 'h-7 w-7',
-        LG: 'h-9 w-9',
+        [Size.Sm]: 'h-6 w-6',
+        [Size.Md]: 'h-7 w-7',
+        [Size.Lg]: 'h-9 w-9',
       },
       checked: {
         base: '[[type=checkbox]:not(:checked)~&]:hidden',
         modeState: {
-          LIGHT: {
+          [Mode.Light]: {
             normal: 'fill-primary-500',
             disabled: 'fill-neutral-800/[0.36]',
           },
-          DARK: {
+          [Mode.Dark]: {
             normal: 'fill-primary-300',
             disabled: 'fill-white/[0.36]',
           },
@@ -232,11 +244,11 @@ export default {
       unchecked: {
         base: '[[type=checkbox]:checked~&]:hidden',
         modeState: {
-          LIGHT: {
+          [Mode.Light]: {
             normal: 'fill-neutral-800',
             disabled: 'fill-neutral-800/[0.36]',
           },
-          DARK: {
+          [Mode.Dark]: {
             normal: 'fill-white',
             disabled: 'fill-white/[0.36]',
           },
@@ -249,42 +261,42 @@ export default {
     normal: 'cursor-pointer',
     disabled: '',
     layout: {
-      START: '',
-      END: 'flex-row-reverse',
-      SPACE_BETWEEN: 'flex-row-reverse w-full justify-between',
+      [RadioLayout.Start]: '',
+      [RadioLayout.End]: 'flex-row-reverse',
+      [RadioLayout.SpaceBetween]: 'flex-row-reverse w-full justify-between',
     },
     inputHeight: {
       base: 'min-h-[2.5rem]',
       size: {
-        SM: 'pt-2',
-        MD: 'pt-1.5',
-        LG: 'pt-0.5',
+        [Size.Sm]: 'pt-2',
+        [Size.Md]: 'pt-1.5',
+        [Size.Lg]: 'pt-0.5',
       },
     },
     input: {
       base: 'peer absolute h-0 w-0 opacity-0',
       size: {
-        SM: 'h-4 w-4',
-        MD: 'h-5 w-5',
-        LG: 'h-6 w-6',
+        [Size.Sm]: 'h-4 w-4',
+        [Size.Md]: 'h-5 w-5',
+        [Size.Lg]: 'h-6 w-6',
       },
     },
     label: {
       base: '',
       mode: {
-        LIGHT: {
+        [Mode.Light]: {
           normal: '',
           disabled: 'text-neutral-800/[0.36]',
         },
-        DARK: {
+        [Mode.Dark]: {
           normal: 'text-white',
           disabled: 'text-white/[0.36]',
         },
       },
       size: {
-        SM: '',
-        MD: '',
-        LG: '',
+        [Size.Sm]: '',
+        [Size.Md]: '',
+        [Size.Lg]: '',
       },
     },
     icon: {
@@ -292,22 +304,22 @@ export default {
       normal: '',
       disabled: '',
       mode: {
-        LIGHT: 'outline-neutral-800',
-        DARK: 'outline-white',
+        [Mode.Light]: 'outline-neutral-800',
+        [Mode.Dark]: 'outline-white',
       },
       size: {
-        SM: 'h-6 w-6',
-        MD: 'h-7 w-7',
-        LG: 'h-9 w-9',
+        [Size.Sm]: 'h-6 w-6',
+        [Size.Md]: 'h-7 w-7',
+        [Size.Lg]: 'h-9 w-9',
       },
       checked: {
         base: '[input:not(:checked)~&]:hidden',
         modeState: {
-          LIGHT: {
+          [Mode.Light]: {
             normal: 'fill-primary-500',
             disabled: 'fill-neutral-800/[0.36]',
           },
-          DARK: {
+          [Mode.Dark]: {
             normal: 'fill-primary-300',
             disabled: 'fill-white/[0.36]',
           },
@@ -316,11 +328,11 @@ export default {
       unchecked: {
         base: '[input:checked~&]:hidden',
         modeState: {
-          LIGHT: {
+          [Mode.Light]: {
             normal: 'fill-neutral-800',
             disabled: 'fill-neutral-800/[0.36]',
           },
-          DARK: {
+          [Mode.Dark]: {
             normal: 'fill-white',
             disabled: 'fill-white/[0.36]',
           },
@@ -332,16 +344,16 @@ export default {
     messageContainer: 'space-y-2',
     container: {
       indent: {
-        NONE: '',
-        LABEL: '',
-        LABEL_AND_CHILDREN: 'ml-1',
+        [FieldSetIndent.None]: '',
+        [FieldSetIndent.Label]: '',
+        [FieldSetIndent.LabelAndChildren]: 'ml-1',
       },
     },
     legend: {
       indent: {
-        NONE: '',
-        LABEL: 'ml-1',
-        LABEL_AND_CHILDREN: '',
+        [FieldSetIndent.None]: '',
+        [FieldSetIndent.Label]: 'ml-1',
+        [FieldSetIndent.LabelAndChildren]: '',
       },
     },
   },
@@ -350,16 +362,16 @@ export default {
     normal: 'cursor-pointer',
     disabled: '',
     layout: {
-      START: 'flex-row-reverse',
-      END: '',
-      SPACE_BETWEEN: 'w-full justify-between',
+      [ToggleSwitchLayout.Start]: 'flex-row-reverse',
+      [ToggleSwitchLayout.End]: '',
+      [ToggleSwitchLayout.SpaceBetween]: 'w-full justify-between',
     },
     inputHeight: {
       base: 'min-h-[2.5rem]',
       size: {
-        SM: 'pt-2',
-        MD: 'pt-1.5',
-        LG: 'pt-0.5',
+        [Size.Sm]: 'pt-2',
+        [Size.Md]: 'pt-1.5',
+        [Size.Lg]: 'pt-0.5',
       },
     },
     input: {
@@ -368,21 +380,21 @@ export default {
     label: {
       base: '',
       mode: {
-        LIGHT: {
+        [Mode.Light]: {
           normal: '',
           required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-neutral-800/[0.36]',
         },
-        DARK: {
+        [Mode.Dark]: {
           normal: 'text-white',
           required: "after:content-['*'] after:ml-0.5",
           disabled: 'text-white/[0.36]',
         },
       },
       size: {
-        SM: '',
-        MD: 'pt-0.5',
-        LG: 'pt-1.5',
+        [Size.Sm]: '',
+        [Size.Md]: 'pt-0.5',
+        [Size.Lg]: 'pt-1.5',
       },
     },
     switch: {
@@ -390,13 +402,13 @@ export default {
       normal: 'transition-colors duration-200 ease-in-out',
       disabled: '',
       modeState: {
-        LIGHT: {
+        [Mode.Light]: {
           normal:
             'outline-neutral-800 border-neutral-600 [[type=checkbox]:checked~&]:border-transparent [[type=checkbox]:checked~&]:bg-primary-500',
           disabled:
             'border-neutral-800/[0.36] [[type=checkbox]:checked~&]:border-transparent [[type=checkbox]:checked~&]:bg-neutral-800/[0.36]',
         },
-        DARK: {
+        [Mode.Dark]: {
           normal:
             'outline-white border-white [[type=checkbox]:checked~&]:border-transparent [[type=checkbox]:checked~&]:bg-primary-300',
           disabled:
@@ -404,13 +416,13 @@ export default {
         },
       },
       size: {
-        SM: {
+        [Size.Sm]: {
           base: 'w-10',
         },
-        MD: {
+        [Size.Md]: {
           base: 'w-12',
         },
-        LG: {
+        [Size.Lg]: {
           base: 'w-16',
         },
       },
@@ -420,20 +432,23 @@ export default {
       normal: 'transition duration-200 ease-in-out',
       disabled: '',
       modeState: {
-        LIGHT: {
+        [Mode.Light]: {
           normal: 'bg-neutral-600 [[type=checkbox]:checked+span>&]:bg-white',
           disabled:
             'bg-neutral-800/[0.36] [[type=checkbox]:checked+span>&]:bg-white',
         },
-        DARK: {
+        [Mode.Dark]: {
           normal: 'bg-white [[type=checkbox]:checked+span>&]:bg-neutral-800',
           disabled: 'bg-white/[0.36]',
         },
       },
       size: {
-        SM: 'h-4 w-4 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-4',
-        MD: 'h-5 w-5 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-5',
-        LG: 'h-7 w-7 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-7',
+        [Size.Sm]:
+          'h-4 w-4 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-4',
+        [Size.Md]:
+          'h-5 w-5 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-5',
+        [Size.Lg]:
+          'h-7 w-7 translate-x-0 [[type=checkbox]:checked+span>&]:translate-x-7',
       },
     },
   },

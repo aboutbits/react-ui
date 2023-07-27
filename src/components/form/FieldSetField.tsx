@@ -23,7 +23,7 @@ export function FieldSetField({
   className,
   ...props
 }: FieldSetFieldProps) {
-  const tone = status === Status.invalid ? FormTone.critical : FormTone.neutral
+  const tone = status === Status.Invalid ? FormTone.Critical : FormTone.Neutral
   const { form: theme } = useTheme()
 
   return (

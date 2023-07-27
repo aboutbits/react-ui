@@ -1,37 +1,40 @@
+import { Mode, Size, Tone } from '../types'
+import { ButtonVariant } from '.'
+
 export default {
   button: {
     base: 'inline-flex items-center justify-center font-medium rounded-lg outline-1 outline-offset-2 focus:outline',
     variantSize: {
       base: {
-        SM: 'px-4 py-1.5 text-sm leading-5',
-        MD: 'px-6 py-2.5 text-sm leading-5',
-        LG: 'px-8 py-4 text-lg leading-7',
+        [Size.Sm]: 'px-4 py-1.5 text-sm leading-5',
+        [Size.Md]: 'px-6 py-2.5 text-sm leading-5',
+        [Size.Lg]: 'px-8 py-4 text-lg leading-7',
       },
-      GHOST: {
-        SM: 'px-4-1px py-1.5-1px border',
-        MD: 'px-6-1px py-2.5-1px border',
-        LG: 'px-8-1px py-4-1px border',
+      [ButtonVariant.Ghost]: {
+        [Size.Sm]: 'px-4-1px py-1.5-1px border',
+        [Size.Md]: 'px-6-1px py-2.5-1px border',
+        [Size.Lg]: 'px-8-1px py-4-1px border',
       },
     },
     icon: {
       base: 'fill-current',
       size: {
-        SM: 'w-4 h-4',
-        MD: 'w-4 h-4',
-        LG: 'w-7 h-7',
+        [Size.Sm]: 'w-4 h-4',
+        [Size.Md]: 'w-4 h-4',
+        [Size.Lg]: 'w-7 h-7',
       },
       iconStart: {
         size: {
-          SM: '-ml-1 mr-1',
-          MD: '-ml-2 mr-2',
-          LG: '-ml-3 mr-3',
+          [Size.Sm]: '-ml-1 mr-1',
+          [Size.Md]: '-ml-2 mr-2',
+          [Size.Lg]: '-ml-3 mr-3',
         },
       },
       iconEnd: {
         size: {
-          SM: 'ml-1 -mr-1',
-          MD: 'ml-2 -mr-2',
-          LG: 'ml-3 -mr-3',
+          [Size.Sm]: 'ml-1 -mr-1',
+          [Size.Md]: 'ml-2 -mr-2',
+          [Size.Lg]: 'ml-3 -mr-3',
         },
       },
     },
@@ -41,110 +44,110 @@ export default {
     icon: {
       base: 'fill-current inline-block align-top',
       size: {
-        SM: 'w-5 h-5',
-        MD: 'w-6 h-6',
-        LG: 'w-9 h-9',
+        [Size.Sm]: 'w-5 h-5',
+        [Size.Md]: 'w-6 h-6',
+        [Size.Lg]: 'w-9 h-9',
       },
     },
     variantSize: {
       base: {
-        SM: 'p-1.5',
-        MD: 'p-2',
-        LG: 'p-3',
+        [Size.Sm]: 'p-1.5',
+        [Size.Md]: 'p-2',
+        [Size.Lg]: 'p-3',
       },
-      GHOST: {
-        SM: 'p-1.5-1px border',
-        MD: 'p-2-1px border',
-        LG: 'p-3-1px border',
+      [ButtonVariant.Ghost]: {
+        [Size.Sm]: 'p-1.5-1px border',
+        [Size.Md]: 'p-2-1px border',
+        [Size.Lg]: 'p-3-1px border',
       },
     },
   },
   modeVariantTone: {
-    LIGHT: {
-      SOLID: {
-        PRIMARY:
+    [Mode.Light]: {
+      [ButtonVariant.Solid]: {
+        [Tone.Primary]:
           'bg-primary-500 hover:bg-primary-600 text-white outline-primary-500',
-        NEUTRAL:
+        [Tone.Neutral]:
           'bg-neutral-700 hover:bg-neutral-900 text-white outline-neutral-800',
-        CRITICAL:
+        [Tone.Critical]:
           'bg-critical-500 hover:bg-critical-600 text-white outline-critical-500',
-        WARNING:
+        [Tone.Warning]:
           'bg-warning-500 hover:bg-warning-600 text-white outline-warning-500',
-        SUCCESS:
+        [Tone.Success]:
           'bg-success-600 hover:bg-success-700 text-white outline-success-600',
-        INFORMATIVE:
+        [Tone.Informative]:
           'bg-informative-500 hover:bg-informative-600 text-white outline-informative-500',
         disabled: 'bg-neutral-800/[0.16] text-neutral-800/[0.36]',
       },
-      GHOST: {
-        PRIMARY:
+      [ButtonVariant.Ghost]: {
+        [Tone.Primary]:
           'hover:bg-primary-500/10 focus:bg-primary-500/10 border-primary-500 focus:border-transparent text-primary-500 outline-primary-500',
-        NEUTRAL:
+        [Tone.Neutral]:
           'hover:bg-neutral-500/10 focus:bg-neutral-500/10 border-neutral-700 focus:border-transparent text-neutral-700 outline-neutral-700',
-        CRITICAL:
+        [Tone.Critical]:
           'hover:bg-critical-500/10 focus:bg-critical-500/10 border-critical-500 focus:border-transparent text-critical-500 outline-critical-500',
-        WARNING:
+        [Tone.Warning]:
           'hover:bg-warning-500/10 focus:bg-warning-500/10 border-warning-600 focus:border-transparent text-warning-600 outline-warning-600',
-        SUCCESS:
+        [Tone.Success]:
           'hover:bg-success-500/10 focus:bg-success-500/10 border-success-600 focus:border-transparent text-success-600 outline-success-600',
-        INFORMATIVE:
+        [Tone.Informative]:
           'hover:bg-informative-500/10 focus:bg-informative-500/10 border-informative-500 focus:border-transparent text-informative-500 outline-informative-500',
         disabled: 'border-neutral-800/[0.36] text-neutral-800/[0.36]',
       },
-      TRANSPARENT: {
-        PRIMARY:
+      [ButtonVariant.Transparent]: {
+        [Tone.Primary]:
           'hover:bg-primary-500/10 text-primary-500 focus:outline-primary-500',
-        NEUTRAL:
+        [Tone.Neutral]:
           'hover:bg-neutral-500/10 text-neutral-700 focus:outline-neutral-700',
-        CRITICAL:
+        [Tone.Critical]:
           'hover:bg-critical-500/10 text-critical-500 focus:outline-critical-500',
-        WARNING:
+        [Tone.Warning]:
           'hover:bg-warning-500/10 text-warning-600 focus:outline-warning-600',
-        SUCCESS:
+        [Tone.Success]:
           'hover:bg-success-500/10 text-success-600 focus:outline-success-600',
-        INFORMATIVE:
+        [Tone.Informative]:
           'hover:bg-informative-500/10 text-informative-500 focus:outline-informative-500',
         disabled: 'text-neutral-800/[0.36]',
       },
     },
-    DARK: {
-      SOLID: {
-        PRIMARY:
+    [Mode.Dark]: {
+      [ButtonVariant.Solid]: {
+        [Tone.Primary]:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
-        NEUTRAL:
+        [Tone.Neutral]:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
-        CRITICAL:
+        [Tone.Critical]:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
-        WARNING:
+        [Tone.Warning]:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
-        SUCCESS:
+        [Tone.Success]:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
-        INFORMATIVE:
+        [Tone.Informative]:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
         disabled: 'bg-white/[0.26] text-white/[0.36]',
       },
-      GHOST: {
-        PRIMARY:
+      [ButtonVariant.Ghost]: {
+        [Tone.Primary]:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
-        NEUTRAL:
+        [Tone.Neutral]:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
-        CRITICAL:
+        [Tone.Critical]:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
-        WARNING:
+        [Tone.Warning]:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
-        SUCCESS:
+        [Tone.Success]:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
-        INFORMATIVE:
+        [Tone.Informative]:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
         disabled: 'border-white/[0.36] text-white/[0.36]',
       },
-      TRANSPARENT: {
-        PRIMARY: 'hover:bg-white/10 text-white focus:outline-white',
-        NEUTRAL: 'hover:bg-white/10 text-white focus:outline-white',
-        CRITICAL: 'hover:bg-white/10 text-white focus:outline-white',
-        WARNING: 'hover:bg-white/10 text-white focus:outline-white',
-        SUCCESS: 'hover:bg-white/10 text-white focus:outline-white',
-        INFORMATIVE: 'hover:bg-white/10 text-white focus:outline-white',
+      [ButtonVariant.Transparent]: {
+        [Tone.Primary]: 'hover:bg-white/10 text-white focus:outline-white',
+        [Tone.Neutral]: 'hover:bg-white/10 text-white focus:outline-white',
+        [Tone.Critical]: 'hover:bg-white/10 text-white focus:outline-white',
+        [Tone.Warning]: 'hover:bg-white/10 text-white focus:outline-white',
+        [Tone.Success]: 'hover:bg-white/10 text-white focus:outline-white',
+        [Tone.Informative]: 'hover:bg-white/10 text-white focus:outline-white',
         disabled: 'text-white/[0.36]',
       },
     },
