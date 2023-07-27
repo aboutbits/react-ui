@@ -4,8 +4,7 @@
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "import": "./dist/esm/index.js"
     }
   },
   "files": [
@@ -30,9 +29,8 @@
   },
   "scripts": {
     "dev": "storybook dev -p 4000 --no-open",
-    "build": "rimraf dist && npm run build:types && npm run build:esm && npm run build:cjs",
+    "build": "rimraf dist && npm run build:types && npm run build:esm",
     "build:esm": "tsc -p tsconfig.esm.json",
-    "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:types": "tsc -p tsconfig.types.json",
     "build-storybook": "storybook build",
     "lint": "eslint --cache .",
