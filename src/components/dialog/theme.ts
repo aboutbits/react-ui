@@ -20,13 +20,13 @@ export default {
   dialog: {
     base: 'flex flex-col min-h-0 outline-none bg-white shadow-dialog max-h-full overflow-hidden',
     mobilePositionSize: {
-      CENTER: {
+      [DialogPosition.Center]: {
         base: 'rounded-lg',
         [Size.Sm]: 'w-full max-w-xs',
         [Size.Md]: 'w-full max-w-xl',
         [Size.Lg]: 'w-full max-w-3xl',
       },
-      FULLSCREEN: {
+      [DialogPosition.Fullscreen]: {
         base: 'w-full h-full',
         [Size.Sm]: '',
         [Size.Md]: '',
@@ -34,13 +34,13 @@ export default {
       },
     },
     desktopPositionSize: {
-      CENTER: {
+      [DialogPosition.Center]: {
         base: 'lg:h-auto lg:rounded-lg',
         [Size.Sm]: 'lg:w-full lg:max-w-xs',
         [Size.Md]: 'lg:w-full lg:max-w-xl',
         [Size.Lg]: 'lg:w-full lg:max-w-3xl',
       },
-      FULLSCREEN: {
+      [DialogPosition.Fullscreen]: {
         base: 'lg:w-full lg:h-full lg:max-w-none lg:rounded-none',
         [Size.Sm]: '',
         [Size.Md]: '',
