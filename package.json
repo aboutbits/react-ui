@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@aboutbits/pagination": "^1.1.0",
+    "@aboutbits/react-pagination": "^2.0.1",
     "@aboutbits/react-material-icons": "^1.1.2",
     "@aboutbits/react-toolbox": "^0.2.1",
     "@aboutbits/ts-utils": "github:@aboutbits/ts-utils#main",
@@ -64,7 +65,6 @@
   "devDependencies": {
     "@aboutbits/eslint-config": "^2.1.2",
     "@aboutbits/prettier-config": "^1.6.0",
-    "@aboutbits/react-pagination": "^1.0.2",
     "@aboutbits/ts-config": "^1.1.2",
     "@hookform/resolvers": "^3.1.1",
     "@storybook/addon-essentials": "^7.0.26",
@@ -111,6 +111,11 @@
     "vite": "^4.4.3",
     "vitest": "^0.33.0",
     "zod": "^3.21.4"
+  },
+  "peerDependenciesMeta": {
+    "@aboutbits/react-pagination": {
+      "optional": true
+    }
   },
   "prettier": "@aboutbits/prettier-config"
 }
