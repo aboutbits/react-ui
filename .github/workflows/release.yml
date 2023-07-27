@@ -1,27 +1,32 @@
 name: Create Relase & Publish Package
+
 on:
   push:
     tags:
       - 'v*'
+
+env:
+  NODE_VERSION: 16
+
 jobs:
   build:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/github-script@v6
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-      - uses: actions/setup-node@v1
+          script: |
+            github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: '${{ github.ref }}',
+              name: 'Release ${{ github.ref }}'
+            })
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
-          node-version: '16.x'
+          node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
-      - run: npm install
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
