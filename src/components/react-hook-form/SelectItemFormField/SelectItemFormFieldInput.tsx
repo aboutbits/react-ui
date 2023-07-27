@@ -42,8 +42,8 @@ export function SelectItemFormFieldInput<
   onClear,
   disabled = false,
   hasError,
-  mode = Mode.light,
-  variant = FormVariant.ghost,
+  mode = Mode.Light,
+  variant = FormVariant.Ghost,
   className,
   required,
   hideRequired,
@@ -56,7 +56,7 @@ export function SelectItemFormFieldInput<
   const inputCss = useInputCss({
     mode,
     variant,
-    tone: error ? FormTone.critical : FormTone.neutral,
+    tone: error ? FormTone.Critical : FormTone.Neutral,
     disabled,
     withIconStart: false,
     withIconEnd: false,
@@ -140,7 +140,7 @@ export function SelectItemFormFieldInput<
       {Boolean(error) && (
         <InputMessage
           mode={mode}
-          tone={FormTone.critical}
+          tone={FormTone.Critical}
           disabled={disabled}
           message={error?.message}
         />

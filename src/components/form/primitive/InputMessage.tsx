@@ -18,8 +18,8 @@ export type InputMessageProps = ClassNameProps &
  * A themed message to be used with field components.
  */
 export function InputMessage({
-  mode = Mode.light,
-  tone = FormTone.neutral,
+  mode = Mode.Light,
+  tone = FormTone.Neutral,
   noIndent = false,
   disabled = false,
   className,

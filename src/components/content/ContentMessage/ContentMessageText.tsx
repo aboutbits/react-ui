@@ -9,7 +9,7 @@ export type ContentMessageTextProps = ClassNameProps & {
 }
 
 export function ContentMessageText({
-  tone = Tone.primary,
+  tone = Tone.Primary,
   className,
   children,
 }: ContentMessageTextProps) {

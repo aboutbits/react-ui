@@ -4,8 +4,8 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps, IconProps, Tone } from '../../types'
 
 export enum ContentMessageIconStyle {
-  rounded = 'rounded',
-  plain = 'plain',
+  Rounded = 'ROUNDED',
+  Plain = 'PLAIN',
 }
 
 export type ContentMessageIconProps = ClassNameProps & {
@@ -16,8 +16,8 @@ export type ContentMessageIconProps = ClassNameProps & {
 
 export function ContentMessageIcon({
   icon: Icon,
-  iconStyle = ContentMessageIconStyle.rounded,
-  tone = Tone.primary,
+  iconStyle = ContentMessageIconStyle.Rounded,
+  tone = Tone.Primary,
   className,
 }: ContentMessageIconProps) {
   const { content } = useTheme()

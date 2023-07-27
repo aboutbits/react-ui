@@ -21,7 +21,7 @@ export function ContentMessage({
   icon,
   title,
   text,
-  tone = Tone.primary,
+  tone = Tone.Primary,
   iconProps,
 }: ContentMessageProps): ReactElement {
   return (

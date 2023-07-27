@@ -10,7 +10,7 @@ export function Alert({
   title,
   actions,
   tone,
-  actionsPosition = AlertActionsPosition.responsive,
+  actionsPosition = AlertActionsPosition.Responsive,
   children,
 }: AlertProps): ReactElement {
   return (
@@ -68,7 +68,7 @@ export function AlertIcon({
 
 export function AlertContent({
   className,
-  actionsPosition = AlertActionsPosition.responsive,
+  actionsPosition = AlertActionsPosition.Responsive,
   children,
 }: {
   className?: string

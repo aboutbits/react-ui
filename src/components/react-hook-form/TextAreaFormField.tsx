@@ -59,7 +59,7 @@ export const TextAreaFormField = forwardRef(function TextAreaFormField<
         forwardedRef.current = e
       }}
       message={error?.message ?? message}
-      status={error ? Status.invalid : undefined}
+      status={error ? Status.Invalid : undefined}
     />
   )
 })

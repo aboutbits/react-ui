@@ -29,9 +29,9 @@ export type InputProps = React.DetailedHTMLProps<
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   function InputComponent(
     {
-      mode = Mode.light,
-      variant = FormVariant.solid,
-      tone = FormTone.neutral,
+      mode = Mode.Light,
+      variant = FormVariant.Solid,
+      tone = FormTone.Neutral,
       disabled = false,
       className,
       iconStart,
@@ -55,7 +55,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {iconStart && (
           <InputIcon
             icon={iconStart}
-            position={IconPosition.start}
+            position={IconPosition.Start}
             mode={mode}
             disabled={disabled}
           />
@@ -64,7 +64,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {iconEnd && (
           <InputIcon
             icon={iconEnd}
-            position={IconPosition.end}
+            position={IconPosition.End}
             mode={mode}
             disabled={disabled}
           />

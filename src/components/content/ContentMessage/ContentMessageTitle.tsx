@@ -9,7 +9,7 @@ export type ContentMessageTitleProps = ClassNameProps & {
 }
 
 export function ContentMessageTitle({
-  tone = Tone.primary,
+  tone = Tone.Primary,
   className,
   children,
 }: ContentMessageTitleProps) {

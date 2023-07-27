@@ -1,3 +1,10 @@
+import { Size } from '../types'
+import {
+  SectionContentLayout,
+  SectionHeaderRowLayout,
+  SectionHeaderSpacerSize,
+} from '.'
+
 export default {
   section: {
     base: '',
@@ -9,8 +16,9 @@ export default {
   content: {
     base: 'px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
     layout: {
-      oneColumnGrid: 'grid gap-y-6',
-      twoColumnGrid: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6',
+      [SectionContentLayout.OneColumnGrid]: 'grid gap-y-6',
+      [SectionContentLayout.TwoColumnGrid]:
+        'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6',
     },
   },
   contentTitle: { base: 'text-2xl' },
@@ -47,10 +55,10 @@ export default {
   },
   headerSpacer: {
     size: {
-      sm: '',
-      md: 'h-2',
-      lg: 'h-4',
-      xl: 'h-6',
+      [SectionHeaderSpacerSize.Sm]: '',
+      [SectionHeaderSpacerSize.Md]: 'h-2',
+      [SectionHeaderSpacerSize.Lg]: 'h-4',
+      [SectionHeaderSpacerSize.Xl]: 'h-6',
     },
   },
   headerTitle: {
@@ -59,18 +67,18 @@ export default {
   headerRow: {
     base: '',
     layout: {
-      stretch: '',
-      spaceBetween: 'flex justify-between gap-x-2.5',
-      start: 'flex justify-start gap-x-2.5',
-      center: 'flex justify-center gap-x-2.5',
-      end: 'flex justify-end gap-x-2.5',
+      [SectionHeaderRowLayout.Stretch]: '',
+      [SectionHeaderRowLayout.SpaceBetween]: 'flex justify-between gap-x-2.5',
+      [SectionHeaderRowLayout.Start]: 'flex justify-start gap-x-2.5',
+      [SectionHeaderRowLayout.Center]: 'flex justify-center gap-x-2.5',
+      [SectionHeaderRowLayout.End]: 'flex justify-end gap-x-2.5',
     },
   },
   headerGroup: {
     base: 'flex items-center gap-y-2',
     spacing: {
-      sm: 'gap-x-2.5',
-      md: 'gap-x-6',
+      [Size.Sm]: 'gap-x-2.5',
+      [Size.Md]: 'gap-x-6',
     },
   },
   footerArea: {
@@ -91,6 +99,6 @@ export default {
     base: 'flex flex-wrap items-center gap-y-4',
     actions: 'flex-1',
     formSubmitFeedback:
-      'w-full justify-center lg:order-first lg:w-auto lg:justify-start',
+      'w-full justify-center [Size.Lg]:order-first LG:w-auto LG:justify-start',
   },
 }

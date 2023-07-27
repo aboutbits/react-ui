@@ -25,12 +25,12 @@ export const CheckboxField = forwardRef<HTMLInputElement, CheckboxFieldProps>(
       disabled = false,
       className,
       message,
-      layout = CheckboxLayout.start,
+      layout = CheckboxLayout.Start,
       ...props
     },
     ref,
   ) {
-    const tone = status === Status.invalid ? FormTone.critical : undefined
+    const tone = status === Status.Invalid ? FormTone.Critical : undefined
 
     return (
       <div className={className}>

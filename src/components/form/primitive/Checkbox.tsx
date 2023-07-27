@@ -18,9 +18,9 @@ import {
 } from './useThemedCss'
 
 export enum CheckboxLayout {
-  start = 'START',
-  end = 'END',
-  spaceBetween = 'SPACE_BETWEEN',
+  Start = 'START',
+  End = 'END',
+  SpaceBetween = 'SPACE_BETWEEN',
 }
 
 export type CheckboxProps = Omit<
@@ -47,9 +47,9 @@ export type CheckboxProps = Omit<
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
     {
-      mode = Mode.light,
-      layout = CheckboxLayout.start,
-      size = Size.md,
+      mode = Mode.Light,
+      layout = CheckboxLayout.Start,
+      size = Size.Md,
       applyInputHeight = false,
       disabled = false,
       label,

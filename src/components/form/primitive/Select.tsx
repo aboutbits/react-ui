@@ -29,9 +29,9 @@ export type SelectProps = Omit<
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   function Select(
     {
-      mode = Mode.light,
-      variant = FormVariant.solid,
-      tone = FormTone.neutral,
+      mode = Mode.Light,
+      variant = FormVariant.Solid,
+      tone = FormTone.Neutral,
       className,
       disabled = false,
       children,

@@ -1,13 +1,13 @@
 export enum FormVariant {
-  ghost = 'ghost',
-  soft = 'soft',
-  solid = 'solid',
-  transparent = 'transparent',
+  Ghost = 'GHOST',
+  Soft = 'SOFT',
+  Solid = 'SOLID',
+  Transparent = 'TRANSPARENT',
 }
 
 export enum FormTone {
-  neutral = 'NEUTRAL',
-  critical = 'CRITICAL',
+  Neutral = 'NEUTRAL',
+  Critical = 'CRITICAL',
 }
 
 export type FormToneProps = {
@@ -22,7 +22,7 @@ export type FormVariantProps = {
 }
 
 export enum Status {
-  invalid = 'INVALID',
+  Invalid = 'INVALID',
 }
 
 export type StatusProps = {

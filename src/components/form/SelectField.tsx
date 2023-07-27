@@ -27,8 +27,8 @@ export type SelectFieldProps = Omit<SelectProps, 'tone'> &
 export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
   function SelectField(
     {
-      mode = Mode.light,
-      variant = FormVariant.solid,
+      mode = Mode.Light,
+      variant = FormVariant.Solid,
       status,
       disabled = false,
       className,
@@ -42,7 +42,7 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
     ref,
   ) {
     const tone =
-      status === Status.invalid ? FormTone.critical : FormTone.neutral
+      status === Status.Invalid ? FormTone.Critical : FormTone.Neutral
 
     const id = useId(props.id)
 

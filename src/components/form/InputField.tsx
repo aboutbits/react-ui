@@ -40,7 +40,7 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
     ref,
   ) {
     const tone =
-      status === Status.invalid ? FormTone.critical : FormTone.neutral
+      status === Status.Invalid ? FormTone.Critical : FormTone.Neutral
 
     const id = useId(props.id)
     return (

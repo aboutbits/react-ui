@@ -2,9 +2,9 @@ import { ComponentType } from 'react'
 import { IconProps, ModeProps, Size, Tone } from '../types'
 
 export enum ButtonVariant {
-  solid = 'solid',
-  ghost = 'ghost',
-  transparent = 'transparent',
+  Solid = 'SOLID',
+  Ghost = 'GHOST',
+  Transparent = 'TRANSPARENT',
 }
 
 export type ButtonStyleProps = ModeProps & {

@@ -18,8 +18,8 @@ export const DialogHeaderLeftActionIcon = forwardRef<
   return (
     <ButtonIcon
       ref={ref}
-      variant={ButtonVariant.transparent}
-      tone={Tone.neutral}
+      variant={ButtonVariant.Transparent}
+      tone={Tone.Neutral}
       className={classNames(dialog.headerLeftActionIcon.base, className)}
       {...props}
     />

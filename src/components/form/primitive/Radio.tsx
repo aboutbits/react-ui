@@ -11,9 +11,9 @@ import {
 } from './useThemedCss'
 
 export enum RadioLayout {
-  start = 'START',
-  end = 'END',
-  spaceBetween = 'SPACE_BETWEEN',
+  Start = 'START',
+  End = 'END',
+  SpaceBetween = 'SPACE_BETWEEN',
 }
 
 export type RadioProps = Omit<
@@ -35,9 +35,9 @@ export type RadioProps = Omit<
  */
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   {
-    mode = Mode.light,
-    layout = RadioLayout.start,
-    size = Size.md,
+    mode = Mode.Light,
+    layout = RadioLayout.Start,
+    size = Size.Md,
     applyInputHeight = false,
     disabled = false,
     label,

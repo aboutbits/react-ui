@@ -14,10 +14,10 @@ export type ButtonProps = React.DetailedHTMLProps<
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
     {
-      mode = Mode.light,
-      variant = ButtonVariant.solid,
-      size = Size.md,
-      tone = Tone.primary,
+      mode = Mode.Light,
+      variant = ButtonVariant.Solid,
+      size = Size.Md,
+      tone = Tone.Primary,
       iconStart: IconStart,
       iconEnd: IconEnd,
       type = 'button',
@@ -36,7 +36,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             ? button.modeVariantTone[mode][variant][tone]
             : button.modeVariantTone[mode][variant].disabled,
           button.button.variantSize[
-            variant === ButtonVariant.ghost ? variant : 'base'
+            variant === ButtonVariant.Ghost ? variant : 'base'
           ][size],
           className,
         )}

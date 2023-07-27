@@ -4,9 +4,9 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 export enum DescriptionItemContentAlignVertical {
-  start = 'start',
-  center = 'center',
-  end = 'end',
+  Start = 'START',
+  Center = 'CENTER',
+  End = 'END',
 }
 
 export type DescriptionItemContentProps = ClassNameProps & {
@@ -15,7 +15,7 @@ export type DescriptionItemContentProps = ClassNameProps & {
 }
 
 export function DescriptionItemContent({
-  alignVertical = DescriptionItemContentAlignVertical.start,
+  alignVertical = DescriptionItemContentAlignVertical.Start,
   children,
   className,
 }: DescriptionItemContentProps) {

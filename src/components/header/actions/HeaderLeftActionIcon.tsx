@@ -15,8 +15,8 @@ export function HeaderLeftActionIcon(
   return (
     <HeaderLeftArea className={header.leftActionIcon.base}>
       <HeaderButtonIcon
-        variant={ButtonVariant.transparent}
-        tone={Tone.neutral}
+        variant={ButtonVariant.Transparent}
+        tone={Tone.Neutral}
         {...props}
       />
     </HeaderLeftArea>

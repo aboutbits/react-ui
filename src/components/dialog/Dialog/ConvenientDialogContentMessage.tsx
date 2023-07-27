@@ -11,12 +11,12 @@ export function DialogContentError({
   icon: Icon = IconWarning,
   ...props
 }: Omit<DialogContentMessageProps, 'tone'>): ReactElement {
-  return <DialogContentMessage tone={Tone.critical} icon={Icon} {...props} />
+  return <DialogContentMessage tone={Tone.Critical} icon={Icon} {...props} />
 }
 
 export function DialogContentEmpty({
   icon: Icon = IconList,
   ...props
 }: Omit<DialogContentMessageProps, 'tone'>): ReactElement {
-  return <DialogContentMessage tone={Tone.neutral} icon={Icon} {...props} />
+  return <DialogContentMessage tone={Tone.Neutral} icon={Icon} {...props} />
 }

@@ -20,10 +20,10 @@ export const ButtonIconLink = forwardRef<
 >(function ButtonIconLink(
   {
     href,
-    mode = Mode.light,
-    variant = ButtonVariant.solid,
-    size = Size.md,
-    tone = Tone.primary,
+    mode = Mode.Light,
+    variant = ButtonVariant.Solid,
+    size = Size.Md,
+    tone = Tone.Primary,
     icon: Icon,
     internal = true,
     disabled = false,
@@ -42,7 +42,7 @@ export const ButtonIconLink = forwardRef<
       ? button.modeVariantTone[mode][variant][tone]
       : button.modeVariantTone[mode][variant].disabled,
     button.buttonIcon.variantSize[
-      variant === ButtonVariant.ghost ? variant : 'base'
+      variant === ButtonVariant.Ghost ? variant : 'base'
     ][size],
     className,
   )

@@ -18,10 +18,10 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   function ButtonLink(
     {
       href,
-      mode = Mode.light,
-      variant = ButtonVariant.solid,
-      size = Size.md,
-      tone = Tone.primary,
+      mode = Mode.Light,
+      variant = ButtonVariant.Solid,
+      size = Size.Md,
+      tone = Tone.Primary,
       iconStart: IconStart,
       iconEnd: IconEnd,
       internal = true,
@@ -41,7 +41,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         ? button.modeVariantTone[mode][variant].disabled
         : button.modeVariantTone[mode][variant][tone],
       button.button.variantSize[
-        variant === ButtonVariant.ghost ? variant : 'base'
+        variant === ButtonVariant.Ghost ? variant : 'base'
       ][size],
       className,
     )

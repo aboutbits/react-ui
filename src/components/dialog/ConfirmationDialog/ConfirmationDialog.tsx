@@ -11,13 +11,13 @@ import { Button, ButtonVariant } from '../../button'
 import { Tone } from '../../types'
 
 export enum ConfirmationDialogVariant {
-  confirm = 'confirm',
-  critical = 'critical',
+  Confirm = 'CONFIRM',
+  Critical = 'CRITICAL',
 }
 
 const variantConfirmationButtonTone: Record<ConfirmationDialogVariant, Tone> = {
-  [ConfirmationDialogVariant.confirm]: Tone.primary,
-  [ConfirmationDialogVariant.critical]: Tone.critical,
+  [ConfirmationDialogVariant.Confirm]: Tone.Primary,
+  [ConfirmationDialogVariant.Critical]: Tone.Critical,
 }
 
 export type ConfirmDialogProps = Omit<DialogProps, 'children'> & {
@@ -64,7 +64,7 @@ export function ConfirmationDialog({
   disableConfirm,
   onDismiss,
   onConfirm,
-  variant = ConfirmationDialogVariant.confirm,
+  variant = ConfirmationDialogVariant.Confirm,
   confirmButtonText,
   dismissButtonText,
   title,
@@ -80,8 +80,8 @@ export function ConfirmationDialog({
           <DialogFooterActions>
             {Boolean(dismissButtonText) && (
               <Button
-                variant={ButtonVariant.ghost}
-                tone={Tone.neutral}
+                variant={ButtonVariant.Ghost}
+                tone={Tone.Neutral}
                 disabled={disableDismiss}
                 onClick={onDismiss}
               >
@@ -89,7 +89,7 @@ export function ConfirmationDialog({
               </Button>
             )}
             <Button
-              variant={ButtonVariant.solid}
+              variant={ButtonVariant.Solid}
               tone={variantConfirmationButtonTone[variant]}
               disabled={disableConfirm}
               onClick={onConfirm}

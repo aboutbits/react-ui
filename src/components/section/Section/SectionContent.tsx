@@ -9,8 +9,8 @@ export type SectionContentProps = ClassNameProps & {
 }
 
 export enum SectionContentLayout {
-  oneColumnGrid = 'oneColumnGrid',
-  twoColumnGrid = 'twoColumnGrid',
+  OneColumnGrid = 'ONE_COLUMN_GRID',
+  TwoColumnGrid = 'TWO_COLUMN_GRID',
 }
 
 export function SectionContent({

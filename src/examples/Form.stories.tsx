@@ -228,12 +228,12 @@ export const UserEdit: Story = () => {
         <Section>
           <SectionHeader title="User edit" />
           <SectionContainer>
-            <SectionContent layout={SectionContentLayout.twoColumnGrid}>
+            <SectionContent layout={SectionContentLayout.TwoColumnGrid}>
               <DescriptionItem
                 title="ID"
                 content="42"
                 contentProps={{
-                  alignVertical: DescriptionItemContentAlignVertical.center,
+                  alignVertical: DescriptionItemContentAlignVertical.Center,
                 }}
               />
               <InputFormField
@@ -246,7 +246,7 @@ export const UserEdit: Story = () => {
               />
               <FieldSetField
                 label="Name"
-                indent={FieldSetIndent.label}
+                indent={FieldSetIndent.Label}
                 showRequired
               >
                 <div className="flex flex-col justify-between gap-3 md:flex-row [&>*]:flex-1">
@@ -329,7 +329,7 @@ export const UserEdit: Story = () => {
               <FieldSetField
                 label="Privacy"
                 name="privacy"
-                indent={FieldSetIndent.labelAndChildren}
+                indent={FieldSetIndent.LabelAndChildren}
               >
                 <CheckboxFormField
                   name="privacy"
@@ -340,18 +340,18 @@ export const UserEdit: Story = () => {
               <FieldSetFormField
                 label="Server validation"
                 field="serverValidationErrors"
-                indent={FieldSetIndent.labelAndChildren}
+                indent={FieldSetIndent.LabelAndChildren}
               >
                 <ToggleSwitchFormField
                   name="serverValidationErrors"
                   label="Enable server validation errors"
-                  layout={ToggleSwitchLayout.spaceBetween}
+                  layout={ToggleSwitchLayout.SpaceBetween}
                   applyInputHeight
                 />
               </FieldSetFormField>
               {showSuccess && (
                 <Alert
-                  tone={Tone.success}
+                  tone={Tone.Success}
                   icon={IconCheck}
                   className="xl:col-span-full"
                 >

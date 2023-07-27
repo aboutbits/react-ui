@@ -23,7 +23,7 @@ export function FieldSetFormField<
     <FieldSetField
       {...props}
       message={error?.message ?? message}
-      status={error ? Status.invalid : undefined}
+      status={error ? Status.Invalid : undefined}
     >
       {children}
     </FieldSetField>
