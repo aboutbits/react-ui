@@ -1,14 +1,10 @@
-import {
-  CheckboxLayout,
-  FieldSetIndent,
-  FormVariant,
-  IconPosition,
-  Mode,
-  RadioLayout,
-  Size,
-  ToggleSwitchLayout,
-  Tone,
-} from '..'
+import { Mode, Size, Tone } from '../types'
+import { CheckboxLayout } from './primitive/Checkbox/types'
+import { FieldSetIndent } from './primitive/FieldSet/types'
+import { IconPosition } from './primitive/InputIcon/types'
+import { RadioLayout } from './primitive/Radio/types'
+import { ToggleSwitchLayout } from './primitive/ToggleSwitch/types'
+import { FormVariant } from './types'
 
 export default {
   input: {

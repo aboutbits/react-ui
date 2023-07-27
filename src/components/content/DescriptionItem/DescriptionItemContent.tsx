@@ -2,12 +2,7 @@ import classNames from 'classnames'
 import { ReactNode } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
-
-export enum DescriptionItemContentAlignVertical {
-  Start = 'START',
-  Center = 'CENTER',
-  End = 'END',
-}
+import { DescriptionItemContentAlignVertical } from './types'
 
 export type DescriptionItemContentProps = ClassNameProps & {
   alignVertical?: DescriptionItemContentAlignVertical

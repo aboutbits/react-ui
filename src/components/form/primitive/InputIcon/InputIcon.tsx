@@ -1,7 +1,8 @@
 import classNames from 'classnames'
 import { ComponentType, ReactElement } from 'react'
-import { useTheme } from '../../../framework'
-import { IconProps, Mode, ModeProps } from '../../types'
+import { useTheme } from '../../../../framework'
+import { IconProps, Mode, ModeProps } from '../../../types'
+import { IconPosition } from './types'
 
 export type InputIconProps = {
   icon: ComponentType<IconProps>
@@ -9,11 +10,6 @@ export type InputIconProps = {
   disabled?: boolean
   className?: string
 } & ModeProps
-
-export enum IconPosition {
-  Start = 'START',
-  End = 'END',
-}
 
 /**
  * A themed `Icon` component to be used with field components.

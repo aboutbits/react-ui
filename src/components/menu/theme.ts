@@ -1,4 +1,4 @@
-import { MenuDirection } from '.'
+import { MenuDirection } from './types'
 
 export default {
   menuContainer: 'relative',

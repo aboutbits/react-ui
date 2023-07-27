@@ -1,27 +1,7 @@
 import { Preview } from '@storybook/react'
-import { defaultTheme, Theme, ReactUIProvider, makeLinkComponent } from '../src'
+import { ReactUIProvider, defaultTheme, makeLinkComponent } from '../src'
 import { Background } from './types'
 import '../styles/index.css'
-
-// Add custom button tone for demo purpose
-type AugmentedTheme = Theme & {
-  button: {
-    modeVariantTone: {
-      light: {
-        solid: { purple: string }
-        ghost: { purple: string }
-        transparent: { purple: string }
-      }
-    }
-  }
-}
-const theme = defaultTheme as AugmentedTheme
-theme.button.modeVariantTone.light.solid.purple =
-  'bg-purple-500 hover:bg-purple-600 text-white outline-purple-500'
-theme.button.modeVariantTone.light.ghost.purple =
-  'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500'
-theme.button.modeVariantTone.light.transparent.purple =
-  'hover:bg-purple-50 text-purple-500 focus:outline-purple-500'
 
 const LinkComponent = makeLinkComponent(
   ({ children, _internal, href, ...props }, ref) => (
@@ -63,7 +43,7 @@ const preview: Preview = {
     (Story) => {
       return (
         <div>
-          <ReactUIProvider theme={theme} linkComponent={LinkComponent}>
+          <ReactUIProvider theme={defaultTheme} linkComponent={LinkComponent}>
             <Story />
           </ReactUIProvider>
         </div>

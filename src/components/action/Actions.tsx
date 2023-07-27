@@ -2,12 +2,7 @@ import classNames from 'classnames'
 import { ReactElement, ReactNode } from 'react'
 import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
-
-export enum ActionsPosition {
-  Start = 'START',
-  Center = 'CENTER',
-  End = 'END',
-}
+import { ActionsPosition } from './types'
 
 export type ActionsProps = ClassNameProps & {
   /**

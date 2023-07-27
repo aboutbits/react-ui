@@ -1,5 +1,5 @@
 import { Tone } from '../types'
-import { AlertActionsPosition } from '.'
+import { AlertActionsPosition } from './types'
 
 export default {
   container: {

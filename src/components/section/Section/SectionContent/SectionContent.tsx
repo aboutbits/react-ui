@@ -1,16 +1,12 @@
 import classNames from 'classnames'
 import { ReactNode } from 'react'
-import { useTheme } from '../../../framework'
-import { ClassNameProps } from '../../types'
+import { useTheme } from '../../../../framework'
+import { ClassNameProps } from '../../../types'
+import { SectionContentLayout } from './types'
 
 export type SectionContentProps = ClassNameProps & {
   layout?: SectionContentLayout
   children?: ReactNode
-}
-
-export enum SectionContentLayout {
-  OneColumnGrid = 'ONE_COLUMN_GRID',
-  TwoColumnGrid = 'TWO_COLUMN_GRID',
 }
 
 export function SectionContent({

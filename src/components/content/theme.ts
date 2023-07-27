@@ -1,8 +1,6 @@
-import {
-  ContentMessageIconStyle,
-  DescriptionItemContentAlignVertical,
-  Tone,
-} from '..'
+import { Tone } from '../types'
+import { ContentMessageIconStyle } from './ContentMessage/types'
+import { DescriptionItemContentAlignVertical } from './DescriptionItem/types'
 
 export default {
   area: {

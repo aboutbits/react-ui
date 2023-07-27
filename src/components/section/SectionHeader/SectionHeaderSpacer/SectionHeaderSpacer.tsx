@@ -1,14 +1,8 @@
 import classNames from 'classnames'
 import { ReactElement } from 'react'
-import { useTheme } from '../../../framework'
-import { ClassNameProps } from '../../types'
-
-export enum SectionHeaderSpacerSize {
-  Sm = 'SM',
-  Md = 'MD',
-  Lg = 'LG',
-  Xl = 'XL',
-}
+import { useTheme } from '../../../../framework'
+import { ClassNameProps } from '../../../types'
+import { SectionHeaderSpacerSize } from './types'
 
 export function SectionHeaderSpacer({
   size = SectionHeaderSpacerSize.Sm,
