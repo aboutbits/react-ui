@@ -6,7 +6,8 @@
     "declaration": true,
     "declarationMap": true,
     "removeComments": false,
-    "noEmit": false
+    "noEmit": false,
+    "incremental": false
   },
   "exclude": [
     "src/vitest.ts",
