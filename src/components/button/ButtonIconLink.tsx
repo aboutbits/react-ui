@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React from 'react'
+import { forwardRef } from 'react'
 import { LinkComponentProps, useLinkComponent, useTheme } from '../../framework'
 import { Mode, Size, Tone } from '../types'
 import {
@@ -14,7 +14,7 @@ export type ButtonIconLinkProps = LinkComponentProps &
   ButtonIconCommonProps &
   LinkCommonProps
 
-export const ButtonIconLink = React.forwardRef<
+export const ButtonIconLink = forwardRef<
   HTMLAnchorElement,
   ButtonIconLinkProps
 >(function ButtonIconLink(
@@ -31,30 +31,27 @@ export const ButtonIconLink = React.forwardRef<
     className,
     ...props
   },
-  ref
+  ref,
 ) {
   const { button } = useTheme()
   const LinkComponent = useLinkComponent()
 
   const linkClassNames = classNames(
-    /* eslint-disable @typescript-eslint/ban-ts-comment */
     button.buttonIcon.base,
     !disabled
-      ? // @ts-ignore
-        button.modeVariantTone[mode][variant][tone]
+      ? button.modeVariantTone[mode][variant][tone]
       : button.modeVariantTone[mode][variant].disabled,
-    button.buttonIcon.variantSize.base[size],
-    // @ts-ignore
-    button.buttonIcon.variantSize[variant]?.[size],
-    /* eslint-enable */
-    className
+    button.buttonIcon.variantSize[
+      variant === ButtonVariant.Ghost ? variant : 'base'
+    ][size],
+    className,
   )
 
   const icon = (
     <Icon
       className={classNames(
         button.buttonIcon.icon.base,
-        button.buttonIcon.icon.size[size]
+        button.buttonIcon.icon.size[size],
       )}
     />
   )

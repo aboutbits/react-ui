@@ -15,12 +15,12 @@ import {
   SectionContainer,
   SectionContent,
   SectionContentLayout,
-  SectionFooterWithActions,
+  SectionFooterWithSubmit,
   SectionHeader,
 } from '../components'
 import { Alert } from '../components/alert'
-import { SubmitButton } from '../components/button'
 import {
+  FieldSetField,
   FieldSetIndent,
   FormError,
   Option,
@@ -28,7 +28,7 @@ import {
 } from '../components/form'
 import {
   CheckboxFormField,
-  FieldsetFormField,
+  FieldSetFormField,
   Form,
   InputFormField,
   PaginatedResponse,
@@ -113,9 +113,11 @@ const useGetData = ({
             (index): Project => ({
               id: index,
               name: `Project ${index}`,
-            })
+            }),
           )
-          .filter((project) => (search ? project.name.includes(search) : true))
+          .filter((project) =>
+            search !== undefined ? project.name.includes(search) : true,
+          ),
       )
     }, 1000)
   }, [search, page, size])
@@ -144,11 +146,6 @@ export const UserEdit: Story = () => {
       .refine((val) => !val.includes(' '), {
         message: 'Space characters are not allowed',
       }),
-    age: z
-      .number()
-      .min(0)
-      .nullable()
-      .transform((v) => (v === null ? z.NEVER : v)),
     email: z.string().email(),
     name: z.object({
       first: z.string().min(3),
@@ -157,18 +154,27 @@ export const UserEdit: Story = () => {
     language: languageSchema,
     role: roleSchema,
     bio: z.string().nullable(),
-    favProjectId: z.string().nullable(),
+    favProjectId: z.number().nullable(),
     uiMode: uiModeSchema,
-    privacy: z.boolean().transform((v) => (v === false ? z.NEVER : v)),
+    privacy: z.boolean().transform((v, ctx) => {
+      if (v) {
+        return v
+      }
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'You must accept the privacy policy',
+      })
+      return z.NEVER
+    }),
     serverValidationErrors: z.boolean(),
   })
 
-  type Person = z.infer<typeof personSchema>
-
-  const defaultPerson: DefaultValues<Person> = {
+  type Person = z.output<typeof personSchema>
+  type PersonIn = z.input<typeof personSchema>
+  const defaultProject: Project = { id: 1, name: 'Project 1' }
+  const defaultPerson: DefaultValues<PersonIn> = {
     username: 'john.doe',
     email: 'john@aboutbits.it',
-    age: 0,
     name: {
       first: 'John',
       last: 'Doe',
@@ -176,12 +182,12 @@ export const UserEdit: Story = () => {
     language: 'EN',
     role: 'USER',
     bio: 'John is a software engineer from Bolzano, Italy',
-    favProjectId: '1',
-    privacy: true,
+    favProjectId: defaultProject.id,
+    privacy: false,
     serverValidationErrors: false,
   }
 
-  const form = useForm<Person>({
+  const form = useForm<PersonIn, unknown, Person>({
     resolver: zodResolver(personSchema),
     defaultValues: defaultPerson,
   })
@@ -202,7 +208,6 @@ export const UserEdit: Story = () => {
                     'Please choose another name',
                   ],
                   bio: ['Please provide a better bio'],
-                  privacy: ['You must accept the privacy policy'],
                 },
               },
             },
@@ -213,7 +218,7 @@ export const UserEdit: Story = () => {
         action('onSubmit')(data)
         setShowSuccess(true)
         resolve()
-      }, 1000)
+      }, 1000),
     )
   })
 
@@ -239,13 +244,12 @@ export const UserEdit: Story = () => {
                 placeholder="Username"
                 required
               />
-              <FieldsetFormField
+              <FieldSetField
                 label="Name"
-                fields={['name.first', 'name.last']}
                 indent={FieldSetIndent.Label}
                 showRequired
               >
-                <div className="flex md:flex-row flex-col justify-between gap-3 [&>*]:flex-1">
+                <div className="flex flex-col justify-between gap-3 md:flex-row [&>*]:flex-1">
                   <InputFormField
                     id="name.first"
                     type="text"
@@ -261,7 +265,7 @@ export const UserEdit: Story = () => {
                     required
                   />
                 </div>
-              </FieldsetFormField>
+              </FieldSetField>
               <InputFormField
                 id="email"
                 type="email"
@@ -299,32 +303,32 @@ export const UserEdit: Story = () => {
                 dialogTitle="Projects"
                 dialogLabel="Projects"
                 noSearchResults="No projects available."
-                initialItem={{ id: 1, name: 'Project 1' }}
-                getItemId={(item: Project) => item.id}
+                initialItem={defaultProject}
+                extractIdFromItem={(item) => item.id}
                 renderListItem={(item) => item.name}
                 renderErrorMessage={(error) => error.message}
                 useGetData={useGetData}
                 paginationConfig={{ indexType: IndexType.ZERO_BASED }}
-                required
               />
-              <FieldsetFormField
+              <FieldSetFormField
                 label="Preferred UI mode"
-                fields={['uiMode']}
-                className="space-y-4"
+                field="uiMode"
                 showRequired
               >
-                {UI_MODES.map((mode) => (
-                  <RadioFormField
-                    key={mode}
-                    name="uiMode"
-                    label={mode.charAt(0) + mode.slice(1).toLowerCase()}
-                    value={mode}
-                  />
-                ))}
-              </FieldsetFormField>
-              <FieldsetFormField
+                <div className="mt-2 space-y-4">
+                  {UI_MODES.map((mode) => (
+                    <RadioFormField
+                      key={mode}
+                      name="uiMode"
+                      label={mode.charAt(0) + mode.slice(1).toLowerCase()}
+                      value={mode}
+                    />
+                  ))}
+                </div>
+              </FieldSetFormField>
+              <FieldSetField
                 label="Privacy"
-                fields={['privacy']}
+                name="privacy"
                 indent={FieldSetIndent.LabelAndChildren}
               >
                 <CheckboxFormField
@@ -332,10 +336,10 @@ export const UserEdit: Story = () => {
                   label="Accept the privacy policy"
                   applyInputHeight
                 />
-              </FieldsetFormField>
-              <FieldsetFormField
+              </FieldSetField>
+              <FieldSetFormField
                 label="Server validation"
-                fields={['serverValidationErrors']}
+                field="serverValidationErrors"
                 indent={FieldSetIndent.LabelAndChildren}
               >
                 <ToggleSwitchFormField
@@ -344,7 +348,7 @@ export const UserEdit: Story = () => {
                   layout={ToggleSwitchLayout.SpaceBetween}
                   applyInputHeight
                 />
-              </FieldsetFormField>
+              </FieldSetFormField>
               {showSuccess && (
                 <Alert
                   tone={Tone.Success}
@@ -356,9 +360,7 @@ export const UserEdit: Story = () => {
               )}
               <FormError>{apiErrorMessage}</FormError>
             </SectionContent>
-            <SectionFooterWithActions>
-              <SubmitButton>Save</SubmitButton>
-            </SectionFooterWithActions>
+            <SectionFooterWithSubmit />
           </SectionContainer>
         </Section>
       </Form>

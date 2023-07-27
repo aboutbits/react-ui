@@ -5,7 +5,7 @@ import { SelectFormField, SelectFormFieldProps } from './SelectFormField'
 
 export type SelectYearFormFieldProps<
   TFieldValues extends FieldValues,
-  TFieldName extends FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues>,
 > = Omit<SelectFormFieldProps<TFieldValues, TFieldName>, 'children'> &
   SelectYearFieldOptionsProps
 
@@ -14,10 +14,10 @@ export type SelectYearFormFieldProps<
  */
 export const SelectYearFormField = forwardRef(function SelectYearFormField<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >(
   { from, to, ...props }: SelectYearFormFieldProps<TFieldValues, TFieldName>,
-  ref: ForwardedRef<HTMLSelectElement>
+  ref: ForwardedRef<HTMLSelectElement>,
 ) {
   return (
     <SelectFormField<TFieldValues, TFieldName> {...props} ref={ref}>

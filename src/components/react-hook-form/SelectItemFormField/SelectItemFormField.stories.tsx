@@ -22,8 +22,8 @@ import { Form } from '../Form'
 import {
   SearchQueryParameters,
   PaginatedResponse,
-} from './SelectItemDialogWithSearch'
-import { SelectItemFormField } from './SelectItemFormField'
+  SelectItemFormField,
+} from '.'
 
 type User = {
   id: number
@@ -31,6 +31,7 @@ type User = {
 }
 
 const meta = {
+  title: 'components/react-hook-form/SelectItemFormField',
   component: SelectItemFormField,
   args: {
     name: 'userId',
@@ -39,7 +40,7 @@ const meta = {
     dialogTitle: 'Users',
     dialogLabel: 'Users',
     noSearchResults: 'No users available.',
-    getItemId: (item) => (item as User).id,
+    extractIdFromItem: (item) => (item as User).id,
     renderListItem: (item) => (item as User).name,
     renderErrorMessage: (error) => (error as ErrorBody).message,
     paginationConfig: { indexType: IndexType.ZERO_BASED },
@@ -117,15 +118,17 @@ const useGetDataSuccess = ({
             }
           })
           .filter((user) => {
-            if (search) {
+            if (search !== undefined) {
               return user.name.includes(search)
             } else {
               return true
             }
-          })
+          }),
       )
     }, 1000)
-    return () => clearTimeout(id)
+    return () => {
+      clearTimeout(id)
+    }
   }, [search, page, size])
 
   if (data === undefined) {

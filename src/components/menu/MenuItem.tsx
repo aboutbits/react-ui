@@ -22,7 +22,7 @@ export function MenuItem({ children, className, onClick }: MenuItemProps) {
           className={classNames(
             menu.menuItem.base,
             active && menu.menuItem.active,
-            className
+            className,
           )}
           onClick={onClick}
           type="button"

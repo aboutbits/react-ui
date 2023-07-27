@@ -17,7 +17,7 @@ export type OptionProps = Omit<
  */
 export const Option = forwardRef(function Option(
   { value = '', mode = Mode.Light, className, children, ...props }: OptionProps,
-  ref: ForwardedRef<HTMLOptionElement>
+  ref: ForwardedRef<HTMLOptionElement>,
 ) {
   const {
     form: { option: theme },

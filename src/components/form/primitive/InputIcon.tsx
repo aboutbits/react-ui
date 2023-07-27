@@ -31,7 +31,7 @@ export function InputIcon({
     <div
       className={classNames(
         form.inputIcon.container.base,
-        form.inputIcon.container[position]
+        form.inputIcon.container[position],
       )}
     >
       <Icon
@@ -40,7 +40,7 @@ export function InputIcon({
           disabled
             ? form.inputIcon[mode].disabled
             : form.inputIcon[mode].normal,
-          className
+          className,
         )}
       />
     </div>

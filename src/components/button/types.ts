@@ -19,7 +19,7 @@ export type ButtonStyleProps = ModeProps & {
   /**
    * Defines the tone of the button. Basically the color, so be sure to have the colors defined in Tailwind.
    **/
-  tone?: Tone | string
+  tone?: Tone
 }
 
 export type ButtonCommonProps = {

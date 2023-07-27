@@ -9,22 +9,26 @@ import { InputField, InputFieldProps, Status } from '../form'
 
 export type DateFormFieldProps<
   TFieldValues extends FieldValues,
-  TFieldName extends FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues>,
 > = Omit<InputFieldProps, 'status' | 'onChange'> & {
   name: TFieldName
+}
+
+type HTMLNullableInputElement = Omit<HTMLInputElement, 'value'> & {
+  value: HTMLInputElement['value'] | null | undefined
 }
 
 /**
  * An [InputField](../?path=/docs/components-form-inputfield--docs) within the context of a `react-hook-form` form and with the default type `date`.
  *
- * The form value that is returned for validation is of type `Date | null`. `null` is returned if the input is an empty string.
+ * The form value that is returned for validation is of type `Date | null`. `null` is returned if the input is an empty string or nullish.
  */
 export const DateFormField = forwardRef(function DateFormField<
   TFieldValues extends FieldValues = FieldValues,
-  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >(
   { name, message, ...props }: DateFormFieldProps<TFieldValues, TFieldName>,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   return (
     <Controller
@@ -38,14 +42,18 @@ export const DateFormField = forwardRef(function DateFormField<
             ? formatDateForDateInput(value)
             : ''
 
-        const inputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const inputOnChange = (
+          event: ChangeEvent<HTMLNullableInputElement>,
+        ) => {
           const value = event.target.value
-          const date = new Date(value)
 
-          if (value === '') {
+          if (value === '' || value === null || value === undefined) {
             onChange(null as FieldPathValue<TFieldValues, TFieldName>)
-          } else if (!isNaN(date.getTime())) {
-            onChange(date as FieldPathValue<TFieldValues, TFieldName>)
+          } else {
+            const date = new Date(value)
+            if (!isNaN(date.getTime())) {
+              onChange(date as FieldPathValue<TFieldValues, TFieldName>)
+            }
           }
         }
 
@@ -56,7 +64,7 @@ export const DateFormField = forwardRef(function DateFormField<
             type="date"
             value={inputValue}
             onChange={inputOnChange}
-            message={error?.message?.toString() || message}
+            message={error?.message ?? message}
             status={error ? Status.Invalid : undefined}
             ref={ref}
           />

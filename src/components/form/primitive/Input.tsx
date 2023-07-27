@@ -38,7 +38,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       iconEnd,
       ...props
     },
-    ref
+    ref,
   ) {
     const { form } = useTheme()
     const inputCss = useInputCss({
@@ -46,8 +46,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       variant,
       tone,
       disabled,
-      withIconStart: !!iconStart,
-      withIconEnd: !!iconEnd,
+      withIconStart: Boolean(iconStart),
+      withIconEnd: Boolean(iconEnd),
     })
 
     return (
@@ -71,5 +71,5 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     )
-  }
+  },
 )

@@ -1,8 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { useState } from 'react'
 import { action } from '@storybook/addon-actions'
-import { FormVariant, Option } from '../../form'
-import { SelectFormField } from '../../react-hook-form'
+import { FormVariant, Option } from '../form'
 import {
   Section,
   SectionContainer,
@@ -12,15 +11,16 @@ import {
   SectionHeaderGroup,
   SectionListItemButton,
   SectionHeaderTitle,
-  SectionFilter,
-} from '../'
-import { SectionContentEmpty } from '../Section/ConvenientSectionContentMessage'
+} from '../section'
+import { SectionContentEmpty } from '../section/Section/ConvenientSectionContentMessage'
+import { SelectFormField } from './SelectFormField'
+import { FilterForm } from './FilterForm'
 
-<Meta title="Components/Section/SectionFilter" component={SectionFilter} />
+<Meta title="Components/React Hook Form/FilterForm" component={FilterForm} />
 
-# SectionFilter
+# FilterForm
 
-You can use the `SectionFilter` to create a filter on a specific section.
+You can use the `FilterForm` to have a form whose fields are updated with the given default values without overwriting user input.
 This component is a form wrapper that submits automatically by default. You can disable auto-submit by passing `false` to the `autoSubmit` prop.
 
 Find more samples in the [List examples](/docs/examples-list--default-story).
@@ -44,7 +44,7 @@ export const Template = ({ ...args }) => {
       <SectionHeaderArea>
         <SectionHeaderRow>
           <SectionHeaderTitle>Users</SectionHeaderTitle>
-          <SectionFilter
+          <FilterForm
             className="flex"
             {...args}
             defaultValues={filter}
@@ -71,7 +71,7 @@ export const Template = ({ ...args }) => {
                 <Option value="SALES">Sales</Option>
               </SelectFormField>
             </SectionHeaderGroup>
-          </SectionFilter>
+          </FilterForm>
         </SectionHeaderRow>
       </SectionHeaderArea>
       <SectionContainer>

@@ -58,7 +58,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       hideRequired,
       ...props
     },
-    ref
+    ref,
   ) {
     const checkboxCss = useCheckboxCss({
       layout,
@@ -76,7 +76,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <label className={classNames(checkboxCss, className)}>
-        {label && <span className={checkboxLabelCss}>{label}</span>}
+        {Boolean(label) && <span className={checkboxLabelCss}>{label}</span>}
         <input
           {...props}
           ref={ref}
@@ -88,16 +88,20 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <IconCheckbox mode={mode} size={size} disabled={disabled} />
       </label>
     )
-  }
+  },
 )
 
-export const IconCheckbox: React.FC<
-  IconProps &
-    Required<ModeProps> & {
-      size: Size
-      disabled: boolean
-    }
-> = ({ size, mode, disabled, className, ...props }) => {
+export const IconCheckbox = ({
+  size,
+  mode,
+  disabled,
+  className,
+  ...props
+}: IconProps &
+  Required<ModeProps> & {
+    size: Size
+    disabled: boolean
+  }) => {
   const {
     form: {
       checkbox: { check: theme },
@@ -111,7 +115,7 @@ export const IconCheckbox: React.FC<
     theme.size[size],
     theme.mode[mode],
     theme[disabledState],
-    className
+    className,
   )
 
   return (
@@ -120,7 +124,7 @@ export const IconCheckbox: React.FC<
         className={classNames(
           theme.checked.base,
           theme.checked.modeState[mode][disabledState],
-          checkCss
+          checkCss,
         )}
         {...props}
       />
@@ -128,7 +132,7 @@ export const IconCheckbox: React.FC<
         className={classNames(
           theme.unchecked.base,
           theme.unchecked.modeState[mode][disabledState],
-          checkCss
+          checkCss,
         )}
         {...props}
       />

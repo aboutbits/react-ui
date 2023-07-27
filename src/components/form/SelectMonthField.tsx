@@ -1,5 +1,4 @@
 import { forwardRef } from 'react'
-import { z } from 'zod'
 import { useInternationalization } from '../../framework'
 import { Mode } from '../types'
 import { SelectField, SelectFieldProps } from './SelectField'
@@ -19,8 +18,6 @@ export const MONTHS = [
   'NOVEMBER',
   'DECEMBER',
 ] as const
-
-export const zodMonth = z.enum(MONTHS)
 
 export type Month = (typeof MONTHS)[number]
 
@@ -47,7 +44,7 @@ export const useSelectMonthFieldOptions = ({ mode }: { mode?: Mode }) => {
 
   return MONTHS.map((month) => (
     <Option mode={mode} key={month} value={month}>
-      {messages[`month.${month.toLowerCase()}`]}
+      {messages[`month.${month.toLowerCase() as Lowercase<Month>}`]}
     </Option>
   ))
 }

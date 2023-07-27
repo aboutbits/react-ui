@@ -39,7 +39,7 @@ export const TextAreaField = forwardRef<
     hideRequired,
     ...props
   },
-  ref
+  ref,
 ) {
   const tone = status === Status.Invalid ? FormTone.Critical : FormTone.Neutral
 
@@ -47,7 +47,7 @@ export const TextAreaField = forwardRef<
 
   return (
     <div className={className}>
-      {!!label && (
+      {Boolean(label) && (
         <InputLabel
           mode={mode}
           tone={tone}
@@ -67,7 +67,7 @@ export const TextAreaField = forwardRef<
         disabled={disabled}
         required={required}
       />
-      {!!message && (
+      {Boolean(message) && (
         <InputMessage
           mode={mode}
           tone={tone}

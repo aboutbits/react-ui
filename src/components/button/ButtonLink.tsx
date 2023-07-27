@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React from 'react'
+import { forwardRef } from 'react'
 import { useLinkComponent, LinkComponentProps, useTheme } from '../../framework'
 import { Mode, Size, Tone } from '../types'
 import {
@@ -14,7 +14,7 @@ export type ButtonLinkProps = LinkComponentProps &
   ButtonCommonProps &
   LinkCommonProps
 
-export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
+export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   function ButtonLink(
     {
       href,
@@ -30,23 +30,20 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       children,
       ...props
     },
-    ref
+    ref,
   ) {
     const LinkComponent = useLinkComponent()
     const { button } = useTheme()
 
     const linkClassNames = classNames(
-      /* eslint-disable @typescript-eslint/ban-ts-comment */
       button.button.base,
-      !disabled
-        ? // @ts-ignore
-          button.modeVariantTone[mode][variant][tone]
-        : button.modeVariantTone[mode][variant].disabled,
-      button.button.variantSize.base[size],
-      // @ts-ignore
-      button.button.variantSize[variant]?.[size],
-      /* eslint-enable */
-      className
+      disabled
+        ? button.modeVariantTone[mode][variant].disabled
+        : button.modeVariantTone[mode][variant][tone],
+      button.button.variantSize[
+        variant === ButtonVariant.Ghost ? variant : 'base'
+      ][size],
+      className,
     )
 
     const content = (
@@ -56,7 +53,7 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             className={classNames(
               button.button.icon.base,
               button.button.icon.size[size],
-              button.button.icon.iconStart.size[size]
+              button.button.icon.iconStart.size[size],
             )}
           />
         )}
@@ -66,7 +63,7 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             className={classNames(
               button.button.icon.base,
               button.button.icon.size[size],
-              button.button.icon.iconEnd.size[size]
+              button.button.icon.iconEnd.size[size],
             )}
           />
         )}
@@ -98,5 +95,5 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         {content}
       </LinkComponent>
     )
-  }
+  },
 )

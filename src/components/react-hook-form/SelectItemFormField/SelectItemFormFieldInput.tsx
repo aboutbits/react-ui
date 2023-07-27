@@ -10,7 +10,10 @@ import { useId } from '../../util'
 import { useFieldError } from '../util/useFieldError'
 import { replacePlaceholderColorWithTextColor } from './replacePlaceholderColorWithTextColor'
 
-export type SelectItemInputProps<Item, SelectedItem extends Item | null> = {
+export type SelectItemFormFieldInputProps<
+  Item,
+  SelectedItem extends Item | null,
+> = {
   name: string
   label: string
   placeholder: string
@@ -26,7 +29,10 @@ export type SelectItemInputProps<Item, SelectedItem extends Item | null> = {
 } & RequiredProps &
   HideRequiredProps
 
-export function SelectItemInput<Item, SelectedItem extends Item | null>({
+export function SelectItemFormFieldInput<
+  Item,
+  SelectedItem extends Item | null,
+>({
   name,
   label,
   placeholder,
@@ -41,7 +47,7 @@ export function SelectItemInput<Item, SelectedItem extends Item | null>({
   className,
   required,
   hideRequired,
-}: SelectItemInputProps<Item, SelectedItem>) {
+}: SelectItemFormFieldInputProps<Item, SelectedItem>) {
   const id = useId()
   const componentRef = useRef<HTMLDivElement | null>(null)
 
@@ -58,7 +64,7 @@ export function SelectItemInput<Item, SelectedItem extends Item | null>({
 
   const customCssEmptyInput = useMemo(
     () => replacePlaceholderColorWithTextColor(inputCss),
-    [inputCss]
+    [inputCss],
   )
   const { messages } = useInternationalization()
   const { form } = useTheme()
@@ -72,13 +78,15 @@ export function SelectItemInput<Item, SelectedItem extends Item | null>({
         <button
           type="button"
           id={id}
-          onClick={() => onOpenSelect()}
+          onClick={() => {
+            onOpenSelect()
+          }}
           className={classNames(
             customCssEmptyInput,
             form.selectItem.input.container.base,
             hasError
               ? form.selectItem.input.container.error
-              : form.selectItem.input.container.normal
+              : form.selectItem.input.container.normal,
           )}
         >
           <span className={form.selectItem.input.placeholder.base}>
@@ -97,25 +105,29 @@ export function SelectItemInput<Item, SelectedItem extends Item | null>({
             form.selectItem.input.container.base,
             hasError
               ? form.selectItem.input.container.error
-              : form.selectItem.input.container.normal
+              : form.selectItem.input.container.normal,
           )}
         >
           <button
             type="button"
             id={id}
-            onClick={() => onOpenSelect()}
+            onClick={() => {
+              onOpenSelect()
+            }}
             className={form.selectItem.input.selectButton.base}
           >
             <span>{renderItem(selectedItem)}</span>
           </button>
           <button
             type="button"
-            onClick={() => onClear()}
+            onClick={() => {
+              onClear()
+            }}
             className={classNames(
               form.selectItem.input.iconContainer.base,
               hasError
                 ? form.selectItem.input.iconContainer.error
-                : form.selectItem.input.iconContainer.normal
+                : form.selectItem.input.iconContainer.normal,
             )}
           >
             <IconClose
@@ -125,12 +137,12 @@ export function SelectItemInput<Item, SelectedItem extends Item | null>({
           </button>
         </div>
       )}
-      {!!error && (
+      {Boolean(error) && (
         <InputMessage
           mode={mode}
           tone={FormTone.Critical}
           disabled={disabled}
-          message={error.message?.toString()}
+          message={error?.message}
         />
       )}
     </div>

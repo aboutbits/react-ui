@@ -30,13 +30,13 @@ const MyForm = ({
   const formRef = useCallback(
     (formElement: HTMLFormElement | null) => {
       if (formElement) {
-        formElement.requestSubmit = async () => {
+        formElement.requestSubmit = () => {
           const values = form.getValues()
           onSubmit(values)
         }
       }
     },
-    [form, onSubmit]
+    [form, onSubmit],
   )
 
   return (
@@ -111,7 +111,7 @@ describe('ReactHookFormAutoSubmit', () => {
   test('should submit form on unmount if not yet submitted', async () => {
     const handleSubmit = vi.fn()
     const { unmount } = render(
-      <MyForm autoSubmitInterval={1000} onSubmit={handleSubmit} />
+      <MyForm autoSubmitInterval={1000} onSubmit={handleSubmit} />,
     )
 
     await act(async () => {
@@ -127,7 +127,7 @@ describe('ReactHookFormAutoSubmit', () => {
           name: 'John',
         })
       },
-      { timeout: 500 }
+      { timeout: 500 },
     )
   })
 })

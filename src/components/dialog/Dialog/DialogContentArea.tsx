@@ -28,10 +28,10 @@ export function DialogContentArea({
       onScroll={onScroll}
       className={classNames(
         dialog.contentArea.base,
-        enableScrollLayout
-          ? dialog.contentArea.scrolled[isScrolled ? 'on' : 'off']
-          : null,
-        className
+        dialog.contentArea.scrolled[
+          enableScrollLayout && !isScrolled ? 'off' : 'on'
+        ],
+        className,
       )}
     >
       {children}

@@ -4,19 +4,11 @@ import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 
 export type SectionContentProps = ClassNameProps & {
-  layout?: SectionContentLayout | Layout
+  layout?: SectionContentLayout
   children?: ReactNode
 }
 
 export enum SectionContentLayout {
-  OneColumnGrid = 'ONE_COLUMN_GRID',
-  TwoColumnGrid = 'TWO_COLUMN_GRID',
-}
-
-/**
- * @deprecated use SectionContentLayout instead
- */
-export enum Layout {
   OneColumnGrid = 'ONE_COLUMN_GRID',
   TwoColumnGrid = 'TWO_COLUMN_GRID',
 }

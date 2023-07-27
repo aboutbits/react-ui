@@ -65,7 +65,7 @@ export function SectionPaginationInMemoryButton({
       className={classNames(
         paginationTheme.page.base,
         disabled ? paginationTheme.page.disabled : paginationTheme.page.enabled,
-        className
+        className,
       )}
       onClick={() => {
         onChangePage(pageIndex)
@@ -89,7 +89,9 @@ export function PaginationInMemory({
   const { pagination: paginationTheme } = useTheme()
   const pagination = calculatePagination(page, size, total, config)
 
-  if (pagination === null) return null
+  if (pagination === null) {
+    return null
+  }
 
   return (
     <PaginationContainer className={className}>
@@ -111,7 +113,7 @@ export function PaginationInMemory({
                 aria-label={`${messages['pagination.page']} ${page.displayNumber}`}
                 className={classNames(
                   paginationTheme.page.number,
-                  page.isCurrent ? paginationTheme.page.current : ''
+                  page.isCurrent ? paginationTheme.page.current : '',
                 )}
                 onChangePage={onChangePage}
                 pageIndex={page.indexNumber}

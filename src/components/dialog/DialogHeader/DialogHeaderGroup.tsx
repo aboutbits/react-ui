@@ -23,7 +23,7 @@ export function DialogHeaderGroup({
       className={classNames(
         dialog.headerGroup.base,
         dialog.headerGroup.spacing[spacing],
-        className
+        className,
       )}
     >
       {children}

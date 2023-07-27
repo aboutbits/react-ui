@@ -11,7 +11,7 @@ import { Description } from '@storybook/blocks'
 import { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { zodMonth } from '../form'
+import { MONTHS } from '../form'
 import { Form } from './Form'
 import { SelectMonthFormField } from './SelectMonthFormField'
 
@@ -28,7 +28,7 @@ const meta = {
   decorators: [
     (Story) => {
       const personSchema = z.object({
-        month: zodMonth,
+        month: z.enum(MONTHS),
       })
       type Person = z.infer<typeof personSchema>
       const defaultPerson: Person = {

@@ -329,6 +329,7 @@ export default {
     },
   },
   fieldset: {
+    messageContainer: 'space-y-2',
     container: {
       indent: {
         NONE: '',

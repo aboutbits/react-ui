@@ -62,89 +62,89 @@ export default {
   modeVariantTone: {
     LIGHT: {
       SOLID: {
-        primary:
+        PRIMARY:
           'bg-primary-500 hover:bg-primary-600 text-white outline-primary-500',
-        neutral:
+        NEUTRAL:
           'bg-neutral-700 hover:bg-neutral-900 text-white outline-neutral-800',
-        critical:
+        CRITICAL:
           'bg-critical-500 hover:bg-critical-600 text-white outline-critical-500',
-        warning:
+        WARNING:
           'bg-warning-500 hover:bg-warning-600 text-white outline-warning-500',
-        success:
+        SUCCESS:
           'bg-success-600 hover:bg-success-700 text-white outline-success-600',
-        informative:
+        INFORMATIVE:
           'bg-informative-500 hover:bg-informative-600 text-white outline-informative-500',
         disabled: 'bg-neutral-800/[0.16] text-neutral-800/[0.36]',
       },
       GHOST: {
-        primary:
+        PRIMARY:
           'hover:bg-primary-500/10 focus:bg-primary-500/10 border-primary-500 focus:border-transparent text-primary-500 outline-primary-500',
-        neutral:
+        NEUTRAL:
           'hover:bg-neutral-500/10 focus:bg-neutral-500/10 border-neutral-700 focus:border-transparent text-neutral-700 outline-neutral-700',
-        critical:
+        CRITICAL:
           'hover:bg-critical-500/10 focus:bg-critical-500/10 border-critical-500 focus:border-transparent text-critical-500 outline-critical-500',
-        warning:
+        WARNING:
           'hover:bg-warning-500/10 focus:bg-warning-500/10 border-warning-600 focus:border-transparent text-warning-600 outline-warning-600',
-        success:
+        SUCCESS:
           'hover:bg-success-500/10 focus:bg-success-500/10 border-success-600 focus:border-transparent text-success-600 outline-success-600',
-        informative:
+        INFORMATIVE:
           'hover:bg-informative-500/10 focus:bg-informative-500/10 border-informative-500 focus:border-transparent text-informative-500 outline-informative-500',
         disabled: 'border-neutral-800/[0.36] text-neutral-800/[0.36]',
       },
       TRANSPARENT: {
-        primary:
+        PRIMARY:
           'hover:bg-primary-500/10 text-primary-500 focus:outline-primary-500',
-        neutral:
+        NEUTRAL:
           'hover:bg-neutral-500/10 text-neutral-700 focus:outline-neutral-700',
-        critical:
+        CRITICAL:
           'hover:bg-critical-500/10 text-critical-500 focus:outline-critical-500',
-        warning:
+        WARNING:
           'hover:bg-warning-500/10 text-warning-600 focus:outline-warning-600',
-        success:
+        SUCCESS:
           'hover:bg-success-500/10 text-success-600 focus:outline-success-600',
-        informative:
+        INFORMATIVE:
           'hover:bg-informative-500/10 text-informative-500 focus:outline-informative-500',
         disabled: 'text-neutral-800/[0.36]',
       },
     },
     DARK: {
       SOLID: {
-        primary:
+        PRIMARY:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
-        neutral:
+        NEUTRAL:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
-        critical:
+        CRITICAL:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
-        warning:
+        WARNING:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
-        success:
+        SUCCESS:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
-        informative:
+        INFORMATIVE:
           'bg-white hover:bg-white/[0.84] text-neutral-900 outline-white',
         disabled: 'bg-white/[0.26] text-white/[0.36]',
       },
       GHOST: {
-        primary:
+        PRIMARY:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
-        neutral:
+        NEUTRAL:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
-        critical:
+        CRITICAL:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
-        warning:
+        WARNING:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
-        success:
+        SUCCESS:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
-        informative:
+        INFORMATIVE:
           'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
         disabled: 'border-white/[0.36] text-white/[0.36]',
       },
       TRANSPARENT: {
-        primary: 'hover:bg-white/10 text-white focus:outline-white',
-        neutral: 'hover:bg-white/10 text-white focus:outline-white',
-        critical: 'hover:bg-white/10 text-white focus:outline-white',
-        warning: 'hover:bg-white/10 text-white focus:outline-white',
-        success: 'hover:bg-white/10 text-white focus:outline-white',
-        informative: 'hover:bg-white/10 text-white focus:outline-white',
+        PRIMARY: 'hover:bg-white/10 text-white focus:outline-white',
+        NEUTRAL: 'hover:bg-white/10 text-white focus:outline-white',
+        CRITICAL: 'hover:bg-white/10 text-white focus:outline-white',
+        WARNING: 'hover:bg-white/10 text-white focus:outline-white',
+        SUCCESS: 'hover:bg-white/10 text-white focus:outline-white',
+        INFORMATIVE: 'hover:bg-white/10 text-white focus:outline-white',
         disabled: 'text-white/[0.36]',
       },
     },

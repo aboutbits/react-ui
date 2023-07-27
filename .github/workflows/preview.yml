@@ -1,0 +1,80 @@
+name: Preview
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+env:
+  NODE_VERSION: 16
+  PREVIEW_DOMAIN: react-ui.aboutbits.dev
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Lint
+        run: npm run lint
+        shell: bash
+      - name: Typecheck
+        run: npm run typecheck
+        shell: bash
+
+  test:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Test
+        run: npm run test
+        shell: bash
+
+  comment-link:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    if: ${{ github.event.action == 'opened' }}
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Preview link: [https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}](https://${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }})'
+            })
+
+  deploy-preview:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    needs:
+      - checks
+      - test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - id: deploy
+        uses: aboutbits/github-actions-vercel/deploy@v1
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
+          vercel-project-id: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
+      - uses: aboutbits/github-actions-vercel/link-domain@v1
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-scope: aboutbits
+          deployment-domain: ${{ steps.deploy.outputs.url }}
+          preview-domain: ${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}

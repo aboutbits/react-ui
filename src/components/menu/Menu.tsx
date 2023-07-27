@@ -41,7 +41,7 @@ export function Menu({
     <HeadlessMenu.Items
       className={classNames(
         menu.menuList.base,
-        menu.menuList.direction[direction]
+        menu.menuList.direction[direction],
       )}
     >
       {children}
@@ -64,7 +64,7 @@ export function Menu({
                   menu.menuButton.icon.base,
                   menu.menuButton.icon.direction[direction].state[
                     open ? 'open' : 'closed'
-                  ]
+                  ],
                 )}
               />
             </span>

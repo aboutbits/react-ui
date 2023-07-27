@@ -28,14 +28,14 @@ export function ContentMessageIcon({
         content.message.iconContainer.base,
         content.message.iconContainer.style[iconStyle].base,
         content.message.iconContainer.style[iconStyle].tone[tone],
-        className
+        className,
       )}
     >
       <Icon
         className={classNames(
           content.message.icon.base,
           content.message.icon.style[iconStyle],
-          content.message.icon.tone[tone]
+          content.message.icon.tone[tone],
         )}
       />
     </div>

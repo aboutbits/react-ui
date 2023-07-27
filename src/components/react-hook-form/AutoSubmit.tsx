@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useRef } from 'react'
 import { useWatch } from 'react-hook-form'
-import { useDebounce } from '../util/useDebounce'
+import { useDebounce } from '@aboutbits/react-toolbox'
 
 export function AutoSubmit({
   interval = 200,
@@ -19,7 +19,7 @@ export function AutoSubmit({
   useEffect(() => {
     if (initialRender.current) {
       initialRender.current = false
-    } else if (debouncedValueToSave) {
+    } else {
       formInput.current?.form?.requestSubmit()
       dataChanged.current = false
     }

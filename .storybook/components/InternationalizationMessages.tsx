@@ -1,6 +1,6 @@
 import { Markdown, Subheading } from '@storybook/addon-docs'
 import { ReactElement } from 'react'
-import defaultMessages from '../../src/framework/internationalization/defaultMessages.en'
+import { defaultMessages } from '../../src/framework/internationalization/defaultMessages.en'
 import { SourceJson } from './SourceJson'
 
 export function InternationalizationMessages({
@@ -9,7 +9,7 @@ export function InternationalizationMessages({
   items: (keyof typeof defaultMessages)[]
 }): ReactElement {
   const messages = Object.fromEntries(
-    items.map((item) => [item, defaultMessages[item]])
+    items.map((item) => [item, defaultMessages[item]]),
   )
 
   return (

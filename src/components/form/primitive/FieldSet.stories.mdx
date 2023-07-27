@@ -1,10 +1,10 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { Theme } from '../../../../.storybook/components'
-import { Fieldset } from './Fieldset'
+import { FieldSet } from './FieldSet'
 
-<Meta title="Components/Form/primitive/Fieldset" component={Fieldset} />
+<Meta title="Components/Form/primitive/FieldSet" component={FieldSet} />
 
-# Fieldset
+# FieldSet
 
 A themed fieldset.
 
@@ -12,14 +12,14 @@ It inherits styles from the [InputLabel](../?path=/docs/components-form-primitiv
 
 The `indent` property can be used to control the indentation of the component (which may depend on its position and the components it contains).
 
-export const Template = ({ ...args }) => <Fieldset {...args} />
+export const Template = ({ ...args }) => <FieldSet {...args} />
 
 <Canvas>
   <Story
     name="Default"
     args={{
       label: 'Label',
-      children: <>Fieldset Content</>,
+      children: <>FieldSet Content</>,
     }}
     argTypes={{
       disabled: { type: 'boolean' },

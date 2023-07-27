@@ -78,7 +78,7 @@ export function ConfirmationDialog({
         <DialogContent>{body}</DialogContent>
         <DialogFooterArea>
           <DialogFooterActions>
-            {dismissButtonText && (
+            {Boolean(dismissButtonText) && (
               <Button
                 variant={ButtonVariant.Ghost}
                 tone={Tone.Neutral}

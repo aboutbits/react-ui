@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react'
+import { useIsMounted } from '@aboutbits/react-toolbox'
 import { useInternationalization } from '../../framework'
 import { isAxiosErrorWithErrorBody } from './helpers'
 import { ErrorBody } from './types'
-import { useIsMounted } from './useIsMounted'
 
 export const DEFAULT_ERROR_MESSAGE_PATH = 'error.api'
 
@@ -24,11 +24,11 @@ export type UseHandleRequestOptions<V, R, E> = {
 }
 
 export type UseHandleRequestTrigger<V, R> = (
-  values: V
+  values: V,
 ) => Promise<R | undefined>
 
 export type UseHandleRequestReturn<V, R> = {
-  apiErrorMessage: string | null
+  apiErrorMessage: string | undefined
   isRequesting: boolean
   triggerRequest: UseHandleRequestTrigger<V, R>
 }
@@ -36,20 +36,20 @@ export type UseHandleRequestReturn<V, R> = {
 export function useHandleRequest<
   Values = void,
   Response = unknown,
-  Error = unknown
+  Error = unknown,
 >(
   requestAction: (values: Values) => Promise<Response>,
-  options?: UseHandleRequestOptions<Values, Response, Error>
+  options?: UseHandleRequestOptions<Values, Response, Error>,
 ): UseHandleRequestReturn<Values, Response> {
   const [isRequesting, setIsRequesting] = useState(false)
-  const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null)
+  const [apiErrorMessage, setApiErrorMessage] = useState<string>()
   const { messages } = useInternationalization()
   const isMounted = useIsMounted()
 
   const triggerRequest: UseHandleRequestTrigger<Values, Response> = useCallback(
     async (values) => {
       try {
-        setApiErrorMessage(null)
+        setApiErrorMessage(undefined)
         setIsRequesting(true)
         const response = await requestAction(values)
         if (isMounted()) {
@@ -73,14 +73,15 @@ export function useHandleRequest<
             errorBody,
           })
           if (options?.throwOnError) {
-            throw error as Error
+            throw error
           }
         }
+        return undefined
       } finally {
         setIsRequesting(false)
       }
     },
-    [messages, options, requestAction, isMounted]
+    [messages, options, requestAction, isMounted],
   )
 
   return {

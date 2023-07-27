@@ -1,13 +1,21 @@
 name: Main
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 env:
   NODE_VERSION: 16
 
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  lint:
+  checks:
     runs-on: ubuntu-22.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v1
@@ -22,6 +30,7 @@ jobs:
 
   test:
     runs-on: ubuntu-22.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v1
@@ -33,12 +42,10 @@ jobs:
 
   deploy-main:
     runs-on: ubuntu-22.04
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
+    timeout-minutes: 20
     if: github.ref == 'refs/heads/main'
     needs:
-      - lint
+      - checks
       - test
     steps:
       - uses: actions/checkout@v3
@@ -50,25 +57,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
           vercel-project-id: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
-          arguments: --prod
-
-  deploy-next:
-    runs-on: ubuntu-22.04
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
-    if: github.ref == 'refs/heads/next'
-    needs:
-      - lint
-      - test
-    steps:
-      - uses: actions/checkout@v3
-      - uses: aboutbits/github-actions-node/setup-and-install@v1
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - uses: aboutbits/github-actions-vercel/deploy@v1
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
-          vercel-project-id: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
-          arguments: --prod
+          build-arguments: --prod
+          deploy-arguments: --prod

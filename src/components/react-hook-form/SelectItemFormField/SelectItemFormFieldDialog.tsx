@@ -4,6 +4,7 @@ import { Actions } from '@aboutbits/react-pagination/dist/types'
 import { AsyncView } from '@aboutbits/react-toolbox'
 import { ReactElement, ReactNode } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
+import { IndexType } from '@aboutbits/pagination'
 import { useInternationalization, useTheme } from '../../../framework'
 import {
   Dialog,
@@ -45,7 +46,7 @@ export type PaginatedResponse<T> = {
   perPage: number
 }
 
-export type SelectItemDialogWithSearchProps<ItemType, Error> = DialogProps & {
+export type SelectItemFormFieldDialogProps<ItemType, Error> = DialogProps & {
   onConfirm: (item: ItemType) => void
   useGetData: (params: SearchQueryParameters & PaginationQueryParameters) => {
     data?: PaginatedResponse<ItemType>
@@ -54,7 +55,7 @@ export type SelectItemDialogWithSearchProps<ItemType, Error> = DialogProps & {
   renderListItem: (item: ItemType) => ReactNode
   renderErrorMessage: (error: Error) => ReactNode
   noSearchResults: string
-  paginationConfig: { indexType: number }
+  paginationConfig: { indexType: IndexType }
   numberOfLoadingItems?: number
   title: ReactNode
 }
@@ -63,7 +64,7 @@ const defaultValues: FilterParameters = {
   search: '',
 }
 
-export function SelectItemDialogWithSearch<ItemType, Error>({
+export function SelectItemFormFieldDialog<ItemType, Error>({
   onConfirm,
   useGetData,
   renderListItem,
@@ -73,7 +74,7 @@ export function SelectItemDialogWithSearch<ItemType, Error>({
   numberOfLoadingItems = 5,
   title,
   ...props
-}: SelectItemDialogWithSearchProps<ItemType, Error>): ReactElement {
+}: SelectItemFormFieldDialogProps<ItemType, Error>): ReactElement {
   const { form: theme } = useTheme()
 
   const { queryParameters, page, size, actions } = useQueryAndPagination({
@@ -145,7 +146,7 @@ export function SelectItemDialogSearch({
         onSubmit={(event) => {
           // Stop propagation to prevent submitting a form outside of the dialog (bubbling up the React tree)
           event.stopPropagation()
-          return form.handleSubmit(actions.updateQuery)(event)
+          void form.handleSubmit(actions.updateQuery)(event)
         }}
         className={theme.selectItem.form}
       >
@@ -174,11 +175,11 @@ export function SelectItemDialogSuccess<ItemType, Error>({
   actions: Actions
   searching: boolean
 } & Pick<
-  SelectItemDialogWithSearchProps<ItemType, Error>,
+  SelectItemFormFieldDialogProps<ItemType, Error>,
   'onConfirm' | 'renderListItem' | 'paginationConfig' | 'noSearchResults'
 >): ReactElement {
   const { messages } = useInternationalization()
-  const { form } = useTheme()
+  const { form: theme } = useTheme()
 
   const empty = searching ? messages['select.search.empty'] : noSearchResults
 
@@ -188,7 +189,7 @@ export function SelectItemDialogSuccess<ItemType, Error>({
     <>
       <DialogContentArea
         enableScrollLayout={false}
-        className={form.selectItem.dialogContentArea.base}
+        className={theme.selectItem.dialogContentArea.base}
       >
         <DialogContentList>
           {data.items.map((item, index) => (

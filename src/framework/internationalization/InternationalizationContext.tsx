@@ -1,10 +1,13 @@
 import { createContext, useContext } from 'react'
-import defaultMessages from './defaultMessages.en'
+import { defaultMessages } from './defaultMessages.en'
 
-export type InternationalizationMessages = Record<string, string>
+export type InternationalizationMessages = typeof defaultMessages
 
-export type Internationalization = {
-  messages: InternationalizationMessages
+export type Internationalization<
+  TMessages extends
+    Partial<InternationalizationMessages> = InternationalizationMessages,
+> = {
+  messages: TMessages
 }
 
 export const defaultInternationalization: Internationalization = {
@@ -12,9 +15,9 @@ export const defaultInternationalization: Internationalization = {
 }
 
 export const InternationalizationContext = createContext<Internationalization>(
-  defaultInternationalization
+  defaultInternationalization,
 )
 
-export function useInternationalization(): Internationalization {
+export function useInternationalization() {
   return useContext(InternationalizationContext)
 }

@@ -39,7 +39,7 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
       hideRequired,
       ...props
     },
-    ref
+    ref,
   ) {
     const tone =
       status === Status.Invalid ? FormTone.Critical : FormTone.Neutral
@@ -48,7 +48,7 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
 
     return (
       <div className={className}>
-        {!!label && (
+        {Boolean(label) && (
           <InputLabel
             mode={mode}
             tone={tone}
@@ -71,7 +71,7 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
         >
           {children}
         </Select>
-        {!!message && (
+        {Boolean(message) && (
           <InputMessage
             mode={mode}
             tone={tone}
@@ -81,5 +81,5 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
         )}
       </div>
     )
-  }
+  },
 )

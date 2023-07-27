@@ -6,7 +6,7 @@ export const ThemeContext = createContext<Theme | undefined>(undefined)
 export function useTheme(): Theme {
   const theme = useContext(ThemeContext)
 
-  if (theme === null || theme === undefined) {
+  if (theme === undefined) {
     throw new Error('No theme available on context')
   }
 

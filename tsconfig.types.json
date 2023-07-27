@@ -1,8 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES6",
-    "outDir": "./dist/esm"
+    "emitDeclarationOnly": true,
+    "outDir": "./dist/types",
+    "declaration": true,
+    "declarationMap": true,
+    "removeComments": false,
+    "noEmit": false
   },
   "exclude": [
     "src/vitest.ts",

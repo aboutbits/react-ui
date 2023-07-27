@@ -1,4 +1,4 @@
-import { ReactNode, useRef, useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { useController } from 'react-hook-form'
 import { DialogProps } from '../../dialog'
 import { FormVariantProps } from '../../form'
@@ -9,22 +9,25 @@ import {
   RequiredProps,
 } from '../../types'
 import {
-  SelectItemDialogWithSearch,
-  SelectItemDialogWithSearchProps,
-} from './SelectItemDialogWithSearch'
-import { SelectItemInput, SelectItemInputProps } from './SelectItemInput'
+  SelectItemFormFieldDialog,
+  SelectItemFormFieldDialogProps,
+} from './SelectItemFormFieldDialog'
+import {
+  SelectItemFormFieldInput,
+  SelectItemFormFieldInputProps,
+} from './SelectItemFormFieldInput'
 
 export type SelectItemFormFieldProps<
   Item,
   SelectedItem extends Item | null,
   ItemId,
-  Error
+  Error,
 > = Pick<
-  SelectItemInputProps<Item, SelectedItem>,
+  SelectItemFormFieldInputProps<Item, SelectedItem>,
   'name' | 'label' | 'placeholder' | 'disabled'
 > & {
   renderInputItem?: (item: Item) => ReactNode
-  getItemId: (item: Item) => ItemId
+  extractIdFromItem: (item: Item) => ItemId
   /**
    * The item that should be rendered on first render.
    */
@@ -41,7 +44,7 @@ export type SelectItemFormFieldProps<
   RequiredProps &
   HideRequiredProps &
   Pick<
-    SelectItemDialogWithSearchProps<Item, Error>,
+    SelectItemFormFieldDialogProps<Item, Error>,
     | 'useGetData'
     | 'noSearchResults'
     | 'renderListItem'
@@ -58,7 +61,7 @@ export function SelectItemFormField<
   Item,
   SelectedItem extends Item | null,
   ItemId,
-  Error
+  Error,
 >({
   disabled = false,
   name,
@@ -77,32 +80,34 @@ export function SelectItemFormField<
   renderListItem,
   renderErrorMessage,
   paginationConfig,
-  getItemId,
+  extractIdFromItem,
   required,
   hideRequired,
 }: SelectItemFormFieldProps<Item, SelectedItem, ItemId, Error>) {
   const { field, fieldState } = useController({ name })
 
   const [showDialog, setShowDialog] = useState<boolean>(false)
-  const selectedItem = useRef<Item | null>(
-    initialItem === undefined ? null : initialItem
+  const [selectedItem, setSelectedItem] = useState<Item | null>(
+    initialItem ?? null,
   )
 
   return (
     <>
-      <SelectItemInput
+      <SelectItemFormFieldInput
         name={name}
         label={label}
         placeholder={placeholder}
-        selectedItem={selectedItem.current}
+        selectedItem={selectedItem}
         renderItem={renderInputItem ? renderInputItem : renderListItem}
-        onOpenSelect={() => setShowDialog(true)}
+        onOpenSelect={() => {
+          setShowDialog(true)
+        }}
         onClear={() => {
           field.onChange(null)
-          selectedItem.current = null
+          setSelectedItem(null)
         }}
         disabled={disabled}
-        hasError={!!fieldState.error}
+        hasError={Boolean(fieldState.error)}
         required={required}
         hideRequired={hideRequired}
         mode={mode}
@@ -110,15 +115,15 @@ export function SelectItemFormField<
         className={className}
       />
       {showDialog && (
-        <SelectItemDialogWithSearch
+        <SelectItemFormFieldDialog
           onDismiss={() => {
             field.onChange(field.value)
             setShowDialog(false)
           }}
           isOpen={showDialog}
           onConfirm={(item: Item) => {
-            field.onChange(getItemId(item))
-            selectedItem.current = item
+            field.onChange(extractIdFromItem(item))
+            setSelectedItem(item)
             setShowDialog(false)
           }}
           useGetData={useGetData}

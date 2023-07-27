@@ -1,8 +1,7 @@
 import { forwardRef } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { RadioField, RadioFieldProps, Status } from '../form'
+import { RadioField, RadioFieldProps } from '../form'
 import { useForwardedRef } from '../util/useForwardedRef'
-import { useFieldError } from './util/useFieldError'
 
 export type RadioFormFieldFieldProps = Omit<RadioFieldProps, 'status'> & {
   name: string
@@ -16,24 +15,20 @@ export type RadioFormFieldFieldProps = Omit<RadioFieldProps, 'status'> & {
 export const RadioFormField = forwardRef<
   HTMLInputElement,
   RadioFormFieldFieldProps
->(function RadioFormField({ mode, name, message, ...props }, ref) {
+>(function RadioFormField({ name, ...props }, ref) {
   const { register } = useFormContext()
   const { ref: formFieldRef, ...formFieldProps } = register(name)
 
-  const error = useFieldError(name)
   const forwardedRef = useForwardedRef(ref)
 
   return (
     <RadioField
-      mode={mode}
       {...props}
       {...formFieldProps}
       ref={(e) => {
         formFieldRef(e)
         forwardedRef.current = e
       }}
-      message={error?.message?.toString() || message}
-      status={error ? Status.Invalid : undefined}
     />
   )
 })

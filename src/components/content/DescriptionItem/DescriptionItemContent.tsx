@@ -25,7 +25,7 @@ export function DescriptionItemContent({
       className={classNames(
         content.descriptionItemContent.base,
         content.descriptionItemContent.alignVertical[alignVertical],
-        className
+        className,
       )}
     >
       {children}

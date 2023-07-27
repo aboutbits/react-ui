@@ -26,7 +26,7 @@ export function SectionHeaderRow({
       className={classNames(
         section.headerRow.base,
         section.headerRow.layout[layout],
-        className
+        className,
       )}
     >
       {children}
