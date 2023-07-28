@@ -21,9 +21,9 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               tag_name: '${{ github.ref }}',
-              name: 'Release ${{ github.ref }}'
+              name: 'Release ${{ github.ref_name }}'
             })
-      - uses: aboutbits/github-actions-node/setup-and-install@v2
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
