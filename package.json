@@ -1,16 +1,20 @@
 {
   "name": "@aboutbits/react-ui",
   "version": "2.0.2",
+  "types": "./dist/types/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "main": "./dist/cjs/index.js",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js"
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
     },
-    "./tailwind-preset": "./tailwind-preset.js"
+    "./tailwind-preset": "./tailwind-preset.ts"
   },
   "files": [
     "dist/**/*",
-    "tailwind-preset.js"
+    "tailwind-preset.ts"
   ],
   "private": false,
   "publishConfig": {
@@ -30,9 +34,10 @@
   },
   "scripts": {
     "dev": "storybook dev -p 4000 --no-open",
-    "build": "rimraf dist && npm run build:types && npm run build:esm",
-    "build:esm": "tsc -p tsconfig.esm.json",
+    "build": "rimraf dist && npm run build:types && npm run build:esm && npm run build:cjs",
     "build:types": "tsc -p tsconfig.types.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
     "build-storybook": "storybook build",
     "lint": "eslint --cache .",
     "lint:fix": "npm run lint -- --fix",
@@ -48,10 +53,8 @@
   },
   "dependencies": {
     "@aboutbits/pagination": "^1.1.0",
-    "@aboutbits/react-pagination": "^2.0.1",
     "@aboutbits/react-material-icons": "^1.1.2",
     "@aboutbits/react-toolbox": "^0.2.1",
-    "@aboutbits/ts-utils": "github:@aboutbits/ts-utils#main",
     "@headlessui/react": "^1.7.7",
     "axios": "^1.4.0",
     "classnames": "^2.0.0",
@@ -59,11 +62,13 @@
     "react-hook-form": "^7.45.2"
   },
   "peerDependencies": {
+    "@aboutbits/react-pagination": "^2.0.0",
     "react": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@aboutbits/eslint-config": "^2.1.2",
     "@aboutbits/prettier-config": "^1.6.0",
+    "@aboutbits/react-pagination": "github:aboutbits/react-pagination#fix-package-structure",
     "@aboutbits/ts-config": "^1.1.2",
     "@hookform/resolvers": "^3.1.1",
     "@storybook/addon-essentials": "^7.0.26",
