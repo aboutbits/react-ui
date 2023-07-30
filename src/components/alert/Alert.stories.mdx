@@ -30,9 +30,9 @@ export const Template = ({ children, ...args }) => (
 
 export const DissmissCriticalButton = (
   <Button
-    variant={ButtonVariant.transparent}
-    size={Size.sm}
-    tone={Tone.critical}
+    variant={ButtonVariant.Transparent}
+    size={Size.Sm}
+    tone={Tone.Critical}
   >
     Dismiss
   </Button>
@@ -41,16 +41,16 @@ export const DissmissCriticalButton = (
 export const YesNoCriticalButtons = (
   <>
     <Button
-      variant={ButtonVariant.transparent}
-      size={Size.sm}
-      tone={Tone.critical}
+      variant={ButtonVariant.Transparent}
+      size={Size.Sm}
+      tone={Tone.Critical}
     >
       Yes
     </Button>
     <Button
-      variant={ButtonVariant.transparent}
-      size={Size.sm}
-      tone={Tone.critical}
+      variant={ButtonVariant.Transparent}
+      size={Size.Sm}
+      tone={Tone.Critical}
     >
       No
     </Button>
@@ -63,7 +63,7 @@ export const YesNoCriticalButtons = (
     args={{
       children:
         'This alert component can be used to highlight a message to the user.',
-      tone: Tone.critical,
+      tone: Tone.Critical,
       icon: 'Warning',
     }}
     argTypes={{
@@ -109,22 +109,22 @@ export const YesNoCriticalButtons = (
 
 <Canvas>
   <Story name="Primary">
-    <Alert tone={Tone.primary}>Primary message</Alert>
+    <Alert tone={Tone.Primary}>Primary message</Alert>
   </Story>
   <Story name="Neutral">
-    <Alert tone={Tone.neutral}>Neutral message</Alert>
+    <Alert tone={Tone.Neutral}>Neutral message</Alert>
   </Story>
   <Story name="Warning">
-    <Alert tone={Tone.warning}>Warning message</Alert>
+    <Alert tone={Tone.Warning}>Warning message</Alert>
   </Story>
   <Story name="Critical">
-    <Alert tone={Tone.critical}>Critical message</Alert>
+    <Alert tone={Tone.Critical}>Critical message</Alert>
   </Story>
   <Story name="Success">
-    <Alert tone={Tone.success}>Success message</Alert>
+    <Alert tone={Tone.Success}>Success message</Alert>
   </Story>
   <Story name="Informative">
-    <Alert tone={Tone.informative}>Informative message</Alert>
+    <Alert tone={Tone.Informative}>Informative message</Alert>
   </Story>
 </Canvas>
 
@@ -132,7 +132,7 @@ export const YesNoCriticalButtons = (
 
 <Canvas>
   <Story name="Icon">
-    <Alert icon={IconCheck} tone={Tone.success}>
+    <Alert icon={IconCheck} tone={Tone.Success}>
       Success Message
     </Alert>
   </Story>
@@ -142,7 +142,7 @@ export const YesNoCriticalButtons = (
 
 <Canvas>
   <Story name="Title">
-    <Alert icon={IconCheck} tone={Tone.success} title="Success">
+    <Alert icon={IconCheck} tone={Tone.Success} title="Success">
       Congratulations, this is a success message!
     </Alert>
   </Story>
@@ -154,17 +154,17 @@ export const YesNoCriticalButtons = (
   <Story name="ActionsResponsive">
     <Alert
       icon={IconCheck}
-      tone={Tone.success}
+      tone={Tone.Success}
       actions={
         <Button
-          tone={Tone.success}
-          variant={ButtonVariant.transparent}
-          size={Size.sm}
+          tone={Tone.Success}
+          variant={ButtonVariant.Transparent}
+          size={Size.Sm}
         >
           Dismiss
         </Button>
       }
-      actionsPosition={AlertActionsPosition.responsive}
+      actionsPosition={AlertActionsPosition.Responsive}
     >
       Success message with <b>responsive</b> actions
     </Alert>
@@ -175,17 +175,17 @@ export const YesNoCriticalButtons = (
   <Story name="ActionsFixedRight">
     <Alert
       icon={IconCheck}
-      tone={Tone.success}
+      tone={Tone.Success}
       actions={
         <Button
-          tone={Tone.success}
-          variant={ButtonVariant.transparent}
-          size={Size.sm}
+          tone={Tone.Success}
+          variant={ButtonVariant.Transparent}
+          size={Size.Sm}
         >
           Dismiss
         </Button>
       }
-      actionsPosition={AlertActionsPosition.fixedRight}
+      actionsPosition={AlertActionsPosition.FixedRight}
     >
       Success message with actions <b>fixed to the right</b>
     </Alert>
@@ -196,17 +196,17 @@ export const YesNoCriticalButtons = (
   <Story name="ActionsFixedBottom">
     <Alert
       icon={IconCheck}
-      tone={Tone.success}
+      tone={Tone.Success}
       actions={
         <Button
-          tone={Tone.success}
-          variant={ButtonVariant.transparent}
-          size={Size.sm}
+          tone={Tone.Success}
+          variant={ButtonVariant.Transparent}
+          size={Size.Sm}
         >
           Dismiss
         </Button>
       }
-      actionsPosition={AlertActionsPosition.fixedBottom}
+      actionsPosition={AlertActionsPosition.FixedBottom}
     >
       Success message with actions <b>fixed to the bottom</b>
     </Alert>
@@ -217,7 +217,7 @@ export const YesNoCriticalButtons = (
 
 <Canvas>
   <Story name="Very Long Message">
-    <Alert icon={IconWarning} tone={Tone.critical}>
+    <Alert icon={IconWarning} tone={Tone.Critical}>
       Duis mauris ligula, aliquam id maximus at, aliquam ut dui. Morbi ac neque
       mattis libero cursus lobortis quis ac urna. Nullam vel augue vitae lacus
       fermentum ullamcorper eu eget sapien.
