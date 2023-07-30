@@ -1,5 +1,10 @@
-import type { Config } from 'tailwindcss'
+// import type { Config } from 'tailwindcss'
+// import colors from 'tailwindcss/colors'
+
+import forms from '@tailwindcss/forms'
+import { Config } from 'tailwindcss'
 import colors from 'tailwindcss/colors'
+import preset from './tailwind-preset'
 
 export default {
   content: [
@@ -16,7 +21,6 @@ export default {
       },
     },
   },
-  darkMode: 'class',
-  presets: [require('./tailwind-preset.js')],
-  plugins: [require('@tailwindcss/forms')],
+  presets: [preset],
+  plugins: [forms],
 } satisfies Config
