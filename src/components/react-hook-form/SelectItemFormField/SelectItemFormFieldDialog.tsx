@@ -1,10 +1,9 @@
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
-import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/inMemoryPagination'
-import { Actions } from '@aboutbits/react-pagination/dist/types'
 import { AsyncView } from '@aboutbits/react-toolbox'
 import { ReactElement, ReactNode } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { IndexType } from '@aboutbits/pagination'
+import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/routers/inMemory'
 import { useInternationalization, useTheme } from '../../../framework'
 import {
   Dialog,
@@ -77,18 +76,23 @@ export function SelectItemFormFieldDialog<ItemType, Error>({
 }: SelectItemFormFieldDialogProps<ItemType, Error>): ReactElement {
   const { form: theme } = useTheme()
 
-  const { queryParameters, page, size, actions } = useQueryAndPagination({
-    ...paginationConfig,
-    defaultQueryParameters: defaultValues,
-  })
+  const { query, page, size, setQuery, setPage } = useQueryAndPagination(
+    defaultValues,
+    (query) => {
+      if (query.search === undefined || Array.isArray(query.search)) {
+        return {}
+      }
+      return { search: query.search }
+    },
+  )
 
   const { data, error } = useGetData({
-    search: queryParameters.search,
+    search: query.search,
     page,
     size,
   })
 
-  const searching = queryParameters.search !== ''
+  const searching = query.search !== ''
 
   return (
     <Dialog mobilePosition={DialogPosition.Fullscreen} {...props}>
@@ -99,7 +103,11 @@ export function SelectItemFormFieldDialog<ItemType, Error>({
             <DialogHeaderTitle>{title}</DialogHeaderTitle>
           </DialogHeaderRow>
           <DialogHeaderRow className={theme.selectItem.dialogHeaderSearch}>
-            <SelectItemDialogSearch actions={actions} />
+            <SelectItemDialogSearch
+              setQuery={(query) => {
+                setQuery(query)
+              }}
+            />
           </DialogHeaderRow>
         </DialogHeaderArea>
         <AsyncView
@@ -109,7 +117,7 @@ export function SelectItemFormFieldDialog<ItemType, Error>({
             <SelectItemDialogSuccess
               data={data}
               searching={searching}
-              actions={actions}
+              setPage={setPage}
               onConfirm={onConfirm}
               renderListItem={renderListItem}
               paginationConfig={paginationConfig}
@@ -132,9 +140,9 @@ export function SelectItemFormFieldDialog<ItemType, Error>({
 }
 
 export function SelectItemDialogSearch({
-  actions,
+  setQuery,
 }: {
-  actions: Actions
+  setQuery: (query: Partial<FilterParameters>) => void
 }): ReactElement {
   const { messages } = useInternationalization()
   const form = useForm({ defaultValues })
@@ -146,7 +154,7 @@ export function SelectItemDialogSearch({
         onSubmit={(event) => {
           // Stop propagation to prevent submitting a form outside of the dialog (bubbling up the React tree)
           event.stopPropagation()
-          void form.handleSubmit(actions.updateQuery)(event)
+          void form.handleSubmit(setQuery)(event)
         }}
         className={theme.selectItem.form}
       >
@@ -164,7 +172,7 @@ export function SelectItemDialogSearch({
 
 export function SelectItemDialogSuccess<ItemType, Error>({
   data,
-  actions,
+  setPage,
   searching,
   onConfirm,
   renderListItem,
@@ -172,7 +180,7 @@ export function SelectItemDialogSuccess<ItemType, Error>({
   noSearchResults,
 }: {
   data: PaginatedResponse<ItemType>
-  actions: Actions
+  setPage: (page: number) => void
   searching: boolean
 } & Pick<
   SelectItemFormFieldDialogProps<ItemType, Error>,
@@ -208,7 +216,7 @@ export function SelectItemDialogSuccess<ItemType, Error>({
         page={data.currentPage}
         size={data.perPage}
         total={data.total}
-        onChangePage={actions.setPage}
+        onChangePage={setPage}
         config={paginationConfig}
       />
     </>

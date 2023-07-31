@@ -1,6 +1,6 @@
 const prod = process.env.NODE_ENV === 'production'
 
-module.exports = {
+export default {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},

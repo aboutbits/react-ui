@@ -1,5 +1,7 @@
-/** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
-module.exports = {
+import type { Config } from 'tailwindcss'
+
+export default {
+  content: [],
   theme: {
     colors: {
       white: '#ffffff',
@@ -101,4 +103,4 @@ module.exports = {
       },
     },
   },
-}
+} satisfies Config
