@@ -3,7 +3,7 @@ import { AsyncView } from '@aboutbits/react-toolbox'
 import { ReactElement, ReactNode } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { IndexType } from '@aboutbits/pagination'
-import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/cjs/routers/inMemory'
+import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/routers/inMemory'
 import { useInternationalization, useTheme } from '../../../framework'
 import {
   Dialog,
