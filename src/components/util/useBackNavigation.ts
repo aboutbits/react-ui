@@ -6,7 +6,7 @@ export const useBackNavigation = () => {
 
   return {
     goBack: useCallback(
-      (fallbackUrl: string) => {
+      ({ fallbackUrl }: { fallbackUrl: string }) => {
         const canGoBack =
           typeof window !== 'undefined' &&
           'navigation' in window &&

@@ -51,7 +51,7 @@ export function HeaderBackAction({
       onClick(event)
       return
     }
-    goBack(fallbackUrl)
+    goBack({ fallbackUrl })
   }
 
   return (
