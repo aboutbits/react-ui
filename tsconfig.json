@@ -1,6 +1,9 @@
 {
   "extends": "@aboutbits/ts-config/react",
   "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "esnext",
     "skipLibCheck": true
   },
   "exclude": ["node_modules", "dist"],
