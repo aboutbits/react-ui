@@ -1,6 +1,6 @@
 import { MenuDirection } from './types'
 
-export default {
+const className = {
   menuContainer: 'relative',
   menuButton: {
     base: 'flex items-center underline focus:no-underline focus:outline-none focus:ring',
@@ -34,3 +34,5 @@ export default {
     },
   },
 }
+
+export default className
