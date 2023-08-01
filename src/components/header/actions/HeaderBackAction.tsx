@@ -1,7 +1,8 @@
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
 import { ComponentProps, ComponentType, ReactElement } from 'react'
-import { useInternationalization, useRouter } from '../../../framework'
+import { useInternationalization } from '../../../framework'
 import { IconProps } from '../../types'
+import { useBackNavigation } from '../../util/useBackNavigation'
 import {
   HeaderLeftActionIcon,
   HeaderLeftActionIconProps,
@@ -40,39 +41,24 @@ export function HeaderBackAction({
   fallbackUrl,
   ...props
 }: HeaderBackActionProps): ReactElement {
-  const router = useRouter()
+  const { goBack } = useBackNavigation()
   const { messages } = useInternationalization()
 
-  const goBack: ComponentProps<typeof HeaderLeftActionIcon>['onClick'] = (
+  const handleClick: ComponentProps<typeof HeaderLeftActionIcon>['onClick'] = (
     event,
   ) => {
     if (onClick) {
       onClick(event)
       return
     }
-
-    const canGoBack =
-      typeof window !== 'undefined' &&
-      'navigation' in window &&
-      typeof window.navigation === 'object' &&
-      window.navigation !== null &&
-      'canGoBack' in window.navigation &&
-      typeof window.navigation.canGoBack === 'boolean'
-        ? window.navigation.canGoBack
-        : window.history.length > 1
-
-    if (canGoBack) {
-      router.back()
-    } else {
-      router.replace(fallbackUrl)
-    }
+    goBack(fallbackUrl)
   }
 
   return (
     <HeaderLeftActionIcon
       icon={icon}
       label={label ?? messages['button.goBack']}
-      onClick={goBack}
+      onClick={handleClick}
       {...props}
     />
   )
