@@ -49,9 +49,9 @@ export function HeaderBackAction({
   ) => {
     if (onClick) {
       onClick(event)
-      return
+    } else {
+      goBack({ fallbackUrl })
     }
-    goBack({ fallbackUrl })
   }
 
   return (
