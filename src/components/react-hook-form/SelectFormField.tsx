@@ -7,6 +7,7 @@ import {
   ReactElement,
   ReactNode,
   useEffect,
+  useMemo,
 } from 'react'
 import {
   FieldPath,
@@ -53,14 +54,19 @@ export const SelectFormField = forwardRef(function SelectFormField<
   ref: ForwardedRef<HTMLSelectElement>,
 ) {
   const { register } = useFormContext<TFieldValues>()
+
+  const setValueAs = useMemo(() => {
+    return (
+      registerOptions?.setValueAs ||
+      ((input: unknown) => {
+        return input === '' && transformEmptyToNull ? null : input
+      })
+    )
+  }, [registerOptions, transformEmptyToNull])
+
   const { ref: formFieldRef, ...formFieldProps } = register<TFieldName>(name, {
-    setValueAs: (input: unknown) => {
-      if (input === '' && transformEmptyToNull) {
-        return null
-      }
-      return input
-    },
     ...registerOptions,
+    setValueAs,
   })
 
   const error = useFieldError(name)
@@ -75,7 +81,7 @@ export const SelectFormField = forwardRef(function SelectFormField<
     const childrenArray = Children.toArray(children)
 
     const childWithFormValueExists = childrenArray.some(
-      (child) => isOption(child) && child.props.value === formValue,
+      (child) => isOption(child) && setValueAs(child.props.value) === formValue,
     )
 
     if (!childWithFormValueExists) {
@@ -83,13 +89,13 @@ export const SelectFormField = forwardRef(function SelectFormField<
       const newValue = isOption(firstChild) ? firstChild.props.value : ''
 
       if (newValue !== formValue) {
-        setValue(name, newValue as typeof formValue, {
+        setValue(name, setValueAs(newValue) as typeof formValue, {
           shouldDirty: true,
           shouldTouch: false,
         })
       }
     }
-  }, [name, children, formValue, setValue])
+  }, [name, children, formValue, setValue, setValueAs])
 
   return (
     <SelectField
