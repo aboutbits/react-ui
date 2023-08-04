@@ -3,7 +3,7 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "module": "esnext",
-    "target": "esnext",
+    "target": "es2020",
     "skipLibCheck": true
   },
   "exclude": ["node_modules", "dist"],
