@@ -9,6 +9,7 @@ export default {
       transparent: 'rgba(0,0,0,0)',
       current: 'currentColor',
       primary: {
+        25: '#f5f7ff',
         50: '#eff2fd',
         100: '#dde3fb',
         200: '#b8c6f6',
