@@ -35,9 +35,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           !props.disabled
             ? button.modeVariantTone[mode][variant][tone]
             : button.modeVariantTone[mode][variant].disabled,
-          button.button.variantSize[
-            variant === ButtonVariant.Ghost ? variant : 'base'
-          ][size],
+          button.button.variantSize.base,
+          button.button.variantSize[variant][size],
           className,
         )}
         ref={ref}
