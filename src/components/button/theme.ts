@@ -6,14 +6,24 @@ export default {
     base: 'inline-flex items-center justify-center font-medium rounded-lg outline-1 outline-offset-2 focus:outline',
     variantSize: {
       base: {
-        [Size.Sm]: 'px-4 py-1.5 text-sm leading-5',
-        [Size.Md]: 'px-6 py-2.5 text-sm leading-5',
-        [Size.Lg]: 'px-8 py-4 text-lg leading-7',
+        [Size.Sm]: 'text-sm leading-5',
+        [Size.Md]: 'text-sm leading-5',
+        [Size.Lg]: 'text-lg leading-7',
+      },
+      [ButtonVariant.Solid]: {
+        [Size.Sm]: 'px-4 py-1.5',
+        [Size.Md]: 'px-6 py-2.5',
+        [Size.Lg]: 'px-8 py-4',
       },
       [ButtonVariant.Ghost]: {
         [Size.Sm]: 'px-4-1px py-1.5-1px border',
         [Size.Md]: 'px-6-1px py-2.5-1px border',
         [Size.Lg]: 'px-8-1px py-4-1px border',
+      },
+      [ButtonVariant.Transparent]: {
+        [Size.Sm]: 'px-4 py-1.5',
+        [Size.Md]: 'px-6 py-2.5',
+        [Size.Lg]: 'px-8 py-4',
       },
     },
     icon: {
