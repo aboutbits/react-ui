@@ -41,9 +41,7 @@ export const ButtonIconLink = forwardRef<
     !disabled
       ? button.modeVariantTone[mode][variant][tone]
       : button.modeVariantTone[mode][variant].disabled,
-    button.buttonIcon.variantSize[
-      variant === ButtonVariant.Ghost ? variant : 'base'
-    ][size],
+    button.buttonIcon.variantSize[variant][size],
     className,
   )
 

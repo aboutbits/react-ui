@@ -32,9 +32,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         className={classNames(
           button.button.base,
-          !props.disabled
-            ? button.modeVariantTone[mode][variant][tone]
-            : button.modeVariantTone[mode][variant].disabled,
+          props.disabled
+            ? button.modeVariantTone[mode][variant].disabled
+            : button.modeVariantTone[mode][variant][tone],
           button.button.variantSize.base,
           button.button.variantSize[variant][size],
           className,
