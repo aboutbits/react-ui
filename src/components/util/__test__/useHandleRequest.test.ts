@@ -81,7 +81,7 @@ describe('useHandleRequest', () => {
 
     await act(() => result.current.triggerRequest())
 
-    expect(result.current.apiErrorMessage).toBe('Server Error')
+    expect(result.current.apiErrorMessage).toBe(expectedErrorMessage)
 
     act(() => {
       void result.current.triggerRequest()
@@ -114,5 +114,20 @@ describe('useHandleRequest', () => {
     await act(() => result.current.triggerRequest())
 
     expect(result.current.apiErrorMessage).toBe(defaultMessages['error.api'])
+  })
+
+  test('should correctly clear the api error message', async () => {
+    const { result } = renderHook(() =>
+      useHandleRequest(onRequestWithErrorResponse, { onSuccess }),
+    )
+    expect(result.current.apiErrorMessage).toBeUndefined()
+
+    await act(() => result.current.triggerRequest())
+    expect(result.current.apiErrorMessage).toBe(expectedErrorMessage)
+
+    act(() => {
+      result.current.clearApiErrorMessage()
+    })
+    expect(result.current.apiErrorMessage).toBeUndefined()
   })
 })

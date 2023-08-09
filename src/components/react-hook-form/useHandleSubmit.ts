@@ -1,4 +1,5 @@
 import { FieldValues, Path, UseFormReturn } from 'react-hook-form'
+import { useCallback } from 'react'
 import {
   joinFieldErrorMessages,
   useHandleRequest,
@@ -11,7 +12,7 @@ const DEFAULT_ERROR_FIELD_PATH = 'apiError'
 
 export type UseHandleSubmitReturn<V, R> = Pick<
   UseHandleRequestReturn<V, R>,
-  'apiErrorMessage'
+  'apiErrorMessage' | 'clearApiErrorMessage'
 > & {
   isSubmitting: boolean
   triggerSubmit: UseHandleRequestTrigger<V, R>
@@ -39,11 +40,12 @@ export function useHandleSubmit<
 
   options?: UseHandleRequestOptions<TActualFieldValues, Response, Error>,
 ): UseHandleSubmitReturn<TActualFieldValues, Response> {
-  const { apiErrorMessage, isRequesting, triggerRequest } = useHandleRequest<
-    TActualFieldValues,
-    Response,
-    Error
-  >(
+  const {
+    apiErrorMessage,
+    clearApiErrorMessage,
+    isRequesting,
+    triggerRequest,
+  } = useHandleRequest<TActualFieldValues, Response, Error>(
     async (values) => {
       clearErrors(DEFAULT_ERROR_FIELD_PATH as Path<TFieldValues>)
       return await submitAction(values)
@@ -69,8 +71,14 @@ export function useHandleSubmit<
     },
   )
 
+  const clearError = useCallback(() => {
+    clearErrors(DEFAULT_ERROR_FIELD_PATH as Path<TFieldValues>)
+    clearApiErrorMessage()
+  }, [clearApiErrorMessage, clearErrors])
+
   return {
     apiErrorMessage,
+    clearApiErrorMessage: clearError,
     isSubmitting: isRequesting,
     triggerSubmit: triggerRequest,
   }
