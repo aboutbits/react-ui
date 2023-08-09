@@ -60,7 +60,7 @@ export default {
       },
     },
     variantSize: {
-      base: {
+      [ButtonVariant.Solid]: {
         [Size.Sm]: 'p-1.5',
         [Size.Md]: 'p-2',
         [Size.Lg]: 'p-3',
@@ -69,6 +69,11 @@ export default {
         [Size.Sm]: 'p-1.5-1px border',
         [Size.Md]: 'p-2-1px border',
         [Size.Lg]: 'p-3-1px border',
+      },
+      [ButtonVariant.Transparent]: {
+        [Size.Sm]: 'p-1.5',
+        [Size.Md]: 'p-2',
+        [Size.Lg]: 'p-3',
       },
     },
   },
