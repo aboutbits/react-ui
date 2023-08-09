@@ -62,13 +62,13 @@
     "react-hook-form": "^7.45.2"
   },
   "peerDependencies": {
-    "@aboutbits/react-pagination": "^2.0.0",
+    "@aboutbits/react-pagination": "^3.0.3",
     "react": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@aboutbits/eslint-config": "^2.1.2",
     "@aboutbits/prettier-config": "^1.6.0",
-    "@aboutbits/react-pagination": "^2.0.2",
+    "@aboutbits/react-pagination": "^3.0.3",
     "@aboutbits/ts-config": "^1.1.2",
     "@hookform/resolvers": "^3.1.1",
     "@storybook/addon-essentials": "^7.0.26",
