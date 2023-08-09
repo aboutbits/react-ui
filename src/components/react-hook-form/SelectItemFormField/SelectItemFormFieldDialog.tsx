@@ -77,13 +77,13 @@ export function SelectItemFormFieldDialog<ItemType, Error>({
   const { form: theme } = useTheme()
 
   const { query, page, size, setQuery, setPage } = useQueryAndPagination(
-    defaultValues,
     (query) => {
       if (query.search === undefined || Array.isArray(query.search)) {
         return {}
       }
       return { search: query.search }
     },
+    defaultValues,
   )
 
   const { data, error } = useGetData({
