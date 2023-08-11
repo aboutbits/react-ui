@@ -12,12 +12,13 @@ export type DescriptionItemProps = ClassNameProps & {
    * Defines the content of the section description item.
    * Will be placed inside dl.
    **/
-  content: ReactNode
+  content: Exclude<ReactNode, null | undefined>
   /**
    * Defines the title of section description item.
    * Will be placed inside dt.
    **/
-  title: ReactNode
+  title: Exclude<ReactNode, null | undefined>
+
   /**
    * Defines if the component appears or not depending on if the content is empty (null) or not.
    **/
@@ -37,7 +38,7 @@ export function DescriptionItem({
 }: DescriptionItemProps) {
   return (
     <>
-      {((hideIfEmpty && Boolean(content)) || !hideIfEmpty) && (
+      {((hideIfEmpty && content) || !hideIfEmpty) && (
         <DescriptionItemContainer className={className}>
           <DescriptionItemTitle>{title}</DescriptionItemTitle>
           <DescriptionItemContent {...contentProps}>
