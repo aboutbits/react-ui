@@ -9,40 +9,49 @@ import { DescriptionItemTitle } from './DescriptionItemTitle'
 
 export type DescriptionItemProps = ClassNameProps & {
   /**
-   * Defines the content of the section description item.
-   * Will be placed inside dl.
-   **/
-  content: Exclude<ReactNode, null | undefined>
-  /**
    * Defines the title of section description item.
    * Will be placed inside dt.
    **/
-  title: Exclude<ReactNode, null | undefined>
-
-  /**
-   * Defines if the component appears or not depending on if the content is empty (null) or not.
-   **/
-  hideIfEmpty?: boolean
+  title: ReactNode
   /**
    * Defines the props for the description item content.
    */
   contentProps?: Omit<DescriptionItemContentProps, 'children'>
-}
+} & (
+    | {
+        /**
+         * Defines the content of the section description item.
+         * Will be placed inside dl.
+         **/
+        content: Exclude<ReactNode, null | undefined>
+        hideIfEmpty?: never
+      }
+    | {
+        /**
+         * Defines the content of the section description item.
+         * Will be placed inside dl.
+         **/
+        content: ReactNode
+        /**
+         * Defines if the component appears or not depending on if the content is empty (null) or not.
+         **/
+        hideIfEmpty: true
+      }
+  )
 
 export function DescriptionItem({
   title,
-  content,
   className,
-  hideIfEmpty = false,
   contentProps,
+  ...props
 }: DescriptionItemProps) {
   return (
     <>
-      {((hideIfEmpty && content) || !hideIfEmpty) && (
+      {((props.hideIfEmpty && props.content) || !props.hideIfEmpty) && (
         <DescriptionItemContainer className={className}>
           <DescriptionItemTitle>{title}</DescriptionItemTitle>
           <DescriptionItemContent {...contentProps}>
-            {content}
+            {props.content}
           </DescriptionItemContent>
         </DescriptionItemContainer>
       )}
