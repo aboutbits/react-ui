@@ -24,7 +24,7 @@ export type DescriptionItemProps = ClassNameProps & {
          * Will be placed inside dl.
          **/
         content: Exclude<ReactNode, null | undefined>
-        hideIfEmpty?: never
+        hideIfEmpty?: false
       }
     | {
         /**
