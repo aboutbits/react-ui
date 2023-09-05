@@ -1,5 +1,5 @@
 import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
-import { ComponentProps, ComponentType, ReactElement } from 'react'
+import { ComponentProps, ComponentType } from 'react'
 import { useInternationalization } from '../../../framework'
 import { IconProps } from '../../types'
 import { useBackNavigation } from '../../util/useBackNavigation'
@@ -40,8 +40,8 @@ export function HeaderBackAction({
   onClick,
   fallbackUrl,
   ...props
-}: HeaderBackActionProps): ReactElement {
-  const { goBack } = useBackNavigation()
+}: HeaderBackActionProps) {
+  const { goBack } = useBackNavigation({ fallbackUrl: fallbackUrl ?? '' })
   const { messages } = useInternationalization()
 
   const handleClick: ComponentProps<typeof HeaderLeftActionIcon>['onClick'] = (
@@ -50,7 +50,7 @@ export function HeaderBackAction({
     if (onClick) {
       onClick(event)
     } else {
-      goBack({ fallbackUrl })
+      goBack()
     }
   }
 
