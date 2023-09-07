@@ -60,6 +60,7 @@ export function SectionPaginationInMemoryButton({
   const { pagination: paginationTheme } = useTheme()
   return (
     <button
+      type="button"
       aria-disabled={disabled}
       disabled={disabled}
       className={classNames(
