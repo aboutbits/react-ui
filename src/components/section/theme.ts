@@ -99,4 +99,7 @@ export default {
     formSubmitFeedback:
       'w-full justify-center [Size.Lg]:order-first LG:w-auto LG:justify-start',
   },
+  appendix: {
+    base: 'mt-4',
+  },
 }
