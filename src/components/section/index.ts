@@ -1,4 +1,5 @@
 export * from './Section/Section'
+export * from './Section/SectionAppendix'
 export * from './Section/SectionContainer'
 export * from './Section/SectionContent'
 export * from './Section/SectionContentList'
