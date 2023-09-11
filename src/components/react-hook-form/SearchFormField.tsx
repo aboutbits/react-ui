@@ -10,6 +10,9 @@ export type SearchFormFieldProps<
 > = Omit<InputFormFieldProps<TFieldValues, TFieldName>, 'ref' | 'name'> &
   Partial<Pick<InputFormFieldProps<TFieldValues, TFieldName>, 'name'>>
 
+/**
+ * A standardized search input, like [SearchField](../?path=/docs/components-form-searchfield--docs), but within the context of a `react-hook-form` form.
+ */
 export const SearchFormField = forwardRef(function SearchFormField<
   TFieldValues extends FieldValues,
   TFieldName extends FieldPath<TFieldValues>,
