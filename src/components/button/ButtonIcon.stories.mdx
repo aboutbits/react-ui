@@ -18,9 +18,9 @@ export const Template = ({ ...args }) => <ButtonIcon {...args} />
     args={{
       disabled: false,
       mode: Mode.Light,
-      variant: ButtonVariant.solid,
-      size: Size.md,
-      tone: Tone.primary,
+      variant: ButtonVariant.Solid,
+      size: Size.Md,
+      tone: Tone.Primary,
       icon: 'Add',
     }}
     argTypes={{
@@ -91,13 +91,13 @@ The `Variant` determine if there is a background fill and a border. The `transpa
 
 <Canvas>
   <Story name="VariantSolid">
-    <ButtonIcon icon={IconAdd} variant={ButtonVariant.solid} />
+    <ButtonIcon icon={IconAdd} variant={ButtonVariant.Solid} />
   </Story>
   <Story name="VariantGhost">
-    <ButtonIcon icon={IconAdd} variant={ButtonVariant.ghost} />
+    <ButtonIcon icon={IconAdd} variant={ButtonVariant.Ghost} />
   </Story>
   <Story name="VariantTransparent">
-    <ButtonIcon icon={IconAdd} variant={ButtonVariant.transparent} />
+    <ButtonIcon icon={IconAdd} variant={ButtonVariant.Transparent} />
   </Story>
 </Canvas>
 
@@ -107,13 +107,13 @@ The size determine the padding between the button text and its border.
 
 <Canvas>
   <Story name="SizeSm">
-    <ButtonIcon icon={IconAdd} size={Size.sm} />
+    <ButtonIcon icon={IconAdd} size={Size.Sm} />
   </Story>
   <Story name="SizeMd">
-    <ButtonIcon icon={IconAdd} size={Size.md} />
+    <ButtonIcon icon={IconAdd} size={Size.Md} />
   </Story>
   <Story name="SizeLg">
-    <ButtonIcon icon={IconAdd} size={Size.lg} />
+    <ButtonIcon icon={IconAdd} size={Size.Lg} />
   </Story>
 </Canvas>
 
@@ -125,22 +125,22 @@ For additional information about Tailwind config, please refer to the [Tailwind 
 
 <Canvas>
   <Story name="Primary">
-    <ButtonIcon icon={IconAdd} tone={Tone.primary} />
+    <ButtonIcon icon={IconAdd} tone={Tone.Primary} />
   </Story>
   <Story name="Neutral">
-    <ButtonIcon icon={IconAdd} tone={Tone.neutral} />
+    <ButtonIcon icon={IconAdd} tone={Tone.Neutral} />
   </Story>
   <Story name="Warning">
-    <ButtonIcon icon={IconAdd} tone={Tone.warning} />
+    <ButtonIcon icon={IconAdd} tone={Tone.Warning} />
   </Story>
   <Story name="Critical">
-    <ButtonIcon icon={IconAdd} tone={Tone.critical} />
+    <ButtonIcon icon={IconAdd} tone={Tone.Critical} />
   </Story>
   <Story name="Success">
-    <ButtonIcon icon={IconAdd} tone={Tone.success} />
+    <ButtonIcon icon={IconAdd} tone={Tone.Success} />
   </Story>
   <Story name="Informative">
-    <ButtonIcon icon={IconAdd} tone={Tone.informative} />
+    <ButtonIcon icon={IconAdd} tone={Tone.Informative} />
   </Story>
 </Canvas>
 
