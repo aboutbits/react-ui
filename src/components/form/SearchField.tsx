@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import { useInternationalization } from '../../framework'
 import { InputField, InputFieldProps } from './InputField'
 
-export type SearchFieldProps<> = Omit<InputFieldProps, 'ref' | 'name'> &
+export type SearchFieldProps = Omit<InputFieldProps, 'ref' | 'name'> &
   Partial<Pick<InputFieldProps, 'name'>>
 
 /**
