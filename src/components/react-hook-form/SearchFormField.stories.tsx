@@ -8,13 +8,14 @@ import {
   Title,
 } from '@storybook/blocks'
 import { action } from '@storybook/addon-actions'
+import { useForm } from 'react-hook-form'
 import {
   InternationalizationMessages,
   Theme,
 } from '../../../.storybook/components'
 import { Section, SectionHeaderArea } from '../section'
 import { SearchFormField } from './SearchFormField'
-import { FilterForm } from './FilterForm'
+import { Form } from './Form'
 
 const meta = {
   component: SearchFormField,
@@ -22,18 +23,20 @@ const meta = {
     disabled: { type: 'boolean' },
   },
   decorators: [
-    (Story) => (
-      <Section>
-        <SectionHeaderArea>
-          <FilterForm
-            defaultValues={{ search: '' }}
-            onSubmit={action('filter')}
-          >
-            <Story />
-          </FilterForm>
-        </SectionHeaderArea>
-      </Section>
-    ),
+    (Story) => {
+      const form = useForm({
+        defaultValues: { search: '' },
+      })
+      return (
+        <Section>
+          <SectionHeaderArea>
+            <Form form={form} onSubmit={action('onSubmit')}>
+              <Story />
+            </Form>
+          </SectionHeaderArea>
+        </Section>
+      )
+    },
   ],
   parameters: {
     docs: {
