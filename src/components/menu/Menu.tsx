@@ -1,15 +1,31 @@
 import { Menu as HeadlessMenu } from '@headlessui/react'
 import classNames from 'classnames'
 import { ReactNode } from 'react'
-import {
-  autoUpdate,
-  useFloating,
-  flip,
-  offset,
-  Placement,
-} from '@floating-ui/react'
+import { autoUpdate, useFloating, flip, offset } from '@floating-ui/react'
 import { useTheme } from '../../framework'
 import { remToPx } from '../util/remToPx'
+
+export enum Placement {
+  Top = 'top',
+  Right = 'right',
+  Bottom = 'bottom',
+  Left = 'left',
+  TopStart = 'top-start',
+  RightStart = 'right-start',
+  BottomStart = 'bottom-start',
+  LeftStart = 'left-start',
+  TopEnd = 'top-end',
+  RightEnd = 'right-end',
+  BottomEnd = 'bottom-end',
+  LeftEnd = 'left-end',
+}
+
+const placementUnionToPlacementEnum = (placement: `${Placement}`) => {
+  const matchedEnumKey = Object.entries(Placement).find(
+    ([_key, value]) => value === placement,
+  )?.[0] as keyof typeof Placement
+  return Placement[matchedEnumKey]
+}
 
 export type MenuProps = {
   children?: ReactNode
@@ -62,7 +78,7 @@ export function Menu({
           >
             {typeof buttonChildren === 'function'
               ? buttonChildren({
-                  placement: finalPlacement === 'top' ? 'top' : 'bottom',
+                  placement: placementUnionToPlacementEnum(finalPlacement),
                   open,
                 })
               : buttonChildren}
