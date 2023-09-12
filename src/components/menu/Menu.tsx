@@ -31,6 +31,7 @@ export type MenuProps = {
   children?: ReactNode
   className?: string
   disabled?: boolean
+  'aria-label'?: string
   buttonChildren:
     | ReactNode
     | (({
@@ -50,9 +51,9 @@ Menu items are added as children using the [MenuItem](/docs/components-menu-menu
 export function Menu({
   children,
   className,
-  disabled,
   buttonChildren,
   placement,
+  ...props
 }: MenuProps) {
   const { menu } = useTheme()
 
@@ -72,9 +73,9 @@ export function Menu({
       {({ open }) => (
         <div className={menu.menuContainer}>
           <HeadlessMenu.Button
-            disabled={disabled}
             className={classNames(menu.menuButton.base, className)}
             ref={refs.setReference}
+            {...props}
           >
             {typeof buttonChildren === 'function'
               ? buttonChildren({
