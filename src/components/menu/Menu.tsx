@@ -1,71 +1,73 @@
-import IconArrowDropUp from '@aboutbits/react-material-icons/dist/IconArrowDropUp'
-import { Menu as HeadlessMenu } from '@headlessui/react'
+import { Menu as HeadlessMenu, MenuButtonProps } from '@headlessui/react'
 import classNames from 'classnames'
 import { ReactNode } from 'react'
+import {
+  autoUpdate,
+  useFloating,
+  flip,
+  offset,
+  Placement,
+} from '@floating-ui/react'
 import { useTheme } from '../../framework'
-import { ClassNameProps } from '../types'
-import { MenuDirection } from './types'
+import { remToPx } from '../util/remToPx'
 
-export type MenuProps = ClassNameProps & {
-  /**
-   * Defines the accessibility label for the menu.
-   **/
-  menuLabel: string
-  /**
-   * Defines the content to the left of the arrow button.
-   **/
-  menuButtonContent: ReactNode
-  /**
-   * Defines the id attribute for the menu button.
-   **/
-  menuButtonId?: string
+export type MenuProps = {
   children?: ReactNode
-  direction: MenuDirection
+  className?: string
+  buttonProps?: Omit<MenuButtonProps<'button'>, 'children' | 'className'>
+  buttonChildren:
+    | ReactNode
+    | (({
+        placement,
+        open,
+      }: {
+        placement: Extract<Placement, 'bottom' | 'top'>
+        open: boolean
+      }) => ReactNode)
 }
 
+/**
+ * A dropdown menu that uses the `Menu` component of [HeadlessUI](https://headlessui.com/react/dialog).
+Menu items are added as children using the [MenuItem](/docs/components-menu-menuitem--docs) component.
+ */
 export function Menu({
-  menuLabel,
-  className,
-  menuButtonContent,
   children,
-  menuButtonId,
-  direction,
+  className,
+  buttonProps,
+  buttonChildren,
 }: MenuProps) {
   const { menu } = useTheme()
 
-  const items = (
-    <HeadlessMenu.Items
-      className={classNames(
-        menu.menuList.base,
-        menu.menuList.direction[direction],
-      )}
-    >
-      {children}
-    </HeadlessMenu.Items>
-  )
+  const { refs, floatingStyles, placement } = useFloating({
+    whileElementsMounted: autoUpdate,
+    placement: 'bottom',
+    strategy: 'absolute',
+    middleware: [offset(remToPx(1)), flip({ padding: remToPx(1) })],
+  })
+
   return (
     <HeadlessMenu>
       {({ open }) => (
         <div className={menu.menuContainer}>
-          {direction === MenuDirection.Up && items}
           <HeadlessMenu.Button
-            id={menuButtonId}
-            aria-label={menuLabel}
+            {...buttonProps}
             className={classNames(menu.menuButton.base, className)}
+            ref={refs.setReference}
           >
-            {menuButtonContent}
-            <span aria-hidden>
-              <IconArrowDropUp
-                className={classNames(
-                  menu.menuButton.icon.base,
-                  menu.menuButton.icon.direction[direction].state[
-                    open ? 'open' : 'closed'
-                  ],
-                )}
-              />
-            </span>
+            {typeof buttonChildren === 'function'
+              ? buttonChildren({
+                  placement: placement === 'top' ? 'top' : 'bottom',
+                  open,
+                })
+              : buttonChildren}
           </HeadlessMenu.Button>
-          {direction === MenuDirection.Down && items}
+          <HeadlessMenu.Items
+            ref={refs.setFloating}
+            className={menu.menuList.base}
+            style={{ ...floatingStyles }}
+          >
+            {children}
+          </HeadlessMenu.Items>
         </div>
       )}
     </HeadlessMenu>
