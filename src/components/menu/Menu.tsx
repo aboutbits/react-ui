@@ -1,5 +1,5 @@
 import { Menu as HeadlessMenu } from '@headlessui/react'
-import { Fragment, ReactNode } from 'react'
+import { Fragment, ReactElement, ReactNode, ReactPortal } from 'react'
 import { autoUpdate, useFloating, flip, offset } from '@floating-ui/react'
 import { useTheme } from '../../framework'
 import { remToPx } from '../util/remToPx'
@@ -26,17 +26,19 @@ const placementUnionToPlacementEnum = (placement: `${MenuPlacement}`) => {
   return MenuPlacement[matchedEnumKey]
 }
 
+type ButtonComponent = ReactElement | ReactPortal
+
 export type MenuProps = {
   children?: ReactNode
   button:
-    | ReactNode
+    | ButtonComponent
     | (({
         placement,
         open,
       }: {
         placement: MenuPlacement
         open: boolean
-      }) => ReactNode)
+      }) => ButtonComponent)
   placement: MenuPlacement
 }
 
