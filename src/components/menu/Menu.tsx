@@ -28,7 +28,7 @@ export type MenuProps = {
 }
 
 /**
- * A dropdown menu that uses the `Menu` component of [HeadlessUI](https://headlessui.com/react/dialog).
+ * A dropdown menu that uses the `Menu` component of [HeadlessUI](https://headlessui.com/react/dialog) and the anchor positioning of [Floating UI](https://floating-ui.com).
 Menu items are added as children using the [MenuItem](/docs/components-menu-menuitem--docs) component.
  */
 export function Menu({
