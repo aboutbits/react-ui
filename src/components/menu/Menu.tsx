@@ -73,7 +73,11 @@ export function Menu({
       {({ open }) => (
         <div className={menu.menuContainer}>
           <HeadlessMenu.Button
-            className={classNames(menu.menuButton.base, className)}
+            className={classNames(
+              menu.menuButton.base,
+              props.disabled && menu.menuButton.disabled,
+              className,
+            )}
             ref={refs.setReference}
             {...props}
           >
