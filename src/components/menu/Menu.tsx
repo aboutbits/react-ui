@@ -1,4 +1,4 @@
-import { Menu as HeadlessMenu, MenuButtonProps } from '@headlessui/react'
+import { Menu as HeadlessMenu } from '@headlessui/react'
 import classNames from 'classnames'
 import { ReactNode } from 'react'
 import {
@@ -14,7 +14,7 @@ import { remToPx } from '../util/remToPx'
 export type MenuProps = {
   children?: ReactNode
   className?: string
-  buttonProps?: Omit<MenuButtonProps<'button'>, 'children' | 'className'>
+  disabled?: boolean
   buttonChildren:
     | ReactNode
     | (({
@@ -34,7 +34,7 @@ Menu items are added as children using the [MenuItem](/docs/components-menu-menu
 export function Menu({
   children,
   className,
-  buttonProps,
+  disabled,
   buttonChildren,
   placement,
 }: MenuProps) {
@@ -56,7 +56,7 @@ export function Menu({
       {({ open }) => (
         <div className={menu.menuContainer}>
           <HeadlessMenu.Button
-            {...buttonProps}
+            disabled={disabled}
             className={classNames(menu.menuButton.base, className)}
             ref={refs.setReference}
           >
