@@ -1,6 +1,6 @@
 {
   "name": "@aboutbits/react-ui",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "types": "./dist/types/index.d.ts",
   "module": "./dist/esm/index.js",
   "main": "./dist/cjs/index.js",
