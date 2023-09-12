@@ -21,10 +21,10 @@ export type MenuProps = {
         placement,
         open,
       }: {
-        placement: Extract<Placement, 'bottom' | 'top'>
+        placement: Placement
         open: boolean
       }) => ReactNode)
-  placement?: Extract<Placement, 'bottom' | 'top'>
+  placement: Placement
 }
 
 /**
@@ -36,7 +36,7 @@ export function Menu({
   className,
   buttonProps,
   buttonChildren,
-  placement = 'bottom',
+  placement,
 }: MenuProps) {
   const { menu } = useTheme()
 
@@ -70,7 +70,7 @@ export function Menu({
           <HeadlessMenu.Items
             ref={refs.setFloating}
             className={menu.menuList.base}
-            style={{ ...floatingStyles }}
+            style={floatingStyles}
           >
             {children}
           </HeadlessMenu.Items>

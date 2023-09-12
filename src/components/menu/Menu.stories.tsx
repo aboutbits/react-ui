@@ -42,7 +42,7 @@ const meta = {
       }, [])
 
       return (
-        <div className="h-80 overflow-y-scroll border-2">
+        <div className="h-96 overflow-y-scroll border-2">
           <div className="flex h-[1100px] items-center justify-center">
             <div ref={elementRef}>
               <Story />
@@ -57,7 +57,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
+export const WithLabel: Story = {
   render: (args) => {
     return (
       <Menu {...args}>
@@ -73,13 +73,15 @@ export const Default: Story = {
     )
   },
   args: {
+    placement: 'bottom',
     buttonChildren: 'Menu',
   },
 }
 
 export const LabelWithArrow: Story = {
-  ...Default,
+  ...WithLabel,
   args: {
+    placement: 'top',
     buttonChildren: ({ placement, open }) => (
       <>
         Menu
@@ -101,8 +103,9 @@ export const LabelWithArrow: Story = {
 }
 
 export const ThreeDots: Story = {
-  ...Default,
+  ...WithLabel,
   args: {
+    placement: 'bottom-end',
     buttonChildren: <IconMoreVert className="h-6 w-6" />,
   },
 }
