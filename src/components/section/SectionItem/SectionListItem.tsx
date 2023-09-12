@@ -16,7 +16,7 @@ export function SectionListItem({ className, children }: SectionListItemProps) {
   const { section } = useTheme()
 
   return (
-    <div className={classNames(className, section.listItem.base)}>
+    <div className={classNames(section.listItem.base, className)}>
       {children}
     </div>
   )
