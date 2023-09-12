@@ -24,6 +24,7 @@ export type MenuProps = {
         placement: Extract<Placement, 'bottom' | 'top'>
         open: boolean
       }) => ReactNode)
+  placement?: Extract<Placement, 'bottom' | 'top'>
 }
 
 /**
@@ -35,12 +36,17 @@ export function Menu({
   className,
   buttonProps,
   buttonChildren,
+  placement = 'bottom',
 }: MenuProps) {
   const { menu } = useTheme()
 
-  const { refs, floatingStyles, placement } = useFloating({
+  const {
+    refs,
+    floatingStyles,
+    placement: finalPlacement,
+  } = useFloating({
     whileElementsMounted: autoUpdate,
-    placement: 'bottom',
+    placement,
     strategy: 'absolute',
     middleware: [offset(remToPx(1)), flip({ padding: remToPx(1) })],
   })
@@ -56,7 +62,7 @@ export function Menu({
           >
             {typeof buttonChildren === 'function'
               ? buttonChildren({
-                  placement: placement === 'top' ? 'top' : 'bottom',
+                  placement: finalPlacement === 'top' ? 'top' : 'bottom',
                   open,
                 })
               : buttonChildren}
