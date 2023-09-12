@@ -19,7 +19,7 @@ import { ButtonVariant } from './types'
 import { Button } from './Button'
 
 const icons = {
-  options: ['None', 'Warning', 'Info'],
+  options: ['None', 'Add', 'Info'],
   mapping: {
     None: undefined,
     Add: IconAdd,
