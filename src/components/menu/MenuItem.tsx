@@ -5,13 +5,20 @@ import { useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 
 export type MenuItemProps = ClassNameProps & {
-  /**
-   * Defines which action should be executed on clicking.
-   **/
-  onClick: () => void
   children?: ReactNode
-}
+} & Pick<
+    React.DetailedHTMLProps<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
+    'onClick'
+  >
 
+/**
+ * This component is used to add an item to the [Menu](/docs/components-menu-menu--docs).
+ *
+ * It leverages on the `Menu` component of [HeadlessUI](https://headlessui.com/react/menu).
+ */
 export function MenuItem({ children, className, onClick }: MenuItemProps) {
   const { menu } = useTheme()
 

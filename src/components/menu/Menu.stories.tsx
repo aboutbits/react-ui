@@ -11,13 +11,18 @@ import {
   Description,
 } from '@storybook/addon-docs'
 import classNames from 'classnames'
-import { useEffect, useRef } from 'react'
+import { ReactNode, forwardRef, useEffect, useRef } from 'react'
 import { Theme } from '../../../.storybook/components'
+import { Button, ButtonIcon, ButtonVariant } from '../button'
+import { Tone } from '../types'
 import { Menu, MenuPlacement } from './Menu'
 import { MenuItem } from './MenuItem'
 
 const meta = {
   component: Menu,
+  args: {
+    placement: MenuPlacement.Bottom,
+  },
   parameters: {
     docs: {
       page: () => (
@@ -42,7 +47,7 @@ const meta = {
       }, [])
 
       return (
-        <div className="h-96 overflow-y-scroll border-2">
+        <div className="h-96 overflow-y-scroll border-2" tabIndex={-1}>
           <div className="flex h-[1100px] items-center justify-center">
             <div ref={elementRef}>
               <Story />
@@ -57,7 +62,32 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const WithLabel: Story = {
+type MenuButtonProps = { children: ReactNode } & Omit<
+  React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >,
+  'children' | 'className'
+>
+
+const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
+  function MenuButton({ children, ...props }, ref) {
+    return (
+      <button
+        className={classNames(
+          'flex items-center underline focus:no-underline focus:outline-none focus:ring',
+          props.disabled && 'text-neutral-800/[0.36]',
+        )}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </button>
+    )
+  },
+)
+
+export const WithCustomButton: Story = {
   render: (args) => {
     return (
       <Menu {...args}>
@@ -73,17 +103,22 @@ export const WithLabel: Story = {
     )
   },
   args: {
-    placement: MenuPlacement.Bottom,
-    buttonChildren: 'Menu',
+    button: <MenuButton>Menu</MenuButton>,
   },
 }
 
-export const LabelWithArrow: Story = {
-  ...WithLabel,
+export const WithDisabledButton: Story = {
+  ...WithCustomButton,
   args: {
-    placement: MenuPlacement.Top,
-    buttonChildren: ({ placement, open }) => (
-      <>
+    button: <MenuButton disabled>Menu</MenuButton>,
+  },
+}
+
+export const WithCustomButtonAndArrow: Story = {
+  ...WithCustomButton,
+  args: {
+    button: ({ placement, open }) => (
+      <MenuButton>
         Menu
         <IconArrowDropUp
           className={classNames(
@@ -97,15 +132,27 @@ export const LabelWithArrow: Story = {
               : 'rotate-180 transform',
           )}
         />
-      </>
+      </MenuButton>
     ),
   },
 }
 
-export const ThreeDots: Story = {
-  ...WithLabel,
+export const WithButton: Story = {
+  ...WithCustomButton,
   args: {
-    placement: MenuPlacement.BottomEnd,
-    buttonChildren: <IconMoreVert className="h-6 w-6" />,
+    button: <Button>Menu</Button>,
+  },
+}
+
+export const WithButtonIcon: Story = {
+  ...WithCustomButton,
+  args: {
+    button: (
+      <ButtonIcon
+        icon={IconMoreVert}
+        tone={Tone.Neutral}
+        variant={ButtonVariant.Transparent}
+      />
+    ),
   },
 }

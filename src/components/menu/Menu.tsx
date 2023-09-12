@@ -1,6 +1,5 @@
 import { Menu as HeadlessMenu } from '@headlessui/react'
-import classNames from 'classnames'
-import { ReactNode } from 'react'
+import { Fragment, ReactNode } from 'react'
 import { autoUpdate, useFloating, flip, offset } from '@floating-ui/react'
 import { useTheme } from '../../framework'
 import { remToPx } from '../util/remToPx'
@@ -29,10 +28,7 @@ const placementUnionToPlacementEnum = (placement: `${MenuPlacement}`) => {
 
 export type MenuProps = {
   children?: ReactNode
-  className?: string
-  disabled?: boolean
-  'aria-label'?: string
-  buttonChildren:
+  button:
     | ReactNode
     | (({
         placement,
@@ -48,13 +44,7 @@ export type MenuProps = {
  * A dropdown menu that uses the `Menu` component of [HeadlessUI](https://headlessui.com/react/dialog) and the anchor positioning of [Floating UI](https://floating-ui.com).
 Menu items are added as children using the [MenuItem](/docs/components-menu-menuitem--docs) component.
  */
-export function Menu({
-  children,
-  className,
-  buttonChildren,
-  placement,
-  ...props
-}: MenuProps) {
+export function Menu({ children, button, placement }: MenuProps) {
   const { menu } = useTheme()
 
   const {
@@ -72,21 +62,13 @@ export function Menu({
     <HeadlessMenu>
       {({ open }) => (
         <div className={menu.menuContainer}>
-          <HeadlessMenu.Button
-            className={classNames(
-              menu.menuButton.base,
-              props.disabled && menu.menuButton.disabled,
-              className,
-            )}
-            ref={refs.setReference}
-            {...props}
-          >
-            {typeof buttonChildren === 'function'
-              ? buttonChildren({
+          <HeadlessMenu.Button as={Fragment} ref={refs.setReference}>
+            {typeof button === 'function'
+              ? button({
                   placement: placementUnionToPlacementEnum(finalPlacement),
                   open,
                 })
-              : buttonChildren}
+              : button}
           </HeadlessMenu.Button>
           <HeadlessMenu.Items
             ref={refs.setFloating}
