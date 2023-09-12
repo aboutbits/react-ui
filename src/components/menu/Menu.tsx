@@ -5,7 +5,7 @@ import { autoUpdate, useFloating, flip, offset } from '@floating-ui/react'
 import { useTheme } from '../../framework'
 import { remToPx } from '../util/remToPx'
 
-export enum Placement {
+export enum MenuPlacement {
   Top = 'top',
   Right = 'right',
   Bottom = 'bottom',
@@ -20,11 +20,11 @@ export enum Placement {
   LeftEnd = 'left-end',
 }
 
-const placementUnionToPlacementEnum = (placement: `${Placement}`) => {
-  const matchedEnumKey = Object.entries(Placement).find(
+const placementUnionToPlacementEnum = (placement: `${MenuPlacement}`) => {
+  const matchedEnumKey = Object.entries(MenuPlacement).find(
     ([_key, value]) => value === placement,
-  )?.[0] as keyof typeof Placement
-  return Placement[matchedEnumKey]
+  )?.[0] as keyof typeof MenuPlacement
+  return MenuPlacement[matchedEnumKey]
 }
 
 export type MenuProps = {
@@ -38,10 +38,10 @@ export type MenuProps = {
         placement,
         open,
       }: {
-        placement: Placement
+        placement: MenuPlacement
         open: boolean
       }) => ReactNode)
-  placement: Placement
+  placement: MenuPlacement
 }
 
 /**

@@ -13,7 +13,7 @@ import {
 import classNames from 'classnames'
 import { useEffect, useRef } from 'react'
 import { Theme } from '../../../.storybook/components'
-import { Menu, Placement } from './Menu'
+import { Menu, MenuPlacement } from './Menu'
 import { MenuItem } from './MenuItem'
 
 const meta = {
@@ -73,7 +73,7 @@ export const WithLabel: Story = {
     )
   },
   args: {
-    placement: Placement.Bottom,
+    placement: MenuPlacement.Bottom,
     buttonChildren: 'Menu',
   },
 }
@@ -81,14 +81,14 @@ export const WithLabel: Story = {
 export const LabelWithArrow: Story = {
   ...WithLabel,
   args: {
-    placement: Placement.Top,
+    placement: MenuPlacement.Top,
     buttonChildren: ({ placement, open }) => (
       <>
         Menu
         <IconArrowDropUp
           className={classNames(
             'h-6 w-6',
-            placement === Placement.Top
+            placement === MenuPlacement.Top
               ? open
                 ? 'rotate-180 transform'
                 : ''
@@ -105,7 +105,7 @@ export const LabelWithArrow: Story = {
 export const ThreeDots: Story = {
   ...WithLabel,
   args: {
-    placement: Placement.BottomEnd,
+    placement: MenuPlacement.BottomEnd,
     buttonChildren: <IconMoreVert className="h-6 w-6" />,
   },
 }
