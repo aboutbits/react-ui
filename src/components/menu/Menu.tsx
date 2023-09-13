@@ -1,71 +1,84 @@
-import IconArrowDropUp from '@aboutbits/react-material-icons/dist/IconArrowDropUp'
 import { Menu as HeadlessMenu } from '@headlessui/react'
-import classNames from 'classnames'
-import { ReactNode } from 'react'
+import { Fragment, ReactElement, ReactNode, ReactPortal } from 'react'
+import { autoUpdate, useFloating, flip, offset } from '@floating-ui/react'
 import { useTheme } from '../../framework'
-import { ClassNameProps } from '../types'
-import { MenuDirection } from './types'
+import { remToPx } from '../util/remToPx'
 
-export type MenuProps = ClassNameProps & {
-  /**
-   * Defines the accessibility label for the menu.
-   **/
-  menuLabel: string
-  /**
-   * Defines the content to the left of the arrow button.
-   **/
-  menuButtonContent: ReactNode
-  /**
-   * Defines the id attribute for the menu button.
-   **/
-  menuButtonId?: string
-  children?: ReactNode
-  direction: MenuDirection
+export enum MenuPlacement {
+  Top = 'top',
+  Right = 'right',
+  Bottom = 'bottom',
+  Left = 'left',
+  TopStart = 'top-start',
+  RightStart = 'right-start',
+  BottomStart = 'bottom-start',
+  LeftStart = 'left-start',
+  TopEnd = 'top-end',
+  RightEnd = 'right-end',
+  BottomEnd = 'bottom-end',
+  LeftEnd = 'left-end',
 }
 
-export function Menu({
-  menuLabel,
-  className,
-  menuButtonContent,
-  children,
-  menuButtonId,
-  direction,
-}: MenuProps) {
+const placementUnionToPlacementEnum = (placement: `${MenuPlacement}`) => {
+  const matchedEnumKey = Object.entries(MenuPlacement).find(
+    ([_key, value]) => value === placement,
+  )?.[0] as keyof typeof MenuPlacement
+  return MenuPlacement[matchedEnumKey]
+}
+
+type ButtonComponent = ReactElement | ReactPortal
+
+export type MenuProps = {
+  children?: ReactNode
+  button:
+    | ButtonComponent
+    | (({
+        placement,
+        open,
+      }: {
+        placement: MenuPlacement
+        open: boolean
+      }) => ButtonComponent)
+  placement: MenuPlacement
+}
+
+/**
+ * A dropdown menu that uses the `Menu` component of [HeadlessUI](https://headlessui.com/react/dialog) and the anchor positioning of [Floating UI](https://floating-ui.com).
+Menu items are added as children using the [MenuItem](/docs/components-menu-menuitem--docs) component.
+ */
+export function Menu({ children, button, placement }: MenuProps) {
   const { menu } = useTheme()
 
-  const items = (
-    <HeadlessMenu.Items
-      className={classNames(
-        menu.menuList.base,
-        menu.menuList.direction[direction],
-      )}
-    >
-      {children}
-    </HeadlessMenu.Items>
-  )
+  const {
+    refs,
+    floatingStyles,
+    placement: finalPlacement,
+  } = useFloating({
+    whileElementsMounted: autoUpdate,
+    placement,
+    strategy: 'absolute',
+    middleware: [offset(remToPx(1)), flip({ padding: remToPx(1) })],
+  })
+
   return (
     <HeadlessMenu>
       {({ open }) => (
         <div className={menu.menuContainer}>
-          {direction === MenuDirection.Up && items}
-          <HeadlessMenu.Button
-            id={menuButtonId}
-            aria-label={menuLabel}
-            className={classNames(menu.menuButton.base, className)}
-          >
-            {menuButtonContent}
-            <span aria-hidden>
-              <IconArrowDropUp
-                className={classNames(
-                  menu.menuButton.icon.base,
-                  menu.menuButton.icon.direction[direction].state[
-                    open ? 'open' : 'closed'
-                  ],
-                )}
-              />
-            </span>
+          <HeadlessMenu.Button as={Fragment} ref={refs.setReference}>
+            {typeof button === 'function'
+              ? button({
+                  placement: placementUnionToPlacementEnum(finalPlacement),
+                  open,
+                })
+              : button}
           </HeadlessMenu.Button>
-          {direction === MenuDirection.Down && items}
+          <HeadlessMenu.Items
+            ref={refs.setFloating}
+            className={menu.menuList.base}
+            style={floatingStyles}
+          >
+            {children}
+          </HeadlessMenu.Items>
         </div>
       )}
     </HeadlessMenu>
