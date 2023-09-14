@@ -40,7 +40,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       disabled
         ? button.modeVariantTone[mode][variant].disabled
         : button.modeVariantTone[mode][variant][tone],
-      button.button.variantSize.base,
+      button.button.variantSize.base[size],
       button.button.variantSize[variant][size],
       className,
     )
