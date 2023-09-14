@@ -63,10 +63,7 @@ export function Menu({ className, children, button, placement }: MenuProps) {
   })
 
   return (
-    <HeadlessMenu
-      as="div"
-      className={classNames(menu.menuContainer, className)}
-    >
+    <HeadlessMenu as="div" className={classNames(menu.container, className)}>
       {({ open }) => (
         <>
           <HeadlessMenu.Button as={Fragment} ref={refs.setReference}>
@@ -79,7 +76,7 @@ export function Menu({ className, children, button, placement }: MenuProps) {
           </HeadlessMenu.Button>
           <HeadlessMenu.Items
             ref={refs.setFloating}
-            className={menu.menuList.base}
+            className={menu.list.base}
             style={floatingStyles}
           >
             {children}
