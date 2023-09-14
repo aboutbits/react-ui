@@ -16,6 +16,10 @@ import { MenuItem } from './MenuItem'
 
 const meta = {
   component: MenuItem,
+  args: {
+    children: 'Menu item',
+    onClick: action(`onClick()`),
+  },
   parameters: {
     docs: {
       page: () => (
@@ -25,7 +29,7 @@ const meta = {
           <Primary />
           <Subheading>Props</Subheading>
           <Controls />
-          <Theme component="menu" items={['menuItem']} />
+          <Theme component="button" items={['button']} />
           <Stories />
         </>
       ),
@@ -43,7 +47,12 @@ const meta = {
         <div className="h-96 overflow-y-scroll border-2" tabIndex={-1}>
           <div className="flex h-[1100px] items-center justify-center">
             <div ref={elementRef}>
-              <Story />
+              <Menu
+                placement={MenuPlacement.Bottom}
+                button={<Button aria-label="Menu">Menu</Button>}
+              >
+                <Story />
+              </Menu>
             </div>
           </div>
         </div>
@@ -56,22 +65,5 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: ({ onClick, ...args }) => {
-    return (
-      <Menu
-        placement={MenuPlacement.Bottom}
-        button={<Button aria-label="Menu">Menu</Button>}
-      >
-        {Array.from(Array(1).keys())
-          .map((item) => item + 1)
-          .map((item) => (
-            <MenuItem
-              key={item}
-              onClick={action(`onClick(${item})`)}
-              {...args}
-            >{`Menu item ${item}`}</MenuItem>
-          ))}
-      </Menu>
-    )
-  },
+  args: {} as never,
 }

@@ -1,43 +1,64 @@
 import { Menu as HeadlessMenu } from '@headlessui/react'
-import classNames from 'classnames'
 import { Fragment, ReactNode } from 'react'
-import { useTheme } from '../../framework'
-import { ClassNameProps } from '../types'
+import { ClassNameProps, Size, Tone } from '../types'
+import { Button, ButtonLink, ButtonVariant } from '../button'
 
 export type MenuItemProps = ClassNameProps & {
-  children?: ReactNode
-} & Pick<
-    React.DetailedHTMLProps<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    >,
-    'onClick'
-  >
+  children: ReactNode
+  disabled?: boolean
+} & (
+    | {
+        onClick: () => void
+        href?: never
+      }
+    | {
+        onClick?: never
+        href: string
+      }
+  )
+
+const sharedProps = {
+  variant: ButtonVariant.Transparent,
+  size: Size.Sm,
+  tone: Tone.Neutral,
+  role: 'menuitem',
+}
 
 /**
  * This component is used to add an item to the [Menu](/docs/components-menu-menu--docs).
  *
  * It leverages on the `Menu` component of [HeadlessUI](https://headlessui.com/react/menu).
  */
-export function MenuItem({ children, className, onClick }: MenuItemProps) {
-  const { menu } = useTheme()
-
+export function MenuItem({
+  className,
+  disabled,
+  onClick,
+  href,
+  children,
+}: MenuItemProps) {
   return (
     <HeadlessMenu.Item as={Fragment}>
-      {({ active }) => (
-        <button
-          className={classNames(
-            menu.menuItem.base,
-            active && menu.menuItem.active,
-            className,
-          )}
-          onClick={onClick}
-          type="button"
-          role="menuitem"
-        >
-          {children}
-        </button>
-      )}
+      {() => {
+        return href === undefined ? (
+          <Button
+            className={className}
+            disabled={disabled}
+            {...sharedProps}
+            onClick={onClick}
+          >
+            {children}
+          </Button>
+        ) : (
+          <ButtonLink
+            className={className}
+            disabled={disabled}
+            {...sharedProps}
+            href={href}
+          >
+            {children}
+          </ButtonLink>
+        )
+      }}
     </HeadlessMenu.Item>
   )
 }
