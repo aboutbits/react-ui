@@ -55,7 +55,6 @@ export type SelectItemFormFieldDialogProps<ItemType, Error> = DialogProps & {
   renderErrorMessage: (error: Error) => ReactNode
   noSearchResults: string
   paginationConfig: { indexType: IndexType }
-  numberOfLoadingItems?: number
   title: ReactNode
 }
 
@@ -70,7 +69,6 @@ export function SelectItemFormFieldDialog<ItemType, Error>({
   renderErrorMessage,
   noSearchResults,
   paginationConfig,
-  numberOfLoadingItems = 5,
   title,
   ...props
 }: SelectItemFormFieldDialogProps<ItemType, Error>): ReactElement {
@@ -126,7 +124,7 @@ export function SelectItemFormFieldDialog<ItemType, Error>({
           )}
           renderLoading={
             <DialogContentListLoading
-              numberOfItems={numberOfLoadingItems}
+              numberOfItems={size}
               enableScrollLayout={false}
             />
           }
