@@ -20,9 +20,16 @@ const meta = {
   args: {
     children: 'Menu item',
     onClick: action(`onClick()`),
+    tone: Tone.Neutral,
   },
   argTypes: {
     disabled: { type: 'boolean' },
+    tone: {
+      options: Object.values(Tone).filter(
+        (t) => t === Tone.Neutral || t === Tone.Critical,
+      ),
+      control: { type: 'select' },
+    },
   },
   parameters: {
     docs: {
@@ -68,12 +75,6 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Neutral: Story = {
+export const Default: Story = {
   args: {},
-}
-
-export const Critical: Story = {
-  args: {
-    tone: Tone.Critical,
-  },
 }
