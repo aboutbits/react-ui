@@ -37,6 +37,7 @@ export function MenuItem({
       {({ active }) =>
         href === undefined ? (
           <button
+            type="button"
             className={classNames(
               theme.base,
               active && theme.active.tone[tone],
