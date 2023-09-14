@@ -32,17 +32,17 @@ export function MenuItem({
     menu: { item: theme },
   } = useTheme()
 
-  const themeClassName = [
-    theme.base,
-    disabled ? theme.tone.disabled : theme.tone[tone],
-  ]
-
   return (
     <HeadlessMenu.Item as={Fragment}>
-      {() => {
-        return href === undefined ? (
+      {({ active }) =>
+        href === undefined ? (
           <button
-            className={classNames(themeClassName, className)}
+            className={classNames(
+              theme.base,
+              active && theme.active.tone[tone],
+              disabled ? theme.tone.disabled : theme.tone[tone],
+              className,
+            )}
             disabled={disabled}
             onClick={onClick}
             role={ROLE}
@@ -51,7 +51,12 @@ export function MenuItem({
           </button>
         ) : (
           <LinkComponent
-            className={classNames(themeClassName, className)}
+            className={classNames(
+              theme.base,
+              active && theme.active.tone[tone],
+              disabled ? theme.tone.disabled : theme.tone[tone],
+              className,
+            )}
             disabled={disabled}
             role={ROLE}
             href={href}
@@ -59,7 +64,7 @@ export function MenuItem({
             {children}
           </LinkComponent>
         )
-      }}
+      }
     </HeadlessMenu.Item>
   )
 }
