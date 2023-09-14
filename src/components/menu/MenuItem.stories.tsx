@@ -11,6 +11,7 @@ import {
 import { useEffect, useRef } from 'react'
 import { Theme } from '../../../.storybook/components'
 import { Button } from '../button'
+import { Tone } from '../types'
 import { Menu, MenuPlacement } from './Menu'
 import { MenuItem } from './MenuItem'
 
@@ -19,6 +20,16 @@ const meta = {
   args: {
     children: 'Menu item',
     onClick: action(`onClick()`),
+    tone: Tone.Neutral,
+  },
+  argTypes: {
+    disabled: { type: 'boolean' },
+    tone: {
+      options: Object.values(Tone).filter(
+        (t) => t === Tone.Neutral || t === Tone.Critical,
+      ),
+      control: { type: 'select' },
+    },
   },
   parameters: {
     docs: {
@@ -44,8 +55,8 @@ const meta = {
       }, [])
 
       return (
-        <div className="h-96 overflow-y-scroll border-2" tabIndex={-1}>
-          <div className="flex h-[1100px] items-center justify-center">
+        <div className="h-60 overflow-y-scroll border-2" tabIndex={-1}>
+          <div className="flex h-[42rem] items-center justify-center">
             <div ref={elementRef}>
               <Menu
                 placement={MenuPlacement.Bottom}
@@ -65,5 +76,5 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {} as never,
+  args: {},
 }

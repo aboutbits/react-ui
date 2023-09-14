@@ -1,7 +1,23 @@
+import { Tone } from '../types'
+
 const className = {
-  menuContainer: 'relative',
-  menuList: {
-    base: 'py-2 flex flex-col items-center gap-1 whitespace-nowrap min-w-32 rounded border border-primary-500/10 shadow focus:outline-none bg-white absolute',
+  container: 'relative',
+  list: {
+    base: 'py-2 flex flex-col items-stretch gap-1 whitespace-nowrap min-w-[6rem] rounded border border-primary-500/10 shadow bg-white absolute',
+  },
+  item: {
+    base: 'inline-flex items-start font-medium text-sm leading-5 px-4 py-1.5',
+    active: {
+      tone: {
+        [Tone.Neutral]: 'bg-neutral-500/10',
+        [Tone.Critical]: 'bg-critical-500/10',
+      },
+    },
+    tone: {
+      [Tone.Neutral]: 'text-neutral-700',
+      [Tone.Critical]: 'text-critical-500',
+      disabled: 'text-neutral-800/[0.36]',
+    },
   },
 }
 

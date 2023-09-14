@@ -1,28 +1,18 @@
 import { Menu as HeadlessMenu } from '@headlessui/react'
 import { Fragment, ReactNode } from 'react'
-import { ClassNameProps, Size, Tone } from '../types'
-import { Button, ButtonLink, ButtonVariant } from '../button'
+import classNames from 'classnames'
+import { ClassNameProps, Tone } from '../types'
+import { useLinkComponent, useTheme } from '../../framework'
 
 export type MenuItemProps = ClassNameProps & {
   children: ReactNode
   disabled?: boolean
-} & (
-    | {
-        onClick: () => void
-        href?: never
-      }
-    | {
-        onClick?: never
-        href: string
-      }
-  )
-
-const sharedProps = {
-  variant: ButtonVariant.Transparent,
-  size: Size.Sm,
-  tone: Tone.Neutral,
-  role: 'menuitem',
+  tone?: Tone.Neutral | Tone.Critical
+  onClick?: () => void
+  href?: string
 }
+
+const ROLE = 'menuitem'
 
 /**
  * This component is used to add an item to the [Menu](/docs/components-menu-menu--docs).
@@ -31,34 +21,51 @@ const sharedProps = {
  */
 export function MenuItem({
   className,
-  disabled,
   onClick,
   href,
   children,
+  disabled,
+  tone = Tone.Neutral,
 }: MenuItemProps) {
+  const LinkComponent = useLinkComponent()
+  const {
+    menu: { item: theme },
+  } = useTheme()
+
   return (
     <HeadlessMenu.Item as={Fragment}>
-      {() => {
-        return href === undefined ? (
-          <Button
-            className={className}
+      {({ active }) =>
+        href === undefined ? (
+          <button
+            type="button"
+            className={classNames(
+              theme.base,
+              active && theme.active.tone[tone],
+              disabled ? theme.tone.disabled : theme.tone[tone],
+              className,
+            )}
             disabled={disabled}
-            {...sharedProps}
             onClick={onClick}
+            role={ROLE}
           >
             {children}
-          </Button>
+          </button>
         ) : (
-          <ButtonLink
-            className={className}
+          <LinkComponent
+            className={classNames(
+              theme.base,
+              active && theme.active.tone[tone],
+              disabled ? theme.tone.disabled : theme.tone[tone],
+              className,
+            )}
             disabled={disabled}
-            {...sharedProps}
+            role={ROLE}
             href={href}
           >
             {children}
-          </ButtonLink>
+          </LinkComponent>
         )
-      }}
+      }
     </HeadlessMenu.Item>
   )
 }
