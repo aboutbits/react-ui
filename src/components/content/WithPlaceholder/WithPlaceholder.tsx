@@ -6,9 +6,9 @@ export type WithPlaceholderProps = {
 }
 
 export function WithPlaceholder({
-                                  children,
-                                  placeholder = '-',
-                                }: WithPlaceholderProps) {
+  children,
+  placeholder = '-',
+}: WithPlaceholderProps) {
   return (
     <>
       {typeof children === 'number'
