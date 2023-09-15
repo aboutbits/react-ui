@@ -11,8 +11,8 @@ export type WithPlaceholderProps = PropsWithChildren<{
  * This component validates the content and displays a placeholder if the content is empty, null or undefined.
  */
 export function WithPlaceholder({
-  children,
   placeholder = '-',
+  children,
 }: WithPlaceholderProps) {
   return (
     <>
