@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { PropsWithChildren, ReactNode } from 'react'
 
 export type WithPlaceholderProps = PropsWithChildren<{
   /**

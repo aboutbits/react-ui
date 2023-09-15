@@ -10,33 +10,25 @@ import { Meta, StoryObj } from '@storybook/react'
 import { WithPlaceholder } from './WithPlaceholder'
 
 const children = {
-  options: ['null', 'undefined', 'empty', 'text'],
+  options: ['null', 'undefined', 'Empty text', 'ReactNode'],
   mapping: {
-    'null': null,
-    'undefined': undefined,
+    null: null,
+    undefined: undefined,
     'Empty text': '',
-    'ReactNode': 'John Doe',
+    ReactNode: 'John Doe',
   },
   control: { type: 'select' },
 }
 
-const placeholder = {
-  options: ['default', 'star', 'notFound'],
-  mapping: {
-    default: '-',
-    star: '*',
-    notFound: 'Not found',
-  },
-}
 const meta = {
   title: 'Components/Content/WithPlaceHolder',
   component: WithPlaceholder,
   args: {
-    children: 'Content',
+    children: 'John Doe',
+    placeholder: '-',
   },
   argTypes: {
     children,
-    placeholder,
   },
   parameters: {
     docs: {
