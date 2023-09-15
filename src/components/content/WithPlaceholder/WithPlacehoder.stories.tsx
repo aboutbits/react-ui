@@ -24,8 +24,8 @@ const meta = {
   title: 'Components/Content/WithPlaceHolder',
   component: WithPlaceholder,
   args: {
-    children: 'John Doe',
     placeholder: '-',
+    children: 'John Doe',
   },
   argTypes: {
     children,
