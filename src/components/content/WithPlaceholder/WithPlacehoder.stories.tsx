@@ -10,10 +10,10 @@ import { Meta, StoryObj } from '@storybook/react'
 import { WithPlaceholder } from './WithPlaceholder'
 
 const children = {
-  options: ['null', 'undefined', 'Empty text', 'ReactNode'],
+  options: ['Null', 'Undefined', 'Empty text', 'ReactNode'],
   mapping: {
-    null: null,
-    undefined: undefined,
+    Null: null,
+    Undefined: undefined,
     'Empty text': '',
     ReactNode: 'John Doe',
   },
