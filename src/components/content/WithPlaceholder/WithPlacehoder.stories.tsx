@@ -21,7 +21,7 @@ const children = {
 }
 
 const placeholder = {
-  options: ['default','star', 'notFound'],
+  options: ['default', 'star', 'notFound'],
   mapping: {
     default: '-',
     star: '*',
