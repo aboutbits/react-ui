@@ -12,7 +12,7 @@ export type WithPlaceholderProps = {
 }
 
 /**
- * This component validates the content and displays a placeholder if the content is not valid e.g. empty, null or undefined.
+ * This component validates the content and displays a placeholder if the content is empty, null or undefined.
  */
 export function WithPlaceholder({
   children,
