@@ -1,36 +1,42 @@
-import {WithPlaceholder} from "./WithPlaceholder";
-import {Controls, Description, Primary, Stories, Subheading, Title} from "@storybook/blocks";
-import {Meta, StoryObj} from "@storybook/react";
+import {
+  Controls,
+  Description,
+  Primary,
+  Stories,
+  Subheading,
+  Title,
+} from '@storybook/blocks'
+import { Meta, StoryObj } from '@storybook/react'
+import { WithPlaceholder } from './WithPlaceholder'
 
-
-const children ={
+const children = {
   options: ['null', 'undefined', 'empty', 'text'],
   mapping: {
-  null: null,
-  undefined: undefined,
-  empty: '',
-  text: 'John Doe',
-},
+    null: null,
+    undefined,
+    empty: '',
+    text: 'John Doe',
+  },
   control: { type: 'select' },
 }
 
 const placeholder = {
   options: ['star', 'notFound'],
   mapping: {
-  star: '*',
-  notFound: 'Not found',
-},
+    star: '*',
+    notFound: 'Not found',
+  },
 }
 const meta = {
-  title:"Components/Content/WithPlaceHolder",
+  title: 'Components/Content/WithPlaceHolder',
   component: WithPlaceholder,
   args: {
-    children: "Content",
-    placeholder: "Placeholder",
+    children: 'Content',
+    placeholder: 'Placeholder',
   },
   argTypes: {
-    children: children,
-    placeholder: placeholder,
+    children,
+    placeholder,
   },
   parameters: {
     docs: {
@@ -52,5 +58,3 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
-
-
