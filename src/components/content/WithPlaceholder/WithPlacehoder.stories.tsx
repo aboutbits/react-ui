@@ -21,8 +21,9 @@ const children = {
 }
 
 const placeholder = {
-  options: ['star', 'notFound'],
+  options: ['default','star', 'notFound'],
   mapping: {
+    default: '-',
     star: '*',
     notFound: 'Not found',
   },
@@ -32,7 +33,6 @@ const meta = {
   component: WithPlaceholder,
   args: {
     children: 'Content',
-    placeholder: 'Placeholder',
   },
   argTypes: {
     children,
