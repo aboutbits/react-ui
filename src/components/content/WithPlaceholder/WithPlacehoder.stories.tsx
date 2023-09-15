@@ -12,10 +12,10 @@ import { WithPlaceholder } from './WithPlaceholder'
 const children = {
   options: ['null', 'undefined', 'empty', 'text'],
   mapping: {
-    null: null,
-    undefined,
-    empty: '',
-    text: 'John Doe',
+    'null': null,
+    'undefined': undefined,
+    'Empty text': '',
+    'ReactNode': 'John Doe',
   },
   control: { type: 'select' },
 }
