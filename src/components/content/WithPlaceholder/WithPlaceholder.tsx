@@ -2,11 +2,11 @@ import { ReactNode } from 'react'
 
 export type WithPlaceholderProps = {
   /**
-   * Defineds the children to be rendered.
+   * Defines the children to be rendered.
    */
   children: ReactNode
   /**
-   * Defineds the placeholder to be rendered if the children is not valid.
+   * Defines the placeholder to be rendered if the children is not valid.
    */
   placeholder?: ReactNode
 }
