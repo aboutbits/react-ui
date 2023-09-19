@@ -27,6 +27,8 @@ import {
   SelectField,
   Tone,
   Option,
+  SectionListItemButtonProps,
+  SectionListItemLink,
 } from '../components'
 import { SearchField } from '../components/form/SearchField'
 import { useFilter } from '../components/util/useFilter'
@@ -66,7 +68,13 @@ function useMockedList(numberOfTotalItems: number) {
   )
 }
 
-const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
+const List = ({
+  numberOfTotalItems = 5,
+  withIcon,
+}: { numberOfTotalItems?: number } & Pick<
+  SectionListItemButtonProps,
+  'withIcon'
+>) => {
   const content = useMockedList(numberOfTotalItems)
   return (
     <Section>
@@ -79,14 +87,25 @@ const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
           />
         ) : (
           <SectionContentList>
-            {content.map((item) => (
-              <SectionListItemButton
-                key={item.name}
-                onClick={action('onItemClick')}
-              >
-                {`${item.name} (${item.role} - ${item.department})`}
-              </SectionListItemButton>
-            ))}
+            {content.map((item, index) =>
+              index % 2 === 0 ? (
+                <SectionListItemButton
+                  key={item.name}
+                  onClick={action('onItemClick')}
+                  withIcon={withIcon}
+                >
+                  {`Button ${item.name} (${item.role} - ${item.department})`}
+                </SectionListItemButton>
+              ) : (
+                <SectionListItemLink
+                  key={item.name}
+                  href="#"
+                  withIcon={withIcon}
+                >
+                  {`Link ${item.name} (${item.role} - ${item.department})`}
+                </SectionListItemLink>
+              ),
+            )}
           </SectionContentList>
         )}
       </SectionContainer>
@@ -97,6 +116,8 @@ const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
 export const SimpleList: Story = () => <List />
 
 export const EmptySimpleList: Story = () => <List numberOfTotalItems={0} />
+
+export const ListWithoutIcon: Story = () => <List withIcon={false} />
 
 /**
  * The following example shows how multiple section components and the in memory pagination are used to create an overview list with filters.
