@@ -2,7 +2,7 @@ import { Size } from '../types'
 import { SectionContentLayout } from './Section/SectionContent/types'
 import { SectionHeaderRowLayout } from './SectionHeader/SectionHeaderRow/types'
 import { SectionHeaderSpacerSize } from './SectionHeader/SectionHeaderSpacer/types'
-import { SectionListItemVariant } from './types'
+import { SectionListItemLayout } from './types'
 
 const className = {
   section: {
@@ -32,9 +32,9 @@ const className = {
   },
   listItem: {
     base: 'flex border-b border-neutral-200 last:border-0 items-center bg-white px-4 md:px-6',
-    variant: {
-      [SectionListItemVariant.Compact]: 'py-4 min-h-[1.5rem]',
-      [SectionListItemVariant.Expanded]:
+    layout: {
+      [SectionListItemLayout.Compact]: 'py-4 min-h-[1.5rem]',
+      [SectionListItemLayout.Expanded]:
         'py-4 min-h-[6.5rem] first:pt-6 first:min-h-[7rem] last:pb-6 last:min-h-[7rem]',
     },
     icon: 'fill-current mt-auto',

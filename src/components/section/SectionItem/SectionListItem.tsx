@@ -8,7 +8,7 @@ import {
   useTheme,
 } from '../../../framework'
 import { ClassNameProps } from '../../types'
-import { SectionListItemVariant } from '../types'
+import { SectionListItemLayout } from '../types'
 
 export type SectionListItemProps = ClassNameProps & {
   children?: ReactNode
@@ -30,7 +30,7 @@ export type SectionListItemButtonProps = ClassNameProps & {
    */
   onClick: () => void
   children?: ReactNode
-  variant?: SectionListItemVariant
+  variant?: SectionListItemLayout
   badge?: ReactNode
 }
 
@@ -42,7 +42,7 @@ export const SectionListItemButton = forwardRef<
     children,
     onClick,
     className,
-    variant = SectionListItemVariant.Compact,
+    variant = SectionListItemLayout.Compact,
     badge,
     ...props
   },
@@ -51,7 +51,7 @@ export const SectionListItemButton = forwardRef<
   const { section } = useTheme()
 
   const Icon =
-    variant === SectionListItemVariant.Compact
+    variant === SectionListItemLayout.Compact
       ? IconKeyboardArrowRight
       : IconArrowForwardIos
 
@@ -60,7 +60,7 @@ export const SectionListItemButton = forwardRef<
       onClick={onClick}
       className={classNames(
         section.listItem.base,
-        section.listItem.variant[variant],
+        section.listItem.layout[variant],
         section.listItemButton.base,
         className,
       )}
@@ -77,7 +77,7 @@ export const SectionListItemButton = forwardRef<
 })
 
 export type SectionListItemLinkProps = LinkComponentProps & {
-  variant?: SectionListItemVariant
+  variant?: SectionListItemLayout
   badge?: ReactNode
 }
 
@@ -86,7 +86,7 @@ export const SectionListItemLink = forwardRef<
   SectionListItemLinkProps
 >(function SectionListItemLink(
   {
-    variant = SectionListItemVariant.Compact,
+    variant = SectionListItemLayout.Compact,
     badge,
     children,
     className,
@@ -99,7 +99,7 @@ export const SectionListItemLink = forwardRef<
   const { section } = useTheme()
 
   const Icon =
-    variant === SectionListItemVariant.Compact
+    variant === SectionListItemLayout.Compact
       ? IconKeyboardArrowRight
       : IconArrowForwardIos
 
@@ -107,7 +107,7 @@ export const SectionListItemLink = forwardRef<
     <LinkComponent
       className={classNames(
         section.listItem.base,
-        section.listItem.variant[variant],
+        section.listItem.layout[variant],
         section.listItemLink.base,
         className,
       )}

@@ -1,4 +1,4 @@
-export enum SectionListItemVariant {
+export enum SectionListItemLayout {
   Compact = 'COMPACT',
   Expanded = 'EXPANDED',
 }

@@ -31,7 +31,7 @@ import {
 } from '../components'
 import { SearchField } from '../components/form/SearchField'
 import { useFilter } from '../components/util/useFilter'
-import { SectionListItemVariant } from '../components/section/types'
+import { SectionListItemLayout } from '../components/section/types'
 
 const meta = {
   component: SectionContentList,
@@ -74,7 +74,7 @@ const List = ({
   links = false,
 }: {
   numberOfTotalItems?: number
-  variant?: SectionListItemVariant
+  variant?: SectionListItemLayout
   links?: boolean
 }) => {
   const content = useMockedList(numberOfTotalItems)
@@ -116,11 +116,11 @@ export const SimpleList: Story = () => <List />
 export const EmptySimpleList: Story = () => <List numberOfTotalItems={0} />
 
 export const ExpandedButtonsList: Story = () => (
-  <List variant={SectionListItemVariant.Expanded} />
+  <List variant={SectionListItemLayout.Expanded} />
 )
 
 export const ExpandedLinksList: Story = () => (
-  <List links variant={SectionListItemVariant.Expanded} />
+  <List links variant={SectionListItemLayout.Expanded} />
 )
 
 /**
