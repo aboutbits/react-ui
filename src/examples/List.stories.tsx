@@ -4,12 +4,10 @@ import { Meta, StoryFn } from '@storybook/react'
 import { useMemo, useState } from 'react'
 import { IndexType } from '@aboutbits/pagination'
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
-import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { Markdown } from '@storybook/addon-docs'
 import {
   ButtonIcon,
   ButtonVariant,
-  FormVariant,
   Section,
   SectionContainer,
   SectionContentEmpty,
@@ -24,12 +22,11 @@ import {
   SectionHeaderSpacer,
   SectionHeaderTitle,
   SectionListItemButton,
-  SelectField,
   Tone,
   Option,
-  useFilter,
-  SearchField,
 } from '../components'
+import { SearchFilterField } from '../components/filter/SearchFilterField'
+import { SelectFilterField } from '../components/filter/SelectFilterField'
 
 const meta = {
   component: SectionContentList,
@@ -102,10 +99,6 @@ export const EmptySimpleList: Story = () => <List numberOfTotalItems={0} />
  * The following example shows how multiple section components and the in memory pagination are used to create an overview list with filters.
  */
 export const ListWithFilter: Story = () => {
-  const isScreenMedium = useMatchMediaQuery('(min-width: 768px)')
-  const filterVariant = isScreenMedium
-    ? FormVariant.Soft
-    : FormVariant.Transparent
   const numberOfTotalItems = 1000
   const numberOfItemsPerPage = 5
   const [page, setPage] = useState(1)
@@ -115,24 +108,6 @@ export const ListWithFilter: Story = () => {
       item.name.includes(filter.search) &&
       (filter.role === '' || item.role === filter.role) &&
       (filter.department === '' || item.department === filter.department),
-  )
-  const searchFilterProps = useFilter<HTMLInputElement>()(
-    filter.search,
-    (v) => {
-      setFilter((prevFilter) => ({ ...prevFilter, search: v }))
-    },
-    {
-      debounce: true,
-    },
-  )
-  const roleFilterProps = useFilter<HTMLSelectElement>()(filter.role, (v) => {
-    setFilter((prevFilter) => ({ ...prevFilter, role: v }))
-  })
-  const departmentFilterProps = useFilter<HTMLSelectElement>()(
-    filter.department,
-    (v) => {
-      setFilter((prevFilter) => ({ ...prevFilter, department: v }))
-    },
   )
   return (
     <Section>
@@ -152,30 +127,45 @@ export const ListWithFilter: Story = () => {
             spacing={SectionHeaderGroupSpacing.Md}
             className="flex-col gap-y-2 md:flex-row"
           >
-            <SearchField
-              {...searchFilterProps}
-              className="w-full grow md:w-auto"
+            <SearchFilterField
+              filter={{
+                value: filter.search,
+                setValue: (v) => {
+                  setFilter((prevFilter) => ({ ...prevFilter, search: v }))
+                },
+              }}
             />
             <SectionHeaderGroup className="grid w-full grid-cols-2 md:flex md:w-auto">
-              <SelectField
-                {...roleFilterProps}
+              <SelectFilterField
                 name="role"
-                variant={filterVariant}
+                filter={{
+                  value: filter.role,
+                  setValue: (v) => {
+                    setFilter((prevFilter) => ({ ...prevFilter, role: v }))
+                  },
+                }}
               >
                 <Option value="">All roles</Option>
                 <Option value="ADMIN">Admin</Option>
                 <Option value="USER">User</Option>
-              </SelectField>
-              <SelectField
-                {...departmentFilterProps}
+              </SelectFilterField>
+              <SelectFilterField
                 name="department"
-                variant={filterVariant}
+                filter={{
+                  value: filter.department,
+                  setValue: (v) => {
+                    setFilter((prevFilter) => ({
+                      ...prevFilter,
+                      department: v,
+                    }))
+                  },
+                }}
               >
                 <Option value="">All departments</Option>
                 <Option value="HR">Human Resources</Option>
                 <Option value="IT">Engineering</Option>
                 <Option value="SALES">Sales</Option>
-              </SelectField>
+              </SelectFilterField>
             </SectionHeaderGroup>
           </SectionHeaderGroup>
         </SectionHeaderRow>

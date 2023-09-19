@@ -14,6 +14,7 @@ import menu from '../../components/menu/theme'
 import pagination from '../../components/pagination/theme'
 import section from '../../components/section/theme'
 import tabs from '../../components/tabs/theme'
+import filter from '../../components/filter/theme'
 
 export const defaultTheme = {
   action,
@@ -30,4 +31,5 @@ export const defaultTheme = {
   menu,
   pagination,
   tabs,
+  filter,
 }
