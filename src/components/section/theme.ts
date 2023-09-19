@@ -30,7 +30,7 @@ export default {
     base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
   },
   listItem: {
-    base: 'flex border-b border-neutral-200 last:border-0 items-center min-h-[3.5rem] bg-white px-4 md:px-6',
+    base: 'flex border-b border-neutral-200 last:border-0 items-center py-4 bg-white px-4 md:px-6',
   },
   listItemWithAction: {
     base: 'justify-between space-x-4',
