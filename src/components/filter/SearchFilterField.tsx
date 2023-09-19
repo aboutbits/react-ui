@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import { forwardRef } from 'react'
 import { FormVariant, SearchField, SearchFieldProps } from '../form'
+import { useTheme } from '../../framework'
 import { FilterOptions, useFilter } from './useFilter'
 
 export type SearchFilterFieldProps = SearchFieldProps & {
@@ -15,6 +16,10 @@ export const SearchFilterField = forwardRef<
   HTMLInputElement,
   SearchFilterFieldProps
 >(function SearchFilterField({ filter, className, ...props }, ref) {
+  const {
+    filter: { search: theme },
+  } = useTheme()
+
   const filterProps = useFilter<HTMLInputElement>()(
     filter.value,
     filter.setValue,
@@ -25,7 +30,7 @@ export const SearchFilterField = forwardRef<
     <SearchField
       {...filterProps}
       variant={FormVariant.Soft}
-      className={classNames('w-full grow md:w-auto', className)}
+      className={classNames(theme.base, className)}
       {...props}
       ref={ref}
     />
