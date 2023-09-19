@@ -2,8 +2,9 @@ import { Size } from '../types'
 import { SectionContentLayout } from './Section/SectionContent/types'
 import { SectionHeaderRowLayout } from './SectionHeader/SectionHeaderRow/types'
 import { SectionHeaderSpacerSize } from './SectionHeader/SectionHeaderSpacer/types'
+import { SectionListItemVariant } from './types'
 
-export default {
+const className = {
   section: {
     base: '',
   },
@@ -30,7 +31,16 @@ export default {
     base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
   },
   listItem: {
-    base: 'flex border-b border-neutral-200 last:border-0 items-center min-h-[3.5rem] bg-white px-4 md:px-6',
+    base: 'flex border-b border-neutral-200 last:border-0 items-center bg-white px-4 md:px-6',
+    variant: {
+      [SectionListItemVariant.Compact]: 'py-4 min-h-[1.5rem]',
+      [SectionListItemVariant.Expanded]:
+        'py-4 min-h-[6.5rem] first:pt-6 first:min-h-[7rem] last:pb-6 last:min-h-[7rem]',
+    },
+    icon: 'fill-current mt-auto',
+    rightAlignedContainer: {
+      base: 'flex flex-col items-end self-stretch justify-between',
+    },
   },
   listItemWithAction: {
     base: 'justify-between space-x-4',
@@ -40,7 +50,6 @@ export default {
   },
   listItemButton: {
     base: 'block w-full focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
-    icon: 'fill-current',
   },
   listItemLink: {
     base: 'block focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
@@ -103,3 +112,5 @@ export default {
     base: 'mt-4',
   },
 }
+
+export default className

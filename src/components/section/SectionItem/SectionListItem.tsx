@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
+import IconArrowForwardIos from '@aboutbits/react-material-icons/dist/IconArrowForwardIos'
 import { ReactNode, forwardRef } from 'react'
 import {
   LinkComponentProps,
@@ -7,6 +8,7 @@ import {
   useTheme,
 } from '../../../framework'
 import { ClassNameProps } from '../../types'
+import { SectionListItemVariant } from '../types'
 
 export type SectionListItemProps = ClassNameProps & {
   children?: ReactNode
@@ -28,55 +30,85 @@ export type SectionListItemButtonProps = ClassNameProps & {
    */
   onClick: () => void
   children?: ReactNode
+  variant?: SectionListItemVariant
+  badge?: ReactNode
 }
 
 export const SectionListItemButton = forwardRef<
   HTMLButtonElement,
   SectionListItemButtonProps
 >(function SectionListItemButton(
-  { children, onClick, className, ...props },
+  {
+    children,
+    onClick,
+    className,
+    variant = SectionListItemVariant.Compact,
+    badge,
+    ...props
+  },
   ref,
 ) {
   const { section } = useTheme()
+
+  const Icon =
+    variant === SectionListItemVariant.Compact
+      ? IconKeyboardArrowRight
+      : IconArrowForwardIos
 
   return (
     <button
       onClick={onClick}
       className={classNames(
-        section.listItemButton.base,
         section.listItem.base,
+        section.listItem.variant[variant],
+        section.listItemButton.base,
         className,
       )}
       ref={ref}
       {...props}
     >
       {children}
-      <IconKeyboardArrowRight
-        width="24"
-        height="24"
-        className={section.listItemButton.icon}
-      />
+      <div className={section.listItem.rightAlignedContainer.base}>
+        {badge}
+        <Icon width="24" height="24" className={section.listItem.icon} />
+      </div>
     </button>
   )
 })
 
-export type SectionListItemLinkProps = LinkComponentProps
+export type SectionListItemLinkProps = LinkComponentProps & {
+  variant?: SectionListItemVariant
+  badge?: ReactNode
+}
 
 export const SectionListItemLink = forwardRef<
   HTMLAnchorElement,
   SectionListItemLinkProps
 >(function SectionListItemLink(
-  { children, className, internal = true, ...props },
+  {
+    variant = SectionListItemVariant.Compact,
+    badge,
+    children,
+    className,
+    internal = true,
+    ...props
+  },
   ref,
 ) {
   const LinkComponent = useLinkComponent()
   const { section } = useTheme()
 
+  const Icon =
+    variant === SectionListItemVariant.Compact
+      ? IconKeyboardArrowRight
+      : IconArrowForwardIos
+
   return (
     <LinkComponent
       className={classNames(
-        section.listItemLink.base,
         section.listItem.base,
+        section.listItem.variant[variant],
+        section.listItemLink.base,
         className,
       )}
       internal={internal}
@@ -84,11 +116,10 @@ export const SectionListItemLink = forwardRef<
       {...props}
     >
       {children}
-      <IconKeyboardArrowRight
-        width="24"
-        height="24"
-        className={section.listItemButton.icon}
-      />
+      <div className={section.listItem.rightAlignedContainer.base}>
+        {badge}
+        <Icon width="24" height="24" className={section.listItem.icon} />
+      </div>
     </LinkComponent>
   )
 })

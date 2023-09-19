@@ -27,9 +27,11 @@ import {
   SelectField,
   Tone,
   Option,
+  SectionListItemLink,
 } from '../components'
 import { SearchField } from '../components/form/SearchField'
 import { useFilter } from '../components/util/useFilter'
+import { SectionListItemVariant } from '../components/section/types'
 
 const meta = {
   component: SectionContentList,
@@ -66,7 +68,15 @@ function useMockedList(numberOfTotalItems: number) {
   )
 }
 
-const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
+const List = ({
+  numberOfTotalItems = 5,
+  variant,
+  links = false,
+}: {
+  numberOfTotalItems?: number
+  variant?: SectionListItemVariant
+  links?: boolean
+}) => {
   const content = useMockedList(numberOfTotalItems)
   return (
     <Section>
@@ -79,14 +89,21 @@ const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
           />
         ) : (
           <SectionContentList>
-            {content.map((item) => (
-              <SectionListItemButton
-                key={item.name}
-                onClick={action('onItemClick')}
-              >
-                {`${item.name} (${item.role} - ${item.department})`}
-              </SectionListItemButton>
-            ))}
+            {content.map((item) =>
+              links ? (
+                <SectionListItemLink key={item.name} href="#" variant={variant}>
+                  {`${item.name} (${item.role} - ${item.department})`}
+                </SectionListItemLink>
+              ) : (
+                <SectionListItemButton
+                  key={item.name}
+                  onClick={action('onItemClick')}
+                  variant={variant}
+                >
+                  {`${item.name} (${item.role} - ${item.department})`}
+                </SectionListItemButton>
+              ),
+            )}
           </SectionContentList>
         )}
       </SectionContainer>
@@ -97,6 +114,14 @@ const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
 export const SimpleList: Story = () => <List />
 
 export const EmptySimpleList: Story = () => <List numberOfTotalItems={0} />
+
+export const ExpandedButtonsList: Story = () => (
+  <List variant={SectionListItemVariant.Expanded} />
+)
+
+export const ExpandedLinksList: Story = () => (
+  <List links variant={SectionListItemVariant.Expanded} />
+)
 
 /**
  * The following example shows how multiple section components and the in memory pagination are used to create an overview list with filters.
