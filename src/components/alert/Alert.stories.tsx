@@ -7,13 +7,13 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
+import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
+import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Button, ButtonVariant } from '../button'
 import { Size, Tone } from '../types'
 import { Theme } from '../../../.storybook/components'
 import { Alert } from './Alert'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
-import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { AlertActionsPosition } from './types'
 import {
   AlertCritical,
@@ -93,7 +93,7 @@ const meta = {
   argTypes: {
     title: { control: 'text' },
     icon: icons,
-    actions: actions,
+    actions,
   },
   parameters: {
     docs: {

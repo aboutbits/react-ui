@@ -9,8 +9,8 @@ import {
 import { Meta, StoryObj } from '@storybook/react'
 import { Button, ButtonVariant } from '../button'
 import { Tone } from '../types'
-import { Actions } from './Actions'
 import { Theme } from '../../../.storybook/components'
+import { Actions } from './Actions'
 
 const children = {
   options: ['One button', 'Two buttons'],
