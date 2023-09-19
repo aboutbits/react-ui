@@ -27,6 +27,7 @@ import {
   SelectField,
   Tone,
   Option,
+  SectionListItemButtonProps,
 } from '../components'
 import { SearchField } from '../components/form/SearchField'
 import { useFilter } from '../components/util/useFilter'
@@ -66,7 +67,13 @@ function useMockedList(numberOfTotalItems: number) {
   )
 }
 
-const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
+const List = ({
+  numberOfTotalItems = 5,
+  withIcon,
+}: { numberOfTotalItems?: number } & Pick<
+  SectionListItemButtonProps,
+  'withIcon'
+>) => {
   const content = useMockedList(numberOfTotalItems)
   return (
     <Section>
@@ -83,6 +90,7 @@ const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
               <SectionListItemButton
                 key={item.name}
                 onClick={action('onItemClick')}
+                withIcon={withIcon}
               >
                 {`${item.name} (${item.role} - ${item.department})`}
               </SectionListItemButton>
@@ -97,6 +105,8 @@ const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
 export const SimpleList: Story = () => <List />
 
 export const EmptySimpleList: Story = () => <List numberOfTotalItems={0} />
+
+export const ListWithoutIcon: Story = () => <List withIcon={false} />
 
 /**
  * The following example shows how multiple section components and the in memory pagination are used to create an overview list with filters.

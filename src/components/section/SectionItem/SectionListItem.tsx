@@ -28,13 +28,14 @@ export type SectionListItemButtonProps = ClassNameProps & {
    */
   onClick: () => void
   children?: ReactNode
+  withIcon?: boolean
 }
 
 export const SectionListItemButton = forwardRef<
   HTMLButtonElement,
   SectionListItemButtonProps
 >(function SectionListItemButton(
-  { children, onClick, className, ...props },
+  { children, onClick, className, withIcon = true, ...props },
   ref,
 ) {
   const { section } = useTheme()
@@ -51,22 +52,26 @@ export const SectionListItemButton = forwardRef<
       {...props}
     >
       {children}
-      <IconKeyboardArrowRight
-        width="24"
-        height="24"
-        className={section.listItemButton.icon}
-      />
+      {withIcon && (
+        <IconKeyboardArrowRight
+          width="24"
+          height="24"
+          className={section.listItemButton.icon}
+        />
+      )}
     </button>
   )
 })
 
-export type SectionListItemLinkProps = LinkComponentProps
+export type SectionListItemLinkProps = LinkComponentProps & {
+  withIcon?: boolean
+}
 
 export const SectionListItemLink = forwardRef<
   HTMLAnchorElement,
   SectionListItemLinkProps
 >(function SectionListItemLink(
-  { children, className, internal = true, ...props },
+  { children, className, internal = true, withIcon = true, ...props },
   ref,
 ) {
   const LinkComponent = useLinkComponent()
@@ -84,11 +89,13 @@ export const SectionListItemLink = forwardRef<
       {...props}
     >
       {children}
-      <IconKeyboardArrowRight
-        width="24"
-        height="24"
-        className={section.listItemButton.icon}
-      />
+      {withIcon && (
+        <IconKeyboardArrowRight
+          width="24"
+          height="24"
+          className={section.listItemButton.icon}
+        />
+      )}
     </LinkComponent>
   )
 })
