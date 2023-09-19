@@ -28,6 +28,7 @@ import {
   Tone,
   Option,
   SectionListItemButtonProps,
+  SectionListItemLink,
 } from '../components'
 import { SearchField } from '../components/form/SearchField'
 import { useFilter } from '../components/util/useFilter'
@@ -86,15 +87,25 @@ const List = ({
           />
         ) : (
           <SectionContentList>
-            {content.map((item) => (
-              <SectionListItemButton
-                key={item.name}
-                onClick={action('onItemClick')}
-                withIcon={withIcon}
-              >
-                {`${item.name} (${item.role} - ${item.department})`}
-              </SectionListItemButton>
-            ))}
+            {content.map((item, index) =>
+              index % 2 === 0 ? (
+                <SectionListItemButton
+                  key={item.name}
+                  onClick={action('onItemClick')}
+                  withIcon={withIcon}
+                >
+                  {`Button ${item.name} (${item.role} - ${item.department})`}
+                </SectionListItemButton>
+              ) : (
+                <SectionListItemLink
+                  key={item.name}
+                  href="#"
+                  withIcon={withIcon}
+                >
+                  {`Link ${item.name} (${item.role} - ${item.department})`}
+                </SectionListItemLink>
+              ),
+            )}
           </SectionContentList>
         )}
       </SectionContainer>

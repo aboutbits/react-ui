@@ -38,12 +38,9 @@ export default {
       base: 'flex flex-shrink-0',
     },
   },
-  listItemButton: {
+  listItemButtonLink: {
     base: 'block w-full focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
     icon: 'fill-current',
-  },
-  listItemLink: {
-    base: 'block focus:outline-neutral-800 justify-between space-x-4 hover:bg-neutral-100 active:bg-neutral-100',
   },
   subsectionTitle: {
     base: 'bg-neutral-100 px-4 md:px-6 py-1 border-b border-t first:border-t-none border-neutral-200 text-sm text-neutral-600',

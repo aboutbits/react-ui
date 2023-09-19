@@ -22,6 +22,18 @@ export function SectionListItem({ className, children }: SectionListItemProps) {
   )
 }
 
+function SectionListItemIcon() {
+  const { section } = useTheme()
+
+  return (
+    <IconKeyboardArrowRight
+      width="24"
+      height="24"
+      className={section.listItemButtonLink.icon}
+    />
+  )
+}
+
 export type SectionListItemButtonProps = ClassNameProps & {
   /**
    * On click handler for the button.
@@ -44,21 +56,15 @@ export const SectionListItemButton = forwardRef<
     <button
       onClick={onClick}
       className={classNames(
-        section.listItemButton.base,
         section.listItem.base,
+        section.listItemButtonLink.base,
         className,
       )}
       ref={ref}
       {...props}
     >
       {children}
-      {withIcon && (
-        <IconKeyboardArrowRight
-          width="24"
-          height="24"
-          className={section.listItemButton.icon}
-        />
-      )}
+      {withIcon && <SectionListItemIcon />}
     </button>
   )
 })
@@ -80,8 +86,8 @@ export const SectionListItemLink = forwardRef<
   return (
     <LinkComponent
       className={classNames(
-        section.listItemLink.base,
         section.listItem.base,
+        section.listItemButtonLink.base,
         className,
       )}
       internal={internal}
@@ -89,13 +95,7 @@ export const SectionListItemLink = forwardRef<
       {...props}
     >
       {children}
-      {withIcon && (
-        <IconKeyboardArrowRight
-          width="24"
-          height="24"
-          className={section.listItemButton.icon}
-        />
-      )}
+      {withIcon && <SectionListItemIcon />}
     </LinkComponent>
   )
 })
