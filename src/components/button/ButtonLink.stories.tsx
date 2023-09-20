@@ -1,6 +1,3 @@
-import { ButtonLink } from './ButtonLink'
-import { Mode, Size, Tone } from '../types'
-import { ButtonVariant } from './types'
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import {
@@ -13,6 +10,9 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
+import { Mode, Size, Tone } from '../types'
+import { ButtonVariant } from './types'
+import { ButtonLink } from './ButtonLink'
 
 const meta = {
   component: ButtonLink,

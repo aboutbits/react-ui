@@ -13,14 +13,6 @@ import { Mode, Size, Tone } from '../types'
 import { ButtonVariant } from './types'
 import { ButtonIconLink } from './ButtonIconLink'
 
-const icons = {
-  options: ['Info', 'Add'],
-  mapping: {
-    Info: IconInfo,
-    Add: IconAdd,
-  },
-}
-
 const meta = {
   component: ButtonIconLink,
   args: {
