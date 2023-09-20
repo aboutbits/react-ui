@@ -13,9 +13,23 @@ import { Source } from '@storybook/blocks'
 import { Meta, StoryObj } from '@storybook/react'
 import { Form } from '../react-hook-form'
 import { useForm } from 'react-hook-form'
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 
 const meta = {
   component: SubmitButton,
+  argTypes: {
+    iconStart: {
+      options: ['None', 'Add', 'Info'],
+      mapping: { None: undefined, Add: IconAdd, Info: IconInfo },
+      control: { type: 'select' },
+    },
+    iconEnd: {
+      options: ['None', 'Add', 'Info'],
+      mapping: { None: undefined, Add: IconAdd, Info: IconInfo },
+      control: { type: 'select' },
+    },
+  },
   parameters: {
     docs: {
       page: () => (
