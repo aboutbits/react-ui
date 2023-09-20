@@ -8,7 +8,7 @@ export type RadioFormFieldFieldProps = Omit<RadioFieldProps, 'status'> & {
 }
 
 /**
- * A [RadioField](../?path=/docs/components-form-radiofield--default-story) within the context of a `react-hook-form` form.
+ * A [RadioField](../?path=/docs/components-form-radiofield--docs) within the context of a `react-hook-form` form.
  *
  * The form value that is returned for validation is of type `string`.
  */

@@ -9,7 +9,7 @@ export type SelectYearFieldProps = Omit<SelectFieldProps, 'children'> &
 /**
  * A select field for years independent of any form validation library.
  *
- * It uses the [SelectField](../?path=/docs/components-form-selectfield--default-story) and [Option](../?path=/docs/components-form-primitive-option--default-story) components.
+ * It uses the [SelectField](../?path=/docs/components-form-selectfield--docs) and [Option](../?path=/docs/components-form-primitive-option--docs) components.
  *
  * With the props `from` and `to`, the corresponding start and end year can be set.
  */

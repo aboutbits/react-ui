@@ -24,7 +24,7 @@ export type SelectProps = Omit<
 /**
  * A themed `select` element.
  *
- * It inherits styles from the primitive [Input](../?path=/docs/components-form-primitive-input--default-story).
+ * It inherits styles from the primitive [Input](../?path=/docs/components-form-primitive-input--docs).
  */
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   function Select(

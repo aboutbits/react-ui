@@ -9,7 +9,7 @@ export type CheckboxFormFieldProps = Omit<CheckboxFieldProps, 'status'> & {
 }
 
 /**
- * A [CheckboxField](../?path=/docs/components-form-checkboxfield--default-story) within the context of a `react-hook-form` form.
+ * A [CheckboxField](../?path=/docs/components-form-checkboxfield--docs) within the context of a `react-hook-form` form.
  *
  * The form value that is returned for validation is of type `boolean`.
  */

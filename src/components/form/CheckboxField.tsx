@@ -15,7 +15,7 @@ export type CheckboxFieldProps = Omit<CheckboxProps, 'tone'> &
 /**
  * A checkbox field.
  *
- * It is composed of the primitives [Checkbox](../?path=/docs/components-form-primitive-checkbox--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
+ * It is composed of the primitives [Checkbox](../?path=/docs/components-form-primitive-checkbox--docs) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--docs).
  */
 export const CheckboxField = forwardRef<HTMLInputElement, CheckboxFieldProps>(
   function CheckboxField(

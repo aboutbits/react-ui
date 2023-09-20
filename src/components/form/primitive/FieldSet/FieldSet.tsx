@@ -19,7 +19,7 @@ export type FieldSetProps = React.DetailedHTMLProps<
 /**
  * A themed fieldset.
  *
- * It inherits styles from the [InputLabel](../?path=/docs/components-form-primitive-inputlabel--default-story).
+ * It inherits styles from the [InputLabel](../?path=/docs/components-form-primitive-inputlabel--docs).
  *
  * The `indent` property can be used to control the indentation of the component (which may depend on its position and the components it contains).
  */
