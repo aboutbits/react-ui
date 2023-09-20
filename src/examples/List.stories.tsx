@@ -27,11 +27,11 @@ import {
   SelectField,
   Tone,
   Option,
+  useFilter,
+  SearchField,
   SectionListItemButtonProps,
   SectionListItemLink,
 } from '../components'
-import { SearchField } from '../components/form/SearchField'
-import { useFilter } from '../components/util/useFilter'
 
 const meta = {
   component: SectionContentList,
@@ -137,7 +137,7 @@ export const ListWithFilter: Story = () => {
       (filter.role === '' || item.role === filter.role) &&
       (filter.department === '' || item.department === filter.department),
   )
-  const searchFilterProps = useFilter<HTMLInputElement>(
+  const searchFilterProps = useFilter<HTMLInputElement>()(
     filter.search,
     (v) => {
       setFilter((prevFilter) => ({ ...prevFilter, search: v }))
@@ -146,10 +146,10 @@ export const ListWithFilter: Story = () => {
       debounce: true,
     },
   )
-  const roleFilterProps = useFilter<HTMLSelectElement>(filter.role, (v) => {
+  const roleFilterProps = useFilter<HTMLSelectElement>()(filter.role, (v) => {
     setFilter((prevFilter) => ({ ...prevFilter, role: v }))
   })
-  const departmentFilterProps = useFilter<HTMLSelectElement>(
+  const departmentFilterProps = useFilter<HTMLSelectElement>()(
     filter.department,
     (v) => {
       setFilter((prevFilter) => ({ ...prevFilter, department: v }))
