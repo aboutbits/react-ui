@@ -130,7 +130,11 @@ export const ListWithFilter: Story = () => {
   const numberOfTotalItems = 1000
   const numberOfItemsPerPage = 5
   const [page, setPage] = useState(1)
-  const [filter, setFilter] = useState({ role: '', department: '', search: '' })
+  const [filter, setFilter] = useState({
+    role: 'ADMIN',
+    department: '',
+    search: '',
+  })
   const content = useMockedList(numberOfTotalItems).filter(
     (item) =>
       item.name.includes(filter.search) &&
