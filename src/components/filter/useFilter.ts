@@ -1,5 +1,12 @@
 import { useDebounce } from '@aboutbits/react-toolbox'
-import { ChangeEventHandler, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  ChangeEventHandler,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 
 export type FilterOptions = {
   /** Whether to debounce and the debounce interval in milliseconds.
@@ -25,7 +32,11 @@ export function useFilter<TElement extends HTMLElement & { value: unknown }>() {
       }
       return 0
     }, [options?.debounce])
-    const elementRef = useRef<TElement>(null)
+    const [element, setElement] = useState<TElement | null>(null)
+
+    const elementRef = useCallback((element: TElement) => {
+      setElement(element)
+    }, [])
 
     const settingNewValueRef = useRef(false)
 
@@ -43,10 +54,10 @@ export function useFilter<TElement extends HTMLElement & { value: unknown }>() {
     }, [debouncedInternalValue, setValue])
 
     useEffect(() => {
-      if (elementRef.current && !settingNewValueRef.current) {
-        elementRef.current.value = value
+      if (element && !settingNewValueRef.current) {
+        element.value = value
       }
-    }, [value])
+    }, [value, element])
 
     const onChange: ChangeEventHandler<TElement> = (e) => {
       settingNewValueRef.current = true
