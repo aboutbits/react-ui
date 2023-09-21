@@ -34,7 +34,7 @@ export function useFilter<TElement extends HTMLElement & { value: unknown }>() {
     }, [options?.debounce])
     const [element, setElement] = useState<TElement | null>(null)
 
-    const elementRef = useCallback((element: TElement) => {
+    const elementRef = useCallback((element: TElement | null) => {
       setElement(element)
     }, [])
 
