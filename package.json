@@ -44,7 +44,7 @@
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest watch --passWithNoTests",
     "typecheck": "tsc --project tsconfig.json --noEmit",
-    "checks": "npm run test && npm run lint && npm run typecheck",
+    "checks": "npm run typecheck && npm run lint && npm run test",
     "prepublishOnly": "npm run checks",
     "prepare": "npm run build",
     "preversion": "npm run checks",
