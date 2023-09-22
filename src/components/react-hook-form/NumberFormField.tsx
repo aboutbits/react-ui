@@ -11,7 +11,7 @@ export type NumberFormFieldProps<
 >
 
 /**
- * An [InputField](../?path=/docs/components-form-inputfield--default-story) within the context of a `react-hook-form` form and with the default type `number`.
+ * An [InputField](../?path=/docs/components-form-inputfield--docs) within the context of a `react-hook-form` form and with the default type `number`.
  *
  * The form value that is returned for validation is of type `number | null`. `null` is returned if the input is an empty string or nullish.
  */

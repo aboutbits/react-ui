@@ -22,7 +22,7 @@ export type TextAreaFieldProps = Omit<TextAreaProps, 'tone'> &
 /**
  * A text area field independent of any form validation library.
  *
- * It is composed of the primitives [TextArea](../?path=/docs/components-form-primitive-textarea--default-story), [InputLabel](../?path=/docs/components-form-primitive-inputlabel--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
+ * It is composed of the primitives [TextArea](../?path=/docs/components-form-primitive-textarea--docs), [InputLabel](../?path=/docs/components-form-primitive-inputlabel--docs) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--docs).
  */
 export const TextAreaField = forwardRef<
   HTMLTextAreaElement,

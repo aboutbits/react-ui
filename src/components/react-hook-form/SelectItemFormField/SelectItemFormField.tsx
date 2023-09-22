@@ -53,9 +53,9 @@ export type SelectItemFormFieldProps<
   >
 
 /*
- * A [SelectItemField](../?path=/docs/components-form-selectitemfield--default-story) within the context of a `react-hook-form` form.
+ * A [SelectItemField](../?path=/docs/components-form-selectitemfield--docs) within the context of a `react-hook-form` form.
  *
- * It is composed of the primitives [InputLabel](../?path=/docs/components-form-primitive-inputlabel--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
+ * It is composed of the primitives [InputLabel](../?path=/docs/components-form-primitive-inputlabel--docs) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--docs).
  */
 export function SelectItemFormField<
   Item,

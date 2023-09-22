@@ -13,7 +13,7 @@ export type OptionProps = Omit<
   ModeProps & { children?: string | number | undefined | null }
 
 /**
- * A custom themed `option` element to be used with [Select](../?path=/docs/components-form-primitive-select--default-story).
+ * A custom themed `option` element to be used with [Select](../?path=/docs/components-form-primitive-select--docs).
  */
 export const Option = forwardRef(function Option(
   { value = '', mode = Mode.Light, className, children, ...props }: OptionProps,

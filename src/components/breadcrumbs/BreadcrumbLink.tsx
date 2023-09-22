@@ -9,6 +9,9 @@ export type BreadcrumbLinkProps = ClassNameProps &
       Partial<Pick<LinkComponentProps, 'href'>>
   }
 
+/**
+ * A link component that is commonly used for parent links inside a [Breadcrumbs](../?path=/docs/components-breadcrumbs--docs) component
+ */
 export function BreadcrumbLink({
   href,
   className,
