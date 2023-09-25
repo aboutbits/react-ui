@@ -16,6 +16,16 @@ export type ContentMessageProps = ClassNameProps &
     iconProps?: Partial<ContentMessageIconProps>
   }
 
+/**
+ *
+ * @param className
+ * @param icon
+ * @param title
+ * @param text
+ * @param tone
+ * @param iconProps
+ * @constructor
+ */
 export function ContentMessage({
   className,
   icon,

@@ -7,6 +7,9 @@ export type ContentAreaProps = ClassNameProps & {
   children?: ReactNode
 }
 
+/**
+ * This component makes sure that there is enough space between multiple sections and actions on a page.
+ */
 export function ContentArea({ className, children }: ContentAreaProps) {
   const { content } = useTheme()
   return (
