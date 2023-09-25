@@ -13,6 +13,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { Mode, Size, Tone } from '../types'
 import { ButtonVariant } from './types'
 import { ButtonLink } from './ButtonLink'
+import { Theme } from '../../../.storybook/components'
 
 const meta = {
   component: ButtonLink,
@@ -66,31 +67,7 @@ const meta = {
           <Primary />
           <Subheading>Props</Subheading>
           <Controls />
-          <Markdown>
-            All themes are the same as for the
-            [Button](/docs/components-button-button--default-story#theme).
-          </Markdown>
-          <Stories />
-          <Subheading>Mode</Subheading>
-          <Markdown>
-            The mode is the same as for the
-            [Button](/docs/components-button-button--default-story#size).
-          </Markdown>
-          <Subheading>Size</Subheading>
-          <Markdown>
-            The size is the same as for the
-            [Button](/docs/components-button-button--default-story#size).
-          </Markdown>
-          <Subheading>Variants</Subheading>
-          <Markdown>
-            The variants are the same as for the
-            [Button](/docs/components-button-button--default-story#variants).
-          </Markdown>
-          <Subheading>Tone</Subheading>
-          <Markdown>
-            The tone is the same as for the
-            [Button](/docs/components-button-button--default-story#tone).
-          </Markdown>
+          <Theme component={'button'} items={['button', 'modeVariantTone']} />
         </>
       ),
     },

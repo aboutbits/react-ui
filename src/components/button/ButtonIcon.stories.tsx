@@ -46,7 +46,10 @@ const meta = {
           <Primary />
           <Subheading>Props</Subheading>
           <Controls />
-          <Theme component="button" items={['buttonIcon']} />
+          <Theme
+            component="button"
+            items={['buttonIcon', 'modeVariantTone', 'button']}
+          />
           <Markdown>
             Additionally, all the `button.modeVariantTone` themes are used. See
             [Button](/docs/components-button-button--default-story#theme).
@@ -83,11 +86,6 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
-
-/**
- * The `Mode` determines if the component is placed on LIGHT or DARK background.
- */
-
 export const Modes: Story = {
   render: (args) => (
     <div className="flex flex-row items-center gap-6">
@@ -117,10 +115,6 @@ export const Variants: Story = {
   },
 }
 
-/**
- * The size determine the padding between the button text and its border.
- */
-
 export const Sizes: Story = {
   render: (args) => (
     <div className="flex flex-row items-center gap-6">
@@ -131,11 +125,6 @@ export const Sizes: Story = {
   ),
 }
 
-/**
- * he tone of the button determine it's background color. Given the prop, the component will look at the Tailwind config to determine its color.
- *
- * For additional information about Tailwind config, please refer to the [Tailwind documentation on colors](https://tailwindcss.com/docs/customizing-colors).
- */
 export const Tones: Story = {
   render: (args) => (
     <div className="flex flex-row items-center gap-6">
@@ -152,7 +141,6 @@ export const Tones: Story = {
 /**
  * If the provided colors are not satisfying the needs of a project, it is possible to add your own colors. In the following example, it is moderated what needs to be added to the `reactui.config.js`. See [ReactUI Integrations](https://github.com/aboutbits/react-ui-integrations) for more information.
  */
-
 export const CustomPurple: Story = {
   render: (args) => (
     <ButtonIcon

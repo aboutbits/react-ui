@@ -1,6 +1,6 @@
 import {
   Controls,
-  Markdown,
+  Description,
   Primary,
   Stories,
   Subheading,
@@ -32,14 +32,7 @@ const meta = {
       page: () => (
         <>
           <Title />
-          <Markdown>
-            The **_default values_** for variant, size, and tone can be found in
-            the [Button Section](/docs/components-button-button--docs). The
-            submit button uses `React Hook Form` to automatically disable during
-            submitting. When the submit button is not placed inside a form (i.e.
-            it has no form context), you can use the `formControl` prop to pass
-            the control of the form.
-          </Markdown>
+          <Description />
           <Primary />
           <Subheading>Props</Subheading>
           <Controls />

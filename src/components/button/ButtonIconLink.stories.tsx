@@ -12,6 +12,7 @@ import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Mode, Size, Tone } from '../types'
 import { ButtonVariant } from './types'
 import { ButtonIconLink } from './ButtonIconLink'
+import { Theme } from '../../../.storybook/components'
 
 const meta = {
   component: ButtonIconLink,
@@ -59,30 +60,10 @@ const meta = {
           <Primary />
           <Subheading>Props</Subheading>
           <Controls />
-          <Markdown>
-            All themes are the same as for the
-            [ButtonIcon](/docs/components-button-buttonicon--default-story#theme).
-          </Markdown>
-          <Subheading>Mode</Subheading>
-          <Markdown>
-            The mode is the same as for the
-            [ButtonIcon](/docs/components-button-buttonicon--default-story#theme).
-          </Markdown>
-          <Subheading>Variants</Subheading>
-          <Markdown>
-            The variants are the same as for the
-            [ButtonIcon](/docs/components-button-buttonicon--default-story#theme).
-          </Markdown>
-          <Subheading>Size</Subheading>{' '}
-          <Markdown>
-            The size is the same as for the
-            [ButtonIcon](/docs/components-button-buttonicon--default-story#theme).
-          </Markdown>
-          <Subheading>Tone</Subheading>
-          <Markdown>
-            The tone is the same as for the
-            [ButtonIcon](/docs/components-button-buttonicon--default-story#theme).
-          </Markdown>
+          <Theme
+            component="button"
+            items={['buttonIcon', 'modeVariantTone', 'button']}
+          />
         </>
       ),
     },
