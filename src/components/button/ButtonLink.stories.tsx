@@ -3,7 +3,6 @@ import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import {
   Controls,
   Description,
-  Markdown,
   Primary,
   Stories,
   Subheading,
@@ -11,9 +10,9 @@ import {
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
 import { Mode, Size, Tone } from '../types'
+import { Theme } from '../../../.storybook/components'
 import { ButtonVariant } from './types'
 import { ButtonLink } from './ButtonLink'
-import { Theme } from '../../../.storybook/components'
 
 const meta = {
   component: ButtonLink,
@@ -67,7 +66,8 @@ const meta = {
           <Primary />
           <Subheading>Props</Subheading>
           <Controls />
-          <Theme component={'button'} items={['button', 'modeVariantTone']} />
+          <Theme component="button" items={['button', 'modeVariantTone']} />
+          <Stories />
         </>
       ),
     },

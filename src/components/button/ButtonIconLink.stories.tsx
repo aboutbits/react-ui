@@ -1,7 +1,6 @@
 import {
   Controls,
   Description,
-  Markdown,
   Primary,
   Subheading,
   Title,
@@ -10,9 +9,9 @@ import { Meta, StoryObj } from '@storybook/react'
 import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Mode, Size, Tone } from '../types'
+import { Theme } from '../../../.storybook/components'
 import { ButtonVariant } from './types'
 import { ButtonIconLink } from './ButtonIconLink'
-import { Theme } from '../../../.storybook/components'
 
 const meta = {
   component: ButtonIconLink,
