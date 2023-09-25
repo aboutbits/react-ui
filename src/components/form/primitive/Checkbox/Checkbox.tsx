@@ -37,7 +37,7 @@ export type CheckboxProps = Omit<
 /**
  * A themed checkbox input that can be used in controlled or uncontrolled mode.
  *
- * It inherits styles from the primitive [InputLabel](../?path=/docs/components-form-primitive-inputlabel--default-story).
+ * It inherits styles from the primitive [InputLabel](../?path=/docs/components-form-primitive-inputlabel--docs).
  */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(

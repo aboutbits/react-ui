@@ -30,7 +30,7 @@ export type SelectFormFieldProps<
 }
 
 /**
- * A [SelectField](../?path=/docs/components-form-selectfield--default-story) within the context of a `react-hook-form` form.
+ * A [SelectField](../?path=/docs/components-form-selectfield--docs) within the context of a `react-hook-form` form.
  *
  * The form value that is returned for validation is of type `string` by default. If `transformEmptyToNull` is `true` and the input is empty, `null` is returned.
  *

@@ -10,7 +10,7 @@ export type ActionsProps = ClassNameProps & {
    **/
   position?: ActionsPosition
   /**
-   * Defineds the children to be rendered.
+   * Defines the children to be rendered.
    */
   children?: ReactNode
 }

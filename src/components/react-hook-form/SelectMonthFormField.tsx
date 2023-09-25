@@ -9,7 +9,7 @@ export type SelectMonthFormField<
 > = Omit<SelectFormFieldProps<TFieldValues, TFieldName>, 'children'>
 
 /**
- * A [SelectFormField](../?path=/docs/components-reacthookform-selectformfield--default-story) for months.
+ * A [SelectFormField](../?path=/docs/components-reacthookform-selectformfield--docs) for months.
  */
 export const SelectMonthFormField = forwardRef(function SelectMonthFormField<
   TFieldValues extends FieldValues = FieldValues,

@@ -15,7 +15,7 @@ export type ToggleSwitchFieldProps = Omit<ToggleSwitchProps, 'tone'> &
 /**
  * A toggle switch field.
  *
- * It is composed of the primitives [ToggleSwitch](../?path=/docs/components-form-primitive-toggleswitch--default-story) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--default-story).
+ * It is composed of the primitives [ToggleSwitch](../?path=/docs/components-form-primitive-toggleswitch--docs) and [InputMessage](../?path=/docs/components-form-primitive-inputmessage--docs).
  */
 export const ToggleSwitchField = forwardRef<
   HTMLInputElement,

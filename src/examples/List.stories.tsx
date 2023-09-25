@@ -27,9 +27,11 @@ import {
   SelectField,
   Tone,
   Option,
+  useFilter,
+  SearchField,
+  SectionListItemButtonProps,
+  SectionListItemLink,
 } from '../components'
-import { SearchField } from '../components/form/SearchField'
-import { useFilter } from '../components/util/useFilter'
 
 const meta = {
   component: SectionContentList,
@@ -66,7 +68,13 @@ function useMockedList(numberOfTotalItems: number) {
   )
 }
 
-const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
+const List = ({
+  numberOfTotalItems = 5,
+  withIcon,
+}: { numberOfTotalItems?: number } & Pick<
+  SectionListItemButtonProps,
+  'withIcon'
+>) => {
   const content = useMockedList(numberOfTotalItems)
   return (
     <Section>
@@ -79,14 +87,25 @@ const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
           />
         ) : (
           <SectionContentList>
-            {content.map((item) => (
-              <SectionListItemButton
-                key={item.name}
-                onClick={action('onItemClick')}
-              >
-                {`${item.name} (${item.role} - ${item.department})`}
-              </SectionListItemButton>
-            ))}
+            {content.map((item, index) =>
+              index % 2 === 0 ? (
+                <SectionListItemButton
+                  key={item.name}
+                  onClick={action('onItemClick')}
+                  withIcon={withIcon}
+                >
+                  {`Button ${item.name} (${item.role} - ${item.department})`}
+                </SectionListItemButton>
+              ) : (
+                <SectionListItemLink
+                  key={item.name}
+                  href="#"
+                  withIcon={withIcon}
+                >
+                  {`Link ${item.name} (${item.role} - ${item.department})`}
+                </SectionListItemLink>
+              ),
+            )}
           </SectionContentList>
         )}
       </SectionContainer>
@@ -97,6 +116,8 @@ const List = ({ numberOfTotalItems = 5 }: { numberOfTotalItems?: number }) => {
 export const SimpleList: Story = () => <List />
 
 export const EmptySimpleList: Story = () => <List numberOfTotalItems={0} />
+
+export const ListWithoutIcon: Story = () => <List withIcon={false} />
 
 /**
  * The following example shows how multiple section components and the in memory pagination are used to create an overview list with filters.
@@ -109,14 +130,18 @@ export const ListWithFilter: Story = () => {
   const numberOfTotalItems = 1000
   const numberOfItemsPerPage = 5
   const [page, setPage] = useState(1)
-  const [filter, setFilter] = useState({ role: '', department: '', search: '' })
+  const [filter, setFilter] = useState({
+    role: 'ADMIN',
+    department: '',
+    search: '',
+  })
   const content = useMockedList(numberOfTotalItems).filter(
     (item) =>
       item.name.includes(filter.search) &&
       (filter.role === '' || item.role === filter.role) &&
       (filter.department === '' || item.department === filter.department),
   )
-  const searchFilterProps = useFilter<HTMLInputElement>(
+  const searchFilterProps = useFilter<HTMLInputElement>()(
     filter.search,
     (v) => {
       setFilter((prevFilter) => ({ ...prevFilter, search: v }))
@@ -125,10 +150,10 @@ export const ListWithFilter: Story = () => {
       debounce: true,
     },
   )
-  const roleFilterProps = useFilter<HTMLSelectElement>(filter.role, (v) => {
+  const roleFilterProps = useFilter<HTMLSelectElement>()(filter.role, (v) => {
     setFilter((prevFilter) => ({ ...prevFilter, role: v }))
   })
-  const departmentFilterProps = useFilter<HTMLSelectElement>(
+  const departmentFilterProps = useFilter<HTMLSelectElement>()(
     filter.department,
     (v) => {
       setFilter((prevFilter) => ({ ...prevFilter, department: v }))

@@ -10,7 +10,7 @@ export type FieldSetFormProps<TFieldValues extends FieldValues> = Omit<
 }
 
 /**
- * A [FieldSetField](../?path=/docs/components-form-fieldsetfield--default-story) within the context of a `react-hook-form` form.
+ * A [FieldSetField](../?path=/docs/components-form-fieldsetfield--docs) within the context of a `react-hook-form` form.
  *
  * The `FieldSetFormField` label will display an error state depending on the specified form `fields`.
  */

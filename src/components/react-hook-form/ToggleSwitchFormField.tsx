@@ -12,7 +12,7 @@ export type ToggleSwitchFormFieldProps = Omit<
 }
 
 /**
- * A [ToggleSwitchField](../?path=/docs/components-form-toggleswitchfield--default-story) within the context of a `react-hook-form` form.
+ * A [ToggleSwitchField](../?path=/docs/components-form-toggleswitchfield--docs) within the context of a `react-hook-form` form.
  *
  * The form value that is returned for validation is of type `boolean`.
  */

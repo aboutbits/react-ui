@@ -20,7 +20,7 @@ export type TextAreaProps = React.DetailedHTMLProps<
 /**
  * A themed `textarea` element.
  *
- * It inherits styles from the primitive [Input](../?path=/docs/components-form-primitive-input--default-story).
+ * It inherits styles from the primitive [Input](../?path=/docs/components-form-primitive-input--docs).
  */
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   function TextArea(

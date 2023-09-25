@@ -10,7 +10,7 @@ export type SelectYearFormFieldProps<
   SelectYearFieldOptionsProps
 
 /**
- * A [SelectFormField](../?path=/docs/components-reacthookform-selectformfield--default-story) for years.
+ * A [SelectFormField](../?path=/docs/components-reacthookform-selectformfield--docs) for years.
  */
 export const SelectYearFormField = forwardRef(function SelectYearFormField<
   TFieldValues extends FieldValues = FieldValues,
