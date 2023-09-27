@@ -25,6 +25,13 @@ function SubmitButtonComponent<F extends FieldValues>(
 }
 
 // Type assertion required for a component with forwarded ref and generic type
+
+/**
+ * The submit button uses `React Hook Form` to automatically disable during
+ * submitting. When the submit button is not placed inside a form (i.e.
+ * it has no form context), you can use the `formControl` prop to pass
+ * the control of the form.
+ */
 export const SubmitButton = forwardRef(SubmitButtonComponent) as <
   F extends FieldValues,
 >(
