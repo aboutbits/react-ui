@@ -1,20 +1,18 @@
-import { ContentMessage } from './ContentMessage'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import IconError from '@aboutbits/react-material-icons/dist/IconError'
 import {
   Controls,
-  Description,
   Markdown,
   Primary,
   Stories,
   Subheading,
   Title,
 } from '@storybook/addon-docs'
-import { Theme } from '../../../../.storybook/components'
 import { Meta, StoryObj } from '@storybook/react'
+import { Theme } from '../../../../.storybook/components'
 import { Tone } from '../../types'
-import React from 'react'
+import { ContentMessage } from './ContentMessage'
 
 const meta = {
   component: ContentMessage,
@@ -79,7 +77,7 @@ export const Tones: Story = {
     <div className="flex flex-row gap-2">
       <ContentMessage {...args} tone={Tone.Primary} title="Primary" />
       <ContentMessage {...args} tone={Tone.Informative} title="Informative" />
-      <ContentMessage {...args} tone={Tone.Success} title={'Success'} />
+      <ContentMessage {...args} tone={Tone.Success} title="Success" />
       <ContentMessage {...args} tone={Tone.Warning} title="Warning" />
       <ContentMessage {...args} tone={Tone.Critical} title="Critical" />
     </div>

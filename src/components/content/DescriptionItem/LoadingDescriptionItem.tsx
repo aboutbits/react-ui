@@ -4,6 +4,9 @@ import { useTheme } from '../../../framework'
 import { LoadingBar } from '../../loading'
 import { DescriptionItem as DescriptionItem } from './DescriptionItem'
 
+/**
+ * This component is used to show a loading [DescriptionItem](/docs/components-content-descriptionitem--docs).
+ */
 export function LoadingDescriptionItem({
   className,
 }: {

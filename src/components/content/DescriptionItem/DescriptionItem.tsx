@@ -39,6 +39,20 @@ export type DescriptionItemProps = ClassNameProps & {
       }
   )
 
+/**
+ * The DescriptionItem displays read only information with HTML description list element (`dl`) tag.
+ *
+ * The `contentProps.alignVertical` option is useful to align the content to the input field when the component is placed inside a form.
+ *
+ * ### Subcomponents
+ *
+ * It is composed of the following components, which can also be used separately for custom purposes:
+ *
+ * - DescriptionItemContainer
+ * - DescriptionItemTitle
+ * - DescriptionItemContent
+ */
+
 export function DescriptionItem({
   title,
   className,
