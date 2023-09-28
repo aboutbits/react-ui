@@ -18,13 +18,8 @@ export type ContentMessageProps = ClassNameProps &
 
 /**
  *
- * @param className
- * @param icon
- * @param title
- * @param text
- * @param tone
- * @param iconProps
- * @constructor
+ * This component renders a message with icon in the given tone. It can
+ * be used to create a warning or error message inside a section.
  */
 export function ContentMessage({
   className,

@@ -1,5 +1,3 @@
-import { ContentArea } from './ContentArea'
-import { Theme } from '../../../../.storybook/components'
 import {
   Controls,
   Description,
@@ -9,6 +7,8 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
+import { Theme } from '../../../../.storybook/components'
+import { ContentArea } from './ContentArea'
 
 const meta = {
   component: ContentArea,
@@ -41,6 +41,7 @@ const meta = {
           <Subheading>Props</Subheading>
           <Controls />
           <Theme component="content" items={['area']} />
+          <Stories />
         </>
       ),
     },
