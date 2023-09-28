@@ -2,6 +2,7 @@ import {
   Controls,
   Description,
   Primary,
+  Stories,
   Subheading,
   Title,
 } from '@storybook/addon-docs'
@@ -40,6 +41,7 @@ const meta = {
           <Subheading>Props</Subheading>
           <Controls />
           <Theme component="content" items={['area']} />
+          <Stories />
         </>
       ),
     },

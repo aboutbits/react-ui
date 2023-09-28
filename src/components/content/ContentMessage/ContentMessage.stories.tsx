@@ -3,7 +3,7 @@ import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import IconError from '@aboutbits/react-material-icons/dist/IconError'
 import {
   Controls,
-  Markdown,
+  Description,
   Primary,
   Stories,
   Subheading,
@@ -42,10 +42,7 @@ const meta = {
       page: () => (
         <>
           <Title />
-          <Markdown>
-            This component renders a message with icon in the given tone. It can
-            be used to create a warning or error message inside a section.
-          </Markdown>
+          <Description />
           <Subheading>Subcomponents</Subheading>
           It is composed of the following components, which can also be used
           separately for custom purposes:
