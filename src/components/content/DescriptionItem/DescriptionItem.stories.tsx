@@ -1,4 +1,3 @@
-import { DescriptionItem } from './DescriptionItem'
 import {
   Controls,
   Description,
@@ -7,9 +6,10 @@ import {
   Subheading,
   Title,
 } from '@storybook/addon-docs'
-import { Theme } from '../../../../.storybook/components'
 import { Meta, StoryObj } from '@storybook/react'
+import { Theme } from '../../../../.storybook/components'
 import { Section, SectionContainer, SectionContent } from '../../section'
+import { DescriptionItem } from './DescriptionItem'
 
 const meta = {
   component: DescriptionItem,

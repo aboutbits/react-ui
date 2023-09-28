@@ -3,7 +3,8 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "module": "esnext",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "jsx": "react"
   },
   "exclude": ["node_modules", "dist"],
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", ".storybook/**/*"]
