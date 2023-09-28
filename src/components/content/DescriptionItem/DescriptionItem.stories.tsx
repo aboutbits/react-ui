@@ -24,6 +24,14 @@ const meta = {
         <>
           <Title />
           <Description />
+          <Subheading>Subcomponents</Subheading>
+          It is composed of the following components, which can also be used
+          separately for custom purposes:
+          <ul>
+            <li>DescriptionItemContainer</li>
+            <li>DescriptionItemTitle</li>
+            <li>DescriptionItemContent</li>
+          </ul>
           <Primary />
           <Subheading>Props</Subheading>
           <Controls />
