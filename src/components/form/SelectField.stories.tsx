@@ -7,18 +7,33 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
-import { FieldSetField } from './FieldSetField'
+import { SelectField } from './SelectField'
+import { Option } from './primitive/Option'
 import { Status } from './types'
 
+const children = (
+  <>
+    <Option value="admin"> Admin </Option>
+    <Option value="user"> User </Option>
+  </>
+)
+
 const meta = {
-  component: FieldSetField,
+  component: SelectField,
   args: {
-    label: 'Label',
-    children: 'FieldSet Content',
+    label: 'Role',
+    message: 'Your role inside the department',
+    children,
   },
   argTypes: {
     disabled: { type: 'boolean' },
     children: { control: { disable: true } },
+    status: {
+      options: ['undefined', 'invalid'],
+      mapping: { undefined, invalid: Status.Invalid },
+    },
+    required: { type: 'boolean' },
+    hideRequired: { type: 'boolean' },
   },
   parameters: {
     docs: {
@@ -34,7 +49,7 @@ const meta = {
       ),
     },
   },
-} satisfies Meta<typeof FieldSetField>
+} satisfies Meta<typeof SelectField>
 
 export default meta
 
@@ -42,10 +57,21 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
 
-export const WithMessage: Story = {
+export const WithLabel: Story = {
   args: {
     label: 'Label',
-    children: <>FieldSet Content</>,
+  },
+}
+
+export const WithMessage: Story = {
+  args: {
+    message: 'This is the message',
+  },
+}
+
+export const WithLabelAndMessage: Story = {
+  args: {
+    label: 'Label',
     message: 'This is the message',
   },
 }
@@ -54,8 +80,7 @@ export const StatusInvalid: Story = {
   args: {
     label: 'Label',
     message: 'This is the message',
-    status: Status.Invalid,
-    children: <>FieldSet Content</>,
+    status: Status.Invalid, // Assuming Status is defined or imported
   },
 }
 
@@ -64,6 +89,5 @@ export const Disabled: Story = {
     label: 'Label',
     message: 'This is the message',
     disabled: true,
-    children: <>FieldSet Content</>,
   },
 }

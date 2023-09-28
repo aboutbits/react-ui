@@ -7,18 +7,17 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
-import { FieldSetField } from './FieldSetField'
+import { ToggleSwitchField } from './ToggleSwitchField'
 import { Status } from './types'
 
 const meta = {
-  component: FieldSetField,
+  component: ToggleSwitchField,
   args: {
-    label: 'Label',
-    children: 'FieldSet Content',
+    label: 'Airplane mode',
   },
   argTypes: {
     disabled: { type: 'boolean' },
-    children: { control: { disable: true } },
+    required: { type: 'boolean' },
   },
   parameters: {
     docs: {
@@ -34,18 +33,17 @@ const meta = {
       ),
     },
   },
-} satisfies Meta<typeof FieldSetField>
+} satisfies Meta<typeof ToggleSwitchField>
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof ToggleSwitchField>
 
 export const Default: Story = {}
 
 export const WithMessage: Story = {
   args: {
     label: 'Label',
-    children: <>FieldSet Content</>,
     message: 'This is the message',
   },
 }
@@ -55,7 +53,6 @@ export const StatusInvalid: Story = {
     label: 'Label',
     message: 'This is the message',
     status: Status.Invalid,
-    children: <>FieldSet Content</>,
   },
 }
 
@@ -64,6 +61,5 @@ export const Disabled: Story = {
     label: 'Label',
     message: 'This is the message',
     disabled: true,
-    children: <>FieldSet Content</>,
   },
 }

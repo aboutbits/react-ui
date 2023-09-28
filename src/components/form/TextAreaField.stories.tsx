@@ -7,18 +7,21 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
-import { FieldSetField } from './FieldSetField'
-import { Status } from './types'
+import { Mode } from '../types'
+import { TextAreaField } from './TextAreaField'
+import { FormVariant, Status } from './types'
 
 const meta = {
-  component: FieldSetField,
+  component: TextAreaField,
   args: {
-    label: 'Label',
-    children: 'FieldSet Content',
+    mode: Mode.Light,
+    variant: FormVariant.Solid,
+    disabled: false,
+    rows: 4,
   },
   argTypes: {
-    disabled: { type: 'boolean' },
-    children: { control: { disable: true } },
+    required: { type: 'boolean' },
+    hideRequired: { type: 'boolean' },
   },
   parameters: {
     docs: {
@@ -34,7 +37,7 @@ const meta = {
       ),
     },
   },
-} satisfies Meta<typeof FieldSetField>
+} satisfies Meta<typeof TextAreaField>
 
 export default meta
 
@@ -42,10 +45,21 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
 
-export const WithMessage: Story = {
+export const WithLabel: Story = {
   args: {
     label: 'Label',
-    children: <>FieldSet Content</>,
+  },
+}
+
+export const WithMessage: Story = {
+  args: {
+    message: 'This is the message',
+  },
+}
+
+export const WithLabelAndMessage: Story = {
+  args: {
+    label: 'Label',
     message: 'This is the message',
   },
 }
@@ -55,7 +69,6 @@ export const StatusInvalid: Story = {
     label: 'Label',
     message: 'This is the message',
     status: Status.Invalid,
-    children: <>FieldSet Content</>,
   },
 }
 
@@ -64,6 +77,5 @@ export const Disabled: Story = {
     label: 'Label',
     message: 'This is the message',
     disabled: true,
-    children: <>FieldSet Content</>,
   },
 }
