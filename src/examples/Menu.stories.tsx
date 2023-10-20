@@ -39,8 +39,10 @@ const meta = {
         <div className="h-screen overflow-y-scroll border-2" tabIndex={-1}>
           <div className="flex h-[100rem] items-center justify-center">
             <div>
-              Nested container
-              <div className="overflow-hidden border-2 p-10">
+              <div className="px-4">
+                Container with &quot;overflow: hidden&quot;
+              </div>
+              <div className="mx-4 flex items-center justify-center overflow-hidden border-2 p-8">
                 <div ref={elementRef}>
                   <Story />
                 </div>
