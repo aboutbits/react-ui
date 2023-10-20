@@ -36,10 +36,15 @@ const meta = {
       }, [])
 
       return (
-        <div className="h-96 overflow-y-scroll border-2" tabIndex={-1}>
-          <div className="flex h-[70rem] items-center justify-center">
-            <div ref={elementRef}>
-              <Story />
+        <div className="h-screen overflow-y-scroll border-2" tabIndex={-1}>
+          <div className="flex h-[100rem] items-center justify-center">
+            <div>
+              Nested container
+              <div className="overflow-hidden border-2 p-10">
+                <div ref={elementRef}>
+                  <Story />
+                </div>
+              </div>
             </div>
           </div>
         </div>

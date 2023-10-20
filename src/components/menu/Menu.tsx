@@ -1,6 +1,12 @@
 import { Menu as HeadlessMenu } from '@headlessui/react'
 import { Fragment, ReactElement, ReactNode, ReactPortal } from 'react'
-import { autoUpdate, useFloating, flip, offset } from '@floating-ui/react'
+import {
+  autoUpdate,
+  useFloating,
+  flip,
+  offset,
+  FloatingPortal,
+} from '@floating-ui/react'
 import classNames from 'classnames'
 import { useTheme } from '../../framework'
 import { remToPx } from '../util/remToPx'
@@ -74,13 +80,17 @@ export function Menu({ className, children, button, placement }: MenuProps) {
                 })
               : button}
           </HeadlessMenu.Button>
-          <HeadlessMenu.Items
-            ref={refs.setFloating}
-            className={menu.list.base}
-            style={floatingStyles}
-          >
-            {children}
-          </HeadlessMenu.Items>
+          {open && (
+            <FloatingPortal>
+              <HeadlessMenu.Items
+                ref={refs.setFloating}
+                className={menu.list.base}
+                style={floatingStyles}
+              >
+                {children}
+              </HeadlessMenu.Items>
+            </FloatingPortal>
+          )}
         </>
       )}
     </HeadlessMenu>
