@@ -36,10 +36,17 @@ const meta = {
       }, [])
 
       return (
-        <div className="h-96 overflow-y-scroll border-2" tabIndex={-1}>
-          <div className="flex h-[70rem] items-center justify-center">
-            <div ref={elementRef}>
-              <Story />
+        <div className="h-screen overflow-y-scroll border-2" tabIndex={-1}>
+          <div className="flex h-[100rem] items-center justify-center">
+            <div>
+              <div className="px-4">
+                Container with &quot;overflow: hidden&quot;
+              </div>
+              <div className="mx-4 flex items-center justify-center overflow-hidden border-2 p-8">
+                <div ref={elementRef}>
+                  <Story />
+                </div>
+              </div>
             </div>
           </div>
         </div>
