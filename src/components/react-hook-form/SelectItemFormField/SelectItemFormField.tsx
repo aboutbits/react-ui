@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { useController } from 'react-hook-form'
 import { DialogProps } from '../../dialog'
 import { FormVariantProps } from '../../form'
@@ -90,6 +90,14 @@ export function SelectItemFormField<
   const [selectedItem, setSelectedItem] = useState<Item | null>(
     initialItem ?? null,
   )
+
+  useEffect(() => {
+    if (!field.value) {
+      setSelectedItem(null)
+    } else if (initialItem && field.value === extractIdFromItem(initialItem)) {
+      setSelectedItem(initialItem)
+    }
+  }, [field.value, initialItem, extractIdFromItem])
 
   return (
     <>
