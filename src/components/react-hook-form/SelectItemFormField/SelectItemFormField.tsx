@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 import { useController } from 'react-hook-form'
 import { DialogProps } from '../../dialog'
 import { FormVariantProps } from '../../form'
@@ -84,6 +84,8 @@ export function SelectItemFormField<
   required,
   hideRequired,
 }: SelectItemFormFieldProps<Item, SelectedItem, ItemId, Error>) {
+  const initialItemRef = useRef(initialItem)
+
   const { field, fieldState } = useController({ name })
 
   const [showDialog, setShowDialog] = useState<boolean>(false)
@@ -94,10 +96,13 @@ export function SelectItemFormField<
   useEffect(() => {
     if (field.value === null || field.value === undefined) {
       setSelectedItem(null)
-    } else if (initialItem && field.value === extractIdFromItem(initialItem)) {
-      setSelectedItem(initialItem)
+    } else if (
+      initialItemRef.current &&
+      field.value === extractIdFromItem(initialItemRef.current)
+    ) {
+      setSelectedItem(initialItemRef.current)
     }
-  }, [field.value, initialItem, extractIdFromItem])
+  }, [field.value, extractIdFromItem])
 
   return (
     <>
