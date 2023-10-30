@@ -92,7 +92,7 @@ export function SelectItemFormField<
   )
 
   useEffect(() => {
-    if (!field.value) {
+    if (field.value === null || field.value === undefined) {
       setSelectedItem(null)
     } else if (initialItem && field.value === extractIdFromItem(initialItem)) {
       setSelectedItem(initialItem)
