@@ -71,7 +71,7 @@ jobs:
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
-          vercel-project-id: prj_LzxUR2ScPhpdn1e9JCwTSNXLoNFH
+          vercel-project-id: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
       - uses: aboutbits/github-actions-vercel/link-domain@v1
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
