@@ -471,6 +471,7 @@ export default {
       },
       icon: {
         base: 'h-5 w-5',
+        disabled: 'fill-current',
       },
     },
     form: 'flex-1',

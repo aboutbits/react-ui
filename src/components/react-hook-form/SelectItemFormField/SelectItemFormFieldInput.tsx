@@ -71,11 +71,16 @@ export function SelectItemFormFieldInput<
 
   return (
     <div ref={componentRef} className={className}>
-      <InputLabel htmlFor={id} showRequired={required && !hideRequired}>
+      <InputLabel
+        htmlFor={id}
+        showRequired={required && !hideRequired}
+        disabled={disabled}
+      >
         {label}
       </InputLabel>
       {selectedItem === null ? (
         <button
+          disabled={disabled}
           type="button"
           id={id}
           onClick={() => {
@@ -94,7 +99,10 @@ export function SelectItemFormFieldInput<
           </span>
           <span className={form.selectItem.input.iconContainer.base}>
             <IconKeyboardArrowDown
-              className={form.selectItem.input.icon.base}
+              className={classNames(
+                form.selectItem.input.icon.base,
+                disabled && form.selectItem.input.icon.disabled,
+              )}
             />
           </span>
         </button>
@@ -109,6 +117,7 @@ export function SelectItemFormFieldInput<
           )}
         >
           <button
+            disabled={disabled}
             type="button"
             id={id}
             onClick={() => {
@@ -119,6 +128,7 @@ export function SelectItemFormFieldInput<
             <span>{renderItem(selectedItem)}</span>
           </button>
           <button
+            disabled={disabled}
             type="button"
             onClick={() => {
               onClear()
@@ -131,7 +141,10 @@ export function SelectItemFormFieldInput<
             )}
           >
             <IconClose
-              className={form.selectItem.input.icon.base}
+              className={classNames(
+                form.selectItem.input.icon.base,
+                disabled && form.selectItem.input.icon.disabled,
+              )}
               title={messages['select.clear']}
             />
           </button>
