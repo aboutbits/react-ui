@@ -1,7 +1,15 @@
-import { ReactElement } from 'react'
 import { PaginationRouter, PaginationRouterProps } from '../../pagination'
-import { SectionFooterArea } from './SectionFooterArea'
+import { SectionFooterArea, SectionFooterAreaProps } from './SectionFooterArea'
 
+export type SectionFooterWithPaginationRouterProps = Pick<
+  SectionFooterAreaProps,
+  'variant'
+> &
+  PaginationRouterProps
+
+/**
+ * This component can conveniently be used to add a pagination with a section footer. This component leverages on [SectionFooter](/docs/components-section-sectionfooter--section-footer--docs) and [PaginationRouter](/docs/components-pagination-paginationrouter--docs).
+ */
 export function SectionFooterWithPaginationRouter({
   page,
   size,
@@ -9,13 +17,14 @@ export function SectionFooterWithPaginationRouter({
   config,
   className,
   linkProps,
-}: PaginationRouterProps): ReactElement | null {
+  variant,
+}: SectionFooterWithPaginationRouterProps) {
   if (total <= size) {
     return null
   }
 
   return (
-    <SectionFooterArea>
+    <SectionFooterArea variant={variant}>
       <PaginationRouter
         page={page}
         size={size}

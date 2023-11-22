@@ -1,5 +1,6 @@
 import { Size } from '../types'
 import { SectionContentLayout } from './Section/SectionContent/types'
+import { SectionFooterVariant } from './SectionFooter/types'
 import { SectionHeaderRowLayout } from './SectionHeader/SectionHeaderRow/types'
 import { SectionHeaderSpacerSize } from './SectionHeader/SectionHeaderSpacer/types'
 
@@ -77,7 +78,9 @@ export default {
     },
   },
   footerArea: {
-    base: 'px-4 md:px-6 py-4 bg-neutral-100 border-t border-neutral-200 text-xs',
+    base: 'px-4 md:px-6 py-4 text-xs',
+    [SectionFooterVariant.Solid]: 'bg-neutral-100 border-t border-neutral-200',
+    [SectionFooterVariant.Transparent]: '',
   },
   loading: {
     listItem: {
