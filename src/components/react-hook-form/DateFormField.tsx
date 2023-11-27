@@ -75,7 +75,7 @@ export const DateFormField = forwardRef(function DateFormField<
 })
 
 export function formatDateForDateInput(date: Date): string {
-  const year = date.getFullYear()
+  const year = `${date.getFullYear()}`.padStart(4, '0')
   const month = `${date.getMonth() + 1}`.padStart(2, '0')
   const day = `${date.getDate()}`.padStart(2, '0')
 
