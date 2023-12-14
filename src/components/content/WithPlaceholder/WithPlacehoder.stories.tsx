@@ -21,7 +21,6 @@ const children = {
 }
 
 const meta = {
-  title: 'Components/Content/WithPlaceHolder',
   component: WithPlaceholder,
   args: {
     placeholder: '-',
