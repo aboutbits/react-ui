@@ -2,7 +2,7 @@ name: Preview
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, reopened, synchronize, closed]
 
 env:
   NODE_VERSION: 16
@@ -16,6 +16,7 @@ jobs:
   checks:
     runs-on: ubuntu-22.04
     timeout-minutes: 10
+    if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'synchronize' }}
     steps:
       - uses: actions/checkout@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v1
@@ -31,6 +32,7 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     timeout-minutes: 10
+    if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'synchronize' }}
     steps:
       - uses: actions/checkout@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v1
@@ -43,7 +45,7 @@ jobs:
   comment-link:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
-    if: ${{ github.event.action == 'opened' }}
+    if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' }}
     steps:
       - uses: actions/github-script@v6
         with:
@@ -58,6 +60,7 @@ jobs:
   deploy-preview:
     runs-on: ubuntu-22.04
     timeout-minutes: 20
+    if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'synchronize' }}
     needs:
       - checks
       - test
@@ -77,4 +80,19 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-scope: aboutbits
           deployment-domain: ${{ steps.deploy.outputs.url }}
+          preview-domain: ${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}
+
+  unlink-domain:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    if: ${{ github.event.action == 'closed' }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: aboutbits/github-actions-node/setup-and-install@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: aboutbits/github-actions-vercel/unlink-domain@v1
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-scope: ${{ env.VERCEL_SCOPE }}
           preview-domain: ${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}
