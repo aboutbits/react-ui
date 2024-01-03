@@ -12,7 +12,7 @@ env:
   PREVIEW_DOMAIN: react-ui.aboutbits.dev
 
 concurrency:
-  group: ${{ github.ref }}
+  group: ${{ github.ref }}-preview
   cancel-in-progress: true
 
 jobs:
