@@ -6,6 +6,9 @@ on:
 
 env:
   NODE_VERSION: 16
+  VERCEL_SCOPE: aboutbits
+  VERCEL_ORGANIZATION_ID: team_e2WfHoRuw9BQVW7oYmMSKRJ6
+  VERCEL_PROJECT_ID: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
   PREVIEW_DOMAIN: react-ui.aboutbits.dev
 
 concurrency:
@@ -73,12 +76,12 @@ jobs:
         uses: aboutbits/github-actions-vercel/deploy@v1
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-organization-id: team_e2WfHoRuw9BQVW7oYmMSKRJ6
-          vercel-project-id: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
+          vercel-organization-id: ${{ env.VERCEL_ORGANIZATION_ID }}
+          vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}
       - uses: aboutbits/github-actions-vercel/link-domain@v1
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-scope: aboutbits
+          vercel-scope: ${{ env.VERCEL_SCOPE }}
           deployment-domain: ${{ steps.deploy.outputs.url }}
           preview-domain: ${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}
 
