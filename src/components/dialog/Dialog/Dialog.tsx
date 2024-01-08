@@ -1,6 +1,6 @@
 import { Dialog as HeadlessDialog } from '@headlessui/react'
 import classNames from 'classnames'
-import { ReactElement, useRef } from 'react'
+import { MutableRefObject, ReactElement, useRef } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 import { DialogContext } from '../DialogContext'
@@ -9,7 +9,7 @@ import { DialogPosition, DialogSize } from '../types'
 export type DialogProps = ClassNameProps & {
   isOpen?: boolean
   onDismiss?: () => void
-  initialFocusRef?: React.RefObject<HTMLDivElement>
+  initialFocusRef?: MutableRefObject<HTMLElement | null>
   size?: DialogSize
   children?: ReactElement
   mobilePosition?: DialogPosition
@@ -32,8 +32,8 @@ export function Dialog({
   ...props
 }: DialogProps): ReactElement {
   const { dialog } = useTheme()
-  const nullRef = useRef<HTMLDivElement>(null)
-  const initialFocusRef = initialFocusRefProp ?? nullRef
+  const panelRef = useRef<HTMLDivElement>(null)
+  const initialFocusRef = initialFocusRefProp ?? panelRef
 
   return (
     <DialogContext.Provider value={{ size }}>
@@ -50,7 +50,7 @@ export function Dialog({
         {...props}
       >
         <HeadlessDialog.Panel
-          ref={initialFocusRef}
+          ref={panelRef}
           aria-label={ariaLabel}
           className={classNames(
             dialog.dialog.base,
