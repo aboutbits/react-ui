@@ -1,6 +1,5 @@
-import { useDebounce } from '@aboutbits/react-toolbox'
 import {
-  ChangeEventHandler,
+  ChangeEvent,
   useCallback,
   useEffect,
   useMemo,
@@ -39,19 +38,7 @@ export function useFilter<TElement extends HTMLElement & { value: unknown }>() {
     }, [])
 
     const settingNewValueRef = useRef(false)
-
-    const [internalValue, setInternalValue] = useState(value)
-    const debouncedInternalValue = useDebounce(internalValue, debounceInterval)
-    const oldDebouncedInternalValueRef = useRef<TValue>()
-
-    useEffect(() => {
-      // Check that the debounced value is new, because `setValue` might not be reference stable and trigger this effect even though the debounced value did not change
-      if (debouncedInternalValue !== oldDebouncedInternalValueRef.current) {
-        oldDebouncedInternalValueRef.current = debouncedInternalValue
-        setValue(debouncedInternalValue)
-        settingNewValueRef.current = false
-      }
-    }, [debouncedInternalValue, setValue])
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
     useEffect(() => {
       if (element && !settingNewValueRef.current) {
@@ -59,10 +46,22 @@ export function useFilter<TElement extends HTMLElement & { value: unknown }>() {
       }
     }, [value, element])
 
-    const onChange: ChangeEventHandler<TElement> = (e) => {
-      settingNewValueRef.current = true
-      setInternalValue(e.target.value as TValue)
-    }
+    const onChange = useCallback(
+      (e: ChangeEvent<TElement>) => {
+        settingNewValueRef.current = true
+
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current)
+          timeoutRef.current = null
+        }
+
+        timeoutRef.current = setTimeout(() => {
+          setValue(e.target.value as TValue)
+          settingNewValueRef.current = false
+        }, debounceInterval)
+      },
+      [debounceInterval, setValue],
+    )
 
     return {
       ref: elementRef,
