@@ -29,8 +29,8 @@
   },
   "homepage": "https://react-ui.aboutbits.it",
   "engines": {
-    "npm": "^8 || ^9",
-    "node": "^16 || ^18"
+    "npm": "^8",
+    "node": "^16"
   },
   "scripts": {
     "dev": "storybook dev -p 4000 --no-open",

@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  NODE_VERSION: 16
+  NODE_VERSION: 20
 
 concurrency:
   group: ${{ github.ref }}
@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
-      - uses: aboutbits/github-actions-node/setup-and-install@v1
+      - uses: actions/checkout@v4
+      - uses: aboutbits/github-actions-node/setup-and-install@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Lint
@@ -32,8 +32,8 @@ jobs:
     runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
-      - uses: aboutbits/github-actions-node/setup-and-install@v1
+      - uses: actions/checkout@v4
+      - uses: aboutbits/github-actions-node/setup-and-install@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Test
@@ -48,8 +48,8 @@ jobs:
       - checks
       - test
     steps:
-      - uses: actions/checkout@v3
-      - uses: aboutbits/github-actions-node/setup-and-install@v1
+      - uses: actions/checkout@v4
+      - uses: aboutbits/github-actions-node/setup-and-install@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
       - uses: aboutbits/github-actions-vercel/deploy@v1
