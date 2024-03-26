@@ -111,7 +111,7 @@ export function PaginationInMemory({
             <PaginationPagesListItem key={page.indexNumber}>
               <SectionPaginationInMemoryButton
                 aria-current={page.isCurrent ? 'page' : false}
-                aria-label={`${messages['pagination.page']} ${page.displayNumber}`}
+                aria-label={`${messages['pagination.page']} ${page.displayNumber.toString()}`}
                 className={classNames(
                   paginationTheme.page.number,
                   page.isCurrent ? paginationTheme.page.current : '',

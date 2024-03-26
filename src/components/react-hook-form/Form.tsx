@@ -42,7 +42,7 @@ export const Form = forwardRef(function Form<
       <form
         {...props}
         ref={ref}
-        onSubmit={onSubmit ? form.handleSubmit(onSubmit) : undefined}
+        onSubmit={onSubmit ? void form.handleSubmit(onSubmit) : undefined}
       >
         {children}
       </form>

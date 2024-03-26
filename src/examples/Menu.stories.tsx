@@ -2,9 +2,14 @@ import { action } from '@storybook/addon-actions'
 import { Meta, StoryFn } from '@storybook/react'
 import { Primary, Title, Markdown } from '@storybook/addon-docs'
 import { useEffect, useRef, useState } from 'react'
-import { Button, ButtonVariant } from '../components/button'
-import { Menu, MenuItem, MenuPlacement } from '../components/menu'
-import { Tone } from '../components'
+import {
+  Tone,
+  Menu,
+  MenuItem,
+  MenuPlacement,
+  Button,
+  ButtonVariant,
+} from '../components'
 
 const meta = {
   component: Menu,

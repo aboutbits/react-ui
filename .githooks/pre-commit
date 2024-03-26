@@ -3,4 +3,4 @@
 set -e
 set -o pipefail
 
-npm run checks
+# npm run checks

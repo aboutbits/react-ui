@@ -1,6 +1,8 @@
 import { act, renderHook, waitFor } from '@testing-library/react'
-import { useForm } from 'react-hook-form'
+import { FieldValues, useForm } from 'react-hook-form'
 import { vi } from 'vitest'
+import { undefined } from 'zod'
+import { AxiosError, AxiosHeaders } from 'axios'
 import { defaultMessages } from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleSubmit } from '../useHandleSubmit'
 
@@ -17,13 +19,35 @@ const getPromiseState = async (
 describe('useHandleSubmit', () => {
   const submitAction = () => new Promise((resolve) => setTimeout(resolve, 10))
 
-  const onSuccess = () => undefined
+  const onSuccess = ({
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    response,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    values,
+  }: {
+    response: unknown
+    values: FieldValues
+  }) => {}
 
-  const expectedErrorMessage = 'Server Error'
-  const axiosError = {
-    isAxiosError: true,
-    response: { data: { message: expectedErrorMessage } },
+  const headers = new AxiosHeaders()
+  const config = {
+    url: 'http://localhost:3000',
+    headers,
   }
+  const expectedErrorMessage = 'Server Error'
+  const axiosError = new AxiosError(
+    'Error',
+    '400',
+    config,
+    { path: '/test' },
+    {
+      status: 400,
+      data: { message: expectedErrorMessage },
+      statusText: 'ok',
+      config,
+      headers,
+    },
+  )
 
   const onDeleteWithErrorResponse = () =>
     new Promise((_resolve, reject) =>
@@ -35,16 +59,14 @@ describe('useHandleSubmit', () => {
   const onDeleteWithUnexpectedError = () =>
     new Promise((_resolve, reject) =>
       setTimeout(() => {
-        reject({
-          message: 'The request did not reach the server',
-        })
+        reject(new Error('The request did not reach the server'))
       }, 10),
     )
 
   const onDeleteWithoutErrorResponse = () =>
     new Promise((_resolve, reject) =>
       setTimeout(() => {
-        reject()
+        reject(new Error())
       }, 10),
     )
 
@@ -222,7 +244,7 @@ describe('useHandleSubmit', () => {
 
     const onSubmitResult = await act(() => hookResult.current.triggerSubmit({}))
 
-    expect(onSubmitResult).toEqual(undefined)
+    expect(onSubmitResult).toBeUndefined()
   })
 
   test('onSubmit should throw on error if option is set', async () => {

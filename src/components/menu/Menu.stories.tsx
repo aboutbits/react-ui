@@ -96,8 +96,8 @@ export const WithCustomButton: Story = {
           .map((item) => (
             <MenuItem
               key={item}
-              onClick={action(`onClick(${item})`)}
-            >{`Menu item ${item}`}</MenuItem>
+              onClick={action(`onClick(${item.toString()})`)}
+            >{`Menu item ${item.toString()}`}</MenuItem>
           ))}
       </Menu>
     )
@@ -128,8 +128,8 @@ export const WithCustomButtonAndArrow: Story = {
                 ? 'rotate-180 transform'
                 : ''
               : open
-              ? ''
-              : 'rotate-180 transform',
+                ? ''
+                : 'rotate-180 transform',
           )}
         />
       </MenuButton>

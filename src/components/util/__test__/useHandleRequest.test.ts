@@ -1,5 +1,6 @@
 import { act, renderHook, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
+import { AxiosError, AxiosHeaders } from 'axios'
 import { defaultMessages } from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleRequest } from '../useHandleRequest'
 
@@ -14,17 +15,56 @@ describe('useHandleRequest', () => {
   const onRequestWithErrorResponse = () =>
     new Promise((_resolve, reject) =>
       setTimeout(() => {
-        reject({
-          isAxiosError: true,
-          response: { data: { message: expectedErrorMessage } },
-        })
+        const headers = new AxiosHeaders()
+        const config = {
+          url: 'http://localhost:3000',
+          headers,
+        }
+
+        reject(
+          new AxiosError(
+            'Error',
+            '400',
+            config,
+            { path: '/test' },
+            {
+              status: 400,
+              data: {
+                message: expectedErrorMessage,
+              },
+              statusText: 'ok',
+              config,
+              headers,
+            },
+          ),
+        )
       }, 10),
     )
 
   const onRequestWithoutErrorResponse = () =>
     new Promise((_resolve, reject) =>
       setTimeout(() => {
-        reject()
+        const headers = new AxiosHeaders()
+        const config = {
+          url: 'http://localhost:3000',
+          headers,
+        }
+
+        reject(
+          new AxiosError(
+            'Error',
+            '400',
+            config,
+            { path: '/test' },
+            {
+              status: 400,
+              data: {},
+              statusText: 'ok',
+              config,
+              headers,
+            },
+          ),
+        )
       }, 10),
     )
 

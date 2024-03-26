@@ -33,6 +33,7 @@ function genId() {
 
 // eslint-disable-next-line
 const maybeReactUseId: undefined | (() => string) = (React as any)[
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   'useId'.toString()
 ]
 

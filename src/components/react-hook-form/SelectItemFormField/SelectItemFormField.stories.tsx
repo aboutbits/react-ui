@@ -114,7 +114,7 @@ const useGetDataSuccess = ({
           .map((index): User => {
             return {
               id: index,
-              name: `User ${index}`,
+              name: `User ${index.toString()}`,
             }
           })
           .filter((user) => {

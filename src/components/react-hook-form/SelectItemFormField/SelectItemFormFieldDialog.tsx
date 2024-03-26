@@ -3,7 +3,7 @@ import { AsyncView } from '@aboutbits/react-toolbox'
 import { ReactElement, ReactNode } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { IndexType } from '@aboutbits/pagination'
-import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/routers/inMemory'
+import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/cjs/routers/inMemory'
 import { useInternationalization, useTheme } from '../../../framework'
 import {
   Dialog,
@@ -21,9 +21,9 @@ import {
   DialogPosition,
   DialogProps,
 } from '../../dialog'
-import { FormVariant } from '../../form/types'
+import { FormVariant } from '../../form'
 import { PaginationInMemoryProps } from '../../pagination'
-import { InputFormField } from '../../react-hook-form'
+import { InputFormField } from '../InputFormField'
 import { AutoSubmit } from '../AutoSubmit'
 
 type FilterParameters = {
