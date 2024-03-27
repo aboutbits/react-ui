@@ -110,6 +110,7 @@ describe('useHandleSubmit', () => {
 
     const onSuccess = vi.fn(() => undefined)
     const { result } = renderHook(() =>
+      // @ts-expect-error The mock function has not the right type
       useHandleSubmit(form.current, submitAction, { onSuccess }),
     )
 
@@ -138,7 +139,9 @@ describe('useHandleSubmit', () => {
     const onError = vi.fn(() => undefined)
     const { result } = renderHook(() =>
       useHandleSubmit(form.current, onDeleteWithErrorResponse, {
+        // @ts-expect-error The mock function has not the right type
         onSuccess,
+        // @ts-expect-error The mock function has not the right type
         onError,
       }),
     )
