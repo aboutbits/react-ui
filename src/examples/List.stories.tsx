@@ -60,7 +60,7 @@ function useMockedList(numberOfTotalItems: number) {
   return useMemo(
     () =>
       Array.from(Array(numberOfTotalItems).keys()).map((item, index) => ({
-        name: `User ${item + 1}`,
+        name: `User ${(item + 1).toString()}`,
         role: index % 8 === 0 ? 'ADMIN' : 'USER',
         department: index % 3 === 0 ? 'HR' : 'SALES',
       })),

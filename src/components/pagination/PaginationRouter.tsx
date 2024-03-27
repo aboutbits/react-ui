@@ -103,7 +103,7 @@ export function PaginationRouter({
                   size,
                 })}
                 aria-current={page.isCurrent ? 'page' : false}
-                aria-label={`${messages['pagination.page']} ${page.displayNumber}`}
+                aria-label={`${messages['pagination.page']} ${page.displayNumber.toString()}`}
                 className={classNames(
                   paginationTheme.page.base,
                   paginationTheme.page.number,

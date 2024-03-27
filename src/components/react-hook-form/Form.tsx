@@ -19,13 +19,15 @@ export type FormProps<
   TTransformedValues extends FieldValues | undefined = undefined,
 > = Omit<HTMLFormProps, 'onSubmit'> & {
   form: UseFormReturn<TFieldValues, TContext, TTransformedValues>
-  onSubmit?: TTransformedValues extends FieldValues
-    ? SubmitHandler<NoInfer<TTransformedValues>>
-    : SubmitHandler<NoInfer<TFieldValues>>
+  onSubmit?: TTransformedValues extends undefined
+    ? SubmitHandler<NoInfer<TFieldValues>>
+    : TTransformedValues extends FieldValues
+      ? SubmitHandler<NoInfer<TTransformedValues>>
+      : never
 }
 
 export const Form = forwardRef(function Form<
-  TFieldValues extends FieldValues,
+  TFieldValues extends FieldValues = FieldValues,
   TContext = unknown,
   TTransformedValues extends FieldValues | undefined = undefined,
 >(
@@ -42,7 +44,7 @@ export const Form = forwardRef(function Form<
       <form
         {...props}
         ref={ref}
-        onSubmit={onSubmit ? form.handleSubmit(onSubmit) : undefined}
+        onSubmit={onSubmit ? void form.handleSubmit(onSubmit) : undefined}
       >
         {children}
       </form>

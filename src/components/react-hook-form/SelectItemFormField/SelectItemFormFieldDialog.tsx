@@ -21,9 +21,9 @@ import {
   DialogPosition,
   DialogProps,
 } from '../../dialog'
-import { FormVariant } from '../../form/types'
+import { FormVariant } from '../../form'
 import { PaginationInMemoryProps } from '../../pagination'
-import { InputFormField } from '../../react-hook-form'
+import { InputFormField } from '../InputFormField'
 import { AutoSubmit } from '../AutoSubmit'
 
 type FilterParameters = {

@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { DefaultValues, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
+import { AxiosError, AxiosHeaders } from 'axios'
 import {
   ContentArea,
   DescriptionItem,
@@ -17,16 +18,12 @@ import {
   SectionContentLayout,
   SectionFooterWithSubmit,
   SectionHeader,
-} from '../components'
-import { Alert } from '../components/alert'
-import {
+  Alert,
   FieldSetField,
   FieldSetIndent,
   FormError,
   Option,
   ToggleSwitchLayout,
-} from '../components/form'
-import {
   CheckboxFormField,
   FieldSetFormField,
   Form,
@@ -39,8 +36,8 @@ import {
   TextAreaFormField,
   ToggleSwitchFormField,
   useHandleSubmit,
-} from '../components/react-hook-form'
-import { Tone } from '../components/types'
+  Tone,
+} from '../components'
 
 const meta = {
   component: Form,
@@ -112,7 +109,7 @@ const useGetData = ({
           .map(
             (index): Project => ({
               id: index,
-              name: `Project ${index}`,
+              name: `Project ${index.toString()}`,
             }),
           )
           .filter((project) =>
@@ -122,16 +119,12 @@ const useGetData = ({
     }, 1000)
   }, [search, page, size])
 
-  if (data === undefined) {
-    return {}
-  }
-
   return {
     data: {
-      items: data.slice(page * size, page * size + size),
+      items: data?.slice(page * size, page * size + size) ?? [],
       currentPage: page,
       perPage: size,
-      total: data.length,
+      total: data?.length ?? 0,
     },
   }
 }
@@ -197,21 +190,38 @@ export const UserEdit: Story = () => {
     return new Promise<void>((resolve, reject) =>
       setTimeout(() => {
         if (data.serverValidationErrors) {
-          reject({
-            isAxiosError: true,
-            response: {
-              data: {
-                message: 'Oops, something went wrong.',
-                errors: {
-                  'name.first': [
-                    'This is not a good name',
-                    'Please choose another name',
-                  ],
-                  bio: ['Please provide a better bio'],
+          const headers = new AxiosHeaders()
+          const config = {
+            url: 'http://localhost:3000',
+            headers,
+          }
+
+          reject(
+            new AxiosError(
+              'Error',
+              '400',
+              config,
+              { path: '/test' },
+              {
+                status: 400,
+                data: {
+                  data: {
+                    message: 'Oops, something went wrong.',
+                    errors: {
+                      'name.first': [
+                        'This is not a good name',
+                        'Please choose another name',
+                      ],
+                      bio: ['Please provide a better bio'],
+                    },
+                  },
                 },
+                statusText: 'ok',
+                config,
+                headers,
               },
-            },
-          })
+            ),
+          )
           return
         }
 
