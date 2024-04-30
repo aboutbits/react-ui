@@ -1,3 +1,5 @@
 export * from './SelectItemFormField'
 export * from './SelectItemFormFieldDialog'
 export * from './SelectItemFormFieldInput'
+export * from './SelectItemFormFieldInputV2'
+export * from './SelectItemFormFieldV2'
