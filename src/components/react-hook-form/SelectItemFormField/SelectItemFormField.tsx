@@ -26,6 +26,12 @@ export type SelectItemFormFieldProps<
   SelectItemFormFieldInputProps<Item, SelectedItem>,
   'name' | 'label' | 'placeholder' | 'disabled'
 > & {
+  /**
+   * The function to resolve an item by its id. This will be called when the programmatically set value is not the same as the initial item.
+   * When the function cannot resolve the item, it has to throw an error.
+   * Make sure to pass a stable reference to prevent unnecessary calls.
+   */
+  resolveItem?: (id: ItemId) => Item | Promise<Item>
   renderInputItem?: (item: Item) => ReactNode
   extractIdFromItem: (item: Item) => ItemId
   /**
@@ -69,6 +75,7 @@ export function SelectItemFormField<
   mode,
   variant,
   initialItem,
+  resolveItem,
   renderInputItem,
   label,
   placeholder,
@@ -93,16 +100,66 @@ export function SelectItemFormField<
     initialItem ?? null,
   )
 
+  const fieldValueRef = useRef(field.value as ItemId)
   useEffect(() => {
+    fieldValueRef.current = field.value as ItemId
+  }, [field.value])
+
+  // This effect is used to set the selected item when the field value changes (i.e. when the value is set programmatically with React Hook Form).
+  useEffect(() => {
+    if (selectedItem && extractIdFromItem(selectedItem) === field.value) {
+      return
+    }
+
+    // If the field value is null or undefined, we set the selected item to null.
     if (field.value === null || field.value === undefined) {
       setSelectedItem(null)
-    } else if (
+      return
+    }
+
+    // If the field value is the same as the initial item's id, we set the selected item to the initial item.
+    if (
       initialItemRef.current &&
       field.value === extractIdFromItem(initialItemRef.current)
     ) {
       setSelectedItem(initialItemRef.current)
+      return
     }
-  }, [field.value, extractIdFromItem])
+
+    // At this point, we don't know the selected item. We have to resolve it with the resolveItem callback.
+
+    if (!resolveItem) {
+      console.warn(
+        'SelectItemFormField: No resolveItem function provided. This is required to resolve the selected item.',
+      )
+      return
+    }
+
+    const fieldValueToBeResolved = field.value as ItemId
+
+    void (async () => {
+      try {
+        const item = await resolveItem(fieldValueToBeResolved)
+
+        // Make sure the field has not been changed in the meantime
+        if (fieldValueToBeResolved === fieldValueRef.current) {
+          // Make sure the resolved item is really the item that we want to set
+          if (extractIdFromItem(item) === fieldValueToBeResolved) {
+            setSelectedItem(item)
+          } else {
+            console.error(
+              'SelectItemFormField: The resolved item could not be set as the selected item. It does not have the same id as the field value.',
+            )
+          }
+        }
+      } catch (error) {
+        console.error(
+          'SelectItemFormField: Error while resolving the selected item.',
+          error,
+        )
+      }
+    })()
+  }, [field.value, selectedItem, extractIdFromItem, resolveItem])
 
   return (
     <>

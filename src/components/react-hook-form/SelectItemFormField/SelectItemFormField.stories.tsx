@@ -19,6 +19,7 @@ import {
 } from '../../../../.storybook/components'
 import { ErrorBody } from '../../util'
 import { Form } from '../Form'
+import { Button } from '../../button'
 import {
   SearchQueryParameters,
   PaginatedResponse,
@@ -40,9 +41,10 @@ const meta = {
     dialogTitle: 'Users',
     dialogLabel: 'Users',
     noSearchResults: 'No users available.',
-    extractIdFromItem: (item) => (item as User).id,
-    renderListItem: (item) => (item as User).name,
-    renderErrorMessage: (error) => (error as ErrorBody).message,
+    resolveItem,
+    extractIdFromItem: (item) => item.id,
+    renderListItem: (item) => item.name,
+    renderErrorMessage: (error) => error.message,
     paginationConfig: { indexType: IndexType.ZERO_BASED },
     dialogProps: { overlayClassName: 'z-10' },
   },
@@ -56,16 +58,26 @@ const meta = {
       })
       type Person = z.infer<typeof personSchema>
       const defaultPerson: DefaultValues<Person> = {
-        userId: (context.args.initialItem as User | undefined)?.id,
+        userId: context.args.initialItem?.id,
       }
       const form = useForm({
         resolver: zodResolver(personSchema),
         defaultValues: defaultPerson,
       })
       return (
-        <Form form={form} onSubmit={action('onSubmit')}>
-          <Story />
-        </Form>
+        <>
+          <Form form={form} onSubmit={action('onSubmit')}>
+            <Story />
+          </Form>
+          <Button
+            className="mt-4"
+            onClick={() => {
+              form.setValue('userId', 999)
+            }}
+          >
+            Set to `User 999`
+          </Button>
+        </>
       )
     },
   ],
@@ -91,10 +103,10 @@ const meta = {
       ),
     },
   },
-} satisfies Meta<typeof SelectItemFormField>
+} satisfies Meta<typeof SelectItemFormField<User, User, number, ErrorBody>>
 
 export default meta
-type Story = StoryObj<typeof SelectItemFormField>
+type Story = StoryObj<typeof meta>
 
 const useGetDataSuccess = ({
   search,
@@ -168,6 +180,17 @@ const useGetDataEmpty = ({
       total: 0,
     },
   }
+}
+
+function resolveItem(id: number): Promise<User> {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      resolve({
+        id,
+        name: `User ${id.toString()}`,
+      })
+    }, 200),
+  )
 }
 
 export const Default: Story = {
