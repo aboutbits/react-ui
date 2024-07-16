@@ -48,7 +48,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
     size,
   })
   const radioLabelCss = useRadioLabelCss({ mode, size, disabled })
-  const radioInputCss = useRadioInputCss({ size })
+  const radioInputCss = useRadioInputCss({ size, disabled })
 
   return (
     <label className={classNames(radioCss, className)}>

@@ -270,7 +270,9 @@ export default {
       },
     },
     input: {
-      base: 'peer absolute h-0 w-0 opacity-0 cursor-pointer',
+      base: 'peer absolute h-0 w-0 opacity-0',
+      normal: 'cursor-pointer',
+      disabled: '',
       size: {
         [Size.Sm]: 'h-4 w-4',
         [Size.Md]: 'h-5 w-5',
