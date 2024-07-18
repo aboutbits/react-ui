@@ -229,14 +229,24 @@ export function useRadioLabelCss({
   )
 }
 
-export function useRadioInputCss({ size }: { size: Size }) {
+export function useRadioInputCss({
+  size,
+  disabled,
+}: {
+  size: Size
+  disabled: boolean
+}) {
   const {
     form: {
       radio: { input: theme },
     },
   } = useTheme()
 
-  return classNames(theme.base, theme.size[size])
+  return classNames(
+    theme.base,
+    theme.size[size],
+    disabled ? theme.disabled : theme.normal,
+  )
 }
 
 export function useRadioIconCss({
