@@ -50,7 +50,12 @@ function CheckboxComponent(
   } = useTheme()
   const { register } = useFormContext()
   const { ref: fieldRef, ...field } = register(name)
-  const checked = useWatch({ name })
+  const checkedValue = useWatch({ name })
+
+  // When there are multiple checkboxes with the same name but different values, checkedValue will be an array
+  const checked = Array.isArray(checkedValue)
+    ? Boolean(checkedValue.find((data) => data === props.value))
+    : checkedValue
 
   const forwardedRef = useForwardedRef(ref)
 
