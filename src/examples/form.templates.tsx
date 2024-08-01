@@ -48,6 +48,7 @@ type FormData = {
   bio: string
   favProjectId: string | null
   serverValidationErrors: boolean
+  experiences: string[]
 }
 
 const defaultValues = {
@@ -62,6 +63,7 @@ const defaultValues = {
   bio: 'John is a software engineer from Bolzano, Italy',
   favProjectId: '1',
   serverValidationErrors: false,
+  experiences: [],
 }
 
 const resolver = yupResolver(
@@ -77,6 +79,7 @@ const resolver = yupResolver(
     bio: Yup.string(),
     favProjectId: Yup.string().nullable().required(),
     serverValidationErrors: Yup.boolean().required(),
+    experiences: Yup.array().of(Yup.string()),
   })
 )
 
@@ -203,6 +206,30 @@ export function FormExampleTemplate({
                 useGetData={useGetData}
                 paginationConfig={{ indexType: IndexType.ZERO_BASED }}
               />
+              <FieldSet
+                label="Experience with"
+                fields={['experiences']}
+                indent={FieldSetIndent.labelAndChildren}
+              >
+                <Checkbox
+                  name="experiences"
+                  value="typescript"
+                  label="TypeScript"
+                  applyInputHeight
+                />
+                <Checkbox
+                  name="experiences"
+                  value="react"
+                  label="React"
+                  applyInputHeight
+                />
+                <Checkbox
+                  name="experiences"
+                  value="next"
+                  label="Next"
+                  applyInputHeight
+                />
+              </FieldSet>
               <FieldSet
                 label="Privacy"
                 fields={['privacy']}
