@@ -22,6 +22,8 @@ const useIsomorphicLayoutEffect = canUseDOM() ? useLayoutEffect : useEffect
 function canUseDOM() {
   return Boolean(
     typeof window !== 'undefined' &&
+      // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+      typeof window.document !== 'undefined' &&
       typeof window.document.createElement !== 'undefined',
   )
 }

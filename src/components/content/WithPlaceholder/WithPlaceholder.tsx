@@ -14,14 +14,15 @@ export function WithPlaceholder({
   placeholder = '-',
   children,
 }: WithPlaceholderProps) {
-  /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
   return (
     <>
       {typeof children === 'number'
         ? isNaN(children)
           ? placeholder
           : children
-        : children || placeholder}
+        : children === null || children === undefined || children === ''
+          ? placeholder
+          : children}
     </>
   )
 }
