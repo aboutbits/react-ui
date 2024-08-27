@@ -1,7 +1,7 @@
 import { Preview } from '@storybook/react'
 import { ReactUIProvider, defaultTheme, makeLinkComponent } from '../src'
-import { Background } from './types'
 import '../styles/index.css'
+import { Background } from './types'
 
 const LinkComponent = makeLinkComponent(
   ({ children, _internal, href, ...props }, ref) => (

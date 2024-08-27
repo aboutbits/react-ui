@@ -1,13 +1,13 @@
 import { action } from '@storybook/addon-actions'
-import { Meta, StoryObj } from '@storybook/react'
 import {
   Controls,
+  Description,
   Primary,
   Stories,
   Subheading,
   Title,
-  Description,
 } from '@storybook/addon-docs'
+import { Meta, StoryObj } from '@storybook/react'
 import { useEffect, useRef } from 'react'
 import { Theme } from '../../../.storybook/components'
 import { Button } from '../button'

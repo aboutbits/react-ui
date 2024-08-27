@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { Mode } from '../types'
-import { SelectField, SelectFieldProps } from './SelectField'
 import { Option } from './primitive'
+import { SelectField, SelectFieldProps } from './SelectField'
 
 export type SelectYearFieldProps = Omit<SelectFieldProps, 'children'> &
   SelectYearFieldOptionsProps

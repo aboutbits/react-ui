@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 import {
   Controls,
   Description,
@@ -7,15 +7,15 @@ import {
   Subheading,
   Title,
 } from '@storybook/blocks'
-import { action } from '@storybook/addon-actions'
+import { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'
 import {
   InternationalizationMessages,
   Theme,
 } from '../../../.storybook/components'
 import { Section, SectionHeaderArea } from '../section'
-import { SearchFormField } from './SearchFormField'
 import { Form } from './Form'
+import { SearchFormField } from './SearchFormField'
 
 const meta = {
   component: SearchFormField,

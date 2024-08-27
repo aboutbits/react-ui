@@ -51,7 +51,7 @@ export function DescriptionItem({
 }: DescriptionItemProps) {
   return (
     <>
-      {((props.hideIfEmpty && props.content) || !props.hideIfEmpty) && (
+      {((props.hideIfEmpty && props.content) ?? !props.hideIfEmpty) && (
         <DescriptionItemContainer className={className}>
           <DescriptionItemTitle>{title}</DescriptionItemTitle>
           <DescriptionItemContent {...contentProps}>

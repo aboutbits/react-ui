@@ -1,21 +1,21 @@
+import { IndexType, calculatePagination } from '@aboutbits/pagination'
 import classNames from 'classnames'
-import { calculatePagination, IndexType } from '@aboutbits/pagination'
 import {
   LinkComponentProps,
+  useInternationalization,
   useLinkComponent,
   useTheme,
-  useInternationalization,
 } from '../../framework'
 import { ClassNameProps } from '../types'
 import { PaginationContainer } from './PaginationContainer'
 import {
-  PaginationNextContent,
-  PaginationPreviousContent,
-} from './PaginationPreviousNextContent'
-import {
   PaginationPagesList,
   PaginationPagesListItem,
 } from './PaginationPagesList'
+import {
+  PaginationNextContent,
+  PaginationPreviousContent,
+} from './PaginationPreviousNextContent'
 
 export type PaginationRouterProps = ClassNameProps & {
   /**

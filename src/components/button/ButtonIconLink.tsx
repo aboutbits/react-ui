@@ -5,8 +5,8 @@ import { Mode, Size, Tone } from '../types'
 import {
   ButtonIconCommonProps,
   ButtonStyleProps,
-  LinkCommonProps,
   ButtonVariant,
+  LinkCommonProps,
 } from './types'
 
 export type ButtonIconLinkProps = LinkComponentProps &

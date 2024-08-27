@@ -1,13 +1,13 @@
-import { Menu as HeadlessMenu } from '@headlessui/react'
-import { Fragment, ReactElement, ReactNode, ReactPortal } from 'react'
 import {
+  FloatingPortal,
   autoUpdate,
-  useFloating,
   flip,
   offset,
-  FloatingPortal,
+  useFloating,
 } from '@floating-ui/react'
+import { Menu as HeadlessMenu } from '@headlessui/react'
 import classNames from 'classnames'
+import { Fragment, ReactElement, ReactNode, ReactPortal } from 'react'
 import { useTheme } from '../../framework'
 import { remToPx } from '../util/remToPx'
 

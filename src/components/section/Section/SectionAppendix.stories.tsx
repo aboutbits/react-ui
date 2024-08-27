@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from '@storybook/react'
 import {
   Controls,
   Description,
@@ -7,11 +6,12 @@ import {
   Subheading,
   Title,
 } from '@storybook/blocks'
+import { Meta, StoryObj } from '@storybook/react'
+import { Theme } from '../../../../.storybook/components/Theme'
 import { Button, ButtonVariant } from '../../button'
 import { Tone } from '../../types'
-import { Theme } from '../../../../.storybook/components/Theme'
-import { SectionAppendix } from './SectionAppendix'
 import { Section } from './Section'
+import { SectionAppendix } from './SectionAppendix'
 import { SectionContainer } from './SectionContainer'
 import { SectionContent } from './SectionContent'
 

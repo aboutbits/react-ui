@@ -9,10 +9,10 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
-import { Mode, Size, Tone } from '../types'
 import { Theme } from '../../../.storybook/components'
-import { ButtonVariant } from './types'
+import { Mode, Size, Tone } from '../types'
 import { ButtonLink } from './ButtonLink'
+import { ButtonVariant } from './types'
 
 const meta = {
   component: ButtonLink,

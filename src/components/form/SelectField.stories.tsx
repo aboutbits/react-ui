@@ -7,8 +7,8 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
-import { SelectField } from './SelectField'
 import { Option } from './primitive/Option'
+import { SelectField } from './SelectField'
 import { Status } from './types'
 
 const children = (

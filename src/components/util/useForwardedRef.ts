@@ -5,6 +5,7 @@ import { ForwardedRef, useImperativeHandle, useRef } from 'react'
  */
 export function useForwardedRef<T extends Element>(ref: ForwardedRef<T>) {
   const forwardedRef = useRef<T | null>(null)
-  useImperativeHandle(ref, () => forwardedRef.current as T)
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  useImperativeHandle(ref, () => forwardedRef.current!)
   return forwardedRef
 }

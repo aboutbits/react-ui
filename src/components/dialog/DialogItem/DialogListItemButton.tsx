@@ -1,6 +1,6 @@
 import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
 import classNames from 'classnames'
-import { forwardRef, MouseEventHandler } from 'react'
+import { MouseEventHandler, forwardRef } from 'react'
 import { useTheme } from '../../../framework'
 import { ClassNameProps } from '../../types'
 

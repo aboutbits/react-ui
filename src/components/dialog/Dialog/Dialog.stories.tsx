@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory, DecoratorFn } from '@storybook/react'
 import { ReactElement, ReactNode, useState } from 'react'
-import { Button } from '../../button'
 import {
   Dialog,
   DialogContent,
@@ -11,15 +10,16 @@ import {
   DialogHeader,
   DialogHeaderArea,
   DialogHeaderCloseAction,
+  DialogHeaderGroup,
   DialogHeaderLeftActionIcon,
   DialogHeaderRow,
-  DialogHeaderGroup,
   DialogHeaderTitle,
   DialogHeaderWithClose,
   DialogPosition,
   DialogProps,
   DialogSize,
 } from '../'
+import { Button } from '../../button'
 import DialogDocs from './Dialog.docs.mdx'
 
 type TemplateArgs = DialogProps & { content: ReactNode }

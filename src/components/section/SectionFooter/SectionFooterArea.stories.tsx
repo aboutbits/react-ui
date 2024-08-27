@@ -1,12 +1,12 @@
-import { Meta, StoryObj } from '@storybook/react'
 import {
   Controls,
+  Description,
   Primary,
   Stories,
   Subheading,
   Title,
-  Description,
 } from '@storybook/addon-docs'
+import { Meta, StoryObj } from '@storybook/react'
 import { Theme } from '../../../../.storybook/components'
 import { SectionFooterArea } from '../index'
 import { SectionFooterVariant } from './types'

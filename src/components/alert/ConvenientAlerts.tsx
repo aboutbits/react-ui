@@ -1,6 +1,6 @@
 import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
+import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import { ReactElement } from 'react'
 import { Tone } from '../types'
 import { Alert } from './Alert'

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { forwardRef } from 'react'
-import { useTheme, useLinkComponent, LinkComponentProps } from '../../framework'
+import { LinkComponentProps, useLinkComponent, useTheme } from '../../framework'
 
 export const TextLink = forwardRef<HTMLAnchorElement, LinkComponentProps>(
   function TextLink({ children, className, internal = true, ...props }, ref) {

@@ -22,7 +22,6 @@ const useIsomorphicLayoutEffect = canUseDOM() ? useLayoutEffect : useEffect
 function canUseDOM() {
   return Boolean(
     typeof window !== 'undefined' &&
-      typeof window.document !== 'undefined' &&
       typeof window.document.createElement !== 'undefined',
   )
 }

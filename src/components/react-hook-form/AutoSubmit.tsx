@@ -1,6 +1,6 @@
+import { useDebounce } from '@aboutbits/react-toolbox'
 import { ReactElement, useEffect, useRef } from 'react'
 import { useWatch } from 'react-hook-form'
-import { useDebounce } from '@aboutbits/react-toolbox'
 
 export function AutoSubmit({
   interval = 200,

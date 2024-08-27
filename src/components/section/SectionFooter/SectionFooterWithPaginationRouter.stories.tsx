@@ -1,13 +1,13 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { IndexType } from '@aboutbits/pagination'
 import {
   Controls,
+  Description,
   Primary,
   Stories,
   Subheading,
   Title,
-  Description,
 } from '@storybook/addon-docs'
-import { IndexType } from '@aboutbits/pagination'
+import { Meta, StoryObj } from '@storybook/react'
 import { SectionFooterWithPaginationRouter } from './SectionFooterWithPaginationRouter'
 import { SectionFooterVariant } from './types'
 

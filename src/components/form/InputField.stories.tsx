@@ -1,5 +1,5 @@
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import {
   Controls,
   Description,
@@ -115,8 +115,8 @@ export const Disabled: Story = {
 export const WithIcons: Story = {
   render: (args) => (
     <div className="flex flex-row space-x-4">
-      <InputField {...args} iconStart={IconSearch}></InputField>
-      <InputField {...args} iconEnd={IconBadge}></InputField>
+      <InputField {...args} iconStart={IconSearch} />
+      <InputField {...args} iconEnd={IconBadge} />
     </div>
   ),
 }

@@ -1,4 +1,4 @@
-import { calculatePagination, IndexType } from '@aboutbits/pagination'
+import { IndexType, calculatePagination } from '@aboutbits/pagination'
 import classNames from 'classnames'
 import { ReactNode } from 'react'
 import { useInternationalization, useTheme } from '../../framework'

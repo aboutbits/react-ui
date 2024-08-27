@@ -1,15 +1,15 @@
 import IconArrowDropUp from '@aboutbits/react-material-icons/dist/IconArrowDropUp'
 import IconMoreVert from '@aboutbits/react-material-icons/dist/IconMoreVert'
 import { action } from '@storybook/addon-actions'
-import { Meta, StoryObj } from '@storybook/react'
 import {
   Controls,
+  Description,
   Primary,
   Stories,
   Subheading,
   Title,
-  Description,
 } from '@storybook/addon-docs'
+import { Meta, StoryObj } from '@storybook/react'
 import classNames from 'classnames'
 import { ReactNode, forwardRef, useEffect, useRef } from 'react'
 import { Theme } from '../../../.storybook/components'

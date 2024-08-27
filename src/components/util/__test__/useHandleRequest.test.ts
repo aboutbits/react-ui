@@ -1,6 +1,6 @@
 import { act, renderHook, waitFor } from '@testing-library/react'
-import { vi } from 'vitest'
 import { AxiosError, AxiosHeaders } from 'axios'
+import { vi } from 'vitest'
 import { defaultMessages } from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleRequest } from '../useHandleRequest'
 

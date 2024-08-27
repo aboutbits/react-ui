@@ -1,3 +1,5 @@
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import {
   Controls,
   Description,
@@ -8,8 +10,6 @@ import {
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'
-import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import { Form } from '../react-hook-form'
 import { SubmitButton } from './SubmitButton'
 

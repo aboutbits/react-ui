@@ -1,20 +1,20 @@
 import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { action } from '@storybook/addon-actions'
 import {
-  Title,
+  Controls,
   Primary,
   Stories,
   Subheading,
-  Controls,
+  Title,
 } from '@storybook/addon-docs'
 import { Description } from '@storybook/blocks'
-import { z } from 'zod'
-import { DefaultValues, useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { action } from '@storybook/addon-actions'
 import { Meta, StoryObj } from '@storybook/react'
-import { InputFormField } from './InputFormField'
+import { DefaultValues, useForm } from 'react-hook-form'
+import { z } from 'zod'
 import { Form } from './Form'
+import { InputFormField } from './InputFormField'
 
 const icons = {
   options: ['None', 'Badge', 'Search'],

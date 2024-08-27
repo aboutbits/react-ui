@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from '@storybook/react'
 import {
   Controls,
   Description,
@@ -7,6 +6,7 @@ import {
   Subheading,
   Title,
 } from '@storybook/addon-docs'
+import { Meta, StoryObj } from '@storybook/react'
 import { Theme } from '../../../../../.storybook/components'
 import { Checkbox } from './Checkbox'
 

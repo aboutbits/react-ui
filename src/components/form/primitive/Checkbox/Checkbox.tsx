@@ -1,7 +1,7 @@
 import IconCheckBoxOutlineBlankRounded from '@aboutbits/react-material-icons/dist/IconCheckBoxOutlineBlankRounded'
 import IconCheckBoxRounded from '@aboutbits/react-material-icons/dist/IconCheckBoxRounded'
 import classNames from 'classnames'
-import { forwardRef, ReactNode } from 'react'
+import { ReactNode, forwardRef } from 'react'
 import { useTheme } from '../../../../framework'
 import {
   HideRequiredProps,

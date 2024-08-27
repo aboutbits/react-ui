@@ -1,3 +1,5 @@
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
+import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { action } from '@storybook/addon-actions'
 import {
@@ -11,10 +13,8 @@ import { Description } from '@storybook/blocks'
 import { Meta, StoryObj } from '@storybook/react'
 import { DefaultValues, useForm } from 'react-hook-form'
 import { z } from 'zod'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
-import { Form } from './Form'
 import { DateFormField } from './DateFormField'
+import { Form } from './Form'
 
 const icons = {
   options: ['None', 'Warning', 'Info'],
