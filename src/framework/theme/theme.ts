@@ -6,6 +6,7 @@ import breadcrumbs from '../../components/breadcrumbs/theme'
 import button from '../../components/button/theme'
 import content from '../../components/content/theme'
 import dialog from '../../components/dialog/theme'
+import files from '../../components/files/theme'
 import form from '../../components/form/theme'
 import header from '../../components/header/theme'
 import link from '../../components/link/theme'
@@ -30,4 +31,5 @@ export const defaultTheme = {
   menu,
   pagination,
   tabs,
+  files,
 }

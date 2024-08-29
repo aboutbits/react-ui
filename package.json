@@ -113,7 +113,8 @@
     "typescript": "^5.4.3",
     "vite": "^4.4.3",
     "vitest": "^0.33.0",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "axios-mock-adapter": "^1.22.0"
   },
   "peerDependencies": {
     "@aboutbits/react-pagination": "^3.0.3",

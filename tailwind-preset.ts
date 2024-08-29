@@ -102,6 +102,29 @@ export default {
       lineHeight: {
         12: '3rem',
       },
+      keyframes: {
+        spinner: {
+          '0%': {
+            strokeDasharray: '0 100',
+            strokeDashoffset: '25',
+          },
+          '50%': {
+            strokeDasharray: `100 0`,
+            strokeDashoffset: '25',
+          },
+          '50.1%': {
+            strokeDasharray: '100 0',
+            strokeDashoffset: '125',
+          },
+          '100%': {
+            strokeDasharray: '0 100',
+            strokeDashoffset: '25',
+          },
+        },
+      },
+      animation: {
+        spinner: 'spinner 2s cubic-bezier(0.88, 0, 0.58, 1) infinite',
+      },
     },
   },
 } satisfies Config

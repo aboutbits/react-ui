@@ -77,6 +77,10 @@ export default {
       },
     },
   },
+  buttonIconResponsive: {
+    button: 'hidden md:flex',
+    buttonIcon: 'md:hidden',
+  },
   modeVariantTone: {
     [Mode.Light]: {
       [ButtonVariant.Solid]: {
