@@ -97,7 +97,7 @@ export const Single: Story = {
           })
           onSuccess()
         } catch {
-          onError('Datei konnte nicht hochgeladen werden')
+          onError('File could not be uploaded')
         }
 
         await mutateRemoteFiles()
@@ -199,7 +199,7 @@ export const Multiple: Story = {
               })
               onSuccess(file)
             } catch {
-              onError(file, 'Datei konnte nicht hochgeladen werden')
+              onError(file, 'File could not be uploaded')
             }
           }),
         )

@@ -77,7 +77,7 @@ export const WithDeleteDialog: Story = {
           })
           onSuccess()
         } catch {
-          onError('Datei konnte nicht hochgeladen werden')
+          onError('File upload failed')
         }
 
         await mutateRemoteFiles()
