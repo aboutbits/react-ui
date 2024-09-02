@@ -30,7 +30,8 @@ export default {
     disabled: 'fill-neutral-800',
   },
   fileList: {
-    container: 'flex flex-col rounded-xl border border-neutral-400',
+    container:
+      'flex flex-col rounded-xl border border-neutral-400 overflow-hidden',
     item: {
       container:
         'relative flex justify-between gap-4 border-b border-neutral-200 px-6 py-4 last:border-none',
