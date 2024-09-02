@@ -1,19 +1,19 @@
-import { Meta, StoryObj } from '@storybook/react'
+import { IndexType } from '@aboutbits/pagination'
 import {
   Controls,
+  Description,
   Primary,
   Stories,
   Subheading,
   Title,
-  Description,
 } from '@storybook/addon-docs'
-import { IndexType } from '@aboutbits/pagination'
+import { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { SectionFooterVariant } from './types'
 import {
   SectionFooterWithPaginationInMemory,
   SectionFooterWithPaginationInMemoryProps,
 } from './SectionFooterWithPaginationInMemory'
+import { SectionFooterVariant } from './types'
 
 const Template = (args: SectionFooterWithPaginationInMemoryProps) => {
   const [page, setPage] = useState(args.page)

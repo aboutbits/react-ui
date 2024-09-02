@@ -1,6 +1,6 @@
-import { ReactElement } from 'react'
 import IconList from '@aboutbits/react-material-icons/dist/IconList'
 import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
+import { ReactElement } from 'react'
 import { Tone } from '../../types'
 import {
   SectionContentMessage,

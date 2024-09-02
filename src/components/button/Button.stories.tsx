@@ -1,4 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react'
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import {
   Controls,
   Description,
@@ -9,14 +10,13 @@ import {
   Subheading,
   Title,
 } from '@storybook/blocks'
-import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
+import { Meta, StoryObj } from '@storybook/react'
 import { Theme } from '../../../.storybook/components'
-import { Mode, Size } from '../types'
 import { CustomTheme } from '../../../.storybook/components/CustomTheme'
 import { Background } from '../../../.storybook/types'
-import { ButtonVariant } from './types'
+import { Mode, Size } from '../types'
 import { Button } from './Button'
+import { ButtonVariant } from './types'
 
 const icons = {
   options: ['None', 'Add', 'Info'],

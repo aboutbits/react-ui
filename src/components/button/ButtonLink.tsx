@@ -1,12 +1,12 @@
 import classNames from 'classnames'
 import { forwardRef } from 'react'
-import { useLinkComponent, LinkComponentProps, useTheme } from '../../framework'
+import { LinkComponentProps, useLinkComponent, useTheme } from '../../framework'
 import { Mode, Size, Tone } from '../types'
 import {
   ButtonCommonProps,
   ButtonStyleProps,
-  LinkCommonProps,
   ButtonVariant,
+  LinkCommonProps,
 } from './types'
 
 export type ButtonLinkProps = LinkComponentProps &

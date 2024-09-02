@@ -20,7 +20,9 @@ export function WithPlaceholder({
         ? isNaN(children)
           ? placeholder
           : children
-        : children || placeholder}
+        : children === null || children === undefined || children === ''
+          ? placeholder
+          : children}
     </>
   )
 }

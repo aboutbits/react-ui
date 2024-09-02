@@ -1,8 +1,8 @@
 import { Markdown, Subheading } from '@storybook/addon-docs'
 import { ReactElement } from 'react'
 import {
-  defaultTheme,
   Theme as ThemeType,
+  defaultTheme,
 } from '../../src/framework/theme/theme'
 import { SourceJson } from './SourceJson'
 
@@ -11,7 +11,7 @@ export function Theme<T extends keyof ThemeType, R extends keyof ThemeType[T]>({
   items,
 }: {
   component: T
-  items?: Array<R>
+  items?: R[]
 }): ReactElement {
   const theme = {
     [component]: items

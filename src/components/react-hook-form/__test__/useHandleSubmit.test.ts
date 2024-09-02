@@ -1,8 +1,8 @@
 import { act, renderHook, waitFor } from '@testing-library/react'
+import { AxiosError, AxiosHeaders } from 'axios'
 import { FieldValues, useForm } from 'react-hook-form'
 import { vi } from 'vitest'
 import { undefined } from 'zod'
-import { AxiosError, AxiosHeaders } from 'axios'
 import { defaultMessages } from '../../../framework/internationalization/defaultMessages.en'
 import { useHandleSubmit } from '../useHandleSubmit'
 
@@ -27,6 +27,7 @@ describe('useHandleSubmit', () => {
   }: {
     response: unknown
     values: FieldValues
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
   }) => {}
 
   const headers = new AxiosHeaders()

@@ -8,11 +8,11 @@ import {
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
 import { Theme } from '../../../.storybook/components'
-import { Breadcrumbs } from './Breadcrumbs'
 import { BreadcrumbLink } from './BreadcrumbLink'
+import { BreadcrumbLoading } from './BreadcrumbLoading'
+import { Breadcrumbs } from './Breadcrumbs'
 import { BreadcrumbsLoading } from './BreadcrumbsLoading'
 import { BreadcrumbText } from './BreadcrumbText'
-import { BreadcrumbLoading } from './BreadcrumbLoading'
 
 const meta = {
   component: Breadcrumbs,

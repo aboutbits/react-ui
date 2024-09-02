@@ -13,7 +13,7 @@ export function BreadcrumbLoading({
   const { breadcrumbs } = useTheme()
 
   const { className: loadingBarClassName, ...restLoadingBarProps } =
-    loadingBarProps || {}
+    loadingBarProps ?? {}
 
   return (
     <div className={classNames(breadcrumbs.breadcrumbLoading.base, className)}>

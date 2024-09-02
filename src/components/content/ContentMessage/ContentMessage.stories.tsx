@@ -1,6 +1,6 @@
+import IconError from '@aboutbits/react-material-icons/dist/IconError'
 import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
-import IconError from '@aboutbits/react-material-icons/dist/IconError'
 import {
   Controls,
   Description,

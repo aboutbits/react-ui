@@ -1,8 +1,8 @@
 import { Menu as HeadlessMenu } from '@headlessui/react'
-import { Fragment, ReactNode } from 'react'
 import classNames from 'classnames'
-import { ClassNameProps, Tone } from '../types'
+import { Fragment, ReactNode } from 'react'
 import { useLinkComponent, useTheme } from '../../framework'
+import { ClassNameProps, Tone } from '../types'
 
 export type MenuItemProps = ClassNameProps & {
   children: ReactNode

@@ -9,8 +9,8 @@ import {
 import { Meta, StoryObj } from '@storybook/react'
 import { Theme } from '../../../../.storybook/components'
 import { FormTone, FormVariant } from '../types'
-import { Select } from './Select'
 import { Option } from './Option'
+import { Select } from './Select'
 
 const meta = {
   component: Select,
@@ -53,10 +53,10 @@ export const Default: Story = {}
 export const Variants: Story = {
   render: (args) => (
     <div className="flex flex-row space-x-4">
-      <Select {...args} variant={FormVariant.Ghost}></Select>
-      <Select {...args} variant={FormVariant.Soft}></Select>
-      <Select {...args} variant={FormVariant.Transparent}></Select>
-      <Select {...args} variant={FormVariant.Solid}></Select>
+      <Select {...args} variant={FormVariant.Ghost} />
+      <Select {...args} variant={FormVariant.Soft} />
+      <Select {...args} variant={FormVariant.Transparent} />
+      <Select {...args} variant={FormVariant.Solid} />
     </div>
   ),
 }
@@ -64,8 +64,8 @@ export const Variants: Story = {
 export const Tone: Story = {
   render: (args) => (
     <div className="flex flex-row space-x-4">
-      <Select {...args} tone={FormTone.Neutral}></Select>
-      <Select {...args} tone={FormTone.Critical}></Select>
+      <Select {...args} tone={FormTone.Neutral} />
+      <Select {...args} tone={FormTone.Critical} />
     </div>
   ),
 }

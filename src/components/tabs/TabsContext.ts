@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-export interface TabsContextInterface {
+export type TabsContextInterface = {
   /**
    * Define the active tab by its name
    */

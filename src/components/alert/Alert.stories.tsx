@@ -1,3 +1,6 @@
+import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
+import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
 import {
   Controls,
   Markdown,
@@ -7,20 +10,17 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
-import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
+import { Theme } from '../../../.storybook/components'
 import { Button, ButtonVariant } from '../button'
 import { Size, Tone } from '../types'
-import { Theme } from '../../../.storybook/components'
 import { Alert } from './Alert'
-import { AlertActionsPosition } from './types'
 import {
   AlertCritical,
   AlertInformative,
   AlertSuccess,
   AlertWarning,
 } from './ConvenientAlerts'
+import { AlertActionsPosition } from './types'
 
 const icons = {
   options: ['None', 'Warning', 'Check', 'Info'],

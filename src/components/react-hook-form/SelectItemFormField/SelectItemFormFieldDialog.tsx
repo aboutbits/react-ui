@@ -1,9 +1,9 @@
+import { IndexType } from '@aboutbits/pagination'
 import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/routers/inMemory'
 import { AsyncView } from '@aboutbits/react-toolbox'
 import { ReactElement, ReactNode } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { IndexType } from '@aboutbits/pagination'
-import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/routers/inMemory'
 import { useInternationalization, useTheme } from '../../../framework'
 import {
   Dialog,
@@ -23,8 +23,8 @@ import {
 } from '../../dialog'
 import { FormVariant } from '../../form'
 import { PaginationInMemoryProps } from '../../pagination'
-import { InputFormField } from '../InputFormField'
 import { AutoSubmit } from '../AutoSubmit'
+import { InputFormField } from '../InputFormField'
 
 type FilterParameters = {
   search: string

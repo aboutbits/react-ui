@@ -2,10 +2,10 @@ import {
   Children,
   ComponentProps,
   ForwardedRef,
-  forwardRef,
-  isValidElement,
   ReactElement,
   ReactNode,
+  forwardRef,
+  isValidElement,
   useEffect,
   useMemo,
 } from 'react'
@@ -57,7 +57,7 @@ export const SelectFormField = forwardRef(function SelectFormField<
 
   const setValueAs = useMemo(() => {
     return (
-      registerOptions?.setValueAs ||
+      registerOptions?.setValueAs ??
       ((input: unknown) => {
         return input === '' && transformEmptyToNull ? null : input
       })

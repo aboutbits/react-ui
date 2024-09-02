@@ -1,3 +1,5 @@
+import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
 import {
   Controls,
   Description,
@@ -7,8 +9,6 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
-import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
 import { Theme } from '../../../../.storybook/components'
 import { FormTone, FormVariant } from '../types'
 import { Input } from './Input'

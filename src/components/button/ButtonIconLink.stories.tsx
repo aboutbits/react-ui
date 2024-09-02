@@ -1,3 +1,5 @@
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
 import {
   Controls,
   Description,
@@ -6,12 +8,10 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
-import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
-import { Mode, Size, Tone } from '../types'
 import { Theme } from '../../../.storybook/components'
-import { ButtonVariant } from './types'
+import { Mode, Size, Tone } from '../types'
 import { ButtonIconLink } from './ButtonIconLink'
+import { ButtonVariant } from './types'
 
 const meta = {
   component: ButtonIconLink,

@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from '@storybook/react'
 import {
   Controls,
   Description,
@@ -7,6 +6,7 @@ import {
   Subheading,
   Title,
 } from '@storybook/blocks'
+import { Meta, StoryObj } from '@storybook/react'
 import {
   InternationalizationMessages,
   Theme,

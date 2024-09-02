@@ -7,9 +7,9 @@ import {
   Title,
 } from '@storybook/addon-docs'
 import { Meta, StoryObj } from '@storybook/react'
+import { Theme } from '../../../.storybook/components'
 import { Button, ButtonVariant } from '../button'
 import { Tone } from '../types'
-import { Theme } from '../../../.storybook/components'
 import { Actions } from './Actions'
 
 const children = {

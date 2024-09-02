@@ -9,8 +9,8 @@ import {
   LinkComponentContext,
 } from './router/LinkComponentContext'
 import { Router, RouterContext } from './router/RouterContext'
-import { ThemeContext } from './theme/ThemeContext'
 import { Theme } from './theme/theme'
+import { ThemeContext } from './theme/ThemeContext'
 
 export type ReactUIProviderProps = {
   theme?: Theme
@@ -51,9 +51,9 @@ export function ReactUIProvider({
   return (
     <ThemeContext.Provider value={theme}>
       <InternationalizationContext.Provider value={mergedInternationalization}>
-        <RouterContext.Provider value={router || routerComponentFromContext}>
+        <RouterContext.Provider value={router ?? routerComponentFromContext}>
           <LinkComponentContext.Provider
-            value={linkComponent || linkComponentFromContext}
+            value={linkComponent ?? linkComponentFromContext}
           >
             {children}
           </LinkComponentContext.Provider>

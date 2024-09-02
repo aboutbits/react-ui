@@ -1,8 +1,8 @@
 import { forwardRef } from 'react'
 import { useInternationalization } from '../../framework'
 import { Mode } from '../types'
-import { SelectField, SelectFieldProps } from './SelectField'
 import { Option } from './primitive'
+import { SelectField, SelectFieldProps } from './SelectField'
 
 export const MONTHS = [
   'JANUARY',

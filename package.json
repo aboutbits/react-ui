@@ -64,7 +64,7 @@
     "react-hook-form": "^7.51.2"
   },
   "devDependencies": {
-    "@aboutbits/eslint-config": "^2.2.4",
+    "@aboutbits/eslint-config": "^3.0.0",
     "@aboutbits/prettier-config": "^1.6.1",
     "@aboutbits/react-pagination": "^3.0.12",
     "@aboutbits/ts-config": "^1.1.3",

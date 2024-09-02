@@ -45,7 +45,7 @@ const meta = {
               'month.november',
               'month.december',
             ]}
-          ></InternationalizationMessages>
+          />
         </>
       ),
     },
