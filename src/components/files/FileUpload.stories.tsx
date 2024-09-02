@@ -64,11 +64,6 @@ const meta = {
             <Story of={Multiple} />
           </Canvas>
           <Controls of={Multiple} />
-          <Subheading>With delete dialog</Subheading>
-          <Canvas>
-            <Story of={WithDeleteDialog} />
-          </Canvas>
-          <Controls of={WithDeleteDialog} />
         </>
       ),
     },
@@ -268,104 +263,6 @@ export const Multiple: Story = {
             onClick={() => void triggerUpload()}
             className="mt-8"
           >
-            Upload
-          </Button>
-        )}
-      </div>
-    )
-  },
-}
-
-export const WithDeleteDialog: Story = {
-  render: ({ autoUpload }) => {
-    const { remoteFile, mutateRemoteFiles, axiosInstance } = useMockedUploadApi(
-      {
-        multipleFiles: false,
-        initialFile: { id: 1, name: 'file1.pdf', size: 1024 },
-      },
-    )
-
-    const onUpload = useCallback<FileUploadOnUploadSingle>(
-      async (file, { onProgress, onError, onSuccess }) => {
-        const formData = new FormData()
-        formData.append('file', file)
-
-        try {
-          await axiosInstance.post('/upload', formData, {
-            onUploadProgress: (event) => {
-              if (event.total) {
-                onProgress(event.loaded / event.total)
-              }
-            },
-          })
-          onSuccess()
-        } catch {
-          onError('Datei konnte nicht hochgeladen werden')
-        }
-
-        await mutateRemoteFiles()
-      },
-      [axiosInstance, mutateRemoteFiles],
-    )
-
-    const {
-      fileUploadObjects,
-      isUploading,
-      triggerUpload,
-      removeFile,
-      addFilesToUpload,
-    } = useFileUpload<CustomRemoteFile>({
-      remoteFile,
-      fileUploadObjectIsFile: (fileUploadObject, file) =>
-        fileUploadObject.file.name === file.name,
-      onUpload,
-      autoUpload,
-    })
-
-    const handleDelete = async (
-      fileUploadObject: FileUploadObject<CustomRemoteFile>,
-    ) => {
-      if (fileUploadObject.space === FileSpace.Local) {
-        removeFile(fileUploadObject.file)
-      } else {
-        await axiosInstance.post('/delete')
-        removeFile(fileUploadObject.file)
-      }
-    }
-
-    return (
-      <div className="flex flex-col gap-4">
-        {fileUploadObjects.length === 0 && (
-          <FileDropZone
-            onSelect={addFilesToUpload}
-            fileTypes={['pdf']}
-            maxFileSize={1000000}
-          />
-        )}
-        {fileUploadObjects.length > 0 && (
-          <FileList>
-            {fileUploadObjects.map((fileUploadObject) => (
-              <FileListItem
-                key={fileUploadObject.id}
-                fileUploadObject={fileUploadObject}
-                renderRemoteFileName={(remoteFile) => remoteFile.name}
-                renderRemoteFileSize={(remoteFile) => remoteFile.size}
-                disabled={
-                  isUploading && fileUploadObject.state !== FileState.Uploading
-                }
-                fileActions={
-                  <DeleteFileAction
-                    fileUploadObject={fileUploadObject}
-                    onDelete={handleDelete}
-                  />
-                }
-              />
-            ))}
-          </FileList>
-        )}
-
-        {!autoUpload && (
-          <Button size={Size.Md} onClick={void triggerUpload} className="mt-8">
             Upload
           </Button>
         )}
