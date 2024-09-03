@@ -1,6 +1,6 @@
-import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
+import IconCheck from '@aboutbits/react-material-icons/dist/IconCheckOutlined'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfoIOutlined'
+import IconWarning from '@aboutbits/react-material-icons/dist/IconWarningOutlined'
 import {
   Controls,
   Markdown,

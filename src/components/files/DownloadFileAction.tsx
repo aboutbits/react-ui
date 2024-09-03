@@ -1,4 +1,4 @@
-import IconDownload from '@aboutbits/react-material-icons/dist/IconDownload'
+import IconDownload from '@aboutbits/react-material-icons/dist/IconDownloadRounded'
 import { useState } from 'react'
 import { useInternationalization } from '../../framework'
 import { ButtonVariant } from '../button'

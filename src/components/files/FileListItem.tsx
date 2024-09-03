@@ -1,5 +1,5 @@
-import IconCheckCircle from '@aboutbits/react-material-icons/dist/IconCheckCircle'
-import IconInsertDriveFile from '@aboutbits/react-material-icons/dist/IconInsertDriveFile'
+import IconCheckCircle from '@aboutbits/react-material-icons/dist/IconCheckCircleRoundedFilled'
+import IconDraftRounded from '@aboutbits/react-material-icons/dist/IconDraftRoundedFilled'
 import classNames from 'classnames'
 import { ReactNode, useEffect, useState } from 'react'
 import { useInternationalization, useTheme } from '../../framework'
@@ -88,7 +88,7 @@ export function FileListItem<TRemoteFile>({
                 className={classNames(files.icon.size, files.icon.success)}
               />
             ) : (
-              <IconInsertDriveFile
+              <IconDraftRounded
                 className={classNames(
                   files.icon.size,
                   disabled

@@ -1,5 +1,5 @@
-import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import IconBadge from '@aboutbits/react-material-icons/dist/IconBadgeRounded'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearchRounded'
 import {
   Controls,
   Description,

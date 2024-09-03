@@ -1,4 +1,4 @@
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearchRounded'
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues } from 'react-hook-form'
 import { useInternationalization } from '../../framework'

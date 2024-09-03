@@ -1,5 +1,5 @@
-import IconKeyboardArrowLeft from '@aboutbits/react-material-icons/dist/IconKeyboardArrowLeft'
-import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
+import IconKeyboardArrowLeft from '@aboutbits/react-material-icons/dist/IconKeyboardArrowLeftRounded'
+import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRightRounded'
 import { ReactElement } from 'react'
 import { useInternationalization, useTheme } from '../../framework'
 

@@ -1,4 +1,4 @@
-import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
+import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRightRounded'
 import classNames from 'classnames'
 import { ReactNode, forwardRef } from 'react'
 import {

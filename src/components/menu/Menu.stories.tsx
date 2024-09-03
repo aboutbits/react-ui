@@ -1,5 +1,5 @@
-import IconArrowDropUp from '@aboutbits/react-material-icons/dist/IconArrowDropUp'
-import IconMoreVert from '@aboutbits/react-material-icons/dist/IconMoreVert'
+import IconArrowDropUp from '@aboutbits/react-material-icons/dist/IconArrowDropUpRounded'
+import IconMoreVert from '@aboutbits/react-material-icons/dist/IconMoreVertRounded'
 import { action } from '@storybook/addon-actions'
 import {
   Controls,

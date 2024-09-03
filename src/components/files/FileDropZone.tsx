@@ -1,4 +1,4 @@
-import IconUploadFile from '@aboutbits/react-material-icons/dist/IconUploadFile'
+import IconUploadFile from '@aboutbits/react-material-icons/dist/IconUploadFileRounded'
 import classNames from 'classnames'
 import { ChangeEventHandler, useRef } from 'react'
 import { useInternationalization, useTheme } from '../../framework'

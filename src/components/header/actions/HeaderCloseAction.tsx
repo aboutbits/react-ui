@@ -1,4 +1,4 @@
-import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
+import IconClose from '@aboutbits/react-material-icons/dist/IconCloseRounded'
 import { ComponentType, ReactElement } from 'react'
 import { useInternationalization } from '../../../framework'
 import { IconProps } from '../../types'

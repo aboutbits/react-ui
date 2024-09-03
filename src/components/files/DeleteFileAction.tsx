@@ -1,4 +1,4 @@
-import IconDelete from '@aboutbits/react-material-icons/dist/IconDelete'
+import IconDelete from '@aboutbits/react-material-icons/dist/IconDeleteRoundedFilled'
 import { useState } from 'react'
 import { useInternationalization } from '../../framework'
 import { ButtonVariant } from '../button'

@@ -1,5 +1,5 @@
 import { IndexType } from '@aboutbits/pagination'
-import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAddRounded'
 import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { action } from '@storybook/addon-actions'
 import { Markdown } from '@storybook/addon-docs'

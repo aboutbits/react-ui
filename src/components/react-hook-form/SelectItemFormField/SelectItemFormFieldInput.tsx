@@ -1,5 +1,5 @@
-import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyboardArrowDown'
+import IconClose from '@aboutbits/react-material-icons/dist/IconCloseRounded'
+import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyboardArrowDownRounded'
 import classNames from 'classnames'
 import { ReactNode, useMemo, useRef } from 'react'
 import { useInternationalization, useTheme } from '../../../framework'

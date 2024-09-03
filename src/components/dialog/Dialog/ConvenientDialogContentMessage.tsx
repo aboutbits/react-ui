@@ -1,5 +1,5 @@
-import IconList from '@aboutbits/react-material-icons/dist/IconList'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
+import IconList from '@aboutbits/react-material-icons/dist/IconListRoundedFilled'
+import IconWarning from '@aboutbits/react-material-icons/dist/IconWarningRoundedFilled'
 import { ReactElement } from 'react'
 import { Tone } from '../../types'
 import {

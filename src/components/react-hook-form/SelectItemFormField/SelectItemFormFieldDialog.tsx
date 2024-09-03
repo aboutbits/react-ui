@@ -1,5 +1,5 @@
 import { IndexType } from '@aboutbits/pagination'
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearchRounded'
 import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/routers/inMemory'
 import { AsyncView } from '@aboutbits/react-toolbox'
 import { ReactElement, ReactNode } from 'react'

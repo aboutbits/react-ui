@@ -26,7 +26,7 @@ export default {
     },
     size: 'h-6 w-6',
     error: 'fill-critical-800',
-    default: 'fill-primary-800',
+    default: 'fill-primary-800 ',
     success: 'fill-success-800',
     disabled: 'fill-neutral-800',
   },

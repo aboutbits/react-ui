@@ -1,5 +1,5 @@
 import { IndexType } from '@aboutbits/pagination'
-import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
+import IconCheck from '@aboutbits/react-material-icons/dist/IconCheckRounded'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { action } from '@storybook/addon-actions'
 import { Markdown, Primary, Title } from '@storybook/addon-docs'

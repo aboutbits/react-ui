@@ -1,4 +1,4 @@
-import IconCheckCircle from '@aboutbits/react-material-icons/dist/IconCheckCircle'
+import IconCheckCircle from '@aboutbits/react-material-icons/dist/IconCheckCircleRounded'
 import classNames from 'classnames'
 import { ComponentType, ReactElement, ReactNode } from 'react'
 import { useInternationalization, useTheme } from '../../framework'

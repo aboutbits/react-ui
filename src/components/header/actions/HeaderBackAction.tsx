@@ -1,4 +1,4 @@
-import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBackRounded'
 import { ComponentProps, ComponentType } from 'react'
 import { useInternationalization } from '../../../framework'
 import { IconProps } from '../../types'

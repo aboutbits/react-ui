@@ -1,4 +1,4 @@
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import IconSearch from '@aboutbits/react-material-icons/dist/IconSearchRounded'
 import { forwardRef } from 'react'
 import { useInternationalization } from '../../framework'
 import { InputField, InputFieldProps } from './InputField'

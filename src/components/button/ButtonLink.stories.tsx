@@ -1,5 +1,5 @@
-import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
+import IconAdd from '@aboutbits/react-material-icons/dist/IconAddRounded'
+import IconInfo from '@aboutbits/react-material-icons/dist/IconInfoRounded'
 import {
   Controls,
   Description,
