@@ -1,37 +1,24 @@
 import classNames from 'classnames'
-import React from 'react'
 import { useTheme } from '../../framework'
 import { IconProps } from '../types'
 
-export const IconSpinner: React.FC<IconProps> = ({
-  title,
-  currentColor,
-  ...props
-}) => {
+export function IconSpinner({ className, ...props }: IconProps) {
   const { loading } = useTheme()
   return (
     <svg
-      viewBox="0 0 24 24"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label={title}
+      width="25"
+      height="24"
+      viewBox="0 0 25 24"
+      fill="none"
+      className={classNames(
+        loading.iconSpinner.defaultColor,
+        loading.iconSpinner.base,
+        className,
+      )}
       {...props}
     >
-      {title && <title>{title}</title>}
-      <circle
-        cx="12"
-        cy="12"
-        r="9"
-        strokeWidth="2"
-        pathLength="100"
-        fill="none"
-        className={classNames(
-          currentColor
-            ? loading.iconSpinner.currentColor
-            : loading.iconSpinner.defaultColor,
-          loading.iconSpinner.base,
-        )}
-      />
+      <path d="M12.497 21.5C11.1965 21.5 9.96875 21.2508 8.81375 20.7525C7.65892 20.2542 6.65042 19.5739 5.78825 18.7118C4.92608 17.8496 4.24583 16.8411 3.7475 15.6863C3.24917 14.5312 3 13.3035 3 12.003C3 10.6867 3.24967 9.45358 3.749 8.30375C4.24833 7.15375 4.92817 6.14867 5.7885 5.2885C6.64867 4.42817 7.65733 3.74833 8.8145 3.249C9.97167 2.74967 11.2002 2.5 12.5 2.5C12.7125 2.5 12.8906 2.57192 13.0343 2.71575C13.1781 2.85958 13.25 3.03775 13.25 3.25025C13.25 3.46292 13.1781 3.641 13.0343 3.7845C12.8906 3.92817 12.7125 4 12.5 4C10.2833 4 8.39583 4.77917 6.8375 6.3375C5.27917 7.89583 4.5 9.78333 4.5 12C4.5 14.2167 5.27917 16.1042 6.8375 17.6625C8.39583 19.2208 10.2833 20 12.5 20C14.7167 20 16.6042 19.2208 18.1625 17.6625C19.7208 16.1042 20.5 14.2167 20.5 12C20.5 11.7872 20.5719 11.609 20.7157 11.4655C20.8596 11.3218 21.0378 11.25 21.2502 11.25C21.4629 11.25 21.641 11.3219 21.7845 11.4658C21.9282 11.6094 22 11.7875 22 12C22 13.2998 21.7503 14.5283 21.251 15.6855C20.7517 16.8427 20.0718 17.8513 19.2115 18.7115C18.3513 19.5718 17.3462 20.2517 16.1962 20.751C15.0464 21.2503 13.8133 21.5 12.497 21.5Z" />
     </svg>
   )
 }

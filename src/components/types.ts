@@ -66,7 +66,4 @@ export type UseSearchQuery = {
   actions: { search: (query: string) => void; clear: () => void }
 }
 
-export type IconProps = {
-  title?: string
-  currentColor?: boolean
-} & React.SVGProps<SVGSVGElement>
+export type IconProps = React.SVGProps<SVGSVGElement>

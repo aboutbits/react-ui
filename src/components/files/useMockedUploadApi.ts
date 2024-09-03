@@ -96,6 +96,33 @@ export function useMockedUploadApi({
       return [200, null]
     })
 
+  mock
+    .onGet('/download')
+    .reply(
+      async (config: AxiosRequestConfig): Promise<[number, Blob | null]> => {
+        // Ensure that params exist and have the correct type
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        if (!config.params || typeof config.params.fileName !== 'string') {
+          return [400, null]
+        }
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const { fileName } = config.params
+
+        await sleep(1000)
+        const file = serverFiles.current.find((f) => f.name === fileName)
+
+        if (!file) {
+          return [404, null]
+        }
+
+        const fileContent = new Blob([`Content of ${file.name}`], {
+          type: 'text/plain',
+        })
+
+        return [200, fileContent]
+      },
+    )
   const [remoteFiles, setRemoteFiles] = useState<CustomRemoteFile[]>(
     serverFiles.current,
   )

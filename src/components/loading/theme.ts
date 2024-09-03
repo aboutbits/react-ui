@@ -12,8 +12,8 @@ export default {
     },
   },
   iconSpinner: {
-    base: 'animate-spinner',
+    base: 'animate-spin',
     currentColor: 'stroke-current',
-    defaultColor: 'stroke-primary-500',
+    defaultColor: 'stroke-primary-800',
   },
 }

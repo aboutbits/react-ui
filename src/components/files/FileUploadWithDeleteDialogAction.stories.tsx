@@ -8,6 +8,7 @@ import { DeleteFileAction } from './DeleteFileAction'
 import { FileDropZone } from './FileDropZone'
 import { FileList } from './FileList'
 import { FileListItem } from './FileListItem'
+import { FileUploadContainer } from './FileUploadContainer'
 import { FileSpace, FileState, FileUploadObject } from './FileUploadState'
 import { FileUploadOnUploadSingle, useFileUpload } from './useFileUpload'
 import { useMockedUploadApi } from './useMockedUploadApi'
@@ -110,10 +111,15 @@ export const WithDeleteDialog: Story = {
       fileUploadObject: FileUploadObject<CustomRemoteFile>,
     ) => {
       setIsDeleting(true)
-      await axiosInstance.post('/delete')
-      removeFile(fileUploadObject.file)
-      setIsDeleting(false)
-      setDeleteDialogState({ isOpen: false })
+      try {
+        await axiosInstance.post('/delete')
+        removeFile(fileUploadObject.file)
+      } catch {
+        // handle error here
+      } finally {
+        setIsDeleting(false)
+        setDeleteDialogState({ isOpen: false })
+      }
     }
 
     const [deleteDialogState, setDeleteDialogState] =
@@ -122,7 +128,7 @@ export const WithDeleteDialog: Story = {
     const [isDeleting, setIsDeleting] = useState(false)
 
     return (
-      <div className="flex flex-col gap-4">
+      <FileUploadContainer>
         {fileUploadObjects.length === 0 && (
           <FileDropZone
             onSelect={addFilesToUpload}
@@ -166,7 +172,7 @@ export const WithDeleteDialog: Story = {
             dismissButtonText="Cancel"
           />
         )}
-      </div>
+      </FileUploadContainer>
     )
   },
 }

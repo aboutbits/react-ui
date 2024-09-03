@@ -1,15 +1,15 @@
 import classNames from 'classnames'
-import { ComponentType, ReactNode } from 'react'
+import { ComponentType } from 'react'
 import { useTheme } from '../../framework'
+import { Button, ButtonProps } from '../button/Button'
+import { ButtonIcon, ButtonIconProps } from '../button/ButtonIcon'
 import { IconProps } from '../types'
-import { Button, ButtonProps } from './Button'
-import { ButtonIcon, ButtonIconProps } from './ButtonIcon'
 
 export type ResponsiveButtonIconProps = Omit<
   ButtonProps & ButtonIconProps,
   'ref' | 'children' | 'icon' | 'iconStart' | 'iconEnd' | 'label'
 > & {
-  label: ReactNode
+  label: string
 } & (
     | {
         icon: ComponentType<IconProps>
@@ -28,22 +28,26 @@ export function ResponsiveButtonIcon({
   iconEnd,
   ...props
 }: ResponsiveButtonIconProps) {
-  const { button } = useTheme()
+  const { files } = useTheme()
   return (
     <>
       <Button
         {...props}
         iconStart={icon}
         iconEnd={iconEnd}
-        className={classNames(button.buttonIconResponsive.button, className)}
+        className={classNames(
+          files.action.buttonIconResponsive.button,
+          className,
+        )}
       >
         {label}
       </Button>
       <ButtonIcon
         {...props}
         icon={icon ?? iconEnd}
+        aria-label={label}
         className={classNames(
-          button.buttonIconResponsive.buttonIcon,
+          files.action.buttonIconResponsive.buttonIcon,
           className,
         )}
       />

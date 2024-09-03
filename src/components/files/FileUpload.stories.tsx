@@ -9,6 +9,7 @@ import {
   Title,
 } from '@storybook/blocks'
 import { Meta, StoryObj } from '@storybook/react'
+import { AxiosResponse } from 'axios'
 import { FC, useCallback } from 'react'
 import { Button } from '../button'
 import { Size } from '../types'
@@ -17,6 +18,7 @@ import { DownloadFileAction } from './DownloadFileAction'
 import { FileDropZone } from './FileDropZone'
 import { FileList } from './FileList'
 import { FileListItem } from './FileListItem'
+import { FileUploadContainer } from './FileUploadContainer'
 import { FileSpace, FileState, FileUploadObject } from './FileUploadState'
 import {
   FileUploadOnUploadMulitple,
@@ -131,7 +133,7 @@ export const Single: Story = {
     }
 
     return (
-      <div className="flex flex-col gap-4">
+      <FileUploadContainer>
         {fileUploadObjects.length === 0 && (
           <FileDropZone
             onSelect={addFilesToUpload}
@@ -165,7 +167,7 @@ export const Single: Story = {
             Upload
           </Button>
         )}
-      </div>
+      </FileUploadContainer>
     )
   },
 }
@@ -222,15 +224,41 @@ export const Multiple: Story = {
       fileUploadObject: FileUploadObject<CustomRemoteFile>,
     ) => {
       if (fileUploadObject.space === FileSpace.Local) {
-        removeFile(fileUploadObject.file) // Move this logic into FileListItem
+        removeFile(fileUploadObject.file)
       } else {
         await axiosInstance.post('/delete')
         removeFile(fileUploadObject.file)
       }
     }
 
+    const handleDownload = async (
+      fileUploadObject: FileUploadObject<CustomRemoteFile>,
+    ): Promise<void> => {
+      try {
+        const fileName: string = fileUploadObject.file.name
+        const response: AxiosResponse<Blob> = await axiosInstance.get(
+          '/download',
+          {
+            params: { fileName },
+            responseType: 'blob',
+          },
+        )
+
+        const downloadUrl: string = URL.createObjectURL(response.data)
+        const a: HTMLAnchorElement = document.createElement('a')
+        a.href = downloadUrl
+        a.download = fileName
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+      } catch (error) {
+        // Handle error here
+        console.error('Download failed:', error)
+      }
+    }
+
     return (
-      <div className="flex flex-col gap-4">
+      <FileUploadContainer>
         <FileDropZone
           multipleFiles
           onSelect={addFilesToUpload}
@@ -246,7 +274,10 @@ export const Multiple: Story = {
                 renderRemoteFileSize={(remoteFile) => remoteFile.size}
                 fileActions={
                   <>
-                    <DownloadFileAction onClick={() => void triggerUpload()} />
+                    <DownloadFileAction
+                      fileUploadObject={fileUploadObject}
+                      onDownload={handleDownload}
+                    />
                     <DeleteFileAction
                       fileUploadObject={fileUploadObject}
                       onDelete={handleDelete}
@@ -266,7 +297,7 @@ export const Multiple: Story = {
             Upload
           </Button>
         )}
-      </div>
+      </FileUploadContainer>
     )
   },
 }

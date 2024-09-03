@@ -1,4 +1,5 @@
 export default {
+  container: 'flex flex-col gap-4',
   fileDropzone: {
     container: {
       base: 'flex flex-col items-stretch gap-4',
@@ -39,6 +40,12 @@ export default {
       textContainer: 'flex grow flex-col gap-1 truncate',
       progress: 'bg-primary-800 absolute inset-x-0 bottom-0 h-1 rounded-xl',
       actions: 'flex items-center gap-2',
+    },
+  },
+  action: {
+    buttonIconResponsive: {
+      button: 'max-md:hidden',
+      buttonIcon: 'md:hidden',
     },
   },
 }

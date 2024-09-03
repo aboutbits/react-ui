@@ -28,6 +28,7 @@ export function FileListItem<TRemoteFile>({
 }: FileListItemProps<TRemoteFile>) {
   const [recentlyUploaded, setRecentlyUploaded] = useState<boolean>()
   const formatFileSize = useHumanReadableFileSize()
+  const { messages } = useInternationalization()
 
   const fileSize =
     fileUploadObject.space === FileSpace.Remote
@@ -35,6 +36,8 @@ export function FileListItem<TRemoteFile>({
       : fileUploadObject.file.size
 
   const formattedFileSize = fileSize ? formatFileSize(fileSize) : undefined
+
+  const fileState = fileUploadObject.state
 
   const name =
     fileUploadObject.space === FileSpace.Remote
@@ -57,39 +60,6 @@ export function FileListItem<TRemoteFile>({
 
   return (
     <div className={classNames(files.fileList.item.container)}>
-      <FileListItemContent
-        fileName={name}
-        fileSize={formattedFileSize}
-        fileUploadObject={fileUploadObject}
-        recentlyUploaded={recentlyUploaded}
-        disabled={disabled}
-        fileActions={fileActions}
-      />
-    </div>
-  )
-}
-
-function FileListItemContent<TRemoteFile>({
-  fileName,
-  fileSize,
-  fileUploadObject,
-  recentlyUploaded,
-  disabled,
-  fileActions,
-}: {
-  fileName: string
-  fileSize?: string
-  fileUploadObject: FileUploadObject<TRemoteFile>
-  recentlyUploaded?: boolean
-  disabled?: boolean
-  fileActions?: ReactNode
-}) {
-  const { files } = useTheme()
-  const { messages } = useInternationalization()
-
-  const fileState = fileUploadObject.state
-  return (
-    <>
       <div className={files.fileList.item.content}>
         {fileUploadObject.state === FileState.Uploading ? (
           <div
@@ -132,7 +102,7 @@ function FileListItemContent<TRemoteFile>({
           </div>
         )}
         <div className={files.fileList.item.textContainer}>
-          <div className={classNames(files.text.bold)}>{fileName}</div>
+          <div className={classNames(files.text.bold)}>{name}</div>
           <div
             className={
               fileUploadObject.state === FileState.Failed
@@ -145,7 +115,7 @@ function FileListItemContent<TRemoteFile>({
               : fileState === FileState.Uploading
                 ? messages['files.item.uploading']
                 : fileState === FileState.Uploaded && fileSize
-                  ? fileSize
+                  ? formattedFileSize
                   : ''}
           </div>
         </div>
@@ -161,6 +131,6 @@ function FileListItemContent<TRemoteFile>({
             style={{ width: `${fileUploadObject.progress * 100}%` }}
           />
         )}
-    </>
+    </div>
   )
 }
