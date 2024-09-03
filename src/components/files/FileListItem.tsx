@@ -68,7 +68,9 @@ export function FileListItem<TRemoteFile>({
               files.icon.container.default,
             )}
           >
-            <IconSpinner className={files.icon.size} />
+            <IconSpinner
+              className={classNames(files.icon.size, files.icon.default)}
+            />
           </div>
         ) : (
           <div
