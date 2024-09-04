@@ -3,7 +3,7 @@ import IconDraftRounded from '@aboutbits/react-material-icons/dist/IconDraftRoun
 import classNames from 'classnames'
 import { ReactNode, useEffect, useState } from 'react'
 import { useInternationalization, useTheme } from '../../framework'
-import { IconSpinner } from '../loading/IconSpinner'
+import { LoadingSpinner } from '../loading/LoadingSpinner'
 import { FileSpace, FileState, FileUploadObject } from './FileUploadState'
 import { useHumanReadableFileSize } from './utils'
 
@@ -68,7 +68,7 @@ export function FileListItem<TRemoteFile>({
               files.icon.container.default,
             )}
           >
-            <IconSpinner
+            <LoadingSpinner
               className={classNames(files.icon.size, files.icon.default)}
             />
           </div>

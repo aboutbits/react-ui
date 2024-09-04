@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { useTheme } from '../../framework'
 import { IconProps } from '../types'
 
-export function IconSpinner({ className, ...props }: IconProps) {
+export function LoadingSpinner({ className, ...props }: IconProps) {
   const { loading } = useTheme()
   return (
     <IconProgressActivityRounded

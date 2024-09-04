@@ -2,7 +2,7 @@ import IconDownload from '@aboutbits/react-material-icons/dist/IconDownloadRound
 import { useState } from 'react'
 import { useInternationalization } from '../../framework'
 import { ButtonVariant } from '../button'
-import { IconSpinner } from '../loading/IconSpinner'
+import { LoadingSpinner } from '../loading/LoadingSpinner'
 import { Tone } from '../types'
 import { FileUploadObject } from './FileUploadState'
 import { ResponsiveButtonIcon } from './ResponsiveButtonIcon'
@@ -25,7 +25,7 @@ export function DownloadFileAction<TRemoteFile>({
       variant={ButtonVariant.Transparent}
       tone={Tone.Neutral}
       disabled={isDownloading}
-      icon={isDownloading ? IconSpinner : IconDownload}
+      icon={isDownloading ? LoadingSpinner : IconDownload}
       onClick={() => {
         setIsDownloading(true)
         Promise.resolve(onDownload(fileUploadObject))

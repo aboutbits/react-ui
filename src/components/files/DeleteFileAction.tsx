@@ -2,7 +2,7 @@ import IconDelete from '@aboutbits/react-material-icons/dist/IconDeleteRoundedFi
 import { useState } from 'react'
 import { useInternationalization } from '../../framework'
 import { ButtonVariant } from '../button'
-import { IconSpinner } from '../loading/IconSpinner'
+import { LoadingSpinner } from '../loading/LoadingSpinner'
 import { Tone } from '../types'
 import { FileUploadObject } from './FileUploadState'
 import { ResponsiveButtonIcon } from './ResponsiveButtonIcon'
@@ -35,7 +35,7 @@ export function DeleteFileAction<TRemoteFile>({
             setIsDeleting(false)
           })
       }}
-      icon={isDeleting ? IconSpinner : IconDelete}
+      icon={isDeleting ? LoadingSpinner : IconDelete}
       label={messages['files.action.delete']}
     />
   )
