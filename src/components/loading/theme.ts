@@ -12,7 +12,7 @@ export default {
     },
   },
   iconSpinner: {
-    base: 'animate-spin',
+    base: 'animate-spin fill-current',
     currentColor: 'stroke-current',
     defaultColor: 'stroke-primary-800',
   },
