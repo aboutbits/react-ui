@@ -1,11 +1,11 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import IconList from '@aboutbits/react-material-icons/dist/IconList'
+import { IconListOutlinedFilled } from '@aboutbits/react-material-icons'
 import { Theme } from '../../../../.storybook/components'
 import { Tone } from '../../types'
 import { SectionContentMessage } from './SectionContentMessage'
 import {
-  SectionContentEmpty,
-  SectionContentError,
+    SectionContentEmpty,
+    SectionContentError,
 } from './ConvenientSectionContentMessage'
 
 <Meta
@@ -35,7 +35,7 @@ export const Template = (args) => <SectionContentMessage {...args} />
         options: ['None', 'List'],
         mapping: {
           None: undefined,
-          List: IconList,
+          List: IconListOutlinedFilled,
         },
         control: { type: 'select' },
       },

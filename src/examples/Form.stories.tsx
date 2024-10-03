@@ -1,5 +1,5 @@
 import { IndexType } from '@aboutbits/pagination'
-import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
+import { IconCheckOutlinedFilled } from '@aboutbits/react-material-icons'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { action } from '@storybook/addon-actions'
 import { Markdown, Primary, Title } from '@storybook/addon-docs'
@@ -362,7 +362,7 @@ export const UserEdit: Story = () => {
               {showSuccess && (
                 <Alert
                   tone={Tone.Success}
-                  icon={IconCheck}
+                  icon={IconCheckOutlinedFilled}
                   className="xl:col-span-full"
                 >
                   Submitted!

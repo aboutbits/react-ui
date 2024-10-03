@@ -1,5 +1,7 @@
-import IconKeyboardArrowLeft from '@aboutbits/react-material-icons/dist/IconKeyboardArrowLeft'
-import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
+import {
+  IconKeyboardArrowLeftOutlinedFilled,
+  IconKeyboardArrowRightOutlinedFilled,
+} from '@aboutbits/react-material-icons'
 import { ReactElement } from 'react'
 import { useInternationalization, useTheme } from '../../framework'
 
@@ -9,7 +11,9 @@ export function PaginationPreviousContent(): ReactElement {
 
   return (
     <>
-      <IconKeyboardArrowLeft className={pagination.prevNext.icon.base} />
+      <IconKeyboardArrowLeftOutlinedFilled
+        className={pagination.prevNext.icon.base}
+      />
       <span className={pagination.prevNext.text.base}>
         {messages['pagination.prev']}
       </span>
@@ -26,7 +30,9 @@ export function PaginationNextContent(): ReactElement {
       <span className={pagination.prevNext.text.base}>
         {messages['pagination.next']}
       </span>
-      <IconKeyboardArrowRight className={pagination.prevNext.icon.base} />
+      <IconKeyboardArrowRightOutlinedFilled
+        className={pagination.prevNext.icon.base}
+      />
     </>
   )
 }

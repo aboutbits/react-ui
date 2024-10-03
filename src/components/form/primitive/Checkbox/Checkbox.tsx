@@ -1,5 +1,7 @@
-import IconCheckBoxOutlineBlankRounded from '@aboutbits/react-material-icons/dist/IconCheckBoxOutlineBlankRounded'
-import IconCheckBoxRounded from '@aboutbits/react-material-icons/dist/IconCheckBoxRounded'
+import {
+  IconCheckBoxOutlineBlankRoundedFilled,
+  IconCheckBoxRoundedFilled,
+} from '@aboutbits/react-material-icons'
 import classNames from 'classnames'
 import { ReactNode, forwardRef } from 'react'
 import { useTheme } from '../../../../framework'
@@ -80,13 +82,17 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           required={required}
           className={checkboxInputCss}
         />
-        <IconCheckbox mode={mode} size={size} disabled={disabled} />
+        <IconCheckboxOutlinedFilled
+          mode={mode}
+          size={size}
+          disabled={disabled}
+        />
       </label>
     )
   },
 )
 
-export const IconCheckbox = ({
+export const IconCheckboxOutlinedFilled = ({
   size,
   mode,
   disabled,
@@ -115,7 +121,7 @@ export const IconCheckbox = ({
 
   return (
     <>
-      <IconCheckBoxRounded
+      <IconCheckBoxRoundedFilled
         className={classNames(
           theme.checked.base,
           theme.checked.modeState[mode][disabledState],
@@ -123,7 +129,7 @@ export const IconCheckbox = ({
         )}
         {...props}
       />
-      <IconCheckBoxOutlineBlankRounded
+      <IconCheckBoxOutlineBlankRoundedFilled
         className={classNames(
           theme.unchecked.base,
           theme.unchecked.modeState[mode][disabledState],

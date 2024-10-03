@@ -1,6 +1,8 @@
-import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
+import {
+  IconCheckOutlinedFilled,
+  IconInfoOutlinedFilled,
+  IconWarningOutlinedFilled,
+} from '@aboutbits/react-material-icons'
 import {
   Controls,
   Markdown,
@@ -26,9 +28,9 @@ const icons = {
   options: ['None', 'Warning', 'Check', 'Info'],
   mapping: {
     None: undefined,
-    Warning: IconWarning,
-    Check: IconCheck,
-    Info: IconInfo,
+    Warning: IconWarningOutlinedFilled,
+    Check: IconCheckOutlinedFilled,
+    Info: IconInfoOutlinedFilled,
   },
   control: { type: 'select' },
 }
@@ -88,7 +90,7 @@ const meta = {
     children:
       'This alert component can be used to highlight a message to the user.',
     tone: Tone.Critical,
-    icon: IconWarning,
+    icon: IconWarningOutlinedFilled,
   },
   argTypes: {
     title: { control: 'text' },
@@ -169,7 +171,7 @@ export const ConvinientAlertComponents: Story = {
 
 export const ActionsResponsive: Story = {
   args: {
-    icon: IconCheck,
+    icon: IconCheckOutlinedFilled,
     tone: Tone.Success,
     actions: DissmissSuccessButton,
     actionsPosition: AlertActionsPosition.Responsive,
@@ -186,7 +188,7 @@ export const ActionsResponsive: Story = {
 
 export const ActionsFixedRight: Story = {
   args: {
-    icon: IconCheck,
+    icon: IconCheckOutlinedFilled,
     tone: Tone.Success,
     actions: DissmissSuccessButton,
     actionsPosition: AlertActionsPosition.FixedRight,
@@ -207,7 +209,7 @@ export const ActionsFixedRight: Story = {
 
 export const ActionsFixedBottom: Story = {
   args: {
-    icon: IconCheck,
+    icon: IconCheckOutlinedFilled,
     tone: Tone.Success,
     actions: DissmissSuccessButton,
     actionsPosition: AlertActionsPosition.FixedBottom,
@@ -228,7 +230,7 @@ export const ActionsFixedBottom: Story = {
 
 export const VeryLongMessage: Story = {
   args: {
-    icon: IconWarning,
+    icon: IconWarningOutlinedFilled,
     tone: Tone.Critical,
   },
   render: (args) => (

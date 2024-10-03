@@ -1,4 +1,4 @@
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import { IconSearchOutlinedFilled } from '@aboutbits/react-material-icons'
 import { forwardRef } from 'react'
 import { useInternationalization } from '../../framework'
 import { InputField, InputFieldProps } from './InputField'
@@ -18,7 +18,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
         name={name}
         ref={ref}
         placeholder={messages['search.placeholder']}
-        iconStart={IconSearch}
+        iconStart={IconSearchOutlinedFilled}
         {...props}
       />
     )

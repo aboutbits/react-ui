@@ -1,6 +1,8 @@
-import IconCheck from '@aboutbits/react-material-icons/dist/IconCheck'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
+import {
+  IconCheckOutlinedFilled,
+  IconInfoOutlinedFilled,
+  IconWarningOutlinedFilled,
+} from '@aboutbits/react-material-icons'
 import { ReactElement } from 'react'
 import { Tone } from '../types'
 import { Alert } from './Alert'
@@ -11,7 +13,7 @@ export function AlertSuccess({
   ...props
 }: Omit<AlertProps, 'tone' | 'icon'>): ReactElement {
   return (
-    <Alert tone={Tone.Success} icon={IconCheck} {...props}>
+    <Alert tone={Tone.Success} icon={IconCheckOutlinedFilled} {...props}>
       {children}
     </Alert>
   )
@@ -22,7 +24,7 @@ export function AlertWarning({
   ...props
 }: Omit<AlertProps, 'tone' | 'icon'>): ReactElement {
   return (
-    <Alert tone={Tone.Warning} icon={IconWarning} {...props}>
+    <Alert tone={Tone.Warning} icon={IconWarningOutlinedFilled} {...props}>
       {children}
     </Alert>
   )
@@ -33,7 +35,7 @@ export function AlertCritical({
   ...props
 }: Omit<AlertProps, 'tone' | 'icon'>): ReactElement {
   return (
-    <Alert tone={Tone.Critical} icon={IconWarning} {...props}>
+    <Alert tone={Tone.Critical} icon={IconWarningOutlinedFilled} {...props}>
       {children}
     </Alert>
   )
@@ -44,7 +46,7 @@ export function AlertInformative({
   ...props
 }: Omit<AlertProps, 'tone' | 'icon'>): ReactElement {
   return (
-    <Alert tone={Tone.Informative} icon={IconInfo} {...props}>
+    <Alert tone={Tone.Informative} icon={IconInfoOutlinedFilled} {...props}>
       {children}
     </Alert>
   )

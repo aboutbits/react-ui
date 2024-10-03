@@ -1,5 +1,7 @@
-import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import {
+  IconBadgeOutlinedFilled,
+  IconSearchOutlinedFilled,
+} from '@aboutbits/react-material-icons'
 import {
   Controls,
   Description,
@@ -31,8 +33,8 @@ const meta = {
       options: ['None', 'Search', 'Badge'],
       mapping: {
         None: undefined,
-        Search: IconSearch,
-        Badge: IconBadge,
+        Search: IconSearchOutlinedFilled,
+        Badge: IconBadgeOutlinedFilled,
       },
       control: { type: 'select' },
     },
@@ -40,8 +42,8 @@ const meta = {
       options: ['None', 'Search', 'Badge'],
       mapping: {
         None: undefined,
-        Search: IconSearch,
-        Badge: IconBadge,
+        Search: IconSearchOutlinedFilled,
+        Badge: IconBadgeOutlinedFilled,
       },
       control: { type: 'select' },
     },
@@ -112,11 +114,11 @@ export const Disabled: Story = {
   },
 }
 
-export const WithIcons: Story = {
+export const WithIconsOutlinedFilled: Story = {
   render: (args) => (
     <div className="flex flex-row space-x-4">
-      <InputField {...args} iconStart={IconSearch} />
-      <InputField {...args} iconEnd={IconBadge} />
+      <InputField {...args} iconStart={IconSearchOutlinedFilled} />
+      <InputField {...args} iconEnd={IconBadgeOutlinedFilled} />
     </div>
   ),
 }

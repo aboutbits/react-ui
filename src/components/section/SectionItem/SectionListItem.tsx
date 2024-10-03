@@ -1,4 +1,4 @@
-import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRight'
+import { IconKeyboardArrowRightOutlinedFilled } from '@aboutbits/react-material-icons'
 import classNames from 'classnames'
 import { ReactNode, forwardRef } from 'react'
 import {
@@ -26,7 +26,7 @@ function SectionListItemIcon() {
   const { section } = useTheme()
 
   return (
-    <IconKeyboardArrowRight
+    <IconKeyboardArrowRightOutlinedFilled
       width="24"
       height="24"
       className={section.listItemButtonLink.icon}

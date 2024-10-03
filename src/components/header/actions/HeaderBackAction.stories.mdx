@@ -1,4 +1,4 @@
-import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
+import { IconCloseOutlinedFilled } from '@aboutbits/react-material-icons'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { InternationalizationMessages } from '../../../../.storybook/components'
 import { HeaderBackAction } from './HeaderBackAction'
@@ -22,7 +22,7 @@ export const Template = (args) => <HeaderBackAction {...args} />
         options: ['Default', 'Close'],
         mapping: {
           Default: undefined,
-          Close: IconClose,
+          Close: IconCloseOutlinedFilled,
         },
         control: { type: 'select' },
       },

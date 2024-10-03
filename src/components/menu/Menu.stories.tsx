@@ -1,5 +1,7 @@
-import IconArrowDropUp from '@aboutbits/react-material-icons/dist/IconArrowDropUp'
-import IconMoreVert from '@aboutbits/react-material-icons/dist/IconMoreVert'
+import {
+  IconArrowDropUpOutlinedFilled,
+  IconMoreVertOutlinedFilled,
+} from '@aboutbits/react-material-icons'
 import { action } from '@storybook/addon-actions'
 import {
   Controls,
@@ -120,7 +122,7 @@ export const WithCustomButtonAndArrow: Story = {
     button: ({ placement, open }) => (
       <MenuButton>
         Menu
-        <IconArrowDropUp
+        <IconArrowDropUpOutlinedFilled
           className={classNames(
             'h-6 w-6',
             placement === MenuPlacement.Top
@@ -149,7 +151,7 @@ export const WithButtonIcon: Story = {
   args: {
     button: (
       <ButtonIcon
-        icon={IconMoreVert}
+        icon={IconMoreVertOutlinedFilled}
         tone={Tone.Neutral}
         variant={ButtonVariant.Transparent}
       />

@@ -1,4 +1,4 @@
-import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
+import { IconArrowBackOutlinedFilled } from '@aboutbits/react-material-icons'
 import { ComponentProps, ComponentType } from 'react'
 import { useInternationalization } from '../../../framework'
 import { IconProps } from '../../types'
@@ -35,7 +35,7 @@ export type HeaderBackActionOnClickOrFallbackUrlProps =
     }
 
 export function HeaderBackAction({
-  icon = IconArrowBack,
+  icon = IconArrowBackOutlinedFilled,
   label,
   onClick,
   fallbackUrl,

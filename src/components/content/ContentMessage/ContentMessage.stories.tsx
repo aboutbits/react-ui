@@ -1,6 +1,8 @@
-import IconError from '@aboutbits/react-material-icons/dist/IconError'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarning'
+import {
+  IconErrorOutlinedFilled,
+  IconInfoOutlinedFilled,
+  IconWarningOutlinedFilled,
+} from '@aboutbits/react-material-icons'
 import {
   Controls,
   Description,
@@ -19,16 +21,16 @@ const meta = {
   args: {
     title: 'No items',
     text: 'No data available for this view',
-    icon: IconInfo,
+    icon: IconInfoOutlinedFilled,
   },
   argTypes: {
     icon: {
       options: ['None', 'Info', 'Warning', 'Error'],
       mapping: {
         None: undefined,
-        Info: IconInfo,
-        Warning: IconWarning,
-        Error: IconError,
+        Info: IconInfoOutlinedFilled,
+        Warning: IconWarningOutlinedFilled,
+        Error: IconErrorOutlinedFilled,
       },
       control: { type: 'select' },
     },

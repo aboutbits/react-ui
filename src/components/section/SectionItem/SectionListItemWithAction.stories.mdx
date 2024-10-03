@@ -1,12 +1,12 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
-import IconEdit from '@aboutbits/react-material-icons/dist/IconEdit'
-import IconCopyAll from '@aboutbits/react-material-icons/dist/IconCopyAll'
+import { IconEditOutlinedFilled } from '@aboutbits/react-material-icons'
+import { IconCopyAllOutlinedFilled } from '@aboutbits/react-material-icons'
 import { Theme } from '../../../../.storybook/components'
 import {
-  Section,
-  SectionContainer,
-  SectionContentList,
-  SectionListItemWithAction,
+    Section,
+    SectionContainer,
+    SectionContentList,
+    SectionListItemWithAction,
 } from '../'
 
 <Meta
@@ -29,7 +29,7 @@ export const Template = ({ children, action }) => (
     name="Default"
     args={{
       children: 'Jane Doe',
-      action: <IconEdit width={20} height={20} className="fill-current" />,
+      action: <IconEditOutlinedFilled width={20} height={20} className="fill-current" />,
     }}
     argTypes={{
       action: { control: false },
@@ -55,7 +55,7 @@ export const Template = ({ children, action }) => (
     args={{
       children:
         'This list item has a very long text. The text should wrap, there should be a space between text and action. And the action should not shrink.',
-      action: <IconCopyAll width={20} height={20} className="fill-current" />,
+      action: <IconCopyAllOutlinedFilled width={20} height={20} className="fill-current" />,
     }}
   >
     {Template.bind({})}
@@ -71,21 +71,21 @@ export const Template = ({ children, action }) => (
         <SectionContentList>
           <SectionListItemWithAction
             action={
-              <IconEdit width={20} height={20} className="fill-current" />
+              <IconEditOutlinedFilled width={20} height={20} className="fill-current" />
             }
           >
             Jane Doe
           </SectionListItemWithAction>
           <SectionListItemWithAction
             action={
-              <IconEdit width={20} height={20} className="fill-current" />
+              <IconEditOutlinedFilled width={20} height={20} className="fill-current" />
             }
           >
             John Doe
           </SectionListItemWithAction>
           <SectionListItemWithAction
             action={
-              <IconEdit width={20} height={20} className="fill-current" />
+              <IconEditOutlinedFilled width={20} height={20} className="fill-current" />
             }
           >
             Mary Doe

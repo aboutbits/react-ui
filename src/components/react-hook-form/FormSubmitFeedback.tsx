@@ -1,4 +1,4 @@
-import IconCheckCircle from '@aboutbits/react-material-icons/dist/IconCheckCircle'
+import { IconCheckCircleOutlinedFilled } from '@aboutbits/react-material-icons'
 import classNames from 'classnames'
 import { ComponentType, ReactElement, ReactNode } from 'react'
 import { useInternationalization, useTheme } from '../../framework'
@@ -14,7 +14,7 @@ export type FormSubmitFeedbackProps = {
 
 export function FormSubmitFeedback({
   savedMessage,
-  icon: Icon = IconCheckCircle,
+  icon: Icon = IconCheckCircleOutlinedFilled,
   successDelay,
   className,
 }: FormSubmitFeedbackProps): ReactElement | null {

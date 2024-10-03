@@ -1,5 +1,7 @@
-import IconBadge from '@aboutbits/react-material-icons/dist/IconBadge'
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import {
+  IconBadgeOutlinedFilled,
+  IconSearchOutlinedFilled,
+} from '@aboutbits/react-material-icons'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { action } from '@storybook/addon-actions'
 import {
@@ -20,8 +22,8 @@ const icons = {
   options: ['None', 'Badge', 'Search'],
   mapping: {
     None: undefined,
-    Badge: IconBadge,
-    Search: IconSearch,
+    Badge: IconBadgeOutlinedFilled,
+    Search: IconSearchOutlinedFilled,
   },
 }
 
