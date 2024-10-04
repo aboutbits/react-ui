@@ -5,7 +5,11 @@ import {
   offset,
   useFloating,
 } from '@floating-ui/react'
-import { Menu as HeadlessMenu } from '@headlessui/react'
+import {
+  Menu as HeadlessMenu,
+  MenuButton as HeadlessMenuButton,
+  MenuItems as HeadlessMenuItems,
+} from '@headlessui/react'
 import classNames from 'classnames'
 import { Fragment, ReactElement, ReactNode, ReactPortal } from 'react'
 import { useTheme } from '../../framework'
@@ -52,7 +56,7 @@ export type MenuProps = {
 
 /**
  * A dropdown menu that uses the `Menu` component of [HeadlessUI](https://headlessui.com/react/dialog) and the anchor positioning of [Floating UI](https://floating-ui.com).
-Menu items are added as children using the [MenuItem](/docs/components-menu-menuitem--docs) component.
+ Menu items are added as children using the [MenuItem](/docs/components-menu-menuitem--docs) component.
  */
 export function Menu({ className, children, button, placement }: MenuProps) {
   const { menu } = useTheme()
@@ -72,23 +76,23 @@ export function Menu({ className, children, button, placement }: MenuProps) {
     <HeadlessMenu as="div" className={classNames(menu.container, className)}>
       {({ open }) => (
         <>
-          <HeadlessMenu.Button as={Fragment} ref={refs.setReference}>
+          <HeadlessMenuButton as={Fragment} ref={refs.setReference}>
             {typeof button === 'function'
               ? button({
                   placement: placementUnionToPlacementEnum(finalPlacement),
                   open,
                 })
               : button}
-          </HeadlessMenu.Button>
+          </HeadlessMenuButton>
           {open && (
             <FloatingPortal>
-              <HeadlessMenu.Items
+              <HeadlessMenuItems
                 ref={refs.setFloating}
                 className={menu.list.base}
                 style={floatingStyles}
               >
                 {children}
-              </HeadlessMenu.Items>
+              </HeadlessMenuItems>
             </FloatingPortal>
           )}
         </>

@@ -57,7 +57,7 @@
     "@aboutbits/react-material-icons": "^2.0.0",
     "@aboutbits/react-toolbox": "^0.2.5",
     "@floating-ui/react": "^0.26.10",
-    "@headlessui/react": "^1.7.18",
+    "@headlessui/react": "^2.1.9",
     "axios": "^1.6.8",
     "classnames": "^2.5.1",
     "lodash": "^4.17.21",
