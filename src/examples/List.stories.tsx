@@ -1,5 +1,5 @@
 import { IndexType } from '@aboutbits/pagination'
-import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
+import IconAddOutlinedFilled from '@aboutbits/react-material-icons/dist/IconAddOutlinedFilled'
 import { useMatchMediaQuery } from '@aboutbits/react-toolbox'
 import { action } from '@storybook/addon-actions'
 import { Markdown } from '@storybook/addon-docs'
@@ -166,7 +166,7 @@ export const ListWithFilter: Story = () => {
           <SectionHeaderTitle>List of users</SectionHeaderTitle>
           <ButtonIcon
             label="Add"
-            icon={IconAdd}
+            icon={IconAddOutlinedFilled}
             variant={ButtonVariant.Transparent}
             tone={Tone.Neutral}
             onClick={action('onAddNew')}

@@ -1,4 +1,4 @@
-import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
+import IconCloseOutlinedFilled from '@aboutbits/react-material-icons/dist/IconCloseOutlinedFilled'
 import { ComponentType, ReactElement } from 'react'
 import { useInternationalization } from '../../../framework'
 import { IconProps } from '../../types'
@@ -18,7 +18,7 @@ export type DialogHeaderCloseActionProps = Omit<
 }
 
 export function DialogHeaderCloseAction({
-  icon = IconClose,
+  icon = IconCloseOutlinedFilled,
   label,
   ...props
 }: DialogHeaderCloseActionProps): ReactElement {
