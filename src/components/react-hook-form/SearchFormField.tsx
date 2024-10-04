@@ -1,4 +1,4 @@
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearchRounded'
+import IconSearchOutlinedFilled from '@aboutbits/react-material-icons/dist/IconSearchOutlinedFilled'
 import { ForwardedRef, forwardRef } from 'react'
 import { FieldPath, FieldValues } from 'react-hook-form'
 import { useInternationalization } from '../../framework'
@@ -30,7 +30,7 @@ export const SearchFormField = forwardRef(function SearchFormField<
       name={name}
       ref={ref}
       placeholder={messages['search.placeholder']}
-      iconStart={IconSearch}
+      iconStart={IconSearchOutlinedFilled}
       {...props}
     />
   )

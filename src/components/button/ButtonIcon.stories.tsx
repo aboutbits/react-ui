@@ -1,5 +1,5 @@
-import IconAddRounded from '@aboutbits/react-material-icons/dist/IconAddRounded'
-import IconInfoRounded from '@aboutbits/react-material-icons/dist/IconInfoRounded'
+import IconAddOutlinedFilled from '@aboutbits/react-material-icons/dist/IconAddOutlinedFilled'
+import IconInfoOutlinedFilled from '@aboutbits/react-material-icons/dist/IconInfoOutlinedFilled'
 import {
   Controls,
   Description,
@@ -19,8 +19,8 @@ import { ButtonVariant } from './types'
 const icons = {
   options: ['Info', 'Add'],
   mapping: {
-    Info: IconInfoRounded,
-    Add: IconAddRounded,
+    Info: IconInfoOutlinedFilled,
+    Add: IconAddOutlinedFilled,
   },
 }
 
@@ -32,7 +32,7 @@ const meta = {
     variant: ButtonVariant.Solid,
     size: Size.Md,
     tone: Tone.Primary,
-    icon: IconAddRounded,
+    icon: IconAddOutlinedFilled,
   },
   argTypes: {
     icon: icons,

@@ -1,4 +1,4 @@
-import IconKeyboardArrowRight from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRightRounded'
+import IconKeyboardArrowRightOutlinedFilled from '@aboutbits/react-material-icons/dist/IconKeyboardArrowRightOutlinedFilled'
 import classNames from 'classnames'
 import { MouseEventHandler, forwardRef } from 'react'
 import { useTheme } from '../../../framework'
@@ -32,7 +32,7 @@ export const DialogListItemButton = forwardRef<
       {...props}
     >
       {children}
-      <IconKeyboardArrowRight
+      <IconKeyboardArrowRightOutlinedFilled
         width="24"
         height="24"
         className={dialog.listItemButton.icon}

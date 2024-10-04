@@ -1,5 +1,5 @@
-import IconList from '@aboutbits/react-material-icons/dist/IconListRoundedFilled'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarningRoundedFilled'
+import IconListOutlinedFilled from '@aboutbits/react-material-icons/dist/IconListOutlinedFilled'
+import IconWarningOutlinedFilled from '@aboutbits/react-material-icons/dist/IconWarningOutlinedFilled'
 import { ReactElement } from 'react'
 import { Tone } from '../../types'
 import {
@@ -8,14 +8,14 @@ import {
 } from './SectionContentMessage'
 
 export function SectionContentError({
-  icon: Icon = IconWarning,
+  icon: Icon = IconWarningOutlinedFilled,
   ...props
 }: Omit<SectionContentMessageProps, 'tone'>): ReactElement {
   return <SectionContentMessage tone={Tone.Critical} icon={Icon} {...props} />
 }
 
 export function SectionContentEmpty({
-  icon: Icon = IconList,
+  icon: Icon = IconListOutlinedFilled,
   ...props
 }: Omit<SectionContentMessageProps, 'tone'>): ReactElement {
   return <SectionContentMessage tone={Tone.Neutral} icon={Icon} {...props} />

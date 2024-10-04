@@ -59,13 +59,13 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
         disabled={disabled}
         className={radioInputCss}
       />
-      <IconRadio mode={mode} size={size} disabled={disabled} />
+      <IconRadioOutlinedFilled mode={mode} size={size} disabled={disabled} />
       {Boolean(label) && <span className={radioLabelCss}>{label}</span>}
     </label>
   )
 })
 
-const IconRadio = ({
+const IconRadioOutlinedFilled = ({
   size,
   mode,
   disabled,

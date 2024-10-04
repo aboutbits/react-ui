@@ -1,5 +1,5 @@
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfoRounded'
-import IconWarning from '@aboutbits/react-material-icons/dist/IconWarningRounded'
+import IconInfoOutlinedFilled from '@aboutbits/react-material-icons/dist/IconInfoOutlinedFilled'
+import IconWarningOutlinedFilled from '@aboutbits/react-material-icons/dist/IconWarningOutlinedFilled'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { action } from '@storybook/addon-actions'
 import {
@@ -20,8 +20,8 @@ const icons = {
   options: ['None', 'Warning', 'Info'],
   mapping: {
     None: undefined,
-    Warning: IconWarning,
-    Info: IconInfo,
+    Warning: IconWarningOutlinedFilled,
+    Info: IconInfoOutlinedFilled,
   },
 }
 

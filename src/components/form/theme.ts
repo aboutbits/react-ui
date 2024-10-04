@@ -172,7 +172,7 @@ export default {
     },
   },
   checkbox: {
-    base: 'relative inline-flex items-start gap-x-2',
+    base: 'relative inline-flex items-start gap-x-2 align-bottom',
     normal: 'cursor-pointer',
     disabled: '',
     layout: {

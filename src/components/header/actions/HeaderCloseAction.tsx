@@ -1,4 +1,4 @@
-import IconClose from '@aboutbits/react-material-icons/dist/IconCloseRounded'
+import IconCloseOutlinedFilled from '@aboutbits/react-material-icons/dist/IconCloseOutlinedFilled'
 import { ComponentType, ReactElement } from 'react'
 import { useInternationalization } from '../../../framework'
 import { IconProps } from '../../types'
@@ -15,7 +15,7 @@ export type HeaderCloseActionProps = Omit<HeaderLeftActionIconProps, 'icon'> & {
 }
 
 export function HeaderCloseAction({
-  icon = IconClose,
+  icon = IconCloseOutlinedFilled,
   label,
   ...props
 }: HeaderCloseActionProps): ReactElement {

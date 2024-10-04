@@ -1,7 +1,7 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
-import IconEdit from '@aboutbits/react-material-icons/dist/IconEditRounded'
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import IconEditOutlinedFilled from '@aboutbits/react-material-icons/dist/IconEditOutlinedFilled'
 import { action } from '@storybook/addon-actions'
-import IconAdd from '@aboutbits/react-material-icons/dist/IconAddRounded'
+import IconAddOutlinedFilled from '@aboutbits/react-material-icons/dist/IconAddOutlinedFilled'
 import { Theme } from '../../../../.storybook/components'
 import { HeaderButtonIcon } from '../actions/HeaderButtonIcon'
 import { HeaderRightArea } from './HeaderRightArea'
@@ -27,7 +27,7 @@ export const Template = ({ children, ...args }) => (
         mapping: {
           HeaderButtonIcon: (
             <HeaderButtonIcon
-              icon={IconEdit}
+              icon={IconEditOutlinedFilled}
               label="Edit"
               onClick={action('onClick')}
             />
@@ -55,12 +55,12 @@ export const Template = ({ children, ...args }) => (
   <Story name="Multiple children">
     <HeaderRightArea>
       <HeaderButtonIcon
-        icon={IconEdit}
+        icon={IconEditOutlinedFilled}
         label="Edit"
         onClick={action('onClick')}
       />
       <HeaderButtonIcon
-        icon={IconAdd}
+        icon={IconAddOutlinedFilled}
         label="Add"
         onClick={action('onClick')}
       />

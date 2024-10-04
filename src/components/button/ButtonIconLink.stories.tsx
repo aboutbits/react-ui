@@ -1,5 +1,5 @@
-import IconAdd from '@aboutbits/react-material-icons/dist/IconAddRounded'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfoRounded'
+import IconAddOutlinedFilled from '@aboutbits/react-material-icons/dist/IconAddOutlinedFilled'
+import IconInfoOutlinedFilled from '@aboutbits/react-material-icons/dist/IconInfoOutlinedFilled'
 import {
   Controls,
   Description,
@@ -22,7 +22,7 @@ const meta = {
     variant: ButtonVariant.Solid,
     size: Size.Md,
     tone: Tone.Primary,
-    icon: IconAdd,
+    icon: IconAddOutlinedFilled,
   },
   argTypes: {
     mode: {
@@ -44,8 +44,8 @@ const meta = {
     icon: {
       options: ['Info', 'Add'],
       mapping: {
-        Info: IconInfo,
-        Add: IconAdd,
+        Info: IconInfoOutlinedFilled,
+        Add: IconAddOutlinedFilled,
       },
       control: { type: 'select' },
     },

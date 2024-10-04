@@ -1,5 +1,5 @@
-import IconAdd from '@aboutbits/react-material-icons/dist/IconAddRounded'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfoRounded'
+import IconAddOutlinedFilled from '@aboutbits/react-material-icons/dist/IconAddOutlinedFilled'
+import IconInfoOutlinedFilled from '@aboutbits/react-material-icons/dist/IconInfoOutlinedFilled'
 import {
   Controls,
   Description,
@@ -18,12 +18,20 @@ const meta = {
   argTypes: {
     iconStart: {
       options: ['None', 'Add', 'Info'],
-      mapping: { None: undefined, Add: IconAdd, Info: IconInfo },
+      mapping: {
+        None: undefined,
+        Add: IconAddOutlinedFilled,
+        Info: IconInfoOutlinedFilled,
+      },
       control: { type: 'select' },
     },
     iconEnd: {
       options: ['None', 'Add', 'Info'],
-      mapping: { None: undefined, Add: IconAdd, Info: IconInfo },
+      mapping: {
+        None: undefined,
+        Add: IconAddOutlinedFilled,
+        Info: IconInfoOutlinedFilled,
+      },
       control: { type: 'select' },
     },
   },

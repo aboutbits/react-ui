@@ -1,5 +1,5 @@
-import IconBadge from '@aboutbits/react-material-icons/dist/IconBadgeRounded'
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearchRounded'
+import IconBadgeOutlinedFilled from '@aboutbits/react-material-icons/dist/IconBadgeOutlinedFilled'
+import IconSearchOutlinedFilled from '@aboutbits/react-material-icons/dist/IconSearchOutlinedFilled'
 import {
   Controls,
   Description,
@@ -16,15 +16,15 @@ import { IconPosition } from './types'
 const meta = {
   component: InputIcon,
   args: {
-    icon: IconSearch,
+    icon: IconSearchOutlinedFilled,
     position: IconPosition.Start,
   },
   argTypes: {
     icon: {
       options: ['Search', 'Badge'],
       mapping: {
-        Search: IconSearch,
-        Badge: IconBadge,
+        Search: IconSearchOutlinedFilled,
+        Badge: IconBadgeOutlinedFilled,
       },
       control: { type: 'select' },
     },
