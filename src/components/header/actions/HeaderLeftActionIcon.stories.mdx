@@ -1,5 +1,5 @@
-import IconArrowBack from '@aboutbits/react-material-icons/dist/IconArrowBack'
-import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
+import IconArrowBackOutlinedFilled from '@aboutbits/react-material-icons/dist/IconArrowBackOutlinedFilled'
+import IconCloseOutlinedFilled from '@aboutbits/react-material-icons/dist/IconCloseOutlinedFilled'
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { Theme } from '../../../../.storybook/components'
 import { HeaderLeftActionIcon } from './HeaderLeftActionIcon'
@@ -25,8 +25,8 @@ export const Template = (args) => <HeaderLeftActionIcon {...args} />
       icon: {
         options: ['ArrowBack', 'Close'],
         mapping: {
-          ArrowBack: IconArrowBack,
-          Close: IconClose,
+          ArrowBack: IconArrowBackOutlinedFilled,
+          Close: IconCloseOutlinedFilled,
         },
         control: { type: 'select' },
       },

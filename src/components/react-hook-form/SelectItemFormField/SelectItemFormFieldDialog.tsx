@@ -1,5 +1,5 @@
 import { IndexType } from '@aboutbits/pagination'
-import IconSearch from '@aboutbits/react-material-icons/dist/IconSearch'
+import IconSearchOutlinedFilled from '@aboutbits/react-material-icons/dist/IconSearchOutlinedFilled'
 import { useQueryAndPagination } from '@aboutbits/react-pagination/dist/routers/inMemory'
 import { AsyncView } from '@aboutbits/react-toolbox'
 import { ReactElement, ReactNode } from 'react'
@@ -162,7 +162,7 @@ export function SelectItemDialogSearch({
         <InputFormField
           name="search"
           variant={FormVariant.Soft}
-          iconStart={IconSearch}
+          iconStart={IconSearchOutlinedFilled}
           placeholder={messages['search.placeholder']}
         />
       </form>

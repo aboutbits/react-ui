@@ -1,5 +1,5 @@
-import IconClose from '@aboutbits/react-material-icons/dist/IconClose'
-import IconKeyboardArrowDown from '@aboutbits/react-material-icons/dist/IconKeyboardArrowDown'
+import IconCloseOutlinedFilled from '@aboutbits/react-material-icons/dist/IconCloseOutlinedFilled'
+import IconKeyboardArrowDownOutlinedFilled from '@aboutbits/react-material-icons/dist/IconKeyboardArrowDownOutlinedFilled'
 import classNames from 'classnames'
 import { ReactNode, useMemo, useRef } from 'react'
 import { useInternationalization, useTheme } from '../../../framework'
@@ -98,7 +98,7 @@ export function SelectItemFormFieldInput<
             {placeholder}
           </span>
           <span className={form.selectItem.input.iconContainer.base}>
-            <IconKeyboardArrowDown
+            <IconKeyboardArrowDownOutlinedFilled
               className={classNames(
                 form.selectItem.input.icon.base,
                 disabled && form.selectItem.input.icon.disabled,
@@ -140,7 +140,7 @@ export function SelectItemFormFieldInput<
                 : form.selectItem.input.iconContainer.normal,
             )}
           >
-            <IconClose
+            <IconCloseOutlinedFilled
               className={classNames(
                 form.selectItem.input.icon.base,
                 disabled && form.selectItem.input.icon.disabled,

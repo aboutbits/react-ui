@@ -1,5 +1,5 @@
-import IconAdd from '@aboutbits/react-material-icons/dist/IconAdd'
-import IconInfo from '@aboutbits/react-material-icons/dist/IconInfo'
+import IconAddOutlinedFilled from '@aboutbits/react-material-icons/dist/IconAddOutlinedFilled'
+import IconInfoOutlinedFilled from '@aboutbits/react-material-icons/dist/IconInfoOutlinedFilled'
 import {
   Controls,
   Description,
@@ -22,8 +22,8 @@ const icons = {
   options: ['None', 'Add', 'Info'],
   mapping: {
     None: undefined,
-    Add: IconAdd,
-    Info: IconInfo,
+    Add: IconAddOutlinedFilled,
+    Info: IconInfoOutlinedFilled,
   },
 }
 
@@ -111,12 +111,12 @@ export const Disabled: Story = {
 
 export const IconStart: Story = {
   args: {
-    iconStart: IconInfo,
+    iconStart: IconInfoOutlinedFilled,
   },
 }
 export const IconEnd: Story = {
   args: {
-    iconEnd: IconInfo,
+    iconEnd: IconInfoOutlinedFilled,
   },
 }
 
