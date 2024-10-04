@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@aboutbits/pagination": "^2.0.2",
-    "@aboutbits/react-material-icons": "^1.2.5",
+    "@aboutbits/react-material-icons": "^2.0.0",
     "@aboutbits/react-toolbox": "^0.2.5",
     "@floating-ui/react": "^0.26.10",
     "@headlessui/react": "^1.7.18",
