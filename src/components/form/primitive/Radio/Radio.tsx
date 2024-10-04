@@ -1,4 +1,4 @@
-import IconRadioButtonCheckedRoundedFilled from '@aboutbits/react-material-icons/dist/IconRadioButtonCheckedRoundedFilled'
+import IconRadioButtonCheckedRounded from '@aboutbits/react-material-icons/dist/IconRadioButtonCheckedRounded'
 import IconRadioButtonUncheckedOutlined from '@aboutbits/react-material-icons/dist/IconRadioButtonUncheckedOutlined'
 import classNames from 'classnames'
 import { ReactNode, forwardRef } from 'react'
@@ -91,7 +91,7 @@ const IconRadioOutlinedFilled = ({
 
   return (
     <>
-      <IconRadioButtonCheckedRoundedFilled
+      <IconRadioButtonCheckedRounded
         className={classNames(iconCssChecked, className)}
         {...props}
       />
