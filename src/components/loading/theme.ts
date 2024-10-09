@@ -11,4 +11,9 @@ export default {
       base: 'p-5 w-full',
     },
   },
+  iconSpinner: {
+    base: 'animate-spin fill-current',
+    currentColor: 'stroke-current',
+    defaultColor: 'stroke-primary-800',
+  },
 }
