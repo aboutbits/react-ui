@@ -1,4 +1,7 @@
-import { Dialog as HeadlessDialog } from '@headlessui/react'
+import {
+  Dialog as HeadlessDialog,
+  DialogPanel as HeadlessDialogPanel,
+} from '@headlessui/react'
 import classNames from 'classnames'
 import { MutableRefObject, ReactElement, useRef } from 'react'
 import { useTheme } from '../../../framework'
@@ -49,7 +52,7 @@ export function Dialog({
         onClose={onDismiss ?? (() => undefined)}
         {...props}
       >
-        <HeadlessDialog.Panel
+        <HeadlessDialogPanel
           ref={panelRef}
           aria-label={ariaLabel}
           className={classNames(
@@ -62,7 +65,7 @@ export function Dialog({
           )}
         >
           {children}
-        </HeadlessDialog.Panel>
+        </HeadlessDialogPanel>
       </HeadlessDialog>
     </DialogContext.Provider>
   )
