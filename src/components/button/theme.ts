@@ -52,7 +52,7 @@ export default {
   buttonIcon: {
     base: 'inline-block rounded-full outline-1 outline-offset-2 focus:outline',
     icon: {
-      base: 'fill-current inline-block flex items-center',
+      base: 'fill-current block',
       size: {
         [Size.Sm]: 'w-5 h-5',
         [Size.Md]: 'w-6 h-6',
