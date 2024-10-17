@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
 import { SectionHeader } from './SectionHeader'
+import { Button } from "../../button";
 
 <Meta title="Components/Section/SectionHeader" component={SectionHeader} />
 
@@ -7,7 +8,7 @@ import { SectionHeader } from './SectionHeader'
 
 This component can be used to create a section header swiftly.
 
-It leverages the components [SectionHeaderArea](/docs/components-section-sectionheaderara--docs) and [SectionHeaderTitle](/docs/components-section-sectionheadertitle--docs).
+It leverages the components [SectionHeaderArea](/docs/components-section-sectionheaderara--docs), [SectionHeaderRow](/docs/components-section-sectionheaderrow--docs) and [SectionHeaderTitle](/docs/components-section-sectionheadertitle--docs).
 
 export const Template = ({ ...args }) => <SectionHeader {...args} />
 
@@ -17,6 +18,18 @@ export const Template = ({ ...args }) => <SectionHeader {...args} />
   </Story>
 </Canvas>
 
+<Canvas>
+  <Story name="With right element" args={{ title: 'Header Title', right: <Button>Right</Button> }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Long title with right element" args={{ title: 'Very Long Title: lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet', right: <Button>Right</Button> }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ### Props
 
-<ArgsTable story="Default" />
+<ArgsTable story="With right element" />
