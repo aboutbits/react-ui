@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { SectionHeaderArea } from './SectionHeaderArea'
-import { SectionHeaderTitle } from './SectionHeaderTitle'
 import { SectionHeaderRow, SectionHeaderRowLayout } from './SectionHeaderRow'
+import { SectionHeaderTitle } from './SectionHeaderTitle'
 
 export type SectionHeaderProps = {
   title: ReactNode
