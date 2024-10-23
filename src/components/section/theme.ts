@@ -97,7 +97,7 @@ export default {
     base: 'flex flex-wrap items-center gap-y-4',
     actions: 'flex-1',
     formSubmitFeedback:
-      'w-full justify-center [Size.Lg]:order-first LG:w-auto LG:justify-start',
+      'w-full justify-center lg:order-first lg:w-auto lg:justify-start',
   },
   appendix: {
     base: 'mt-4',
