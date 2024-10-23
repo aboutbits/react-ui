@@ -6,15 +6,19 @@ import { SectionHeaderTitle } from './SectionHeaderTitle'
 export type SectionHeaderProps = {
   title: ReactNode
   className?: string
-  right?: ReactNode
+  rightArea?: ReactNode
 }
 
-export function SectionHeader({ className, title, right }: SectionHeaderProps) {
+export function SectionHeader({
+  className,
+  title,
+  rightArea,
+}: SectionHeaderProps) {
   return (
     <SectionHeaderArea className={className}>
       <SectionHeaderRow layout={SectionHeaderRowLayout.SpaceBetween}>
         <SectionHeaderTitle>{title}</SectionHeaderTitle>
-        {right}
+        <div>{rightArea}</div>
       </SectionHeaderRow>
     </SectionHeaderArea>
   )

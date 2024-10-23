@@ -19,13 +19,19 @@ export const Template = ({ ...args }) => <SectionHeader {...args} />
 </Canvas>
 
 <Canvas>
-  <Story name="With right element" args={{ title: 'Header Title', right: <Button>Right</Button> }}>
+  <Story name="With right element" args={{ title: 'Header Title', rightArea: <Button>Right</Button> }}>
     {Template.bind({})}
   </Story>
 </Canvas>
 
 <Canvas>
-  <Story name="Long title with right element" args={{ title: 'Very Long Title: lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet', right: <Button>Right</Button> }}>
+  <Story name="With multiple right elements" args={{ title: 'Header Title', rightArea: <><Button>Right 1</Button><Button>Right 2</Button></> }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Long title with right element" args={{ title: 'Very Long Title: lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet', rightArea: <Button>Right</Button> }}>
     {Template.bind({})}
   </Story>
 </Canvas>
