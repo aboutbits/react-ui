@@ -1,10 +1,4 @@
-import {
-  FloatingPortal,
-  autoUpdate,
-  flip,
-  offset,
-  useFloating,
-} from '@floating-ui/react'
+import { autoUpdate, flip, offset, useFloating } from '@floating-ui/react'
 import {
   Menu as HeadlessMenu,
   MenuButton as HeadlessMenuButton,
@@ -85,15 +79,13 @@ export function Menu({ className, children, button, placement }: MenuProps) {
               : button}
           </HeadlessMenuButton>
           {open && (
-            <FloatingPortal>
-              <HeadlessMenuItems
-                ref={refs.setFloating}
-                className={menu.list.base}
-                style={floatingStyles}
-              >
-                {children}
-              </HeadlessMenuItems>
-            </FloatingPortal>
+            <HeadlessMenuItems
+              ref={refs.setFloating}
+              className={menu.list.base}
+              style={floatingStyles}
+            >
+              {children}
+            </HeadlessMenuItems>
           )}
         </>
       )}
