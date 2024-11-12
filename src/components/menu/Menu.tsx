@@ -90,6 +90,7 @@ export function Menu({ className, children, button, placement }: MenuProps) {
                 ref={refs.setFloating}
                 className={menu.list.base}
                 style={floatingStyles}
+                modal={false}
               >
                 {children}
               </HeadlessMenuItems>
