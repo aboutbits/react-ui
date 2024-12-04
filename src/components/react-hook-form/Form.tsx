@@ -47,7 +47,7 @@ export const Form = forwardRef(function Form<
           await onPreSubmit(e)
         }
 
-        return form.handleSubmit(onSubmit)
+        return form.handleSubmit(onSubmit)(e)
       }
     : undefined
 
