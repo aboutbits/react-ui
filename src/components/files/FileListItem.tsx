@@ -5,7 +5,6 @@ import { ReactNode, useEffect, useState } from 'react'
 import { useInternationalization, useTheme } from '../../framework'
 import { LoadingSpinner } from '../loading/LoadingSpinner'
 import { FileSpace, FileState, FileUploadObject } from './FileUploadState'
-import { useHumanReadableFileSize } from './utils'
 
 export type FileListItemProps<TRemoteFile> = {
   fileUploadObject: FileUploadObject<TRemoteFile>
@@ -14,7 +13,7 @@ export type FileListItemProps<TRemoteFile> = {
    * @param remoteFile
    * @returns The size of the remote file in bytes
    */
-  renderRemoteFileSize?: (remoteFile: TRemoteFile) => number
+  renderRemoteFileDescription?: (remoteFile: TRemoteFile) => ReactNode
   disabled?: boolean
   fileActions?: ReactNode
 }
@@ -24,18 +23,10 @@ export function FileListItem<TRemoteFile>({
   renderRemoteFileName,
   disabled,
   fileActions,
-  renderRemoteFileSize,
+  renderRemoteFileDescription,
 }: FileListItemProps<TRemoteFile>) {
   const [recentlyUploaded, setRecentlyUploaded] = useState<boolean>()
-  const formatFileSize = useHumanReadableFileSize()
   const { messages } = useInternationalization()
-
-  const fileSize =
-    fileUploadObject.space === FileSpace.Remote
-      ? renderRemoteFileSize?.(fileUploadObject.file)
-      : fileUploadObject.file.size
-
-  const formattedFileSize = fileSize ? formatFileSize(fileSize) : undefined
 
   const fileState = fileUploadObject.state
 
@@ -116,8 +107,10 @@ export function FileListItem<TRemoteFile>({
               ? fileUploadObject.message
               : fileState === FileState.Uploading
                 ? messages['files.item.uploading']
-                : fileState === FileState.Uploaded && fileSize
-                  ? formattedFileSize
+                : fileState === FileState.Uploaded &&
+                    fileUploadObject.space === FileSpace.Remote &&
+                    renderRemoteFileDescription
+                  ? renderRemoteFileDescription(fileUploadObject.file)
                   : ''}
           </div>
         </div>

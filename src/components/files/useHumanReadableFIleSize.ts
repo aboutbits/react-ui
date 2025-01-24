@@ -1,15 +1,5 @@
 import { useCallback } from 'react'
 
-export function getFileType(file: File) {
-  const splitName = file.name.split('.')
-
-  if (splitName.length < 1) {
-    return ''
-  }
-
-  return splitName.pop()?.toUpperCase() ?? ''
-}
-
 const UNITS = [
   'byte',
   'kilobyte',
@@ -19,7 +9,7 @@ const UNITS = [
   'petabyte',
 ] as const
 
-export function useFormattedBytes() {
+function useFormattedBytes() {
   return useCallback((value: number, unit: (typeof UNITS)[number]) => {
     const formattedValue = value.toFixed(1)
     switch (unit) {
