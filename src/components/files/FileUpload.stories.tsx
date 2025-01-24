@@ -25,6 +25,7 @@ import {
   FileUploadOnUploadSingle,
   useFileUpload,
 } from './useFileUpload'
+import { useHumanReadableFileSize } from './useHumanReadableFIleSize'
 import { useMockedUploadApi } from './useMockedUploadApi'
 
 export type CustomRemoteFile = {
@@ -83,6 +84,8 @@ export const Single: Story = {
         initialFile: { id: 1, name: 'file1.pdf', size: 1024 },
       },
     )
+
+    const formatFileSize = useHumanReadableFileSize()
 
     const onUpload = useCallback<FileUploadOnUploadSingle>(
       async (file, { onProgress, onError, onSuccess }) => {
@@ -148,7 +151,9 @@ export const Single: Story = {
                 key={fileUploadObject.id}
                 fileUploadObject={fileUploadObject}
                 renderRemoteFileName={(remoteFile) => remoteFile.name}
-                renderRemoteFileSize={(remoteFile) => remoteFile.size}
+                renderRemoteFileDescription={(remoteFile) =>
+                  formatFileSize(remoteFile.size)
+                }
                 disabled={
                   isUploading && fileUploadObject.state !== FileState.Uploading
                 }
@@ -183,6 +188,7 @@ export const Multiple: Story = {
           { id: 3, name: 'blank.pdf', size: 3000 },
         ],
       })
+    const formatFileSize = useHumanReadableFileSize()
 
     const onUpload = useCallback<FileUploadOnUploadMulitple>(
       async (files, { onProgress, onError, onSuccess }) => {
@@ -271,7 +277,9 @@ export const Multiple: Story = {
                 key={fileUploadObject.id}
                 fileUploadObject={fileUploadObject}
                 renderRemoteFileName={(remoteFile) => remoteFile.name}
-                renderRemoteFileSize={(remoteFile) => remoteFile.size}
+                renderRemoteFileDescription={(remoteFile) =>
+                  formatFileSize(remoteFile.size)
+                }
                 fileActions={
                   <>
                     <DownloadFileAction

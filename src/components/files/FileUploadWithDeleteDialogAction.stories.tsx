@@ -11,6 +11,7 @@ import { FileListItem } from './FileListItem'
 import { FileUploadContainer } from './FileUploadContainer'
 import { FileSpace, FileState, FileUploadObject } from './FileUploadState'
 import { FileUploadOnUploadSingle, useFileUpload } from './useFileUpload'
+import { useHumanReadableFileSize } from './useHumanReadableFIleSize'
 import { useMockedUploadApi } from './useMockedUploadApi'
 
 export type CustomRemoteFile = {
@@ -62,6 +63,8 @@ export const WithDeleteDialog: Story = {
         initialFile: { id: 1, name: 'file1.pdf', size: 1024 },
       },
     )
+
+    const formatFileSize = useHumanReadableFileSize()
 
     const onUpload = useCallback<FileUploadOnUploadSingle>(
       async (file, { onProgress, onError, onSuccess }) => {
@@ -143,7 +146,9 @@ export const WithDeleteDialog: Story = {
                 key={fileUploadObject.id}
                 fileUploadObject={fileUploadObject}
                 renderRemoteFileName={(remoteFile) => remoteFile.name}
-                renderRemoteFileSize={(remoteFile) => remoteFile.size}
+                renderRemoteFileDescription={(remoteFile) =>
+                  formatFileSize(remoteFile.size)
+                }
                 disabled={
                   isUploading && fileUploadObject.state !== FileState.Uploading
                 }

@@ -4,7 +4,7 @@ import { ChangeEventHandler, useRef } from 'react'
 import { useInternationalization, useTheme } from '../../framework'
 import { ClassNameProps } from '../types'
 import { useFileDropZone } from './useFileDropZone'
-import { useHumanReadableFileSize } from './utils'
+import { useHumanReadableFileSize } from './useHumanReadableFIleSize'
 
 export type FileDropZoneProps = {
   fileTypes?: string[]
