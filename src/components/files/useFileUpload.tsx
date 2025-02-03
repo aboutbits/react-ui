@@ -157,8 +157,10 @@ export function useFileUpload<TRemoteFile = unknown>({
         fileUploadObject,
       ): fileUploadObject is Extract<
         FileUploadObject<TRemoteFile>,
-        { state: FileState.ToUpload }
-      > => fileUploadObject.state === FileState.ToUpload,
+        { state: FileState.ToUpload | FileState.Failed }
+      > =>
+        fileUploadObject.state === FileState.ToUpload ||
+        fileUploadObject.state === FileState.Failed,
     )
 
     filesItemsToUpload.forEach(({ file }) => {
