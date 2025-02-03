@@ -39,7 +39,7 @@ export default {
       content: 'flex grow items-center gap-4 truncate',
       textContainer: 'flex grow flex-col gap-1 truncate',
       progress: 'bg-primary-800 absolute inset-x-0 bottom-0 h-1 rounded-xl',
-      actions: 'flex items-center gap-2',
+      actions: 'flex items-center gap-2 px-1',
     },
   },
   action: {
