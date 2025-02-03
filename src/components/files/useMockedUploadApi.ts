@@ -6,6 +6,7 @@ import { CustomRemoteFile } from './FileUpload.stories'
 export function useMockedUploadApi(options: {
   multipleFiles?: false
   initialFile: CustomRemoteFile
+  shouldFail?: boolean
 }): {
   remoteFile: CustomRemoteFile
   mutateRemoteFiles: () => Promise<void>
@@ -15,6 +16,7 @@ export function useMockedUploadApi(options: {
 export function useMockedUploadApi(options: {
   multipleFiles: true
   initialFiles: CustomRemoteFile[]
+  shouldFail?: boolean
 }): {
   remoteFiles: CustomRemoteFile[]
   mutateRemoteFiles: () => Promise<void>
@@ -25,10 +27,12 @@ export function useMockedUploadApi({
   multipleFiles,
   initialFile,
   initialFiles,
+  shouldFail,
 }: {
   multipleFiles?: boolean
   initialFile?: CustomRemoteFile
   initialFiles?: CustomRemoteFile[]
+  shouldFail?: boolean
 }) {
   const serverFiles = useRef<CustomRemoteFile[]>(
     initialFiles ?? (initialFile ? [initialFile] : []),
@@ -64,7 +68,7 @@ export function useMockedUploadApi({
         })
         await sleep(speed)
 
-        if (fileName === 'error.pdf' && progress > 0.5) {
+        if ((fileName === 'error.pdf' || shouldFail) && progress > 0.5) {
           return [500, null]
         }
       }
