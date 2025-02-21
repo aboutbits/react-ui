@@ -36,7 +36,7 @@ export default {
   listItemWithAction: {
     base: 'justify-between space-x-4',
     action: {
-      base: 'flex flex-shrink-0',
+      base: 'flex shrink-0',
     },
   },
   listItemButtonLink: {

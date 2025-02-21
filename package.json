@@ -23,11 +23,11 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
-    "./tailwind-preset": "./tailwind-preset.ts"
+    "./tailwind-preset": "./styles/tailwind-preset.css"
   },
   "files": [
     "dist/**/*",
-    "tailwind-preset.ts"
+    "styles/tailwind-preset.css"
   ],
   "engines": {
     "npm": ">=8",
@@ -78,7 +78,8 @@
     "@storybook/react": "^7.4.1",
     "@storybook/react-vite": "^7.4.1",
     "@storybook/theming": "^7.4.1",
-    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/postcss": "^4.0.7",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.2",
     "@testing-library/user-event": "^14.5.2",
@@ -89,7 +90,6 @@
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@vitejs/plugin-react-swc": "^3.6.0",
-    "autoprefixer": "^10.4.19",
     "cssnano": "^6.1.1",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
@@ -99,7 +99,6 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.8.0",
-    "eslint-plugin-tailwindcss": "^3.15.1",
     "jsdom": "^24.0.0",
     "next": "^14.1.4",
     "postcss": "^8.4.38",
@@ -110,7 +109,7 @@
     "remark-gfm": "^3.0.1",
     "rimraf": "^5.0.1",
     "storybook": "^7.4.1",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^4.0.7",
     "typescript": "^5.4.3",
     "vite": "^4.4.3",
     "vitest": "^0.33.0",

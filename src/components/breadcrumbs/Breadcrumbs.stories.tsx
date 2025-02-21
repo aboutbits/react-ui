@@ -72,7 +72,7 @@ export const LoadingDefault: Story = {
 export const LoadingCustom: Story = {
   render: () => (
     <Breadcrumbs>
-      <BreadcrumbLoading loadingBarProps={{ className: '!w-10' }} />
+      <BreadcrumbLoading loadingBarProps={{ className: 'w-10!' }} />
       <BreadcrumbLoading />
       <BreadcrumbText>Settings</BreadcrumbText>
     </Breadcrumbs>

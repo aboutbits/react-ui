@@ -8,7 +8,7 @@ import { FormVariant } from './types'
 
 export default {
   input: {
-    base: 'block w-full p-2.5-1px border leading-5 appearance-none outline-none focus:ring-0 focus:outline focus:outline-1 focus:-outline-offset-2 rounded-lg',
+    base: 'block w-full p-2.5-1px border leading-5 appearance-none outline-hidden focus:ring-0 focus:outline focus:-outline-offset-2 rounded-lg',
     field: 'relative',
     modeVariant: {
       [Mode.Light]: {
@@ -212,7 +212,7 @@ export default {
       },
     },
     check: {
-      base: 'block shrink-0 outline-1 rounded-md outline-offset-[-1px] peer-focus:outline',
+      base: 'block shrink-0 rounded-md outline-offset-[-1px] peer-focus:outline',
       normal: '',
       disabled: '',
       mode: {
@@ -298,7 +298,7 @@ export default {
       },
     },
     icon: {
-      base: 'block shrink-0 outline-1 rounded-full peer-focus:outline',
+      base: 'block shrink-0 rounded-full peer-focus:outline',
       normal: '',
       disabled: '',
       mode: {
@@ -396,7 +396,7 @@ export default {
       },
     },
     switch: {
-      base: 'block shrink-0 rounded-full border-2 p-0.5 outline-1 outline-offset-2 peer-focus:outline',
+      base: 'block shrink-0 rounded-full border-2 p-0.5 outline-offset-2 peer-focus:outline',
       normal: 'transition-colors duration-200 ease-in-out',
       disabled: '',
       modeState: {
@@ -456,12 +456,12 @@ export default {
   selectItem: {
     input: {
       container: {
-        base: 'flex flex-row text-left gap-x-2 focus-within:outline focus-within:outline-1 focus-within:-outline-offset-2',
+        base: 'flex flex-row text-left gap-x-2 focus-within:outline focus-within:-outline-offset-2',
         normal: 'focus-within:outline-neutral-800',
         error: 'focus-within:outline-critical-500',
       },
       selectButton: {
-        base: 'flex-1 text-left -my-2.5 -ml-2 pl-2.5 focus:ring-0 focus:outline-none',
+        base: 'flex-1 text-left -my-2.5 -ml-2 pl-2.5 focus:ring-0 focus:outline-hidden',
       },
       placeholder: {
         base: 'flex-1',

@@ -1,6 +1,6 @@
 export default {
   breadcrumbs: {
-    base: "flex w-full flex-wrap text-sm [&>*]:after:content-['/'] [&>*]:after:mx-1 [&>*]:after:text-neutral-400 [&>*:last-child]:after:content-none",
+    base: "flex w-full flex-wrap text-sm *:after:content-['/'] *:after:mx-1 *:after:text-neutral-400 [&>*:last-child]:after:content-none",
   },
   breadcrumbLink: {
     base: 'whitespace-nowrap',

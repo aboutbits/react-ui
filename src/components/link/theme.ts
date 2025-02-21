@@ -1,5 +1,5 @@
 export default {
   textLink: {
-    base: 'underline focus:no-underline focus:outline-none focus:ring',
+    base: 'underline focus:no-underline focus:outline-hidden focus:ring-3',
   },
 }
