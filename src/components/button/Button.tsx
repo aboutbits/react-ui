@@ -4,6 +4,8 @@ import { useTheme } from '../../framework'
 import { Mode, Size, Tone } from '../types'
 import { ButtonCommonProps, ButtonStyleProps, ButtonVariant } from './types'
 
+// test
+
 export type ButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
