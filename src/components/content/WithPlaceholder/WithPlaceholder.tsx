@@ -8,7 +8,7 @@ export type WithPlaceholderProps = PropsWithChildren<{
 }>
 
 /**
- * This component validates the content and displays a placeholder if the content is empty, null or undefined.
+ * This component validates the content and displays a placeholder if the content is empty, NaN, null, undefined or false.
  */
 export function WithPlaceholder({
   placeholder = '-',
