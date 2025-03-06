@@ -14,15 +14,15 @@ export function WithPlaceholder({
   placeholder = '-',
   children,
 }: WithPlaceholderProps) {
-  return (
-    <>
-      {typeof children === 'number'
-        ? isNaN(children)
-          ? placeholder
-          : children
-        : children === null || children === undefined || children === ''
-          ? placeholder
-          : children}
-    </>
-  )
+  if (
+    children === null ||
+    children === undefined ||
+    children === '' ||
+    children === false ||
+    (typeof children === 'number' && isNaN(children))
+  ) {
+    return placeholder
+  }
+
+  return children
 }
