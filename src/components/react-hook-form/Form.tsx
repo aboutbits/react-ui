@@ -24,7 +24,9 @@ export type FormProps<
     : TTransformedValues extends FieldValues
       ? SubmitHandler<NoInfer<TTransformedValues>>
       : never
-  onPreSubmit?: (e: FormEvent<HTMLFormElement>) => void | Promise<void>
+  onPreSubmit?: (
+    e: FormEvent<HTMLFormElement>,
+  ) => void | Promise<void> | boolean | Promise<boolean> // eslint-disable-line @typescript-eslint/no-invalid-void-type
 }
 
 export const Form = forwardRef(function Form<
@@ -41,12 +43,16 @@ export const Form = forwardRef(function Form<
   }: FormProps<TFieldValues, TContext, TTransformedValues>,
   ref: ForwardedRef<HTMLFormElement>,
 ) {
-  const handleFormSubmit = onSubmit
+  const handleSubmit = onSubmit
     ? async (e: FormEvent<HTMLFormElement>) => {
         if (onPreSubmit) {
-          await onPreSubmit(e)
-        }
+          const result = await onPreSubmit(e)
 
+          if (result === false) {
+            e.preventDefault()
+            return
+          }
+        }
         return form.handleSubmit(onSubmit)(e)
       }
     : undefined
@@ -56,9 +62,7 @@ export const Form = forwardRef(function Form<
       <form
         {...props}
         ref={ref}
-        onSubmit={
-          handleFormSubmit ? (e) => void handleFormSubmit(e) : undefined
-        }
+        onSubmit={handleSubmit ? (e) => void handleSubmit(e) : undefined}
       >
         {children}
       </form>
