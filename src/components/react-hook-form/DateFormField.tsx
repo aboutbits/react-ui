@@ -10,12 +10,8 @@ import { InputField, InputFieldProps, Status } from '../form'
 export type DateFormFieldProps<
   TFieldValues extends FieldValues,
   TFieldName extends FieldPath<TFieldValues>,
-> = Omit<InputFieldProps, 'status' | 'onChange'> & {
+> = Omit<InputFieldProps, 'status'> & {
   name: TFieldName
-}
-
-type HTMLNullableInputElement = Omit<HTMLInputElement, 'value'> & {
-  value: HTMLInputElement['value'] | null | undefined
 }
 
 /**
@@ -27,14 +23,19 @@ export const DateFormField = forwardRef(function DateFormField<
   TFieldValues extends FieldValues = FieldValues,
   TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >(
-  { name, message, ...props }: DateFormFieldProps<TFieldValues, TFieldName>,
+  {
+    name,
+    message,
+    onChange,
+    ...props
+  }: DateFormFieldProps<TFieldValues, TFieldName>,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
   return (
     <Controller
       name={name}
       render={({
-        field: { value, onChange, ...field },
+        field: { value, onChange: fieldOnChange, ...field },
         fieldState: { error },
       }) => {
         const inputValue =
@@ -42,17 +43,17 @@ export const DateFormField = forwardRef(function DateFormField<
             ? formatDateForDateInput(value)
             : ''
 
-        const inputOnChange = (
-          event: ChangeEvent<HTMLNullableInputElement>,
-        ) => {
+        const inputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+          onChange?.(event)
+
           const value = event.target.value
 
-          if (value === '' || value === null || value === undefined) {
-            onChange(null as FieldPathValue<TFieldValues, TFieldName>)
+          if (value === '') {
+            fieldOnChange(null as FieldPathValue<TFieldValues, TFieldName>)
           } else {
             const date = new Date(value)
             if (!isNaN(date.getTime())) {
-              onChange(date as FieldPathValue<TFieldValues, TFieldName>)
+              fieldOnChange(date as FieldPathValue<TFieldValues, TFieldName>)
             }
           }
         }
