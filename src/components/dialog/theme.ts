@@ -16,7 +16,7 @@ export default {
     },
   },
   dialog: {
-    base: 'flex flex-col min-h-0 outline-none bg-white shadow-dialog max-h-full overflow-hidden',
+    base: 'flex flex-col min-h-0 outline-hidden bg-white shadow-dialog max-h-full overflow-hidden',
     mobilePositionSize: {
       [DialogPosition.Center]: {
         base: 'rounded-lg',
