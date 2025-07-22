@@ -14,11 +14,11 @@ concurrency:
 
 jobs:
   checks:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     strategy:
       matrix:
-        node_version: [16, 18, 20]
+        node_version: [ 18, 20, 22 ]
     steps:
       - uses: actions/checkout@v4
       - uses: aboutbits/github-actions-node/setup-and-install@v2
@@ -32,11 +32,11 @@ jobs:
         shell: bash
 
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     strategy:
       matrix:
-        node_version: [16, 18, 20]
+        node_version: [ 18, 20, 22 ]
     steps:
       - uses: actions/checkout@v4
       - uses: aboutbits/github-actions-node/setup-and-install@v2
