@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  NODE_VERSION: 20
+  NODE_VERSION: 22
 
 concurrency:
   group: ${{ github.ref }}
@@ -14,11 +14,11 @@ concurrency:
 
 jobs:
   checks:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     strategy:
       matrix:
-        node_version: [16, 18, 20]
+        node_version: [ 18, 20, 22 ]
     steps:
       - uses: actions/checkout@v4
       - uses: aboutbits/github-actions-node/setup-and-install@v2
@@ -32,11 +32,11 @@ jobs:
         shell: bash
 
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     strategy:
       matrix:
-        node_version: [16, 18, 20]
+        node_version: [ 18, 20, 22 ]
     steps:
       - uses: actions/checkout@v4
       - uses: aboutbits/github-actions-node/setup-and-install@v2
@@ -47,7 +47,7 @@ jobs:
         shell: bash
 
   deploy-main:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     if: github.ref == 'refs/heads/main'
     needs:

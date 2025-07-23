@@ -2,10 +2,10 @@ name: Preview
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize, closed]
+    types: [ opened, reopened, synchronize, closed ]
 
 env:
-  NODE_VERSION: 20
+  NODE_VERSION: 22
   VERCEL_SCOPE: aboutbits
   VERCEL_ORGANIZATION_ID: team_e2WfHoRuw9BQVW7oYmMSKRJ6
   VERCEL_PROJECT_ID: prj_PBGTsidF0cEZ6uj5mN2Rev0pulxG
@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   checks:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'synchronize' }}
     steps:
@@ -33,7 +33,7 @@ jobs:
         shell: bash
 
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'synchronize' }}
     steps:
@@ -46,7 +46,7 @@ jobs:
         shell: bash
 
   comment-link:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' }}
     steps:
@@ -61,7 +61,7 @@ jobs:
             })
 
   deploy-preview:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'synchronize' }}
     needs:
@@ -86,7 +86,7 @@ jobs:
           preview-domain: ${{ github.event.pull_request.number }}.${{ env.PREVIEW_DOMAIN }}
 
   unlink-domain:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     if: ${{ github.event.action == 'closed' }}
     steps:
