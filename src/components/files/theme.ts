@@ -10,7 +10,7 @@ export default {
     },
   },
   text: {
-    base: 'flex-grow flex flex-col items-start gap-1',
+    base: 'grow flex flex-col items-start gap-1',
     underline: 'font-semibold underline',
     bold: 'font-semibold',
     info: 'text-xs text-neutral-500',

@@ -3,7 +3,7 @@ import { ButtonVariant } from './types'
 
 export default {
   button: {
-    base: 'inline-flex items-center justify-center font-medium rounded-lg outline-1 outline-offset-2 focus:outline',
+    base: 'inline-flex items-center justify-center font-medium rounded-lg focus:outline outline-offset-2',
     variantSize: {
       base: {
         [Size.Sm]: 'text-sm leading-5',
@@ -50,7 +50,7 @@ export default {
     },
   },
   buttonIcon: {
-    base: 'inline-block rounded-full outline-1 outline-offset-2 focus:outline',
+    base: 'inline-block rounded-full outline-offset-2 focus:outline',
     icon: {
       base: 'fill-current block',
       size: {
