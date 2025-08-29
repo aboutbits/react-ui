@@ -138,13 +138,15 @@ docker-compose down
 
 ## Build & Publish
 
-To build and publish the package, simply commit all changes and push them to master. Then run one of the following commands locally:
+To build and publish the package, visit the GitHub Actions page of the repository.
 
-```bash
-npm version patch
-npm version minor
-npm version major
-```
+You can choose between two workflows:
+- `Release Package` to publish a new version of the package.
+- `Pre-Release Package` to publish a new pre-release version of the package.
+
+**Note:** Pre-releases need to be supplied with a pre-id.
+
+**Note:** To increment a pre-release, you have to run the normal release workflow and select "prerelease". For this action you need to already be on a pre-release version.
 
 ## Information
 

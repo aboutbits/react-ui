@@ -1,4 +1,4 @@
-name: Release Package
+name: Pre-Release Package
 
 on:
   workflow_dispatch:
@@ -7,16 +7,20 @@ on:
         description: "Version increment type"
         type: choice
         required: true
-        default: "patch"
+        default: "prepatch"
         options:
-          - "major"
-          - "minor"
-          - "patch"
-          - "prerelease"
+          - "premajor"
+          - "preminor"
+          - "prepatch"
+      preid:
+        description: "--preid"
+        type: string
+        required: true
 
 jobs:
   build-and-publish:
     uses: ./.github/workflows/build-and-publish.yml
     with:
       increment: ${{ github.event.inputs.increment }}
+      preid: ${{ github.event.inputs.preid }}
     secrets: inherit

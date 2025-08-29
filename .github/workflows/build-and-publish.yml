@@ -1,0 +1,34 @@
+name: Build & Publish Package
+
+on:
+  workflow_call:
+    inputs:
+      increment:
+        required: true
+        type: string
+      preid:
+        required: false
+        type: string
+
+env:
+  NODE_VERSION: 22
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+      - uses: aboutbits/github-actions-base/git-setup@v2
+      - uses: aboutbits/github-actions-node/build-and-publish-package@v3
+        id: package
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: 'https://registry.npmjs.org'
+          increment: ${{ github.event.inputs.increment }}
+          preid: ${{ github.event.inputs.preid }}
+      - uses: aboutbits/github-actions-base/github-create-release@v2
+        with:
+          tag-name: 'v${{ steps.package.outputs.version }}'

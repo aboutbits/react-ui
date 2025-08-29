@@ -20,7 +20,7 @@ jobs:
       matrix:
         node_version: [ 18, 20, 22 ]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: aboutbits/github-actions-node/setup-and-install@v2
         with:
           node-version: ${{ matrix.node_version }}
@@ -38,8 +38,8 @@ jobs:
       matrix:
         node_version: [ 18, 20, 22 ]
     steps:
-      - uses: actions/checkout@v4
-      - uses: aboutbits/github-actions-node/setup-and-install@v2
+      - uses: actions/checkout@v5
+      - uses: aboutbits/github-actions-node/setup-and-install@v3
         with:
           node-version: ${{ matrix.node_version }}
       - name: Test
@@ -54,8 +54,8 @@ jobs:
       - checks
       - test
     steps:
-      - uses: actions/checkout@v4
-      - uses: aboutbits/github-actions-node/setup-and-install@v2
+      - uses: actions/checkout@v5
+      - uses: aboutbits/github-actions-node/setup-and-install@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
       - uses: aboutbits/github-actions-vercel/deploy@v1
