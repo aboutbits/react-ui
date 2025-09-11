@@ -32,4 +32,4 @@ jobs:
           preid: ${{ github.event.inputs.preid }}
       - uses: aboutbits/github-actions-base/github-create-release@v2
         with:
-          tag-name: '${{ steps.package.outputs.version }}'
+          tag-name: 'v${{ steps.package.outputs.version }}'
