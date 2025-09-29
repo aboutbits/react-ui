@@ -58,9 +58,6 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'synchronize' }}
-    needs:
-      - checks
-      - test
     steps:
       - uses: actions/checkout@v5
       - uses: aboutbits/github-actions-node/setup-and-install@v3
