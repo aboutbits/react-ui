@@ -66,10 +66,10 @@ const meta = {
               '      },\n' +
               '      GHOST: {\n' +
               '        purple:\n' +
-              "          'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500',\n" +
+              "          'hover:bg-purple-50 focus-visible:bg-purple-50 border-purple-500 focus-visible:border-transparent text-purple-500 outline-purple-500',\n" +
               '      },\n' +
               '      TRANSPARENT: {\n' +
-              "        purple: 'hover:bg-purple-50 text-purple-500 focus:outline-purple-500',\n" +
+              "        purple: 'hover:bg-purple-50 text-purple-500 focus-visible:outline-purple-500',\n" +
               '      },\n' +
               '    },\n' +
               '  },\n' +

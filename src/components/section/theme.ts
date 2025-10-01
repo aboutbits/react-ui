@@ -40,7 +40,7 @@ export default {
     },
   },
   listItemButtonLink: {
-    base: 'w-full focus:outline-neutral-800 justify-between gap-4 hover:bg-neutral-100 active:bg-neutral-100',
+    base: 'w-full focus-visible:outline-neutral-800 justify-between gap-4 hover:bg-neutral-100 active:bg-neutral-100',
     icon: 'fill-current',
   },
   subsectionTitle: {

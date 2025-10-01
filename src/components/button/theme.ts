@@ -3,7 +3,7 @@ import { ButtonVariant } from './types'
 
 export default {
   button: {
-    base: 'inline-flex items-center justify-center font-medium rounded-lg outline-1 outline-offset-2 focus:outline',
+    base: 'inline-flex items-center justify-center font-medium rounded-lg outline-1 outline-offset-2 focus-visible:outline',
     variantSize: {
       base: {
         [Size.Sm]: 'text-sm leading-5',
@@ -50,7 +50,7 @@ export default {
     },
   },
   buttonIcon: {
-    base: 'inline-block rounded-full outline-1 outline-offset-2 focus:outline',
+    base: 'inline-block rounded-full outline-1 outline-offset-2 focus-visible:outline',
     icon: {
       base: 'fill-current block',
       size: {
@@ -96,32 +96,32 @@ export default {
       },
       [ButtonVariant.Ghost]: {
         [Tone.Primary]:
-          'hover:bg-primary-500/10 focus:bg-primary-500/10 border-primary-500 focus:border-transparent text-primary-500 outline-primary-500',
+          'hover:bg-primary-500/10 focus-visible:bg-primary-500/10 border-primary-500 focus-visible:border-transparent text-primary-500 outline-primary-500',
         [Tone.Neutral]:
-          'hover:bg-neutral-500/10 focus:bg-neutral-500/10 border-neutral-700 focus:border-transparent text-neutral-700 outline-neutral-700',
+          'hover:bg-neutral-500/10 focus-visible:bg-neutral-500/10 border-neutral-700 focus-visible:border-transparent text-neutral-700 outline-neutral-700',
         [Tone.Critical]:
-          'hover:bg-critical-500/10 focus:bg-critical-500/10 border-critical-500 focus:border-transparent text-critical-500 outline-critical-500',
+          'hover:bg-critical-500/10 focus-visible:bg-critical-500/10 border-critical-500 focus-visible:border-transparent text-critical-500 outline-critical-500',
         [Tone.Warning]:
-          'hover:bg-warning-500/10 focus:bg-warning-500/10 border-warning-600 focus:border-transparent text-warning-600 outline-warning-600',
+          'hover:bg-warning-500/10 focus-visible:bg-warning-500/10 border-warning-600 focus-visible:border-transparent text-warning-600 outline-warning-600',
         [Tone.Success]:
-          'hover:bg-success-500/10 focus:bg-success-500/10 border-success-600 focus:border-transparent text-success-600 outline-success-600',
+          'hover:bg-success-500/10 focus-visible:bg-success-500/10 border-success-600 focus-visible:border-transparent text-success-600 outline-success-600',
         [Tone.Informative]:
-          'hover:bg-informative-500/10 focus:bg-informative-500/10 border-informative-500 focus:border-transparent text-informative-500 outline-informative-500',
+          'hover:bg-informative-500/10 focus-visible:bg-informative-500/10 border-informative-500 focus-visible:border-transparent text-informative-500 outline-informative-500',
         disabled: 'border-neutral-800/[0.36] text-neutral-800/[0.36]',
       },
       [ButtonVariant.Transparent]: {
         [Tone.Primary]:
-          'hover:bg-primary-500/10 text-primary-500 focus:outline-primary-500',
+          'hover:bg-primary-500/10 text-primary-500 focus-visible:outline-primary-500',
         [Tone.Neutral]:
-          'hover:bg-neutral-500/10 text-neutral-700 focus:outline-neutral-700',
+          'hover:bg-neutral-500/10 text-neutral-700 focus-visible:outline-neutral-700',
         [Tone.Critical]:
-          'hover:bg-critical-500/10 text-critical-500 focus:outline-critical-500',
+          'hover:bg-critical-500/10 text-critical-500 focus-visible:outline-critical-500',
         [Tone.Warning]:
-          'hover:bg-warning-500/10 text-warning-600 focus:outline-warning-600',
+          'hover:bg-warning-500/10 text-warning-600 focus-visible:outline-warning-600',
         [Tone.Success]:
-          'hover:bg-success-500/10 text-success-600 focus:outline-success-600',
+          'hover:bg-success-500/10 text-success-600 focus-visible:outline-success-600',
         [Tone.Informative]:
-          'hover:bg-informative-500/10 text-informative-500 focus:outline-informative-500',
+          'hover:bg-informative-500/10 text-informative-500 focus-visible:outline-informative-500',
         disabled: 'text-neutral-800/[0.36]',
       },
     },
@@ -143,26 +143,32 @@ export default {
       },
       [ButtonVariant.Ghost]: {
         [Tone.Primary]:
-          'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
+          'hover:bg-white/10 focus-visible:bg-white/10 border-white focus-visible:border-transparent text-white outline-white',
         [Tone.Neutral]:
-          'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
+          'hover:bg-white/10 focus-visible:bg-white/10 border-white focus-visible:border-transparent text-white outline-white',
         [Tone.Critical]:
-          'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
+          'hover:bg-white/10 focus-visible:bg-white/10 border-white focus-visible:border-transparent text-white outline-white',
         [Tone.Warning]:
-          'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
+          'hover:bg-white/10 focus-visible:bg-white/10 border-white focus-visible:border-transparent text-white outline-white',
         [Tone.Success]:
-          'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
+          'hover:bg-white/10 focus-visible:bg-white/10 border-white focus-visible:border-transparent text-white outline-white',
         [Tone.Informative]:
-          'hover:bg-white/10 focus:bg-white/10 border-white focus:border-transparent text-white outline-white',
+          'hover:bg-white/10 focus-visible:bg-white/10 border-white focus-visible:border-transparent text-white outline-white',
         disabled: 'border-white/[0.36] text-white/[0.36]',
       },
       [ButtonVariant.Transparent]: {
-        [Tone.Primary]: 'hover:bg-white/10 text-white focus:outline-white',
-        [Tone.Neutral]: 'hover:bg-white/10 text-white focus:outline-white',
-        [Tone.Critical]: 'hover:bg-white/10 text-white focus:outline-white',
-        [Tone.Warning]: 'hover:bg-white/10 text-white focus:outline-white',
-        [Tone.Success]: 'hover:bg-white/10 text-white focus:outline-white',
-        [Tone.Informative]: 'hover:bg-white/10 text-white focus:outline-white',
+        [Tone.Primary]:
+          'hover:bg-white/10 text-white focus-visible:outline-white',
+        [Tone.Neutral]:
+          'hover:bg-white/10 text-white focus-visible:outline-white',
+        [Tone.Critical]:
+          'hover:bg-white/10 text-white focus-visible:outline-white',
+        [Tone.Warning]:
+          'hover:bg-white/10 text-white focus-visible:outline-white',
+        [Tone.Success]:
+          'hover:bg-white/10 text-white focus-visible:outline-white',
+        [Tone.Informative]:
+          'hover:bg-white/10 text-white focus-visible:outline-white',
         disabled: 'text-white/[0.36]',
       },
     },

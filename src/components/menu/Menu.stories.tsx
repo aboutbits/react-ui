@@ -75,7 +75,7 @@ const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
     return (
       <button
         className={classNames(
-          'flex items-center underline focus:no-underline focus:outline-none focus:ring',
+          'flex items-center underline focus-visible:no-underline focus-visible:outline-none focus-visible:ring',
           props.disabled && 'text-neutral-800/[0.36]',
         )}
         ref={ref}

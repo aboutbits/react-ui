@@ -60,7 +60,7 @@ const meta = {
                     },
                     GHOST: {
                       urgent:
-                        'hover:bg-purple-50 focus:bg-purple-50 border-purple-500 focus:border-transparent text-purple-500 outline-purple-500',
+                        'hover:bg-purple-50 focus-visible:bg-purple-50 border-purple-500 focus-visible:border-transparent text-purple-500 outline-purple-500',
                     },
                   },
                 },
