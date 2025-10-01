@@ -1,5 +1,8 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs'
+import IconEditOutlinedFilled from '@aboutbits/react-material-icons/dist/IconEditOutlinedFilled'
 import { Theme } from '../../../../.storybook/components'
+import { ButtonIcon, ButtonVariant } from '../../button'
+import { Size, Tone } from '../../types'
 import {
   Section,
   SectionContainer,
@@ -37,6 +40,34 @@ export const Template = ({ children, ...args }) => {
 
 <Theme component="section" items={['listItemButtonLink']} />
 
+## Without icon
+
+<Canvas>
+  <Story name="Without icon">
+    <SectionListItemButton withIcon={false}>
+      List item button
+    </SectionListItemButton>
+  </Story>
+</Canvas>
+
+## With Actions
+
+<Canvas>
+  <Story name="With actions">
+    <SectionListItemButton actionsArea={
+      <ButtonIcon
+        icon={IconEditOutlinedFilled}
+        variant={ButtonVariant.Transparent}
+        tone={Tone.Neutral}
+        size={Size.Sm}
+      />
+    }>
+      List item button
+    </SectionListItemButton>
+  </Story>
+</Canvas>
+
+
 ## Example: Usage within Section
 
 <Canvas>
@@ -45,7 +76,16 @@ export const Template = ({ children, ...args }) => {
       <SectionContainer>
         <SectionContentList>
           <SectionListItemButton>Item 1</SectionListItemButton>
-          <SectionListItemButton>Item 2</SectionListItemButton>
+          <SectionListItemButton actionsArea={
+              <ButtonIcon
+                icon={IconEditOutlinedFilled}
+                variant={ButtonVariant.Transparent}
+                tone={Tone.Neutral}
+                size={Size.Sm}
+              />
+            }>
+              Item 2
+            </SectionListItemButton>
           <SectionListItemButton>Item 3</SectionListItemButton>
         </SectionContentList>
       </SectionContainer>
