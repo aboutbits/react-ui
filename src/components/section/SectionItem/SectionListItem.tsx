@@ -9,16 +9,30 @@ import {
 import { ClassNameProps } from '../../types'
 
 export type SectionListItemProps = ClassNameProps & {
+  actionsArea?: ReactNode
+  withIcon?: boolean
   children?: ReactNode
 }
 
-export function SectionListItem({ className, children }: SectionListItemProps) {
+export function SectionListItem({
+  actionsArea,
+  withIcon = false,
+  className,
+  children,
+}: SectionListItemProps) {
   const { section } = useTheme()
 
   return (
-    <div className={classNames(section.listItem.base, className)}>
-      {children}
-    </div>
+    <SectionListItemBase
+      baseArea={
+        <div className={classNames(section.listItem.base)}>
+          <div className={section.listItem.childrenWrapper}>{children}</div>
+        </div>
+      }
+      actionsArea={actionsArea}
+      withIcon={withIcon}
+      className={className}
+    />
   )
 }
 
@@ -27,76 +41,93 @@ function SectionListItemIcon() {
 
   return (
     <IconKeyboardArrowRightOutlinedFilled
+      aria-hidden
       width="24"
       height="24"
-      className={section.listItemButtonLink.icon}
+      className={section.listItem.icon}
     />
   )
 }
 
 export type SectionListItemButtonProps = ClassNameProps & {
-  /**
-   * On click handler for the button.
-   */
-  onClick: () => void
-  children?: ReactNode
+  actionsArea?: ReactNode
   withIcon?: boolean
+  children?: ReactNode
+  onClick: () => void
 }
 
 export const SectionListItemButton = forwardRef<
   HTMLButtonElement,
   SectionListItemButtonProps
 >(function SectionListItemButton(
-  { children, onClick, className, withIcon = true, ...props },
+  { actionsArea, children, onClick, className, withIcon = true, ...props },
   ref,
 ) {
   const { section } = useTheme()
 
   return (
-    <button
-      onClick={onClick}
-      className={classNames(
-        section.listItem.base,
-        section.listItemButtonLink.base,
-        className,
-      )}
-      ref={ref}
-      {...props}
-    >
-      {children}
-      {withIcon && <SectionListItemIcon />}
-    </button>
+    <SectionListItemBase
+      baseArea={
+        <button
+          onClick={onClick}
+          className={classNames(
+            section.listItem.base,
+            section.listItemButtonLink.base,
+          )}
+          ref={ref}
+          {...props}
+        >
+          <div className={section.listItem.childrenWrapper}>{children}</div>
+        </button>
+      }
+      actionsArea={actionsArea}
+      withIcon={withIcon}
+      className={className}
+    />
   )
 })
 
 export type SectionListItemLinkProps = LinkComponentProps & {
   withIcon?: boolean
+  actionsArea?: ReactNode
 }
 
 export const SectionListItemLink = forwardRef<
   HTMLAnchorElement,
   SectionListItemLinkProps
 >(function SectionListItemLink(
-  { children, className, internal = true, withIcon = true, ...props },
+  {
+    actionsArea,
+    withIcon = true,
+    internal = true,
+    className,
+    children,
+    ...props
+  },
   ref,
 ) {
   const LinkComponent = useLinkComponent()
   const { section } = useTheme()
 
   return (
-    <LinkComponent
-      className={classNames(
-        section.listItem.base,
-        section.listItemButtonLink.base,
-        className,
-      )}
-      internal={internal}
-      ref={ref}
-      {...props}
-    >
-      {children}
-      {withIcon && <SectionListItemIcon />}
-    </LinkComponent>
+    <SectionListItemBase
+      baseArea={
+        <LinkComponent
+          className={classNames(
+            section.listItem.base,
+            section.listItemButtonLink.base,
+          )}
+          internal={internal}
+          ref={ref}
+          {...props}
+        >
+          <div className={section.listItem.childrenWrapper}>{children}</div>
+        </LinkComponent>
+      }
+      actionsArea={actionsArea}
+      withIcon={withIcon}
+      className={className}
+    />
   )
 })
 
@@ -108,19 +139,41 @@ type SectionListItemWithActionProps = ClassNameProps & {
   children?: ReactNode
 }
 
+/**
+ * @deprecated Use the `actionsArea` prop of `SectionListItem`, `SectionListItemButton` or `SectionListItemLink` instead.
+ */
 export function SectionListItemWithAction({
-  children,
   action,
-  className,
+  ...props
 }: SectionListItemWithActionProps) {
+  return <SectionListItem {...props} actionsArea={action} />
+}
+
+function SectionListItemBase({
+  baseArea,
+  actionsArea,
+  withIcon = false,
+  className,
+}: {
+  baseArea: ReactNode
+  actionsArea?: ReactNode
+  withIcon?: boolean
+  className?: string
+}) {
   const { section } = useTheme()
 
   return (
-    <SectionListItem
-      className={classNames(section.listItemWithAction.base, className)}
-    >
-      {children}
-      <div className={section.listItemWithAction.action.base}>{action}</div>
-    </SectionListItem>
+    <div className={classNames(section.listItem.container, className)}>
+      {baseArea}
+      {((actionsArea !== undefined &&
+        actionsArea !== null &&
+        actionsArea !== false) ||
+        withIcon) && (
+        <div className={section.listItem.rightArea}>
+          {actionsArea}
+          {withIcon && <SectionListItemIcon />}
+        </div>
+      )}
+    </div>
   )
 }

@@ -31,17 +31,16 @@ export default {
     base: 'grid xl:grid-cols-2 xl:gap-x-11 gap-y-6 px-4 md:px-6 pt-4 md:pt-6 pb-8 md:pb-9',
   },
   listItem: {
-    base: 'flex border-b border-neutral-200 last:border-0 items-center py-4 bg-white px-4 md:px-6',
-  },
-  listItemWithAction: {
-    base: 'justify-between space-x-4',
-    action: {
-      base: 'flex flex-shrink-0',
-    },
+    container:
+      'grid w-full grid-cols-[1fr_auto] border-b border-neutral-200 last:border-0',
+    base: 'col-span-full row-start-1 grid grid-cols-subgrid w-full items-center py-4 bg-white px-4 md:px-6',
+    childrenWrapper: 'col-span-1 text-left',
+    rightArea:
+      'col-start-2 col-end-2 row-start-1 mr-4 flex items-center gap-x-2 md:mr-6 pointer-events-none [&_:is(a,button)]:pointer-events-auto',
+    icon: 'fill-current',
   },
   listItemButtonLink: {
-    base: 'w-full focus-visible:outline-neutral-800 justify-between gap-4 hover:bg-neutral-100 active:bg-neutral-100',
-    icon: 'fill-current',
+    base: 'focus-visible:outline-neutral-800 hover:bg-neutral-100 active:bg-neutral-100',
   },
   subsectionTitle: {
     base: 'bg-neutral-100 px-4 md:px-6 py-1 border-b border-t first:border-t-none border-neutral-200 text-sm text-neutral-600',
