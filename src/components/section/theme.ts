@@ -40,7 +40,7 @@ export default {
     icon: 'fill-current',
   },
   listItemButtonLink: {
-    base: 'focus:outline-neutral-800 hover:bg-neutral-100 active:bg-neutral-100',
+    base: 'focus-visible:outline-neutral-800 hover:bg-neutral-100 active:bg-neutral-100',
   },
   subsectionTitle: {
     base: 'bg-neutral-100 px-4 md:px-6 py-1 border-b border-t first:border-t-none border-neutral-200 text-sm text-neutral-600',

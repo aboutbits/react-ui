@@ -8,7 +8,7 @@ import { FormVariant } from './types'
 
 export default {
   input: {
-    base: 'block w-full p-2.5-1px border leading-5 appearance-none outline-none focus:ring-0 focus:outline focus:outline-1 focus:-outline-offset-2 rounded-lg',
+    base: 'block w-full p-2.5-1px border leading-5 appearance-none outline-none focus-visible:ring-0 focus-visible:outline focus-visible:outline-1 focus-visible:-outline-offset-2 rounded-lg',
     field: 'relative',
     modeVariant: {
       [Mode.Light]: {
@@ -23,36 +23,36 @@ export default {
         [FormVariant.Ghost]: {
           tone: {
             [Tone.Neutral]:
-              'bg-transparent border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
+              'bg-transparent border-neutral-500 focus-visible:border-neutral-800 focus-visible:outline-neutral-800',
             [Tone.Critical]:
-              'bg-transparent border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+              'bg-transparent border-critical-500 focus-visible:border-critical-500 focus-visible:outline-critical-500',
           },
           disabled: 'bg-transparent border-neutral-800/[0.36]',
         },
         [FormVariant.Soft]: {
           tone: {
             [Tone.Neutral]:
-              'bg-neutral-800/[0.06] border-transparent focus:border-neutral-800 focus:outline-neutral-800',
+              'bg-neutral-800/[0.06] border-transparent focus-visible:border-neutral-800 focus-visible:outline-neutral-800',
             [Tone.Critical]:
-              'bg-neutral-800/[0.06] border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+              'bg-neutral-800/[0.06] border-critical-500 focus-visible:border-critical-500 focus-visible:outline-critical-500',
           },
           disabled: 'bg-neutral-800/[0.16] border-transparent',
         },
         [FormVariant.Solid]: {
           tone: {
             [Tone.Neutral]:
-              'bg-white border-neutral-500 focus:border-neutral-800 focus:outline-neutral-800',
+              'bg-white border-neutral-500 focus-visible:border-neutral-800 focus-visible:outline-neutral-800',
             [Tone.Critical]:
-              'bg-white border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+              'bg-white border-critical-500 focus-visible:border-critical-500 focus-visible:outline-critical-500',
           },
           disabled: 'bg-white border-neutral-800/[0.36]',
         },
         [FormVariant.Transparent]: {
           tone: {
             [Tone.Neutral]:
-              'bg-transparent border-transparent focus:border-neutral-800 focus:outline-neutral-800 hover:bg-neutral-100 hover:border-neutral-100',
+              'bg-transparent border-transparent focus-visible:border-neutral-800 focus-visible:outline-neutral-800 hover:bg-neutral-100 hover:border-neutral-100',
             [Tone.Critical]:
-              'bg-transparent border-critical-500 focus:border-critical-500 focus:outline-critical-500',
+              'bg-transparent border-critical-500 focus-visible:border-critical-500 focus-visible:outline-critical-500',
           },
           disabled: 'bg-transparent border-transparent',
         },
@@ -68,36 +68,36 @@ export default {
         [FormVariant.Ghost]: {
           tone: {
             [Tone.Neutral]:
-              'bg-transparent border-neutral-200 focus:border-white focus:outline-white ',
+              'bg-transparent border-neutral-200 focus-visible:border-white focus-visible:outline-white ',
             [Tone.Critical]:
-              'bg-transparent border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
+              'bg-transparent border-critical-300 focus-visible:border-critical-300 focus-visible:outline-critical-300 ',
           },
           disabled: 'bg-transparent border-white/[0.36]',
         },
         [FormVariant.Soft]: {
           tone: {
             [Tone.Neutral]:
-              'bg-white/[0.08] border-transparent focus:border-white focus:outline-white',
+              'bg-white/[0.08] border-transparent focus-visible:border-white focus-visible:outline-white',
             [Tone.Critical]:
-              'bg-white/[0.08] border-critical-300 focus:border-critical-300 focus:outline-critical-300',
+              'bg-white/[0.08] border-critical-300 focus-visible:border-critical-300 focus-visible:outline-critical-300',
           },
           disabled: 'bg-white/[0.16] border-transparent',
         },
         [FormVariant.Solid]: {
           tone: {
             [Tone.Neutral]:
-              'bg-neutral-800 border-neutral-200 focus:border-white focus:outline-white ',
+              'bg-neutral-800 border-neutral-200 focus-visible:border-white focus-visible:outline-white ',
             [Tone.Critical]:
-              'bg-neutral-800 border-critical-300 focus:border-critical-300 focus:outline-critical-300 ',
+              'bg-neutral-800 border-critical-300 focus-visible:border-critical-300 focus-visible:outline-critical-300 ',
           },
           disabled: 'bg-neutral-800 border-white/[0.36]',
         },
         [FormVariant.Transparent]: {
           tone: {
             [Tone.Neutral]:
-              'bg-transparent border-transparent focus:border-white focus:outline-white',
+              'bg-transparent border-transparent focus-visible:border-white focus-visible:outline-white',
             [Tone.Critical]:
-              'bg-transparent border-critical-300 focus:border-critical-300 focus:outline-critical-300',
+              'bg-transparent border-critical-300 focus-visible:border-critical-300 focus-visible:outline-critical-300',
           },
           disabled: 'bg-transparent border-transparent',
         },
@@ -212,7 +212,7 @@ export default {
       },
     },
     check: {
-      base: 'block shrink-0 outline-1 rounded-md outline-offset-[-1px] peer-focus:outline',
+      base: 'block shrink-0 outline-1 rounded-md outline-offset-[-1px] peer-focus-visible:outline',
       normal: '',
       disabled: '',
       mode: {
@@ -298,7 +298,7 @@ export default {
       },
     },
     icon: {
-      base: 'block shrink-0 outline-1 rounded-full peer-focus:outline',
+      base: 'block shrink-0 outline-1 rounded-full peer-focus-visible:outline',
       normal: '',
       disabled: '',
       mode: {
@@ -396,7 +396,7 @@ export default {
       },
     },
     switch: {
-      base: 'block shrink-0 rounded-full border-2 p-0.5 outline-1 outline-offset-2 peer-focus:outline',
+      base: 'block shrink-0 rounded-full border-2 p-0.5 outline-1 outline-offset-2 peer-focus-visible:outline',
       normal: 'transition-colors duration-200 ease-in-out',
       disabled: '',
       modeState: {
@@ -461,15 +461,15 @@ export default {
         error: 'focus-within:outline-critical-500',
       },
       selectButton: {
-        base: 'flex-1 text-left -my-2.5 -ml-2 pl-2.5 focus:ring-0 focus:outline-none',
+        base: 'flex-1 text-left -my-2.5 -ml-2 pl-2.5 focus-visible:ring-0 focus-visible:outline-none',
       },
       placeholder: {
         base: 'flex-1',
       },
       iconContainer: {
         base: 'mr-1',
-        normal: 'focus:outline-neutral-800',
-        error: 'focus:outline-critical-500',
+        normal: 'focus-visible:outline-neutral-800',
+        error: 'focus-visible:outline-critical-500',
       },
       icon: {
         base: 'h-5 w-5',
