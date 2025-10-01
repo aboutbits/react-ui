@@ -24,7 +24,7 @@ export function SectionListItem({
 
   return (
     <SectionListItemBase
-      baseElementArea={
+      baseArea={
         <div className={classNames(section.listItem.base)}>
           <div className={section.listItem.childrenWrapper}>{children}</div>
         </div>
@@ -67,7 +67,7 @@ export const SectionListItemButton = forwardRef<
 
   return (
     <SectionListItemBase
-      baseElementArea={
+      baseArea={
         <button
           onClick={onClick}
           className={classNames(
@@ -111,7 +111,7 @@ export const SectionListItemLink = forwardRef<
 
   return (
     <SectionListItemBase
-      baseElementArea={
+      baseArea={
         <LinkComponent
           className={classNames(
             section.listItem.base,
@@ -150,12 +150,12 @@ export function SectionListItemWithAction({
 }
 
 function SectionListItemBase({
-  baseElementArea,
+  baseArea,
   actionsArea,
   withIcon = false,
   className,
 }: {
-  baseElementArea: ReactNode
+  baseArea: ReactNode
   actionsArea?: ReactNode
   withIcon?: boolean
   className?: string
@@ -164,7 +164,7 @@ function SectionListItemBase({
 
   return (
     <div className={classNames(section.listItem.container, className)}>
-      {baseElementArea}
+      {baseArea}
       {((actionsArea !== undefined &&
         actionsArea !== null &&
         actionsArea !== false) ||
