@@ -45,6 +45,10 @@ export const Form = forwardRef(function Form<
 ) {
   const handleSubmit = onSubmit
     ? async (e: FormEvent<HTMLFormElement>) => {
+        // A submit event should never bubble up,
+        // as it would trigger any parent forms.
+        e.stopPropagation()
+
         if (onPreSubmit) {
           const result = await onPreSubmit(e)
 
