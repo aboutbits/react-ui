@@ -36,7 +36,7 @@ export default {
     base: 'col-span-full row-start-1 grid grid-cols-subgrid w-full items-center py-4 bg-white px-4 md:px-6',
     childrenWrapper: 'col-span-1 text-left',
     rightArea:
-      'col-start-2 col-end-2 row-start-1 mr-4 flex items-center gap-x-2 md:mr-6 pointer-events-none [&_:is(a,button)]:pointer-events-auto',
+      'col-start-2 col-end-2 row-start-1 mr-4 flex items-center gap-x-2 md:mr-6 pointer-events-none [&_:is(a,button,label,input)]:pointer-events-auto',
     icon: 'fill-current',
   },
   listItemButtonLink: {
